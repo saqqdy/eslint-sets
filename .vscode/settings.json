@@ -1,0 +1,51 @@
+{
+    "cSpell.words": [
+        "Builtins",
+        "cnpm",
+        "consola",
+        "esbuild",
+        "eslint-sets",
+        "gitm",
+        "Gitm",
+        "gitmars",
+        "Gitmars",
+        "gitmarscommands",
+        "gitmarsconfig",
+        "gitmarsdb",
+        "gitmarslog",
+        "gitmarsrc",
+        "iife",
+        "jsexclude",
+        "pnpm",
+        "saqqdy",
+        "tscjs",
+        "tsesm",
+        "tsnd",
+        "tsup",
+        "typedoc",
+        "vuex"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "npm.packageManager": "yarn",
+    "eslint.probe": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "vue",
+        "markdown"
+    ],
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "vue",
+        "markdown"
+    ]
+}

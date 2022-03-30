@@ -1,0 +1,11 @@
+/lib
+/es
+/dist
+/docs
+
+*.bak
+*_bak
+
+stats.html
+#Electron-builder output
+dist_electron

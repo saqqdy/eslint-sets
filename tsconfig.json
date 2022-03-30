@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "ESNext",
+        "moduleResolution": "node",
+        "noLib": false,
+        "lib": ["esnext"],
+        "sourceMap": true,
+        "module": "ESNext",
+        "strict": true,
+        "declaration": true,
+        "noImplicitOverride": true,
+        "noUnusedLocals": false,
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "noUnusedParameters": false,
+        "baseUrl": ".",
+        "rootDirs": ["ui", "server"],
+        "paths": {
+            "@/*": ["./ui/src/*"],
+            "@/package": ["./package.json"]
+        }
+    },
+    "include": [
+        "bin/**/*.ts",
+        "bin/**/*.d.ts",
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "typings/*.d.ts"
+    ]
+}

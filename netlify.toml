@@ -1,0 +1,11 @@
+[build.environment]
+  NODE_VERSION = "14"
+
+[build]
+  publish = "docs/.vuepress/dist"
+  command = "find ./docs -type f -path \"*.md\" | xargs sed -i \"s/https:\/\/raw.githubusercontent.com\/saqqdy\/eslint-sets/https:\/\/gitee.com\/saqqdy\/eslint-sets\/raw/g\" && sed -i \"s/base: '\/eslint-sets\/'/base: '\/'/g\" docs/.vuepress/config.js && npm run docs:build && git checkout . && git clean -fd"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

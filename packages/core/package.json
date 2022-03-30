@@ -30,6 +30,10 @@
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
         "directory": "packages/core"
     },
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	},
     "keywords": [
         "eslint-sets",
         "git",

@@ -10,6 +10,7 @@ export const packages: PackageManifest[] = [
     {
         name: 'vue',
         iife: false,
+        dts: false,
         display: 'Eslint config sets for vue2.0'
     }
 ]

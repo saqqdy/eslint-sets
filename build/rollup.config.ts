@@ -5,11 +5,12 @@ import { packages } from './packages'
 import {
     esbuildPlugin,
     dtsPlugin,
+	terserPlugin,
     resolvePlugin,
     visualPlugin,
     shebangPlugin,
     esbuildMinify,
-    minifyBanner,
+    bannerPlugin,
     injectEslintSetsCore
 } from './rollup-plugins'
 import { banner } from './config'
@@ -100,8 +101,8 @@ for (const {
                         esbuildMinify({
                             minify: true
                         }),
-                        minifyBanner({
-                            banner
+                        bannerPlugin({
+                            content: banner
                         })
                     ]
                 }
@@ -114,7 +115,7 @@ for (const {
             output,
             plugins: [
                 resolvePlugin,
-                target ? esbuild({ target }) : esbuildPlugin,
+                target ? esbuild({ target }) : esbuildPlugin(),
                 shebangPlugin
             ],
             external: [...externals, ...external]

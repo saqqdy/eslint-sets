@@ -1,6 +1,6 @@
 <div style="text-align: center;" align="center">
 
-# @eslint-sets/node
+# @eslint-sets/vue
 
 A simplified http request client for nodejs
 
@@ -19,42 +19,42 @@ A simplified http request client for nodejs
 
 ```bash
 # use npm
-$ npm install @eslint-sets/node --save
+$ npm install @eslint-sets/vue --save
 
 # use yarn
-$ yarn add @eslint-sets/node
+$ yarn add @eslint-sets/vue
 
 # use pnpm
-$ pnpm install @eslint-sets/node
+$ pnpm install @eslint-sets/vue
 ```
 
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/node')
+const { nextIndex } = require('@eslint-sets/vue')
 
 nextIndex()
 ```
 
 ## Issues & Support
 
-Please open an issue [here](https://github.com/saqqdy/@eslint-sets/node/issues).
+Please open an issue [here](https://github.com/saqqdy/@eslint-sets/vue/issues).
 
 ## License
 
 [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/@eslint-sets/node.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@eslint-sets/node
+[npm-image]: https://img.shields.io/npm/v/@eslint-sets/vue.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@eslint-sets/vue
 [codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696
-[codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/node/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/node&utm_campaign=Badge_Grade
-[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@eslint-sets/node.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/node?branch=master
-[download-image]: https://img.shields.io/npm/dm/@eslint-sets/node.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@eslint-sets/node
-[gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/node/index.cjs?compression=gzip&label=gzip%20size:%20JS
-[gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/node/index.cjs?compression=gzip&label=gzip%20size:%20JS
+[codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/vue/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/vue&utm_campaign=Badge_Grade
+[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@eslint-sets/vue.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/vue?branch=master
+[download-image]: https://img.shields.io/npm/dm/@eslint-sets/vue.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@eslint-sets/vue
+[gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/vue/index.cjs?compression=gzip&label=gzip%20size:%20JS
+[gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/vue/index.cjs?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
-[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_@eslint-sets/node
-[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_@eslint-sets/node
+[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_@eslint-sets/vue
+[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_@eslint-sets/vue

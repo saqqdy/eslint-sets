@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/core",
     "description": "git master core",
-    "version": "1.0.0-alpha.3",
+    "version": "1.0.0-alpha.0",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -27,17 +27,18 @@
     "sideEffects": false,
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/saqqdy/eslint-sets.git"
+        "url": "git+https://github.com/saqqdy/eslint-sets.git",
+        "directory": "packages/core"
     },
     "keywords": [
         "eslint-sets",
         "git",
         "tool"
     ],
-    "author": "saqqdy<www.saqqdy.com>",
+    "author": "saqqdy <https://github.com/saqqdy>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://www.saqqdy.com/eslint-sets"
+    "homepage": "https://github.com/saqqdy/eslint-sets#readme"
 }

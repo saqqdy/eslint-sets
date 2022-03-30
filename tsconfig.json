@@ -7,6 +7,7 @@
         "lib": ["esnext"],
         "sourceMap": true,
         "module": "ESNext",
+        "removeComments": true,
         "strict": true,
         "declaration": true,
         "noImplicitOverride": true,
@@ -18,19 +19,10 @@
         "resolveJsonModule": true,
         "noUnusedParameters": false,
         "baseUrl": ".",
-        "rootDirs": ["ui", "server"],
         "paths": {
-            "@/*": ["./ui/src/*"],
+            "@/*": ["./packages/*"],
             "@/package": ["./package.json"]
         }
     },
-    "include": [
-        "bin/**/*.ts",
-        "bin/**/*.d.ts",
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
-        "typings/*.d.ts"
-    ]
+    "include": ["packages/**/*.ts", "packages/**/*.d.ts", "typings/*.d.ts"]
 }

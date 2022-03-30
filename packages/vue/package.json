@@ -1,7 +1,7 @@
 {
-    "name": "@eslint-sets/node",
+    "name": "@eslint-sets/vue",
     "description": "js utils for nodejs",
-    "version": "1.0.0-alpha.6",
+    "version": "1.0.0-alpha.0",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -25,7 +25,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
-        "directory": "packages/node"
+        "directory": "packages/vue"
     },
     "keywords": [
         "eslint-sets",
@@ -37,5 +37,5 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/node#readme"
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue#readme"
 }

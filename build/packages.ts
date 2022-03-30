@@ -8,8 +8,8 @@ export const packages: PackageManifest[] = [
         display: 'some core js'
     },
     {
-        name: 'utils',
+        name: 'vue',
         iife: false,
-        display: 'Shared utilities'
+        display: 'Eslint config sets for vue2.0'
     },
 ]

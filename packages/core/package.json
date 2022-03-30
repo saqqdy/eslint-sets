@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/core",
     "description": "git master core",
-    "version": "1.0.0-alpha.0",
+    "version": "1.0.0-alpha.1",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -30,10 +30,10 @@
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
         "directory": "packages/core"
     },
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
     "keywords": [
         "eslint-sets",
         "git",

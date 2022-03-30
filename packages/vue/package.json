@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/vue",
     "description": "js utils for nodejs",
-    "version": "1.0.0-alpha.0",
+    "version": "1.0.0-alpha.1",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -20,17 +20,19 @@
         "src": "src",
         "typings": "typings"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "@eslint-sets/core": "workspace:*"
+    },
     "sideEffects": false,
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
         "directory": "packages/vue"
     },
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
     "keywords": [
         "eslint-sets",
         "git",

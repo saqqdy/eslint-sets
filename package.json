@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/monorepo",
     "description": "eslint-sets",
-    "version": "1.0.0-alpha.1",
+    "version": "1.0.0-alpha.2",
     "scripts": {
         "eslint": "eslint --fix --ext .vue,.js",
         "prettier": "npx prettier --write ./",
@@ -57,7 +57,8 @@
     "pnpm": {
         "peerDependencyRules": {
             "ignoreMissing": [
-                "@babel/core"
+                "@babel/core",
+                "webpack"
             ],
             "allowedVersions": {
                 "eslint": "^8.10.0"

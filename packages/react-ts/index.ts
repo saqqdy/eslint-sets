@@ -1,0 +1,102 @@
+export const config = {
+    root: true,
+    env: {
+        node: true,
+        browser: true,
+        commonjs: true,
+        es6: true
+    },
+    parser: '@typescript-eslint/parser',
+    extends: ['eslint:recommended', 'plugin:react/recommended'],
+    parserOptions: {
+        parser: '@typescript-eslint/parser',
+        ecmaVersion: 2020,
+        project: './tsconfig.json',
+        ecmaFeatures: {
+            experimentalObjectRestSpread: true,
+            experimentalDecorators: true,
+            jsx: true
+        },
+        sourceType: 'module'
+    },
+    plugins: [
+        'react',
+        'react-hooks',
+        '@typescript-eslint/eslint-plugin',
+        'eslint-plugin-tsdoc'
+    ],
+    globals: {
+        __DEV__: false,
+        __dirname: false,
+        h: true,
+        window: true,
+        define: true,
+        history: true,
+        location: true,
+        wxjs: true,
+        $: true,
+        WeixinJSBridge: true,
+        wx: true,
+        process: true,
+        qq: true
+    },
+    settings: {
+        react: {
+            version: '17.0.0'
+        }
+    },
+    rules: {
+        'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
+        'no-debugger': 1,
+        semi: [2, 'never'],
+        'comma-dangle': 'off',
+        'one-var': [
+            'warn',
+            {
+                var: 'always',
+                let: 'always',
+                const: 'never'
+            }
+        ],
+        'no-throw-literal': 0,
+        'no-new-wrappers': 2,
+        'no-useless-escape': 0,
+        'no-redeclare': 2,
+        'no-tabs': 0,
+        'no-mixed-spaces-and-tabs': 1,
+        'space-before-function-paren': [0, 'always'],
+        'object-shorthand': 2,
+        'no-unused-vars': [
+            2,
+            { ignoreRestSiblings: true, argsIgnorePattern: '^h$' }
+        ],
+        'no-dupe-keys': 2,
+        'no-func-assign': 2,
+        'valid-typeof': 2,
+        'no-shadow': 0,
+        'no-prototype-builtins': 0,
+        'no-undef': 2,
+        'no-irregular-whitespace': 1,
+        '@typescript-eslint/no-var-requires': 0,
+        '@typescript-eslint/ban-ts-ignore': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            2,
+            {
+                argsIgnorePattern: '^h$',
+                varsIgnorePattern: '^h$'
+            }
+        ],
+        quotes: ['error', 'single'],
+        'react/react-in-jsx-scope': 0
+    }
+}
+export default config

@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/core",
     "description": "git master core",
-    "version": "1.0.0-alpha.1",
+    "version": "1.0.0-alpha.2",
     "exports": {
         ".": {
             "import": "./index.mjs",

@@ -1,5 +1,5 @@
 {
-    "name": "@eslint-sets/vue",
+    "name": "@eslint-sets/react",
     "description": "js utils for nodejs",
     "version": "1.0.0-alpha.2",
     "exports": {
@@ -21,17 +21,7 @@
         "typings": "typings"
     },
     "devDependencies": {
-        "@eslint-sets/core": "workspace:*",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^8.12.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-import": "^2.25.4",
-        "eslint-plugin-jsdoc": "^38.1.4",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-vue": "^8.5.0",
-        "eslint-plugin-vue-scoped-css": "^2.2.0",
-        "prettier": "^2.6.1",
-        "vue-eslint-parser": "^8.3.0"
+        "@eslint-sets/core": "workspace:*"
     },
     "peerDependencies": {
         "eslint": ">=8.0.0",
@@ -41,7 +31,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
-        "directory": "packages/vue"
+        "directory": "packages/react"
     },
     "pnpm": {
         "peerDependencyRules": {
@@ -68,5 +58,14 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue#readme"
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/react#readme",
+    "dependencies": {
+        "babel-eslint": "^10.1.0",
+        "eslint": "^8.12.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsdoc": "^38.1.4",
+        "eslint-plugin-react": "^7.29.4",
+        "eslint-plugin-react-hooks": "^4.4.0",
+        "prettier": "^2.6.1"
+    }
 }

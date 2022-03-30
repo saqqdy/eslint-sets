@@ -3,7 +3,8 @@
     "exclude": ["__tests__", "../../temp"],
     "compilerOptions": {
         "removeComments": true,
-        "target": "es6",
+        "declaration": false,
+        "target": "ESNext",
         "outDir": "../lib",
         "module": "commonjs",
         "lib": ["ESNext"],

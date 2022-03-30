@@ -4,7 +4,7 @@
         "target": "ESNext",
         "moduleResolution": "node",
         "noLib": false,
-        "lib": ["esnext"],
+        "lib": ["ESNext"],
         "sourceMap": true,
         "module": "ESNext",
         "removeComments": true,

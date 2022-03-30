@@ -15,7 +15,7 @@ import type { Options as BannerOptions } from 'rollup-plugin-add-banner'
 
 export const esbuildPlugin = (options: ESBuildOptions = {}): Plugin =>
     esbuild({
-		minify: false, // 避免\u005c被转码
+        minify: false, // 避免\u005c被转码
         sourceMap: options.minify || false,
         target: 'es2017',
         define: {

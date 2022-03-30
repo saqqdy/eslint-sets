@@ -53,10 +53,10 @@
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git"
     },
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
     "keywords": [
         "eslint-sets",
         "vue",

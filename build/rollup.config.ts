@@ -5,7 +5,7 @@ import { packages } from './packages'
 import {
     esbuildPlugin,
     dtsPlugin,
-	terserPlugin,
+    terserPlugin,
     resolvePlugin,
     visualPlugin,
     shebangPlugin,
@@ -64,7 +64,7 @@ for (const {
         if (mjs !== false) {
             output.push({
                 file: `packages/${name}/dist/${fn}.mjs`,
-				exports: 'auto',
+                exports: 'auto',
                 banner,
                 format: 'es'
             })
@@ -73,7 +73,7 @@ for (const {
         if (cjs !== false) {
             output.push({
                 file: `packages/${name}/dist/${fn}.cjs`,
-				exports: 'named',
+                exports: 'named',
                 banner,
                 format: 'cjs'
             })
@@ -84,7 +84,7 @@ for (const {
                 {
                     file: `packages/${name}/dist/${fn}.iife.js`,
                     format: 'iife',
-					exports: 'named',
+                    exports: 'named',
                     name: iifeName,
                     extend: true,
                     globals: iifeGlobals,
@@ -96,7 +96,7 @@ for (const {
                 {
                     file: `packages/${name}/dist/${fn}.iife.min.js`,
                     format: 'iife',
-					exports: 'named',
+                    exports: 'named',
                     name: iifeName,
                     extend: true,
                     globals: iifeGlobals,

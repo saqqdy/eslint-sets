@@ -1,16 +1,21 @@
 /* 1eslint-disable no-console */
 const os = require('os')
 const fs = require('fs')
-const path = require('path')
+const { join } = require('path')
 const { spawnSync, execSync } = require('child_process')
-const cwd = process.cwd()
+
+let [, , cwd] = process.argv
+const ROOT_PATH = join(__dirname, '..')
+cwd = join(ROOT_PATH, cwd.replace(/"/g, ''))
+
+if (!cwd) cwd = process.cwd()
 
 type TypeManagers = 'npm' | 'pnpm' | 'yarn' | string
 
 const PACKAGE_NEXT = ['vue', 'vuex', 'vue-router']
 const PACKAGE_MANAGERS: TypeManagers[] = ['pnpm', 'yarn', 'npm']
 
-let pkg = fs.readFileSync(path.join(cwd, 'package.json')),
+let pkg = fs.readFileSync(join(cwd, 'package.json')),
     dependencies,
     list = ['--registry', 'https://registry.npmmirror.com']
 
@@ -35,15 +40,18 @@ switch (cmd) {
 
 // @next
 for (let packageName in dependencies) {
+    const isWorkspacePkg = dependencies[packageName] === 'workspace:*'
     if (PACKAGE_NEXT.includes(packageName)) packageName += '@next'
-    list.push(packageName)
+    else packageName += '@latest'
+    !isWorkspacePkg && list.push(packageName)
 }
 
 // run install
 if (list.length > 0) {
     spawnSync(cmd, list, {
+        cwd,
         stdio: 'inherit',
-        shell: process.platform === 'win32' /*, env: { detached: true }*/
+        shell: process.platform === 'win32'
     })
 } else {
     process.exit(1)

@@ -5,6 +5,7 @@
     "scripts": {
         "eslint": "eslint --fix --ext .vue,.js",
         "prettier": "npx prettier --write ./",
+        "reinstall": "tscjs scripts/reinstall",
         "lib": "sh scripts/lib.sh",
         "docs": "sh scripts/docs.sh --docs",
         "push": "tscjs scripts/push.ts",
@@ -52,6 +53,16 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git"
+    },
+    "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "@babel/core"
+            ],
+            "allowedVersions": {
+                "eslint": "^8.10.0"
+            }
+        }
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org",

@@ -1,4 +1,4 @@
-export default {
+export const config = {
     root: true,
     env: {
         node: true,
@@ -59,3 +59,4 @@ export default {
         'prettier'
     ]
 }
+export default config

@@ -64,6 +64,7 @@ for (const {
         if (mjs !== false) {
             output.push({
                 file: `packages/${name}/dist/${fn}.mjs`,
+				exports: 'auto',
                 banner,
                 format: 'es'
             })
@@ -72,6 +73,7 @@ for (const {
         if (cjs !== false) {
             output.push({
                 file: `packages/${name}/dist/${fn}.cjs`,
+				exports: 'named',
                 banner,
                 format: 'cjs'
             })
@@ -82,6 +84,7 @@ for (const {
                 {
                     file: `packages/${name}/dist/${fn}.iife.js`,
                     format: 'iife',
+					exports: 'named',
                     name: iifeName,
                     extend: true,
                     globals: iifeGlobals,
@@ -93,6 +96,7 @@ for (const {
                 {
                     file: `packages/${name}/dist/${fn}.iife.min.js`,
                     format: 'iife',
+					exports: 'named',
                     name: iifeName,
                     extend: true,
                     globals: iifeGlobals,

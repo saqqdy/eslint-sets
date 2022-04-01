@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/vue3",
     "description": "js utils for nodejs",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "exports": {
         ".": {
             "import": "./index.mjs",

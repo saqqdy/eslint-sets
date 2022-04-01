@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/simple",
     "description": "js utils for nodejs",
-    "version": "1.0.0-alpha.3",
+    "version": "1.0.0",
     "exports": {
         ".": {
             "import": "./index.mjs",

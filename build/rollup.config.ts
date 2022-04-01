@@ -1,13 +1,11 @@
-import { resolve, normalize } from 'path'
+import { resolve } from 'path'
 import fg from 'fast-glob'
 import { packages } from './packages'
 import {
     esbuild,
     dts as dtsPlugin,
-    terser,
     filesize,
     nodeResolve,
-    visual,
     banner as bannerPlugin,
     minify
 } from './plugins'

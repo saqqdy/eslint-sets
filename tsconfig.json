@@ -23,6 +23,5 @@
             "@/*": ["./packages/*"],
             "@/package": ["./package.json"]
         }
-    },
-    "include": ["packages/**/*.ts", "packages/**/*.d.ts", "typings/*.d.ts"]
+    }
 }

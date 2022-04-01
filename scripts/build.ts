@@ -1,7 +1,7 @@
 import path from 'path'
 import assert from 'assert'
 import { execSync } from 'child_process'
-import { promises, copyFileSync, readFileSync, writeFileSync } from 'fs'
+import { promises, readFileSync, writeFileSync } from 'fs'
 import fg from 'fast-glob'
 import consola from 'consola'
 import { packages } from '../build/packages'

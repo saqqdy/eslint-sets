@@ -22,4 +22,4 @@ for (const { name } of packages) {
 execSync(command, {
     stdio: 'inherit'
 })
-consola.success(`Published @eslint-sets/monorepo`)
+consola.success('Published @eslint-sets/monorepo')

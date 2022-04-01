@@ -1,5 +1,5 @@
-import { join, resolve } from 'path'
-import { promises, copyFileSync, readFileSync, writeFileSync } from 'fs'
+import { resolve } from 'path'
+import { promises, readFileSync, writeFileSync } from 'fs'
 import { packages } from '../build/packages'
 import { version } from '../package.json'
 

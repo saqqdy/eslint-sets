@@ -1,6 +1,6 @@
-/lib
-/es
-/dist
+lib
+es
+dist
 /docs
 
 *.bak

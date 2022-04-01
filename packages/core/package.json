@@ -1,6 +1,6 @@
 {
     "name": "@eslint-sets/core",
-    "description": "git master core",
+    "description": "eslint-sets core",
     "version": "1.0.0-alpha.2",
     "exports": {
         ".": {

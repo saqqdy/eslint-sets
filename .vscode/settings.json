@@ -6,6 +6,7 @@
         "eggjs",
         "esbuild",
         "eslint-sets",
+        "filesize",
         "gitm",
         "Gitm",
         "gitmars",

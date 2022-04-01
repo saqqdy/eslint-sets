@@ -1,1 +1,1 @@
-export { default as extend } from 'js-cool/es/extend'
+export { extend } from 'js-cool'

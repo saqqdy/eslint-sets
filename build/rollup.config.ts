@@ -1,19 +1,16 @@
 import { resolve, normalize } from 'path'
-import esbuild from 'rollup-plugin-esbuild'
 import fg from 'fast-glob'
 import { packages } from './packages'
 import {
-    esbuildPlugin,
-    dtsPlugin,
-    terserPlugin,
-    resolvePlugin,
-    visualPlugin,
-    shebangPlugin,
-    esbuildMinify,
-    bannerPlugin,
-    injectEslintSetsCore
-} from './rollup-plugins'
-import { banner } from './config'
+    esbuild,
+    dts as dtsPlugin,
+    terser,
+    filesize,
+    nodeResolve,
+    visual,
+    banner as bannerPlugin,
+    minify
+} from './plugins'
 
 import type { OutputOptions, RollupOptions } from 'rollup'
 
@@ -35,7 +32,22 @@ for (const {
     target
 } of packages) {
     if (build === false) continue
-    // const pkg = require(`packages/${name}/package.json`)
+    const pkg = require(`packages/${name}/package.json`)
+    const banner =
+        '/*!\n' +
+        ' * ' +
+        pkg.name +
+        ' v' +
+        pkg.version +
+        '\n' +
+        ' * ' +
+        pkg.description +
+        '\n' +
+        ' * (c) 2021-' +
+        new Date().getFullYear() +
+        ' saqqdy<https://github.com/saqqdy> \n' +
+        ' * Released under the MIT License.\n' +
+        ' */'
     // const deps = Object.keys(pkg.dependencies || {})
     const iifeGlobals = {
         'js-cool': 'JsCool',
@@ -102,7 +114,7 @@ for (const {
                     globals: iifeGlobals,
                     plugins: [
                         // injectEslintSetsCore,
-                        esbuildMinify({
+                        minify({
                             minify: true
                         }),
                         bannerPlugin({
@@ -118,9 +130,9 @@ for (const {
             input,
             output,
             plugins: [
-                resolvePlugin,
-                target ? esbuild({ target }) : esbuildPlugin(),
-                shebangPlugin
+                nodeResolve,
+                target ? esbuild({ target }) : esbuild(),
+                filesize
             ],
             external: [...externals, ...external]
             // external(id) {

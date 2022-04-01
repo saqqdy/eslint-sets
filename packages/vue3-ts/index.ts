@@ -1,3 +1,5 @@
+import { extend as _extend } from '@eslint-sets/core'
+
 export const config = {
     root: true,
     env: {
@@ -127,4 +129,7 @@ export const config = {
         }
     ]
 }
+
+export const extend = (customConfig: object) =>
+    _extend(true, config, customConfig)
 export default config

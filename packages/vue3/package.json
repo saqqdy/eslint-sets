@@ -20,9 +20,21 @@
         "src": "src",
         "typings": "typings"
     },
-    "devDependencies": {
-        "@eslint-sets/core": "workspace:*"
+    "dependencies": {
+        "@eslint-sets/core": "workspace:*",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^8.12.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsdoc": "^38.1.4",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-vitest-globals": "^1.1.0",
+        "eslint-plugin-vue": "^8.5.0",
+        "eslint-plugin-vue-scoped-css": "^2.2.0",
+        "prettier": "^2.6.1",
+        "vue-eslint-parser": "^8.3.0"
     },
+    "devDependencies": {},
     "peerDependencies": {
         "eslint": ">=8.0.0",
         "prettier": ">=2.4.0"
@@ -59,18 +71,5 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3#readme",
-    "dependencies": {
-        "babel-eslint": "^10.1.0",
-        "eslint": "^8.12.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-import": "^2.25.4",
-        "eslint-plugin-jsdoc": "^38.1.4",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-vitest-globals": "^1.1.0",
-        "eslint-plugin-vue": "^8.5.0",
-        "eslint-plugin-vue-scoped-css": "^2.2.0",
-        "prettier": "^2.6.1",
-        "vue-eslint-parser": "^8.3.0"
-    }
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3#readme"
 }

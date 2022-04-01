@@ -4,7 +4,9 @@ const fs = require('fs')
 const { join } = require('path')
 const { spawnSync, execSync } = require('child_process')
 
-let [, , cwd] = process.argv
+let [, , cwd = ''] = process.argv,
+    pkg: any,
+    list
 const ROOT_PATH = join(__dirname, '..')
 cwd = join(ROOT_PATH, cwd.replace(/"/g, ''))
 
@@ -15,12 +17,11 @@ type TypeManagers = 'npm' | 'pnpm' | 'yarn' | string
 const PACKAGE_NEXT = ['vue', 'vuex', 'vue-router']
 const PACKAGE_MANAGERS: TypeManagers[] = ['pnpm', 'yarn', 'npm']
 
-let pkg = fs.readFileSync(join(cwd, 'package.json')),
-    dependencies,
-    list = ['--registry', 'https://registry.npmmirror.com']
+pkg = fs.readFileSync(join(cwd, 'package.json'))
+list = ['--registry', 'https://registry.npmmirror.com']
 
 pkg = JSON.parse(pkg)
-dependencies = { ...pkg.devDependencies, ...pkg.dependencies }
+const dependencies = { ...pkg.devDependencies, ...pkg.dependencies }
 const cmd = getPackageManager()
 
 switch (cmd) {

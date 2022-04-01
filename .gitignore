@@ -4,7 +4,6 @@ dist
 yarn.lock
 /.pnp
 .pnp.js
-.gitmasterrc
 
 /tests/e2e/reports/
 selenium-debug.log

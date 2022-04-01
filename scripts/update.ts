@@ -17,7 +17,7 @@ async function updatePackageJSON() {
         packageJSON.homepage =
             name === 'core'
                 ? 'https://github.com/saqqdy/eslint-sets#readme'
-                : `https://github.com/saqqdy/eslint-sets/tree/master/packages/${name}#readme`
+                : `https://github.com/saqqdy/eslint-sets/tree/main/packages/${name}#readme`
         packageJSON.repository = {
             type: 'git',
             url: 'git+https://github.com/saqqdy/eslint-sets.git',

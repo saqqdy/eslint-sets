@@ -4,7 +4,7 @@
     "compilerOptions": {
         "removeComments": true,
         "target": "ESNext",
-        "outDir": "../lib",
+        "outDir": "dist",
         "module": "commonjs",
         "lib": ["ESNext"],
         "sourceMap": true

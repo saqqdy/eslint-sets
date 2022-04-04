@@ -1,7 +1,6 @@
-import { extend } from '@eslint-sets/core'
 const basic = require('@eslint-sets/eslint-config-basic')
 
-export const config = {
+const config = {
     plugins: [
         '@typescript-eslint/eslint-plugin'
         // 'eslint-plugin-tsdoc'
@@ -66,6 +65,4 @@ export const config = {
     ]
 }
 
-export const merge = (customConfig: object) =>
-    extend(true, config, customConfig)
 export default config

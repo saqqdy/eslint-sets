@@ -27,7 +27,8 @@ for (const {
     cjs,
     mjs,
     dts,
-    target
+    target,
+    exportType = 'auto'
 } of packages) {
     if (build === false) continue
     const pkg = require(`packages/${name}/package.json`)
@@ -74,7 +75,8 @@ for (const {
         if (mjs !== false) {
             output.push({
                 file: `packages/${name}/dist/${fn}.mjs`,
-                exports: 'auto',
+                // exports: 'auto',
+                exports: exportType,
                 banner,
                 format: 'es'
             })
@@ -82,8 +84,9 @@ for (const {
         // output cjs
         if (cjs !== false) {
             output.push({
-                file: `packages/${name}/dist/${fn}.cjs`,
-                exports: 'named',
+                file: `packages/${name}/dist/${fn}.js`,
+                // exports: 'auto',
+                exports: exportType,
                 banner,
                 format: 'cjs'
             })
@@ -94,7 +97,8 @@ for (const {
                 {
                     file: `packages/${name}/dist/${fn}.iife.js`,
                     format: 'iife',
-                    exports: 'named',
+                    // exports: 'named',
+                    // exports: exportType,
                     name: iifeName,
                     extend: true,
                     globals: iifeGlobals,
@@ -106,7 +110,8 @@ for (const {
                 {
                     file: `packages/${name}/dist/${fn}.iife.min.js`,
                     format: 'iife',
-                    exports: 'named',
+                    // exports: 'named',
+                    // exports: exportType,
                     name: iifeName,
                     extend: true,
                     globals: iifeGlobals,

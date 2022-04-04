@@ -10,11 +10,11 @@ const versions = version.split(',')
 const REGISTRY_URL = 'https://registry.npmjs.org'
 const command = `npm --registry=${REGISTRY_URL} unpublish`
 
-for (const { name } of packages) {
+for (const { pkgName } of packages) {
     for (const version of versions) {
-        execSync(`${command} @eslint-sets/${name}@${version}`, {
+        execSync(`${command} @eslint-sets/${pkgName}@${version}`, {
             stdio: 'inherit'
         })
-        consola.success(`UnPublished @eslint-sets/${name}@${version}`)
+        consola.success(`UnPublished @eslint-sets/${pkgName}@${version}`)
     }
 }

@@ -1,9 +1,9 @@
 {
     "name": "@eslint-sets/monorepo",
     "description": "eslint-sets",
-    "version": "2.0.0-alpha.2",
+    "version": "2.0.0-alpha.3",
     "scripts": {
-        "eslint": "eslint --fix --ext .vue,.js",
+        "eslint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
         "prettier": "npx prettier --write ./",
         "reinstall": "tscjs scripts/reinstall",
         "lib": "sh scripts/lib.sh",
@@ -34,9 +34,19 @@
         "eslint": "^8.12.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-sets": "~1.8.1",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsonc": "^2.2.1",
+        "eslint-plugin-markdown": "^2.2.1",
+        "eslint-plugin-n": "^15.1.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-promise": "^6.0.0",
         "eslint-plugin-tsdoc": "^0.2.14",
+        "eslint-plugin-unicorn": "^42.0.0",
+        "eslint-plugin-yml": "^0.14.0",
         "fast-glob": "^3.2.11",
         "js-cool": "^2.3.2",
+        "jsonc-eslint-parser": "^2.1.0",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.6.1",
         "rimraf": "^3.0.2",
@@ -51,7 +61,8 @@
         "tsnd": "^1.0.2",
         "typedoc": "^0.22.13",
         "typedoc-plugin-markdown": "^3.11.14",
-        "typescript": "^4.6.3"
+        "typescript": "^4.6.3",
+        "yaml-eslint-parser": "^0.5.0"
     },
     "repository": {
         "type": "git",

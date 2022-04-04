@@ -20,7 +20,6 @@
     },
     "main": "index.js",
     "devDependencies": {
-        "@eslint-sets/eslint-config-simple-ts": "workspace:*",
         "@rollup/plugin-commonjs": "^21.0.3",
         "@rollup/plugin-json": "^4.1.0",
         "@rollup/plugin-node-resolve": "^13.1.3",

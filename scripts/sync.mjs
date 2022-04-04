@@ -3,8 +3,7 @@
 
 import { packages } from '../build/packages'
 
-let cmd = 'open'
-if (process.platform === 'win32') cmd = 'start'
+const cmd = process.platform === 'win32' ? 'start' : 'open'
 
 for (const pkg of packages) {
     await $`${cmd} https://npmmirror.com/sync/@eslint-sets/${pkg.pkgName}`

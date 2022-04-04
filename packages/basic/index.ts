@@ -119,7 +119,7 @@
         'n/no-callback-literal': 'off',
 
         // prettier
-        'prettier/prettier': 'error',
+        // 'prettier/prettier': 'error',
 
         'sort-imports': [
             'error',

@@ -1,4 +1,3 @@
-
 export const config = {
     plugins: [
         // 'eslint-plugin-tsdoc',

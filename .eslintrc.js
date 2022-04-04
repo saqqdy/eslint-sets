@@ -40,7 +40,8 @@ module.exports = {
         'no-useless-escape': 0,
         'no-redeclare': 2,
         'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
+        indent: [2, 4],
+        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,
         'no-unused-vars': [

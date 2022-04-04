@@ -1,6 +1,6 @@
 export interface PackageManifest {
     name: string
-	pkgName: string
+    pkgName: string
     display: string
     addon?: boolean
     author?: string
@@ -16,5 +16,5 @@ export interface PackageManifest {
     mjs?: boolean
     dts?: boolean
     target?: string
-	exportType?: 'auto' | 'default' | 'named' | 'none' | undefined
+    exportType?: 'auto' | 'default' | 'named' | 'none' | undefined
 }

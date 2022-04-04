@@ -1,4 +1,4 @@
- const config = {
+const config = {
     root: true,
     env: {
         node: true,
@@ -23,11 +23,7 @@
         '!.vitepress',
         '!.vuepress'
     ],
-    plugins: [
-        'html',
-        'unicorn',
-        'prettier'
-    ],
+    plugins: ['html', 'unicorn', 'prettier'],
     extends: [
         './standard',
         'plugin:import/recommended',
@@ -65,7 +61,7 @@
         'no-useless-escape': 0,
         'no-redeclare': 2,
         'no-tabs': 0,
-        'indent': [2, 'tab'],
+        indent: [2, 'tab'],
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,

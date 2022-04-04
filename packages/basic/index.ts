@@ -25,8 +25,8 @@
     ],
     plugins: [
         'html',
-        'unicorn'
-        // 'prettier'
+        'unicorn',
+        'prettier'
     ],
     extends: [
         './standard',
@@ -35,7 +35,6 @@
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:yml/standard',
         'plugin:markdown/recommended'
-        // 'prettier'
     ],
     settings: {
         'import/resolver': {
@@ -66,7 +65,8 @@
         'no-useless-escape': 0,
         'no-redeclare': 2,
         'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
+        'indent': [2, 'tab'],
+        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,
         'no-unused-vars': [
@@ -119,7 +119,7 @@
         'n/no-callback-literal': 'off',
 
         // prettier
-        // 'prettier/prettier': 'error',
+        'prettier/prettier': 'error',
 
         'sort-imports': [
             'error',

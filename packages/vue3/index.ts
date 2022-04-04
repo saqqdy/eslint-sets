@@ -1,4 +1,3 @@
-import { extend } from '@eslint-sets/core'
 
 export const config = {
     plugins: [
@@ -71,6 +70,4 @@ export const config = {
     ]
 }
 
-export const merge = (customConfig: object) =>
-    extend(true, config, customConfig)
 export default config

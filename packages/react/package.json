@@ -2,17 +2,7 @@
     "name": "@eslint-sets/eslint-config-react",
     "description": "Eslint config sets for react",
     "version": "2.0.0-alpha.2",
-    "exports": {
-        ".": {
-            "import": "./index.mjs",
-            "require": "./index.js",
-            "types": "./index.d.ts"
-        },
-        "./*": "./*"
-    },
-    "main": "./index.cjs",
-    "module": "./index.mjs",
-    "types": "./index.d.ts",
+    "main": "./index.js",
     "scripts": {},
     "directories": {
         "es": "es",

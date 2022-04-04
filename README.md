@@ -37,5 +37,5 @@ Please open an issue [here](https://github.com/saqqdy/@eslint-sets/monorepo/issu
 [codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/monorepo/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/monorepo&utm_campaign=Badge_Grade
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
-[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_@eslint-sets/monorepo
-[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_@eslint-sets/monorepo
+[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_eslint-sets
+[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_eslint-sets

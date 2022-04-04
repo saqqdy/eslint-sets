@@ -56,5 +56,5 @@ Please open an issue [here](https://github.com/saqqdy/@eslint-sets/eslint-config
 [gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-simple/index.js?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
-[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_@eslint-sets/eslint-config-simple
-[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_@eslint-sets/eslint-config-simple
+[sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_eslint-sets
+[sonar-url]: https://sonarcloud.io/dashboard?id=saqqdy_eslint-sets

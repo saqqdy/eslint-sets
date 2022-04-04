@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-egg",
-    "description": "js utils for nodejs",
-    "version": "1.0.0",
+    "description": "Eslint config sets for eggjs",
+    "version": "2.0.0-alpha.0",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -22,10 +22,9 @@
     },
     "dependencies": {
         "@eslint-sets/core": "workspace:*",
+        "@eslint-sets/eslint-config-basic": "workspace:*",
         "babel-eslint": "^10.1.0",
-        "eslint": "^8.12.0",
-        "eslint-config-egg": "^11.0.1",
-        "prettier": "^2.6.1"
+        "eslint-config-egg": "^11.0.1"
     },
     "devDependencies": {},
     "peerDependencies": {

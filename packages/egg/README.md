@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-egg
 
-A simplified http request client for nodejs
+Eslint config sets for eggjs
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

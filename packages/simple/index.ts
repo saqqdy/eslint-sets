@@ -1,7 +1,6 @@
 import { extend } from '@eslint-sets/core'
 
 export const config = {
-    root: true,
     env: {
         node: true,
         es6: true,
@@ -9,41 +8,37 @@ export const config = {
         shelljs: true,
         commonjs: true
     },
-    rules: {
-        'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
-        'no-debugger': 1,
-        semi: [2, 'never'],
-        'comma-dangle': 'off',
-        'one-var': [
-            'warn',
-            {
-                var: 'always',
-                let: 'always',
-                const: 'never'
+    // parser: 'babel-eslint',
+    // parserOptions: {
+    //     ecmaVersion: 6,
+    //     sourceType: 'module'
+    // },
+    plugins: [
+        // 'eslint-plugin-jsdoc',
+        // 'prettier',
+        // 'import'
+    ],
+    extends: [
+        '@eslint-sets/eslint-config-basic'
+        // 'plugin:vue-scoped-css/base',
+        // 'plugin:jsdoc/recommended',
+    ],
+    rules: {},
+    globals: {
+        jest: 'readonly'
+    },
+    overrides: [
+        {
+            files: ['**/__tests__/*.{j,t}s?(x)', '**/*.spec.{j,t}s?(x)'],
+            env: {
+                mocha: true,
+                jest: true
+            },
+            rules: {
+                'no-console': 'off'
             }
-        ],
-        'no-throw-literal': 0,
-        'no-new-wrappers': 2,
-        'no-useless-escape': 0,
-        'no-redeclare': 2,
-        'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
-        'space-before-function-paren': [0, 'always'],
-        'no-unused-vars': 1,
-        'no-dupe-keys': 2,
-        'no-func-assign': 2,
-        'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
-        'no-undef': 0,
-        'no-irregular-whitespace': 1
-    },
-    parser: 'babel-eslint',
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module'
-    },
-    extends: ['eslint:recommended']
+        }
+    ]
 }
 
 export const merge = (customConfig: object) =>

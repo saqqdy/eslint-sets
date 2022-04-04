@@ -1,58 +1,34 @@
 import { extend } from '@eslint-sets/core'
 
 export const config = {
-    root: true,
     env: {
         node: true,
-        browser: true,
-        commonjs: true,
-        es6: true
+        es6: true,
+        shelljs: true,
+        commonjs: true
     },
-    parser: 'babel-eslint',
-    parserOptions: {
-        sourceType: 'module',
-        ecmaVersion: 2020,
-        parser: 'babel-eslint'
-    },
-    extends: 'eslint-config-egg',
-    rules: {
-        'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
-        'no-debugger': 1,
-        semi: [2, 'never'],
-        'comma-dangle': 'off',
-        'one-var': [
-            'warn',
-            {
-                var: 'always',
-                let: 'always',
-                const: 'never'
-            }
-        ],
-        'no-throw-literal': 0,
-        'no-new-wrappers': 2,
-        'no-useless-escape': 0,
-        'no-redeclare': 2,
-        'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
-        'space-before-function-paren': [0, 'always'],
-        'object-shorthand': 2,
-        'no-unused-vars': [
-            2,
-            { ignoreRestSiblings: true, argsIgnorePattern: '^h$' }
-        ],
-        'no-dupe-keys': 2,
-        'no-func-assign': 2,
-        'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
-        'no-undef': 2,
-        'no-irregular-whitespace': 1,
-        indent: [1, 4],
-        'array-bracket-spacing': [1, 'never']
-    },
+    plugins: [
+        // 'eslint-plugin-jsdoc',
+        // 'prettier',
+        // 'import'
+    ],
+    extends: ['eslint-config-egg', '@eslint-sets/eslint-config-basic'],
+    rules: {},
     globals: {
-        h: true
-    }
+        jest: 'readonly'
+    },
+    overrides: [
+        {
+            files: ['**/__tests__/*.{j,t}s?(x)', '**/*.spec.{j,t}s?(x)'],
+            env: {
+                mocha: true,
+                jest: true
+            },
+            rules: {
+                'no-console': 'off'
+            }
+        }
+    ]
 }
 
 export const merge = (customConfig: object) =>

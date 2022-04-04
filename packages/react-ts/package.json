@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-react-ts",
-    "description": "js utils for nodejs",
-    "version": "1.0.0",
+    "description": "Eslint config sets for react typescript",
+    "version": "2.0.0-alpha.0",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -22,16 +22,14 @@
     },
     "dependencies": {
         "@eslint-sets/core": "workspace:*",
+        "@eslint-sets/eslint-config-ts": "workspace:*",
         "@typescript-eslint/eslint-plugin": "^5.12.1",
         "@typescript-eslint/parser": "^5.12.1",
         "babel-eslint": "^10.1.0",
-        "eslint": "^8.12.0",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-react": "^7.29.4",
         "eslint-plugin-react-hooks": "^4.4.0",
-        "eslint-plugin-tsdoc": "^0.2.14",
-        "prettier": "^2.6.1",
-        "typescript": "^4.5.5"
+        "eslint-plugin-tsdoc": "^0.2.14"
     },
     "devDependencies": {},
     "peerDependencies": {

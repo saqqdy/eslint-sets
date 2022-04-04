@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-simple-ts
 
-A simplified http request client for nodejs
+Eslint config sets for simple typescript
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

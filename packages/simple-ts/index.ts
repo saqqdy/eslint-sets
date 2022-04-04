@@ -1,91 +1,47 @@
 import { extend } from '@eslint-sets/core'
 
 export const config = {
-    root: true,
     env: {
         node: true,
+        es6: true,
         browser: true,
         shelljs: true,
-        commonjs: true,
-        es6: true
+        commonjs: true
     },
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        parser: '@typescript-eslint/parser',
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-            experimentalObjectRestSpread: true,
-            experimentalDecorators: true,
-            jsx: true
-        }
-    },
-    plugins: ['@typescript-eslint/eslint-plugin', 'eslint-plugin-tsdoc'],
-    extends: ['plugin:@typescript-eslint/recommended', 'eslint:recommended'],
-    rules: {
-        'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
-        'no-debugger': 1,
-        semi: [2, 'never'],
-        'comma-dangle': 'off',
-        'one-var': [
-            'warn',
-            {
-                var: 'always',
-                let: 'always',
-                const: 'never'
-            }
-        ],
-        'no-throw-literal': 0,
-        'no-new-wrappers': 2,
-        'no-useless-escape': 0,
-        'no-redeclare': 2,
-        'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
-        'space-before-function-paren': [0, 'always'],
-        'object-shorthand': 2,
-        'no-unused-vars': [
-            2,
-            { ignoreRestSiblings: true, argsIgnorePattern: '^h$' }
-        ],
-        'no-dupe-keys': 2,
-        'no-func-assign': 2,
-        'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
-        'no-undef': 2,
-        'no-irregular-whitespace': 1,
-        '@typescript-eslint/no-var-requires': 0,
-        '@typescript-eslint/ban-ts-ignore': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-empty-function': 'off',
-        'vue/custom-event-name-casing': 'off',
-        'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off',
-        '@typescript-eslint/ban-types': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-unused-vars': [
-            2,
-            {
-                argsIgnorePattern: '^h$',
-                varsIgnorePattern: '^h$'
-            }
-        ],
-        quotes: ['error', 'single']
-    },
+    // parser: '@typescript-eslint/parser',
+    // parserOptions: {
+    //     parser: '@typescript-eslint/parser',
+    //     ecmaVersion: 2020,
+    //     sourceType: 'module',
+    //     ecmaFeatures: {
+    //         experimentalObjectRestSpread: true,
+    //         experimentalDecorators: true,
+    //         jsx: true
+    //     }
+    // },
+    plugins: [
+        // 'eslint-plugin-tsdoc',
+        // 'prettier',
+        // 'import'
+    ],
+    extends: [
+        '@eslint-sets/eslint-config-basic'
+        // 'plugin:vue-scoped-css/base',
+        // 'plugin:jsdoc/recommended',
+    ],
+    rules: {},
     globals: {
-        h: true
+        jest: 'readonly'
     },
     overrides: [
         {
-            files: [
-                '**/__tests__/*.{j,t}s?(x)',
-                '**/tests/unit/**/*.spec.{j,t}s?(x)'
-            ],
+            files: ['**/__tests__/*.{j,t}s?(x)', '**/*.spec.{j,t}s?(x)'],
             env: {
-                mocha: true
+                mocha: true,
+                jest: true
+            },
+            rules: {
+                'no-console': 'off'
             }
         }
     ]

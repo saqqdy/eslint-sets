@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-nuxt
 
-A simplified http request client for nodejs
+Eslint config sets for nuxt
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

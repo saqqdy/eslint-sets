@@ -1,66 +1,62 @@
 import { extend } from '@eslint-sets/core'
 
 export const config = {
-    root: true,
-    env: {
-        node: true,
-        es6: true,
-        browser: true,
-        shelljs: true,
-        commonjs: true
-    },
-    parser: 'vue-eslint-parser',
-    parserOptions: {
-        sourceType: 'module',
-        parser: 'babel-eslint'
-    },
+    plugins: [
+        // 'eslint-plugin-jsdoc',
+        // 'prettier',
+        // 'import'
+    ],
     extends: [
         '@nuxtjs',
-        'plugin:prettier/recommended',
         'plugin:nuxt/recommended',
-        'plugin:jsdoc/recommended'
+        '@eslint-sets/eslint-config-basic'
+        // 'plugin:jsdoc/recommended'
     ],
-    plugins: ['prettier'],
     rules: {
-        'no-console': [0, { allow: ['warn', 'error', 'info'] }],
-        'no-debugger': 1,
-        semi: [2, 'never'],
-        'comma-dangle': 'off',
-        'one-var': [
-            'warn',
+        'vue/max-attributes-per-line': 'off',
+        'vue/no-v-html': 'off',
+        // 'prettier/prettier': 'error',
+        'vue/component-tags-order': [
+            'error',
             {
-                var: 'always',
-                let: 'always',
-                const: 'never'
+                order: ['template', 'script', 'style']
             }
-        ],
-        'no-throw-literal': 0,
-        'no-new-wrappers': 2,
-        'no-useless-escape': 0,
-        'no-redeclare': 2,
-        'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
-        'space-before-function-paren': [0, 'always'],
-        'no-unused-vars': 1,
-        'no-dupe-keys': 2,
-        'no-func-assign': 2,
-        'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
-        'no-undef': 0,
-        'no-irregular-whitespace': 1,
-        'prefer-const': 0,
-        'vue/require-default-prop': 0,
-        'vue/no-v-html': 0,
-        'jsdoc/require-returns': [0, { forceRequireReturn: false }],
-        'jsdoc/check-tag-names': 0,
-        'jsdoc/check-types': 1
+        ]
+    },
+    globals: {
+        h: true,
+        jest: 'readonly'
     },
     overrides: [
         {
-            files: ['*.vue'],
+            files: ['**/__tests__/*.{j,t}s?(x)', '**/*.spec.{j,t}s?(x)'],
+            env: {
+                mocha: true,
+                jest: true
+            },
             rules: {
-                indent: 'off'
+                'no-console': 'off',
+                'vue/one-component-per-file': 'off'
+            }
+        },
+        {
+            files: ['*.vue'],
+            parser: 'vue-eslint-parser',
+            parserOptions: {
+                parser: 'babel-eslint',
+                ecmaVersion: 2020,
+                sourceType: 'module',
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true,
+                    experimentalDecorators: true,
+                    jsx: true
+                },
+                vueFeatures: {}
+            },
+            rules: {
+                indent: 'off',
+                'vue/no-v-model-argument': 'off',
+                'vue/valid-v-model': 0
             }
         }
     ]

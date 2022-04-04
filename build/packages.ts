@@ -1,12 +1,25 @@
 import type { PackageManifest } from './types'
 
 export const packages: PackageManifest[] = [
-    // {
-    //     name: 'core',
-    //     iife: false,
-    //     submodules: true,
-    //     display: 'some core js'
-    // },
+    {
+        name: 'core',
+        iife: false,
+        submodules: true,
+        display: 'some core js'
+    },
+    {
+        name: 'basic',
+        iife: false,
+        dts: false,
+        submodules: true,
+        display: 'Eslint config basic sets'
+    },
+    {
+        name: 'ts',
+        iife: false,
+        dts: false,
+        display: 'Eslint config basic sets for typescript'
+    },
     {
         name: 'egg',
         iife: false,

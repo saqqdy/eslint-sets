@@ -1,103 +1,29 @@
 import { extend } from '@eslint-sets/core'
 
 export const config = {
-    root: true,
-    env: {
-        node: true,
-        browser: true,
-        commonjs: true,
-        es6: true
-    },
-    parser: 'vue-eslint-parser',
-    parserOptions: {
-        parser: '@typescript-eslint/parser',
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-            experimentalObjectRestSpread: true,
-            experimentalDecorators: true,
-            jsx: true,
-            tsx: true
-        }
-    },
     plugins: [
-        '@typescript-eslint',
-        'eslint-plugin-tsdoc',
-        'prettier',
-        'import'
+        // 'eslint-plugin-tsdoc',
+        // 'prettier',
+        // 'import'
     ],
     extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
         'plugin:vue/vue3-recommended',
-        'plugin:vitest-globals/recommended',
-        'prettier'
+        '@eslint-sets/eslint-config-ts',
+        'plugin:vitest-globals/recommended'
     ],
     rules: {
-        'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
-        'no-debugger': 1,
-        semi: [2, 'never'],
-        'comma-dangle': 'off',
-        camelcase: ['error', { properties: 'never' }],
-        'no-var': 'error',
-        'no-empty': ['error', { allowEmptyCatch: true }],
-        'no-void': 'error',
-        'one-var': [
-            'warn',
-            {
-                var: 'always',
-                let: 'always',
-                const: 'never'
-            }
-        ],
-        'no-throw-literal': 0,
-        'no-new-wrappers': 2,
-        'no-useless-escape': 0,
-        'no-redeclare': 2,
-        'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
-        'space-before-function-paren': [0, 'always'],
-        'object-shorthand': 2,
-        'no-unused-vars': [
-            2,
-            {
-                ignoreRestSiblings: true,
-                argsIgnorePattern: '^h$',
-                varsIgnorePattern: '^h$'
-            }
-        ],
-        'no-dupe-keys': 2,
-        'no-func-assign': 2,
-        'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
-        'no-undef': 2,
-        'no-irregular-whitespace': 1,
+        'vue/max-attributes-per-line': 'off',
         'vue/no-v-html': 'off',
         'vue/require-default-prop': 'off',
         'vue/require-explicit-emits': 'off',
         'vue/multi-word-component-names': 'off',
-        'prettier/prettier': 'error',
-        'import/first': 'error',
-        'import/no-duplicates': 'error',
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
-        '@typescript-eslint/consistent-type-imports': [
+        // 'prettier/prettier': 'error',
+        'vue/component-tags-order': [
             'error',
-            { disallowTypeAnnotations: false }
-        ],
-        '@typescript-eslint/no-var-requires': 0,
-        '@typescript-eslint/no-unused-vars': [
-            2,
             {
-                argsIgnorePattern: '^h$',
-                varsIgnorePattern: '^h$'
+                order: ['template', 'script', 'style']
             }
-        ],
-        '@typescript-eslint/no-redeclare': 2,
-        quotes: ['error', 'single']
+        ]
     },
     globals: {
         h: true,
@@ -122,6 +48,19 @@ export const config = {
         },
         {
             files: ['*.vue'],
+            parser: 'vue-eslint-parser',
+            parserOptions: {
+                parser: '@typescript-eslint/parser',
+                ecmaVersion: 2020,
+                sourceType: 'module',
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true,
+                    experimentalDecorators: true,
+                    jsx: true,
+                    tsx: true
+                },
+                vueFeatures: {}
+            },
             rules: {
                 'vue/no-v-model-argument': 'off',
                 'vue/valid-v-model': 0

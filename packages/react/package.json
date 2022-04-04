@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-react",
-    "description": "js utils for nodejs",
-    "version": "1.0.0",
+    "description": "Eslint config sets for react",
+    "version": "2.0.0-alpha.0",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -22,13 +22,12 @@
     },
     "dependencies": {
         "@eslint-sets/core": "workspace:*",
+        "@eslint-sets/eslint-config-basic": "workspace:*",
         "babel-eslint": "^10.1.0",
-        "eslint": "^8.12.0",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-jsdoc": "^38.1.4",
         "eslint-plugin-react": "^7.29.4",
-        "eslint-plugin-react-hooks": "^4.4.0",
-        "prettier": "^2.6.1"
+        "eslint-plugin-react-hooks": "^4.4.0"
     },
     "devDependencies": {},
     "peerDependencies": {

@@ -4,12 +4,12 @@ import { packages } from '../build/packages'
 import { version } from '../package.json'
 
 async function updatePackageJSON() {
-    for (const { name, description, author, iife } of packages) {
+    for (const { name, display, author, iife } of packages) {
         const packageRoot = resolve(__dirname, '..', 'packages', name)
         const packageJSONPath = resolve(packageRoot, 'package.json')
         const packageJSON = JSON.parse(readFileSync(packageJSONPath, 'utf8'))
         packageJSON.version = version
-        packageJSON.description = description || packageJSON.description
+        packageJSON.description = display || packageJSON.description
         packageJSON.author = author || 'saqqdy <https://github.com/saqqdy>'
         packageJSON.bugs = {
             url: 'https://github.com/saqqdy/eslint-sets/issues'

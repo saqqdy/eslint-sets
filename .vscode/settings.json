@@ -1,9 +1,11 @@
 {
     "cSpell.words": [
         "Builtins",
+        "camelcase",
         "cnpm",
         "consola",
         "eggjs",
+        "eqeqeq",
         "esbuild",
         "eslint-sets",
         "filesize",
@@ -18,8 +20,10 @@
         "gitmarsrc",
         "iife",
         "jsexclude",
+        "linebreak",
         "minifer",
         "nuxt",
+        "nuxtjs",
         "pnpm",
         "saqqdy",
         "tscjs",
@@ -30,6 +34,9 @@
         "typedoc",
         "unpub",
         "unpublish",
+        "vitepress",
+        "vitest",
+        "vuepress",
         "vuex"
     ],
     "typescript.tsdk": "node_modules/typescript/lib",

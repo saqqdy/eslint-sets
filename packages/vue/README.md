@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-vue
 
-A simplified http request client for nodejs
+Eslint config sets for vue2.0
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-simple
 
-A simplified http request client for nodejs
+Eslint config sets for simple
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

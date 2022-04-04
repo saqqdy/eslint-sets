@@ -2,7 +2,7 @@
 
 # @eslint-sets/core
 
-A simplified http request client for nodejs
+some core js for eslint-sets
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

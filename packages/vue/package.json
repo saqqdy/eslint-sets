@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-vue",
-    "description": "js utils for nodejs",
-    "version": "1.0.0",
+    "description": "Eslint config sets for vue2.0",
+    "version": "2.0.0-alpha.0",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -22,15 +22,14 @@
     },
     "dependencies": {
         "@eslint-sets/core": "workspace:*",
+        "@eslint-sets/eslint-config-basic": "workspace:*",
         "babel-eslint": "^10.1.0",
-        "eslint": "^8.12.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-jsdoc": "^38.1.4",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-vue": "^8.5.0",
         "eslint-plugin-vue-scoped-css": "^2.2.0",
-        "prettier": "^2.6.1",
         "vue-eslint-parser": "^8.3.0"
     },
     "devDependencies": {},

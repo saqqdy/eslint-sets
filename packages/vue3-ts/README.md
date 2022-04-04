@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-vue3-ts
 
-A simplified http request client for nodejs
+Eslint config sets for vue3.0 typescript
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

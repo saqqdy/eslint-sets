@@ -1,81 +1,31 @@
 import { extend } from '@eslint-sets/core'
 
 export const config = {
-    root: true,
-    env: {
-        node: true,
-        browser: true,
-        commonjs: true,
-        es6: true
-    },
-    parser: 'vue-eslint-parser',
-    parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-            experimentalObjectRestSpread: true,
-            experimentalDecorators: true,
-            jsx: true,
-            tsx: true
-        }
-    },
-    plugins: ['eslint-plugin-jsdoc', 'prettier', 'import'],
+    plugins: [
+        // 'eslint-plugin-jsdoc',
+        // 'prettier',
+        // 'import'
+    ],
     extends: [
-        'eslint:recommended',
         'plugin:vue/vue3-recommended',
-        'plugin:vue-scoped-css/vue3-recommended',
-        'plugin:jsdoc/recommended',
-        'plugin:vitest-globals/recommended',
-        'prettier'
+        '@eslint-sets/eslint-config-basic',
+        // 'plugin:vue-scoped-css/vue3-recommended',
+        // 'plugin:jsdoc/recommended',
+        'plugin:vitest-globals/recommended'
     ],
     rules: {
-        'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
-        'no-debugger': 1,
-        semi: [2, 'never'],
-        'comma-dangle': 'off',
-        camelcase: ['error', { properties: 'never' }],
-        'no-var': 'error',
-        'no-empty': ['error', { allowEmptyCatch: true }],
-        'no-void': 'error',
-        'one-var': [
-            'warn',
-            {
-                var: 'always',
-                let: 'always',
-                const: 'never'
-            }
-        ],
-        'no-throw-literal': 0,
-        'no-new-wrappers': 2,
-        'no-useless-escape': 0,
-        'no-redeclare': 2,
-        'no-tabs': 0,
-        'no-mixed-spaces-and-tabs': 1,
-        'space-before-function-paren': [0, 'always'],
-        'object-shorthand': 2,
-        'no-unused-vars': [
-            2,
-            {
-                ignoreRestSiblings: true,
-                argsIgnorePattern: '^h$',
-                varsIgnorePattern: '^h$'
-            }
-        ],
-        'no-dupe-keys': 2,
-        'no-func-assign': 2,
-        'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
-        'no-undef': 2,
-        'no-irregular-whitespace': 1,
+        'vue/max-attributes-per-line': 'off',
         'vue/no-v-html': 'off',
         'vue/require-default-prop': 'off',
         'vue/require-explicit-emits': 'off',
         'vue/multi-word-component-names': 'off',
-        'prettier/prettier': 'error',
-        'import/first': 'error',
-        'import/no-duplicates': 'error',
-        quotes: ['error', 'single']
+        // 'prettier/prettier': 'error',
+        'vue/component-tags-order': [
+            'error',
+            {
+                order: ['template', 'script', 'style']
+            }
+        ]
     },
     globals: {
         h: true,
@@ -100,7 +50,20 @@ export const config = {
         },
         {
             files: ['*.vue'],
+            parser: 'vue-eslint-parser',
+            parserOptions: {
+                parser: 'babel-eslint',
+                ecmaVersion: 2020,
+                sourceType: 'module',
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true,
+                    experimentalDecorators: true,
+                    jsx: true
+                },
+                vueFeatures: {}
+            },
             rules: {
+                indent: 'off',
                 'vue/no-v-model-argument': 'off',
                 'vue/valid-v-model': 0
             }

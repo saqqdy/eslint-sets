@@ -1,6 +1,6 @@
 {
-    "name": "@eslint-sets/eslint-config-simple",
-    "description": "Eslint config sets for simple",
+    "name": "@eslint-sets/eslint-config-ts",
+    "description": "Eslint config basic sets for typescript",
     "version": "2.0.0-alpha.0",
     "exports": {
         ".": {
@@ -23,18 +23,21 @@
     "dependencies": {
         "@eslint-sets/core": "workspace:*",
         "@eslint-sets/eslint-config-basic": "workspace:*",
-        "babel-eslint": "^10.1.0"
+        "@typescript-eslint/eslint-plugin": "^5.17.0",
+        "@typescript-eslint/parser": "^5.17.0",
+        "eslint-plugin-tsdoc": "^0.2.14"
     },
     "devDependencies": {},
     "peerDependencies": {
         "eslint": ">=8.0.0",
-        "prettier": ">=2.4.0"
+        "prettier": ">=2.4.0",
+        "typescript": ">=4.0"
     },
     "sideEffects": false,
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
-        "directory": "packages/simple"
+        "directory": "packages/ts"
     },
     "pnpm": {
         "peerDependencyRules": {
@@ -61,5 +64,5 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/simple#readme"
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/ts#readme"
 }

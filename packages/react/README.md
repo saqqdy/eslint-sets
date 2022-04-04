@@ -2,7 +2,7 @@
 
 # @eslint-sets/eslint-config-react
 
-A simplified http request client for nodejs
+Eslint config sets for react
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

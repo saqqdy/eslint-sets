@@ -1,5 +1,5 @@
 {
-    "name": "@eslint-sets/egg",
+    "name": "@eslint-sets/eslint-config-egg",
     "description": "js utils for nodejs",
     "version": "1.0.0",
     "exports": {
@@ -63,5 +63,5 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/main/packages/egg#readme"
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/egg#readme"
 }

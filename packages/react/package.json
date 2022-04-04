@@ -1,5 +1,5 @@
 {
-    "name": "@eslint-sets/react",
+    "name": "@eslint-sets/eslint-config-react",
     "description": "js utils for nodejs",
     "version": "1.0.0",
     "exports": {

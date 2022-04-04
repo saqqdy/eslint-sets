@@ -28,6 +28,8 @@
         "tsnd",
         "tsup",
         "typedoc",
+        "unpub",
+        "unpublish",
         "vuex"
     ],
     "typescript.tsdk": "node_modules/typescript/lib",

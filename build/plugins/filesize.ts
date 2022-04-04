@@ -1,7 +1,7 @@
-import filesize from 'rollup-plugin-filesize'
+import { default as _filesize } from 'rollup-plugin-filesize'
 import { reporter } from '../utils/rollup'
 import type { Plugin } from 'rollup'
 
-const filesizePlugin: Plugin = filesize({ reporter })
+const filesize: Plugin = _filesize({ reporter })
 
-export default filesizePlugin
+export default filesize

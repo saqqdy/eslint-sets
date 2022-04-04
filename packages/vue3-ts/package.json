@@ -1,5 +1,5 @@
 {
-    "name": "@eslint-sets/vue3-ts",
+    "name": "@eslint-sets/eslint-config-vue3-ts",
     "description": "js utils for nodejs",
     "version": "1.0.0",
     "exports": {

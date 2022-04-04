@@ -1,8 +1,8 @@
-import esbuild, { type Options } from 'rollup-plugin-esbuild'
+import { default as _esbuild, type Options } from 'rollup-plugin-esbuild'
 import type { Plugin } from 'rollup'
 
-export const esbuildPlugin = (options: Options = {}): Plugin =>
-    esbuild({
+export const esbuild = (options: Options = {}): Plugin =>
+    _esbuild({
         minify: false, // 避免\u005c被转码
         sourceMap: options.minify || false,
         target: 'es2017',
@@ -12,4 +12,4 @@ export const esbuildPlugin = (options: Options = {}): Plugin =>
         ...options
     })
 
-export default esbuildPlugin
+export default esbuild

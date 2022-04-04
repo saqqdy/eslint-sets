@@ -1,9 +1,9 @@
-import banner, { type Options } from 'rollup-plugin-add-banner'
+import { default as _banner, type Options } from 'rollup-plugin-add-banner'
 import { banner as content } from '../config'
 import type { Plugin } from 'rollup'
 
-const bannerPlugin = (options: Options): Plugin =>
-    banner(
+const banner = (options: Options): Plugin =>
+    _banner(
         Object.assign(
             {
                 content
@@ -12,4 +12,4 @@ const bannerPlugin = (options: Options): Plugin =>
         )
     )
 
-export default bannerPlugin
+export default banner

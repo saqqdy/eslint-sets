@@ -1,6 +1,6 @@
-import json from '@rollup/plugin-json'
+import { default as _json } from '@rollup/plugin-json'
 import type { Plugin } from 'rollup'
 
-const jsonPlugin: Plugin = json()
+const json: Plugin = _json()
 
-export default jsonPlugin
+export default json

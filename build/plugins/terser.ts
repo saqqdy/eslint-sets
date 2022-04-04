@@ -1,11 +1,11 @@
-import { terser } from 'rollup-plugin-terser'
+import { terser as _terser } from 'rollup-plugin-terser'
 import type { Plugin } from 'rollup'
 
-const terserPlugin: Plugin = terser({
+const terser: Plugin = _terser({
     format: {
         comments: false
     },
     compress: false
 })
 
-export default terserPlugin
+export default terser

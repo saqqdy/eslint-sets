@@ -1,5 +1,5 @@
 {
-    "name": "@eslint-sets/simple-ts",
+    "name": "@eslint-sets/eslint-config-simple-ts",
     "description": "js utils for nodejs",
     "version": "1.0.0",
     "exports": {

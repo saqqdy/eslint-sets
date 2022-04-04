@@ -1,4 +1,4 @@
-// const { merge } = require('@eslint-sets/simple-ts')
+// const { merge } = require('@eslint-sets/eslint-config-simple-ts')
 
 module.exports = {
     root: true,

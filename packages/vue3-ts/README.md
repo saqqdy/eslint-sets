@@ -49,7 +49,7 @@ Please open an issue [here](https://github.com/saqqdy/@eslint-sets/vue3-ts/issue
 [codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696
 [codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/vue3-ts/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/vue3-ts&utm_campaign=Badge_Grade
 [codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@eslint-sets/vue3-ts.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/vue3-ts?branch=main
+[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/vue3-ts?branch=master
 [download-image]: https://img.shields.io/npm/dm/@eslint-sets/vue3-ts.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@eslint-sets/vue3-ts
 [gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/vue3-ts/index.cjs?compression=gzip&label=gzip%20size:%20JS

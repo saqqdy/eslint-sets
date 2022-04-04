@@ -49,7 +49,7 @@ Please open an issue [here](https://github.com/saqqdy/@eslint-sets/egg/issues).
 [codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696
 [codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/egg/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/egg&utm_campaign=Badge_Grade
 [codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@eslint-sets/egg.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/egg?branch=main
+[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/egg?branch=master
 [download-image]: https://img.shields.io/npm/dm/@eslint-sets/egg.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@eslint-sets/egg
 [gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/egg/index.cjs?compression=gzip&label=gzip%20size:%20JS

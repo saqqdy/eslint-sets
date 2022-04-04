@@ -16,5 +16,5 @@ export interface PackageManifest {
     mjs?: boolean
     dts?: boolean
     target?: string
-    exportType?: 'auto' | 'default' | 'named' | 'none' | undefined
+    exportType?: 'auto' | 'default' | 'named' | 'none'
 }

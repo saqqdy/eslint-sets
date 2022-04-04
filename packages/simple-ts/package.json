@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-simple-ts",
     "description": "Eslint config sets for simple typescript",
-    "version": "2.0.0-alpha.1",
+    "version": "2.0.0-alpha.2",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -10,7 +10,7 @@
         },
         "./*": "./*"
     },
-    "main": "./index.js",
+    "main": "./index.cjs",
     "module": "./index.mjs",
     "types": "./index.d.ts",
     "scripts": {},

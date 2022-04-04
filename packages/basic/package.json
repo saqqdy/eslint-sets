@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-basic",
     "description": "Eslint config basic sets",
-    "version": "2.0.0-alpha.1",
+    "version": "2.0.0-alpha.2",
     "exports": {
         ".": {
             "import": "./index.mjs",
@@ -11,7 +11,7 @@
         "./*": "./*",
         "./*.mjs": "./*.mjs"
     },
-    "main": "./index.js",
+    "main": "./index.cjs",
     "module": "./index.mjs",
     "types": "./index.d.ts",
     "scripts": {},

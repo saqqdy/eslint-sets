@@ -52,8 +52,8 @@ Please open an issue [here](https://github.com/saqqdy/@eslint-sets/eslint-config
 [codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/eslint-config-react-ts?branch=master
 [download-image]: https://img.shields.io/npm/dm/@eslint-sets/eslint-config-react-ts.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@eslint-sets/eslint-config-react-ts
-[gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-react-ts/index.cjs?compression=gzip&label=gzip%20size:%20JS
-[gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-react-ts/index.cjs?compression=gzip&label=gzip%20size:%20JS
+[gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-react-ts/index.js?compression=gzip&label=gzip%20size:%20JS
+[gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-react-ts/index.js?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_@eslint-sets/eslint-config-react-ts

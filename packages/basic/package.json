@@ -11,7 +11,7 @@
         "./*": "./*",
         "./*.mjs": "./*.mjs"
     },
-    "main": "./index.cjs",
+    "main": "./index.js",
     "module": "./index.mjs",
     "types": "./index.d.ts",
     "scripts": {},

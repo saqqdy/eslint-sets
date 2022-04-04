@@ -1,11 +1,11 @@
 import { execSync } from 'child_process'
 import consola from 'consola'
 import { packages } from '../build/packages'
-let [, , version] = process.argv
+let [, , versionText] = process.argv
 
-if (!version) process.exit(1)
-version = version.replace(/\"/g, '')
-const versions = version.split(',')
+if (!versionText) process.exit(1)
+versionText = versionText.replace(/\"/g, '')
+const versions = versionText.split(',')
 
 const REGISTRY_URL = 'https://registry.npmjs.org'
 const command = `npm --registry=${REGISTRY_URL} unpublish`

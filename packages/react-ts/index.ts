@@ -1,4 +1,4 @@
-export const config = {
+const config = {
     plugins: [
         'react',
         'react-hooks'

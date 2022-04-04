@@ -32,7 +32,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for eggjs'
     },
     {
@@ -41,7 +40,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for nuxt'
     },
     {
@@ -50,7 +48,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for react'
     },
     {
@@ -59,7 +56,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for react typescript'
     },
     {
@@ -68,7 +64,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for simple'
     },
     {
@@ -77,7 +72,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for simple typescript'
     },
     {
@@ -86,7 +80,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for vue2.0'
     },
     {
@@ -95,7 +88,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for vue3.0'
     },
     {
@@ -104,7 +96,6 @@ export const packages: PackageManifest[] = [
         iife: false,
         mjs: false,
         dts: false,
-        exportType: 'named',
         display: 'Eslint config sets for vue3.0 typescript'
     }
 ]

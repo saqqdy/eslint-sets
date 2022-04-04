@@ -1,4 +1,4 @@
-export const config = {
+const config = {
     env: {
         node: true,
         es6: true,

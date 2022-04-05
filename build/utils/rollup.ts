@@ -1,4 +1,4 @@
-import { cyan, bold, yellow, green } from 'colors'
+import chalk from 'chalk'
 // import pkg from '../../package.json'
 // const deps = Object.keys(pkg.dependencies || {})
 const noWlPrefixFile =
@@ -25,12 +25,12 @@ export function pathRewriter(bundlePath: string) {
 }
 
 export const reporter = (opt, outputOptions, info) =>
-    `${cyan(
-        bold(
+    `${chalk.cyan(
+        chalk.bold(
             (info.fileName &&
                 `${outputOptions.file?.split('packages/').pop()}`) ||
                 ''
         )
-    )}: bundle size ${yellow(info.bundleSize)} -> minified ${green(
+    )}: bundle size ${chalk.yellow(info.bundleSize)} -> minified ${chalk.green(
         (info.minSize && `${info.minSize}`) || ''
     )}`

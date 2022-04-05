@@ -16,11 +16,11 @@ A simplified http request client for nodejs
 
 ```shell
 # by npm
-npm install -S @eslint-sets/monorepo
+npm install -S @eslint-sets/vue3-ts
 # by yarn
-yarn add @eslint-sets/monorepo
+yarn add @eslint-sets/vue3-ts
 # by pnpm
-pnpm install @eslint-sets/monorepo
+pnpm install @eslint-sets/vue3-ts
 ```
 
 ## Issues & Support

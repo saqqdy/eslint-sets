@@ -31,9 +31,13 @@ $ pnpm install @eslint-sets/eslint-config-ts
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/eslint-config-ts')
-
-nextIndex()
+// .eslintrc.js
+module.exports = {
+    extends: ['@eslint-sets/ts'],
+    rules: {
+        // custom rules
+    }
+}
 ```
 
 ## Issues & Support

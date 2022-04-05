@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-simple",
     "description": "Eslint config sets for simple",
-    "version": "2.0.0-beta.1",
+    "version": "2.0.0",
     "main": "./index.js",
     "scripts": {},
     "directories": {

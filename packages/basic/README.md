@@ -31,9 +31,13 @@ $ pnpm install @eslint-sets/eslint-config-basic
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/eslint-config-basic')
-
-nextIndex()
+// .eslintrc.js
+module.exports = {
+    extends: ['@eslint-sets/basic'],
+    rules: {
+        // custom rules
+    }
+}
 ```
 
 ## Issues & Support

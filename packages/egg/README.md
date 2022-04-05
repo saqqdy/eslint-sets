@@ -31,9 +31,13 @@ $ pnpm install @eslint-sets/eslint-config-egg
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/eslint-config-egg')
-
-nextIndex()
+// .eslintrc.js
+module.exports = {
+    extends: ['@eslint-sets/egg'],
+    rules: {
+        // custom rules
+    }
+}
 ```
 
 ## Issues & Support

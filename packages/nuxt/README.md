@@ -31,9 +31,13 @@ $ pnpm install @eslint-sets/eslint-config-nuxt
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/eslint-config-nuxt')
-
-nextIndex()
+// .eslintrc.js
+module.exports = {
+    extends: ['@eslint-sets/nuxt'],
+    rules: {
+        // custom rules
+    }
+}
 ```
 
 ## Issues & Support

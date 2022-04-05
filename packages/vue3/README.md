@@ -31,9 +31,13 @@ $ pnpm install @eslint-sets/eslint-config-vue3
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/eslint-config-vue3')
-
-nextIndex()
+// .eslintrc.js
+module.exports = {
+    extends: ['@eslint-sets/vue3'],
+    rules: {
+        // custom rules
+    }
+}
 ```
 
 ## Issues & Support

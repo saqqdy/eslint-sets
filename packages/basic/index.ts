@@ -61,7 +61,7 @@ const config = {
         'no-useless-escape': 0,
         'no-redeclare': 2,
         'no-tabs': 0,
-        indent: [2, 'tab'],
+        indent: [0, 'tab', { SwitchCase: 1 }],
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,
@@ -93,7 +93,7 @@ const config = {
         'vars-on-top': 'error',
         'require-await': 'off',
         'no-return-assign': 'off',
-        'operator-linebreak': ['error', 'before'],
+        'operator-linebreak': 0,
         'no-use-before-define': [
             'error',
             { functions: false, classes: false, variables: true }
@@ -104,7 +104,7 @@ const config = {
 
         // import
         'import/order': 'error',
-        'import/first': 'error',
+        'import/first': 'off',
         'import/no-duplicates': 'error',
         'import/no-mutable-exports': 'error',
         'import/no-unresolved': 'off',

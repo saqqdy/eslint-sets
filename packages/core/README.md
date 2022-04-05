@@ -31,9 +31,10 @@ $ pnpm install @eslint-sets/core
 ## Usage
 
 ```js
-const { nextIndex } = require('@eslint-sets/core')
+// .eslintrc.js
+const { extend } = require('@eslint-sets/core')
 
-nextIndex()
+module.exports = extend(true, {}, {})
 ```
 
 ## Issues & Support

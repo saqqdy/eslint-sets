@@ -98,6 +98,8 @@ const config = {
             'error',
             { functions: false, classes: false, variables: true }
         ],
+        'no-template-curly-in-string': 0,
+        'no-extra-semi': 0,
 
         // eslint-comments
         'eslint-comments/disable-enable-pair': 'off',

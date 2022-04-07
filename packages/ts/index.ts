@@ -43,7 +43,8 @@ const config = {
                 argsIgnorePattern: '^h$',
                 varsIgnorePattern: '^h$'
             }
-        ]
+        ],
+        '@typescript-eslint/no-extra-semi': 0
     },
     overrides: [
         ...basic.overrides,

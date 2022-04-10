@@ -54,7 +54,8 @@ const config = {
             },
             rules: {
                 'vue/no-v-model-argument': 'off',
-                'vue/valid-v-model': 0
+                'vue/valid-v-model': 0,
+                'vue/html-indent': ['error', 'tab']
             }
         }
     ]

@@ -1,5 +1,10 @@
 # 更新日志
 
+## 2022.04.10 v2.0.2 更新日志
+
+1. 改用`@babel/eslint-parser`解析器
+2. 依赖包升级
+
 ## 2022.04.05 v2.0.0 更新日志
 
 1. 重新整理 `egg` `nuxt` `react` `react-ts` `simple` `simple-ts` `vue` `vue3` `vue3-ts` 几套配置，抽离出 basic 和 ts 配置

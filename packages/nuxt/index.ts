@@ -53,7 +53,6 @@ const config = {
                 vueFeatures: {}
             },
             rules: {
-                indent: 'off',
                 'vue/no-v-model-argument': 'off',
                 'vue/valid-v-model': 0
             }

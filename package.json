@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/monorepo",
     "description": "eslint-sets",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "scripts": {
         "eslint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
         "prettier": "npx prettier --write ./",

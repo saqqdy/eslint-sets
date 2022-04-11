@@ -61,7 +61,7 @@ const config = {
         'no-useless-escape': 0,
         'no-redeclare': 2,
         'no-tabs': 0,
-        indent: [0, 'tab', { SwitchCase: 1 }],
+        indent: 0,
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,
@@ -100,6 +100,7 @@ const config = {
         ],
         'no-template-curly-in-string': 0,
         'no-extra-semi': 0,
+        'multiline-ternary': 0,
 
         // eslint-comments
         'eslint-comments/disable-enable-pair': 'off',
@@ -111,6 +112,7 @@ const config = {
         'import/no-mutable-exports': 'error',
         'import/no-unresolved': 'off',
         'import/no-absolute-path': 'off',
+        'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
 
         // n

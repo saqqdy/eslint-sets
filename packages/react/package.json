@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-react",
     "description": "Eslint config sets for react",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "main": "./index.js",
     "scripts": {},
     "directories": {

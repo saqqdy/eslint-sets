@@ -1,10 +1,13 @@
 # 更新日志
 
+## 2022.04.11 v2.1.1 更新日志
+
+1. 修复`multiline-ternary`异常
+
 ## 2022.04.11 v2.1.0 更新日志
 
 1. 更新`basic` `ts`配置
 2. 增加`eslint-config-prettier`插件
-3. 修复`multiline-ternary`异常
 
 ## 2022.04.10 v2.0.5 更新日志
 

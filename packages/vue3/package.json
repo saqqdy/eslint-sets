@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-vue3",
     "description": "Eslint config sets for vue3.0",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "main": "./index.js",
     "scripts": {},
     "directories": {

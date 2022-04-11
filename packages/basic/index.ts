@@ -57,12 +57,12 @@ const config = {
                 const: 'never'
             }
         ],
-        'no-throw-literal': 0,
+        'no-throw-literal': 'off',
         'no-new-wrappers': 2,
-        'no-useless-escape': 0,
+        'no-useless-escape': 'off',
         'no-redeclare': 2,
-        'no-tabs': 0,
-        indent: 0,
+        'no-tabs': 'off',
+        indent: 'off',
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,
@@ -77,8 +77,8 @@ const config = {
         'no-dupe-keys': 2,
         'no-func-assign': 2,
         'valid-typeof': 2,
-        'no-shadow': 0,
-        'no-prototype-builtins': 0,
+        'no-shadow': 'off',
+        'no-prototype-builtins': 'off',
         'no-undef': 2,
         'no-irregular-whitespace': 1,
         'array-callback-return': 'error',
@@ -94,14 +94,13 @@ const config = {
         'vars-on-top': 'error',
         'require-await': 'off',
         'no-return-assign': 'off',
-        'operator-linebreak': 0,
+        'operator-linebreak': 'off',
         'no-use-before-define': [
             'error',
             { functions: false, classes: false, variables: true }
         ],
-        'no-template-curly-in-string': 0,
-        'no-extra-semi': 0,
-        'multiline-ternary': 0,
+        'no-template-curly-in-string': 'off',
+        'no-extra-semi': 'off',
 
         // eslint-comments
         'eslint-comments/disable-enable-pair': 'off',

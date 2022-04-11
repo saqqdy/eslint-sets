@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-ts",
     "description": "Eslint config basic sets for typescript",
-    "version": "2.0.6",
+    "version": "2.1.0",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -15,6 +15,7 @@
         "@eslint-sets/eslint-config-basic": "workspace:*",
         "@typescript-eslint/eslint-plugin": "^5.17.0",
         "@typescript-eslint/parser": "^5.17.0",
+        "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-tsdoc": "^0.2.14"
     },
     "devDependencies": {},

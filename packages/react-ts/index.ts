@@ -4,7 +4,11 @@ const config = {
         'react-hooks'
         // 'eslint-plugin-tsdoc'
     ],
-    extends: ['plugin:react/recommended', '@eslint-sets/eslint-config-ts'],
+    extends: [
+        'plugin:react/recommended',
+        '@eslint-sets/eslint-config-ts',
+        'prettier'
+    ],
     rules: {
         'jsx-quotes': ['error', 'prefer-double'],
         'react/react-in-jsx-scope': 'off'

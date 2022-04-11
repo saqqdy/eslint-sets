@@ -8,7 +8,8 @@ const config = {
     extends: [
         '@eslint-sets/eslint-config-basic',
         'plugin:import/typescript',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
+        'prettier'
     ],
     settings: {
         'import/resolver': {
@@ -56,8 +57,7 @@ const config = {
 
         // Override JS
         'no-useless-constructor': 'off',
-        indent: 'off',
-        '@typescript-eslint/indent': ['error', 2],
+        '@typescript-eslint/indent': 0,
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': [
             2,

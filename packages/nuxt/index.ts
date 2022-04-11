@@ -7,7 +7,8 @@ const config = {
     extends: [
         '@nuxtjs',
         'plugin:nuxt/recommended',
-        '@eslint-sets/eslint-config-basic'
+        '@eslint-sets/eslint-config-basic',
+        'prettier'
         // 'plugin:jsdoc/recommended'
     ],
     rules: {

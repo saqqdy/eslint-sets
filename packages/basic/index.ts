@@ -30,7 +30,8 @@ const config = {
         'plugin:eslint-comments/recommended',
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:yml/standard',
-        'plugin:markdown/recommended'
+        'plugin:markdown/recommended',
+        'prettier'
     ],
     settings: {
         'import/resolver': {

@@ -21,7 +21,11 @@ module.exports = {
         }
     },
     plugins: ['@typescript-eslint/eslint-plugin', 'eslint-plugin-tsdoc'],
-    extends: ['plugin:@typescript-eslint/recommended', 'eslint:recommended'],
+    extends: [
+        'plugin:@typescript-eslint/recommended',
+        'eslint:recommended',
+        'prettier'
+    ],
     rules: {
         'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
         'no-debugger': 1,
@@ -40,7 +44,7 @@ module.exports = {
         'no-useless-escape': 0,
         'no-redeclare': 2,
         'no-tabs': 0,
-        indent: [2, 4, { SwitchCase: 1 }],
+        indent: 0,
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
         'space-before-function-paren': [0, 'always'],
         'object-shorthand': 2,

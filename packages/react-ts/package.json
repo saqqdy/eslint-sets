@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-react-ts",
     "description": "Eslint config sets for react typescript",
-    "version": "2.0.6",
+    "version": "2.1.0",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -15,6 +15,7 @@
         "@eslint-sets/eslint-config-ts": "workspace:*",
         "@typescript-eslint/eslint-plugin": "^5.12.1",
         "@typescript-eslint/parser": "^5.12.1",
+        "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-react": "^7.29.4",
         "eslint-plugin-react-hooks": "^4.4.0",

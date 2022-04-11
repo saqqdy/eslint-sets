@@ -23,7 +23,8 @@ const config = {
         // 'import'
     ],
     extends: [
-        '@eslint-sets/eslint-config-basic'
+        '@eslint-sets/eslint-config-basic',
+        'prettier'
         // 'plugin:vue-scoped-css/base',
         // 'plugin:jsdoc/recommended',
     ],

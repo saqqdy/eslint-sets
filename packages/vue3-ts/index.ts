@@ -7,7 +7,8 @@ const config = {
     extends: [
         'plugin:vue/vue3-recommended',
         '@eslint-sets/eslint-config-ts',
-        'plugin:vitest-globals/recommended'
+        'plugin:vitest-globals/recommended',
+        'prettier'
     ],
     rules: {
         'vue/max-attributes-per-line': 'off',
@@ -62,7 +63,7 @@ const config = {
             rules: {
                 'vue/no-v-model-argument': 'off',
                 'vue/valid-v-model': 0,
-                'vue/html-indent': ['error', 'tab']
+                'vue/html-indent': 0
             }
         }
     ]

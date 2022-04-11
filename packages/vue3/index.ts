@@ -9,7 +9,8 @@ const config = {
         '@eslint-sets/eslint-config-basic',
         // 'plugin:vue-scoped-css/vue3-recommended',
         // 'plugin:jsdoc/recommended',
-        'plugin:vitest-globals/recommended'
+        'plugin:vitest-globals/recommended',
+        'prettier'
     ],
     rules: {
         'vue/max-attributes-per-line': 'off',
@@ -64,7 +65,7 @@ const config = {
             rules: {
                 'vue/no-v-model-argument': 'off',
                 'vue/valid-v-model': 0,
-                'vue/html-indent': ['error', 'tab']
+                'vue/html-indent': 0
             }
         }
     ]

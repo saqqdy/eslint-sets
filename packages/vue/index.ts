@@ -6,7 +6,8 @@ const config = {
     ],
     extends: [
         'plugin:vue/recommended',
-        '@eslint-sets/eslint-config-basic'
+        '@eslint-sets/eslint-config-basic',
+        'prettier'
         // 'plugin:vue-scoped-css/base',
         // 'plugin:jsdoc/recommended',
     ],
@@ -55,7 +56,7 @@ const config = {
             rules: {
                 'vue/no-v-model-argument': 'off',
                 'vue/valid-v-model': 0,
-                'vue/html-indent': ['error', 'tab']
+                'vue/html-indent': 0
             }
         }
     ]

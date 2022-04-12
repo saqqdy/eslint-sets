@@ -14,6 +14,8 @@ A simplified http request client for nodejs
 
 ## Install
 
+e.g: use `@eslint-sets/eslint-config-vue3-ts`
+
 ```shell
 # by npm
 npm install -S @eslint-sets/eslint-config-vue3-ts

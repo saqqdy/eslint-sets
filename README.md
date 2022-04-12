@@ -16,11 +16,11 @@ A simplified http request client for nodejs
 
 ```shell
 # by npm
-npm install -S @eslint-sets/vue3-ts
+npm install -S @eslint-sets/eslint-config-vue3-ts
 # by yarn
-yarn add @eslint-sets/vue3-ts
+yarn add @eslint-sets/eslint-config-vue3-ts
 # by pnpm
-pnpm install @eslint-sets/vue3-ts
+pnpm install @eslint-sets/eslint-config-vue3-ts
 ```
 
 ## Issues & Support

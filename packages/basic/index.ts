@@ -7,6 +7,15 @@ const config = {
         commonjs: true,
         es6: true
     },
+    parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        ecmaFeatures: {
+            experimentalObjectRestSpread: true,
+            experimentalDecorators: true,
+            jsx: true
+        }
+    },
     ignorePatterns: [
         '*.min.*',
         'dist',

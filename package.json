@@ -14,6 +14,7 @@
         "pub": "tscjs scripts/publish",
         "unpub": "tscjs scripts/unpublish",
         "sync": "tscjs scripts/sync",
+        "viewInfo": "tscjs scripts/viewInfo",
         "update": "tscjs scripts/update",
         "dist": "pnpm run update && pnpm build",
         "clean": "rimraf dist types typings packages/*/dist"

@@ -6,17 +6,6 @@ const config = {
         shelljs: true,
         commonjs: true
     },
-    // parser: '@typescript-eslint/parser',
-    // parserOptions: {
-    //     parser: '@typescript-eslint/parser',
-    //     ecmaVersion: 2020,
-    //     sourceType: 'module',
-    //     ecmaFeatures: {
-    //         experimentalObjectRestSpread: true,
-    //         experimentalDecorators: true,
-    //         jsx: true
-    //     }
-    // },
     plugins: [
         // 'eslint-plugin-tsdoc',
         // 'prettier',
@@ -25,7 +14,6 @@ const config = {
     extends: [
         '@eslint-sets/eslint-config-basic',
         'prettier'
-        // 'plugin:vue-scoped-css/base',
         // 'plugin:jsdoc/recommended',
     ],
     rules: {},

@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/core",
     "description": "some core js",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "main": "./index.js",
     "scripts": {},
     "directories": {

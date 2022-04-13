@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-vue3-ts",
     "description": "Eslint config sets for vue3.0 typescript",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -11,16 +11,15 @@
         "typings": "typings"
     },
     "dependencies": {
-        "@babel/eslint-parser": "^7.17.0",
         "@eslint-sets/eslint-config-ts": "workspace:*",
         "@typescript-eslint/eslint-plugin": "^5.12.1",
         "@typescript-eslint/parser": "^5.12.1",
         "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-tsdoc": "^0.2.14",
         "eslint-plugin-vitest-globals": "^1.1.0",
         "eslint-plugin-vue": "^8.5.0",
+        "eslint-plugin-vue-scoped-css": "^2.2.0",
         "vue-eslint-parser": "^8.3.0"
     },
     "devDependencies": {},

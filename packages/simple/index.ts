@@ -6,11 +6,6 @@ const config = {
         shelljs: true,
         commonjs: true
     },
-    // parser: '@babel/eslint-parser',
-    // parserOptions: {
-    //     ecmaVersion: 6,
-    //     sourceType: 'module'
-    // },
     plugins: [
         // 'eslint-plugin-jsdoc',
         // 'prettier',
@@ -19,7 +14,6 @@ const config = {
     extends: [
         '@eslint-sets/eslint-config-basic',
         'prettier'
-        // 'plugin:vue-scoped-css/base',
         // 'plugin:jsdoc/recommended',
     ],
     rules: {},

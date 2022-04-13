@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-simple",
     "description": "Eslint config sets for simple",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -11,9 +11,9 @@
         "typings": "typings"
     },
     "dependencies": {
-        "@babel/eslint-parser": "^7.17.0",
         "@eslint-sets/eslint-config-basic": "workspace:*",
-        "eslint-config-prettier": "^8.5.0"
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.0.0"
     },
     "devDependencies": {},
     "peerDependencies": {

@@ -1,4 +1,3 @@
-/* 1eslint-disable no-console */
 const os = require('os')
 const fs = require('fs')
 const { join } = require('path')

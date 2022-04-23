@@ -1,7 +1,8 @@
 const config = {
     plugins: [
         'react',
-        'react-hooks'
+        'react-hooks',
+        'prettier'
         // 'eslint-plugin-tsdoc'
     ],
     extends: [

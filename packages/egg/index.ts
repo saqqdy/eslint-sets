@@ -7,7 +7,7 @@ const config = {
     },
     plugins: [
         // 'eslint-plugin-jsdoc',
-        // 'prettier',
+        'prettier'
         // 'import'
     ],
     extends: [

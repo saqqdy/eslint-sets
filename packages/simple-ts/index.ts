@@ -8,11 +8,11 @@ const config = {
     },
     plugins: [
         // 'eslint-plugin-tsdoc',
-        // 'prettier',
+        'prettier'
         // 'import'
     ],
     extends: [
-        '@eslint-sets/eslint-config-basic',
+        '@eslint-sets/eslint-config-ts',
         'prettier'
         // 'plugin:jsdoc/recommended',
     ],

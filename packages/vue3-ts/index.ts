@@ -1,7 +1,7 @@
 const config = {
     plugins: [
         // 'eslint-plugin-tsdoc',
-        // 'prettier',
+        'prettier'
         // 'import'
     ],
     extends: [

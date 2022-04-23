@@ -2,7 +2,8 @@ const basic = require('@eslint-sets/eslint-config-basic')
 
 const config = {
     plugins: [
-        '@typescript-eslint/eslint-plugin'
+        '@typescript-eslint/eslint-plugin',
+        'prettier'
         // 'eslint-plugin-tsdoc'
     ],
     extends: [

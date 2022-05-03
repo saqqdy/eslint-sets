@@ -110,6 +110,7 @@ const config = {
         ],
         'no-template-curly-in-string': 'off',
         'no-extra-semi': 'off',
+        'no-labels': 0,
 
         // eslint-comments
         'eslint-comments/disable-enable-pair': 'off',

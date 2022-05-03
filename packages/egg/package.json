@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-egg",
     "description": "Eslint config sets for eggjs",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "main": "./index.js",
     "scripts": {},
     "directories": {

@@ -47,7 +47,7 @@
         "eslint-plugin-promise": "^6.0.0",
         "eslint-plugin-tsdoc": "^0.2.14",
         "eslint-plugin-unicorn": "^42.0.0",
-        "eslint-plugin-yml": "^0.14.0",
+        "eslint-plugin-yml": "^0.15.0",
         "fast-glob": "^3.2.11",
         "jest": "^28.0.2",
         "js-cool": "^2.3.2",

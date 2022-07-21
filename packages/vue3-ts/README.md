@@ -19,13 +19,13 @@ Eslint config sets for vue3.0 typescript
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-vue3-ts --save
+$ npm install -D @eslint-sets/eslint-config-vue3-ts
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-vue3-ts
+$ yarn add -D @eslint-sets/eslint-config-vue3-ts
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-vue3-ts
+$ pnpm install -D @eslint-sets/eslint-config-vue3-ts
 ```
 
 ## Usage

@@ -19,13 +19,13 @@ Eslint config sets for vue2.0
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-vue --save
+$ npm install -D @eslint-sets/eslint-config-vue
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-vue
+$ yarn add -D @eslint-sets/eslint-config-vue
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-vue
+$ pnpm install -D @eslint-sets/eslint-config-vue
 ```
 
 ## Usage

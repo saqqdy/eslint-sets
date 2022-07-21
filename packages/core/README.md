@@ -19,13 +19,13 @@ some core js for eslint-sets
 
 ```bash
 # use npm
-$ npm install @eslint-sets/core --save
+$ npm install -D @eslint-sets/core
 
 # use yarn
-$ yarn add @eslint-sets/core
+$ yarn add -D @eslint-sets/core
 
 # use pnpm
-$ pnpm install @eslint-sets/core
+$ pnpm install -D @eslint-sets/core
 ```
 
 ## Usage

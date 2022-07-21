@@ -19,13 +19,13 @@ Eslint config sets for eggjs
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-egg --save
+$ npm install -D @eslint-sets/eslint-config-egg
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-egg
+$ yarn add -D @eslint-sets/eslint-config-egg
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-egg
+$ pnpm install -D @eslint-sets/eslint-config-egg
 ```
 
 ## Usage

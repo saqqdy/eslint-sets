@@ -19,13 +19,13 @@ Eslint config sets for simple typescript
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-simple-ts --save
+$ npm install -D @eslint-sets/eslint-config-simple-ts
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-simple-ts
+$ yarn add -D @eslint-sets/eslint-config-simple-ts
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-simple-ts
+$ pnpm install -D @eslint-sets/eslint-config-simple-ts
 ```
 
 ## Usage

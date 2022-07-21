@@ -19,13 +19,13 @@ Eslint config sets for simple
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-simple --save
+$ npm install -D @eslint-sets/eslint-config-simple
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-simple
+$ yarn add -D @eslint-sets/eslint-config-simple
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-simple
+$ pnpm install -D @eslint-sets/eslint-config-simple
 ```
 
 ## Usage

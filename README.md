@@ -14,15 +14,27 @@ A simplified http request client for nodejs
 
 ## Install
 
-e.g: use `@eslint-sets/eslint-config-vue3-ts`
+e.g: use `@eslint-sets/eslint-config-all`
 
 ```shell
 # by npm
-npm install -S @eslint-sets/eslint-config-vue3-ts
+npm install -D @eslint-sets/eslint-config-all
 # by yarn
-yarn add @eslint-sets/eslint-config-vue3-ts
+yarn add @eslint-sets/eslint-config-all
 # by pnpm
-pnpm install @eslint-sets/eslint-config-vue3-ts
+pnpm install @eslint-sets/eslint-config-all
+```
+
+## Usage
+
+```js
+// .eslintrc.js
+module.exports = {
+    extends: ['@eslint-sets/all'],
+    rules: {
+        // custom rules
+    }
+}
 ```
 
 ## Issues & Support

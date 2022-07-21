@@ -19,13 +19,13 @@ Eslint config sets for nuxt
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-nuxt --save
+$ npm install -D @eslint-sets/eslint-config-nuxt
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-nuxt
+$ yarn add -D @eslint-sets/eslint-config-nuxt
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-nuxt
+$ pnpm install -D @eslint-sets/eslint-config-nuxt
 ```
 
 ## Usage

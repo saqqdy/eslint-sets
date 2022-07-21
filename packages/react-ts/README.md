@@ -19,13 +19,13 @@ Eslint config sets for react typescript
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-react-ts --save
+$ npm install -D @eslint-sets/eslint-config-react-ts
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-react-ts
+$ yarn add -D @eslint-sets/eslint-config-react-ts
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-react-ts
+$ pnpm install -D @eslint-sets/eslint-config-react-ts
 ```
 
 ## Usage

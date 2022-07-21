@@ -19,13 +19,13 @@ Eslint config sets for react
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-react --save
+$ npm install -D @eslint-sets/eslint-config-react
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-react
+$ yarn add -D @eslint-sets/eslint-config-react
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-react
+$ pnpm install -D @eslint-sets/eslint-config-react
 ```
 
 ## Usage

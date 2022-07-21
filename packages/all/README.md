@@ -19,13 +19,13 @@ Eslint config all sets
 
 ```bash
 # use npm
-$ npm install @eslint-sets/eslint-config-all --save
+$ npm install -D @eslint-sets/eslint-config-all
 
 # use yarn
-$ yarn add @eslint-sets/eslint-config-all
+$ yarn add -D @eslint-sets/eslint-config-all
 
 # use pnpm
-$ pnpm install @eslint-sets/eslint-config-all
+$ pnpm install -D @eslint-sets/eslint-config-all
 ```
 
 ## Usage

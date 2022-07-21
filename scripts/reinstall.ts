@@ -3,58 +3,75 @@ const fs = require('fs')
 const { join } = require('path')
 const { spawnSync, execSync } = require('child_process')
 
-let [, , cwd = ''] = process.argv,
-    pkg: any,
-    list
-const ROOT_PATH = join(__dirname, '..')
-cwd = join(ROOT_PATH, cwd.replace(/"/g, ''))
-
-if (!cwd) cwd = process.cwd()
-
 type TypeManagers = 'npm' | 'pnpm' | 'yarn' | string
 
-const PACKAGE_NEXT = ['vue', 'vuex', 'vue-router']
-const PACKAGE_MANAGERS: TypeManagers[] = ['pnpm', 'yarn', 'npm']
+let [, , cwd = ''] = process.argv,
+    pkg: any,
+    argv = ['--registry', 'https://registry.npmmirror.com']
+const isRoot = cwd === ''
+const ROOT = join(__dirname, '..')
+cwd = join(ROOT, cwd.replace(/"/g, ''))
 
 pkg = fs.readFileSync(join(cwd, 'package.json'))
-list = ['--registry', 'https://registry.npmmirror.com']
-
 pkg = JSON.parse(pkg)
-const dependencies = { ...pkg.devDependencies, ...pkg.dependencies }
+
+const PACKAGE_NEXT: string[] = []
+const PACKAGE_EXCLUDE: string[] = []
+const PACKAGE_MANAGERS: TypeManagers[] = ['pnpm', 'yarn', 'npm']
 const cmd = getPackageManager()
 
 switch (cmd) {
     case 'pnpm':
-        list = list.concat(['i', '-WD'])
+        argv = argv.concat(['i'])
         break
     case 'yarn':
-        list = list.concat(['add', '-WD'])
+        argv = argv.concat(['add'])
         break
     case 'npm':
-        list = list.concat(['i', '-D'])
+        argv = argv.concat(['i'])
         break
     default:
-        list = list.concat(['i', '-WD'])
+        argv = argv.concat(['i'])
         break
+}
+if (isRoot) {
+    argv.push('-w')
 }
 
 // @next
-for (let packageName in dependencies) {
-    const isWorkspacePkg = dependencies[packageName] === 'workspace:*'
-    if (PACKAGE_NEXT.includes(packageName)) packageName += '@next'
-    else packageName += '@latest'
-    !isWorkspacePkg && list.push(packageName)
-}
+const pkgList = genInstallName(pkg.dependencies)
+const devPkgList = genInstallName(pkg.devDependencies)
 
 // run install
-if (list.length > 0) {
-    spawnSync(cmd, list, {
-        cwd,
-        stdio: 'inherit',
-        shell: process.platform === 'win32'
-    })
+if (pkgList.length > 0 || devPkgList.length > 0) {
+    pkgList.length &&
+        spawnSync(cmd, argv.concat(pkgList), {
+            cwd,
+            stdio: 'inherit',
+            shell: process.platform === 'win32'
+        })
+    devPkgList.length &&
+        spawnSync(cmd, argv.concat(devPkgList).concat(['-D']), {
+            cwd,
+            stdio: 'inherit',
+            shell: process.platform === 'win32'
+        })
 } else {
     process.exit(1)
+}
+
+function genInstallName(dependencies: Record<string, string>) {
+    const pkgList: string[] = []
+    for (let packageName in dependencies) {
+        const isWorkspacePkg = dependencies[packageName] === 'workspace:*'
+        const isExcludePkg = PACKAGE_EXCLUDE.includes(packageName)
+        if (PACKAGE_NEXT.includes(packageName)) packageName += '@next'
+        else packageName += '@latest'
+        if (!isWorkspacePkg && !isExcludePkg) {
+            pkgList.push(packageName)
+        }
+    }
+    return pkgList
 }
 
 // 获取安装工具

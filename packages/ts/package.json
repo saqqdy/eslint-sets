@@ -12,17 +12,17 @@
     },
     "dependencies": {
         "@eslint-sets/eslint-config-basic": "workspace:*",
-        "@typescript-eslint/eslint-plugin": "^5.17.0",
-        "@typescript-eslint/parser": "^5.17.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.7",
+        "@typescript-eslint/parser": "^5.30.7",
         "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-tsdoc": "^0.2.14"
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-tsdoc": "^0.2.16"
     },
     "devDependencies": {},
     "peerDependencies": {
         "eslint": ">=8.0.0",
         "prettier": ">=2.4.0",
-        "typescript": ">=4.0"
+        "typescript": "^4.7.4"
     },
     "sideEffects": false,
     "repository": {

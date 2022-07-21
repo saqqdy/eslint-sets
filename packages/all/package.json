@@ -1,6 +1,6 @@
 {
-    "name": "@eslint-sets/eslint-config-vue3-ts",
-    "description": "Eslint config sets for vue3.0 typescript",
+    "name": "@eslint-sets/eslint-config-all",
+    "description": "Eslint config all sets",
     "version": "2.1.5",
     "main": "./index.js",
     "scripts": {},
@@ -11,16 +11,36 @@
         "typings": "typings"
     },
     "dependencies": {
-        "@eslint-sets/eslint-config-ts": "workspace:*",
+        "@babel/eslint-parser": "^7.17.0",
+        "@eslint-sets/eslint-config-egg": "workspace:*",
+        "@eslint-sets/eslint-config-nuxt": "workspace:*",
+        "@eslint-sets/eslint-config-react-ts": "workspace:*",
+        "@eslint-sets/eslint-config-vue3-ts": "workspace:*",
         "@typescript-eslint/eslint-plugin": "^5.17.0",
         "@typescript-eslint/parser": "^5.17.0",
+        "eslint-config-egg": "^11.0.1",
         "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-html": "^6.2.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsdoc": "^38.1.4",
+        "eslint-plugin-jsonc": "^2.2.1",
+        "eslint-plugin-markdown": "^2.2.1",
+        "eslint-plugin-n": "^15.1.0",
+        "eslint-plugin-nuxt": "^3.2.0",
         "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-react": "^7.29.4",
+        "eslint-plugin-react-hooks": "^4.4.0",
         "eslint-plugin-tsdoc": "^0.2.14",
+        "eslint-plugin-unicorn": "^42.0.0",
         "eslint-plugin-vitest-globals": "^1.1.0",
         "eslint-plugin-vue": "^8.5.0",
         "eslint-plugin-vue-scoped-css": "^2.2.0",
-        "vue-eslint-parser": "^8.3.0"
+        "eslint-plugin-yml": "^0.14.0",
+        "jsonc-eslint-parser": "^2.1.0",
+        "vue-eslint-parser": "^8.3.0",
+        "yaml-eslint-parser": "^0.5.0"
     },
     "devDependencies": {},
     "peerDependencies": {
@@ -32,7 +52,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saqqdy/eslint-sets.git",
-        "directory": "packages/vue3-ts"
+        "directory": "packages/all"
     },
     "pnpm": {
         "peerDependencyRules": {
@@ -59,5 +79,5 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3-ts#readme"
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/all#readme"
 }

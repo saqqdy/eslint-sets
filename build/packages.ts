@@ -2,6 +2,14 @@ import type { PackageManifest } from './types'
 
 export const packages: PackageManifest[] = [
     {
+        name: 'all',
+        pkgName: 'all',
+        iife: false,
+        mjs: false,
+        dts: false,
+        display: 'Eslint config all sets'
+    },
+    {
         name: 'core',
         pkgName: 'core',
         iife: false,

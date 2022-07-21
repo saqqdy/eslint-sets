@@ -1,10 +1,10 @@
 {
     "name": "@eslint-sets/monorepo",
     "description": "eslint-sets",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "scripts": {
         "eslint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
-        "prettier": "npx prettier --write ./",
+        "prettier": "prettier --write ./",
         "reinstall": "tscjs scripts/reinstall",
         "lib": "sh scripts/lib.sh",
         "docs": "sh scripts/docs.sh --docs",

@@ -78,7 +78,10 @@ const config = {
         'no-unused-vars': [
             2,
             {
+                args: 'none',
+                caughtErrors: 'none',
                 ignoreRestSiblings: true,
+                vars: 'all',
                 argsIgnorePattern: '^h$',
                 varsIgnorePattern: '^h$'
             }

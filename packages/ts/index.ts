@@ -63,6 +63,10 @@ const config = {
         '@typescript-eslint/no-unused-vars': [
             2,
             {
+                args: 'none',
+                caughtErrors: 'none',
+                ignoreRestSiblings: true,
+                vars: 'all',
                 argsIgnorePattern: '^h$',
                 varsIgnorePattern: '^h$'
             }
@@ -77,11 +81,11 @@ const config = {
         'brace-style': 'off',
         '@typescript-eslint/brace-style': [
             'error',
-            'stroustrup',
+            '1tbs',
             { allowSingleLine: true }
         ],
         'comma-dangle': 'off',
-        '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
+        '@typescript-eslint/comma-dangle': 'off',
         'object-curly-spacing': 'off',
         '@typescript-eslint/object-curly-spacing': ['error', 'always'],
 

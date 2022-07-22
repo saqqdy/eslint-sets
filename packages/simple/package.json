@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-simple",
     "description": "Eslint config sets for simple",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -13,6 +13,7 @@
     "dependencies": {
         "@eslint-sets/eslint-config-basic": "workspace:*",
         "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-jsdoc": "^39.3.3",
         "eslint-plugin-prettier": "^4.2.1"
     },
     "devDependencies": {},

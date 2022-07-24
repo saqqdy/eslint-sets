@@ -2,7 +2,7 @@
 
 # @eslint-sets/monorepo
 
-A simplified http request client for nodejs
+Eslint config sets
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]

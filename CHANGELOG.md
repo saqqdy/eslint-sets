@@ -1,5 +1,9 @@
 # 更新日志
 
+## 2022.07.24 v3.0.3 更新日志
+
+1. all 包移除 vue 相关插件
+
 ## 2022.07.22 v3.0.2 更新日志
 
 1. 修复 ts 包的`comma-dangle` `no-unused-vars` 和 `brace-style`问题

@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-simple-ts",
     "description": "Eslint config sets for simple typescript",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "main": "./index.js",
     "scripts": {},
     "directories": {

@@ -1,5 +1,9 @@
 # 更新日志
 
+## 2022.07.28 v3.0.4 更新日志
+
+1. 更改`vue`配置`eslint-plugin-vue`版本，修复`no-v-for-template-key-on-child`问题
+
 ## 2022.07.24 v3.0.3 更新日志
 
 1. all 包移除 vue 相关插件

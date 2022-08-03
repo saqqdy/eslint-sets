@@ -28,6 +28,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   registry-url: https://registry.npmmirror.com
                   cache: pnpm
+                  ERR_PNPM_OUTDATED_LOCKFILE: true
 
             - run: pnpm install
 

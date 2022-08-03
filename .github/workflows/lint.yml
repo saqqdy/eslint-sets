@@ -29,7 +29,7 @@ jobs:
                   registry-url: https://registry.npmmirror.com
                   cache: pnpm
 
-            - run: pnpm install
+            - run: pnpm install --no-frozen-lockfile
 
             - name: Lint
               run: pnpm run eslint

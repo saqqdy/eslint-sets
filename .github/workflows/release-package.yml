@@ -44,6 +44,7 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
+            - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/monorepo/sync"
             - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/all/sync"
             - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/basic/sync"
             - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/core/sync"

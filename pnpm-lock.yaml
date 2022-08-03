@@ -139,7 +139,7 @@ importers:
       vue-eslint-parser: ^8.3.0
       yaml-eslint-parser: ^1.1.0
     dependencies:
-      '@babel/eslint-parser': 7.18.9_eslint@8.21.0
+      '@babel/eslint-parser': 7.18.9_xqt7ek4fk233nrovqiamjvck4u
       '@eslint-sets/eslint-config-egg': link:../egg
       '@eslint-sets/eslint-config-nuxt': link:../nuxt
       '@eslint-sets/eslint-config-react-ts': link:../react-ts

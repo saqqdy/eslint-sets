@@ -15,7 +15,7 @@
         "@eslint-sets/eslint-config-egg": "workspace:*",
         "@eslint-sets/eslint-config-nuxt": "workspace:*",
         "@eslint-sets/eslint-config-react-ts": "workspace:*",
-        "@nuxtjs/eslint-config": "^8.0.0",
+        "@nuxtjs/eslint-config": "^10.0.0",
         "@nuxtjs/eslint-module": "^3.1.0",
         "@typescript-eslint/eslint-plugin": "^5.30.7",
         "@typescript-eslint/parser": "^5.30.7",

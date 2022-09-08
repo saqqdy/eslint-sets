@@ -55,5 +55,8 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/react-ts#readme"
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/react-ts#readme",
+    "devDependencies": {
+        "typescript": "^4.8.2"
+    }
 }

@@ -18,7 +18,9 @@
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-tsdoc": "^0.2.16"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "typescript": "^4.8.2"
+    },
     "peerDependencies": {
         "eslint": ">=8.0.0",
         "prettier": ">=2.4.0"

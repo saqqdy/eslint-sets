@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-vue3",
     "description": "Eslint config sets for vue3.0",
-    "version": "3.0.4",
+    "version": "3.0.5",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -13,9 +13,9 @@
     "dependencies": {
         "@eslint-sets/eslint-config-basic": "workspace:*",
         "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-jsdoc": "^39.3.3",
+        "eslint-plugin-jsdoc": "^39.3.6",
         "eslint-plugin-prettier": "^4.2.1",
-        "eslint-plugin-vitest-globals": "^1.1.0",
+        "eslint-plugin-vitest-globals": "^1.2.0",
         "eslint-plugin-vue": "^8.7.1",
         "eslint-plugin-vue-scoped-css": "^2.2.0",
         "vue-eslint-parser": "^8.3.0"

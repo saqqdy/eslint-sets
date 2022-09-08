@@ -16,7 +16,13 @@ pkg = fs.readFileSync(join(cwd, 'package.json'))
 pkg = JSON.parse(pkg)
 
 const PACKAGE_NEXT: string[] = []
-const PACKAGE_EXCLUDE: string[] = []
+const PACKAGE_EXCLUDE: string[] = [
+    'eslint-plugin-promise',
+    'eslint-plugin-vue',
+    '@nuxtjs/eslint-config',
+    'eslint-plugin-nuxt',
+    'vue-eslint-parser'
+]
 const PACKAGE_MANAGERS: TypeManagers[] = ['pnpm', 'yarn', 'npm']
 const cmd = getPackageManager()
 

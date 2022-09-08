@@ -20,7 +20,7 @@ module.exports = {
             jsx: true
         }
     },
-    plugins: ['@typescript-eslint/eslint-plugin', 'eslint-plugin-tsdoc'],
+    plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
     extends: [
         'plugin:@typescript-eslint/recommended',
         'eslint:recommended',

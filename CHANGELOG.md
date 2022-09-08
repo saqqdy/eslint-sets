@@ -1,5 +1,10 @@
 # 更新日志
 
+## 2022.09.08 v3.0.5 更新日志
+
+1. 修复`eslint-plugin-ts`配置
+2. 升级依赖包
+
 ## 2022.07.28 v3.0.4 更新日志
 
 1. 更改`vue`配置`eslint-plugin-vue`版本，修复`no-v-for-template-key-on-child`问题

@@ -22,7 +22,7 @@
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-promise": "^5.2.0",
         "eslint-plugin-tsdoc": "^0.2.16",
-        "eslint-plugin-unicorn": "^44.0.0",
+        "eslint-plugin-unicorn": "^45.0.0",
         "eslint-plugin-yml": "^1.2.0",
         "jsonc-eslint-parser": "^2.1.0",
         "yaml-eslint-parser": "^1.1.0"

@@ -34,7 +34,7 @@
         "chalk": "^5.0.1",
         "consola": "^2.15.3",
         "cross-env": "^7.0.3",
-        "esbuild": "^0.15.7",
+        "esbuild": "^0.16.4",
         "esbuild-register": "^3.3.3",
         "eslint": "^8.23.0",
         "eslint-config-prettier": "^8.5.0",

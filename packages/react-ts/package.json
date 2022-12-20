@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-react-ts",
     "description": "Eslint config sets for react typescript",
-    "version": "3.0.5",
+    "version": "3.1.0",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -20,9 +20,15 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-tsdoc": "^0.2.16"
     },
+    "devDependencies": {
+        "eslint": "^8.30.0",
+        "prettier": "^2.8.1",
+        "typescript": "~4.8.4"
+    },
     "peerDependencies": {
         "eslint": ">=8.0.0",
-        "prettier": ">=2.4.0"
+        "prettier": ">=2.0.0",
+        "typescript": ">=4.0.0"
     },
     "sideEffects": false,
     "repository": {
@@ -37,7 +43,7 @@
                 "webpack"
             ],
             "allowedVersions": {
-                "eslint": "^8.10.0"
+                "eslint": ">=8.0.0"
             }
         }
     },
@@ -55,8 +61,5 @@
     "bugs": {
         "url": "https://github.com/saqqdy/eslint-sets/issues"
     },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/react-ts#readme",
-    "devDependencies": {
-        "typescript": "^4.8.2"
-    }
+    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/react-ts#readme"
 }

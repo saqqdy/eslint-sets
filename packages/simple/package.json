@@ -1,7 +1,7 @@
 {
     "name": "@eslint-sets/eslint-config-simple",
     "description": "Eslint config sets for simple",
-    "version": "3.0.5",
+    "version": "3.1.0",
     "main": "./index.js",
     "scripts": {},
     "directories": {
@@ -16,9 +16,13 @@
         "eslint-plugin-jsdoc": "^39.3.6",
         "eslint-plugin-prettier": "^4.2.1"
     },
+    "devDependencies": {
+        "eslint": "^8.30.0",
+        "prettier": "^2.8.1"
+    },
     "peerDependencies": {
         "eslint": ">=8.0.0",
-        "prettier": ">=2.4.0"
+        "prettier": ">=2.0.0"
     },
     "sideEffects": false,
     "repository": {
@@ -33,7 +37,7 @@
                 "webpack"
             ],
             "allowedVersions": {
-                "eslint": "^8.10.0"
+                "eslint": ">=8.0.0"
             }
         }
     },

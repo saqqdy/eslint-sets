@@ -38,21 +38,21 @@ jobs:
                   NODE_OPTIONS: --max-old-space-size=6144
 
             - name: Gen .npmrc
-              run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
+              run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
 
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/all/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/basic/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/core/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/egg/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/nuxt/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/react/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/react-ts/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/simple/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/simple-ts/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/ts/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/vue/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/vue3/.npmrc
-            - run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./packages/vue3-ts/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/all/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/basic/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/core/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/egg/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/nuxt/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/react/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/react-ts/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/simple/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/simple-ts/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/ts/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/vue/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/vue3/.npmrc
+            - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/vue3-ts/.npmrc
 
             - run: pnpm pub
               env:

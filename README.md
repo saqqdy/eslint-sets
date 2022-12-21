@@ -30,10 +30,10 @@ pnpm install @eslint-sets/eslint-config-all
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/all'],
-    rules: {
-        // custom rules
-    }
+  extends: ['@eslint-sets/all'],
+  rules: {
+    // custom rules
+  }
 }
 ```
 

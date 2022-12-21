@@ -14,13 +14,13 @@ if (version.includes('beta')) command += ' --tag beta'
 if (version.includes('alpha')) command += ' --tag alpha'
 
 for (const { name } of packages) {
-    execSync(command, {
-        stdio: 'inherit',
-        cwd: join('packages', name, 'dist')
-    })
-    consola.success(`Published @eslint-sets/${name}`)
+	execSync(command, {
+		stdio: 'inherit',
+		cwd: join('packages', name, 'dist')
+	})
+	consola.success(`Published @eslint-sets/${name}`)
 }
 execSync(command, {
-    stdio: 'inherit'
+	stdio: 'inherit'
 })
 consola.success('Published @eslint-sets/monorepo')

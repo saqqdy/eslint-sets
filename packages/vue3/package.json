@@ -1,64 +1,64 @@
 {
-    "name": "@eslint-sets/eslint-config-vue3",
-    "description": "Eslint config sets for vue3.0",
-    "version": "3.1.0",
-    "main": "./index.js",
-    "scripts": {},
-    "directories": {
-        "es": "es",
-        "lib": "lib",
-        "src": "src",
-        "typings": "typings"
-    },
-    "dependencies": {
-        "@eslint-sets/eslint-config-basic": "workspace:*",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-jsdoc": "^39.3.6",
-        "eslint-plugin-prettier": "^4.2.1",
-        "eslint-plugin-vitest-globals": "^1.2.0",
-        "eslint-plugin-vue": "^9.8.0",
-        "eslint-plugin-vue-scoped-css": "^2.2.0",
-        "vue-eslint-parser": "^9.1.0"
-    },
-    "devDependencies": {
-        "eslint": "^8.30.0",
-        "prettier": "^2.8.1"
-    },
-    "peerDependencies": {
-        "eslint": ">=8.0.0",
-        "prettier": ">=2.0.0"
-    },
-    "sideEffects": false,
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/saqqdy/eslint-sets.git",
-        "directory": "packages/vue3"
-    },
-    "pnpm": {
-        "peerDependencyRules": {
-            "ignoreMissing": [
-                "@babel/core",
-                "webpack",
-                "webpack"
-            ],
-            "allowedVersions": {
-                "eslint": ">=8.0.0"
-            }
-        }
-    },
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org",
-        "access": "public"
-    },
-    "keywords": [
-        "eslint-sets",
-        "git",
-        "tool"
-    ],
-    "author": "saqqdy <https://github.com/saqqdy>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/saqqdy/eslint-sets/issues"
-    },
-    "homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3#readme"
+	"name": "@eslint-sets/eslint-config-vue3",
+	"description": "Eslint config sets for vue3.0",
+	"version": "3.2.0-beta.1",
+	"main": "./index.js",
+	"scripts": {},
+	"directories": {
+		"es": "es",
+		"lib": "lib",
+		"src": "src",
+		"typings": "typings"
+	},
+	"dependencies": {
+		"@eslint-sets/eslint-config-basic": "workspace:*",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-jsdoc": "^39.3.6",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-vitest-globals": "^1.2.0",
+		"eslint-plugin-vue": "^9.8.0",
+		"eslint-plugin-vue-scoped-css": "^2.2.0",
+		"vue-eslint-parser": "^9.1.0"
+	},
+	"devDependencies": {
+		"eslint": "^8.30.0",
+		"prettier": "^2.8.1"
+	},
+	"peerDependencies": {
+		"eslint": ">=8.0.0",
+		"prettier": ">=2.0.0"
+	},
+	"sideEffects": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git",
+		"directory": "packages/vue3"
+	},
+	"pnpm": {
+		"peerDependencyRules": {
+			"ignoreMissing": [
+				"@babel/core",
+				"webpack",
+				"webpack"
+			],
+			"allowedVersions": {
+				"eslint": ">=8.0.0"
+			}
+		}
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	},
+	"keywords": [
+		"eslint-sets",
+		"git",
+		"tool"
+	],
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/saqqdy/eslint-sets/issues"
+	},
+	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3#readme"
 }

@@ -3,13 +3,13 @@ import { banner as content } from '../config'
 import type { Plugin } from 'rollup'
 
 const banner = (options: Options): Plugin =>
-    _banner(
-        Object.assign(
-            {
-                content
-            },
-            options
-        )
-    )
+	_banner(
+		Object.assign(
+			{
+				content
+			},
+			options
+		)
+	)
 
 export default banner

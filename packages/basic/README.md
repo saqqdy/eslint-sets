@@ -33,10 +33,10 @@ $ pnpm install -D @eslint-sets/eslint-config-basic
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/basic'],
-    rules: {
-        // custom rules
-    }
+  extends: ['@eslint-sets/basic'],
+  rules: {
+    // custom rules
+  }
 }
 ```
 

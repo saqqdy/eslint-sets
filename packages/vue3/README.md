@@ -33,10 +33,10 @@ $ pnpm install -D @eslint-sets/eslint-config-vue3
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/vue3'],
-    rules: {
-        // custom rules
-    }
+  extends: ['@eslint-sets/vue3'],
+  rules: {
+    // custom rules
+  }
 }
 ```
 

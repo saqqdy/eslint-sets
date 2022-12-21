@@ -33,10 +33,10 @@ $ pnpm install -D @eslint-sets/eslint-config-egg
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/egg'],
-    rules: {
-        // custom rules
-    }
+  extends: ['@eslint-sets/egg'],
+  rules: {
+    // custom rules
+  }
 }
 ```
 

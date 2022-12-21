@@ -33,10 +33,10 @@ $ pnpm install -D @eslint-sets/eslint-config-nuxt
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/nuxt'],
-    rules: {
-        // custom rules
-    }
+  extends: ['@eslint-sets/nuxt'],
+  rules: {
+    // custom rules
+  }
 }
 ```
 

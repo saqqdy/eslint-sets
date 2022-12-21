@@ -33,10 +33,10 @@ $ pnpm install -D @eslint-sets/eslint-config-react-ts
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/react-ts'],
-    rules: {
-        // custom rules
-    }
+  extends: ['@eslint-sets/react-ts'],
+  rules: {
+    // custom rules
+  }
 }
 ```
 

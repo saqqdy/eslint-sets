@@ -1,5 +1,10 @@
 # 更新日志
 
+## 2022.12.21 v3.2.0 更新日志
+
+1. 修复jsx解析不到的问题
+2. 优化代码
+
 ## 2022.12.20 v3.1.0 更新日志
 
 1. 处理依赖包版本不一致的问题
@@ -80,7 +85,7 @@
 ```js
 // .eslintrc.js
 module.exports = {
-    extends: ['@eslint-sets/vue3-ts']
+  extends: ['@eslint-sets/vue3-ts']
 }
 ```
 

@@ -50,7 +50,7 @@ const config = {
 			parser: 'vue-eslint-parser',
 			parserOptions: {
 				parser: '@typescript-eslint/parser',
-				ecmaVersion: 2020,
+				ecmaVersion: 'latest',
 				sourceType: 'module',
 				ecmaFeatures: {
 					experimentalObjectRestSpread: true,

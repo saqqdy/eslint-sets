@@ -53,7 +53,7 @@ const config = {
 			parserOptions: {
 				parser: '@babel/eslint-parser',
 				requireConfigFile: false,
-				ecmaVersion: 2020,
+				ecmaVersion: 'latest',
 				sourceType: 'module',
 				ecmaFeatures: {
 					experimentalObjectRestSpread: true,

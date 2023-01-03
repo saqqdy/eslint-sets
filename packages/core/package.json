@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/core",
 	"description": "some core js",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -12,7 +12,7 @@
 		"typings": "typings"
 	},
 	"dependencies": {
-		"js-cool": "^2.4.0"
+		"js-cool": "^2.8.0"
 	},
 	"sideEffects": false,
 	"repository": {

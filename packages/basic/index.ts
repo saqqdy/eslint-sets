@@ -8,7 +8,7 @@ const config = {
 		es6: true
 	},
 	parserOptions: {
-		ecmaVersion: 2020,
+		ecmaVersion: 'latest',
 		sourceType: 'module',
 		ecmaFeatures: {
 			experimentalObjectRestSpread: true,

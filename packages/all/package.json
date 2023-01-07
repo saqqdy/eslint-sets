@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config",
 	"description": "Eslint config all sets",
-	"version": "4.0.0-beta.2",
+	"version": "4.0.0-beta.3",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -15,7 +15,7 @@
 		"@eslint-sets/eslint-config-egg": "workspace:*",
 		"@eslint-sets/eslint-config-nuxt": "workspace:*",
 		"@eslint-sets/eslint-config-react-ts": "workspace:*",
-		"@nuxtjs/eslint-config": "^8.0.0",
+		"@nuxtjs/eslint-config": "^12.0.0",
 		"@nuxtjs/eslint-module": "^3.1.0",
 		"@typescript-eslint/eslint-plugin": "^5.36.2",
 		"@typescript-eslint/parser": "^5.36.2",

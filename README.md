@@ -1,6 +1,6 @@
 <div style="text-align: center;" align="center">
 
-# @eslint-sets/monorepo
+# @eslint-sets/eslint-config
 
 Eslint config sets
 

@@ -21,7 +21,10 @@ const PACKAGE_EXCLUDE: string[] = [
 	'eslint-plugin-vue',
 	'@nuxtjs/eslint-config',
 	'eslint-plugin-nuxt',
-	'vue-eslint-parser'
+	'eslint-plugin-unicorn',
+	'vue-eslint-parser',
+	'typescript',
+	'eslint'
 ]
 const PACKAGE_MANAGERS: TypeManagers[] = ['pnpm', 'yarn', 'npm']
 const cmd = getPackageManager()

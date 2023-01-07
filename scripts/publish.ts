@@ -6,7 +6,6 @@ import { packages } from '../build/packages'
 
 export const ROOT = join(__dirname, '..')
 export const PACKAGE = join(ROOT, 'packages')
-// execSync('pnpm build', { stdio: 'inherit' })
 
 const REGISTRY_URL = 'https://registry.npmjs.org'
 let command = `npm --registry=${REGISTRY_URL} publish --access public`

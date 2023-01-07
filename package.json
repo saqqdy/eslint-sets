@@ -84,7 +84,7 @@
 				"webpack"
 			],
 			"allowedVersions": {
-				"eslint": ">=7.0.0"
+				"eslint": ">=7.4.0"
 			}
 		}
 	},

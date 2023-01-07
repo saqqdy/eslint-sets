@@ -24,7 +24,7 @@
 		"typescript": "~4.8.4"
 	},
 	"peerDependencies": {
-		"eslint": ">=7.0.0",
+		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0",
 		"typescript": ">=3.5.0"
 	},
@@ -41,7 +41,7 @@
 				"webpack"
 			],
 			"allowedVersions": {
-				"eslint": ">=7.0.0"
+				"eslint": ">=7.4.0"
 			}
 		}
 	},

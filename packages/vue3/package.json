@@ -25,7 +25,7 @@
 		"prettier": "^2.8.1"
 	},
 	"peerDependencies": {
-		"eslint": ">=7.0.0",
+		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
 	"sideEffects": false,
@@ -42,7 +42,7 @@
 				"webpack"
 			],
 			"allowedVersions": {
-				"eslint": ">=7.0.0"
+				"eslint": ">=7.4.0"
 			}
 		}
 	},

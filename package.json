@@ -37,7 +37,6 @@
 		"esbuild-register": "^3.4.2",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.6.0",
-		"eslint-config-sets": "~1.8.3",
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-jsonc": "^2.6.0",

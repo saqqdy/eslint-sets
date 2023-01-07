@@ -34,7 +34,7 @@ const execOption: ExecSyncOptions = {
 }
 
 const newVers = {} as Record<
-	typeof preidList[number] | 'production' | 'increase' | 'pre',
+	(typeof preidList)[number] | 'production' | 'increase' | 'pre',
 	VersionObjectList[]
 >
 
@@ -162,10 +162,10 @@ function parseVersion(ver: string): VersionObject {
 
 function genNextVersion(
 	type:
-		| typeof productionTypes[number]
-		| typeof increaseTypes[number]
-		| typeof preTypes[number] = 'patch',
-	preid?: typeof preidList[number]
+		| (typeof productionTypes)[number]
+		| (typeof increaseTypes)[number]
+		| (typeof preTypes)[number] = 'patch',
+	preid?: (typeof preidList)[number]
 ): VersionObject {
 	const ver = parseVersion(pkg.version)
 	if (type.includes('patch')) {

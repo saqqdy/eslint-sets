@@ -19,7 +19,6 @@ importers:
       esbuild-register: ^3.4.2
       eslint: ^7.32.0
       eslint-config-prettier: ^8.6.0
-      eslint-config-sets: ~1.8.3
       eslint-plugin-eslint-comments: ^3.2.0
       eslint-plugin-import: ^2.26.0
       eslint-plugin-jsonc: ^2.6.0
@@ -70,7 +69,6 @@ importers:
       esbuild-register: 3.4.2_esbuild@0.16.15
       eslint: 7.32.0
       eslint-config-prettier: 8.6.0_eslint@7.32.0
-      eslint-config-sets: 1.8.3
       eslint-plugin-eslint-comments: 3.2.0_eslint@7.32.0
       eslint-plugin-import: 2.26.0_lda5jobv6qo6flq5igwnr35p5e
       eslint-plugin-jsonc: 2.6.0_eslint@7.32.0
@@ -3601,6 +3599,7 @@ packages:
 
   /eslint-config-sets/1.8.3:
     resolution: {integrity: sha512-X9OtGgO3olmrUB42aWMIm9rO+ehz89dysyfWBITHq8N9hB/AxHuNkqHVNU3YLT53WpbRopVCEHIBhZ2i1dMFyw==}
+    dev: false
 
   /eslint-config-standard/16.0.3_wnerebu6rbpsve3qx7qqwvcqtq:
     resolution: {integrity: sha512-x4fmJL5hGqNJKGHSjnLdgA6U6h1YW/G2dW9fA+cyVur4SK6lyue8+UgNKWlZtUDTXvgKDD/Oa3GQjmB5kjtVvg==}

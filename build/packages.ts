@@ -56,6 +56,14 @@ export const packages: PackageManifest[] = [
 		iife: false,
 		mjs: false,
 		dts: false,
-		display: 'Eslint config sets for vue'
+		display: 'Eslint config sets for vue2.0'
+	},
+	{
+		name: 'vue3',
+		pkgName: 'eslint-config-vue3',
+		iife: false,
+		mjs: false,
+		dts: false,
+		display: 'Eslint config sets for vue3.0'
 	}
 ]

@@ -4,6 +4,8 @@ import consola from 'consola'
 import { version } from '../package.json'
 import { packages } from '../build/packages'
 
+export const ROOT = join(__dirname, '..')
+export const PACKAGE = join(ROOT, 'packages')
 // execSync('pnpm build', { stdio: 'inherit' })
 
 const REGISTRY_URL = 'https://registry.npmjs.org'
@@ -16,11 +18,12 @@ if (version.includes('alpha')) command += ' --tag alpha'
 for (const { name, pkgName } of packages) {
 	execSync(command, {
 		stdio: 'inherit',
-		cwd: join('packages', name, 'dist')
+		cwd: join(PACKAGE, name, 'dist')
 	})
 	consola.success(`Published @eslint-sets/${pkgName}`)
 }
 execSync(command, {
-	stdio: 'inherit'
+	stdio: 'inherit',
+	cwd: ROOT
 })
 consola.success('Published @eslint-sets/monorepo')

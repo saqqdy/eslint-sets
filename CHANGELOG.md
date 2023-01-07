@@ -5,7 +5,9 @@
 1. 兼容 eslint v7.x 版本
 2. `@eslint-sets/eslint-config-all` 更改为 `@eslint-sets/eslint-config`
 3. `@nuxtjs/eslint-config` 升级到 v12
-4. 更改`all`包含 react、vue、ts、basic
+4. 更改`all`包含 react、vue、ts
+5. 移除 vue3-ts、simple、simple-ts、react-ts、core
+6. 调整 ts 为基础库，不再引入 basic
 
 ## 2023.01.03 v3.3.0 更新日志
 

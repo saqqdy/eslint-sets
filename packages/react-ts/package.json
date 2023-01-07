@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-react-ts",
 	"description": "Eslint config sets for react typescript",
-	"version": "3.3.0",
+	"version": "4.0.0-beta.1",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -21,14 +21,14 @@
 		"eslint-plugin-tsdoc": "^0.2.16"
 	},
 	"devDependencies": {
-		"eslint": "^8.30.0",
+		"eslint": "^7.32.0",
 		"prettier": "^2.8.1",
 		"typescript": "~4.8.4"
 	},
 	"peerDependencies": {
-		"eslint": ">=8.0.0",
+		"eslint": ">=7.0.0",
 		"prettier": ">=2.0.0",
-		"typescript": ">=4.0.0"
+		"typescript": ">=3.5.0"
 	},
 	"sideEffects": false,
 	"repository": {
@@ -43,7 +43,7 @@
 				"webpack"
 			],
 			"allowedVersions": {
-				"eslint": ">=8.0.0"
+				"eslint": ">=7.0.0"
 			}
 		}
 	},

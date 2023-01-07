@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-basic",
 	"description": "Eslint config basic sets",
-	"version": "3.3.0",
+	"version": "4.0.0-beta.1",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -29,11 +29,11 @@
 		"yaml-eslint-parser": "^1.1.0"
 	},
 	"devDependencies": {
-		"eslint": "^8.30.0",
+		"eslint": "^7.32.0",
 		"prettier": "^2.8.1"
 	},
 	"peerDependencies": {
-		"eslint": ">=8.0.0",
+		"eslint": ">=7.0.0",
 		"prettier": ">=2.0.0"
 	},
 	"sideEffects": false,
@@ -49,7 +49,7 @@
 				"webpack"
 			],
 			"allowedVersions": {
-				"eslint": ">=8.0.0"
+				"eslint": ">=7.0.0"
 			}
 		}
 	},

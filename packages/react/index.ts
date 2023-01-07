@@ -1,3 +1,9 @@
+const { isPackageExists } = require('local-pkg')
+const tsExits = isPackageExists('typescript')
+
+if (!tsExits)
+	console.warn('[@eslint-sets/eslint-config] TypeScript is not installed, fallback to JS only.')
+
 const config = {
 	plugins: [
 		'react',
@@ -5,7 +11,11 @@ const config = {
 		'prettier'
 		// 'eslint-plugin-tsdoc'
 	],
-	extends: ['plugin:react/recommended', '@eslint-sets/eslint-config-basic', 'prettier'],
+	extends: [
+		'plugin:react/recommended',
+		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
+		'prettier'
+	],
 	rules: {
 		'jsx-quotes': ['error', 'prefer-double'],
 		'react/react-in-jsx-scope': 'off'

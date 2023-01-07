@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-basic",
 	"description": "Eslint config basic sets",
-	"version": "4.0.0-beta.3",
+	"version": "4.0.0-beta.5",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -36,7 +36,6 @@
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
-	"sideEffects": false,
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/eslint-sets.git",

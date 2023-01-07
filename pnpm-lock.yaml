@@ -282,6 +282,7 @@ importers:
             eslint-plugin-prettier: ^4.2.1
             eslint-plugin-react: ^7.31.7
             eslint-plugin-react-hooks: ^4.6.0
+            local-pkg: ^0.4.2
             prettier: ^2.8.1
         dependencies:
             '@eslint-sets/eslint-config-basic': link:../basic
@@ -290,6 +291,7 @@ importers:
             eslint-plugin-prettier: 4.2.1_azklrodwt66esftms4odwjmsay
             eslint-plugin-react: 7.31.7_eslint@7.32.0
             eslint-plugin-react-hooks: 4.6.0_eslint@7.32.0
+            local-pkg: 0.4.2
         devDependencies:
             eslint: 7.32.0
             prettier: 2.8.1
@@ -393,6 +395,7 @@ importers:
             eslint-plugin-prettier: ^4.2.1
             eslint-plugin-vue: ^9.8.0
             eslint-plugin-vue-scoped-css: ^2.2.0
+            local-pkg: ^0.4.2
             prettier: ^2.8.1
             vue-eslint-parser: ^9.1.0
         dependencies:
@@ -402,6 +405,7 @@ importers:
             eslint-plugin-prettier: 4.2.1_azklrodwt66esftms4odwjmsay
             eslint-plugin-vue: 9.8.0_eslint@7.32.0
             eslint-plugin-vue-scoped-css: 2.2.0_ncpvmwkgp63fild3mhdc57btly
+            local-pkg: 0.4.2
             vue-eslint-parser: 9.1.0_eslint@7.32.0
         devDependencies:
             eslint: 7.32.0

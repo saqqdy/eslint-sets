@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-vue",
-	"description": "Eslint config sets for vue2.0",
-	"version": "4.0.0-beta.3",
+	"description": "Eslint config sets for vue",
+	"version": "4.0.0-beta.5",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -17,6 +17,7 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-vue": "^9.8.0",
 		"eslint-plugin-vue-scoped-css": "^2.2.0",
+		"local-pkg": "^0.4.2",
 		"vue-eslint-parser": "^9.1.0"
 	},
 	"devDependencies": {
@@ -27,7 +28,6 @@
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
-	"sideEffects": false,
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/eslint-sets.git",

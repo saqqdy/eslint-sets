@@ -1,4 +1,7 @@
+const { existsSync } = require('fs')
+const { join } = require('path')
 const basic = require('@eslint-sets/eslint-config-basic')
+const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json'
 
 const config = {
 	plugins: [
@@ -94,24 +97,55 @@ const config = {
 		'@typescript-eslint/ban-types': 'off',
 		'@typescript-eslint/no-namespace': 'off'
 	},
-	overrides: [
-		...basic.overrides,
-		{
-			files: ['*.js'],
-			rules: {
-				'@typescript-eslint/no-var-requires': 'off'
-			}
-		},
-		{
-			files: ['**/*.md/*.*'],
-			rules: {
-				'@typescript-eslint/no-redeclare': 'off',
-				'@typescript-eslint/no-unused-vars': 'off',
-				'@typescript-eslint/no-use-before-define': 'off',
-				'@typescript-eslint/no-var-requires': 'off'
-			}
-		}
-	]
+	overrides: basic.overrides.concat(
+		!existsSync(join(process.cwd(), tsconfig))
+			? []
+			: [
+					{
+						parserOptions: {
+							tsconfigRootDir: process.cwd(),
+							project: [tsconfig]
+						},
+						parser: '@typescript-eslint/parser',
+						excludedFiles: ['**/*.md/*.*'],
+						files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+						// https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/recommended-requiring-type-checking.ts
+						rules: {
+							'no-throw-literal': 'off',
+							'@typescript-eslint/no-throw-literal': 'error',
+							'no-implied-eval': 'off',
+							'@typescript-eslint/no-implied-eval': 'error',
+							'dot-notation': 'off',
+							'@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
+							'@typescript-eslint/no-floating-promises': 'error',
+							'@typescript-eslint/no-misused-promises': 'error',
+							'@typescript-eslint/await-thenable': 'error',
+							'@typescript-eslint/no-for-in-array': 'error',
+							'@typescript-eslint/no-unnecessary-type-assertion': 'error',
+							'@typescript-eslint/no-unsafe-argument': 'error',
+							'@typescript-eslint/no-unsafe-assignment': 'error',
+							'@typescript-eslint/no-unsafe-call': 'error',
+							'@typescript-eslint/no-unsafe-member-access': 'error',
+							'@typescript-eslint/no-unsafe-return': 'error',
+							'require-await': 'off',
+							'@typescript-eslint/require-await': 'error',
+							'@typescript-eslint/restrict-plus-operands': 'error',
+							'@typescript-eslint/restrict-template-expressions': 'error',
+							'@typescript-eslint/unbound-method': 'error'
+						}
+					},
+					{
+						// https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
+						files: ['**/__tests__/**/*.ts', '**/*.spec.ts', '**/*.test.ts'],
+						plugins: ['jest'],
+						rules: {
+							// you should turn the original rule off *only* for test files
+							'@typescript-eslint/unbound-method': 'off',
+							'jest/unbound-method': 'error'
+						}
+					}
+			  ]
+	)
 }
 
 export default config

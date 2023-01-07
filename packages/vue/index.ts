@@ -1,3 +1,9 @@
+const { isPackageExists } = require('local-pkg')
+const tsExits = isPackageExists('typescript')
+
+if (!tsExits)
+	console.warn('[@eslint-sets/eslint-config] TypeScript is not installed, fallback to JS only.')
+
 const config = {
 	plugins: [
 		// 'eslint-plugin-jsdoc',
@@ -6,7 +12,7 @@ const config = {
 	],
 	extends: [
 		'plugin:vue/recommended',
-		'@eslint-sets/eslint-config-basic',
+		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
 		'prettier'
 		// 'plugin:vue-scoped-css/base',
 		// 'plugin:jsdoc/recommended',
@@ -61,7 +67,8 @@ const config = {
 			rules: {
 				'vue/no-v-model-argument': 'off',
 				'vue/valid-v-model': 0,
-				'vue/html-indent': 0
+				'vue/html-indent': 0,
+				...(tsExits ? { '@typescript-eslint/no-unused-vars': 'off' } : null)
 			}
 		}
 	]

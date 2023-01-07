@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-react-ts",
 	"description": "Eslint config sets for react typescript",
-	"version": "4.0.0-beta.1",
+	"version": "4.0.0-beta.2",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {

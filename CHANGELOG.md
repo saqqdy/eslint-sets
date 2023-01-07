@@ -3,6 +3,7 @@
 ## 2023.01.07 v4.0.0 更新日志
 
 1. 兼容 eslint v7.x 版本
+2. `@eslint-sets/eslint-config-all` 更改为 `@eslint-sets/eslint-config`
 
 ## 2023.01.03 v3.3.0 更新日志
 

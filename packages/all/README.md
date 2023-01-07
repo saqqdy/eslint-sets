@@ -1,8 +1,8 @@
 <div style="text-align: center;" align="center">
 
-# @eslint-sets/eslint-config-all
+# @eslint-sets/eslint-config
 
-Eslint config all sets
+Eslint config sets
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]
@@ -19,13 +19,13 @@ Eslint config all sets
 
 ```bash
 # use npm
-$ npm install -D @eslint-sets/eslint-config-all
+$ npm install -D @eslint-sets/eslint-config
 
 # use yarn
-$ yarn add -D @eslint-sets/eslint-config-all
+$ yarn add -D @eslint-sets/eslint-config
 
 # use pnpm
-$ pnpm install -D @eslint-sets/eslint-config-all
+$ pnpm install -D @eslint-sets/eslint-config
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ $ pnpm install -D @eslint-sets/eslint-config-all
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: ['@eslint-sets/all'],
+  extends: ['@eslint-sets'],
   rules: {
     // custom rules
   }
@@ -42,22 +42,22 @@ module.exports = {
 
 ## Issues & Support
 
-Please open an issue [here](https://github.com/saqqdy/@eslint-sets/eslint-config-all/issues).
+Please open an issue [here](https://github.com/saqqdy/@eslint-sets/eslint-config/issues).
 
 ## License
 
 [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/@eslint-sets/eslint-config-all.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@eslint-sets/eslint-config-all
+[npm-image]: https://img.shields.io/npm/v/@eslint-sets/eslint-config.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@eslint-sets/eslint-config
 [codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696
-[codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/eslint-config-all/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/eslint-config-all&utm_campaign=Badge_Grade
-[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@eslint-sets/eslint-config-all.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/eslint-config-all?branch=master
-[download-image]: https://img.shields.io/npm/dm/@eslint-sets/eslint-config-all.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@eslint-sets/eslint-config-all
-[gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-all/index.js?compression=gzip&label=gzip%20size:%20JS
-[gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config-all/index.js?compression=gzip&label=gzip%20size:%20JS
+[codacy-url]: https://www.codacy.com/gh/saqqdy/@eslint-sets/eslint-config/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/@eslint-sets/eslint-config&utm_campaign=Badge_Grade
+[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/@eslint-sets/eslint-config.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/saqqdy/@eslint-sets/eslint-config?branch=master
+[download-image]: https://img.shields.io/npm/dm/@eslint-sets/eslint-config.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@eslint-sets/eslint-config
+[gzip-image]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config/index.js?compression=gzip&label=gzip%20size:%20JS
+[gzip-url]: http://img.badgesize.io/https://unpkg.com/@eslint-sets/eslint-config/index.js?compression=gzip&label=gzip%20size:%20JS
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
 [sonar-image]: https://sonarcloud.io/api/project_badges/quality_gate?project=saqqdy_eslint-sets

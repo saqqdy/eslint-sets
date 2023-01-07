@@ -14,15 +14,15 @@ Eslint config sets
 
 ## Install
 
-e.g: use `@eslint-sets/eslint-config-all`
+e.g: use `@eslint-sets/eslint-config`
 
 ```shell
 # by npm
-npm install -D @eslint-sets/eslint-config-all
+npm install -D @eslint-sets/eslint-config
 # by yarn
-yarn add @eslint-sets/eslint-config-all
+yarn add @eslint-sets/eslint-config
 # by pnpm
-pnpm install @eslint-sets/eslint-config-all
+pnpm install @eslint-sets/eslint-config
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ pnpm install @eslint-sets/eslint-config-all
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: ['@eslint-sets/all'],
+  extends: ['@eslint-sets'],
   rules: {
     // custom rules
   }

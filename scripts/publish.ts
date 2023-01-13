@@ -17,7 +17,7 @@ if (version.includes('alpha')) command += ' --tag alpha'
 for (const { name, pkgName } of packages) {
 	execSync(command, {
 		stdio: 'inherit',
-		cwd: join(PACKAGE, name, 'dist')
+		cwd: join(PACKAGE, name)
 	})
 	consola.success(`Published @eslint-sets/${pkgName}`)
 }

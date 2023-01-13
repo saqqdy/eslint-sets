@@ -1,6 +1,15 @@
 {
 	"cSpell.words": [
-		"consola"
+		"consola",
+		"esbuild",
+		"filesize",
+		"reinstaller",
+		"saqqdy",
+		"tscjs",
+		"tsdoc",
+		"tsnd",
+		"unpub",
+		"unpublish"
 	],
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.codeActionsOnSave": {

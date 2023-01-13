@@ -182,9 +182,15 @@ const config = {
 			files: ['*.json', '*.json5'],
 			parser: 'jsonc-eslint-parser',
 			rules: {
-				quotes: ['error', 'double'],
-				'quote-props': ['error', 'always'],
-				'comma-dangle': ['error', 'never']
+				'jsonc/array-bracket-spacing': ['error', 'never'],
+				'jsonc/comma-dangle': ['error', 'never'],
+				'jsonc/comma-style': ['error', 'last'],
+				'jsonc/indent': ['error', 2],
+				'jsonc/key-spacing': ['error', { beforeColon: false, afterColon: true }],
+				'jsonc/no-octal-escape': 'error',
+				'jsonc/object-curly-newline': ['error', { multiline: true, consistent: true }],
+				'jsonc/object-curly-spacing': ['error', 'always'],
+				'jsonc/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }]
 			}
 		},
 		{
@@ -203,7 +209,10 @@ const config = {
 					{
 						pathPattern: '^$',
 						order: [
+							'publisher',
 							'name',
+							'displayName',
+							'icon',
 							'description',
 							'type',
 							'version',
@@ -215,28 +224,43 @@ const config = {
 							'unpkg',
 							'jsdelivr',
 							'types',
+							'typesVersions',
 							'exports',
 							'files',
+							'categories',
 							'scripts',
+							'activationEvents',
 							'dependencies',
 							'devDependencies',
 							'peerDependencies',
 							'peerDependenciesMeta',
 							'optionalDependencies',
+							'engines',
+							'resolutions',
+							'overrides',
 							'sideEffects',
+							'pnpm',
 							'keywords',
 							'license',
 							'author',
+							'homepage',
+							'bugs',
 							'repository',
+							'simple-git-hooks',
 							'funding',
 							'husky',
 							'lint-staged',
-							'eslintConfig'
+							'eslintConfig',
+							'contributes'
 						]
 					},
 					{
 						pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
 						order: { type: 'asc' }
+					},
+					{
+						pathPattern: '^exports.*$',
+						order: ['types', 'require', 'import']
 					}
 				]
 			}
@@ -250,11 +274,17 @@ const config = {
 		{
 			files: ['*.js'],
 			rules: {
-				// '@typescript-eslint/no-var-requires': 'off'
+				'@typescript-eslint/no-var-requires': 'off'
 			}
 		},
 		{
-			files: ['scripts/**/*.*', 'cli.*'],
+			files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+			rules: {
+				'no-void': ['error', { allowAsStatement: true }]
+			}
+		},
+		{
+			files: ['script/**/*.*', 'scripts/**/*.*', 'cli.*'],
 			rules: {
 				'no-console': 'off'
 			}
@@ -262,12 +292,19 @@ const config = {
 		{
 			files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
 			rules: {
-				'no-unused-expressions': 'off'
+				'no-unused-expressions': 'off',
+				'no-only-tests/no-only-tests': 'error'
 			}
 		},
 		{
 			files: ['**/*.md/*.*'],
 			rules: {
+				'@typescript-eslint/no-redeclare': 'off',
+				'@typescript-eslint/no-unused-vars': 'off',
+				'@typescript-eslint/no-use-before-define': 'off',
+				'@typescript-eslint/no-var-requires': 'off',
+				'@typescript-eslint/comma-dangle': 'off',
+				'@typescript-eslint/consistent-type-imports': 'off',
 				'import/no-unresolved': 'off',
 				'no-alert': 'off',
 				'no-console': 'off',

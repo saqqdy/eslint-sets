@@ -1,4 +1,4 @@
-import { default as _esbuild } from 'rollup-plugin-esbuild'
+import _esbuild from 'rollup-plugin-esbuild'
 import type { Plugin } from 'rollup'
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 

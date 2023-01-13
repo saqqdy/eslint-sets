@@ -1,8 +1,9 @@
 {
 	"name": "@eslint-sets/monorepo",
 	"description": "eslint-sets",
-	"version": "4.1.0-beta.1",
+	"version": "4.1.0-beta.2",
 	"packageManager": "pnpm@7.18.2",
+	"main": "index.js",
 	"scripts": {
 		"eslint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
 		"prettier": "prettier --write ./",
@@ -18,11 +19,12 @@
 		"viewInfo": "tscjs scripts/viewInfo",
 		"update": "tscjs scripts/update",
 		"dist": "pnpm run update && pnpm build",
+		"prepare": "pnpm -r run stub",
 		"clean": "rimraf dist types typings packages/*/dist"
 	},
-	"main": "index.js",
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.19.1",
+		"@eslint-sets/eslint-config": "4.0.0",
 		"@rollup/plugin-commonjs": "^24.0.0",
 		"@rollup/plugin-json": "^6.0.0",
 		"@rollup/plugin-node-resolve": "^15.0.1",
@@ -72,6 +74,13 @@
 		"yaml-eslint-parser": "^1.1.0",
 		"zx": "^7.1.1"
 	},
+	"keywords": [
+		"eslint-sets",
+		"vue",
+		"vue3.0"
+	],
+	"license": "MIT",
+	"author": "saqqdy.com",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/eslint-sets.git"
@@ -91,13 +100,6 @@
 		"registry": "https://registry.npmjs.org",
 		"access": "public"
 	},
-	"keywords": [
-		"eslint-sets",
-		"vue",
-		"vue3.0"
-	],
-	"author": "saqqdy.com",
-	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},

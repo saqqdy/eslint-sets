@@ -6,11 +6,11 @@ const config = {
 		commonjs: true
 	},
 	plugins: [
-		// 'eslint-plugin-jsdoc',
+		'jsdoc',
 		'prettier'
 		// 'import'
 	],
-	extends: ['eslint-config-egg', '@eslint-sets/eslint-config-basic', 'prettier'],
+	extends: ['eslint-config-egg', "plugin:jsdoc/recommended", '@eslint-sets/eslint-config-basic', 'prettier'],
 	rules: {},
 	globals: {
 		jest: 'readonly'

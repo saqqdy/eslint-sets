@@ -6,11 +6,13 @@ if (!tsExits)
 
 const config = {
 	plugins: [
-		// 'eslint-plugin-tsdoc',
+		tsExits ? 'tsdoc' : 'jsdoc',
 		'prettier'
 		// 'import'
 	],
 	extends: [
+		tsExits ? 'plugin:@typescript-eslint/recommended' : 'plugin:jsdoc/recommended',
+		'plugin:vue-scoped-css/vue3-recommended',
 		'plugin:vue/vue3-recommended',
 		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
 		'plugin:vitest-globals/recommended',

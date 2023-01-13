@@ -6,16 +6,16 @@ if (!tsExits)
 
 const config = {
 	plugins: [
-		// 'eslint-plugin-jsdoc',
+		tsExits ? 'tsdoc' : 'jsdoc',
 		'prettier'
 		// 'import'
 	],
 	extends: [
+		tsExits ? 'plugin:@typescript-eslint/recommended' : 'plugin:jsdoc/recommended',
+		'plugin:vue-scoped-css/recommended',
 		'plugin:vue/recommended',
 		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
 		'prettier'
-		// 'plugin:vue-scoped-css/base',
-		// 'plugin:jsdoc/recommended',
 	],
 	rules: {
 		'vue/max-attributes-per-line': 'off',

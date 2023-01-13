@@ -1,20 +1,19 @@
 const config = {
 	plugins: [
-		// 'eslint-plugin-jsdoc',
+		'jsdoc',
 		'prettier'
 		// 'import'
 	],
 	extends: [
 		'@nuxtjs',
+		'plugin:jsdoc/recommended',
 		'plugin:nuxt/recommended',
 		'@eslint-sets/eslint-config-basic',
 		'prettier'
-		// 'plugin:jsdoc/recommended'
 	],
 	rules: {
 		'vue/max-attributes-per-line': 'off',
 		'vue/no-v-html': 'off',
-		// 'prettier/prettier': 'error',
 		'vue/component-tags-order': [
 			'error',
 			{

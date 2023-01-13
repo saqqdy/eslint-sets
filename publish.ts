@@ -1,12 +1,12 @@
 import { execSync } from 'child_process'
 import { join } from 'path'
 import consola from 'consola'
+import { PACKAGE, ROOT } from '../build/utils/paths'
 import { readJSON, writeJSON } from '../build/utils/fs'
 import { version } from '../package.json'
 import { packages } from '../build/packages'
 
-export const ROOT = join(__dirname, '..')
-export const PACKAGE = join(ROOT, 'packages')
+// execSync('pnpm build', { stdio: 'inherit' })
 
 const REGISTRY_URL = 'https://registry.npmjs.org'
 let command = `npm --registry=${REGISTRY_URL} publish --access public`
@@ -35,7 +35,7 @@ for (const { name, pkgName } of packages) {
 	})
 	execSync(command, {
 		stdio: 'inherit',
-		cwd: join(PACKAGE, name)
+		cwd: join('packages', name)
 	})
 	writeJSON(PKG_FILE, pkgJson, {
 		encoding: 'utf8'
@@ -44,10 +44,9 @@ for (const { name, pkgName } of packages) {
 		stdio: 'inherit',
 		cwd: ROOT
 	})
-	consola.success(`Published @eslint-sets/${pkgName}`)
+	consola.success(`Published ${pkgName}`)
 }
 execSync(command, {
-	stdio: 'inherit',
-	cwd: ROOT
+	stdio: 'inherit'
 })
-consola.success('Published @eslint-sets/monorepo')
+consola.success('Published @gitmars/monorepo')

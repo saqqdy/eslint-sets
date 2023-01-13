@@ -10,7 +10,12 @@ const config = {
 		'prettier'
 		// 'import'
 	],
-	extends: ['eslint-config-egg', "plugin:jsdoc/recommended", '@eslint-sets/eslint-config-basic', 'prettier'],
+	extends: [
+		'eslint-config-egg',
+		'plugin:jsdoc/recommended',
+		'@eslint-sets/eslint-config-basic',
+		'prettier'
+	],
 	rules: {},
 	globals: {
 		jest: 'readonly'

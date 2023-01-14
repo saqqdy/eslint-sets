@@ -45,7 +45,7 @@
 		"yaml-eslint-parser": "^1.1.0"
 	},
 	"devDependencies": {
-		"eslint": "^7.32.0",
+		"eslint": "^8.31.0",
 		"prettier": "^2.8.3",
 		"typescript": "~4.8.4"
 	},

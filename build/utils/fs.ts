@@ -6,8 +6,8 @@ import { readFileSync, writeFileSync } from 'fs'
  *
  * @example
  * ```ts
- * import { readJSON } from '@jssj/node'
- * const data = readJSON('/path/of/json', { encoding: 'utf8 }) // { "name": "saqqdy" }
+ * import { readJSONSync } from '@jssj/node'
+ * const data = readJSONSync('/path/of/json', { encoding: 'utf8 }) // { "name": "saqqdy" }
  * ```
  * @param args - Parameters<typeof readFileSync>
  * @param args.path - Path to file
@@ -28,8 +28,8 @@ export function readJSONSync(...args: Parameters<typeof readFileSync>): Record<s
  *
  * @example
  * ```ts
- * import { writeJSON } from '@jssj/node'
- * writeJSON('/path/of/file', 'test data', { encoding: 'utf8 })
+ * import { writeJSONSync } from '@jssj/node'
+ * writeJSONSync('/path/of/file', 'test data', { encoding: 'utf8 })
  * ```
  * @param args - Parameters<typeof writeFileSync>
  * @param args.path - Path to file

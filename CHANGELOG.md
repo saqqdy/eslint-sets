@@ -105,7 +105,7 @@
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: ['@eslint-sets/vue3-ts']
+  extends: ['@eslint-sets/vue3']
 }
 ```
 

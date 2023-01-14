@@ -3,7 +3,7 @@ import type { PackageManifest } from './types'
 export const packages: PackageManifest[] = [
 	{
 		name: 'all',
-		pkgName: 'eslint-config',
+		pkgName: '@eslint-sets/eslint-config',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -11,7 +11,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'basic',
-		pkgName: 'eslint-config-basic',
+		pkgName: '@eslint-sets/eslint-config-basic',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -20,7 +20,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'ts',
-		pkgName: 'eslint-config-ts',
+		pkgName: '@eslint-sets/eslint-config-ts',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -28,7 +28,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'egg',
-		pkgName: 'eslint-config-egg',
+		pkgName: '@eslint-sets/eslint-config-egg',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -36,7 +36,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'nuxt',
-		pkgName: 'eslint-config-nuxt',
+		pkgName: '@eslint-sets/eslint-config-nuxt',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -44,7 +44,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'react',
-		pkgName: 'eslint-config-react',
+		pkgName: '@eslint-sets/eslint-config-react',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -52,7 +52,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'vue',
-		pkgName: 'eslint-config-vue',
+		pkgName: '@eslint-sets/eslint-config-vue',
 		iife: false,
 		mjs: false,
 		dts: false,
@@ -60,7 +60,7 @@ export const packages: PackageManifest[] = [
 	},
 	{
 		name: 'vue3',
-		pkgName: 'eslint-config-vue3',
+		pkgName: '@eslint-sets/eslint-config-vue3',
 		iife: false,
 		mjs: false,
 		dts: false,

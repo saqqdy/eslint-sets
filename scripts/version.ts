@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { type ExecSyncOptions, type SpawnSyncOptions, execSync, spawnSync } from 'child_process'
 import { Separator, prompt } from 'inquirer'
 import pkg from '../package.json'
-import { writeJSON } from '../build/utils/fs'
+import { writeJSONSync } from '../build/utils/fs'
 import { PACKAGE_PATH, ROOT_PATH } from '../build/utils/paths'
 
 export interface VersionObject {
@@ -124,12 +124,12 @@ prompt([
 	if (data.confirm) {
 		execSync(command, execOption)
 	} else {
-		writeJSON(PACKAGE_JSON_URL, {
+		writeJSONSync(PACKAGE_JSON_URL, {
 			...pkg,
 			version
 		})
 	}
-	writeJSON(VERSION_URL, { version })
+	writeJSONSync(VERSION_URL, { version })
 	spawnSync('npx', ['prettier', '--write', './package.json'], spawnOption)
 })
 

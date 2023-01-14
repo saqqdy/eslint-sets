@@ -39,7 +39,7 @@ module.exports = {
 
 ## Issues & Support
 
-Please open an issue [here](https://github.com/saqqdy/@eslint-sets/monorepo/issues).
+Please open an issue [here](https://github.com/saqqdy/eslint-sets/issues).
 
 ## License
 

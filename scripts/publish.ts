@@ -19,8 +19,7 @@ for (const { name, pkgName } of packages) {
 	const PKG_FILE = join(PACKAGE, name, 'package.json')
 	const pkgJson = readJSONSync(PKG_FILE)
 	const newPkgJson = JSON.parse(JSON.stringify(pkgJson))
-	for (let { pkgName: pkg } of packages) {
-		pkg = `@eslint-sets/${pkg}`
+	for (const { pkgName: pkg } of packages) {
 		if (pkg in ((newPkgJson.dependencies as Record<string, unknown>) || {})) {
 			newPkgJson.dependencies[pkg] = version
 		}
@@ -45,7 +44,7 @@ for (const { name, pkgName } of packages) {
 		stdio: 'inherit',
 		cwd: ROOT
 	})
-	consola.success(`Published @eslint-sets/${pkgName}`)
+	consola.success(`Published ${pkgName}`)
 }
 execSync(command, {
 	stdio: 'inherit',

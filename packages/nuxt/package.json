@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-nuxt",
 	"description": "Eslint config sets for nuxt",
-	"version": "4.1.0-beta.4",
+	"version": "4.1.0-beta.5",
 	"main": "./index.js",
 	"scripts": {},
 	"files": [
@@ -22,15 +22,15 @@
 		"@nuxtjs/eslint-module": "^3.1.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-jsdoc": "^39.6.4",
-		"eslint-plugin-nuxt": "^3.2.0",
+		"eslint-plugin-nuxt": "^4.0.0",
 		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-promise": "^5.2.0",
+		"eslint-plugin-promise": "^6.1.1",
 		"vue-eslint-parser": "^9.1.0"
 	},
 	"devDependencies": {
-		"eslint": "^7.32.0",
+		"eslint": "^8.31.0",
 		"prettier": "^2.8.3",
-		"typescript": "~4.8.4"
+		"typescript": "~4.9.4"
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",

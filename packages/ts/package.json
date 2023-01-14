@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-ts",
 	"description": "Eslint config basic sets for typescript",
-	"version": "4.1.0-beta.4",
+	"version": "4.1.0-beta.5",
 	"main": "./index.js",
 	"scripts": {},
 	"files": [
@@ -25,9 +25,9 @@
 		"eslint-plugin-tsdoc": "^0.2.17"
 	},
 	"devDependencies": {
-		"eslint": "^7.32.0",
+		"eslint": "^8.31.0",
 		"prettier": "^2.8.3",
-		"typescript": "~4.8.4"
+		"typescript": "~4.9.4"
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",

@@ -17,12 +17,10 @@ pkg = JSON.parse(pkg)
 
 const PACKAGE_NEXT: string[] = []
 const PACKAGE_EXCLUDE: string[] = [
-	'eslint-plugin-promise',
-	'eslint-plugin-vue',
+	// 'eslint-plugin-promise',
 	'@nuxtjs/eslint-config',
-	'eslint-plugin-nuxt',
+	// 'eslint-plugin-nuxt',
 	'eslint-plugin-unicorn',
-	'vue-eslint-parser',
 	'typescript',
 	'eslint'
 ]

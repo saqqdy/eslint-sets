@@ -28,7 +28,7 @@
 		"clean": "rimraf dist types typings packages/*/dist"
 	},
 	"devDependencies": {
-		"@eslint-sets/eslint-config": "4.1.0-beta.4",
+		"@eslint-sets/eslint-config": "*",
 		"@rollup/plugin-commonjs": "^24.0.0",
 		"@rollup/plugin-json": "^6.0.0",
 		"@rollup/plugin-node-resolve": "^15.0.1",

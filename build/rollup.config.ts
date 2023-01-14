@@ -69,7 +69,7 @@ for (const {
 		// output mjs
 		if (mjs !== false) {
 			output.push({
-				file: `packages/${name}/dist/${fn}.mjs`,
+				file: `packages/${name}/${fn}.mjs`,
 				// exports: 'auto',
 				exports: exportType,
 				banner,
@@ -79,7 +79,7 @@ for (const {
 		// output cjs
 		if (cjs !== false) {
 			output.push({
-				file: `packages/${name}/dist/${fn}.js`,
+				file: `packages/${name}/${fn}.js`,
 				// exports: 'auto',
 				exports: exportType,
 				banner,
@@ -90,7 +90,7 @@ for (const {
 		if (iife !== false) {
 			output.push(
 				{
-					file: `packages/${name}/dist/${fn}.iife.js`,
+					file: `packages/${name}/${fn}.iife.js`,
 					format: 'iife',
 					// exports: 'named',
 					// exports: exportType,
@@ -103,7 +103,7 @@ for (const {
 					]
 				},
 				{
-					file: `packages/${name}/dist/${fn}.iife.min.js`,
+					file: `packages/${name}/${fn}.iife.min.js`,
 					format: 'iife',
 					// exports: 'named',
 					// exports: exportType,
@@ -143,7 +143,7 @@ for (const {
 			options.push({
 				input,
 				output: {
-					file: `packages/${name}/dist/${fn}.d.ts`,
+					file: `packages/${name}/${fn}.d.ts`,
 					format: 'es'
 				},
 				plugins: [dtsPlugin],

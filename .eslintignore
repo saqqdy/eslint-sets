@@ -1,7 +1,9 @@
 lib
 es
 dist
+packages/*/*.js
 /docs
+pnpm-lock.yaml
 
 *.bak
 *_bak

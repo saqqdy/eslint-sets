@@ -4,6 +4,12 @@
 	"version": "4.1.0-beta.4",
 	"main": "./index.js",
 	"scripts": {},
+	"files": [
+		"index.js",
+		"typings",
+		"*.js",
+		"*.d.ts"
+	],
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -14,19 +20,19 @@
 		"@babel/eslint-parser": "^7.19.1",
 		"@eslint-sets/eslint-config-react": "workspace:*",
 		"@eslint-sets/eslint-config-vue": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "^5.48.0",
-		"@typescript-eslint/parser": "^5.48.0",
+		"@typescript-eslint/eslint-plugin": "^5.48.1",
+		"@typescript-eslint/parser": "^5.48.1",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-html": "^7.1.0",
-		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-import": "^2.27.4",
 		"eslint-plugin-jsdoc": "^39.6.4",
 		"eslint-plugin-jsonc": "^2.6.0",
 		"eslint-plugin-markdown": "^3.0.0",
-		"eslint-plugin-n": "^15.6.0",
+		"eslint-plugin-n": "^15.6.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-promise": "^5.2.0",
-		"eslint-plugin-react": "^7.31.11",
+		"eslint-plugin-react": "^7.32.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"eslint-plugin-unicorn": "^40.1.0",
@@ -40,13 +46,13 @@
 	},
 	"devDependencies": {
 		"eslint": "^7.32.0",
-		"prettier": "^2.8.2",
+		"prettier": "^2.8.3",
 		"typescript": "~4.8.4"
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0",
-		"typescript": ">=3.5.0"
+		"typescript": ">=3.9.0"
 	},
 	"keywords": [
 		"eslint-sets",

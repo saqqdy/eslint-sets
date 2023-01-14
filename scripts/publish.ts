@@ -34,10 +34,10 @@ for (const { name, pkgName } of packages) {
 	writeJSONSync(PKG_FILE, newPkgJson, {
 		encoding: 'utf8'
 	})
-	// execSync(command, {
-	// 	stdio: 'inherit',
-	// 	cwd: join(PACKAGE, name)
-	// })
+	execSync(command, {
+		stdio: 'inherit',
+		cwd: join(PACKAGE, name)
+	})
 	writeJSONSync(PKG_FILE, pkgJson, {
 		encoding: 'utf8'
 	})
@@ -47,8 +47,8 @@ for (const { name, pkgName } of packages) {
 	})
 	consola.success(`Published @eslint-sets/${pkgName}`)
 }
-// execSync(command, {
-// 	stdio: 'inherit',
-// 	cwd: ROOT
-// })
+execSync(command, {
+	stdio: 'inherit',
+	cwd: ROOT
+})
 consola.success('Published @eslint-sets/monorepo')

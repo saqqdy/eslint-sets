@@ -4,6 +4,12 @@
 	"version": "4.1.0-beta.4",
 	"main": "./index.js",
 	"scripts": {},
+	"files": [
+		"index.js",
+		"typings",
+		"*.js",
+		"*.d.ts"
+	],
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -18,13 +24,13 @@
 	},
 	"devDependencies": {
 		"eslint": "^7.32.0",
-		"prettier": "^2.8.2",
+		"prettier": "^2.8.3",
 		"typescript": "~4.8.4"
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0",
-		"typescript": ">=3.5.0"
+		"typescript": ">=3.9.0"
 	},
 	"keywords": [
 		"eslint-sets",

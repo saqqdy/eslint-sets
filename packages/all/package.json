@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config",
 	"description": "Eslint config all sets",
-	"version": "4.1.0",
+	"version": "4.2.0",
 	"main": "./index.js",
 	"scripts": {},
 	"files": [
@@ -20,39 +20,38 @@
 		"@babel/eslint-parser": "^7.19.1",
 		"@eslint-sets/eslint-config-react": "workspace:*",
 		"@eslint-sets/eslint-config-vue": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "^5.48.1",
-		"@typescript-eslint/parser": "^5.48.1",
+		"@typescript-eslint/eslint-plugin": "^5.49.0",
+		"@typescript-eslint/parser": "^5.49.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-html": "^7.1.0",
-		"eslint-plugin-import": "^2.27.4",
-		"eslint-plugin-jsdoc": "^39.6.4",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jsdoc": "^39.7.4",
 		"eslint-plugin-jsonc": "^2.6.0",
 		"eslint-plugin-markdown": "^3.0.0",
 		"eslint-plugin-n": "^15.6.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-promise": "^6.1.1",
-		"eslint-plugin-react": "^7.32.0",
+		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"eslint-plugin-unicorn": "^40.1.0",
 		"eslint-plugin-vitest-globals": "^1.2.0",
-		"eslint-plugin-vue": "^9.8.0",
-		"eslint-plugin-vue-scoped-css": "^2.2.0",
+		"eslint-plugin-vue": "^9.9.0",
+		"eslint-plugin-vue-scoped-css": "^2.4.0",
 		"eslint-plugin-yml": "^1.4.0",
 		"jsonc-eslint-parser": "^2.1.0",
 		"vue-eslint-parser": "^9.1.0",
 		"yaml-eslint-parser": "^1.1.0"
 	},
 	"devDependencies": {
-		"eslint": "^8.31.0",
+		"eslint": "^8.33.0",
 		"prettier": "^2.8.3",
-		"typescript": "~4.9.4"
+		"typescript": "~4.9.5"
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
-		"prettier": ">=2.0.0",
-		"typescript": ">=3.9.0"
+		"prettier": ">=2.0.0"
 	},
 	"keywords": [
 		"eslint-sets",

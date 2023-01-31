@@ -1,0 +1,6 @@
+{
+    "packageTags": {
+        "reinstaller": "latest"
+    },
+    "exclude": ["eslint-plugin-unicorn", "@nuxtjs/eslint-config"]
+}

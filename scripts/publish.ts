@@ -1,7 +1,7 @@
 import { execSync } from 'child_process'
 import { join } from 'path'
 import consola from 'consola'
-import { readJSONSync, writeJSONSync } from '../build/utils/fs'
+import { readJSONSync, writeJSONSync } from '@node-kit/extra.fs'
 import { version } from '../package.json'
 import { packages } from '../build/packages'
 
@@ -17,7 +17,7 @@ if (version.includes('alpha')) command += ' --tag alpha'
 
 for (const { name, pkgName } of packages) {
 	const PKG_FILE = join(PACKAGE, name, 'package.json')
-	const pkgJson = readJSONSync(PKG_FILE)
+	const pkgJson = readJSONSync(PKG_FILE)!
 	const newPkgJson = JSON.parse(JSON.stringify(pkgJson))
 	for (const { pkgName: pkg } of packages) {
 		if (pkg in ((newPkgJson.dependencies as Record<string, unknown>) || {})) {

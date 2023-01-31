@@ -4,7 +4,7 @@ import { execSync } from 'node:child_process'
 import { promises } from 'node:fs'
 // import fg from 'fast-glob'
 import consola from 'consola'
-// import { readJSONSync, writeJSONSync } from '../build/utils/fs'
+// import { readJSONSync, writeJSONSync } from '@node-kit/extra.fs'
 import { packages } from '../build/packages'
 // import { version } from '../package.json'
 // import { updateImport } from "./utils";

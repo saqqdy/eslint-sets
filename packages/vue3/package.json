@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-vue3",
 	"description": "Eslint config sets for vue3.0",
-	"version": "4.1.0",
+	"version": "4.2.0",
 	"main": "./index.js",
 	"scripts": {},
 	"directories": {
@@ -13,27 +13,26 @@
 	"dependencies": {
 		"@eslint-sets/eslint-config-basic": "workspace:*",
 		"@eslint-sets/eslint-config-ts": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "^5.48.1",
-		"@typescript-eslint/parser": "^5.48.1",
+		"@typescript-eslint/eslint-plugin": "^5.49.0",
+		"@typescript-eslint/parser": "^5.49.0",
 		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-jsdoc": "^39.6.4",
+		"eslint-plugin-jsdoc": "^39.7.4",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"eslint-plugin-vitest-globals": "^1.2.0",
-		"eslint-plugin-vue": "^9.8.0",
-		"eslint-plugin-vue-scoped-css": "^2.2.0",
-		"local-pkg": "^0.4.2",
+		"eslint-plugin-vue": "^9.9.0",
+		"eslint-plugin-vue-scoped-css": "^2.4.0",
+		"local-pkg": "^0.4.3",
 		"vue-eslint-parser": "^9.1.0"
 	},
 	"devDependencies": {
-		"eslint": "^8.31.0",
+		"eslint": "^8.33.0",
 		"prettier": "^2.8.3",
-		"typescript": "~4.9.4"
+		"typescript": "~4.9.5"
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
-		"prettier": ">=2.0.0",
-		"typescript": ">=3.9.0"
+		"prettier": ">=2.0.0"
 	},
 	"keywords": [
 		"eslint-sets",

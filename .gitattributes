@@ -2,6 +2,9 @@
 **/.eslintrc.js linguist-vendored
 **/.prettierrc.js linguist-vendored
 **/config.js linguist-vendored
+*.config.js linguist-vendored
+index.js linguist-vendored
+.eslintrc.js linguist-vendored
+.prettierrc.js linguist-vendored
 typedoc.js linguist-vendored
-**/*.config.js linguist-vendored
 scripts/**/* linguist-vendored

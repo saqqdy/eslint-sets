@@ -1,15 +1,14 @@
 {
 	"name": "@eslint-sets/eslint-config-vue",
 	"description": "Eslint config sets for vue2.0",
-	"version": "4.2.1",
-	"main": "./index.js",
-	"scripts": {},
+	"version": "4.3.0",
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
 	"files": [
-		"index.js",
-		"typings",
-		"*.js",
-		"*.d.ts"
+		"bin",
+		"dist"
 	],
+	"scripts": {},
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -19,10 +18,10 @@
 	"dependencies": {
 		"@eslint-sets/eslint-config-basic": "workspace:*",
 		"@eslint-sets/eslint-config-ts": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "^5.49.0",
-		"@typescript-eslint/parser": "^5.49.0",
+		"@typescript-eslint/eslint-plugin": "^5.51.0",
+		"@typescript-eslint/parser": "^5.51.0",
 		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-jsdoc": "^39.7.4",
+		"eslint-plugin-jsdoc": "^39.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"eslint-plugin-vue": "^9.9.0",
@@ -39,17 +38,10 @@
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
-	"keywords": [
-		"eslint-sets",
-		"git",
-		"tool"
-	],
-	"license": "MIT",
-	"author": "saqqdy <https://github.com/saqqdy>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git",
-		"directory": "packages/vue"
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": true
+		}
 	},
 	"pnpm": {
 		"peerDependencyRules": {
@@ -62,12 +54,24 @@
 			}
 		}
 	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+	"keywords": [
+		"eslint-sets",
+		"git",
+		"tool"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},
-	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/vue#readme"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git",
+		"directory": "packages/vue"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
 }

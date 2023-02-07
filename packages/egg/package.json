@@ -1,15 +1,14 @@
 {
 	"name": "@eslint-sets/eslint-config-egg",
 	"description": "Eslint config sets for eggjs",
-	"version": "4.2.1",
-	"main": "./index.js",
-	"scripts": {},
+	"version": "4.3.0",
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
 	"files": [
-		"index.js",
-		"typings",
-		"*.js",
-		"*.d.ts"
+		"bin",
+		"dist"
 	],
+	"scripts": {},
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -31,18 +30,6 @@
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
-	"keywords": [
-		"eslint-sets",
-		"git",
-		"tool"
-	],
-	"license": "MIT",
-	"author": "saqqdy <https://github.com/saqqdy>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git",
-		"directory": "packages/egg"
-	},
 	"pnpm": {
 		"peerDependencyRules": {
 			"ignoreMissing": [
@@ -54,12 +41,24 @@
 			}
 		}
 	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+	"keywords": [
+		"eslint-sets",
+		"git",
+		"tool"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/egg#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},
-	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/egg#readme"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git",
+		"directory": "packages/egg"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
 }

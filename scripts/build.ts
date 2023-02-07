@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import { resolve, sep } from 'node:path'
 import assert from 'assert'
 import { execSync } from 'node:child_process'
 import { promises } from 'node:fs'
@@ -7,7 +7,6 @@ import consola from 'consola'
 // import { readJSONSync, writeJSONSync } from '@node-kit/extra.fs'
 import { packages } from '../build/packages'
 // import { version } from '../package.json'
-// import { updateImport } from "./utils";
 
 const rootDir = resolve(__dirname, '..')
 const watch = process.argv.includes('--watch')
@@ -19,7 +18,9 @@ assert(process.cwd() !== __dirname)
 
 async function buildMetaFiles() {
 	for (const { name } of packages) {
-		const packageRoot = resolve(__dirname, '..', 'packages', name)
+		if (name === 'monorepo') continue
+		const dirName = name.replace(/\./g, sep)
+		const packageRoot = resolve(__dirname, '..', 'packages', dirName)
 		// const packageDist = resolve(packageRoot, 'dist')
 
 		if (name === 'core')
@@ -51,9 +52,21 @@ async function build() {
 	execSync('pnpm run clean', { stdio: 'inherit' })
 
 	consola.info('Rollup')
-	execSync(`pnpm run build:rollup${watch ? ' -- --watch' : ''}`, {
+	execSync(`pnpm run build:rollup${watch ? ' --watch' : ''}`, {
 		stdio: 'inherit'
 	})
+
+	for (const { dts, name } of packages) {
+		if (name === 'monorepo') continue
+		const dirName = name.replace(/\./g, sep)
+		const cwd = resolve(__dirname, '..', 'packages', dirName)
+		if (dts === false) continue
+		consola.info(`Create types: packages/${dirName}`)
+		execSync('npx tsc -p tsconfig.declaration.json', {
+			stdio: 'inherit',
+			cwd
+		})
+	}
 
 	// consola.info("Fix types");
 	// execSync("pnpm run types:fix", { stdio: "inherit" });

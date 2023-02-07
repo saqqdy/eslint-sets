@@ -1,15 +1,14 @@
 {
 	"name": "@eslint-sets/eslint-config-ts",
 	"description": "Eslint config basic sets for typescript",
-	"version": "4.2.1",
-	"main": "./index.js",
-	"scripts": {},
+	"version": "4.3.0",
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
 	"files": [
-		"index.js",
-		"typings",
-		"*.js",
-		"*.d.ts"
+		"bin",
+		"dist"
 	],
+	"scripts": {},
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -18,8 +17,8 @@
 	},
 	"dependencies": {
 		"@eslint-sets/eslint-config-basic": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "^5.49.0",
-		"@typescript-eslint/parser": "^5.49.0",
+		"@typescript-eslint/eslint-plugin": "^5.51.0",
+		"@typescript-eslint/parser": "^5.51.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-tsdoc": "^0.2.17"
@@ -31,19 +30,13 @@
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
-		"prettier": ">=2.0.0"
+		"prettier": ">=2.0.0",
+		"typescript": ">=3.9.0"
 	},
-	"keywords": [
-		"eslint-sets",
-		"git",
-		"tool"
-	],
-	"license": "MIT",
-	"author": "saqqdy <https://github.com/saqqdy>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git",
-		"directory": "packages/ts"
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": true
+		}
 	},
 	"pnpm": {
 		"peerDependencyRules": {
@@ -56,12 +49,24 @@
 			}
 		}
 	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+	"keywords": [
+		"eslint-sets",
+		"git",
+		"tool"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/ts#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},
-	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/ts#readme"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git",
+		"directory": "packages/ts"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
 }

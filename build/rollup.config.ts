@@ -1,17 +1,8 @@
-import { resolve } from 'path'
+import { resolve, sep } from 'path'
 import fg from 'fast-glob'
 import type { OutputOptions, RollupOptions } from 'rollup'
 import { packages } from './packages'
-import {
-	banner as bannerPlugin,
-	dts as dtsPlugin,
-	esbuild,
-	filesize,
-	minify,
-	nodeResolve
-} from './plugins'
-
-// const production = !process.env.ROLLUP_WATCH
+import { banner as bannerPlugin, esbuild, filesize, minify, nodeResolve } from './plugins'
 
 const options: RollupOptions[] = []
 const externals = ['js-cool']
@@ -25,12 +16,13 @@ for (const {
 	build,
 	cjs,
 	mjs,
-	dts,
+	// dts,
 	target,
 	exportType = 'auto'
 } of packages) {
 	if (build === false) continue
-	const pkg = require(`packages/${name}/package.json`)
+	const dirName = name.replace(/\./g, sep)
+	const pkg = require(`packages/${dirName}/package.json`)
 	const banner =
 		'/*!\n' +
 		' * ' +
@@ -46,29 +38,31 @@ for (const {
 		' saqqdy<https://github.com/saqqdy> \n' +
 		' * Released under the MIT License.\n' +
 		' */'
-	// const deps = Object.keys(pkg.dependencies || {})
 	const iifeGlobals = {
 		'js-cool': 'JsCool',
 		...globals
 	}
 	const iifeName = 'EslintSets'
-	const functionNames = ['index']
+	const functionNames = ['index.ts']
 
 	// submodules
-	if (submodules)
+	if (submodules) {
 		functionNames.push(
-			...fg.sync('*/index.ts', { cwd: resolve(`packages/${name}`) }).map(i => i.split('/')[0])
+			...fg.sync('*/index.ts', {
+				cwd: resolve(`packages/${dirName}`),
+				ignore: ['dist']
+			})
 		)
+	}
 
 	for (const fn of functionNames) {
 		const input =
-			fn === 'index' ? `packages/${name}/index.ts` : `packages/${name}/${fn}/index.ts`
+			fn === 'index.ts' ? `packages/${dirName}/index.ts` : `packages/${dirName}/${fn}`
 		const output: OutputOptions[] = []
 		// output mjs
 		if (mjs !== false) {
 			output.push({
-				file: `packages/${name}/${fn}.mjs`,
-				// exports: 'auto',
+				file: `packages/${dirName}/dist/${fn.replace(/\.ts$/, '.mjs')}`,
 				exports: exportType,
 				banner,
 				format: 'es'
@@ -77,21 +71,18 @@ for (const {
 		// output cjs
 		if (cjs !== false) {
 			output.push({
-				file: `packages/${name}/${fn}.js`,
-				// exports: 'auto',
+				file: `packages/${dirName}/dist/${fn.replace(/\.ts$/, '.js')}`,
 				exports: exportType,
 				banner,
 				format: 'cjs'
 			})
 		}
 		// output iife
-		if (iife !== false) {
+		if (iife !== false && fn === 'index.ts') {
 			output.push(
 				{
-					file: `packages/${name}/${fn}.iife.js`,
+					file: `packages/${dirName}/dist/${fn}.iife.js`,
 					format: 'iife',
-					// exports: 'named',
-					// exports: exportType,
 					name: iifeName,
 					extend: true,
 					globals: iifeGlobals,
@@ -101,10 +92,8 @@ for (const {
 					]
 				},
 				{
-					file: `packages/${name}/${fn}.iife.min.js`,
+					file: `packages/${dirName}/dist/${fn}.iife.min.js`,
 					format: 'iife',
-					// exports: 'named',
-					// exports: exportType,
 					name: iifeName,
 					extend: true,
 					globals: iifeGlobals,
@@ -127,27 +116,7 @@ for (const {
 			output,
 			plugins: [nodeResolve, target ? esbuild({ target }) : esbuild(), filesize],
 			external: [...externals, ...external]
-			// external(id) {
-			//     return (
-			//         ['regenerator-runtime', ...externals, ...external].some(k =>
-			//             new RegExp('^' + k).test(id)
-			//         ) || deps.some(k => new RegExp('^' + k).test(id))
-			//     )
-			// }
 		})
-
-		// create dts options
-		if (dts !== false) {
-			options.push({
-				input,
-				output: {
-					file: `packages/${name}/${fn}.d.ts`,
-					format: 'es'
-				},
-				plugins: [dtsPlugin],
-				external: [...externals, ...external]
-			})
-		}
 	}
 }
 

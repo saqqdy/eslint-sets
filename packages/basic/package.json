@@ -1,15 +1,14 @@
 {
 	"name": "@eslint-sets/eslint-config-basic",
 	"description": "Eslint config basic sets",
-	"version": "4.2.1",
-	"main": "./index.js",
-	"scripts": {},
+	"version": "4.3.0",
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
 	"files": [
-		"index.js",
-		"typings",
-		"*.js",
-		"*.d.ts"
+		"bin",
+		"dist"
 	],
+	"scripts": {},
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -42,18 +41,6 @@
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
-	"keywords": [
-		"eslint-sets",
-		"git",
-		"tool"
-	],
-	"license": "MIT",
-	"author": "saqqdy <https://github.com/saqqdy>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git",
-		"directory": "packages/basic"
-	},
 	"pnpm": {
 		"peerDependencyRules": {
 			"ignoreMissing": [
@@ -65,12 +52,24 @@
 			}
 		}
 	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+	"keywords": [
+		"eslint-sets",
+		"git",
+		"tool"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/basic#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},
-	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/basic#readme"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git",
+		"directory": "packages/basic"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
 }

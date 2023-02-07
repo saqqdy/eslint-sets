@@ -1,15 +1,14 @@
 {
 	"name": "@eslint-sets/eslint-config-nuxt",
 	"description": "Eslint config sets for nuxt",
-	"version": "4.2.1",
-	"main": "./index.js",
-	"scripts": {},
+	"version": "4.3.0",
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
 	"files": [
-		"index.js",
-		"typings",
-		"*.js",
-		"*.d.ts"
+		"bin",
+		"dist"
 	],
+	"scripts": {},
 	"directories": {
 		"es": "es",
 		"lib": "lib",
@@ -21,7 +20,7 @@
 		"@nuxtjs/eslint-config": "^8.0.0",
 		"@nuxtjs/eslint-module": "^3.1.0",
 		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-jsdoc": "^39.7.4",
+		"eslint-plugin-jsdoc": "^39.8.0",
 		"eslint-plugin-nuxt": "^4.0.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-promise": "^6.1.1",
@@ -36,18 +35,6 @@
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0"
 	},
-	"keywords": [
-		"eslint-sets",
-		"git",
-		"tool"
-	],
-	"license": "MIT",
-	"author": "saqqdy <https://github.com/saqqdy>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git",
-		"directory": "packages/nuxt"
-	},
 	"pnpm": {
 		"peerDependencyRules": {
 			"ignoreMissing": [
@@ -59,12 +46,24 @@
 			}
 		}
 	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	},
+	"keywords": [
+		"eslint-sets",
+		"git",
+		"tool"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/nuxt#readme",
 	"bugs": {
 		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},
-	"homepage": "https://github.com/saqqdy/eslint-sets/tree/master/packages/nuxt#readme"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git",
+		"directory": "packages/nuxt"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	}
 }

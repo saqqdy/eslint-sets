@@ -8,12 +8,18 @@ import { packages } from '../build/packages'
 export const ROOT = join(__dirname, '..')
 export const PACKAGE = join(ROOT, 'packages')
 
+const [, , ...args] = process.argv
+const IS_TEST = args.includes('--test')
 const REGISTRY_URL = 'https://registry.npmjs.org'
 let command = `npm --registry=${REGISTRY_URL} publish --access public`
 
 if (version.includes('rc')) command += ' --tag release'
-if (version.includes('beta')) command += ' --tag beta'
-if (version.includes('alpha')) command += ' --tag alpha'
+else if (version.includes('beta')) command += ' --tag beta'
+else if (version.includes('alpha')) command += ' --tag alpha'
+else if (IS_TEST) {
+	console.warn(`${version} is not a test version, process exited`)
+	process.exit(0)
+}
 
 for (const { name, pkgName } of packages) {
 	const dirName = name.replace(/\./g, sep)

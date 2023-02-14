@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-react",
 	"description": "Eslint config sets for react",
-	"version": "4.3.1",
+	"version": "5.0.0",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
 	"files": [
@@ -19,15 +19,15 @@
 		"@eslint-sets/eslint-config-basic": "workspace:*",
 		"@eslint-sets/eslint-config-ts": "workspace:*",
 		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-jsdoc": "^39.8.0",
+		"eslint-plugin-jsdoc": "^40.0.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"local-pkg": "^0.4.3"
 	},
 	"devDependencies": {
-		"eslint": "^8.33.0",
-		"prettier": "^2.8.3",
+		"eslint": "^8.34.0",
+		"prettier": "^2.8.4",
 		"typescript": "~4.9.5"
 	},
 	"peerDependencies": {

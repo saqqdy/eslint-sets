@@ -63,5 +63,12 @@ export const packages: PackageManifest[] = [
 		iife: false,
 		mjs: false,
 		display: 'Eslint config sets for vue3.0'
+	},
+	{
+		name: 'svelte',
+		pkgName: '@eslint-sets/eslint-config-svelte',
+		iife: false,
+		mjs: false,
+		display: 'Eslint config sets for svelte'
 	}
 ]

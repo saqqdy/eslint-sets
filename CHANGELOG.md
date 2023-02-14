@@ -1,5 +1,11 @@
 # 更新日志
 
+## 2023.02.14 v5.0.0 更新日志
+
+1. 增加 `@eslint-sets/eslint-config-svelte` ，扩展支持 svelte 项目
+2. `@eslint-sets/eslint-config-all` 扩展支持 svelte 项目
+3. 升级依赖包
+
 ## 2023.02.07 v4.3.1 更新日志
 
 1. 删除不必要的 `peerDependencies`

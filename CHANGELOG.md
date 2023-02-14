@@ -4,7 +4,8 @@
 
 1. 增加 `@eslint-sets/eslint-config-svelte` ，扩展支持 svelte 项目
 2. `@eslint-sets/eslint-config-all` 扩展支持 svelte 项目
-3. 升级依赖包
+3. 文档
+4. 升级依赖包
 
 ## 2023.02.07 v4.3.1 更新日志
 

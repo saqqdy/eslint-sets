@@ -23,7 +23,7 @@
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"local-pkg": "^0.4.3",
 		"svelte": "^3.55.1",
-		"svelte-eslint-parser": "^0.23.0"
+		"svelte-eslint-parser": "^0.24.0"
 	},
 	"devDependencies": {
 		"eslint": "^8.34.0",

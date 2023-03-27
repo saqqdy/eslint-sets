@@ -9,6 +9,7 @@ const config = {
 		'plugin:jsdoc/recommended',
 		'plugin:nuxt/recommended',
 		'@eslint-sets/eslint-config-basic',
+		'plugin:vitest-globals/recommended',
 		'prettier'
 	],
 	rules: {

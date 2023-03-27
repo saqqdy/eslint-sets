@@ -1,6 +1,10 @@
 # 更新日志
 
-## 2023.02.14 v5.0.0
+## 2023.03.27 v5.0.2
+
+1. `react` `svelte` `nuxt` 包里面增加 vitest-global
+
+## 2023.03.27 v5.0.1
 
 1. `vue` 包里面增加 vitest-global
 

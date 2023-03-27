@@ -15,6 +15,7 @@ const config = {
 		'plugin:vue-scoped-css/recommended',
 		'plugin:vue/recommended',
 		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
+		'plugin:vitest-globals/recommended',
 		'prettier'
 	],
 	rules: {

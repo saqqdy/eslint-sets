@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-nuxt",
 	"description": "Eslint config sets for nuxt",
-	"version": "5.0.0",
+	"version": "5.0.1",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
 	"files": [

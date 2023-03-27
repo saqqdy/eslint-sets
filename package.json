@@ -63,7 +63,7 @@
 		"tsnd": "^1.1.0",
 		"typedoc": "^0.23.25",
 		"typedoc-plugin-markdown": "^3.14.0",
-		"typescript": "~4.9.5",
+		"typescript": "~5.0.2",
 		"zx": "^7.1.1"
 	},
 	"pnpm": {

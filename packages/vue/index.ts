@@ -31,7 +31,16 @@ const config = {
 	},
 	globals: {
 		h: true,
-		jest: 'readonly'
+		jest: 'readonly',
+		defineProps: 'readonly',
+		defineEmits: 'readonly',
+		defineExpose: 'readonly',
+		withDefaults: 'readonly',
+		$ref: 'readonly',
+		$computed: 'readonly',
+		$shallowRef: 'readonly',
+		$customRef: 'readonly',
+		$toRef: 'readonly'
 	},
 	overrides: [
 		{

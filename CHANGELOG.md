@@ -1,5 +1,10 @@
 # 更新日志
 
+## 2023.04.04 v5.1.0
+
+1. 增加对 vue macros 的支持
+2. 升级依赖包
+
 ## 2023.03.27 v5.0.2
 
 1. `react` `svelte` `nuxt` 包里面增加 vitest-global

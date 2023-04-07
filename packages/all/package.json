@@ -43,7 +43,7 @@
 		"eslint-plugin-yml": "^1.5.0",
 		"jsonc-eslint-parser": "^2.2.0",
 		"svelte": "^3.58.0",
-		"svelte-eslint-parser": "^0.25.1",
+		"svelte-eslint-parser": "^0.26.0",
 		"vue-eslint-parser": "^9.1.1",
 		"yaml-eslint-parser": "^1.2.0"
 	},

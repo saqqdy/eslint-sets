@@ -1,130 +1,147 @@
-# 更新日志
+# Changelog
 
-## 2023.02.14 v5.0.0 更新日志
+## 2023.05.10 v5.2.0
 
-1. 增加 `@eslint-sets/eslint-config-svelte` ，扩展支持 svelte 项目
-2. `@eslint-sets/eslint-config-all` 扩展支持 svelte 项目
-3. 文档
-4. 升级依赖包
+1. `no-only-tests/no-only-tests` default setting changed to 'warn'
+2. upgrade dependency package
 
-## 2023.02.07 v4.3.1 更新日志
+## 2023.04.04 v5.1.0
 
-1. 删除不必要的 `peerDependencies`
+1. add support for vue macros
+2. upgrade dependencies
 
-## 2023.02.07 v4.3.0 更新日志
+## 2023.03.27 v5.0.2
 
-1. 更改 `typescript` 为可选的
-2. 构建输出 ts 类型
-3. 调整构建输出方式
-4. 升级依赖包
+1. add vitest-global to the `react` `svelte` `nuxt` package
 
-## 2023.01.31 v4.2.1 更新日志
+## 2023.03.27 v5.0.1
 
-1. 删除不必要的 `peerDependencies`
-2. 使用 `reinstaller` 装包工具
-3. 升级依赖包
+1. add vitest-global to the `vue` package
 
-## 2023.01.13 v4.1.0 更新日志
+## 2023.02.14 v5.0.0 1.
 
-1. 增加 jsdoc 和 tsdoc 校验规则
-2. 增加 vue-scoped-css 规则
-3. 修复一些问题
-4. 调整构建框架
-5. 升级依赖包
+1. add `@eslint-sets/eslint-config-svelte` to extend support for the svelte project
+2. `@eslint-sets/eslint-config-all` to extend support for the svelte project
+3. documentation
+4. upgrade dependency packages
 
-## 2023.01.07 v4.0.0 更新日志
+## 2023.02.07 v4.3.1
 
-1. 兼容 eslint v7.x 版本
-2. `@eslint-sets/eslint-config-all` 更改为 `@eslint-sets/eslint-config`
-3. `eslint-plugin-unicorn` 降级到 v40.1.0
-4. 更改`all`包含 react、vue、ts
-5. 移除 vue3-ts、simple、simple-ts、react-ts、core
+1. remove unnecessary `peerDependencies`.
 
-## 2023.01.03 v3.3.0 更新日志
+## 2023.02.07 v4.3.0
 
-1. 修复 node17 assertion 解析不到的问题
+1. change `typescript` to optional
+2. build output ts type
+3. adjust build output method
+4. upgrade dependency packages
 
-## 2022.12.21 v3.2.0 更新日志
+## 2023.01.31 v4.2.1
 
-1. 修复 jsx 解析不到的问题
-2. 优化代码
+1. remove unnecessary `peerDependencies`. 2.
+2. use `reinstaller` package loading tool
+3. upgrade the dependency package
 
-## 2022.12.20 v3.1.0 更新日志
+## 2023.01.13 v4.1.0
 
-1. 处理依赖包版本不一致的问题
-2. 升级依赖包
+1. add jsdoc and tsdoc validation rules
+2. add vue-scoped-css rules
+3. fix some issues
+4. adjust the build framework
+5. upgrade dependency packages
 
-## 2022.09.08 v3.0.5 更新日志
+## 2023.01.07 v4.0.0
 
-1. 修复`eslint-plugin-ts`配置
-2. 升级依赖包
+1. compatible with eslint v7.x version
+2. change `@eslint-sets/eslint-config-all` to `@eslint-sets/eslint-config`
+3. `eslint-plugin-unicorn` downgraded to v40.1.0
+4. change `all` to include react, vue, ts
+5. remove vue3-ts, simple, simple-ts, react-ts, core
 
-## 2022.07.28 v3.0.4 更新日志
+## 2023.01.03 v3.3.0
 
-1. 更改`vue`配置`eslint-plugin-vue`版本，修复`no-v-for-template-key-on-child`问题
+1. fix node17 assertion not parsing issue
 
-## 2022.07.24 v3.0.3 更新日志
+## 2022.12.21 v3.2.0
 
-1. all 包移除 vue 相关插件
+1. fix jsx parsing problem
+2. optimize the code
 
-## 2022.07.22 v3.0.2 更新日志
+## 2022.12.20 v3.1.0
 
-1. 修复 ts 包的`comma-dangle` `no-unused-vars` 和 `brace-style`问题
+1. fix inconsistent dependency package versions
+2. upgrade dependency packages
 
-## 2022.07.21 v3.0.1 更新日志
+## 2022.09.08 v3.0.5
 
-1. 更新文档
+1. fix `eslint-plugin-ts` configuration
+2. upgrade dependency packages
 
-## 2022.07.21 v3.0.0 更新日志
+## 2022.07.28 v3.0.4
 
-1. 新增`all`配置，包含 nuxt、egg、vue、vue3、ts、react 全部配置
-2. 升级依赖包
+1. change `vue` configuration `eslint-plugin-vue` version, fix `no-v-for-template-key-on-child` issue
 
-## 2022.05.03 v2.1.5 更新日志
+## 2022.07.24 v3.0.3
 
-1. 新增`no-labels`，允许 for 循环的 labels
+1. all package removes vue-related plugins
 
-## 2022.04.23 v2.1.4 更新日志
+## 2022.07.22 v3.0.2
 
-1. 修复 `simple-ts` 解析 ts 报错的问题
-2. 所有包显式引入`prettier`插件
+1. fix `comma-dangle`, `no-unused-vars` and `brace-style` issues in ts package
 
-## 2022.04.13 v2.1.3 更新日志
+## 2022.07.21 v3.0.1
 
-1. 修复解析 `es6` 的问题
-2. 清理一些用不到的 package
+1. Update the documentation
 
-## 2022.04.11 v2.1.1 更新日志
+## 2022.07.21 v3.0.0
 
-1. 修复`multiline-ternary`异常
+1. add `all` configuration, including nuxt, egg, vue, vue3, ts, react all configuration
+2. upgrade dependency packages
 
-## 2022.04.11 v2.1.0 更新日志
+## 2022.05.03 v2.1.5
 
-1. 更新`basic` `ts`配置
-2. 增加`eslint-config-prettier`插件
+1. add `no-labels` to allow labels for for loops
 
-## 2022.04.10 v2.0.5 更新日志
+## 2022.04.23 v2.1.4
 
-1. 修复`vue/html-indent`配置
+1. fix `simple-ts` parsing ts error
+2. explicitly introduce `prettier` plugin to all packages
 
-## 2022.04.10 v2.0.4 更新日志
+## 2022.04.13 v2.1.3
 
-1. 修复`indent`报错
+1. fix the problem of parsing `es6`.
+2. clean up some unused packages
 
-## 2022.04.10 v2.0.3 更新日志
+## 2022.04.11 v2.1.1
 
-1. 修复`requireConfigFile`报错
+1. fix `multiline-ternary` exception
 
-## 2022.04.10 v2.0.2 更新日志
+## 2022.04.11 v2.1.0
 
-1. 改用`@babel/eslint-parser`解析器
-2. 依赖包升级
+Update `basic` `ts` configuration 2. add `eslint-config-prettier` plugin
 
-## 2022.04.05 v2.0.0 更新日志
+## 2022.04.10 v2.0.5
 
-1. 重新整理 `egg` `nuxt` `react` `react-ts` `simple` `simple-ts` `vue` `vue3` `vue3-ts` 几套配置，抽离出 basic 和 ts 配置
-2. 移除 `merge` 方法
-3. 全新的引入方式：
+1. fix `vue/html-indent` configuration
+
+## 2022.04.10 v2.0.4
+
+Fix `indent` error
+
+## 2022.04.10 v2.0.3
+
+1. fix `requireConfigFile` error
+
+## 2022.04.10 v2.0.2
+
+1. switch to `@babel/eslint-parser` parser
+2. upgrade dependency packages
+
+## 2022.04.05 v2.0.0
+
+1. reorganize `egg` `nuxt` `react` `react-ts` `simple` `simple-ts` `vue` `vue3` `vue3-ts` sets of configurations, pulling out basic and ts configurations
+2. remove the `merge` method
+3. new way to introduce
 
 ```js
 // .eslintrc.js
@@ -133,8 +150,8 @@ module.exports = {
 }
 ```
 
-## 2022.04.01 v1.0.0 更新日志
+## 2022.04.01 v1.0.0
 
-1. 新增 `egg` `nuxt` `react` `react-ts` `simple` `simple-ts` `vue` `vue3` `vue3-ts` 几套配置
-2. 提供 `merge` 方法，传入自定义配置
-3. `typescript` 支持
+1. add `egg` `nuxt` `react` `react-ts` `simple` `simple-ts` `vue` `vue3` `vue3-ts` several configuration sets
+2. provide `merge` method to pass in custom configurations
+3. `typescript` support

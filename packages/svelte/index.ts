@@ -14,6 +14,7 @@ const config = {
 		tsExits ? 'plugin:@typescript-eslint/recommended' : 'plugin:jsdoc/recommended',
 		'plugin:svelte/recommended',
 		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
+		'plugin:vitest-globals/recommended',
 		'prettier'
 	],
 	rules: {

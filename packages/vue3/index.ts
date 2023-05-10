@@ -38,7 +38,12 @@ const config = {
 		defineProps: 'readonly',
 		defineEmits: 'readonly',
 		defineExpose: 'readonly',
-		withDefaults: 'readonly'
+		withDefaults: 'readonly',
+		$ref: 'readonly',
+		$computed: 'readonly',
+		$shallowRef: 'readonly',
+		$customRef: 'readonly',
+		$toRef: 'readonly'
 	},
 	overrides: [
 		{

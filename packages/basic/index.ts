@@ -293,7 +293,7 @@ const config = {
 			files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
 			rules: {
 				'no-unused-expressions': 'off',
-				'no-only-tests/no-only-tests': 'error'
+				'no-only-tests/no-only-tests': 'warn'
 			}
 		},
 		{

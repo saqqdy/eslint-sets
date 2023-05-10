@@ -14,6 +14,7 @@ const config = {
 	extends: [
 		'plugin:react/recommended',
 		tsExits ? '@eslint-sets/eslint-config-ts' : '@eslint-sets/eslint-config-basic',
+		'plugin:vitest-globals/recommended',
 		'prettier'
 	],
 	rules: {

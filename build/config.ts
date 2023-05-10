@@ -46,5 +46,3 @@ export const alias = {
 	'@': path.resolve(__dirname, '../src'),
 	'eslint-sets': path.resolve(__dirname, './')
 }
-
-export const jsexclude = /node_modules/

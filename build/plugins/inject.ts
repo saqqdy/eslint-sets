@@ -1,15 +1,15 @@
-import { readFileSync } from 'fs'
+import injectCode, { type Options } from 'rollup-plugin-inject-code'
 import type { Plugin } from 'rollup'
 
-const injectEslintSetsCore: Plugin = {
-	name: 'inject-eslint-sets-core',
-	renderChunk(code) {
-		const ESLINT_SETS_CORE_IIFE = readFileSync(
-			require.resolve('@eslint-sets/core/lib/index.iife.js'),
-			'utf-8'
+const injectEslintSetsCore = (options: Options): Plugin =>
+	injectCode(
+		Object.assign(
+			{
+				path: '@eslint-sets/core/lib/index.iife.js',
+				position: 'before'
+			},
+			options
 		)
-		return `${ESLINT_SETS_CORE_IIFE};\n;${code}`
-	}
-}
+	)
 
 export default injectEslintSetsCore

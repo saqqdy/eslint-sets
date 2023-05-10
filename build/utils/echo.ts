@@ -2,11 +2,11 @@ import { format } from 'util'
 import chalk from 'chalk'
 
 /**
- * 输出日志
+ * echo logs
  * @example
  *
- * @param message - 需要输出的内容
- * @param type - 输出的类型
+ * @param message - log content
+ * @param type - log type
  */
 export function echo(message: string, type?: 'warning' | 'info' | 'error' | 'success'): void {
 	let output = format(message)

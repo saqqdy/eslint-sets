@@ -14,15 +14,15 @@ Eslint config sets for basic/ts/egg/nuxt/react/vue/vue3/svelte
 
 ## Package list
 
-- Eslint config sets for all: [@eslint-sets/eslint-config](https://github.com/saqqdy/eslint-sets/tree/master/packages/all)
-- Eslint config sets basic: [@eslint-sets/eslint-config-basic](https://github.com/saqqdy/eslint-sets/tree/master/packages/basic)
-- Eslint config sets ts: [@eslint-sets/eslint-config-ts](https://github.com/saqqdy/eslint-sets/tree/master/packages/ts)
-- Eslint config sets for egg: [@eslint-sets/eslint-config-egg](https://github.com/saqqdy/eslint-sets/tree/master/packages/egg)
-- Eslint config sets for nuxt: [@eslint-sets/eslint-config-nuxt](https://github.com/saqqdy/eslint-sets/tree/master/packages/nuxt)
-- Eslint config sets for react: [@eslint-sets/eslint-config-react](https://github.com/saqqdy/eslint-sets/tree/master/packages/react)
-- Eslint config sets for vue: [@eslint-sets/eslint-config-vue](https://github.com/saqqdy/eslint-sets/tree/master/packages/vue)
-- Eslint config sets for vue3: [@eslint-sets/eslint-config-vue3](https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3)
-- Eslint config sets for svelte: [@eslint-sets/eslint-config-svelte](https://github.com/saqqdy/eslint-sets/tree/master/packages/svelte)
+- Eslint config for all: [@eslint-sets/eslint-config](https://github.com/saqqdy/eslint-sets/tree/master/packages/all)
+- Eslint config basic: [@eslint-sets/eslint-config-basic](https://github.com/saqqdy/eslint-sets/tree/master/packages/basic)
+- Eslint config ts: [@eslint-sets/eslint-config-ts](https://github.com/saqqdy/eslint-sets/tree/master/packages/ts)
+- Eslint config for egg: [@eslint-sets/eslint-config-egg](https://github.com/saqqdy/eslint-sets/tree/master/packages/egg)
+- Eslint config for nuxt: [@eslint-sets/eslint-config-nuxt](https://github.com/saqqdy/eslint-sets/tree/master/packages/nuxt)
+- Eslint config for react: [@eslint-sets/eslint-config-react](https://github.com/saqqdy/eslint-sets/tree/master/packages/react)
+- Eslint config for vue: [@eslint-sets/eslint-config-vue](https://github.com/saqqdy/eslint-sets/tree/master/packages/vue)
+- Eslint config for vue3: [@eslint-sets/eslint-config-vue3](https://github.com/saqqdy/eslint-sets/tree/master/packages/vue3)
+- Eslint config for svelte: [@eslint-sets/eslint-config-svelte](https://github.com/saqqdy/eslint-sets/tree/master/packages/svelte)
 
 ## Install
 

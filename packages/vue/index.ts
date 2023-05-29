@@ -22,6 +22,7 @@ const config = {
 		'vue/max-attributes-per-line': 'off',
 		'vue/no-v-html': 'off',
 		// 'prettier/prettier': 'error',
+		'vue/multi-word-component-names': 'off',
 		'vue/component-tags-order': [
 			'error',
 			{

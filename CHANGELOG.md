@@ -1,5 +1,10 @@
 # Changelog
 
+## 2023.05.29 v5.3.0
+
+1. `vue/multi-word-component-names` default setting changed to 'off'
+2. upgrade dependency package
+
 ## 2023.05.10 v5.2.0
 
 1. `no-only-tests/no-only-tests` default setting changed to 'warn'

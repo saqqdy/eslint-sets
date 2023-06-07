@@ -20,7 +20,7 @@
 		"@nuxtjs/eslint-config": "^8.0.0",
 		"@nuxtjs/eslint-module": "^4.1.0",
 		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-jsdoc": "^45.0.0",
+		"eslint-plugin-jsdoc": "^46.2.5",
 		"eslint-plugin-nuxt": "^4.0.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-promise": "^6.1.1",

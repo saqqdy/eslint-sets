@@ -8,49 +8,112 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/all
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/basic
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/ts
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/egg
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/nuxt
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/react
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/vue
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']
 
   - package-ecosystem: npm
     directory: /packages/vue3
     schedule:
-      interval: daily
+      interval: weekly
 
   - package-ecosystem: npm
     directory: /packages/svelte
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'aws*'
+      - dependency-name: typescript
+        versions: [4.x]
+      - dependency-name: '*'
+        update-types: ['version-update:semver-patch']

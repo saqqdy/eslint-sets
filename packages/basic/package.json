@@ -46,17 +46,6 @@
 			"optional": true
 		}
 	},
-	"pnpm": {
-		"peerDependencyRules": {
-			"ignoreMissing": [
-				"@babel/core",
-				"webpack"
-			],
-			"allowedVersions": {
-				"eslint": ">=7.4.0"
-			}
-		}
-	},
 	"keywords": [
 		"eslint-sets",
 		"git",

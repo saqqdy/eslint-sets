@@ -34,7 +34,7 @@
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
 		"prettier": ">=2.0.0",
-		"svelte": "^3.37.0"
+		"svelte": ">=3.37.0"
 	},
 	"peerDependenciesMeta": {
 		"typescript": {
@@ -42,17 +42,6 @@
 		},
 		"svelte": {
 			"optional": true
-		}
-	},
-	"pnpm": {
-		"peerDependencyRules": {
-			"ignoreMissing": [
-				"@babel/core",
-				"webpack"
-			],
-			"allowedVersions": {
-				"eslint": ">=7.4.0"
-			}
 		}
 	},
 	"keywords": [

@@ -13,6 +13,7 @@ const config = {
 		'prettier'
 	],
 	rules: {
+		'jsdoc/tag-lines': [1, 'any', { startLines: 1 }],
 		'vue/max-attributes-per-line': 'off',
 		'vue/no-v-html': 'off',
 		'vue/component-tags-order': [

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2023.06.14 v5.4.0
+
+1. `jsdoc/tag-lines` default setting changed to `[1, 'any', { startLines: 1 }]`
+2. upgrade `eslint-plugin-jsdoc` from ^45 to ^46
+3. upgrade `eslint-plugin-svelte` from ^2.29 to ^2.30
+4. upgrade `svelte-eslint-parser` from ^0.29 to ^0.31
+5. upgrade `eslint-plugin-jsonc` from ^2.8 to ^2.9
+6. upgrade `eslint-plugin-yml` from ^1.7 to ^1.8
+
 ## 2023.05.29 v5.3.0
 
 1. `vue/multi-word-component-names` default setting changed to 'off'

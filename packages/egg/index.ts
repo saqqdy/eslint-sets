@@ -16,7 +16,9 @@ const config = {
 		'@eslint-sets/eslint-config-basic',
 		'prettier'
 	],
-	rules: {},
+	rules: {
+		'jsdoc/tag-lines': [1, 'any', { startLines: 1 }]
+	},
 	globals: {
 		jest: 'readonly'
 	},

@@ -1,10 +1,12 @@
-const { isPackageExists } = require('local-pkg')
+import type ESLint from 'eslint'
+import { isPackageExists } from 'local-pkg'
+
 const tsExits = isPackageExists('typescript')
 
 if (!tsExits)
 	console.warn('[@eslint-sets/eslint-config] TypeScript is not installed, fallback to JS only.')
 
-const config = {
+const config: ESLint.Linter.BaseConfig = {
 	plugins: [
 		tsExits ? 'tsdoc' : 'jsdoc',
 		'prettier'
@@ -83,6 +85,10 @@ const config = {
 			}
 		}
 	]
+}
+
+if (config.rules && !tsExits) {
+	config.rules['jsdoc/tag-lines'] = [1, 'any', { startLines: 1 }]
 }
 
 export default config

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2023.06.24 v5.5.0
+
+1. upgrade `eslint-plugin-vue` from ^9.14 to ^9.15
+2. upgrade `eslint-plugin-svelte` from ^2.30 to ^2.31
+
 ## 2023.06.14 v5.4.0
 
 1. `jsdoc/tag-lines` default setting changed to `[1, 'any', { startLines: 1 }]`

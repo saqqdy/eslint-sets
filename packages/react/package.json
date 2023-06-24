@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-react",
 	"description": "Eslint config sets for react",
-	"version": "5.4.0",
+	"version": "5.5.0",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
 	"files": [
@@ -27,7 +27,7 @@
 		"local-pkg": "^0.4.3"
 	},
 	"devDependencies": {
-		"eslint": "^8.42.0",
+		"eslint": "^8.43.0",
 		"prettier": "^2.8.8",
 		"typescript": "~5.1.3"
 	},

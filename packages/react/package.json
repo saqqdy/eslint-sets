@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-react",
 	"description": "Eslint config sets for react",
-	"version": "5.5.0",
+	"version": "5.6.0",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
 	"files": [

@@ -23,7 +23,7 @@
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-jsonc": "^2.9.0",
 		"eslint-plugin-markdown": "^3.0.0",
-		"eslint-plugin-n": "^16.0.0",
+		"eslint-plugin-n": "^16.0.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-promise": "^6.1.1",
 		"eslint-plugin-tsdoc": "^0.2.17",
@@ -34,7 +34,7 @@
 		"yaml-eslint-parser": "^1.2.2"
 	},
 	"devDependencies": {
-		"eslint": "^8.43.0",
+		"eslint": "^8.44.0",
 		"prettier": "^2.8.8"
 	},
 	"peerDependencies": {

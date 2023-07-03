@@ -30,7 +30,8 @@ const config: ESLint.Linter.BaseConfig = {
 			{
 				order: ['template', 'script', 'style']
 			}
-		]
+		],
+		'vue-scoped-css/enforce-style-type': ['error', { allows: ['scoped', 'module'] }]
 	},
 	globals: {
 		h: true,

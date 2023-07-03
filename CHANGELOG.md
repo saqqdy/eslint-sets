@@ -1,4 +1,12 @@
-# Changelog
+# Change logs
+
+## 2023.06.30 v5.6.0
+
+1. Change the default value of `vue-scoped-css/enforce-style-type` to '['error', { allows: ['scoped', 'module'] }]'
+2. upgrade `eslint-plugin-jsdoc` from ^46.2 to ^46.4
+3. upgrade `eslint-plugin-svelte` from ^2.31 to ^2.32
+4. upgrade `svelte-eslint-parser` from ^0.31 to ^0.32
+5. upgrade `eslint-plugin-vue-scoped-css` from ^2.4 to 2.5
 
 ## 2023.06.24 v5.5.0
 

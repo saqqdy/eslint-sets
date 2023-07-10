@@ -1,5 +1,10 @@
 # Change logs
 
+## 2023.06.30 v5.6.1
+
+1. fix peerDependencies of prettier
+2. upgrade `@node-kit/extra.fs`
+
 ## 2023.06.30 v5.6.0
 
 1. Change the default value of `vue-scoped-css/enforce-style-type` to '['error', { allows: ['scoped', 'module'] }]'

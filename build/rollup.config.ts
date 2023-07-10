@@ -1,11 +1,12 @@
 import { resolve, sep } from 'path'
 import fg from 'fast-glob'
 import type { OutputOptions, RollupOptions } from 'rollup'
-import { packages } from './packages'
+import { getPackages } from './packages'
 import { banner as bannerPlugin, esbuild, filesize, minify, nodeResolve } from './plugins'
 
 const options: RollupOptions[] = []
 const externals = ['js-cool']
+const packages = getPackages(process.env.BUILD_PACKAGE)
 
 for (const {
 	globals = {},
@@ -17,8 +18,7 @@ for (const {
 	cjs,
 	mjs,
 	// dts,
-	target,
-	exportType = 'auto'
+	target
 } of packages) {
 	if (build === false) continue
 	const dirName = name.replace(/\./g, sep)
@@ -63,7 +63,7 @@ for (const {
 		if (mjs !== false) {
 			output.push({
 				file: `packages/${dirName}/dist/${fn.replace(/\.ts$/, '.mjs')}`,
-				exports: exportType,
+				exports: 'auto',
 				banner,
 				format: 'es'
 			})
@@ -72,7 +72,7 @@ for (const {
 		if (cjs !== false) {
 			output.push({
 				file: `packages/${dirName}/dist/${fn.replace(/\.ts$/, '.js')}`,
-				exports: exportType,
+				exports: 'auto',
 				banner,
 				format: 'cjs'
 			})

@@ -5,6 +5,8 @@
 		"filesize",
 		"iife",
 		"nuxt",
+		"parseargs",
+		"pkgjs",
 		"reinstaller",
 		"saqqdy",
 		"tscjs",

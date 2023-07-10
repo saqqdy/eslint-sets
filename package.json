@@ -1,8 +1,8 @@
 {
 	"name": "@eslint-sets/monorepo",
 	"description": "eslint-sets",
-	"version": "5.6.0",
-	"packageManager": "pnpm@8.6.3",
+	"version": "5.6.1",
+	"packageManager": "pnpm@8.6.7",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -26,13 +26,14 @@
 		"eslint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
 		"prettier": "prettier --write ./",
 		"prepare": "pnpm -r run stub",
-		"clean": "rimraf dist types typings packages/*/dist"
+		"clean": "rm-all dist types typings temp"
 	},
 	"dependencies": {
-		"@node-kit/extra.fs": "^3.0.0"
+		"@node-kit/extra.fs": "^3.1.1"
 	},
 	"devDependencies": {
 		"@eslint-sets/eslint-config": "workspace:*",
+		"@pkgjs/parseargs": "^0.11.0",
 		"@rollup/plugin-commonjs": "^25.0.2",
 		"@rollup/plugin-json": "^6.0.0",
 		"@rollup/plugin-node-resolve": "^15.1.0",
@@ -53,8 +54,7 @@
 		"prettier": "^2.8.8",
 		"prettier-config-common": "^1.4.0",
 		"reinstaller": "^3.0.2",
-		"rimraf": "^5.0.1",
-		"rm-all": "^1.1.0",
+		"rm-all": "^1.1.1",
 		"rollup": "^3.26.0",
 		"rollup-plugin-add-banner": "^1.1.0",
 		"rollup-plugin-dts": "^5.3.0",

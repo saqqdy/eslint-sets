@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-react",
 	"description": "Eslint config sets for react",
-	"version": "5.6.0",
+	"version": "5.6.1",
 	"main": "./dist/index.js",
 	"typings": "./dist/index.d.ts",
 	"files": [
@@ -33,7 +33,7 @@
 	},
 	"peerDependencies": {
 		"eslint": ">=7.4.0",
-		"prettier": ">=2.0.0"
+		"prettier": ">=2 <3"
 	},
 	"peerDependenciesMeta": {
 		"typescript": {

@@ -15,7 +15,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/all
@@ -27,7 +27,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/basic
@@ -39,7 +39,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/ts
@@ -51,7 +51,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/egg
@@ -63,7 +63,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/nuxt
@@ -75,7 +75,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/react
@@ -87,7 +87,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/vue
@@ -99,7 +99,7 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: npm
     directory: /packages/vue3
@@ -116,4 +116,4 @@ updates:
       - dependency-name: typescript
         versions: [4.x]
       - dependency-name: '*'
-        update-types: ['version-update:semver-patch']
+        update-types: ['version-update:semver-minor']

@@ -20,7 +20,7 @@
 		"@eslint-sets/eslint-config-react": "workspace:*",
 		"@eslint-sets/eslint-config-svelte": "workspace:*",
 		"@eslint-sets/eslint-config-vue": "workspace:*",
-		"@typescript-eslint/eslint-plugin": "^5.60.1",
+		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^5.60.1",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-eslint-comments": "^3.2.0",

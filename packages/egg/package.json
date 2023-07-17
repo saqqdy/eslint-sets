@@ -19,7 +19,7 @@
 		"@eslint-sets/eslint-config-basic": "workspace:*",
 		"eslint-config-egg": "^12.2.1",
 		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-prettier": "^4.2.1"
+		"eslint-plugin-prettier": "^5.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^8.44.0",

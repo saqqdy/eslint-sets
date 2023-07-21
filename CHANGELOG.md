@@ -1,5 +1,15 @@
 # Change logs
 
+## 2023.07.17 v5.7.0
+
+1. Added support for prettier 3.0
+2. output `.mjs`
+2. upgrade `eslint-plugin-vitest-globals` from ^1.3 to ^1.4
+3. upgrade `eslint-plugin-react` from ^7.22 to ^7.23
+4. upgrade `@typescript-eslint/eslint-plugin` from ^5.60 to ^6.1
+5. upgrade `@typescript-eslint/parser` from ^5.60 to ^6.1
+6. upgrade `eslint-plugin-prettier` from ^4.2 to ^5.0
+
 ## 2023.06.30 v5.6.1
 
 1. fix peerDependencies of prettier

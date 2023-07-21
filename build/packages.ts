@@ -12,7 +12,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config all sets'
 	},
 	{
@@ -20,7 +19,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-basic',
 		iife: false,
 		browser: false,
-		mjs: false,
 		submodules: true,
 		display: 'Eslint config basic sets'
 	},
@@ -29,7 +27,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-ts',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config basic sets for typescript'
 	},
 	{
@@ -37,7 +34,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-egg',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config sets for eggjs'
 	},
 	{
@@ -45,7 +41,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-nuxt',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config sets for nuxt'
 	},
 	{
@@ -53,7 +48,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-react',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config sets for react'
 	},
 	{
@@ -61,7 +55,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-vue',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config sets for vue2.0'
 	},
 	{
@@ -69,7 +62,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-vue3',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config sets for vue3.0'
 	},
 	{
@@ -77,7 +69,6 @@ export const packages: PackageManifest[] = [
 		pkgName: '@eslint-sets/eslint-config-svelte',
 		iife: false,
 		browser: false,
-		mjs: false,
 		display: 'Eslint config sets for svelte'
 	}
 ]

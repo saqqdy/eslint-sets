@@ -7781,6 +7781,14 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /rollup@3.27.2:
+    resolution: {integrity: sha512-YGwmHf7h2oUHkVBT248x0yt6vZkYQ3/rvE5iQuVBh3WO8GcJ6BNeOkpoX1yMHIiBm18EMLjBPIoUDkhgnyxGOQ==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
+
   /run-applescript@5.0.0:
     resolution: {integrity: sha512-XcT5rBksx1QdIhlFOCtgZkB99ZEouFZ1E2Kc2LHqNW13U3/74YGdkQRmThTwxy4QIyookibDKYZOPqX//6BlAg==}
     engines: {node: '>=12'}
@@ -8628,7 +8636,7 @@ packages:
       '@types/node': 20.4.2
       esbuild: 0.17.19
       postcss: 8.4.26
-      rollup: 3.26.3
+      rollup: 3.27.2
       terser: 5.17.6
     optionalDependencies:
       fsevents: 2.3.2

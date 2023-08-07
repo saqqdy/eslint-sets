@@ -19,7 +19,7 @@
 		"@eslint-sets/eslint-config-ts": "workspace:*",
 		"@typescript-eslint/eslint-plugin": "^6.1.0",
 		"@typescript-eslint/parser": "^6.1.0",
-		"eslint-config-prettier": "^8.8.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-jsdoc": "^46.4.4",
 		"eslint-plugin-prettier": "^5.0.0",
 		"eslint-plugin-tsdoc": "^0.2.17",

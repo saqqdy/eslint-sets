@@ -1,5 +1,13 @@
 # Change logs
 
+## 2023.08.09 v5.8.0
+
+1. upgrade `eslint-config-prettier` from ^8.8 to ^9.0
+2. upgrade `eslint-plugin-import` from ^2.27 to ^2.28
+3. upgrade `@typescript-eslint/eslint-plugin` from ^6.1 to ^6.3
+4. upgrade `@typescript-eslint/parser` from ^6.1 to ^6.3
+5. upgrade `eslint-plugin-vue` from ^9.15 to ^9.16
+
 ## 2023.07.17 v5.7.0
 
 1. Added support for prettier 3.0

@@ -1,5 +1,16 @@
 # Change logs
 
+## 2023.09.14 v5.9.0
+
+1. upgrade `eslint-plugin-yml` from ^1.8 to ^1.9
+2. upgrade `@typescript-eslint/eslint-plugin` from ^6.3 to ^6.7
+3. upgrade `@typescript-eslint/parser` from ^6.3 to ^6.7
+4. upgrade `eslint-plugin-jsdoc` from ^46.4 to ^46.7
+5. upgrade `eslint-plugin-n` from ^16.0 to ^16.1
+6. upgrade `eslint-plugin-svelte` from ^2.32 to ^2.33
+7. upgrade `svelte-eslint-parser` from ^0.32 to ^0.33
+8. upgrade `eslint-plugin-vue` from ^9.16 to ^9.17
+
 ## 2023.08.09 v5.8.0
 
 1. upgrade `eslint-config-prettier` from ^8.8 to ^9.0

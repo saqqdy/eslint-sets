@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/eslint-config-egg",
 	"description": "Eslint config sets for eggjs",
-	"version": "5.9.0",
+	"version": "5.10.0",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"typings": "./dist/index.d.ts",
@@ -16,12 +16,12 @@
 	},
 	"dependencies": {
 		"@eslint-sets/eslint-config-basic": "workspace:*",
-		"eslint-config-egg": "^12.2.1",
+		"eslint-config-egg": "^13.0.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-prettier": "^5.0.0"
+		"eslint-plugin-prettier": "^5.0.1"
 	},
 	"devDependencies": {
-		"eslint": "^8.49.0",
+		"eslint": "^8.51.0",
 		"prettier": "^3.0.3",
 		"typescript": "~5.2.2"
 	},

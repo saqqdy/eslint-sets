@@ -9,7 +9,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -25,7 +25,7 @@ updates:
     directory: /packages/all
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -41,7 +41,7 @@ updates:
     directory: /packages/basic
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -57,7 +57,7 @@ updates:
     directory: /packages/ts
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -73,7 +73,7 @@ updates:
     directory: /packages/egg
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -89,7 +89,7 @@ updates:
     directory: /packages/nuxt
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -105,7 +105,7 @@ updates:
     directory: /packages/react
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -121,7 +121,7 @@ updates:
     directory: /packages/vue
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint
@@ -142,7 +142,7 @@ updates:
     directory: /packages/svelte
     schedule:
       interval: weekly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     ignore:
       - dependency-name: core-js
       - dependency-name: eslint

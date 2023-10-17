@@ -1,5 +1,13 @@
 # Change logs
 
+## 2023.10.17 v5.9.0
+
+1. upgrade `eslint-plugin-yml` from ^1.9 to ^1.10
+2. upgrade `eslint-plugin-jsdoc` from ^46.7 to ^46.8
+3. upgrade `eslint-plugin-jsonc` from ^2.9 to ^2.10
+4. upgrade `eslint-plugin-n` from ^16.1 to ^16.2
+5. upgrade `eslint-plugin-svelte` from ^2.33 to ^2.34
+
 ## 2023.09.14 v5.9.0
 
 1. upgrade `eslint-plugin-yml` from ^1.8 to ^1.9

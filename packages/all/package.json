@@ -41,7 +41,7 @@
 		"eslint-plugin-vue-scoped-css": "^2.5.1",
 		"eslint-plugin-yml": "^1.10.0",
 		"jsonc-eslint-parser": "^2.3.0",
-		"svelte": "^3.59.2",
+		"svelte": "^4.2.5",
 		"svelte-eslint-parser": "^0.33.1",
 		"vue-eslint-parser": "^9.3.2",
 		"yaml-eslint-parser": "^1.2.2"

@@ -144,7 +144,7 @@ const config = {
 							'jest/unbound-method': 'error'
 						}
 					}
-			  ]
+				]
 	)
 }
 

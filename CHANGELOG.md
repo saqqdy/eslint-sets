@@ -1,6 +1,23 @@
 # Change logs
 
-## 2023.10.17 v5.9.0
+## 2024.01.08 v5.11.0
+
+1. upgrade `@typescript-eslint/eslint-plugin` from ^6.8 to ^6.18
+2. upgrade `@typescript-eslint/parser` from ^6.8 to ^6.18
+3. upgrade `eslint-config-egg` from ^13.0 to ^13.1
+4. upgrade `eslint-config-prettier` from ^9.0 to ^9.1
+5. upgrade `eslint-plugin-import` from ^2.28 to ^2.29
+6. upgrade `eslint-plugin-jsdoc` from ^46.8 to ^48.0
+7. upgrade `eslint-plugin-jsonc` from ^2.10 to ^2.11
+8. upgrade `eslint-plugin-n` from ^16.2 to ^16.6
+9. upgrade `eslint-plugin-prettier` from ^5.0 to ^5.1
+10. upgrade `eslint-plugin-svelte` from ^2.34 to ^2.35
+11. upgrade `eslint-plugin-vue` from ^9.17 to ^9.19
+12. upgrade `eslint-plugin-vue-scoped-css` from ^2.5 to 2.6
+13. upgrade `eslint-plugin-yml` from ^1.10 to ^1.11
+14. upgrade `jsonc-eslint-parser` from ^2.3 to ^2.4
+
+## 2023.10.17 v5.10.0
 
 1. upgrade `eslint-plugin-yml` from ^1.9 to ^1.10
 2. upgrade `eslint-plugin-jsdoc` from ^46.7 to ^46.8

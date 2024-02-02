@@ -1,5 +1,15 @@
 # Change logs
 
+## 2024.02.02 v5.12.0
+
+1. upgrade `@typescript-eslint/eslint-plugin` from ^6.18 to ^6.20
+2. upgrade `@typescript-eslint/parser` from ^6.18 to ^6.20
+3. upgrade `eslint-plugin-jsonc` from ^2.11 to ^2.13
+4. upgrade `eslint-plugin-vue` from ^9.19 to ^9.21
+5. upgrade `eslint-plugin-vue-scoped-css` from ^2.6 to 2.7
+6. upgrade `eslint-plugin-yml` from ^1.11 to ^1.12
+7. upgrade `vue-eslint-parser` from ^9.3 to ^9.4
+
 ## 2024.01.08 v5.11.0
 
 1. upgrade `@typescript-eslint/eslint-plugin` from ^6.8 to ^6.18

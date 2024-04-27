@@ -1,5 +1,19 @@
 # Change logs
 
+## 2024.04.27 v5.13.0
+
+1. upgrade `@typescript-eslint/eslint-plugin` from ^6.20 to ^6.21
+2. upgrade `@typescript-eslint/parser` from ^6.18 to ^6.20
+3. upgrade `eslint-plugin-jsdoc` from ^48.0 to ^48.2
+4. upgrade `eslint-plugin-jsonc` from ^2.13 to ^2.15
+5. upgrade `eslint-plugin-react` from ^7.33 to ^7.34
+6. upgrade `eslint-plugin-svelte` from ^2.35 to ^2.38
+7. upgrade `eslint-plugin-vitest-globals` from ^1.4 to ^1.5
+8. upgrade `eslint-plugin-vue` from ^9.21 to ^9.25
+9. upgrade `eslint-plugin-vue-scoped-css` from ^2.7 to 2.8
+10. upgrade `eslint-plugin-yml` from ^1.12 to ^1.14
+11. upgrade `svelte-eslint-parser` from ^0.33 to ^0.35
+
 ## 2024.02.02 v5.12.0
 
 1. upgrade `@typescript-eslint/eslint-plugin` from ^6.18 to ^6.20

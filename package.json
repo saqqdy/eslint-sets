@@ -1,7 +1,7 @@
 {
 	"name": "@eslint-sets/monorepo",
 	"description": "eslint-sets",
-	"version": "5.13.0",
+	"version": "5.14.0",
 	"packageManager": "pnpm@9.0.6",
 	"main": "index.js",
 	"module": "index.mjs",

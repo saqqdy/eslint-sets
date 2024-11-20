@@ -1,6 +1,12 @@
 {
     "packageTags": {
-        "reinstaller": "latest"
+        "reinstaller": "latest",
+        "@typescript-eslint/eslint-plugin": "6",
+        "@typescript-eslint/parser": "6",
+        "eslint-plugin-html": "7",
+        "eslint-plugin-markdown": "3",
+        "eslint-plugin-n": "16",
+        "eslint": "8"
     },
     "exclude": ["eslint-plugin-unicorn", "@nuxtjs/eslint-config", "svelte"]
 }

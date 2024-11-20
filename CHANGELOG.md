@@ -1,26 +1,33 @@
 # Change logs
 
-## 2024.11.20 v5.13.0
+## 2024.11.20 v5.14.0
 
-1. upgrade `@typescript-eslint/eslint-plugin` from ^6.20 to ^8.15
-2. upgrade `@typescript-eslint/parser` from ^6.20 to ^8.15
-3. upgrade `eslint-plugin-html` from ^7.1 to ^8.1
-4. upgrade `eslint-plugin-import` from ^2.29 to ^2.31
-5. upgrade `eslint-plugin-jsdoc` from ^48.0 to ^50.5
-6. upgrade `eslint-plugin-jsonc` from ^2.13 to ^2.18
-7. upgrade `eslint-plugin-markdown` from ^3.0 to ^5.1
-8. upgrade `eslint-plugin-n` from ^16.6 to ^17.13
-9. upgrade `eslint-plugin-prettier` from ^5.1 to ^5.2
-10. upgrade `eslint-plugin-promise` from ^6.1 to ^7.1
-11. upgrade `eslint-plugin-react` from ^7.33 to ^7.37
-12. upgrade `eslint-plugin-react-hooks` from ^4.6 to ^5.0
-13. upgrade `eslint-plugin-svelte` from ^2.35 to ^2.46
-14. upgrade `eslint-plugin-tsdoc` from ^0.2 to ^0.3
-15. upgrade `eslint-plugin-vitest-globals` from ^1.4 to ^1.5
-16. upgrade `eslint-plugin-vue` from ^9.21 to ^9.31
-17. upgrade `eslint-plugin-vue-scoped-css` from ^2.7 to 2.8
-18. upgrade `eslint-plugin-yml` from ^1.12 to ^1.15
-19. upgrade `svelte-eslint-parser` from ^0.33 to ^0.43
+1. upgrade `eslint-plugin-import` from ^2.29 to ^2.31
+2. upgrade `eslint-plugin-jsdoc` from ^48.2 to ^50.5
+3. upgrade `eslint-plugin-jsonc` from ^2.15 to ^2.18
+4. upgrade `eslint-plugin-prettier` from ^5.1 to ^5.2
+5. upgrade `eslint-plugin-promise` from ^6.1 to ^7.1
+6. upgrade `eslint-plugin-react` from ^7.34 to ^7.37
+7. upgrade `eslint-plugin-react-hooks` from ^4.6 to ^5.0
+8. upgrade `eslint-plugin-svelte` from ^2.38 to ^2.46
+9. upgrade `eslint-plugin-tsdoc` from ^0.2 to ^0.3
+10. upgrade `eslint-plugin-vue` from ^9.25 to ^9.31
+11. upgrade `eslint-plugin-yml` from ^1.14 to ^1.15
+12. upgrade `svelte-eslint-parser` from ^0.35 to ^0.43
+
+## 2024.04.27 v5.13.0
+
+1. upgrade `@typescript-eslint/eslint-plugin` from ^6.20 to ^6.21
+2. upgrade `@typescript-eslint/parser` from ^6.18 to ^6.20
+3. upgrade `eslint-plugin-jsdoc` from ^48.0 to ^48.2
+4. upgrade `eslint-plugin-jsonc` from ^2.13 to ^2.15
+5. upgrade `eslint-plugin-react` from ^7.33 to ^7.34
+6. upgrade `eslint-plugin-svelte` from ^2.35 to ^2.38
+7. upgrade `eslint-plugin-vitest-globals` from ^1.4 to ^1.5
+8. upgrade `eslint-plugin-vue` from ^9.21 to ^9.25
+9. upgrade `eslint-plugin-vue-scoped-css` from ^2.7 to 2.8
+10. upgrade `eslint-plugin-yml` from ^1.12 to ^1.14
+11. upgrade `svelte-eslint-parser` from ^0.33 to ^0.35
 
 ## 2024.02.02 v5.12.0
 

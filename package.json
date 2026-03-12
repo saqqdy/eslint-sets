@@ -1,102 +1,118 @@
 {
-	"name": "@eslint-sets/monorepo",
-	"description": "eslint-sets",
-	"version": "5.14.0",
-	"packageManager": "pnpm@9.0.6",
-	"main": "index.js",
-	"module": "index.mjs",
-	"files": [
-		"index.js",
-		"typings",
-		"*.d.ts"
-	],
-	"scripts": {
-		"reinstall": "tscjs scripts/reinstall",
-		"lib": "sh scripts/lib.sh",
-		"docs": "sh scripts/docs.sh --docs",
-		"push": "tscjs scripts/push",
-		"build": "tscjs scripts/build",
-		"build:rollup": "cross-env NODE_OPTIONS=\"--max-old-space-size=6144\" rollup -c",
-		"workflow:publish-test": "zx scripts/workflow.mjs",
-		"pub": "tscjs scripts/publish",
-		"unpub": "tscjs scripts/unpublish",
-		"sync": "tscjs scripts/sync",
-		"viewInfo": "tscjs scripts/viewInfo",
-		"update": "tscjs scripts/update",
-		"dist": "pnpm run update && pnpm build",
-		"eslint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
-		"prettier": "prettier --write ./",
-		"prepare": "pnpm -r run stub",
-		"clean": "rm-all dist types typings temp"
-	},
-	"dependencies": {
-		"@node-kit/extra.fs": "^3.2.0"
-	},
-	"devDependencies": {
-		"@eslint-sets/eslint-config": "workspace:*",
-		"@rollup/plugin-commonjs": "^28.0.1",
-		"@rollup/plugin-json": "^6.1.0",
-		"@rollup/plugin-node-resolve": "^15.3.0",
-		"@rollup/plugin-terser": "^0.4.4",
-		"@types/jest": "^29.5.14",
-		"@types/node": "^22.9.1",
-		"chalk": "^5.3.0",
-		"consola": "^3.2.3",
-		"cross-env": "^7.0.3",
-		"esbuild": "^0.24.0",
-		"esbuild-register": "^3.6.0",
-		"eslint": "^8.57.1",
-		"fast-glob": "^3.3.2",
-		"jest": "^29.7.0",
-		"js-cool": "^5.23.0",
-		"load-yml": "^1.4.0",
-		"npm-run-all": "^4.1.5",
-		"prettier": "^3.3.3",
-		"prettier-config-common": "^1.4.0",
-		"reinstaller": "^3.0.2",
-		"rm-all": "^1.1.1",
-		"rollup": "^4.27.3",
-		"rollup-plugin-add-banner": "^1.1.0",
-		"rollup-plugin-dts": "^6.1.1",
-		"rollup-plugin-esbuild": "^6.1.1",
-		"rollup-plugin-filesize": "^10.0.0",
-		"rollup-plugin-inject-code": "^1.1.0",
-		"rollup-plugin-replace-shebang": "^1.2.0",
-		"rollup-plugin-visualizer": "^5.12.0",
-		"tsnd": "^1.1.0",
-		"typedoc": "^0.26.11",
-		"typedoc-plugin-markdown": "^4.2.10",
-		"typescript": "~5.6.3",
-		"zx": "^8.2.2"
-	},
-	"pnpm": {
-		"peerDependencyRules": {
-			"ignoreMissing": [
-				"@babel/core",
-				"webpack"
-			],
-			"allowedVersions": {
-				"eslint": ">=7.4.0"
-			}
-		}
-	},
-	"keywords": [
-		"eslint-sets",
-		"vue",
-		"vue3.0"
-	],
-	"license": "MIT",
-	"author": "saqqdy.com",
-	"homepage": "https://github.com/saqqdy/eslint-sets#readme",
-	"bugs": {
-		"url": "https://github.com/saqqdy/eslint-sets/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git"
-	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org",
-		"access": "public"
-	}
+  "name": "@eslint-sets/eslint-config",
+  "version": "6.0.0",
+  "description": "Modern ESLint config with flat config support for Vue, React, Svelte, and TypeScript",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp && pnpm publish"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.22.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import-x": "^4.9.0",
+    "eslint-plugin-jsdoc": "^50.6.0",
+    "eslint-plugin-jsonc": "^2.20.0",
+    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-n": "^17.24.0",
+    "eslint-plugin-perfectionist": "^4.10.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-regexp": "^2.7.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "eslint-plugin-toml": "^1.3.1",
+    "eslint-plugin-unicorn": "^58.0.0",
+    "eslint-plugin-unused-imports": "^4.1.0",
+    "eslint-plugin-vitest": "^0.5.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "eslint-plugin-yml": "^3.3.1",
+    "find-up-simple": "^1.0.1",
+    "globals": "^16.0.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "local-pkg": "^1.0.0",
+    "toml-eslint-parser": "^1.0.3",
+    "vue-eslint-parser": "^9.4.3",
+    "yaml-eslint-parser": "^1.2.3"
+  },
+  "optionalDependencies": {
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-svelte": "^3.0.0",
+    "svelte": "^5.25.0",
+    "svelte-eslint-parser": "^1.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "typescript": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@vitest/coverage-v8": "2.1.9",
+    "@vitest/eslint-plugin": "^1.1.0",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.22.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.5.3",
+    "tsup": "^8.4.0",
+    "typescript": "~5.8.2",
+    "vitest": "^2.1.9"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslint-flat-config",
+    "vue",
+    "react",
+    "svelte",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "saqqdy <https://github.com/saqqdy>",
+  "homepage": "https://github.com/saqqdy/eslint-sets#readme",
+  "bugs": {
+    "url": "https://github.com/saqqdy/eslint-sets/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saqqdy/eslint-sets.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "packageManager": "pnpm@9.0.6"
 }

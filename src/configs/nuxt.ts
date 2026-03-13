@@ -23,25 +23,25 @@ export function nuxt(options: NuxtOptions = {}): Linter.Config[] {
 
 	return [
 		{
-			name: 'eslint-sets/nuxt',
 			files: [GLOB_VUE, GLOB_TS],
+			name: 'eslint-sets/nuxt',
 			rules: {
 				// Nuxt-specific rules
 				// Note: Most Nuxt-specific linting is handled by @nuxt/eslint
 				// These are general best practices for Nuxt projects
-
-				// Allow auto-imports
-				'no-undef': 'off',
 
 				// Nuxt 3 best practices
 				'@typescript-eslint/no-unused-vars': [
 					'error',
 					{
 						argsIgnorePattern: '^_',
-						varsIgnorePattern: '^_|^use',
 						caughtErrorsIgnorePattern: '^_',
+						varsIgnorePattern: '^_|^use',
 					},
 				],
+
+				// Allow auto-imports
+				'no-undef': 'off',
 
 				// User overrides
 				...overrides,

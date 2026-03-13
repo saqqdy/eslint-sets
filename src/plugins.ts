@@ -123,6 +123,7 @@ export async function loadPlugin<T>(name: string): Promise<T | null> {
  */
 export async function ensurePackages(packages: string[]): Promise<void> {
 	const missing = packages.filter((pkg) => !isPackageExists(pkg))
+
 	if (missing.length > 0) {
 		throw new Error(
 			`Missing required packages: ${missing.join(', ')}. Please install them with: pnpm add -D ${missing.join(' ')}`,

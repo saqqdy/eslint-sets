@@ -24,6 +24,8 @@ export interface SortTsconfigOptions extends OptionsOverrides {
 /**
  * Sort package.json configuration
  * Note: Requires jsonc plugin to be loaded (via jsonc config)
+ *
+ * Order based on master branch configuration
  */
 export async function sortPackageJson(
 	options: SortPackageJsonOptions = {},
@@ -32,58 +34,70 @@ export async function sortPackageJson(
 
 	return [
 		{
-			name: 'eslint-sets/sort-package-json',
 			files,
+			name: 'eslint-sets/sort-package-json',
 			rules: {
 				'jsonc/sort-keys': [
 					'error',
 					{
-						pathPattern: '^$',
 						order: [
+							'publisher',
 							'name',
-							'version',
+							'displayName',
+							'icon',
+							'description',
 							'type',
+							'version',
 							'private',
 							'packageManager',
-							'description',
-							'keywords',
-							'license',
-							'author',
-							'contributors',
-							'homepage',
-							'repository',
-							'bugs',
-							'funding',
-							'sideEffects',
 							'bin',
 							'main',
 							'module',
-							'exports',
-							'browser',
+							'unpkg',
+							'jsdelivr',
 							'types',
 							'typings',
 							'typesVersions',
+							'exports',
 							'files',
-							'workspaces',
+							'categories',
 							'scripts',
-							'engines',
-							'publishConfig',
-							'config',
+							'activationEvents',
 							'dependencies',
 							'devDependencies',
-							'optionalDependencies',
 							'peerDependencies',
 							'peerDependenciesMeta',
-							'bundledDependencies',
-							'bundleDependencies',
-							'overrides',
+							'optionalDependencies',
+							'engines',
 							'resolutions',
+							'overrides',
+							'sideEffects',
 							'pnpm',
+							'keywords',
+							'license',
+							'author',
+							'homepage',
+							'bugs',
+							'repository',
+							'simple-git-hooks',
+							'funding',
+							'husky',
+							'lint-staged',
+							'eslintConfig',
+							'contributes',
 						],
+						// Root level package.json keys order (from master branch)
+						pathPattern: '^$',
 					},
 					{
-						pathPattern: '^(?:dev|optional|peer)?Dependencies$',
 						order: { type: 'asc' },
+						// Sort dependencies alphabetically
+						pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
+					},
+					{
+						order: ['types', 'require', 'import'],
+						// Sort exports
+						pathPattern: '^exports.*$',
 					},
 				],
 
@@ -97,33 +111,128 @@ export async function sortPackageJson(
 /**
  * Sort tsconfig.json configuration
  * Note: Requires jsonc plugin to be loaded (via jsonc config)
+ *
+ * Reference: https://github.com/antfu/eslint-config/blob/main/src/configs/sort.ts
  */
 export async function sortTsconfig(options: SortTsconfigOptions = {}): Promise<Linter.Config[]> {
-	const { files = ['**/tsconfig*.json'], overrides = {} } = options
+	const { files = ['**/[jt]sconfig.json', '**/[jt]sconfig.*.json'], overrides = {} } = options
 
 	return [
 		{
-			name: 'eslint-sets/sort-tsconfig',
 			files,
+			name: 'eslint-sets/sort-tsconfig',
 			rules: {
 				'jsonc/sort-keys': [
 					'error',
 					{
-						pathPattern: '^(?:compilerOptions|typeAcquisition|typingOptions)$',
-						order: { type: 'asc' },
+						// Root level tsconfig keys order
+						order: ['extends', 'compilerOptions', 'references', 'files', 'include', 'exclude'],
+						pathPattern: '^$',
 					},
 					{
-						pathPattern: '^$',
+						// compilerOptions keys order
 						order: [
-							'extends',
-							'compilerOptions',
+							/* Projects */
+							'incremental',
+							'composite',
+							'tsBuildInfoFile',
+							'disableSourceOfProjectReferenceRedirect',
+							'disableSolutionSearching',
+							'disableReferencedProjectLoad',
+							/* Language and Environment */
+							'target',
+							'jsx',
+							'jsxFactory',
+							'jsxFragmentFactory',
+							'jsxImportSource',
+							'lib',
+							'moduleDetection',
+							'noLib',
+							'reactNamespace',
+							'useDefineForClassFields',
+							'emitDecoratorMetadata',
+							'experimentalDecorators',
+							'libReplacement',
+							/* Modules */
+							'baseUrl',
+							'rootDir',
+							'rootDirs',
+							'customConditions',
+							'module',
+							'moduleResolution',
+							'moduleSuffixes',
+							'noResolve',
+							'paths',
+							'resolveJsonModule',
+							'resolvePackageJsonExports',
+							'resolvePackageJsonImports',
 							'typeRoots',
 							'types',
-							'files',
-							'include',
-							'exclude',
-							'references',
+							'allowArbitraryExtensions',
+							'allowImportingTsExtensions',
+							'allowUmdGlobalAccess',
+							/* JavaScript Support */
+							'allowJs',
+							'checkJs',
+							'maxNodeModuleJsDepth',
+							/* Type Checking */
+							'strict',
+							'strictBindCallApply',
+							'strictFunctionTypes',
+							'strictNullChecks',
+							'strictPropertyInitialization',
+							'allowUnreachableCode',
+							'allowUnusedLabels',
+							'alwaysStrict',
+							'exactOptionalPropertyTypes',
+							'noFallthroughCasesInSwitch',
+							'noImplicitAny',
+							'noImplicitOverride',
+							'noImplicitReturns',
+							'noImplicitThis',
+							'noPropertyAccessFromIndexSignature',
+							'noUncheckedIndexedAccess',
+							'noUnusedLocals',
+							'noUnusedParameters',
+							'useUnknownInCatchVariables',
+							/* Emit */
+							'declaration',
+							'declarationDir',
+							'declarationMap',
+							'downlevelIteration',
+							'emitBOM',
+							'emitDeclarationOnly',
+							'importHelpers',
+							'importsNotUsedAsValues',
+							'inlineSourceMap',
+							'inlineSources',
+							'mapRoot',
+							'newLine',
+							'noEmit',
+							'noEmitHelpers',
+							'noEmitOnError',
+							'outDir',
+							'outFile',
+							'preserveConstEnums',
+							'preserveValueImports',
+							'removeComments',
+							'sourceMap',
+							'sourceRoot',
+							'stripInternal',
+							/* Interop Constraints */
+							'allowSyntheticDefaultImports',
+							'esModuleInterop',
+							'forceConsistentCasingInFileNames',
+							'isolatedDeclarations',
+							'isolatedModules',
+							'preserveSymlinks',
+							'verbatimModuleSyntax',
+							'erasableSyntaxOnly',
+							/* Completeness */
+							'skipDefaultLibCheck',
+							'skipLibCheck',
 						],
+						pathPattern: '^compilerOptions$',
 					},
 				],
 

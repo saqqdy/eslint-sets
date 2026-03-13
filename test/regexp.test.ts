@@ -8,6 +8,7 @@ describe('RegExp Config', () => {
 			`const re = /^[a-z]+$/`,
 			'test.js',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
@@ -17,6 +18,7 @@ describe('RegExp Config', () => {
 			`const re = /test/gi`,
 			'test.js',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
@@ -26,6 +28,7 @@ describe('RegExp Config', () => {
 			`const re = /[a-zA-Z0-9]/`,
 			'test.js',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
@@ -35,6 +38,7 @@ describe('RegExp Config', () => {
 			`const re = /a+b*c?/`,
 			'test.js',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 })

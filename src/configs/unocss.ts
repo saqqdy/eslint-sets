@@ -13,38 +13,38 @@ export interface UnoCssOptions extends OptionsOverrides {
 	strict?: boolean
 }
 
-// Type definition for UnoCSS plugin
-interface UnoCssPlugin {
-	configs: {
-		recommended: Linter.Config
-	}
-	rules: Linter.RulesRecord
-}
-
 /**
  * UnoCSS configuration
  */
 export async function unocss(options: UnoCssOptions = {}): Promise<Linter.Config[]> {
-	const { strict = false, overrides = {} } = options
+	const { overrides = {}, strict = false } = options
 
-	const plugin = await loadPlugin<UnoCssPlugin>('@unocss/eslint-plugin')
+	const plugin = await loadPlugin<any>('@unocss/eslint-plugin')
 
 	if (!plugin) {
 		return []
 	}
 
+	// Use the flat config from the plugin if available
+	const flatConfig = plugin.configs?.flat
+	const pluginRules = flatConfig?.plugins?.unocss?.rules || {}
+
 	return [
 		{
-			name: 'eslint-sets/unocss',
 			files: [GLOB_SRC],
+			name: 'eslint-sets/unocss',
 			plugins: {
-				unocss: plugin as any,
+				unocss: {
+					rules: pluginRules,
+				},
 			},
 			rules: {
 				// UnoCSS recommended rules
 				'unocss/order': 'warn',
 				'unocss/order-attributify': 'off',
-				'unocss/blocklist': strict ? 'error' : 'warn',
+
+				// Optional strict rules
+				...(strict ? { 'unocss/blocklist': 'error' } : {}),
 
 				// User overrides
 				...overrides,

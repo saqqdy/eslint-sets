@@ -27,7 +27,6 @@ export async function svelte(): Promise<Linter.Config[]> {
 
 	return [
 		{
-			name: 'eslint-sets/svelte/setup',
 			files: [GLOB_SVELTE],
 			languageOptions: {
 				parser: svelteParser,
@@ -36,6 +35,7 @@ export async function svelte(): Promise<Linter.Config[]> {
 					sourceType: 'module',
 				},
 			},
+			name: 'eslint-sets/svelte/setup',
 			plugins: {
 				svelte: sveltePlugin,
 			},
@@ -58,8 +58,8 @@ export async function svelte(): Promise<Linter.Config[]> {
 				'svelte/indent': [
 					'error',
 					{
-						indent: 'tab',
 						alignAttributesVertically: true,
+						indent: 'tab',
 						switchCase: 1,
 					},
 				],

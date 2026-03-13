@@ -14,6 +14,7 @@ describe('test', () => {
 })`,
 			'test.spec.ts',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -24,6 +25,7 @@ describe('test', () => {
 			`console.log('test')`,
 			'test.spec.ts',
 		)
+
 		expect(hasRule(messages, 'no-console')).toBeFalsy()
 	})
 })

@@ -28,8 +28,8 @@ export async function noOnlyTests(options: NoOnlyTestsOptions = {}): Promise<Lin
 
 	return [
 		{
-			name: 'eslint-sets/no-only-tests',
 			files: [GLOB_TESTS],
+			name: 'eslint-sets/no-only-tests',
 			plugins: {
 				'no-only-tests': plugin as any,
 			},

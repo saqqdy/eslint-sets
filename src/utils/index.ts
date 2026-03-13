@@ -86,6 +86,7 @@ export async function interopDefault<T>(
 	promise: Promise<T>,
 ): Promise<T extends { default: infer D } ? D : T> {
 	const result = await promise
+
 	return (result as any).default ?? result
 }
 
@@ -97,9 +98,11 @@ export function resolveSubOptions<K extends string>(
 	key: K,
 ): Record<string, unknown> {
 	const value = options[key]
+
 	if (typeof value === 'object' && value !== null) {
 		return value as Record<string, unknown>
 	}
+
 	return {}
 }
 
@@ -108,6 +111,7 @@ export function resolveSubOptions<K extends string>(
  */
 export function getOverrides(options: Record<string, unknown>, key: string): Linter.RulesRecord {
 	const subOptions = resolveSubOptions(options, key)
+
 	return (subOptions.overrides as Linter.RulesRecord) || {}
 }
 

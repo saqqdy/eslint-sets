@@ -6,6 +6,7 @@ describe('Utils', () => {
 		it('should flatten configs', () => {
 			const configs = [{ name: 'a' }, [{ name: 'b' }, { name: 'c' }]]
 			const result = combine(...configs)
+
 			expect(result).toHaveLength(3)
 			expect(result.map((c) => c.name)).toEqual(['a', 'b', 'c'])
 		})
@@ -18,6 +19,7 @@ describe('Utils', () => {
 				'no-debugger': 'warn',
 			}
 			const result = renameRules(rules, 'custom')
+
 			expect(result).toEqual({
 				'custom/no-console': 'error',
 				'custom/no-debugger': 'warn',
@@ -45,6 +47,7 @@ describe('Utils', () => {
 			const target = { a: 1, b: { c: 2 } }
 			const source = { b: { d: 3 } }
 			const result = deepMerge(target, source)
+
 			expect(result).toEqual({ a: 1, b: { c: 2, d: 3 } })
 		})
 
@@ -52,6 +55,7 @@ describe('Utils', () => {
 			const target = { a: 1 }
 			const source = { a: 2 }
 			const result = deepMerge(target, source)
+
 			expect(result).toEqual({ a: 2 })
 		})
 	})
@@ -70,6 +74,7 @@ describe('Utils', () => {
 	describe('filterNil', () => {
 		it('should filter out null and undefined', () => {
 			const arr = [1, null, 2, undefined, 3]
+
 			expect(filterNil(arr)).toEqual([1, 2, 3])
 		})
 

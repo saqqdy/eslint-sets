@@ -31,20 +31,20 @@ export async function e18e(options: E18eOptions = {}): Promise<Linter.Config[]> 
 
 	return [
 		{
-			name: 'eslint-sets/e18e',
 			files: [GLOB_SRC],
+			name: 'eslint-sets/e18e',
 			plugins: {
 				e18e: plugin as any,
 			},
 			rules: {
+				'e18e/no-legacy-object-iteration': 'warn',
 				// e18e modernization rules
 				'e18e/prefer-array-flat': 'warn',
 				'e18e/prefer-array-flat-map': 'warn',
 				'e18e/prefer-array-from-async': 'warn',
 				'e18e/prefer-object-from-entries': 'warn',
-				'e18e/prefer-string-replace-all': 'warn',
 				'e18e/prefer-spread': 'warn',
-				'e18e/no-legacy-object-iteration': 'warn',
+				'e18e/prefer-string-replace-all': 'warn',
 
 				// User overrides
 				...overrides,

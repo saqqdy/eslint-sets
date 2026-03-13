@@ -6,6 +6,32 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- **TypeGen Support**: Added automatic type generation for ESLint rules
+  - Generates `TypedFlatConfigItem`, `RuleOptions`, `Rules`, `ConfigNames` types
+  - Full TypeScript IntelliSense for rule names and options
+  - Run `pnpm run gen` to regenerate types
+- **@stylistic Integration**: Default formatting now uses `@stylistic/eslint-plugin` instead of Prettier
+  - No additional formatting tool needed
+  - Fully integrated with ESLint rules
+  - Customizable via `stylistic` option
+- **Prettier as Optional**: Prettier is now optional and disabled by default
+  - Enable with `stylistic: false, prettier: true`
+- **Perfectionist Sorting**: Added import/export sorting with natural ordering
+  - Uses `eslint-plugin-perfectionist`
+  - Sorts imports, exports, and object keys
+  - Groups: type imports, external, internal, etc.
+- **Solid.js Support**: Added `solid` config for Solid.js projects
+  - Uses `eslint-plugin-solid`
+  - Includes reactivity rules and component best practices
+- **TOML Support**: Added `toml` config for TOML files
+  - Uses `eslint-plugin-toml` and `toml-eslint-parser`
+  - Validates TOML syntax and formatting
+- **Type-Aware TypeScript Rules**: Added optional type-aware rules
+  - Enable with `typescript: { typeAware: true }`
+  - Requires `tsconfig.json` with proper includes
+- **eslint-plugin-n**: Replaced Node.js rules with `eslint-plugin-n`
+  - Better Node.js specific rules
+  - ES modules and CommonJS support
 - **Project Types**: Support for `type: 'app'` and `type: 'lib'` project types
 - **Framework Support**: Added support for Next.js, Nuxt, Astro, Angular, and UnoCSS
 - **Accessibility Rules**: Added optional a11y rules for Vue and React
@@ -16,6 +42,8 @@ All notable changes to this project will be documented in this file.
   - Supports project type, TypeScript, frameworks (Vue, React, Svelte, Solid, Next.js, Nuxt, Astro, Angular, UnoCSS)
   - Accessibility and formatter options
 - **Auto-sort**: Added `sortPackageJson` and `sortTsconfig` options (default: true)
+  - Sorts package.json keys according to best practices
+  - Sorts tsconfig.json keys
 - **ESLint Comments**: Added `eslintComments` option for ESLint directive rules
 - **No Only Tests**: Added `noOnlyTests` config to prevent committing `.only()` tests
 - **Editor Detection**: Added `isInEditor` option to auto-detect editor environment
@@ -43,8 +71,13 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **Default trailingComma**: Changed from `'all'` to `'always-multiline'` (matching @antfu/eslint-config)
+- **@stylistic/configs.customize()**: Now uses `configs.customize()` API for better configuration
+- **Markdown config**: Simplified to use `@eslint/markdown` plugin directly
+- **Default formatter**: Changed from Prettier to `@stylistic/eslint-plugin`
 - **Default gitignore**: Now defaults to `true` (was `false`)
 - **Vitest Plugin**: Upgraded from `eslint-plugin-vitest` to `@vitest/eslint-plugin`
+- **Import sorting**: Replaced `import-x/order` with `perfectionist/sort-imports`
 - **JavaScript Rules**: Added more best practice rules
   - `no-alert`: error
   - `no-eval`: error
@@ -59,10 +92,15 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- Fixed markdown code block linting - rules now properly disabled for code blocks
+- Fixed `@stylistic/comma-dangle` configuration to accept string values
+- Fixed `@eslint/markdown` plugin loading with default export
 - Fixed compatibility with ESLint 9.10.0+
 - Fixed Vue parser configuration for Vue 2/3 detection
 - Fixed TypeScript type-aware rules requiring project configuration
 - Fixed YAML and Markdown file parsing errors when disabled
+- Fixed import sorting conflicts between `import-x/order` and `perfectionist/sort-imports`
+- Fixed `sort-imports` conflict with perfectionist
 - Consolidated all framework configs into single package
 
 ### Breaking Changes
@@ -70,6 +108,8 @@ All notable changes to this project will be documented in this file.
 - Requires ESLint v9.22.0+
 - Configuration file changed from `.eslintrc.js` to `eslint.config.ts`
 - Separate framework packages merged into single package
+- **Default formatting changed**: Now uses `@stylistic/eslint-plugin` instead of Prettier
+  - To continue using Prettier, set `stylistic: false, prettier: true`
 
 ## [5.14.0] - 2024.11.20
 

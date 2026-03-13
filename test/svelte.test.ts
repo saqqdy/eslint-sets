@@ -12,7 +12,7 @@ describe('Svelte Config', () => {
 
 	it('should parse Svelte SFC', async () => {
 		const messages = await lintContent(
-			async () => await (await import('../src/index')).default({ svelte: true }),
+			async () => await (await import('../src/index')).default({ autoDetect: false, svelte: true }),
 			`<script>
   let name = 'world'
 </script>
@@ -20,13 +20,14 @@ describe('Svelte Config', () => {
 <h1>Hello {name}!</h1>`,
 			'test.svelte',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
 	it('should detect svelte/button-has-type', async () => {
 		const messages = await lintContent(
-			async () => await (await import('../src/index')).default({ svelte: true }),
+			async () => await (await import('../src/index')).default({ autoDetect: false, svelte: true }),
 			`<script>
   let name = 'world'
 </script>
@@ -34,6 +35,7 @@ describe('Svelte Config', () => {
 <button>Click me</button>`,
 			'test.svelte',
 		)
+
 		expect(hasRule(messages, 'svelte/button-has-type')).toBeTruthy()
 	})
 })

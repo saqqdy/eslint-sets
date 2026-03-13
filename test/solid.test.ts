@@ -8,6 +8,7 @@ describe('Solid Config', () => {
 				await (
 					await import('../src/index')
 				).default({
+					autoDetect: false,
 					solid: true,
 				}),
 			`import { createSignal } from 'solid-js'
@@ -25,6 +26,7 @@ function Counter() {
 export default Counter`,
 			'Counter.tsx',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 })

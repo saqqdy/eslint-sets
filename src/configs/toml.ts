@@ -13,11 +13,11 @@ const GLOB_TOML = '**/*.toml'
 export function toml(): Linter.Config[] {
 	return [
 		{
-			name: 'eslint-sets/toml',
 			files: [GLOB_TOML],
 			languageOptions: {
 				parser: tomlParser as any,
 			},
+			name: 'eslint-sets/toml',
 			plugins: {
 				toml: tomlPlugin as any,
 			},

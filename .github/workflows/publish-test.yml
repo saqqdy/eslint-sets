@@ -45,27 +45,8 @@ jobs:
       - name: Gen .npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
 
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/all/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/basic/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/egg/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/nuxt/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/react/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/ts/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/vue/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/vue3/.npmrc
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ./packages/svelte/.npmrc
-
       - run: pnpm pub --test
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/monorepo/sync"
       - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-basic/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-egg/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-nuxt/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-react/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-ts/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-vue/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-vue3/sync"
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config-svelte/sync"

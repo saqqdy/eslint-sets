@@ -9,6 +9,7 @@ describe('Imports Config', () => {
 console.warn(used)`,
 			'test.js',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -20,6 +21,7 @@ console.warn(used)`,
 console.warn(used)`,
 			'test.js',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -31,6 +33,7 @@ console.warn(used)`,
 console.warn(used)`,
 			'test.js',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})

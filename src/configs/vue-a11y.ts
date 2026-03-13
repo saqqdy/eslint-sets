@@ -28,8 +28,8 @@ export async function vueA11y(options: VueA11yOptions = {}): Promise<Linter.Conf
 
 	return [
 		{
-			name: 'eslint-sets/vue-a11y',
 			files: [GLOB_VUE],
+			name: 'eslint-sets/vue-a11y',
 			plugins: {
 				'vuejs-accessibility': plugin as any,
 			},

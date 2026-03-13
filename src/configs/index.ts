@@ -1,42 +1,10 @@
 import type { Linter } from 'eslint'
-import type { Options, OptionsOverrides } from '../types'
+import type { Options, OptionsOverrides, PerfectionistOptions } from '../types'
+import type { PrettierOptions } from './prettier'
+import type { ReactOptions } from './react'
+import type { StylisticOptions } from './stylistic'
 import type { TypeScriptOptions } from './typescript'
 import type { VueOptions } from './vue'
-import type { ReactOptions } from './react'
-import { ignores } from './ignores'
-import { javascript } from './javascript'
-import { typescript } from './typescript'
-import { vue } from './vue'
-import { react } from './react'
-import { svelte } from './svelte'
-import { solid } from './solid'
-import { jsonc } from './jsonc'
-import { sortPackageJson, sortTsconfig } from './sort'
-import { yaml } from './yaml'
-import { markdown } from './markdown'
-import { toml } from './toml'
-import { imports } from './imports'
-import { unicorn } from './unicorn'
-import { perfectionist } from './perfectionist'
-import { regexp } from './regexp'
-import { test } from './test'
-import { node } from './node'
-import { prettier } from './prettier'
-import { stylistic } from './stylistic'
-import { disables } from './disables'
-import { command } from './command'
-import { nextjs } from './nextjs'
-import { nuxt } from './nuxt'
-import { astro } from './astro'
-import { angular } from './angular'
-import { unocss } from './unocss'
-import { e18e } from './e18e'
-import { pnpm } from './pnpm'
-import { formatters } from './formatters'
-import { vueA11y } from './vue-a11y'
-import { eslintComments } from './eslint-comments'
-import { jsxA11y } from './jsx-a11y'
-import { noOnlyTests } from './no-only-tests'
 import {
 	hasAngular,
 	hasAstro,
@@ -57,6 +25,40 @@ import {
 	processIgnores,
 	resolveSubOptions,
 } from '../utils'
+import { angular } from './angular'
+import { astro } from './astro'
+import { command } from './command'
+import { disables } from './disables'
+import { e18e } from './e18e'
+import { eslintComments } from './eslint-comments'
+import { formatters } from './formatters'
+import { ignores } from './ignores'
+import { imports } from './imports'
+import { javascript } from './javascript'
+import { jsonc } from './jsonc'
+import { jsxA11y } from './jsx-a11y'
+import { markdown } from './markdown'
+import { nextjs } from './nextjs'
+import { noOnlyTests } from './no-only-tests'
+import { node } from './node'
+import { nuxt } from './nuxt'
+import { perfectionist } from './perfectionist'
+import { pnpm } from './pnpm'
+import { prettier } from './prettier'
+import { react } from './react'
+import { regexp } from './regexp'
+import { solid } from './solid'
+import { sortPackageJson, sortTsconfig } from './sort'
+import { stylistic } from './stylistic'
+import { svelte } from './svelte'
+import { test } from './test'
+import { toml } from './toml'
+import { typescript } from './typescript'
+import { unicorn } from './unicorn'
+import { unocss } from './unocss'
+import { vue } from './vue'
+import { vueA11y } from './vue-a11y'
+import { yaml } from './yaml'
 
 /**
  * Check if a framework option is enabled
@@ -64,6 +66,7 @@ import {
 function isEnabled(option: unknown): boolean {
 	if (option === undefined) return false
 	if (option === 'auto') return false
+
 	return option === true || typeof option === 'object'
 }
 
@@ -89,6 +92,7 @@ function resolveOptionsOverrides<K extends string>(
 	key: K,
 ): OptionsOverrides {
 	const subOptions = resolveSubOptions(options, key)
+
 	return {
 		overrides: (subOptions.overrides as Linter.RulesRecord) || {},
 	}
@@ -99,51 +103,51 @@ function resolveOptionsOverrides<K extends string>(
  */
 export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	const {
-		type: _type = 'app',
-		autoDetect = true,
-		typescript: tsOption = true,
-		vue: vueOption = 'auto',
-		react: reactOption = 'auto',
-		svelte: svelteOption = 'auto',
-		solid: solidOption = 'auto',
-		nextjs: nextjsOption = 'auto',
-		nuxt: nuxtOption = 'auto',
-		astro: astroOption = 'auto',
 		angular: angularOption = 'auto',
-		jsonc: jsoncOption = true,
-		yaml: yamlOption = true,
-		markdown: markdownOption = true,
-		toml: tomlOption = true,
-		imports: importsOption = true,
-		unicorn: unicornOption = true,
-		perfectionist: perfectionistOption = true,
-		regexp: regexpOption = true,
-		test: testOption = true,
-		node: nodeOption = true,
-		eslintComments: eslintCommentsOption = true,
-		prettier: prettierOption = true,
-		stylistic: stylisticOption = false,
-		unocss: unocssOption = 'auto',
+		astro: astroOption = 'auto',
+		autoDetect = true,
+		command: commandOption = true,
+		disables: disablesOption = true,
 		e18e: e18eOption = false,
-		pnpm: pnpmOption = false,
+		eslintComments: eslintCommentsOption = true,
+		extends: extendConfigs = [],
 		formatters: formattersOption = false,
 		gitignore: gitignoreOption = true,
-		disables: disablesOption = true,
-		command: commandOption = true,
+		ignores: ignorePatterns,
+		imports: importsOption = true,
+		isInEditor,
+		jsonc: jsoncOption = true,
+		jsxA11y: jsxA11yOption = false,
+		markdown: markdownOption = true,
+		nextjs: nextjsOption = 'auto',
+		node: nodeOption = true,
+		nuxt: nuxtOption = 'auto',
+		perfectionist: perfectionistOption = true,
+		pnpm: pnpmOption = false,
+		prettier: prettierOption = false,
+		react: reactOption = 'auto',
+		regexp: regexpOption = true,
+		rules: customRules = {},
+		solid: solidOption = 'auto',
 		sortPackageJson: sortPackageJsonOption = true,
 		sortTsconfig: sortTsconfigOption = true,
-		jsxA11y: jsxA11yOption = false,
-		isInEditor,
-		ignores: ignorePatterns,
-		rules: customRules = {},
-		extends: extendConfigs = [],
+		stylistic: stylisticOption = true,
+		svelte: svelteOption = 'auto',
+		test: testOption = true,
+		toml: tomlOption = true,
+		type: _type = 'app',
+		typescript: tsOption = true,
+		unicorn: unicornOption = true,
+		unocss: unocssOption = 'auto',
+		vue: vueOption = 'auto',
+		yaml: yamlOption = true,
 	} = options
 
 	// Detect editor environment
 	const inEditor = isInEditor ?? isInEditorEnv()
 
 	if (inEditor) {
-		console.log('[@eslint-sets/eslint-config] Detected running in editor, some rules are disabled.')
+		console.info('[@eslint-sets/eslint-config] Detected running in editor, some rules are disabled.')
 	}
 
 	const configs: Linter.Config[] = []
@@ -154,6 +158,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Add gitignore patterns if enabled
 	if (gitignoreOption) {
 		const gitignorePatterns = await getGitignorePatterns()
+
 		allIgnores.push(...gitignorePatterns)
 	}
 
@@ -171,6 +176,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// TypeScript
 	if (isEnabled(tsOption) || (isAutoDetect(tsOption) && autoDetect && hasTypeScript())) {
 		const tsOpts: TypeScriptOptions = isOptionsObject(tsOption) ? { ...tsOption } : {}
+
 		tsOpts.overrides = getOverrides(options as Record<string, unknown>, 'typescript')
 		configs.push(...typescript(tsOpts))
 	}
@@ -178,6 +184,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Vue
 	if (isEnabled(vueOption) || (isAutoDetect(vueOption) && autoDetect && hasVue())) {
 		const vueOpts: VueOptions = isOptionsObject(vueOption) ? { ...vueOption } : {}
+
 		vueOpts.overrides = getOverrides(options as Record<string, unknown>, 'vue')
 		configs.push(...(await vue(vueOpts)))
 	}
@@ -185,6 +192,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// React
 	if (isEnabled(reactOption) || (isAutoDetect(reactOption) && autoDetect && hasReact())) {
 		const reactOpts: ReactOptions = isOptionsObject(reactOption) ? { ...reactOption } : {}
+
 		reactOpts.overrides = getOverrides(options as Record<string, unknown>, 'react')
 		reactOpts.a11y = reactOpts.a11y ?? jsxA11yOption
 		configs.push(...(await react(reactOpts)))
@@ -229,18 +237,21 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// JSON/JSONC
 	if (jsoncOption !== false) {
 		const jsoncOpts = typeof jsoncOption === 'object' ? jsoncOption : {}
+
 		configs.push(...jsonc(jsoncOpts))
 	}
 
 	// YAML
 	if (yamlOption !== false) {
 		const yamlOpts = typeof yamlOption === 'object' ? yamlOption : {}
+
 		configs.push(...yaml(yamlOpts))
 	}
 
 	// Markdown
 	if (markdownOption !== false) {
 		const markdownOpts = typeof markdownOption === 'object' ? markdownOption : {}
+
 		configs.push(...(await markdown(markdownOpts)))
 	}
 
@@ -252,18 +263,22 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Imports
 	if (importsOption !== false) {
 		const importsOpts = typeof importsOption === 'object' ? importsOption : {}
+
 		configs.push(imports(importsOpts))
 	}
 
 	// Unicorn
 	if (unicornOption !== false) {
 		const unicornOpts = typeof unicornOption === 'object' ? unicornOption : {}
+
 		configs.push(unicorn(unicornOpts))
 	}
 
 	// Perfectionist
 	if (perfectionistOption !== false) {
-		configs.push(perfectionist())
+		const perfectionistOpts: PerfectionistOptions = typeof perfectionistOption === 'object' ? perfectionistOption : {}
+
+		configs.push(perfectionist(perfectionistOpts))
 	}
 
 	// Regexp
@@ -274,6 +289,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Test
 	if (testOption !== false) {
 		const testOpts = typeof testOption === 'object' ? testOption : {}
+
 		configs.push(test(testOpts))
 		configs.push(...(await noOnlyTests()))
 	}
@@ -310,8 +326,8 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// JSX A11y (if not already included in React)
 	if (
-		jsxA11yOption &&
-		!(isEnabled(reactOption) || (isAutoDetect(reactOption) && autoDetect && hasReact()))
+		jsxA11yOption
+		&& !(isEnabled(reactOption) || (isAutoDetect(reactOption) && autoDetect && hasReact()))
 	) {
 		configs.push(...(await jsxA11y()))
 	}
@@ -342,14 +358,17 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// Stylistic (code formatting with ESLint)
 	if (stylisticOption !== false && stylisticOption !== undefined) {
-		const stylisticOpts = typeof stylisticOption === 'object' ? stylisticOption : {}
+		const stylisticOpts: StylisticOptions = typeof stylisticOption === 'object' ? stylisticOption : {}
+
 		configs.push(...stylistic(stylisticOpts))
 	}
 
 	// Prettier (should be last, before custom rules)
-	// Note: When stylistic is enabled, prettier is typically disabled
-	if (prettierOption !== false && !stylisticOption) {
-		configs.push(...prettier())
+	// Note: When stylistic is enabled (default), prettier is disabled to avoid conflicts
+	if (prettierOption !== false && stylisticOption === false) {
+		const prettierOpts: PrettierOptions = typeof prettierOption === 'object' ? prettierOption : {}
+
+		configs.push(...prettier(prettierOpts))
 	}
 
 	// Custom rules
@@ -368,56 +387,56 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	return combine(...configs)
 }
 
-// Export utilities
-export * from '../utils'
+// Export constants
+export * from '../constants'
 
 // Export all config modules
 export {
-	vue,
-	yaml,
-	test,
-	node,
-	toml,
-	nuxt,
-	e18e,
-	pnpm,
-	react,
-	jsonc,
-	solid,
-	astro,
-	svelte,
-	regexp,
-	nextjs,
-	unocss,
 	angular,
+	astro,
+	command,
+	disables,
+	e18e,
+	eslintComments,
+	formatters,
 	ignores,
 	imports,
-	unicorn,
-	command,
-	jsxA11y,
-	vueA11y,
-	markdown,
-	prettier,
-	disables,
-	stylistic,
-	formatters,
 	javascript,
-	typescript,
+	jsonc,
+	jsxA11y,
+	markdown,
+	nextjs,
+	node,
 	noOnlyTests,
-	sortTsconfig,
+	nuxt,
 	perfectionist,
-	eslintComments,
+	pnpm,
+	prettier,
+	react,
+	regexp,
+	solid,
 	sortPackageJson,
+	sortTsconfig,
+	stylistic,
+	svelte,
+	test,
+	toml,
+	typescript,
+	unicorn,
+	unocss,
+	vue,
+	vueA11y,
+	yaml,
 }
 
 // Export plugin helpers
 export * from '../plugins'
 
-// Export constants
-export * from '../constants'
-
 // Export types
-export type { Linter, Options, ProjectType, FrameworkOptions, OptionsOverrides } from '../types'
-export type { VueOptions } from './vue'
+export type { FrameworkOptions, Linter, Options, OptionsOverrides, ProjectType } from '../types'
+
+// Export utilities
+export * from '../utils'
 export type { ReactOptions } from './react'
 export type { TypeScriptOptions } from './typescript'
+export type { VueOptions } from './vue'

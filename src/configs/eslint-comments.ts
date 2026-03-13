@@ -30,8 +30,8 @@ export async function eslintComments(
 
 	return [
 		{
-			name: 'eslint-sets/eslint-comments',
 			files: [GLOB_SRC],
+			name: 'eslint-sets/eslint-comments',
 			plugins: {
 				'@eslint-community/eslint-comments': plugin as any,
 			},

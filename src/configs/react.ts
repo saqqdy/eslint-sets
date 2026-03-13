@@ -8,17 +8,17 @@ import { hasReactCompiler, loadPlugin } from '../plugins'
  */
 export interface ReactOptions extends OptionsOverrides {
 	/**
-	 * Enable React Compiler rules
-	 * @default auto-detect
-	 */
-	reactCompiler?: boolean
-
-	/**
 	 * Enable JSX accessibility rules
 	 * Requires eslint-plugin-jsx-a11y
 	 * @default false
 	 */
 	a11y?: boolean
+
+	/**
+	 * Enable React Compiler rules
+	 * @default auto-detect
+	 */
+	reactCompiler?: boolean
 }
 
 // Type definitions for React plugins
@@ -38,7 +38,7 @@ interface ESLintPluginJsxA11y {
  * React configuration
  */
 export async function react(options: ReactOptions = {}): Promise<Linter.Config[]> {
-	const { reactCompiler = hasReactCompiler(), a11y = false, overrides = {} } = options
+	const { a11y = false, overrides = {}, reactCompiler = hasReactCompiler() } = options
 
 	const [reactPlugin, hooksPlugin, refreshPlugin, jsxA11yPlugin] = await Promise.all([
 		loadPlugin<ESLintPluginReact>('eslint-plugin-react'),
@@ -53,14 +53,7 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 
 	const configs: Linter.Config[] = [
 		{
-			name: 'eslint-sets/react/setup',
 			files: [GLOB_REACT],
-			plugins: {
-				react: reactPlugin,
-				'react-hooks': hooksPlugin,
-				...(refreshPlugin && { 'react-refresh': refreshPlugin }),
-				...(jsxA11yPlugin && { 'jsx-a11y': jsxA11yPlugin as any }),
-			},
 			languageOptions: {
 				parserOptions: {
 					ecmaFeatures: {
@@ -68,12 +61,17 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 					},
 				},
 			},
-			settings: {
-				react: {
-					version: 'detect',
-				},
+			name: 'eslint-sets/react/setup',
+			plugins: {
+				react: reactPlugin,
+				'react-hooks': hooksPlugin,
+				...(refreshPlugin && { 'react-refresh': refreshPlugin }),
+				...(jsxA11yPlugin && { 'jsx-a11y': jsxA11yPlugin as any }),
 			},
 			rules: {
+				'react-hooks/exhaustive-deps': 'warn',
+				// React Hooks rules
+				'react-hooks/rules-of-hooks': 'error',
 				// React rules
 				'react/boolean-prop-naming': 'off',
 				'react/button-has-type': 'error',
@@ -101,8 +99,8 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				'react/jsx-curly-brace-presence': [
 					'error',
 					{
-						props: 'never',
 						children: 'never',
+						props: 'never',
 					},
 				],
 				'react/jsx-curly-newline': 'off',
@@ -146,10 +144,10 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				'react/jsx-tag-spacing': [
 					'error',
 					{
-						closingSlash: 'never',
-						beforeSelfClosing: 'always',
 						afterOpening: 'never',
 						beforeClosing: 'never',
+						beforeSelfClosing: 'always',
+						closingSlash: 'never',
 					},
 				],
 				'react/jsx-uses-react': 'off',
@@ -199,12 +197,9 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				'react/sort-default-props': 'off',
 				'react/sort-prop-types': 'off',
 				'react/state-in-constructor': 'off',
+
 				'react/style-prop-object': 'error',
 				'react/void-dom-elements-no-children': 'error',
-
-				// React Hooks rules
-				'react-hooks/rules-of-hooks': 'error',
-				'react-hooks/exhaustive-deps': 'warn',
 
 				// React Refresh rules
 				...(refreshPlugin && {
@@ -225,14 +220,19 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				// User overrides
 				...overrides,
 			},
+			settings: {
+				react: {
+					version: 'detect',
+				},
+			},
 		},
 	]
 
 	// Add JSX a11y rules if enabled
 	if (a11y && jsxA11yPlugin) {
 		configs.push({
-			name: 'eslint-sets/react/a11y',
 			files: [GLOB_TSX],
+			name: 'eslint-sets/react/a11y',
 			plugins: {
 				'jsx-a11y': jsxA11yPlugin as any,
 			},

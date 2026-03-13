@@ -25,8 +25,8 @@ export async function nextjs(options: NextjsOptions = {}): Promise<Linter.Config
 
 	return [
 		{
-			name: 'eslint-sets/nextjs',
 			files: [GLOB_SRC],
+			name: 'eslint-sets/nextjs',
 			plugins: {
 				'@next/next': nextPlugin as any,
 			},

@@ -11,8 +11,8 @@ export async function createESLint(
 	const configs = typeof config === 'function' ? await config() : config
 
 	return new ESLint({
-		overrideConfigFile: true,
 		overrideConfig: configs,
+		overrideConfigFile: true,
 	})
 }
 
@@ -27,11 +27,12 @@ export async function lintContent(
 	const configs = typeof config === 'function' ? await config() : config
 
 	const eslint = new ESLint({
-		overrideConfigFile: true,
 		overrideConfig: configs,
+		overrideConfigFile: true,
 	})
 
 	const results = await eslint.lintText(code, { filePath })
+
 	return results[0]?.messages || []
 }
 

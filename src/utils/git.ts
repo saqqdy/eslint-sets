@@ -44,6 +44,7 @@ export async function findGitignore(cwd: string = process.cwd()): Promise<string
 
 	try {
 		const content = readFileSync(gitignorePath, 'utf-8')
+
 		return parseGitignore(content)
 	} catch {
 		return []
@@ -62,6 +63,7 @@ export async function getGitignorePatterns(cwd: string = process.cwd()): Promise
 	if (gitignorePath) {
 		try {
 			const content = readFileSync(gitignorePath, 'utf-8')
+
 			patterns.push(...parseGitignore(content))
 		} catch {
 			// Ignore errors
@@ -70,9 +72,11 @@ export async function getGitignorePatterns(cwd: string = process.cwd()): Promise
 
 	// Also check for .git/info/exclude
 	const gitExcludePath = resolve(cwd, '.git', 'info', 'exclude')
+
 	if (existsSync(gitExcludePath)) {
 		try {
 			const content = readFileSync(gitExcludePath, 'utf-8')
+
 			patterns.push(...parseGitignore(content))
 		} catch {
 			// Ignore errors

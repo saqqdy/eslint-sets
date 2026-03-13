@@ -7,13 +7,14 @@ describe('Disables Config', () => {
 			async () =>
 				await (
 					await import('../src/index')
-				).default({
+				).default({ autoDetect: false,
 					disables: true,
 				}),
 			`console.log('Config loaded')`,
 			'eslint.config.ts',
 		)
 		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+
 		expect(consoleErrors).toHaveLength(0)
 	})
 
@@ -22,7 +23,7 @@ describe('Disables Config', () => {
 			async () =>
 				await (
 					await import('../src/index')
-				).default({
+				).default({ autoDetect: false,
 					disables: true,
 				}),
 			`{
@@ -33,6 +34,7 @@ describe('Disables Config', () => {
 }`,
 			'package.json',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
@@ -41,7 +43,7 @@ describe('Disables Config', () => {
 			async () =>
 				await (
 					await import('../src/index')
-				).default({
+				).default({ autoDetect: false,
 					disables: true,
 					markdown: true,
 				}),
@@ -55,6 +57,7 @@ console.log('hello')
 		)
 		// Markdown parsing may have issues, just check no TypeScript errors
 		const tsErrors = messages.filter((m) => m.ruleId?.includes('typescript') && m.severity === 2)
+
 		expect(tsErrors).toHaveLength(0)
 	})
 
@@ -63,13 +66,14 @@ console.log('hello')
 			async () =>
 				await (
 					await import('../src/index')
-				).default({
+				).default({ autoDetect: false,
 					disables: true,
 				}),
 			`const path = require('path')
 module.exports = {}`,
 			'config.cjs',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 })

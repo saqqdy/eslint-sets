@@ -31,8 +31,8 @@ export async function jsxA11y(options: JsxA11yOptions = {}): Promise<Linter.Conf
 
 	return [
 		{
-			name: 'eslint-sets/jsx-a11y',
 			files: [GLOB_TSX],
+			name: 'eslint-sets/jsx-a11y',
 			plugins: {
 				'jsx-a11y': plugin as any,
 			},

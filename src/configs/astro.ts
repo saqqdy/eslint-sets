@@ -29,7 +29,6 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 
 	return [
 		{
-			name: 'eslint-sets/astro',
 			files: [GLOB_ASTRO],
 			languageOptions: {
 				parser: astroParser,
@@ -38,6 +37,7 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 					sourceType: 'module',
 				},
 			},
+			name: 'eslint-sets/astro',
 			plugins: {
 				astro: astroPlugin as any,
 			},
@@ -47,14 +47,14 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 					? astroPlugin.configs.recommended.find((c: any) => c.rules)?.rules || {}
 					: {}),
 
-				// Additional Astro rules
-				'astro/semi': 'off',
 				'astro/missing-client-only-directive-value': 'error',
 				'astro/no-set-html-directive': 'off',
 				'astro/no-unused-css-selector': 'warn',
 				'astro/prefer-class-list-directive': 'warn',
 				'astro/prefer-object-class-list': 'warn',
 				'astro/prefer-split-class-list': 'warn',
+				// Additional Astro rules
+				'astro/semi': 'off',
 				'astro/valid-astro': 'error',
 
 				// User overrides

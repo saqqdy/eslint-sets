@@ -8,8 +8,9 @@ Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript
 ## Features
 
 - 🚀 **ESLint v9 Flat Config** - Uses the modern flat config format
-- 🎨 **Prettier Integration** - Seamless integration with Prettier
-- ✨ **Stylistic Support** - Optional `@stylistic/eslint-plugin` for code formatting without Prettier
+- 🎨 **@stylistic Integration** - Default formatting with `@stylistic/eslint-plugin` (no Prettier needed)
+- 📝 **TypeScript TypeGen** - Auto-generated types for all rules with full IntelliSense support
+- ✨ **Prettier Support** - Optional Prettier integration for those who prefer it
 - 📦 **Auto-detection** - Automatically detects installed frameworks
 - 🔧 **Highly Configurable** - Fine-grained control over enabled features
 - 🙈 **Git Ignore Support** - Automatically read `.gitignore` patterns (default: on)
@@ -20,6 +21,7 @@ Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript
 - 📝 **Auto-sort** - Automatically sort package.json and tsconfig.json
 - 🔍 **Editor Detection** - Automatically detect editor environment
 - 🔎 **Config Inspector** - Visual tool for inspecting your ESLint config
+- 📊 **Perfectionist Sorting** - Import/export sorting with natural ordering
 
 ## Supported Frameworks
 
@@ -95,93 +97,90 @@ export default eslintConfig()
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-	// Project type: 'app' (default) or 'lib'
-	type: 'lib',
-
-	// TypeScript support (default: true)
-	typescript: true,
-
-	// Vue support (default: 'auto' - auto-detect)
-	vue: true,
-	// Or with options:
-	vue: {
-		vueVersion: 3,
-		a11y: true, // Enable accessibility rules
-	},
-
-	// React support (default: 'auto' - auto-detect)
-	react: true,
-	// Or with options:
-	react: {
-		reactCompiler: true, // React Compiler support
-		a11y: true, // Enable JSX accessibility rules
-	},
-
-	// Svelte support (default: 'auto' - auto-detect)
-	svelte: true,
-
-	// Solid support (default: 'auto' - auto-detect)
-	solid: true,
-
-	// Next.js support (default: 'auto' - auto-detect)
-	nextjs: true,
-
-	// Nuxt support (default: 'auto' - auto-detect)
-	nuxt: true,
+	// Angular support (default: 'auto' - auto-detect)
+	angular: true,
 
 	// Astro support (default: 'auto' - auto-detect)
 	astro: true,
 
-	// Angular support (default: 'auto' - auto-detect)
-	angular: true,
-
-	// UnoCSS support (default: 'auto' - auto-detect)
-	unocss: true,
-
-	// Test file support (default: true)
-	test: true,
-
-	// Prettier integration (default: true)
-	prettier: true,
-
-	// Stylistic formatting (default: false)
-	// When enabled, Prettier is automatically disabled
-	stylistic: true,
-	// Or with custom options:
-	stylistic: {
-		indent: 2, // 'tab' | number
-		quotes: 'single', // 'single' | 'double'
-		semi: false, // boolean
-		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
-		trailingComma: 'all', // 'none' | 'es5' | 'all'
-		bracketSpacing: true, // boolean
-		arrowParens: 'always', // 'always' | 'avoid'
-	},
+	// Relax rules for scripts (default: true)
+	command: true,
+	// Disable rules in config files (default: true)
+	disables: true,
 
 	// e18e modernization rules (default: false)
 	e18e: true,
-
-	// pnpm workspace support (default: false)
-	pnpm: true,
+	// ESLint comments rules (default: true)
+	eslintComments: true,
 
 	// External formatters (default: false)
 	formatters: {
 		css: 'prettier',
-		html: 'prettier',
-		xml: 'prettier',
-		svg: 'prettier',
 		graphql: 'prettier',
+		html: 'prettier',
 		markdown: 'prettier',
+		svg: 'prettier',
+		xml: 'prettier',
 	},
 
 	// Auto-read .gitignore (default: true)
 	gitignore: true,
 
-	// Disable rules in config files (default: true)
-	disables: true,
+	// Files to ignore
+	ignores: ['**/dist/**', '**/node_modules/**'],
 
-	// Relax rules for scripts (default: true)
-	command: true,
+	// Or modify defaults:
+	ignores: (defaults) => [...defaults, '**/custom/**'],
+
+	// Import rules (default: true)
+	imports: true,
+
+	// JSON/JSONC support (default: true)
+	jsonc: true,
+
+	// JSX Accessibility rules (default: false)
+	jsxA11y: true,
+
+	// Markdown support (default: true)
+	markdown: true,
+
+	// Next.js support (default: 'auto' - auto-detect)
+	nextjs: true,
+	// Node.js rules (default: true)
+	node: true,
+
+	// Nuxt support (default: 'auto' - auto-detect)
+	nuxt: true,
+
+	// Perfectionist sorting (default: true)
+	perfectionist: true,
+
+	// pnpm workspace support (default: false)
+	pnpm: true,
+
+	// Prettier integration (default: false)
+	// Note: Must set stylistic: false to use prettier
+	prettier: false,
+
+	// React support (default: 'auto' - auto-detect)
+	react: true,
+
+	// Or with options:
+	react: {
+		a11y: true, // Enable JSX accessibility rules
+		reactCompiler: true, // React Compiler support
+	},
+
+	// Regexp rules (default: true)
+	regexp: true,
+
+	// Custom rule overrides
+	rules: {
+		'no-console': 'off',
+	},
+
+	// Solid support (default: 'auto' - auto-detect)
+	solid: true,
 
 	// Auto-sort package.json (default: true)
 	sortPackageJson: true,
@@ -189,45 +188,49 @@ export default eslintConfig({
 	// Auto-sort tsconfig.json (default: true)
 	sortTsconfig: true,
 
-	// JSX Accessibility rules (default: false)
-	jsxA11y: true,
+	// Stylistic formatting (default: true)
+	// Uses @stylistic/eslint-plugin for code formatting
+	stylistic: true,
 
-	// JSON/JSONC support (default: true)
-	jsonc: true,
+	// Or with custom options:
+	stylistic: {
+		arrowParens: 'always', // 'always' | 'avoid'
+		bracketSpacing: true, // boolean
+		indent: 2, // 'tab' | number
+		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
+		quotes: 'single', // 'single' | 'double'
+		semi: false, // boolean
+		trailingComma: 'always-multiline', // 'none' | 'es5' | 'always-multiline' | 'all'
+	},
 
-	// YAML support (default: true)
-	yaml: true,
+	// Svelte support (default: 'auto' - auto-detect)
+	svelte: true,
 
-	// Markdown support (default: true)
-	markdown: true,
+	// Test file support (default: true)
+	test: true,
 
-	// Import rules (default: true)
-	imports: true,
+	// Project type: 'app' (default) or 'lib'
+	type: 'lib',
+
+	// TypeScript support (default: true)
+	typescript: true,
 
 	// Unicorn rules (default: true)
 	unicorn: true,
 
-	// Perfectionist sorting (default: true)
-	perfectionist: true,
+	// UnoCSS support (default: 'auto' - auto-detect)
+	unocss: true,
 
-	// Regexp rules (default: true)
-	regexp: true,
-
-	// ESLint comments rules (default: true)
-	eslintComments: true,
-
-	// Node.js rules (default: true)
-	node: true,
-
-	// Files to ignore
-	ignores: ['**/dist/**', '**/node_modules/**'],
-	// Or modify defaults:
-	ignores: (defaults) => [...defaults, '**/custom/**'],
-
-	// Custom rule overrides
-	rules: {
-		'no-console': 'off',
+	// Vue support (default: 'auto' - auto-detect)
+	vue: true,
+	// Or with options:
+	vue: {
+		a11y: true, // Enable accessibility rules
+		vueVersion: 3,
 	},
+
+	// YAML support (default: true)
+	yaml: true,
 })
 ```
 
@@ -249,31 +252,49 @@ export default eslintConfig({
 
 This config supports two formatting approaches:
 
-1. **Prettier** (default): Uses `eslint-plugin-prettier` to integrate Prettier with ESLint.
-2. **Stylistic**: Uses `@stylistic/eslint-plugin` for pure ESLint-based formatting.
+1. **Stylistic** (default): Uses `@stylistic/eslint-plugin` for pure ESLint-based formatting - no additional tool needed.
+2. **Prettier**: Uses `eslint-plugin-prettier` to integrate Prettier with ESLint.
 
 ```typescript
-// Use Prettier (default)
+// Use Stylistic (default)
 export default eslintConfig({
-	prettier: true,
-})
-
-// Use Stylistic instead
-export default eslintConfig({
-	prettier: false,
-	stylistic: true,
+	stylistic: true, // or just use defaults
 })
 
 // Use Stylistic with custom options
 export default eslintConfig({
-	prettier: false,
 	stylistic: {
-		indent: 2,
-		quotes: 'single',
-		semi: false,
+		arrowParens: 'always', // 'always' | 'avoid'
+		bracketSpacing: true, // boolean
+		indent: 2, // 'tab' | number
+		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
+		quotes: 'single', // 'single' | 'double'
+		semi: false, // boolean
+		trailingComma: 'always-multiline', // 'none' | 'es5' | 'always-multiline' | 'all'
 	},
 })
+
+// Use Prettier instead (must disable stylistic)
+export default eslintConfig({
+	prettier: true,
+	stylistic: false,
+})
+
+// Use Prettier with custom options
+export default eslintConfig({
+	prettier: {
+		printWidth: 120,
+		semi: false,
+		singleQuote: true,
+		tabWidth: 2,
+		trailingComma: 'all',
+		useTabs: false,
+	},
+	stylistic: false,
+})
 ```
+
+**Note**: Stylistic and Prettier are mutually exclusive. When `stylistic` is enabled (default), Prettier is automatically disabled.
 
 ### Accessibility Rules
 
@@ -320,11 +341,11 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	type: 'lib',
-	vue: {
-		vueVersion: 3,
-		a11y: true,
-	},
 	typescript: true,
+	vue: {
+		a11y: true,
+		vueVersion: 3,
+	},
 })
 ```
 
@@ -335,8 +356,8 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	react: {
-		reactCompiler: true,
 		a11y: true,
+		reactCompiler: true,
 	},
 	typescript: true,
 })
@@ -361,8 +382,8 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	nuxt: true,
-	vue: true,
 	typescript: true,
+	vue: true,
 })
 ```
 
@@ -423,6 +444,41 @@ export default eslintConfig({
 	},
 })
 ```
+
+## TypeScript Support
+
+This package provides full TypeScript support with auto-generated types:
+
+```typescript
+import type { TypedFlatConfigItem, Rules, RuleOptions, ConfigNames } from '@eslint-sets/eslint-config'
+
+// TypedFlatConfigItem - Full type checking for config objects
+const myConfig: TypedFlatConfigItem = {
+	name: 'my-config',
+	rules: {
+		'no-console': 'off',
+		'@stylistic/semi': ['error', 'always'], // IDE shows available options
+	},
+}
+
+// Rules - All available rule names with type checking
+const myRules: Rules = {
+	'no-console': 'off',
+}
+
+// ConfigNames - All available config names
+type MyConfigs = ConfigNames // 'eslint-sets/javascript' | 'eslint-sets/vue' | ...
+```
+
+### Regenerating Types
+
+If you're contributing to this package, regenerate types after adding new plugins:
+
+```shell
+pnpm run gen
+```
+
+This generates `src/typegen.d.ts` with all rule types.
 
 ## Config Inspector
 

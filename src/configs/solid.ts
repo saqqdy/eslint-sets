@@ -15,12 +15,12 @@ export async function solid(): Promise<Linter.Config[]> {
 
 	return [
 		{
-			name: 'eslint-sets/solid',
 			files: [GLOB_SOLID],
+			languageOptions: flatRecommended?.languageOptions,
+			name: 'eslint-sets/solid',
 			plugins: {
 				solid: ((flatRecommended?.plugins as Record<string, unknown>)?.solid as any) || solidPlugin,
 			},
-			languageOptions: flatRecommended?.languageOptions,
 			rules: {
 				// Use recommended rules as base
 				...((flatRecommended as Record<string, unknown>)?.rules as Record<string, unknown>),

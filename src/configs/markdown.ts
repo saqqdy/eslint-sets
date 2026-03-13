@@ -23,18 +23,18 @@ export async function markdown(options: MarkdownOptions = {}): Promise<Linter.Co
 	if (plugin) {
 		return [
 			{
-				name: 'eslint-sets/markdown',
 				files: [GLOB_MD],
+				name: 'eslint-sets/markdown',
 				plugins: {
 					markdown: plugin as any,
 				},
 				rules: {
+					'markdown/no-empty-definitions': 'error',
 					// Markdown rules from @eslint/markdown
 					'markdown/no-html': 'off',
-					'markdown/require-alt-text': 'warn',
 					'markdown/no-missing-atx-heading-space': 'error',
 					'markdown/no-multiple-h1': 'warn',
-					'markdown/no-empty-definitions': 'error',
+					'markdown/require-alt-text': 'warn',
 
 					// User overrides
 					...overrides,
@@ -46,8 +46,8 @@ export async function markdown(options: MarkdownOptions = {}): Promise<Linter.Co
 	// Fallback: basic configuration without rules
 	return [
 		{
-			name: 'eslint-sets/markdown/setup',
 			files: [GLOB_MD],
+			name: 'eslint-sets/markdown/setup',
 			rules: {
 				// No markdown-specific rules available
 				...overrides,

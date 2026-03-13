@@ -21,11 +21,9 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 	const { isInEditor = false, overrides = {} } = options
 
 	return {
-		name: 'eslint-sets/javascript',
 		files: [GLOB_SRC],
 		languageOptions: {
 			ecmaVersion: 2022,
-			sourceType: 'module',
 			globals: {
 				...globals.browser,
 				...globals.es2021,
@@ -39,10 +37,12 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 					jsx: true,
 				},
 			},
+			sourceType: 'module',
 		},
 		linterOptions: {
 			reportUnusedDisableDirectives: true,
 		},
+		name: 'eslint-sets/javascript',
 		rules: {
 			...js.configs.recommended.rules,
 
@@ -175,9 +175,9 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 			'one-var': [
 				'warn',
 				{
-					var: 'always',
-					let: 'always',
 					const: 'never',
+					let: 'always',
+					var: 'always',
 				},
 			],
 			'operator-linebreak': 'off',
@@ -201,16 +201,8 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 			'prefer-rest-params': 'error',
 			'prefer-spread': 'error',
 			'prefer-template': 'error',
-			'sort-imports': [
-				'error',
-				{
-					allowSeparatedGroups: false,
-					ignoreCase: false,
-					ignoreDeclarationSort: true,
-					ignoreMemberSort: false,
-					memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-				},
-			],
+			// Note: sort-imports is disabled - sorting is handled by perfectionist/sort-imports
+			'sort-imports': 'off',
 			'space-before-function-paren': 'off',
 			'symbol-description': 'error',
 			'unicode-bom': ['error', 'never'],
@@ -222,8 +214,8 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 			// Disable in editor for performance
 			...(isInEditor
 				? {
-						'no-unused-vars': 'off',
-					}
+					'no-unused-vars': 'off',
+				}
 				: {}),
 
 			// User overrides

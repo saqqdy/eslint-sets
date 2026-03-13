@@ -1,10 +1,10 @@
 export interface Answers {
-	type: 'app' | 'lib'
-	typescript: boolean
-	frameworks: string[]
+	a11y: boolean
 	formatter: string
+	frameworks: string[]
 	gitignore: boolean
 	sortPackageJson: boolean
 	sortTsconfig: boolean
-	a11y: boolean
+	type: 'app' | 'lib'
+	typescript: boolean
 }

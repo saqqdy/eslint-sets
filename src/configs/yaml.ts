@@ -20,11 +20,11 @@ export function yaml(options: YamlOptions = {}): Linter.Config[] {
 
 	return [
 		{
-			name: 'eslint-sets/yaml/setup',
 			files: [GLOB_YAML],
 			languageOptions: {
 				parser: yamlParser,
 			},
+			name: 'eslint-sets/yaml/setup',
 			plugins: {
 				yml: ymlPlugin as any,
 			},
@@ -42,7 +42,7 @@ export function yaml(options: YamlOptions = {}): Linter.Config[] {
 				'yml/no-empty-mapping-value': 'error',
 				'yml/no-empty-sequence-entry': 'error',
 				'yml/no-irregular-whitespace': 'error',
-				'yml/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
+				'yml/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
 				'yml/no-tab-indent': 'error',
 				'yml/plain-scalar': 'error',
 				'yml/require-string-key': 'error',

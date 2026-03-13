@@ -2,17 +2,17 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
 	test: {
-		globals: true,
-		environment: 'node',
-		include: ['test/**/*.test.ts'],
-		exclude: ['node_modules', 'dist'],
 		coverage: {
+			exclude: ['src/types.ts', 'src/constants.ts'],
+			include: ['src/**/*.ts'],
 			provider: 'v8',
 			reporter: ['text', 'json', 'html'],
-			include: ['src/**/*.ts'],
-			exclude: ['src/types.ts', 'src/constants.ts'],
 		},
-		testTimeout: 30000,
+		environment: 'node',
+		exclude: ['node_modules', 'dist'],
+		globals: true,
 		hookTimeout: 30000,
+		include: ['test/**/*.test.ts'],
+		testTimeout: 30000,
 	},
 })

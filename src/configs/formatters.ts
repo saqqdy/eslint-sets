@@ -13,15 +13,20 @@ export interface FormattersOptions extends OptionsOverrides {
 	css?: 'prettier' | 'none'
 
 	/**
+	 * Enable GraphQL formatting
+	 */
+	graphql?: 'prettier' | 'none'
+
+	/**
 	 * Enable HTML formatting
 	 * @default 'prettier'
 	 */
 	html?: 'prettier' | 'none'
 
 	/**
-	 * Enable XML formatting
+	 * Enable Markdown formatting (beyond standard markdown config)
 	 */
-	xml?: 'prettier' | 'none'
+	markdown?: 'prettier' | 'none'
 
 	/**
 	 * Enable SVG formatting
@@ -29,14 +34,9 @@ export interface FormattersOptions extends OptionsOverrides {
 	svg?: 'prettier' | 'none'
 
 	/**
-	 * Enable GraphQL formatting
+	 * Enable XML formatting
 	 */
-	graphql?: 'prettier' | 'none'
-
-	/**
-	 * Enable Markdown formatting (beyond standard markdown config)
-	 */
-	markdown?: 'prettier' | 'none'
+	xml?: 'prettier' | 'none'
 }
 
 // Type definition for format plugin
@@ -51,12 +51,12 @@ interface FormatPlugin {
 export async function formatters(options: FormattersOptions = {}): Promise<Linter.Config[]> {
 	const {
 		css = 'prettier',
-		html = 'prettier',
-		xml,
-		svg,
 		graphql,
+		html = 'prettier',
 		markdown,
 		overrides = {},
+		svg,
+		xml,
 	} = options
 
 	const configs: Linter.Config[] = []
@@ -71,8 +71,8 @@ export async function formatters(options: FormattersOptions = {}): Promise<Linte
 			// CSS formatting
 			if (css === 'prettier') {
 				configs.push({
-					name: 'eslint-sets/formatters/css',
 					files: ['**/*.css', '**/*.scss', '**/*.less', '**/*.sass'],
+					name: 'eslint-sets/formatters/css',
 					plugins: {
 						format: formatPlugin as any,
 					},
@@ -85,8 +85,8 @@ export async function formatters(options: FormattersOptions = {}): Promise<Linte
 			// HTML formatting
 			if (html === 'prettier') {
 				configs.push({
-					name: 'eslint-sets/formatters/html',
 					files: ['**/*.html'],
+					name: 'eslint-sets/formatters/html',
 					plugins: {
 						format: formatPlugin as any,
 					},
@@ -99,8 +99,8 @@ export async function formatters(options: FormattersOptions = {}): Promise<Linte
 			// XML formatting
 			if (xml === 'prettier') {
 				configs.push({
-					name: 'eslint-sets/formatters/xml',
 					files: ['**/*.xml'],
+					name: 'eslint-sets/formatters/xml',
 					plugins: {
 						format: formatPlugin as any,
 					},
@@ -113,8 +113,8 @@ export async function formatters(options: FormattersOptions = {}): Promise<Linte
 			// SVG formatting
 			if (svg === 'prettier') {
 				configs.push({
-					name: 'eslint-sets/formatters/svg',
 					files: ['**/*.svg'],
+					name: 'eslint-sets/formatters/svg',
 					plugins: {
 						format: formatPlugin as any,
 					},
@@ -127,8 +127,8 @@ export async function formatters(options: FormattersOptions = {}): Promise<Linte
 			// GraphQL formatting
 			if (graphql === 'prettier') {
 				configs.push({
-					name: 'eslint-sets/formatters/graphql',
 					files: ['**/*.graphql', '**/*.gql'],
+					name: 'eslint-sets/formatters/graphql',
 					plugins: {
 						format: formatPlugin as any,
 					},
@@ -141,8 +141,8 @@ export async function formatters(options: FormattersOptions = {}): Promise<Linte
 			// Markdown formatting (additional)
 			if (markdown === 'prettier') {
 				configs.push({
-					name: 'eslint-sets/formatters/markdown',
 					files: ['**/*.md'],
+					name: 'eslint-sets/formatters/markdown',
 					plugins: {
 						format: formatPlugin as any,
 					},

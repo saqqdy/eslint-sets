@@ -17,11 +17,11 @@ export function jsonc(options: JsoncOptions = {}): Linter.Config[] {
 
 	return [
 		{
-			name: 'eslint-sets/jsonc/setup',
 			files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
 			languageOptions: {
 				parser: jsoncParser,
 			},
+			name: 'eslint-sets/jsonc/setup',
 			plugins: {
 				jsonc: jsoncPlugin as any,
 			},
@@ -47,10 +47,10 @@ export function jsonc(options: JsoncOptions = {}): Linter.Config[] {
 				'jsonc/no-undefined-value': 'error',
 				'jsonc/no-unicode-codepoint-escapes': 'error',
 				'jsonc/no-useless-escape': 'error',
-				'jsonc/space-unary-ops': 'error',
-				'jsonc/valid-json-number': 'error',
 				'jsonc/sort-array-values': 'off',
 				'jsonc/sort-keys': 'off',
+				'jsonc/space-unary-ops': 'error',
+				'jsonc/valid-json-number': 'error',
 
 				// User overrides
 				...overrides,

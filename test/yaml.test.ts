@@ -11,6 +11,7 @@ dependencies:
   lodash: "^4.0.0"`,
 			'test.yaml',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -22,6 +23,7 @@ dependencies:
 key: duplicate`,
 			'test.yaml',
 		)
+
 		// Should have some warnings or errors
 		expect(messages.length).toBeGreaterThanOrEqual(0)
 	})

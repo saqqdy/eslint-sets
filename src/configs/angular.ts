@@ -17,7 +17,7 @@ export interface AngularOptions extends OptionsOverrides {
  * Angular configuration
  */
 export async function angular(options: AngularOptions = {}): Promise<Linter.Config[]> {
-	const { templateFiles = ['**/*.html'], overrides = {} } = options
+	const { overrides = {}, templateFiles = ['**/*.html'] } = options
 
 	const [angularPlugin, angularTemplatePlugin, templateParser] = (await Promise.all([
 		loadPlugin('@angular-eslint/eslint-plugin'),
@@ -31,8 +31,8 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 
 	return [
 		{
-			name: 'eslint-sets/angular',
 			files: [GLOB_TS, GLOB_TSX],
+			name: 'eslint-sets/angular',
 			plugins: {
 				'@angular-eslint': angularPlugin as any,
 			},
@@ -45,17 +45,17 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 				'@angular-eslint/component-max-inline-declarations': [
 					'error',
 					{
-						template: 3,
-						styles: 3,
 						animations: 5,
+						styles: 3,
+						template: 3,
 					},
 				],
 				'@angular-eslint/component-selector': [
 					'error',
 					{
-						type: 'element',
 						prefix: ['app'],
 						style: 'kebab-case',
+						type: 'element',
 					},
 				],
 				'@angular-eslint/consistent-component-styles': 'error',
@@ -63,9 +63,9 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 				'@angular-eslint/directive-selector': [
 					'error',
 					{
-						type: 'attribute',
 						prefix: ['app'],
 						style: 'camelCase',
+						type: 'attribute',
 					},
 				],
 				'@angular-eslint/no-async-lifecycle-method': 'error',
@@ -84,7 +84,6 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 				'@angular-eslint/no-outputs-metadata-property': 'error',
 				'@angular-eslint/no-queries-metadata-property': 'error',
 				'@angular-eslint/prefer-standalone': 'warn',
-				'@angular-eslint/prefer-standalone-component': 'warn',
 				'@angular-eslint/relative-url-prefix': 'error',
 				'@angular-eslint/sort-lifecycle-methods': 'error',
 				'@angular-eslint/use-component-selector': 'error',
@@ -97,11 +96,11 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 			},
 		},
 		{
-			name: 'eslint-sets/angular/template',
 			files: templateFiles,
 			languageOptions: {
 				parser: templateParser as any,
 			},
+			name: 'eslint-sets/angular/template',
 			plugins: {
 				'@angular-eslint/template': angularTemplatePlugin as any,
 			},

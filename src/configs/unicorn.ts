@@ -22,8 +22,8 @@ export function unicorn(options: UnicornOptions = {}): Linter.Config {
 	const { overrides = {} } = options
 
 	return {
-		name: 'eslint-sets/unicorn',
 		files: [GLOB_SRC],
+		name: 'eslint-sets/unicorn',
 		plugins: {
 			unicorn: unicornPlugin as any,
 		},

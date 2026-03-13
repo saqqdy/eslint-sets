@@ -1,46 +1,19 @@
 {
 	"name": "@eslint-sets/eslint-config",
-	"version": "6.0.0",
-	"packageManager": "pnpm@9.0.6",
 	"description": "Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript, Next.js, Nuxt, Astro, Angular, UnoCSS and more",
-	"keywords": [
-		"eslint",
-		"eslint-config",
-		"eslint-flat-config",
-		"vue",
-		"react",
-		"svelte",
-		"typescript",
-		"nextjs",
-		"nuxt",
-		"astro",
-		"angular",
-		"solid",
-		"unocss",
-		"accessibility",
-		"a11y",
-		"cli"
-	],
-	"license": "MIT",
-	"author": "saqqdy <https://github.com/saqqdy>",
-	"homepage": "https://github.com/saqqdy/eslint-sets#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/eslint-sets.git"
-	},
-	"bugs": {
-		"url": "https://github.com/saqqdy/eslint-sets/issues"
-	},
+	"version": "6.0.0-beta.0",
+	"packageManager": "pnpm@9.0.6",
 	"bin": {
 		"eslint-sets": "./dist/cli/index.js"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
+			"require": "./dist/index.cjs",
+			"import": "./dist/index.js"
 		},
 		"./cli": {
 			"types": "./dist/cli/index.d.ts",
@@ -48,14 +21,14 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"types": "./dist/index.d.ts",
 	"files": [
-		"dist",
-		"README.md"
+		"README.md",
+		"dist"
 	],
 	"scripts": {
-		"build": "tsup src/index.ts src/cli/index.ts --format esm,cjs --dts --clean",
+		"build": "pnpm gen && tsup src/index.ts src/cli/index.ts --format esm,cjs --dts --clean",
 		"dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+		"gen": "jiti scripts/typegen.ts",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"typecheck": "tsc --noEmit",
@@ -106,11 +79,25 @@
 		"@vitest/coverage-v8": "2.1.9",
 		"bumpp": "^10.1.0",
 		"eslint": "^9.22.0",
+		"eslint-typegen": "^2.3.1",
 		"jiti": "^2.6.1",
 		"prettier": "^3.5.3",
 		"tsup": "^8.4.0",
 		"typescript": "~5.8.2",
 		"vitest": "^2.1.9"
+	},
+	"peerDependencies": {
+		"eslint": "^9.10.0 || ^9.22.0",
+		"prettier": "^3.5.3",
+		"typescript": ">=5.0.0"
+	},
+	"peerDependenciesMeta": {
+		"prettier": {
+			"optional": true
+		},
+		"typescript": {
+			"optional": true
+		}
 	},
 	"optionalDependencies": {
 		"@angular-eslint/eslint-plugin": "^19.0.0",
@@ -133,17 +120,32 @@
 		"svelte": "^5.25.0",
 		"svelte-eslint-parser": "^1.0.0"
 	},
-	"peerDependencies": {
-		"eslint": "^9.10.0 || ^9.22.0",
-		"prettier": "^3.5.3",
-		"typescript": ">=5.0.0"
+	"keywords": [
+		"eslint",
+		"eslint-config",
+		"eslint-flat-config",
+		"vue",
+		"react",
+		"svelte",
+		"typescript",
+		"nextjs",
+		"nuxt",
+		"astro",
+		"angular",
+		"solid",
+		"unocss",
+		"accessibility",
+		"a11y",
+		"cli"
+	],
+	"license": "MIT",
+	"author": "saqqdy <https://github.com/saqqdy>",
+	"homepage": "https://github.com/saqqdy/eslint-sets#readme",
+	"bugs": {
+		"url": "https://github.com/saqqdy/eslint-sets/issues"
 	},
-	"peerDependenciesMeta": {
-		"prettier": {
-			"optional": true
-		},
-		"typescript": {
-			"optional": true
-		}
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/eslint-sets.git"
 	}
 }

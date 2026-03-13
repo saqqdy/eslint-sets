@@ -15,6 +15,7 @@ export function main() {
 }`,
 			'main.js',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -33,6 +34,7 @@ export function greet(user: User): string {
 }`,
 			'main.ts',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -42,9 +44,9 @@ export function greet(user: User): string {
 			async () =>
 				await (
 					await import('../src/index')
-				).default({
-					vue: true,
+				).default({ autoDetect: false,
 					typescript: true,
+					vue: true,
 				}),
 			`<template>
   <div class="app">
@@ -65,6 +67,7 @@ const title = ref<string>('Hello Vue')
 </style>`,
 			'App.vue',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -79,6 +82,7 @@ const title = ref<string>('Hello Vue')
 }`,
 			'package.json',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
@@ -97,6 +101,7 @@ jobs:
       - uses: actions/checkout@v3`,
 			'.github/workflows/ci.yml',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
@@ -107,6 +112,7 @@ jobs:
 			`export const x = 1`,
 			'test.js',
 		)
+
 		expect(jsMessages.filter((m) => m.fatal)).toHaveLength(0)
 
 		// TypeScript
@@ -115,6 +121,7 @@ jobs:
 			`export const x: number = 1`,
 			'test.ts',
 		)
+
 		expect(tsMessages.filter((m) => m.fatal)).toHaveLength(0)
 
 		// JSON
@@ -123,6 +130,7 @@ jobs:
 			`{"name": "test"}`,
 			'test.json',
 		)
+
 		expect(jsonMessages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 })

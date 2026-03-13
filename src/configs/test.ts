@@ -21,14 +21,22 @@ export function test(options: TestOptions = {}): Linter.Config {
 	const { overrides = {} } = options
 
 	return {
-		name: 'eslint-sets/test',
 		files: [GLOB_TESTS],
+		name: 'eslint-sets/test',
 		plugins: {
 			vitest,
 		},
 		rules: {
 			...vitest.configs.recommended.rules,
 
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-non-null-assertion': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-call': 'off',
+			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unsafe-return': 'off',
+			// Relax rules for test files
+			'no-console': 'off',
 			// Vitest rules
 			'vitest/consistent-test-it': [
 				'error',
@@ -86,6 +94,7 @@ export function test(options: TestOptions = {}): Linter.Config {
 			'vitest/prefer-to-contain': 'error',
 			'vitest/prefer-to-have-length': 'error',
 			'vitest/prefer-todo': 'warn',
+
 			'vitest/require-hook': 'off',
 			'vitest/require-local-test-context-for-concurrent-snapshots': 'error',
 			'vitest/require-to-throw-message': 'off',
@@ -93,15 +102,6 @@ export function test(options: TestOptions = {}): Linter.Config {
 			'vitest/valid-describe-callback': 'error',
 			'vitest/valid-expect': 'error',
 			'vitest/valid-title': 'error',
-
-			// Relax rules for test files
-			'no-console': 'off',
-			'@typescript-eslint/no-explicit-any': 'off',
-			'@typescript-eslint/no-non-null-assertion': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'@typescript-eslint/no-unsafe-call': 'off',
-			'@typescript-eslint/no-unsafe-member-access': 'off',
-			'@typescript-eslint/no-unsafe-return': 'off',
 
 			// User overrides
 			...overrides,

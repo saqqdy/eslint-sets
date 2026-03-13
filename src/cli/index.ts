@@ -1,7 +1,7 @@
-import type { Answers } from './types'
 import { existsSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import * as p from '@clack/prompts'
+import type { Answers } from './types'
 
 async function main() {
 	console.clear()
@@ -9,22 +9,22 @@ async function main() {
 	p.intro(' @eslint-sets/eslint-config ')
 
 	const answers: Answers = {
-		type: 'app',
-		typescript: true,
-		frameworks: [],
+		a11y: false,
 		formatter: 'prettier',
+		frameworks: [],
 		gitignore: true,
 		sortPackageJson: true,
 		sortTsconfig: true,
-		a11y: false,
+		type: 'app',
+		typescript: true,
 	}
 
 	// Project type
 	const projectType = await p.select({
 		message: 'What type of project is this?',
 		options: [
-			{ value: 'app', label: 'Application', hint: 'Web application with relaxed rules' },
-			{ value: 'lib', label: 'Library', hint: 'Library with stricter rules' },
+			{ hint: 'Web application with relaxed rules', label: 'Application', value: 'app' },
+			{ hint: 'Library with stricter rules', label: 'Library', value: 'lib' },
 		],
 	})
 
@@ -36,8 +36,8 @@ async function main() {
 
 	// TypeScript
 	const typescript = await p.confirm({
-		message: 'Use TypeScript?',
 		initialValue: true,
+		message: 'Use TypeScript?',
 	})
 
 	if (p.isCancel(typescript)) {
@@ -50,15 +50,15 @@ async function main() {
 	const frameworks = await p.multiselect({
 		message: 'Select frameworks you use',
 		options: [
-			{ value: 'vue', label: 'Vue', hint: 'Vue.js framework' },
-			{ value: 'react', label: 'React', hint: 'React library' },
-			{ value: 'svelte', label: 'Svelte', hint: 'Svelte framework' },
-			{ value: 'solid', label: 'Solid', hint: 'SolidJS framework' },
-			{ value: 'nextjs', label: 'Next.js', hint: 'React framework' },
-			{ value: 'nuxt', label: 'Nuxt', hint: 'Vue framework' },
-			{ value: 'astro', label: 'Astro', hint: 'Static site builder' },
-			{ value: 'angular', label: 'Angular', hint: 'Angular framework' },
-			{ value: 'unocss', label: 'UnoCSS', hint: 'Atomic CSS engine' },
+			{ hint: 'Vue.js framework', label: 'Vue', value: 'vue' },
+			{ hint: 'React library', label: 'React', value: 'react' },
+			{ hint: 'Svelte framework', label: 'Svelte', value: 'svelte' },
+			{ hint: 'SolidJS framework', label: 'Solid', value: 'solid' },
+			{ hint: 'React framework', label: 'Next.js', value: 'nextjs' },
+			{ hint: 'Vue framework', label: 'Nuxt', value: 'nuxt' },
+			{ hint: 'Static site builder', label: 'Astro', value: 'astro' },
+			{ hint: 'Angular framework', label: 'Angular', value: 'angular' },
+			{ hint: 'Atomic CSS engine', label: 'UnoCSS', value: 'unocss' },
 		],
 		required: false,
 	})
@@ -72,8 +72,8 @@ async function main() {
 	// Accessibility
 	if (answers.frameworks.includes('vue') || answers.frameworks.includes('react')) {
 		const a11y = await p.confirm({
-			message: 'Enable accessibility (a11y) rules?',
 			initialValue: false,
+			message: 'Enable accessibility (a11y) rules?',
 		})
 
 		if (p.isCancel(a11y)) {
@@ -87,8 +87,8 @@ async function main() {
 	const formatter = await p.select({
 		message: 'Choose a formatter',
 		options: [
-			{ value: 'prettier', label: 'Prettier', hint: 'Popular code formatter' },
-			{ value: 'stylistic', label: 'ESLint Stylistic', hint: 'ESLint-based formatting' },
+			{ hint: 'Popular code formatter', label: 'Prettier', value: 'prettier' },
+			{ hint: 'ESLint-based formatting', label: 'ESLint Stylistic', value: 'stylistic' },
 		],
 	})
 
@@ -100,8 +100,8 @@ async function main() {
 
 	// Additional options
 	const gitignore = await p.confirm({
-		message: 'Auto-read .gitignore?',
 		initialValue: true,
+		message: 'Auto-read .gitignore?',
 	})
 
 	if (p.isCancel(gitignore)) {
@@ -111,8 +111,8 @@ async function main() {
 	answers.gitignore = gitignore
 
 	const sortPackageJson = await p.confirm({
-		message: 'Auto-sort package.json?',
 		initialValue: true,
+		message: 'Auto-sort package.json?',
 	})
 
 	if (p.isCancel(sortPackageJson)) {
@@ -122,8 +122,8 @@ async function main() {
 	answers.sortPackageJson = sortPackageJson
 
 	const sortTsconfig = await p.confirm({
-		message: 'Auto-sort tsconfig.json?',
 		initialValue: true,
+		message: 'Auto-sort tsconfig.json?',
 	})
 
 	if (p.isCancel(sortTsconfig)) {
@@ -141,8 +141,8 @@ async function main() {
 
 	if (existsSync(configPath)) {
 		const overwrite = await p.confirm({
-			message: 'eslint.config.ts already exists. Overwrite?',
 			initialValue: false,
+			message: 'eslint.config.ts already exists. Overwrite?',
 		})
 
 		if (p.isCancel(overwrite) || !overwrite) {
@@ -159,10 +159,10 @@ async function main() {
 	const packageManager = await p.select({
 		message: 'Choose a package manager',
 		options: [
-			{ value: 'pnpm', label: 'pnpm' },
-			{ value: 'npm', label: 'npm' },
-			{ value: 'yarn', label: 'yarn' },
-			{ value: 'bun', label: 'bun' },
+			{ label: 'pnpm', value: 'pnpm' },
+			{ label: 'npm', value: 'npm' },
+			{ label: 'yarn', value: 'yarn' },
+			{ label: 'bun', value: 'bun' },
 		],
 	})
 
@@ -182,7 +182,7 @@ async function main() {
 function generateConfig(answers: Answers): string {
 	const lines: string[] = [
 		'// eslint.config.ts',
-		"import eslintConfig from '@eslint-sets/eslint-config'",
+		'import eslintConfig from \'@eslint-sets/eslint-config\'',
 		'',
 		'export default eslintConfig({',
 		`  type: '${answers.type}',`,

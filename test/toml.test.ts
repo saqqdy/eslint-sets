@@ -7,7 +7,7 @@ describe('TOML Config', () => {
 			async () =>
 				await (
 					await import('../src/index')
-				).default({
+				).default({ autoDetect: false,
 					toml: true,
 				}),
 			`[package]
@@ -18,6 +18,7 @@ version = "1.0.0"
 serde = "1.0"`,
 			'Cargo.toml',
 		)
+
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 })

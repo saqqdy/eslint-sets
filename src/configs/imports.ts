@@ -18,31 +18,35 @@ export interface ImportsOptions extends OptionsOverrides {
 /**
  * Import configuration
  * Based on antfu/eslint-config
+ *
+ * Note: Import sorting is handled by perfectionist/sort-imports, not import-x/order
  */
 export function imports(options: ImportsOptions = {}): Linter.Config {
-	const { stylistic = true, overrides = {} } = options
+	const { overrides = {}, stylistic = true } = options
 
 	return {
-		name: 'eslint-sets/imports',
 		files: [GLOB_SRC],
+		name: 'eslint-sets/imports',
 		plugins: {
 			'import-x': importPlugin,
 			'unused-imports': unusedImports,
 		},
 		rules: {
 			// Import rules
+			'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 			'import-x/first': 'error',
 			'import-x/no-duplicates': 'error',
 			'import-x/no-mutable-exports': 'error',
 			'import-x/no-named-default': 'error',
 			'import-x/no-self-import': 'error',
 			'import-x/no-webpack-loader-syntax': 'error',
-			'import-x/order': 'error',
+			// Note: import-x/order is disabled - sorting is handled by perfectionist/sort-imports
+			'import-x/order': 'off',
 
 			...(stylistic
 				? {
-						'import-x/newline-after-import': ['error', { count: 1 }],
-					}
+					'import-x/newline-after-import': ['error', { count: 1 }],
+				}
 				: {}),
 
 			// Unused imports

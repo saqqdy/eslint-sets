@@ -11,6 +11,7 @@ describe('JSON Config', () => {
 }`,
 			'package.json',
 		)
+
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -23,6 +24,7 @@ describe('JSON Config', () => {
 }`,
 			'test.json',
 		)
+
 		expect(hasRule(messages, 'jsonc/no-infinity')).toBeTruthy()
 	})
 
@@ -34,6 +36,7 @@ describe('JSON Config', () => {
 }`,
 			'test.json',
 		)
+
 		expect(hasRule(messages, 'jsonc/no-bigint-literals')).toBeTruthy()
 	})
 })

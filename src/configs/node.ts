@@ -11,23 +11,19 @@ const nRecommendedRules = (nPlugin.configs?.['flat/recommended'] as any)?.rules 
 export function node(): Linter.Config[] {
 	return [
 		{
-			name: 'eslint-sets/node',
 			files: [GLOB_SRC],
+			name: 'eslint-sets/node',
 			plugins: {
 				n: nPlugin as any,
 			},
 			rules: {
 				...nRecommendedRules,
 
-				// Override recommended rules
-				'n/no-process-exit': 'off',
-				'n/no-unpublished-import': 'off',
-				'n/no-unpublished-require': 'off',
-
 				// Node.js specific rules
 				'n/callback-return': 'off',
 				'n/exports-style': 'off',
 				'n/file-extension-in-import': 'off',
+
 				'n/global-require': 'off',
 				'n/handle-callback-err': 'error',
 				'n/hashbang': 'error',
@@ -42,9 +38,13 @@ export function node(): Linter.Config[] {
 				'n/no-new-require': 'error',
 				'n/no-path-concat': 'error',
 				'n/no-process-env': 'off',
+				// Override recommended rules
+				'n/no-process-exit': 'off',
 				'n/no-restricted-import': 'off',
 				'n/no-restricted-require': 'off',
 				'n/no-sync': 'off',
+				'n/no-unpublished-import': 'off',
+				'n/no-unpublished-require': 'off',
 				'n/prefer-global/buffer': ['error', 'always'],
 				'n/prefer-global/console': ['error', 'always'],
 				'n/prefer-global/process': ['error', 'always'],

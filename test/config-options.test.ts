@@ -4,6 +4,7 @@ import { eslintConfig } from './utils'
 describe('Config Options', () => {
 	it('should work with default options', async () => {
 		const config = await eslintConfig()
+
 		expect(config).toBeDefined()
 		expect(Array.isArray(config)).toBeTruthy()
 		expect(config.length).toBeGreaterThan(0)
@@ -13,10 +14,12 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			ignores: ['**/dist/**', '**/custom-ignore/**'],
 		})
+
 		expect(config).toBeDefined()
 
 		// Check that ignores config exists
 		const ignoresConfig = config.find((c) => c.name === 'eslint-sets/ignores')
+
 		expect(ignoresConfig).toBeDefined()
 		expect(ignoresConfig?.ignores).toContain('**/dist/**')
 		expect(ignoresConfig?.ignores).toContain('**/custom-ignore/**')
@@ -26,9 +29,11 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			ignores: (defaults) => [...defaults, '**/custom-ignore/**'],
 		})
+
 		expect(config).toBeDefined()
 
 		const ignoresConfig = config.find((c) => c.name === 'eslint-sets/ignores')
+
 		expect(ignoresConfig).toBeDefined()
 		expect(ignoresConfig?.ignores).toContain('**/custom-ignore/**')
 	})
@@ -41,6 +46,7 @@ describe('Config Options', () => {
 		})
 
 		const customConfig = config.find((c) => c.name === 'eslint-sets/custom-rules')
+
 		expect(customConfig).toBeDefined()
 		expect(customConfig?.rules?.['no-console']).toBe('off')
 	})
@@ -51,6 +57,7 @@ describe('Config Options', () => {
 		})
 
 		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript/setup')
+
 		expect(tsConfig).toBeUndefined()
 	})
 
@@ -60,6 +67,7 @@ describe('Config Options', () => {
 		})
 
 		const unicornConfig = config.find((c) => c.name === 'eslint-sets/unicorn')
+
 		expect(unicornConfig).toBeUndefined()
 	})
 
@@ -69,25 +77,26 @@ describe('Config Options', () => {
 		})
 
 		const prettierConfig = config.find((c) => c.name === 'eslint-sets/prettier')
+
 		expect(prettierConfig).toBeUndefined()
 	})
 
 	it('should work with all features disabled', async () => {
 		const config = await eslintConfig({
-			typescript: false,
-			vue: false,
-			react: false,
-			svelte: false,
-			jsonc: false,
-			yaml: false,
-			markdown: false,
 			imports: false,
-			unicorn: false,
-			perfectionist: false,
-			regexp: false,
-			test: false,
-			prettier: false,
+			jsonc: false,
+			markdown: false,
 			node: false,
+			perfectionist: false,
+			prettier: false,
+			react: false,
+			regexp: false,
+			svelte: false,
+			test: false,
+			typescript: false,
+			unicorn: false,
+			vue: false,
+			yaml: false,
 		})
 
 		expect(config.length).toBeGreaterThan(0)
@@ -116,6 +125,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			isInEditor: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -123,6 +133,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			gitignore: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -130,6 +141,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			disables: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -137,6 +149,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			command: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -144,6 +157,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			sortPackageJson: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -151,6 +165,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			sortTsconfig: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -158,6 +173,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			eslintComments: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -165,6 +181,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			autoDetect: false,
 		})
+
 		expect(config).toBeDefined()
 	})
 
@@ -172,6 +189,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			vue: { vueVersion: 3 },
 		})
+
 		expect(config.find((c) => c.name === 'eslint-sets/vue/setup')).toBeDefined()
 	})
 
@@ -179,6 +197,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			react: { a11y: false },
 		})
+
 		// React config may not exist if react package is not installed
 		// Just verify the config is valid
 		expect(config).toBeDefined()
@@ -189,6 +208,7 @@ describe('Config Options', () => {
 		const config = await eslintConfig({
 			typescript: { typeAware: false },
 		})
+
 		expect(config.find((c) => c.name === 'eslint-sets/typescript/setup')).toBeDefined()
 	})
 })

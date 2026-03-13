@@ -21,23 +21,26 @@ export default function eslintConfig(options?: Options): Promise<Linter.Config[]
 	return config(options)
 }
 
-// Export utilities
-export * from './utils'
-
 // Export all config modules
 export * from './configs'
-
-// Export plugin helpers
-export * from './plugins'
-
-// Export constants
-export * from './constants'
 
 // Export config function
 export { config } from './configs'
 
-// Export types
-export type { Linter, Options, ProjectType, FrameworkOptions, OptionsOverrides } from './types'
-export type { VueOptions } from './configs/vue'
+export type { PrettierOptions } from './configs/prettier'
+
 export type { ReactOptions } from './configs/react'
+
+export type { StylisticOptions } from './configs/stylistic'
+
 export type { TypeScriptOptions } from './configs/typescript'
+
+export type { VueOptions } from './configs/vue'
+// Export constants
+export * from './constants'
+// Export plugin helpers
+export * from './plugins'
+// Export types
+export type { ConfigNames, FrameworkOptions, Linter, Options, OptionsOverrides, PerfectionistOptions, ProjectType, Rules, TypedFlatConfigItem } from './types'
+// Export utilities
+export * from './utils'

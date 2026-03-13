@@ -1,12 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import { lintContent } from './utils'
 import { vue } from '../src/configs'
+import { lintContent } from './utils'
 
 describe('Vue Config', () => {
 	it('should parse Vue SFC', async () => {
 		const messages = await lintContent(
 			async () => {
 				const eslintConfig = (await import('../src/index')).default
+
 				return eslintConfig({ vue: true })
 			},
 			`<template>
@@ -17,6 +18,7 @@ export default {}
 </script>`,
 			'test.vue',
 		)
+
 		// Should parse without error
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -25,7 +27,8 @@ export default {}
 		const messages = await lintContent(
 			async () => {
 				const eslintConfig = (await import('../src/index')).default
-				return eslintConfig({ vue: true, typescript: true })
+
+				return eslintConfig({ typescript: true, vue: true })
 			},
 			`<template>
   <div>{{ message }}</div>
@@ -36,6 +39,7 @@ const message = ref<string>('Hello')
 </script>`,
 			'test.vue',
 		)
+
 		// Should parse without error
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
@@ -44,6 +48,7 @@ const message = ref<string>('Hello')
 		const messages = await lintContent(
 			async () => {
 				const eslintConfig = (await import('../src/index')).default
+
 				return eslintConfig({ vue: true })
 			},
 			`<template>
@@ -57,12 +62,14 @@ export default {}
 </style>`,
 			'test.vue',
 		)
+
 		// Should parse without error
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
 	})
 
 	it('should return valid configs with a11y enabled', async () => {
 		const configs = await vue({ a11y: true })
+
 		expect(configs).toBeDefined()
 		expect(Array.isArray(configs)).toBeTruthy()
 		// a11y config may or may not be present depending on plugin availability
@@ -72,12 +79,14 @@ export default {}
 
 	it('should return valid configs with vueVersion 2', async () => {
 		const configs = await vue({ vueVersion: 2 })
+
 		expect(configs).toBeDefined()
 		expect(Array.isArray(configs)).toBeTruthy()
 	})
 
 	it('should apply custom overrides', async () => {
 		const configs = await vue({ overrides: { 'vue/no-v-html': 'off' } })
+
 		expect(configs).toBeDefined()
 		expect(configs[0]?.rules?.['vue/no-v-html']).toBe('off')
 	})

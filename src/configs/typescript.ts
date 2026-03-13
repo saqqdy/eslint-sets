@@ -9,18 +9,6 @@ import { GLOB_SRC, GLOB_TS } from '../constants'
  */
 export interface TypeScriptOptions extends OptionsOverrides {
 	/**
-	 * Enable rules that require type information
-	 * @default false
-	 */
-	typeAware?: boolean
-
-	/**
-	 * Path to tsconfig.json
-	 * @default './tsconfig.json'
-	 */
-	tsconfigPath?: string | string[]
-
-	/**
 	 * Glob patterns for files that should be type aware
 	 * @default ['**\/*.{ts,tsx}']
 	 */
@@ -30,6 +18,18 @@ export interface TypeScriptOptions extends OptionsOverrides {
 	 * Glob patterns for files that should not be type aware
 	 */
 	ignoresTypeAware?: string[]
+
+	/**
+	 * Path to tsconfig.json
+	 * @default './tsconfig.json'
+	 */
+	tsconfigPath?: string | string[]
+
+	/**
+	 * Enable rules that require type information
+	 * @default false
+	 */
+	typeAware?: boolean
 }
 
 /**
@@ -38,20 +38,17 @@ export interface TypeScriptOptions extends OptionsOverrides {
  */
 export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 	const {
-		typeAware = false,
-		tsconfigPath = './tsconfig.json',
 		filesTypeAware = [GLOB_TS],
 		ignoresTypeAware = ['**/*.md/**', '**/*.astro/*.ts'],
 		overrides = {},
+		tsconfigPath = './tsconfig.json',
+		typeAware = false,
 	} = options
 
 	const isTypeAware = typeAware && tsconfigPath
 	const tsconfigPaths = Array.isArray(tsconfigPath) ? tsconfigPath : [tsconfigPath]
 
 	const typeAwareRules: Linter.RulesRecord = {
-		'dot-notation': 'off',
-		'no-implied-eval': 'off',
-		'no-throw-literal': 'off',
 		'@typescript-eslint/await-thenable': 'error',
 		'@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
 		'@typescript-eslint/no-floating-promises': 'error',
@@ -68,11 +65,13 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 		'@typescript-eslint/restrict-plus-operands': 'error',
 		'@typescript-eslint/restrict-template-expressions': 'error',
 		'@typescript-eslint/unbound-method': 'error',
+		'dot-notation': 'off',
+		'no-implied-eval': 'off',
+		'no-throw-literal': 'off',
 	}
 
 	const configs: Linter.Config[] = [
 		{
-			name: 'eslint-sets/typescript/setup',
 			files: [GLOB_TS, GLOB_SRC],
 			languageOptions: {
 				parser: tsParser,
@@ -81,24 +80,18 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 					sourceType: 'module',
 					...(isTypeAware
 						? {
-								project: tsconfigPaths,
-							}
+							project: tsconfigPaths,
+						}
 						: {}),
 				},
 			},
+			name: 'eslint-sets/typescript/setup',
 			plugins: {
 				'@typescript-eslint': tseslint as any,
 			},
 			rules: {
 				...tseslint.configs.recommended.rules,
 				...(tseslint.configs.strict?.rules || {}),
-
-				// Override JavaScript rules
-				'no-dupe-class-members': 'off',
-				'no-loss-of-precision': 'off',
-				'no-redeclare': 'off',
-				'no-use-before-define': 'off',
-				'no-useless-constructor': 'off',
 
 				// TypeScript specific rules
 				'@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
@@ -112,6 +105,7 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 				],
 				'@typescript-eslint/method-signature-style': ['error', 'property'],
 				'@typescript-eslint/no-dupe-class-members': 'error',
+
 				'@typescript-eslint/no-dynamic-delete': 'off',
 				'@typescript-eslint/no-explicit-any': 'off',
 				'@typescript-eslint/no-extraneous-class': 'off',
@@ -134,6 +128,12 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 				'@typescript-eslint/prefer-ts-expect-error': 'error',
 				'@typescript-eslint/triple-slash-reference': 'off',
 				'@typescript-eslint/unified-signatures': 'off',
+				// Override JavaScript rules
+				'no-dupe-class-members': 'off',
+				'no-loss-of-precision': 'off',
+				'no-redeclare': 'off',
+				'no-use-before-define': 'off',
+				'no-useless-constructor': 'off',
 
 				// User overrides
 				...overrides,
@@ -144,9 +144,9 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 	// Add type-aware rules if enabled
 	if (isTypeAware) {
 		configs.push({
-			name: 'eslint-sets/typescript/type-aware',
 			files: filesTypeAware,
 			ignores: ignoresTypeAware,
+			name: 'eslint-sets/typescript/type-aware',
 			rules: {
 				...typeAwareRules,
 				...overrides,

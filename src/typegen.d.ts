@@ -2126,6 +2126,87 @@ export interface RuleOptions {
    */
   'dot-notation'?: Linter.RuleEntry<DotNotation>
   /**
+   * Bans a list of dependencies from being used
+   * @see https://github.com/es-tooling/eslint-plugin-depend/blob/main/docs/rules/ban-dependencies.md
+   */
+  'e18e/ban-dependencies'?: Linter.RuleEntry<E18EBanDependencies>
+  /**
+   * Prefer optimized alternatives to `indexOf()` equality checks
+   */
+  'e18e/no-indexof-equality'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.prototype.at() over length-based indexing
+   */
+  'e18e/prefer-array-at'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.prototype.fill() over Array.from or map with constant values
+   */
+  'e18e/prefer-array-fill'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.from(iterable, mapper) over [...iterable].map(mapper) to avoid intermediate array allocation
+   */
+  'e18e/prefer-array-from-map'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.some() over Array.find() when checking for element existence
+   */
+  'e18e/prefer-array-some'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.prototype.toReversed() over copying and reversing arrays
+   */
+  'e18e/prefer-array-to-reversed'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.prototype.toSorted() over copying and sorting arrays
+   */
+  'e18e/prefer-array-to-sorted'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Array.prototype.toSpliced() over copying and splicing arrays
+   */
+  'e18e/prefer-array-to-spliced'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Date.now() over new Date().getTime() and +new Date()
+   */
+  'e18e/prefer-date-now'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer the exponentiation operator ** over Math.pow()
+   */
+  'e18e/prefer-exponentiation-operator'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer .includes() over indexOf() comparisons for arrays and strings
+   */
+  'e18e/prefer-includes'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer inline equality checks over temporary object creation for simple comparisons
+   */
+  'e18e/prefer-inline-equality'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer nullish coalescing operator (?? and ??=) over verbose null checks
+   */
+  'e18e/prefer-nullish-coalescing'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer Object.hasOwn() over Object.prototype.hasOwnProperty.call() and obj.hasOwnProperty()
+   */
+  'e18e/prefer-object-has-own'?: Linter.RuleEntry<[]>
+  /**
+   * prefer `RegExp.test()` over `String.match()` and `RegExp.exec()` when only checking for match existence
+   */
+  'e18e/prefer-regex-test'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer spread syntax over Array.concat(), Array.from(), Object.assign({}, ...), and Function.apply()
+   */
+  'e18e/prefer-spread-syntax'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer defining regular expressions at module scope to avoid re-compilation on every function call
+   */
+  'e18e/prefer-static-regex'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer passing function and arguments directly to setTimeout/setInterval instead of wrapping in an arrow function or using bind
+   */
+  'e18e/prefer-timer-args'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer URL.canParse() over try-catch blocks for URL validation
+   */
+  'e18e/prefer-url-canparse'?: Linter.RuleEntry<[]>
+  /**
    * Require or disallow newline at the end of files
    * @see https://eslint.org/docs/latest/rules/eol-last
    * @deprecated
@@ -11563,6 +11644,15 @@ type DotNotation = []|[{
   allowKeywords?: boolean
   allowPattern?: string
 }]
+// ----- e18e/ban-dependencies -----
+type E18EBanDependencies = []|[{
+  
+  presets?: string[]
+  
+  modules?: string[]
+  
+  allowed?: string[]
+}]
 // ----- eol-last -----
 type EolLast = []|[("always" | "never" | "unix" | "windows")]
 // ----- eqeqeq -----
@@ -19796,4 +19886,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'eslint-sets/ignores' | 'eslint-sets/javascript' | 'eslint-sets/typescript/setup' | 'eslint-sets/typescript/disables/dts' | 'eslint-sets/typescript/disables/test' | 'eslint-sets/typescript/disables/cjs' | 'eslint-sets/vue/setup' | 'eslint-sets/react/setup' | 'eslint-sets/react/a11y' | 'eslint-sets/svelte/setup' | 'eslint-sets/solid' | 'eslint-sets/nextjs' | 'eslint-sets/nuxt' | 'eslint-sets/astro' | 'eslint-sets/angular' | 'eslint-sets/angular/template' | 'eslint-sets/jsonc/setup' | 'eslint-sets/yaml/setup' | 'eslint-sets/markdown' | 'eslint-sets/toml' | 'eslint-sets/imports' | 'eslint-sets/unicorn' | 'eslint-sets/perfectionist' | 'eslint-sets/regexp' | 'eslint-sets/test' | 'eslint-sets/no-only-tests' | 'eslint-sets/node' | 'eslint-sets/eslint-comments' | 'eslint-sets/disables/config-files' | 'eslint-sets/disables/json-files' | 'eslint-sets/disables/cjs-files' | 'eslint-sets/disables/dts-files' | 'eslint-sets/disables/env-files' | 'eslint-sets/command' | 'eslint-sets/command/shebang' | 'eslint-sets/sort-package-json' | 'eslint-sets/sort-tsconfig' | 'eslint-sets/unocss' | 'eslint-sets/pnpm' | 'eslint-sets/formatters/css' | 'eslint-sets/formatters/html' | 'eslint-sets/stylistic' | 'eslint-sets/builtin-rules'
+export type ConfigNames = 'eslint-sets/ignores' | 'eslint-sets/javascript' | 'eslint-sets/typescript/setup' | 'eslint-sets/typescript/disables/dts' | 'eslint-sets/typescript/disables/test' | 'eslint-sets/typescript/disables/cjs' | 'eslint-sets/vue/setup' | 'eslint-sets/react/setup' | 'eslint-sets/react/a11y' | 'eslint-sets/svelte/setup' | 'eslint-sets/solid' | 'eslint-sets/nextjs' | 'eslint-sets/nuxt' | 'eslint-sets/astro' | 'eslint-sets/angular' | 'eslint-sets/angular/template' | 'eslint-sets/jsonc/setup' | 'eslint-sets/yaml/setup' | 'eslint-sets/markdown' | 'eslint-sets/toml' | 'eslint-sets/imports' | 'eslint-sets/unicorn' | 'eslint-sets/perfectionist' | 'eslint-sets/regexp' | 'eslint-sets/test' | 'eslint-sets/no-only-tests' | 'eslint-sets/node' | 'eslint-sets/eslint-comments' | 'eslint-sets/disables/config-files' | 'eslint-sets/disables/json-files' | 'eslint-sets/disables/cjs-files' | 'eslint-sets/disables/dts-files' | 'eslint-sets/disables/env-files' | 'eslint-sets/command' | 'eslint-sets/command/shebang' | 'eslint-sets/sort-package-json' | 'eslint-sets/sort-tsconfig' | 'eslint-sets/unocss' | 'eslint-sets/e18e' | 'eslint-sets/pnpm' | 'eslint-sets/formatters/css' | 'eslint-sets/formatters/html' | 'eslint-sets/stylistic' | 'eslint-sets/builtin-rules'

@@ -23,7 +23,8 @@
       "Bash(git ls-tree:*)",
       "Bash(pnpm lint:fix 2>&1)",
       "Bash(npx eslint:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(pnpm view:*)"
     ]
   }
 }

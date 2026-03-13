@@ -1,5 +1,5 @@
-import { it, expect, describe } from 'vitest'
-import { combine, isObject, deepMerge, filterNil, renameRules, ensureArray } from '../src/utils'
+import { describe, expect, it } from 'vitest'
+import { combine, deepMerge, ensureArray, filterNil, isObject, renameRules } from '../src/utils'
 
 describe('Utils', () => {
 	describe('combine', () => {

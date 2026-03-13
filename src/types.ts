@@ -1,10 +1,36 @@
 import type { Linter } from 'eslint'
 import type { StylisticOptions } from './configs/stylistic'
 import type { TypeScriptOptions } from './configs/typescript'
+import type { VueOptions } from './configs/vue'
+import type { ReactOptions } from './configs/react'
+import type { FormattersOptions } from './configs/formatters'
 
-export type FrameworkOptions = boolean | 'auto' | Linter.Config
+export type FrameworkOptions = boolean | 'auto' | OptionsOverrides
 
+/**
+ * Project type
+ */
+export type ProjectType = 'app' | 'lib'
+
+/**
+ * Override rules for a specific configuration
+ */
+export interface OptionsOverrides {
+	overrides?: Linter.RulesRecord
+}
+
+/**
+ * Main configuration options
+ */
 export interface Options {
+	/**
+	 * Project type
+	 * - 'app': Application project (default)
+	 * - 'lib': Library project with stricter rules
+	 * @default 'app'
+	 */
+	type?: ProjectType
+
 	/**
 	 * Auto-detect installed frameworks and enable corresponding configs
 	 * @default true
@@ -22,13 +48,13 @@ export interface Options {
 	 * Enable Vue support
 	 * @default 'auto'
 	 */
-	vue?: FrameworkOptions
+	vue?: FrameworkOptions | VueOptions
 
 	/**
 	 * Enable React support
 	 * @default 'auto'
 	 */
-	react?: FrameworkOptions
+	react?: FrameworkOptions | ReactOptions
 
 	/**
 	 * Enable Svelte support
@@ -43,22 +69,49 @@ export interface Options {
 	solid?: FrameworkOptions
 
 	/**
+	 * Enable Next.js support
+	 * Requires @next/eslint-plugin-next
+	 * @default 'auto'
+	 */
+	nextjs?: FrameworkOptions
+
+	/**
+	 * Enable Nuxt support
+	 * @default 'auto'
+	 */
+	nuxt?: FrameworkOptions
+
+	/**
+	 * Enable Astro support
+	 * Requires eslint-plugin-astro
+	 * @default 'auto'
+	 */
+	astro?: FrameworkOptions
+
+	/**
+	 * Enable Angular support
+	 * Requires @angular-eslint/eslint-plugin
+	 * @default 'auto'
+	 */
+	angular?: FrameworkOptions
+
+	/**
 	 * Enable JSON/YAML support
 	 * @default true
 	 */
-	jsonc?: boolean
+	jsonc?: boolean | OptionsOverrides
 
 	/**
 	 * Enable YAML support
 	 * @default true
 	 */
-	yaml?: boolean
+	yaml?: boolean | OptionsOverrides
 
 	/**
 	 * Enable Markdown support
 	 * @default true
 	 */
-	markdown?: boolean
+	markdown?: boolean | OptionsOverrides
 
 	/**
 	 * Enable TOML support
@@ -70,13 +123,13 @@ export interface Options {
 	 * Enable import rules
 	 * @default true
 	 */
-	imports?: boolean
+	imports?: boolean | OptionsOverrides
 
 	/**
 	 * Enable unicorn rules
 	 * @default true
 	 */
-	unicorn?: boolean
+	unicorn?: boolean | OptionsOverrides
 
 	/**
 	 * Enable perfectionist sorting rules
@@ -94,13 +147,19 @@ export interface Options {
 	 * Enable test file rules
 	 * @default true
 	 */
-	test?: boolean
+	test?: boolean | OptionsOverrides
 
 	/**
 	 * Enable Node.js rules
 	 * @default true
 	 */
 	node?: boolean
+
+	/**
+	 * Enable ESLint comments rules
+	 * @default true
+	 */
+	eslintComments?: boolean
 
 	/**
 	 * Enable Prettier integration
@@ -117,8 +176,36 @@ export interface Options {
 	stylistic?: boolean | StylisticOptions
 
 	/**
-	 * Auto-read .gitignore and add patterns to ignores
+	 * Enable UnoCSS support
+	 * Requires @unocss/eslint-plugin
+	 * @default 'auto'
+	 */
+	unocss?: FrameworkOptions
+
+	/**
+	 * Enable e18e modernization rules
+	 * Requires @e18e/eslint-plugin
 	 * @default false
+	 */
+	e18e?: boolean
+
+	/**
+	 * Enable pnpm workspace support
+	 * Requires eslint-plugin-pnpm
+	 * @default false
+	 */
+	pnpm?: boolean
+
+	/**
+	 * Enable external formatters for CSS, HTML, XML, SVG, GraphQL
+	 * Requires eslint-plugin-format
+	 * @default false
+	 */
+	formatters?: boolean | FormattersOptions
+
+	/**
+	 * Auto-read .gitignore and add patterns to ignores
+	 * @default true
 	 */
 	gitignore?: boolean
 
@@ -135,9 +222,35 @@ export interface Options {
 	command?: boolean
 
 	/**
-	 * Files to ignore
+	 * Auto-sort package.json
+	 * @default true
 	 */
-	ignores?: string[]
+	sortPackageJson?: boolean
+
+	/**
+	 * Auto-sort tsconfig.json
+	 * @default true
+	 */
+	sortTsconfig?: boolean
+
+	/**
+	 * Enable JSX accessibility rules
+	 * Requires eslint-plugin-jsx-a11y
+	 * @default false
+	 */
+	jsxA11y?: boolean
+
+	/**
+	 * Control to disable some rules in editors
+	 * @default auto-detect based on process.env
+	 */
+	isInEditor?: boolean
+
+	/**
+	 * Files to ignore
+	 * Can be an array to extend defaults, or a function to modify defaults
+	 */
+	ignores?: string[] | ((defaults: string[]) => string[])
 
 	/**
 	 * Custom rule overrides

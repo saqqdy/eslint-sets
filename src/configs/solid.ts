@@ -18,7 +18,7 @@ export async function solid(): Promise<Linter.Config[]> {
 			name: 'eslint-sets/solid',
 			files: [GLOB_SOLID],
 			plugins: {
-				solid: (flatRecommended?.plugins as Record<string, unknown>)?.solid as any || solidPlugin,
+				solid: ((flatRecommended?.plugins as Record<string, unknown>)?.solid as any) || solidPlugin,
 			},
 			languageOptions: flatRecommended?.languageOptions,
 			rules: {

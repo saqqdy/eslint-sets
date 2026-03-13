@@ -1,11 +1,25 @@
 import type { Linter } from 'eslint'
+import type { OptionsOverrides } from '../types'
 import vitest from '@vitest/eslint-plugin'
 import { GLOB_TESTS } from '../constants'
 
 /**
+ * Test configuration options
+ */
+export interface TestOptions extends OptionsOverrides {
+	/**
+	 * Enable no-only-tests rule
+	 * @default true
+	 */
+	noOnlyTests?: boolean
+}
+
+/**
  * Test configuration
  */
-export function test(): Linter.Config {
+export function test(options: TestOptions = {}): Linter.Config {
+	const { overrides = {} } = options
+
 	return {
 		name: 'eslint-sets/test',
 		files: [GLOB_TESTS],
@@ -88,6 +102,9 @@ export function test(): Linter.Config {
 			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
+
+			// User overrides
+			...overrides,
 		},
 	}
 }

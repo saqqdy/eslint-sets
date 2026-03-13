@@ -1,27 +1,57 @@
 import type { Linter } from 'eslint'
-import { GLOB_REACT } from '../constants'
-import { loadPlugin } from '../plugins'
+import type { OptionsOverrides } from '../types'
+import { GLOB_REACT, GLOB_TSX } from '../constants'
+import { hasReactCompiler, loadPlugin } from '../plugins'
+
+/**
+ * React configuration options
+ */
+export interface ReactOptions extends OptionsOverrides {
+	/**
+	 * Enable React Compiler rules
+	 * @default auto-detect
+	 */
+	reactCompiler?: boolean
+
+	/**
+	 * Enable JSX accessibility rules
+	 * Requires eslint-plugin-jsx-a11y
+	 * @default false
+	 */
+	a11y?: boolean
+}
 
 // Type definitions for React plugins
 type ESLintPluginReact = typeof import('eslint-plugin-react')
 type ESLintPluginReactHooks = typeof import('eslint-plugin-react-hooks')
 type ESLintPluginReactRefresh = typeof import('eslint-plugin-react-refresh')
+// eslint-plugin-jsx-a11y doesn't have types, use a minimal interface
+interface ESLintPluginJsxA11y {
+	configs: {
+		recommended: { rules: Linter.RulesRecord }
+		strict: { rules: Linter.RulesRecord }
+	}
+	rules: Linter.RulesRecord
+}
 
 /**
  * React configuration
  */
-export async function react(): Promise<Linter.Config[]> {
-	const [reactPlugin, hooksPlugin, refreshPlugin] = await Promise.all([
+export async function react(options: ReactOptions = {}): Promise<Linter.Config[]> {
+	const { reactCompiler = hasReactCompiler(), a11y = false, overrides = {} } = options
+
+	const [reactPlugin, hooksPlugin, refreshPlugin, jsxA11yPlugin] = await Promise.all([
 		loadPlugin<ESLintPluginReact>('eslint-plugin-react'),
 		loadPlugin<ESLintPluginReactHooks>('eslint-plugin-react-hooks'),
 		loadPlugin<ESLintPluginReactRefresh>('eslint-plugin-react-refresh'),
+		a11y ? loadPlugin<ESLintPluginJsxA11y>('eslint-plugin-jsx-a11y') : null,
 	])
 
 	if (!reactPlugin || !hooksPlugin) {
 		return []
 	}
 
-	return [
+	const configs: Linter.Config[] = [
 		{
 			name: 'eslint-sets/react/setup',
 			files: [GLOB_REACT],
@@ -29,6 +59,7 @@ export async function react(): Promise<Linter.Config[]> {
 				react: reactPlugin,
 				'react-hooks': hooksPlugin,
 				...(refreshPlugin && { 'react-refresh': refreshPlugin }),
+				...(jsxA11yPlugin && { 'jsx-a11y': jsxA11yPlugin as any }),
 			},
 			languageOptions: {
 				parserOptions: {
@@ -63,7 +94,6 @@ export async function react(): Promise<Linter.Config[]> {
 				],
 				'react/hook-use-state': 'off',
 				'react/iframe-missing-sandbox': 'error',
-				'react/index.js': 'off',
 				'react/jsx-boolean-value': ['error', 'never'],
 				'react/jsx-child-element-spacing': 'off',
 				'react/jsx-closing-bracket-location': 'off',
@@ -82,8 +112,8 @@ export async function react(): Promise<Linter.Config[]> {
 				'react/jsx-first-prop-new-line': ['error', 'never'],
 				'react/jsx-fragments': ['error', 'syntax'],
 				'react/jsx-handler-names': 'off',
-				'react/jsx-indent': ['error', 2],
-				'react/jsx-indent-props': ['error', 2],
+				'react/jsx-indent': 'off', // Let Prettier/Stylistic handle
+				'react/jsx-indent-props': 'off', // Let Prettier/Stylistic handle
 				'react/jsx-key': [
 					'error',
 					{
@@ -182,10 +212,37 @@ export async function react(): Promise<Linter.Config[]> {
 						'warn',
 						{
 							allowConstantExport: true,
+							allowExportNames: ['loader', 'meta', 'headers'],
 						},
 					],
 				}),
+
+				// React Compiler
+				...(reactCompiler && {
+					'react-compiler/react-compiler': 'error',
+				}),
+
+				// User overrides
+				...overrides,
 			},
 		},
 	]
+
+	// Add JSX a11y rules if enabled
+	if (a11y && jsxA11yPlugin) {
+		configs.push({
+			name: 'eslint-sets/react/a11y',
+			files: [GLOB_TSX],
+			plugins: {
+				'jsx-a11y': jsxA11yPlugin as any,
+			},
+			rules: {
+				...jsxA11yPlugin.configs.recommended.rules,
+				'jsx-a11y/click-events-have-key-events': 'warn',
+				'jsx-a11y/no-static-element-interactions': 'warn',
+			},
+		})
+	}
+
+	return configs
 }

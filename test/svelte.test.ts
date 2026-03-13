@@ -1,4 +1,4 @@
-import { it, expect, describe, beforeAll } from 'vitest'
+import { beforeAll, describe, expect, it } from 'vitest'
 import { hasRule, lintContent } from './utils'
 
 describe('Svelte Config', () => {

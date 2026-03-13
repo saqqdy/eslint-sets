@@ -1,14 +1,26 @@
 import type { Linter } from 'eslint'
+import type { OptionsOverrides } from '../types'
 import unicornPlugin from 'eslint-plugin-unicorn'
 import { GLOB_SRC } from '../constants'
 
-// Get rules from the plugin configs
-const unicornRecommendedRules = (unicornPlugin.configs?.recommended as any)?.rules || {}
+/**
+ * Unicorn configuration options
+ */
+export interface UnicornOptions extends OptionsOverrides {
+	/**
+	 * Include all recommended rules
+	 * @default false
+	 */
+	allRecommended?: boolean
+}
 
 /**
  * Unicorn configuration
+ * Based on antfu/eslint-config
  */
-export function unicorn(): Linter.Config {
+export function unicorn(options: UnicornOptions = {}): Linter.Config {
+	const { overrides = {} } = options
+
 	return {
 		name: 'eslint-sets/unicorn',
 		files: [GLOB_SRC],
@@ -16,111 +28,35 @@ export function unicorn(): Linter.Config {
 			unicorn: unicornPlugin as any,
 		},
 		rules: {
-			...unicornRecommendedRules,
-
-			// Turn off problematic rules
-			'unicorn/prevent-abbreviations': 'off',
-			'unicorn/no-null': 'off',
-			'unicorn/filename-case': 'off',
-			'unicorn/no-process-exit': 'off',
-			'unicorn/no-array-callback-reference': 'off',
-			'unicorn/no-await-expression-member': 'off',
-			'unicorn/consistent-destructuring': 'off',
-			'unicorn/consistent-function-scoping': 'off',
-			'unicorn/explicit-length-check': 'off',
-			'unicorn/no-array-reduce': 'off',
-			'unicorn/no-for-loop': 'off',
-			'unicorn/no-hex-escape': 'off',
-			'unicorn/no-lonely-if': 'off',
-			'unicorn/no-negated-condition': 'off',
-			'unicorn/no-nested-ternary': 'off',
-			'unicorn/no-object-as-default-parameter': 'off',
-			'unicorn/no-useless-undefined': 'off',
-			'unicorn/numeric-separators-style': 'off',
-			'unicorn/prefer-array-flat': 'off',
-			'unicorn/prefer-array-flat-map': 'off',
-			'unicorn/prefer-array-some': 'off',
-			'unicorn/prefer-at': 'off',
-			'unicorn/prefer-code-point': 'off',
-			'unicorn/prefer-default-parameters': 'off',
-			'unicorn/prefer-export-from': 'off',
-			'unicorn/prefer-global-this': 'off',
-			'unicorn/prefer-math-trunc': 'off',
-			'unicorn/prefer-native-coercion-functions': 'off',
-			'unicorn/prefer-negative-index': 'off',
-			'unicorn/prefer-number-properties': 'off',
-			'unicorn/prefer-object-from-entries': 'off',
-			'unicorn/prefer-optional-catch-binding': 'off',
-			'unicorn/prefer-prototype-methods': 'off',
-			'unicorn/prefer-query-selector': 'off',
-			'unicorn/prefer-reflect-apply': 'off',
-			'unicorn/prefer-regexp-test': 'off',
-			'unicorn/prefer-set-has': 'off',
-			'unicorn/prefer-spread': 'off',
-			'unicorn/prefer-string-replace-all': 'off',
-			'unicorn/prefer-string-slice': 'off',
-			'unicorn/prefer-switch': 'off',
-			'unicorn/prefer-ternary': 'off',
-			'unicorn/prefer-top-level-await': 'off',
-			'unicorn/relative-url-style': 'off',
-			'unicorn/switch-case-braces': 'off',
-			'unicorn/template-indent': 'off',
-			'unicorn/text-encoding-identifier-case': 'off',
-
-			// Enable additional useful rules
-			'unicorn/better-regex': 'error',
-			'unicorn/catch-error-name': ['error', { name: 'error' }],
-			'unicorn/empty-brace-spaces': 'error',
+			// Pass error message when throwing errors
 			'unicorn/error-message': 'error',
+			// Uppercase regex escapes
 			'unicorn/escape-case': 'error',
-			'unicorn/new-for-builtins': 'error',
-			'unicorn/no-abusive-eslint-disable': 'error',
-			'unicorn/no-anonymous-default-export': 'error',
-			'unicorn/no-array-push-push': 'warn',
-			'unicorn/no-console-spaces': 'error',
-			'unicorn/no-document-cookie': 'error',
-			'unicorn/no-invalid-remove-event-listener': 'error',
-			'unicorn/no-keyword-prefix': 'off',
-			'unicorn/no-length-as-slice-end': 'error',
+			// Array.isArray instead of instanceof
+			'unicorn/no-instanceof-array': 'error',
+			// Ban `new Array` as `Array` constructor's params are ambiguous
 			'unicorn/no-new-array': 'error',
+			// Prevent deprecated `new Buffer()`
 			'unicorn/no-new-buffer': 'error',
-			'unicorn/no-static-only-class': 'error',
-			'unicorn/no-thenable': 'error',
-			'unicorn/no-this-assignment': 'error',
-			'unicorn/no-typeof-undefined': 'error',
-			'unicorn/no-unnecessary-await': 'error',
-			'unicorn/no-unreadable-array-destructuring': 'error',
-			'unicorn/no-unreadable-iife': 'error',
-			'unicorn/no-useless-fallback-in-spread': 'error',
-			'unicorn/no-useless-length-check': 'error',
-			'unicorn/no-useless-promise-resolve-reject': 'error',
-			'unicorn/no-useless-spread': 'error',
-			'unicorn/no-useless-switch-case': 'error',
-			'unicorn/no-zero-fractions': 'error',
+			// Lowercase number formatting for octal, hex, binary (0x1'error' instead of 0X1'error')
 			'unicorn/number-literal-case': 'error',
-			'unicorn/prefer-add-event-listener': 'error',
-			'unicorn/prefer-blob-reading-methods': 'error',
-			'unicorn/prefer-date-now': 'error',
-			'unicorn/prefer-dom-node-append': 'error',
-			'unicorn/prefer-dom-node-dataset': 'error',
-			'unicorn/prefer-dom-node-remove': 'error',
+			// textContent instead of innerText
 			'unicorn/prefer-dom-node-text-content': 'error',
-			'unicorn/prefer-event-target': 'error',
+			// includes over indexOf when checking for existence
 			'unicorn/prefer-includes': 'error',
-			'unicorn/prefer-keyboard-event-key': 'error',
-			'unicorn/prefer-logical-operator-over-ternary': 'error',
-			'unicorn/prefer-modern-dom-apis': 'error',
-			'unicorn/prefer-modern-math-apis': 'error',
-			'unicorn/prefer-module': 'error',
+			// Prefer using the node: protocol
 			'unicorn/prefer-node-protocol': 'error',
-			'unicorn/prefer-set-size': 'error',
+			// Prefer using number properties like `Number.isNaN` rather than `isNaN`
+			'unicorn/prefer-number-properties': 'error',
+			// String methods startsWith/endsWith instead of more complicated stuff
 			'unicorn/prefer-string-starts-ends-with': 'error',
-			'unicorn/prefer-string-trim-start-end': 'error',
+			// Enforce throwing type error when throwing error while checking typeof
 			'unicorn/prefer-type-error': 'error',
-			'unicorn/require-array-join-separator': 'error',
-			'unicorn/require-number-to-fixed-digits-argument': 'error',
-			'unicorn/require-post-message-target-origin': 'error',
+			// Use new when throwing error
 			'unicorn/throw-new-error': 'error',
+
+			// User overrides
+			...overrides,
 		},
 	}
 }

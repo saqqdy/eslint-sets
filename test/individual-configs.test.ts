@@ -1,17 +1,39 @@
-import { it, expect, describe } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
-	vue,
-	yaml,
-	node,
-	jsonc,
-	regexp,
+	angular,
+	astro,
+	command,
+	disables,
+	e18e,
+	eslintComments,
+	formatters,
+	ignores,
 	imports,
-	unicorn,
-	prettier,
 	javascript,
-	typescript,
+	jsonc,
+	jsxA11y,
+	markdown,
+	nextjs,
+	noOnlyTests,
+	node,
+	nuxt,
 	perfectionist,
+	pnpm,
+	prettier,
+	regexp,
+	solid,
+	sortPackageJson,
+	sortTsconfig,
+	stylistic,
+	svelte,
 	test as testConfig,
+	toml,
+	typescript,
+	unicorn,
+	unocss,
+	vue,
+	vueA11y,
+	yaml,
 } from '../src/configs'
 
 describe('Individual Configs', () => {
@@ -35,8 +57,8 @@ describe('Individual Configs', () => {
 	})
 
 	describe('vue', () => {
-		it('should return valid configs', () => {
-			const configs = vue()
+		it('should return valid configs', async () => {
+			const configs = await vue()
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
 		})
@@ -115,6 +137,183 @@ describe('Individual Configs', () => {
 	describe('prettier', () => {
 		it('should return valid configs', () => {
 			const configs = prettier()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('ignores', () => {
+		it('should return a valid config', () => {
+			const config = ignores(['**/custom/**'])
+			expect(config).toBeDefined()
+			expect(config.name).toBe('eslint-sets/ignores')
+			expect(config.ignores).toContain('**/custom/**')
+		})
+	})
+
+	describe('markdown', () => {
+		it('should return valid configs', async () => {
+			const configs = await markdown()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('disables', () => {
+		it('should return valid configs', () => {
+			const configs = disables()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('command', () => {
+		it('should return valid configs', () => {
+			const configs = command()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('nuxt', () => {
+		it('should return valid configs', () => {
+			const configs = nuxt()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('svelte', () => {
+		it('should return valid configs', async () => {
+			const configs = await svelte()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('solid', () => {
+		it('should return valid configs', async () => {
+			const configs = await solid()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('toml', () => {
+		it('should return valid configs', () => {
+			const configs = toml()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('sortPackageJson', () => {
+		it('should return valid configs', async () => {
+			const configs = await sortPackageJson()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('sortTsconfig', () => {
+		it('should return valid configs', async () => {
+			const configs = await sortTsconfig()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('eslintComments', () => {
+		it('should return valid configs', async () => {
+			const configs = await eslintComments()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('noOnlyTests', () => {
+		it('should return valid configs', async () => {
+			const configs = await noOnlyTests()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('nextjs', () => {
+		it('should return valid configs', async () => {
+			const configs = await nextjs()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('astro', () => {
+		it('should return valid configs', async () => {
+			const configs = await astro()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('angular', () => {
+		it('should return valid configs', async () => {
+			const configs = await angular()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('unocss', () => {
+		it('should return valid configs', async () => {
+			const configs = await unocss()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('e18e', () => {
+		it('should return valid configs', async () => {
+			const configs = await e18e()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('pnpm', () => {
+		it('should return valid configs', async () => {
+			const configs = await pnpm()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('formatters', () => {
+		it('should return valid configs', async () => {
+			const configs = await formatters()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('stylistic', () => {
+		it('should return valid configs', () => {
+			const configs = stylistic()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('jsxA11y', () => {
+		it('should return valid configs', async () => {
+			const configs = await jsxA11y()
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('vueA11y', () => {
+		it('should return valid configs', async () => {
+			const configs = await vueA11y()
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
 		})

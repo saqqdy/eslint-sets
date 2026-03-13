@@ -1,4 +1,4 @@
-import { it, expect, describe } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
 describe('Integration Tests', () => {
@@ -39,7 +39,13 @@ export function greet(user: User): string {
 
 	it('should lint a Vue component', async () => {
 		const messages = await lintContent(
-			async () => await (await import('../src/index')).default(),
+			async () =>
+				await (
+					await import('../src/index')
+				).default({
+					vue: true,
+					typescript: true,
+				}),
 			`<template>
   <div class="app">
     <h1>{{ title }}</h1>

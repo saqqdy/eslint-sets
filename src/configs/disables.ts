@@ -5,14 +5,12 @@ import type { Linter } from 'eslint'
  */
 const GLOB_CONFIG_FILES = [
 	'**/*.config.{js,ts,mjs,mts,cjs,cts}',
-	'**/.*rc.{js,ts,mjs,mts,cjs,cts,json,yaml,yml}',
-	'**/.eslint*.{js,ts,mjs,mts,cjs,cts,json,yaml,yml}',
-	'**/.prettier*.{js,ts,mjs,mts,cjs,cts,json,yaml,yml}',
+	'**/.*rc.{js,ts,mjs,mts,cjs,cts,json}',
+	'**/.eslint*.{js,ts,mjs,mts,cjs,cts,json}',
+	'**/.prettier*.{js,ts,mjs,mts,cjs,cts,json}',
 	'**/tsconfig*.json',
 	'**/package.json',
-	'**/.github/workflows/*.{yml,yaml}',
 	'**/Dockerfile*',
-	'**/docker-compose*.{yml,yaml}',
 ]
 
 /**
@@ -48,24 +46,6 @@ export function disables(): Linter.Config[] {
 			files: ['**/*.json'],
 			rules: {
 				'jsonc/sort-keys': 'off',
-			},
-		},
-		{
-			name: 'eslint-sets/disables/markdown-files',
-			files: ['**/*.md'],
-			rules: {
-				'no-console': 'off',
-				'no-alert': 'off',
-				'no-undef': 'off',
-				'no-unused-vars': 'off',
-				'@typescript-eslint/no-unused-vars': 'off',
-				'@typescript-eslint/no-explicit-any': 'off',
-				'@typescript-eslint/no-unsafe-assignment': 'off',
-				'@typescript-eslint/no-unsafe-call': 'off',
-				'@typescript-eslint/no-unsafe-member-access': 'off',
-				'@typescript-eslint/no-unsafe-return': 'off',
-				'unicorn/no-lonely-if': 'off',
-				'unicorn/prefer-ternary': 'off',
 			},
 		},
 		{

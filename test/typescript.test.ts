@@ -1,5 +1,6 @@
-import { it, expect, describe } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
+import { typescript } from '../src/configs'
 
 describe('TypeScript Config', () => {
 	it('should parse TypeScript files', async () => {
@@ -45,5 +46,35 @@ describe('TypeScript Config', () => {
 		)
 		// Should parse without fatal errors
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+	})
+
+	it('should return valid configs with typeAware option', () => {
+		const configs = typescript({ typeAware: true })
+		expect(configs).toBeDefined()
+		expect(Array.isArray(configs)).toBeTruthy()
+		expect(configs.length).toBeGreaterThan(1)
+		// Should have type-aware config
+		expect(configs.find((c) => c.name === 'eslint-sets/typescript/type-aware')).toBeDefined()
+	})
+
+	it('should return valid configs with custom tsconfigPath', () => {
+		const configs = typescript({ tsconfigPath: './custom-tsconfig.json' })
+		expect(configs).toBeDefined()
+		expect(Array.isArray(configs)).toBeTruthy()
+	})
+
+	it('should return valid configs with custom filesTypeAware', () => {
+		const configs = typescript({
+			typeAware: true,
+			filesTypeAware: ['**/*.ts'],
+		})
+		expect(configs).toBeDefined()
+		expect(Array.isArray(configs)).toBeTruthy()
+	})
+
+	it('should apply custom overrides', () => {
+		const configs = typescript({ overrides: { '@typescript-eslint/no-explicit-any': 'off' } })
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.['@typescript-eslint/no-explicit-any']).toBe('off')
 	})
 })

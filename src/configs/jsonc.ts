@@ -1,12 +1,20 @@
 import type { Linter } from 'eslint'
+import type { OptionsOverrides } from '../types'
 import jsoncPlugin from 'eslint-plugin-jsonc'
 import jsoncParser from 'jsonc-eslint-parser'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../constants'
 
 /**
+ * JSON/JSONC configuration options
+ */
+export type JsoncOptions = OptionsOverrides
+
+/**
  * JSON/JSONC/JSON5 configuration
  */
-export function jsonc(): Linter.Config[] {
+export function jsonc(options: JsoncOptions = {}): Linter.Config[] {
+	const { overrides = {} } = options
+
 	return [
 		{
 			name: 'eslint-sets/jsonc/setup',
@@ -43,6 +51,9 @@ export function jsonc(): Linter.Config[] {
 				'jsonc/valid-json-number': 'error',
 				'jsonc/sort-array-values': 'off',
 				'jsonc/sort-keys': 'off',
+
+				// User overrides
+				...overrides,
 			},
 		},
 	]

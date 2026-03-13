@@ -37,4 +37,7 @@ export * from './constants'
 export { config } from './configs'
 
 // Export types
-export type { Linter, Options, FrameworkOptions } from './types'
+export type { Linter, Options, ProjectType, FrameworkOptions, OptionsOverrides } from './types'
+export type { VueOptions } from './configs/vue'
+export type { ReactOptions } from './configs/react'
+export type { TypeScriptOptions } from './configs/typescript'

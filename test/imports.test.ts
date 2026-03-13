@@ -1,4 +1,4 @@
-import { it, expect, describe } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
 describe('Imports Config', () => {
@@ -6,7 +6,7 @@ describe('Imports Config', () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
 			`import { used } from 'module'
-console.log(used)`,
+console.warn(used)`,
 			'test.js',
 		)
 		// Should parse without fatal errors
@@ -17,7 +17,7 @@ console.log(used)`,
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
 			`import used from 'module'
-console.log(used)`,
+console.warn(used)`,
 			'test.js',
 		)
 		// Should parse without fatal errors
@@ -28,7 +28,7 @@ console.log(used)`,
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
 			`import * as used from 'module'
-console.log(used)`,
+console.warn(used)`,
 			'test.js',
 		)
 		// Should parse without fatal errors

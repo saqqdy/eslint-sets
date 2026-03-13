@@ -3,14 +3,14 @@ import stylisticPlugin from '@stylistic/eslint-plugin'
 import { GLOB_SRC } from '../constants'
 
 /**
- * Stylistic options
+ * Stylistic configuration options
  */
 export interface StylisticOptions {
 	/**
-	 * Indentation
-	 * @default 'tab'
+	 * Indentation style
+	 * @default 2
 	 */
-	indent?: 'tab' | number
+	indent?: number | 'tab'
 
 	/**
 	 * Quote style
@@ -19,22 +19,22 @@ export interface StylisticOptions {
 	quotes?: 'single' | 'double'
 
 	/**
-	 * Semicolons
-	 * @default false
-	 */
-	semi?: boolean
-
-	/**
 	 * JSX quote style
 	 * @default 'prefer-double'
 	 */
 	jsxQuotes?: 'prefer-double' | 'prefer-single'
 
 	/**
+	 * Use semicolons
+	 * @default false
+	 */
+	semi?: boolean
+
+	/**
 	 * Trailing commas
 	 * @default 'all'
 	 */
-	trailingComma?: 'none' | 'es5' | 'all'
+	trailingComma?: 'all' | 'none' | 'es5'
 
 	/**
 	 * Bracket spacing
@@ -43,10 +43,15 @@ export interface StylisticOptions {
 	bracketSpacing?: boolean
 
 	/**
-	 * Arrow parentheses
+	 * Arrow function parentheses
 	 * @default 'always'
 	 */
-	arrowParens?: 'always' | 'avoid' | 'as-needed'
+	arrowParens?: 'always' | 'avoid'
+
+	/**
+	 * Override rules
+	 */
+	overrides?: Linter.RulesRecord
 }
 
 /**
@@ -54,13 +59,14 @@ export interface StylisticOptions {
  */
 export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 	const {
-		indent = 'tab',
+		indent = 2,
 		quotes = 'single',
 		semi = false,
 		jsxQuotes = 'prefer-double',
 		trailingComma = 'all',
 		bracketSpacing = true,
 		arrowParens = 'always',
+		overrides = {},
 	} = options
 
 	const indentStyle = indent === 'tab' ? 'tab' : indent
@@ -131,7 +137,7 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 					'error',
 					{
 						code: 120,
-						tabWidth: indentSize,
+						tabWidth: typeof indentSize === 'number' ? indentSize : 2,
 						ignoreUrls: true,
 						ignoreComments: false,
 						ignoreRegExpLiterals: true,
@@ -176,8 +182,12 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 				'@stylistic/jsx-curly-spacing': ['error', { attributes: true, children: true }],
 				'@stylistic/jsx-equals-spacing': ['error', 'never'],
 				'@stylistic/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
-				'@stylistic/jsx-indent': ['error', indentSize, { indentLogicalExpressions: true }],
-				'@stylistic/jsx-indent-props': ['error', indentSize],
+				'@stylistic/jsx-indent': [
+					'error',
+					typeof indentSize === 'number' ? indentSize : 2,
+					{ indentLogicalExpressions: true },
+				],
+				'@stylistic/jsx-indent-props': ['error', typeof indentSize === 'number' ? indentSize : 2],
 				'@stylistic/jsx-newline': 'off',
 				'@stylistic/jsx-one-expression-per-line': ['error', { allow: 'literal' }],
 				'@stylistic/jsx-pascal-case': 'off',
@@ -186,6 +196,9 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 				'@stylistic/jsx-sort-props': 'off',
 				'@stylistic/jsx-tag-spacing': ['error', { beforeSelfClosing: 'always' }],
 				'@stylistic/jsx-wrap-multilines': 'off',
+
+				// User overrides
+				...overrides,
 			},
 		},
 	]

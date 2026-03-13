@@ -1,10 +1,19 @@
 import { isPackageExists } from 'local-pkg'
+import {
+	ANGULAR_PACKAGES,
+	ASTRO_PACKAGES,
+	NEXTJS_PACKAGES,
+	NUXT_PACKAGES,
+	REACT_COMPILER_PACKAGES,
+	UNOCSS_PACKAGES,
+	VUE_PACKAGES,
+} from './constants'
 
 /**
  * Check if Vue is installed
  */
 export function hasVue(): boolean {
-	return isPackageExists('vue')
+	return VUE_PACKAGES.some((pkg) => isPackageExists(pkg))
 }
 
 /**
@@ -12,6 +21,13 @@ export function hasVue(): boolean {
  */
 export function hasReact(): boolean {
 	return isPackageExists('react')
+}
+
+/**
+ * Check if React Compiler is installed
+ */
+export function hasReactCompiler(): boolean {
+	return REACT_COMPILER_PACKAGES.some((pkg) => isPackageExists(pkg))
 }
 
 /**
@@ -25,7 +41,7 @@ export function hasSvelte(): boolean {
  * Check if TypeScript is installed
  */
 export function hasTypeScript(): boolean {
-	return isPackageExists('typescript')
+	return isPackageExists('typescript') || isPackageExists('@typescript/native-preview')
 }
 
 /**
@@ -50,6 +66,48 @@ export function hasSolid(): boolean {
 }
 
 /**
+ * Check if Next.js is installed
+ */
+export function hasNextjs(): boolean {
+	return NEXTJS_PACKAGES.some((pkg) => isPackageExists(pkg))
+}
+
+/**
+ * Check if Nuxt is installed
+ */
+export function hasNuxt(): boolean {
+	return NUXT_PACKAGES.some((pkg) => isPackageExists(pkg))
+}
+
+/**
+ * Check if Astro is installed
+ */
+export function hasAstro(): boolean {
+	return ASTRO_PACKAGES.some((pkg) => isPackageExists(pkg))
+}
+
+/**
+ * Check if Angular is installed
+ */
+export function hasAngular(): boolean {
+	return ANGULAR_PACKAGES.some((pkg) => isPackageExists(pkg))
+}
+
+/**
+ * Check if UnoCSS is installed
+ */
+export function hasUnoCSS(): boolean {
+	return UNOCSS_PACKAGES.some((pkg) => isPackageExists(pkg))
+}
+
+/**
+ * Check if a package is installed
+ */
+export function hasPackage(name: string): boolean {
+	return isPackageExists(name)
+}
+
+/**
  * Dynamically load a plugin
  */
 export async function loadPlugin<T>(name: string): Promise<T | null> {
@@ -57,5 +115,17 @@ export async function loadPlugin<T>(name: string): Promise<T | null> {
 		return (await import(name)) as T
 	} catch {
 		return null
+	}
+}
+
+/**
+ * Ensure packages are installed
+ */
+export async function ensurePackages(packages: string[]): Promise<void> {
+	const missing = packages.filter((pkg) => !isPackageExists(pkg))
+	if (missing.length > 0) {
+		throw new Error(
+			`Missing required packages: ${missing.join(', ')}. Please install them with: pnpm add -D ${missing.join(' ')}`,
+		)
 	}
 }

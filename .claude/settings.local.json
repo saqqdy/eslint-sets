@@ -12,7 +12,16 @@
       "Bash(pnpm add:*)",
       "Bash(pnpm test:*)",
       "Bash(pnpm exec:*)",
-      "Bash(pnpm typecheck:*)"
+      "Bash(pnpm typecheck:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh repo:*)",
+      "Bash(npm search:*)",
+      "Bash(npm view:*)",
+      "Bash(pnpm vitest:*)",
+      "Bash(npm ls:*)",
+      "Bash(npx tsx:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(pnpm lint:fix 2>&1)"
     ]
   }
 }

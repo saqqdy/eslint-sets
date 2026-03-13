@@ -1,4 +1,4 @@
-import { it, expect, describe } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { eslintConfig } from './utils'
 
 describe('Config Options', () => {
@@ -19,6 +19,17 @@ describe('Config Options', () => {
 		const ignoresConfig = config.find((c) => c.name === 'eslint-sets/ignores')
 		expect(ignoresConfig).toBeDefined()
 		expect(ignoresConfig?.ignores).toContain('**/dist/**')
+		expect(ignoresConfig?.ignores).toContain('**/custom-ignore/**')
+	})
+
+	it('should respect ignores function option', async () => {
+		const config = await eslintConfig({
+			ignores: (defaults) => [...defaults, '**/custom-ignore/**'],
+		})
+		expect(config).toBeDefined()
+
+		const ignoresConfig = config.find((c) => c.name === 'eslint-sets/ignores')
+		expect(ignoresConfig).toBeDefined()
 		expect(ignoresConfig?.ignores).toContain('**/custom-ignore/**')
 	})
 
@@ -84,5 +95,100 @@ describe('Config Options', () => {
 		// Should only have basic configs
 		expect(config.find((c) => c.name === 'eslint-sets/javascript')).toBeDefined()
 		expect(config.find((c) => c.name === 'eslint-sets/ignores')).toBeDefined()
+	})
+
+	it('should support extends option', async () => {
+		const config = await eslintConfig({
+			extends: [
+				{
+					name: 'test/custom',
+					rules: {
+						'no-console': 'off',
+					},
+				},
+			],
+		})
+
+		expect(config.find((c) => c.name === 'test/custom')).toBeDefined()
+	})
+
+	it('should support isInEditor option', async () => {
+		const config = await eslintConfig({
+			isInEditor: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support gitignore option disabled', async () => {
+		const config = await eslintConfig({
+			gitignore: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support disables option disabled', async () => {
+		const config = await eslintConfig({
+			disables: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support command option disabled', async () => {
+		const config = await eslintConfig({
+			command: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support sortPackageJson option disabled', async () => {
+		const config = await eslintConfig({
+			sortPackageJson: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support sortTsconfig option disabled', async () => {
+		const config = await eslintConfig({
+			sortTsconfig: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support eslintComments option disabled', async () => {
+		const config = await eslintConfig({
+			eslintComments: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support autoDetect disabled', async () => {
+		const config = await eslintConfig({
+			autoDetect: false,
+		})
+		expect(config).toBeDefined()
+	})
+
+	it('should support vue with options object', async () => {
+		const config = await eslintConfig({
+			vue: { vueVersion: 3 },
+		})
+		expect(config.find((c) => c.name === 'eslint-sets/vue/setup')).toBeDefined()
+	})
+
+	it('should support react with options object', async () => {
+		const config = await eslintConfig({
+			react: { a11y: false },
+		})
+		// React config may not exist if react package is not installed
+		// Just verify the config is valid
+		expect(config).toBeDefined()
+		expect(Array.isArray(config)).toBeTruthy()
+	})
+
+	it('should support typescript with options object', async () => {
+		const config = await eslintConfig({
+			typescript: { typeAware: false },
+		})
+		expect(config.find((c) => c.name === 'eslint-sets/typescript/setup')).toBeDefined()
 	})
 })

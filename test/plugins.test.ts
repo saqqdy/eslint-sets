@@ -1,5 +1,5 @@
-import { it, expect, describe } from 'vitest'
-import { hasVue, hasReact, hasSvelte, hasPrettier, hasTypeScript } from '../src/plugins'
+import { describe, expect, it } from 'vitest'
+import { hasPrettier, hasReact, hasSvelte, hasTypeScript, hasVue } from '../src/plugins'
 
 describe('Plugin Detection', () => {
 	it('should detect TypeScript (installed)', () => {

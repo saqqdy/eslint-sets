@@ -1,7 +1,13 @@
 import type { Linter } from 'eslint'
+import type { OptionsOverrides } from '../types'
 import ymlPlugin, { configs as ymlConfigs } from 'eslint-plugin-yml'
 import yamlParser from 'yaml-eslint-parser'
 import { GLOB_YAML } from '../constants'
+
+/**
+ * YAML configuration options
+ */
+export type YamlOptions = OptionsOverrides
 
 // Get rules from the plugin configs
 const ymlStandardRules = (ymlConfigs?.standard as any)?.rules || {}
@@ -9,7 +15,9 @@ const ymlStandardRules = (ymlConfigs?.standard as any)?.rules || {}
 /**
  * YAML configuration
  */
-export function yaml(): Linter.Config[] {
+export function yaml(options: YamlOptions = {}): Linter.Config[] {
+	const { overrides = {} } = options
+
 	return [
 		{
 			name: 'eslint-sets/yaml/setup',
@@ -41,6 +49,9 @@ export function yaml(): Linter.Config[] {
 				'yml/sort-keys': 'off',
 				'yml/sort-sequence-values': 'off',
 				'yml/spaced-comment': 'error',
+
+				// User overrides
+				...overrides,
 			},
 		},
 	]

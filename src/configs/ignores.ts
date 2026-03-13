@@ -1,5 +1,4 @@
 import type { Linter } from 'eslint'
-import { GLOB_EXCLUDES } from '../constants'
 
 /**
  * Ignores configuration
@@ -7,6 +6,6 @@ import { GLOB_EXCLUDES } from '../constants'
 export function ignores(userIgnores: string[] = []): Linter.Config {
 	return {
 		name: 'eslint-sets/ignores',
-		ignores: [...GLOB_EXCLUDES, ...userIgnores],
+		ignores: userIgnores,
 	}
 }

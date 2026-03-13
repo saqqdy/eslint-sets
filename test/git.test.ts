@@ -1,6 +1,6 @@
-import { it, expect, describe, afterEach, beforeEach } from 'vitest'
-import { parseGitignore, getGitignorePatterns } from '../src/utils/git'
-import { rmSync, mkdirSync, existsSync, writeFileSync } from 'node:fs'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { findGitignore, getGitignorePatterns, parseGitignore } from '../src/utils/git'
+import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { tmpdir } from 'node:os'
 
@@ -62,10 +62,28 @@ build/output/`
 			expect(patterns).toContain('src/**/*.test.ts')
 			expect(patterns).toContain('build/output/**')
 		})
+
+		it('should handle patterns without slashes', () => {
+			const content = `*.log
+*.tmp`
+			const patterns = parseGitignore(content)
+			expect(patterns).toContain('**/*.log')
+			expect(patterns).toContain('**/*.tmp')
+		})
+	})
+
+	describe('findGitignore', () => {
+		it('should return empty array when no .gitignore exists', async () => {
+			const tempDir = join(tmpdir(), `eslint-sets-test-find-${Date.now()}`)
+			mkdirSync(tempDir, { recursive: true })
+			const patterns = await findGitignore(tempDir)
+			expect(patterns).toEqual([])
+			rmSync(tempDir, { recursive: true })
+		})
 	})
 
 	describe('getGitignorePatterns', () => {
-		const tempDir = join(tmpdir(), 'eslint-sets-test-' + Date.now())
+		const tempDir = join(tmpdir(), `eslint-sets-test-${Date.now()}`)
 
 		beforeEach(() => {
 			if (existsSync(tempDir)) {
@@ -90,6 +108,27 @@ build/output/`
 			const patterns = await getGitignorePatterns(tempDir)
 			expect(patterns.length).toBeGreaterThan(0)
 			expect(patterns).toContain('**/node_modules')
+		})
+
+		it('should also read .git/info/exclude if exists', async () => {
+			writeFileSync(join(tempDir, '.gitignore'), 'node_modules')
+			// Create .git/info directory and exclude file
+			mkdirSync(join(tempDir, '.git', 'info'), { recursive: true })
+			writeFileSync(join(tempDir, '.git', 'info', 'exclude'), 'dist\n*.log')
+			const patterns = await getGitignorePatterns(tempDir)
+			expect(patterns).toContain('**/node_modules')
+			expect(patterns).toContain('**/dist')
+			expect(patterns).toContain('**/*.log')
+		})
+
+		it('should deduplicate patterns', async () => {
+			writeFileSync(join(tempDir, '.gitignore'), 'node_modules\ndist')
+			mkdirSync(join(tempDir, '.git', 'info'), { recursive: true })
+			writeFileSync(join(tempDir, '.git', 'info', 'exclude'), 'node_modules\n*.log')
+			const patterns = await getGitignorePatterns(tempDir)
+			// node_modules should only appear once
+			const nodeModulesCount = patterns.filter((p) => p.includes('node_modules')).length
+			expect(nodeModulesCount).toBe(1)
 		})
 	})
 })

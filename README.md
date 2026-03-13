@@ -3,7 +3,7 @@
 [![NPM version][npm-image]][npm-url]
 [![License][license-image]][license-url]
 
-Modern ESLint config with flat config support for Vue, React, Svelte, and TypeScript.
+Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript, Next.js, Nuxt, Astro, Angular, UnoCSS and more.
 
 ## Features
 
@@ -12,9 +12,29 @@ Modern ESLint config with flat config support for Vue, React, Svelte, and TypeSc
 - ✨ **Stylistic Support** - Optional `@stylistic/eslint-plugin` for code formatting without Prettier
 - 📦 **Auto-detection** - Automatically detects installed frameworks
 - 🔧 **Highly Configurable** - Fine-grained control over enabled features
-- 🙈 **Git Ignore Support** - Automatically read `.gitignore` patterns
+- 🙈 **Git Ignore Support** - Automatically read `.gitignore` patterns (default: on)
 - 🛠️ **Disables Support** - Automatically disable strict rules in config files
 - 🖥️ **Command Support** - Relaxed rules for command-line scripts
+- 🏷️ **Project Types** - Support for `app` and `lib` project types
+- ♿ **Accessibility** - Optional a11y rules for Vue and React
+- 📝 **Auto-sort** - Automatically sort package.json and tsconfig.json
+- 🔍 **Editor Detection** - Automatically detect editor environment
+- 🔎 **Config Inspector** - Visual tool for inspecting your ESLint config
+
+## Supported Frameworks
+
+| Framework  | Auto-detect | Notes                                           |
+| ---------- | :---------: | ----------------------------------------------- |
+| TypeScript |     ✅      | Default enabled                                 |
+| Vue        |     ✅      | Vue 2 & 3 support, with a11y option             |
+| React      |     ✅      | With hooks, refresh, and React Compiler support |
+| Svelte     |     ✅      |                                                 |
+| Solid      |     ✅      |                                                 |
+| Next.js    |     ✅      | Requires `@next/eslint-plugin-next`             |
+| Nuxt       |     ✅      |                                                 |
+| Astro      |     ✅      | Requires `eslint-plugin-astro`                  |
+| Angular    |     ✅      | Requires `@angular-eslint/eslint-plugin`        |
+| UnoCSS     |     ✅      | Requires `@unocss/eslint-plugin`                |
 
 ## Installation
 
@@ -25,13 +45,37 @@ pnpm install -D @eslint-sets/eslint-config eslint
 # use npm
 npm install -D @eslint-sets/eslint-config eslint
 
-# use yarn
-yarn add -D @eslint-sets/eslint-config eslint
+# use bun
+bun add -D @eslint-sets/eslint-config eslint
 ```
 
-## Usage
+## Quick Start
 
-### Basic Usage
+### Using CLI (Recommended)
+
+Run the interactive CLI to set up your project:
+
+```shell
+# use pnpm
+pnpm dlx @eslint-sets/eslint-config
+
+# use npm
+npx @eslint-sets/eslint-config
+
+# use bun
+bunx @eslint-sets/eslint-config
+```
+
+The CLI will guide you through:
+
+- Project type selection (Application/Library)
+- TypeScript support
+- Framework selection (Vue, React, Svelte, Solid, Next.js, Nuxt, Astro, Angular, UnoCSS)
+- Accessibility options
+- Formatter choice (Prettier/Stylistic)
+- Additional options (.gitignore, auto-sort, etc.)
+
+### Manual Setup
 
 Create an `eslint.config.ts` file in your project root:
 
@@ -42,6 +86,8 @@ import eslintConfig from '@eslint-sets/eslint-config'
 export default eslintConfig()
 ```
 
+## Usage
+
 ### With Options
 
 ```typescript
@@ -49,78 +95,153 @@ export default eslintConfig()
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  // TypeScript support (default: true)
-  typescript: true,
+	// Project type: 'app' (default) or 'lib'
+	type: 'lib',
 
-  // Vue support (default: 'auto' - auto-detect)
-  vue: true,
+	// TypeScript support (default: true)
+	typescript: true,
 
-  // React support (default: 'auto' - auto-detect)
-  react: true,
+	// Vue support (default: 'auto' - auto-detect)
+	vue: true,
+	// Or with options:
+	vue: {
+		vueVersion: 3,
+		a11y: true, // Enable accessibility rules
+	},
 
-  // Svelte support (default: 'auto' - auto-detect)
-  svelte: true,
+	// React support (default: 'auto' - auto-detect)
+	react: true,
+	// Or with options:
+	react: {
+		reactCompiler: true, // React Compiler support
+		a11y: true, // Enable JSX accessibility rules
+	},
 
-  // Test file support (default: true)
-  test: true,
+	// Svelte support (default: 'auto' - auto-detect)
+	svelte: true,
 
-  // Prettier integration (default: true)
-  prettier: true,
+	// Solid support (default: 'auto' - auto-detect)
+	solid: true,
 
-  // Stylistic formatting (default: false)
-  // When enabled, Prettier is automatically disabled
-  stylistic: true,
-  // Or with custom options:
-  stylistic: {
-    indent: 'tab', // 'tab' | number
-    quotes: 'single', // 'single' | 'double'
-    semi: false, // boolean
-    jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
-    trailingComma: 'all', // 'none' | 'es5' | 'all'
-    bracketSpacing: true, // boolean
-    arrowParens: 'always', // 'always' | 'avoid'
-  },
+	// Next.js support (default: 'auto' - auto-detect)
+	nextjs: true,
 
-  // Auto-read .gitignore (default: false)
-  gitignore: true,
+	// Nuxt support (default: 'auto' - auto-detect)
+	nuxt: true,
 
-  // Disable rules in config files (default: true)
-  disables: true,
+	// Astro support (default: 'auto' - auto-detect)
+	astro: true,
 
-  // Relax rules for scripts (default: true)
-  command: true,
+	// Angular support (default: 'auto' - auto-detect)
+	angular: true,
 
-  // JSON/JSONC support (default: true)
-  jsonc: true,
+	// UnoCSS support (default: 'auto' - auto-detect)
+	unocss: true,
 
-  // YAML support (default: true)
-  yaml: true,
+	// Test file support (default: true)
+	test: true,
 
-  // Markdown support (default: true)
-  markdown: true,
+	// Prettier integration (default: true)
+	prettier: true,
 
-  // Import rules (default: true)
-  imports: true,
+	// Stylistic formatting (default: false)
+	// When enabled, Prettier is automatically disabled
+	stylistic: true,
+	// Or with custom options:
+	stylistic: {
+		indent: 2, // 'tab' | number
+		quotes: 'single', // 'single' | 'double'
+		semi: false, // boolean
+		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
+		trailingComma: 'all', // 'none' | 'es5' | 'all'
+		bracketSpacing: true, // boolean
+		arrowParens: 'always', // 'always' | 'avoid'
+	},
 
-  // Unicorn rules (default: true)
-  unicorn: true,
+	// e18e modernization rules (default: false)
+	e18e: true,
 
-  // Perfectionist sorting (default: true)
-  perfectionist: true,
+	// pnpm workspace support (default: false)
+	pnpm: true,
 
-  // Regexp rules (default: true)
-  regexp: true,
+	// External formatters (default: false)
+	formatters: {
+		css: 'prettier',
+		html: 'prettier',
+		xml: 'prettier',
+		svg: 'prettier',
+		graphql: 'prettier',
+		markdown: 'prettier',
+	},
 
-  // Node.js rules (default: true)
-  node: true,
+	// Auto-read .gitignore (default: true)
+	gitignore: true,
 
-  // Files to ignore
-  ignores: ['**/dist/**', '**/node_modules/**'],
+	// Disable rules in config files (default: true)
+	disables: true,
 
-  // Custom rule overrides
-  rules: {
-    'no-console': 'off',
-  },
+	// Relax rules for scripts (default: true)
+	command: true,
+
+	// Auto-sort package.json (default: true)
+	sortPackageJson: true,
+
+	// Auto-sort tsconfig.json (default: true)
+	sortTsconfig: true,
+
+	// JSX Accessibility rules (default: false)
+	jsxA11y: true,
+
+	// JSON/JSONC support (default: true)
+	jsonc: true,
+
+	// YAML support (default: true)
+	yaml: true,
+
+	// Markdown support (default: true)
+	markdown: true,
+
+	// Import rules (default: true)
+	imports: true,
+
+	// Unicorn rules (default: true)
+	unicorn: true,
+
+	// Perfectionist sorting (default: true)
+	perfectionist: true,
+
+	// Regexp rules (default: true)
+	regexp: true,
+
+	// ESLint comments rules (default: true)
+	eslintComments: true,
+
+	// Node.js rules (default: true)
+	node: true,
+
+	// Files to ignore
+	ignores: ['**/dist/**', '**/node_modules/**'],
+	// Or modify defaults:
+	ignores: (defaults) => [...defaults, '**/custom/**'],
+
+	// Custom rule overrides
+	rules: {
+		'no-console': 'off',
+	},
+})
+```
+
+### Project Types
+
+```typescript
+// Application project (default)
+export default eslintConfig({
+	type: 'app',
+})
+
+// Library project - stricter rules
+export default eslintConfig({
+	type: 'lib',
 })
 ```
 
@@ -134,33 +255,46 @@ This config supports two formatting approaches:
 ```typescript
 // Use Prettier (default)
 export default eslintConfig({
-  prettier: true,
+	prettier: true,
 })
 
 // Use Stylistic instead
 export default eslintConfig({
-  prettier: false,
-  stylistic: true,
+	prettier: false,
+	stylistic: true,
 })
 
 // Use Stylistic with custom options
 export default eslintConfig({
-  prettier: false,
-  stylistic: {
-    indent: 2,
-    quotes: 'single',
-    semi: false,
-  },
+	prettier: false,
+	stylistic: {
+		indent: 2,
+		quotes: 'single',
+		semi: false,
+	},
 })
 ```
 
-### Git Ignore Support
-
-Enable automatic `.gitignore` reading:
+### Accessibility Rules
 
 ```typescript
+// Vue accessibility
 export default eslintConfig({
-  gitignore: true, // Automatically read .gitignore patterns
+	vue: {
+		a11y: true,
+	},
+})
+
+// React/JSX accessibility
+export default eslintConfig({
+	react: {
+		a11y: true,
+	},
+})
+
+// Or standalone JSX a11y
+export default eslintConfig({
+	jsxA11y: true,
 })
 ```
 
@@ -173,7 +307,7 @@ By default, the config auto-detects installed frameworks and enables the appropr
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  autoDetect: true, // Enable auto-detection (default: true)
+	autoDetect: true, // Enable auto-detection (default: true)
 })
 ```
 
@@ -185,8 +319,12 @@ export default eslintConfig({
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  vue: true,
-  typescript: true,
+	type: 'lib',
+	vue: {
+		vueVersion: 3,
+		a11y: true,
+	},
+	typescript: true,
 })
 ```
 
@@ -196,8 +334,46 @@ export default eslintConfig({
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  react: true,
-  typescript: true,
+	react: {
+		reactCompiler: true,
+		a11y: true,
+	},
+	typescript: true,
+})
+```
+
+#### Next.js Project
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	nextjs: true,
+	react: true,
+	typescript: true,
+})
+```
+
+#### Nuxt Project
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	nuxt: true,
+	vue: true,
+	typescript: true,
+})
+```
+
+#### Angular Project
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	angular: true,
+	typescript: true,
 })
 ```
 
@@ -207,8 +383,29 @@ export default eslintConfig({
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  svelte: true,
-  typescript: true,
+	svelte: true,
+	typescript: true,
+})
+```
+
+#### Astro Project
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	astro: true,
+	typescript: true,
+})
+```
+
+#### UnoCSS Project
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	unocss: true,
 })
 ```
 
@@ -218,13 +415,38 @@ export default eslintConfig({
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  extends: [
-    // Additional flat configs
-  ],
-  rules: {
-    // Override rules
-  },
+	extends: [
+		// Additional flat configs
+	],
+	rules: {
+		// Override rules
+	},
 })
+```
+
+## Config Inspector
+
+Visualize and debug your ESLint configuration using the built-in Config Inspector:
+
+```shell
+# Run the inspector
+npx @eslint/config-inspector
+
+# Or using pnpm
+pnpm inspector
+```
+
+Visit http://localhost:7777/ to view and interact with your ESLint config. The inspector shows:
+
+- All configured rules and their sources
+- File patterns and their matching configs
+- Plugin information
+- Rule configurations
+
+You can also build a static version for sharing:
+
+```shell
+npx @eslint/config-inspector build
 ```
 
 ## Individual Configs
@@ -233,44 +455,109 @@ You can also import individual configurations:
 
 ```typescript
 import {
-  javascript,
-  typescript,
-  vue,
-  react,
-  svelte,
-  jsonc,
-  yaml,
-  markdown,
-  imports,
-  unicorn,
-  perfectionist,
-  regexp,
-  test,
-  node,
-  prettier,
-  stylistic,
-  disables,
-  command,
+	javascript,
+	typescript,
+	vue,
+	react,
+	svelte,
+	solid,
+	jsonc,
+	yaml,
+	markdown,
+	toml,
+	imports,
+	unicorn,
+	perfectionist,
+	regexp,
+	test,
+	node,
+	prettier,
+	stylistic,
+	disables,
+	command,
+	nextjs,
+	nuxt,
+	astro,
+	angular,
+	unocss,
+	e18e,
+	pnpm,
+	formatters,
+	eslintComments,
+	jsxA11y,
+	vueA11y,
+	noOnlyTests,
+	sortPackageJson,
+	sortTsconfig,
 } from '@eslint-sets/eslint-config'
 ```
 
 ## Peer Dependencies
 
-| Package | Version |
-|---------|---------|
-| eslint | ^9.22.0 |
-| prettier | ^3.5.3 (optional, for Prettier integration) |
-| typescript | >=5.0.0 (optional, for TypeScript support) |
+| Package    | Version                                     |
+| ---------- | ------------------------------------------- |
+| eslint     | ^9.10.0 or ^9.22.0                          |
+| prettier   | ^3.5.3 (optional, for Prettier integration) |
+| typescript | >=5.0.0 (optional, for TypeScript support)  |
 
 ## Optional Dependencies
 
 The following packages are optional and will be used if installed:
 
+### React
+
 - `eslint-plugin-react` - React support
 - `eslint-plugin-react-hooks` - React Hooks support
 - `eslint-plugin-react-refresh` - React Refresh support
+
+### Vue
+
+- `eslint-plugin-vuejs-accessibility` - Vue accessibility rules
+
+### Svelte
+
 - `eslint-plugin-svelte` - Svelte support
 - `svelte` - Svelte parser
+- `svelte-eslint-parser` - Svelte ESLint parser
+
+### Next.js
+
+- `@next/eslint-plugin-next` - Next.js specific rules
+
+### Astro
+
+- `eslint-plugin-astro` - Astro support
+- `astro-eslint-parser` - Astro ESLint parser
+
+### Angular
+
+- `@angular-eslint/eslint-plugin` - Angular support
+- `@angular-eslint/eslint-plugin-template` - Angular template rules
+- `@angular-eslint/template-parser` - Angular template parser
+
+### UnoCSS
+
+- `@unocss/eslint-plugin` - UnoCSS rules
+
+### Accessibility
+
+- `eslint-plugin-jsx-a11y` - JSX accessibility rules
+
+### Modernization
+
+- `@e18e/eslint-plugin` - Code modernization rules
+
+### Workspace
+
+- `eslint-plugin-pnpm` - pnpm workspace rules
+
+### Formatters
+
+- `eslint-plugin-format` - External formatters for CSS, HTML, etc.
+
+### Markdown
+
+- `@eslint/markdown` - Markdown linting
 
 ## Migration from v5
 
@@ -281,7 +568,7 @@ If you're migrating from the old `@eslint-sets/eslint-config-*` packages:
 ```javascript
 // .eslintrc.js
 module.exports = {
-  extends: '@eslint-sets/eslint-config-vue',
+	extends: '@eslint-sets/eslint-config-vue',
 }
 ```
 
@@ -292,7 +579,7 @@ module.exports = {
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
-  vue: true,
+	vue: true,
 })
 ```
 
@@ -302,12 +589,35 @@ Add to your `.vscode/settings.json`:
 
 ```json
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "eslint.experimental.useFlatConfig": true
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"eslint.experimental.useFlatConfig": true,
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"html",
+		"markdown",
+		"json",
+		"jsonc",
+		"yaml",
+		"toml",
+		"astro",
+		"svelte"
+	]
 }
 ```
+
+## Comparison with @antfu/eslint-config
+
+See [COMPARISON.md](./COMPARISON.md) for a detailed comparison with `@antfu/eslint-config`.
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for release history.
 
 ## License
 

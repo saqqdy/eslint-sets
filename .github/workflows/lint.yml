@@ -2,12 +2,9 @@ name: Lint
 
 on:
   push:
-    branches:
-      - master
-
-  # pull_request:
-  #   branches:
-  #     - master
+    branches: [master, dev]
+  pull_request:
+    branches: [master]
 
 jobs:
   lint:
@@ -15,21 +12,24 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 9.0.6
+          version: 9
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          registry-url: https://registry.npmmirror.com
+          node-version: 20
           cache: pnpm
 
-      - run: pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: pnpm run eslint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck

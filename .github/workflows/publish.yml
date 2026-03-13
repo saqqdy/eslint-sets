@@ -1,52 +1,54 @@
-name: npm-publish
+name: Publish to npm
 
 on:
   release:
     types: [created]
 
 jobs:
-  publish-gpr:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
+      id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 9.0.6
+          version: 9
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          registry-url: https://registry.npmmirror.com
+          node-version: 20
+          registry-url: https://registry.npmjs.org
           cache: pnpm
 
-      - run: echo ${{ matrix.node-version }}
-      - run: npm -v
-      - run: pnpm store path
-      - run: pnpm install
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      # - run: npx changelogithub --no-group
-      #   continue-on-error: true
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Lint
+        run: pnpm lint
 
-      - run: pnpm dist
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish
+        run: pnpm publish --no-git-checks --provenance
         env:
-          NODE_OPTIONS: --max-old-space-size=6144
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Gen .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
-
-      - run: pnpm pub
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-      - run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config/sync"
+      - name: Sync to npmmirror
+        run: curl -X PUT -d "sync_upstream=true" "https://registry-direct.npmmirror.com/@eslint-sets/eslint-config/sync"

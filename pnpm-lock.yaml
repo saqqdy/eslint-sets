@@ -105,6 +105,9 @@ importers:
       '@angular-eslint/template-parser':
         specifier: ^19.0.0
         version: 19.8.1(eslint@9.39.4(jiti@2.6.1))(typescript@5.8.3)
+      '@e18e/eslint-plugin':
+        specifier: ^0.2.0
+        version: 0.2.0(eslint@9.39.4(jiti@2.6.1))
       '@eslint/markdown':
         specifier: ^6.3.0
         version: 6.6.0
@@ -928,6 +931,17 @@ packages:
 
   '@dprint/toml@0.6.4':
     resolution: {integrity: sha512-bZXIUjxr0LIuHWshZr/5mtUkOrnh0NKVZEF6ACojW5z7zkJu7s9sV2mMXm8XQDqN4cJzdHYUYzUyEGdfciaLJA==}
+
+  '@e18e/eslint-plugin@0.2.0':
+    resolution: {integrity: sha512-mXgODVwhuDjTJ+UT+XSvmMmCidtGKfrV5nMIv1UtpWex2pYLsIM3RSpT8HWIMAebS9qANbXPKlSX4BE7ZvuCgA==}
+    peerDependencies:
+      eslint: ^9.0.0 || ^10.0.0
+      oxlint: ^1.41.0
+    peerDependenciesMeta:
+      eslint:
+        optional: true
+      oxlint:
+        optional: true
 
   '@emnapi/core@1.9.0':
     resolution: {integrity: sha512-0DQ98G9ZQZOxfUcQn1waV2yS8aWdZ6kJMbYCJB3oUBecjWYO1fqJ+a1DRfPF3O5JEkwqwP1A9QEN/9mYm2Yd0w==}
@@ -3160,6 +3174,11 @@ packages:
     peerDependencies:
       eslint: '>=8.57.0'
 
+  eslint-plugin-depend@1.5.0:
+    resolution: {integrity: sha512-i3UeLYmclf1Icp35+6W7CR4Bp2PIpDgBuf/mpmXK5UeLkZlvYJ21VuQKKHHAIBKRTPivPGX/gZl5JGno1o9Y0A==}
+    peerDependencies:
+      eslint: '>=8.40.0'
+
   eslint-plugin-eggache@2.0.0:
     resolution: {integrity: sha512-IHPrZ8LZgTRJTN5e6bXEgmv4vE0yDTAYFgHyvlf2KED8gRSiZ/kVPur+VHjpV4/8OVGJg2YaNEqsiBHxgMCKyA==}
     engines: {node: '>=14.17.0'}
@@ -4667,6 +4686,9 @@ packages:
   mlly@1.8.1:
     resolution: {integrity: sha512-SnL6sNutTwRWWR/vcmCYHSADjiEesp5TGQQ0pXyLhW5IoeibRlF/CbSLailbB3CNqJUk9cVJ9dUDnbD7GrcHBQ==}
 
+  module-replacements@2.11.0:
+    resolution: {integrity: sha512-j5sNQm3VCpQQ7nTqGeOZtoJtV3uKERgCBm9QRhmGRiXiqkf7iRFOkfxdJRZWLkqYY8PNf4cDQF/WfXUYLENrRA==}
+
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -6154,6 +6176,13 @@ snapshots:
     optional: true
 
   '@dprint/toml@0.6.4':
+    optional: true
+
+  '@e18e/eslint-plugin@0.2.0(eslint@9.39.4(jiti@2.6.1))':
+    dependencies:
+      eslint-plugin-depend: 1.5.0(eslint@9.39.4(jiti@2.6.1))
+    optionalDependencies:
+      eslint: 9.39.4(jiti@2.6.1)
     optional: true
 
   '@emnapi/core@1.9.0':
@@ -8585,6 +8614,14 @@ snapshots:
       - supports-color
     optional: true
 
+  eslint-plugin-depend@1.5.0(eslint@9.39.4(jiti@2.6.1)):
+    dependencies:
+      empathic: 2.0.0
+      eslint: 9.39.4(jiti@2.6.1)
+      module-replacements: 2.11.0
+      semver: 7.7.4
+    optional: true
+
   eslint-plugin-eggache@2.0.0: {}
 
   eslint-plugin-es-x@7.8.0(eslint@8.57.1):
@@ -10913,6 +10950,9 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.6.3
+
+  module-replacements@2.11.0:
+    optional: true
 
   ms@2.1.3: {}
 

@@ -1,5 +1,74 @@
 # GitHub Workflows 使用指南
 
+## 发布命令说明
+
+### bumpp
+
+`bumpp` 是一个交互式的版本号升级工具，它会：
+
+1. **显示当前版本** - 显示 package.json 中的当前版本
+2. **提示选择新版本** - 提供选项让你选择：
+   - `patch` (0.0.x) - 修复 bug
+   - `minor` (0.x.0) - 新功能
+   - `major` (x.0.0) - 破坏性变更
+   - 自定义版本号
+3. **自动更新文件** - 更新 package.json、CHANGELOG.md 等文件
+4. **创建 git commit 和 tag** - 自动提交版本变更并创建 git tag
+
+```shell
+# 运行 bumpp 时的交互示例
+? Current version: 6.0.0-beta.0
+? Select release type:
+  patch (6.0.0-beta.1)
+  minor (6.0.1-beta.0)
+  major (6.1.0-beta.0)
+  premajor (7.0.0-beta.0)
+❯ custom
+```
+
+### pnpm publish
+
+将包发布到 npm registry：
+
+1. **运行 prepublishOnly** - 执行 `pnpm build` 构建项目
+2. **上传到 npm** - 将 `dist` 目录发布到 npm
+
+### && 连接符
+
+两个命令串联执行：
+- `bumpp` 成功后才执行 `pnpm publish`
+- 如果 `bumpp` 失败或用户取消，`pnpm publish` 不会执行
+
+### 完整发布流程
+
+```shell
+pnpm run release
+```
+
+等同于：
+
+```shell
+# 1. bumpp 交互式选择版本
+bumpp
+  → 更新 package.json 版本号
+  → 更新 CHANGELOG.md
+  → 创建 git commit
+  → 创建 git tag (如 v6.0.0)
+
+# 2. 发布到 npm
+pnpm publish
+  → 运行 prepublishOnly (pnpm build)
+  → 上传到 npm registry
+```
+
+### 发布后还需要
+
+```shell
+git push --follow-tags
+```
+
+将 commit 和 tag 推送到远程仓库。
+
 ## 工作流触发条件
 
 | 工作流 | 触发条件 | 用途 |

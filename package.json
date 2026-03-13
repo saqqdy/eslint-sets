@@ -103,7 +103,7 @@
 		"@angular-eslint/eslint-plugin": "^19.0.0",
 		"@angular-eslint/eslint-plugin-template": "^19.0.0",
 		"@angular-eslint/template-parser": "^19.0.0",
-		"@e18e/eslint-plugin": "^0.4.0",
+		"@e18e/eslint-plugin": "^0.2.0",
 		"@eslint/markdown": "^6.3.0",
 		"@next/eslint-plugin-next": ">=15.0.0",
 		"@unocss/eslint-plugin": ">=0.60.0",

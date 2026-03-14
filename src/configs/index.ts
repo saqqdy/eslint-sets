@@ -178,7 +178,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const tsOpts: TypeScriptOptions = isOptionsObject(tsOption) ? { ...tsOption } : {}
 
 		tsOpts.overrides = getOverrides(options as Record<string, unknown>, 'typescript')
-		configs.push(...typescript(tsOpts))
+		configs.push(...(await typescript(tsOpts)))
 	}
 
 	// Vue
@@ -194,7 +194,6 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const reactOpts: ReactOptions = isOptionsObject(reactOption) ? { ...reactOption } : {}
 
 		reactOpts.overrides = getOverrides(options as Record<string, unknown>, 'react')
-		reactOpts.a11y = reactOpts.a11y ?? jsxA11yOption
 		configs.push(...(await react(reactOpts)))
 	}
 

@@ -7,6 +7,22 @@
 
 现代化的 ESLint 配置，支持 flat config 格式，适用于 Vue、React、Svelte、TypeScript、Next.js、Nuxt、Astro、Angular、UnoCSS 等框架。
 
+## 快速体验
+
+使用 StackBlitz 在线体验：
+
+| 框架 | 链接 |
+| ---- | ---- |
+| Vue 3 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/vue3) |
+| React | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/react) |
+| TypeScript | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/typescript) |
+| Svelte | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/svelte) |
+| Next.js | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/nextjs) |
+| Nuxt | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/nuxt) |
+| Astro | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/astro) |
+| Angular | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/angular) |
+| UnoCSS | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/unocss) |
+
 ## 特性
 
 - 🚀 **ESLint v9 Flat Config** - 使用现代化的 flat config 格式
@@ -106,6 +122,8 @@ export default eslintConfig({
 	astro: true,
 
 	// 放宽脚本规则（默认：true）
+	// 适用于：scripts/**, bin/**, cli/**, tasks/**, tools/**
+	// 允许：console、process.exit、process.env、shebang、require 等
 	command: true,
 	// 在配置文件中禁用规则（默认：true）
 	disables: true,
@@ -169,7 +187,6 @@ export default eslintConfig({
 
 	// 或带选项：
 	react: {
-		a11y: true, // 启用 JSX 无障碍规则
 		reactCompiler: true, // React Compiler 支持
 	},
 
@@ -285,7 +302,7 @@ export default eslintConfig({
 // 使用 Prettier 带自定义选项
 export default eslintConfig({
 	prettier: {
-		printWidth: 120,
+		printWidth: 240,
 		semi: false,
 		singleQuote: true,
 		tabWidth: 2,
@@ -310,9 +327,7 @@ export default eslintConfig({
 
 // React/JSX 无障碍
 export default eslintConfig({
-	react: {
-		a11y: true,
-	},
+	jsxA11y: true,
 })
 
 // 或独立的 JSX a11y
@@ -358,7 +373,6 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	react: {
-		a11y: true,
 		reactCompiler: true,
 	},
 	typescript: true,
@@ -564,8 +578,7 @@ import {
 
 ### React
 
-- `eslint-plugin-react` - React 支持
-- `eslint-plugin-react-hooks` - React Hooks 支持
+- `@eslint-react/eslint-plugin` - 现代化 React 检查（包含 core、dom、web-api、hooks-extra、naming-convention、debug）
 - `eslint-plugin-react-refresh` - React Refresh 支持
 
 ### Vue
@@ -817,10 +830,6 @@ export default eslintConfig({
 	]
 }
 ```
-
-## 与 @antfu/eslint-config 的比较
-
-详细比较请参见 [COMPARISON.md](./COMPARISON.md)。
 
 ## 更新日志
 

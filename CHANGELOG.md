@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [6.0.0] - 2026-03-13
+## [6.0.0] - 2026-03-14
 
 ### Added
 
@@ -36,7 +36,7 @@ All notable changes to this project will be documented in this file.
 - **Framework Support**: Added support for Next.js, Nuxt, Astro, Angular, and UnoCSS
 - **Accessibility Rules**: Added optional a11y rules for Vue and React
   - Vue: via `vue.a11y` option (requires eslint-plugin-vuejs-accessibility)
-  - JSX: via `react.a11y` option or standalone `jsxA11y` config
+  - JSX: via `jsxA11y` config
 - **CLI Tool**: Interactive CLI wizard for project setup
   - Run with: `npx @eslint-sets/eslint-config` or `pnpm dlx @eslint-sets/eslint-config`
   - Supports project type, TypeScript, frameworks (Vue, React, Svelte, Solid, Next.js, Nuxt, Astro, Angular, UnoCSS)
@@ -49,7 +49,7 @@ All notable changes to this project will be documented in this file.
 - **Editor Detection**: Added `isInEditor` option to auto-detect editor environment
 - **Framework Options**: Framework configs now accept options objects
   - `vue: { vueVersion: 2 | 3, a11y: boolean }`
-  - `react: { reactCompiler: boolean, a11y: boolean }`
+  - `react: { reactCompiler: boolean }`
 - **Improved Ignores**: `ignores` can now be a function to modify defaults
 - **Per-framework overrides**: Each framework option now supports `overrides` for custom rules
 - **Angular Support**: Added `angular` config with template support
@@ -71,7 +71,46 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- **Default trailingComma**: Changed from `'all'` to `'always-multiline'` (matching @antfu/eslint-config)
+- **Build System**: Replaced tsup with custom esbuild build script for better Node.js 24 compatibility
+  - CLI now correctly includes shebang (`#!/usr/bin/env node`)
+  - Smaller bundle sizes with `packages: 'external'` option
+- **JavaScript Rules**: Updated rules to align with antfu/eslint-config best practices
+  - `no-labels`: Now enforces `['error', { allowLoop: false, allowSwitch: false }]`
+  - `no-prototype-builtins`: Changed from `'off'` to `'error'`
+  - `no-template-curly-in-string`: Changed from `'off'` to `'error'`
+  - `no-throw-literal`: Changed from `'off'` to `'error'`
+  - `object-shorthand`: Enhanced with `['error', 'always', { avoidQuotes: true, ignoreConstructors: false }]`
+  - `one-var`: Simplified to `['error', { initialized: 'never' }]`
+  - `valid-typeof`: Added `requireStringLiterals: true` option
+- **Node.js Rules**: Disabled `n/no-callback-literal` (not used by antfu/eslint-config)
+- **prefer-node-protocol**: Changed from `n/prefer-node-protocol` to `unicorn/prefer-node-protocol` (matching antfu/eslint-config)
+- **Ignores**: Updated `GLOB_EXCLUDES` to match antfu/eslint-config with more comprehensive ignore patterns
+- **React Plugin Migration**: Migrated from `eslint-plugin-react` + `eslint-plugin-react-hooks` to `@eslint-react/eslint-plugin`
+  - Modern React linting with modular design
+  - Includes core, dom, web-api, hooks-extra, naming-convention, and debug sub-plugins
+  - Better performance and more focused rules
+  - Integrated with `eslint-plugin-react-refresh` for Fast Refresh support
+- **Simplified Config Rules**: Streamlined all framework configs for minimal and essential rules
+  - Vue: Reduced to recommended + 10 core custom rules
+  - React: Uses @eslint-react recommended config with react-refresh integration
+  - Svelte: Reduced to recommended + 15 core custom rules with processor support
+  - Astro: Reduced to recommended + 4 core custom rules with processor support
+  - TypeScript: Uses rule renaming (`ts/*` instead of `@typescript-eslint/*`)
+  - Unicorn: Curated 15 essential rules instead of all recommended
+  - Imports: Simplified to core import rules
+- **TypeScript Rule Renaming**: All `@typescript-eslint/*` rules are now `ts/*`
+  - Cleaner rule names
+  - Better IDE experience
+  - Updated all dependent configs (disables, command, test, nuxt)
+- **Rule Optimization**: Improved rule configurations for better consistency
+  - `@stylistic/no-mixed-spaces-and-tabs`: Now uses `['error', 'smart-tabs']` in stylistic config
+  - `ts/no-redeclare`: Now enabled in TypeScript config (replaces disabled `no-redeclare`)
+  - `unicorn/prefer-node-protocol`: Disabled to avoid conflict with `n/prefer-node-protocol`
+  - `n/prefer-node-protocol`: Enabled in node config for Node.js protocol imports
+  - `n/hashbang`: Disabled in command config to allow shebang in scripts
+  - `unicorn/prefer-module`: Disabled in command config for CommonJS scripts
+  - `unicorn/prefer-top-level-await`: Disabled in command config for scripts
+- **Default trailingComma**: Changed from `'all'` to `'always-multiline'`
 - **@stylistic/configs.customize()**: Now uses `configs.customize()` API for better configuration
 - **Markdown config**: Simplified to use `@eslint/markdown` plugin directly
 - **Default formatter**: Changed from Prettier to `@stylistic/eslint-plugin`
@@ -89,9 +128,12 @@ All notable changes to this project will be documented in this file.
 - **Vue Rules**: Improved Vue 3 support and added Composition API globals
 - **ESLint Compatibility**: Now supports ESLint ^9.10.0 || ^9.22.0
 - **Lint script**: Added `lint:fix` script for auto-fixing lint errors
+- **CLI Tool**: Updated to suggest `@eslint-react/eslint-plugin` and `eslint-plugin-react-refresh` for React/Next.js projects
 
 ### Fixed
 
+- Fixed CLI shebang missing in built output
+- Fixed build compatibility with Node.js 24 and esbuild
 - Fixed markdown code block linting - rules now properly disabled for code blocks
 - Fixed `@stylistic/comma-dangle` configuration to accept string values
 - Fixed `@eslint/markdown` plugin loading with default export
@@ -102,6 +144,11 @@ All notable changes to this project will be documented in this file.
 - Fixed import sorting conflicts between `import-x/order` and `perfectionist/sort-imports`
 - Fixed `sort-imports` conflict with perfectionist
 - Consolidated all framework configs into single package
+- Fixed ESM default export handling in plugin loader
+- Fixed npm package exports for proper ESM/CJS support
+- Fixed Angular config with updated rule names
+- Fixed config file detection for Angular and UnoCSS
+- Fixed Vue/Svelte TypeScript parser configuration
 
 ### Breaking Changes
 
@@ -110,6 +157,8 @@ All notable changes to this project will be documented in this file.
 - Separate framework packages merged into single package
 - **Default formatting changed**: Now uses `@stylistic/eslint-plugin` instead of Prettier
   - To continue using Prettier, set `stylistic: false, prettier: true`
+- **TypeScript rules renamed**: All `@typescript-eslint/*` rules are now `ts/*`
+  - Update any custom rule overrides to use new prefix
 
 ## [5.14.0] - 2024.11.20
 

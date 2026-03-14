@@ -56,7 +56,7 @@ describe('Config Options', () => {
 			typescript: false,
 		})
 
-		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript/setup')
+		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript')
 
 		expect(tsConfig).toBeUndefined()
 	})
@@ -190,12 +190,12 @@ describe('Config Options', () => {
 			vue: { vueVersion: 3 },
 		})
 
-		expect(config.find((c) => c.name === 'eslint-sets/vue/setup')).toBeDefined()
+		expect(config.find((c) => c.name === 'eslint-sets/vue')).toBeDefined()
 	})
 
 	it('should support react with options object', async () => {
 		const config = await eslintConfig({
-			react: { a11y: false },
+			react: { reactCompiler: false },
 		})
 
 		// React config may not exist if react package is not installed
@@ -209,6 +209,33 @@ describe('Config Options', () => {
 			typescript: { typeAware: false },
 		})
 
-		expect(config.find((c) => c.name === 'eslint-sets/typescript/setup')).toBeDefined()
+		expect(config.find((c) => c.name === 'eslint-sets/typescript')).toBeDefined()
+	})
+
+	it('should have ts plugin for typescript config', async () => {
+		const config = await eslintConfig({
+			typescript: true,
+		})
+
+		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript')
+
+		expect(tsConfig).toBeDefined()
+		expect(tsConfig?.plugins?.ts).toBeDefined()
+	})
+
+	it('should use ts/* rule prefix for typescript rules', async () => {
+		const config = await eslintConfig({
+			typescript: true,
+		})
+
+		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript')
+
+		expect(tsConfig).toBeDefined()
+
+		// Check that rules use ts/* prefix instead of @typescript-eslint/*
+		const rules = tsConfig?.rules || {}
+		const tsRules = Object.keys(rules).filter((r) => r.startsWith('ts/'))
+
+		expect(tsRules.length).toBeGreaterThan(0)
 	})
 })

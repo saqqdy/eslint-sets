@@ -13,6 +13,7 @@ export const GLOB_JSON5 = '**/*.json5'
 export const GLOB_JSONC = '**/*.jsonc'
 export const GLOB_YAML = '**/*.{yml,yaml}'
 export const GLOB_MD = '**/*.md'
+export const GLOB_HTML = '**/*.html'
 export const GLOB_TESTS = '**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
 export const GLOB_ALL = '**/*'
 
@@ -33,24 +34,37 @@ export const GLOB_COMMAND_FILES = [
  * Glob patterns for files to ignore by default
  */
 export const GLOB_EXCLUDES = [
-	'**/node_modules/**',
-	'**/dist/**',
-	'**/build/**',
-	'**/.output/**',
-	'**/.nuxt/**',
-	'**/.next/**',
-	'**/coverage/**',
-	'**/.cache/**',
-	'**/.git/**',
-	'**/.vscode/**',
-	'**/.idea/**',
-	'**/*.min.js',
-	'**/*.min.css',
-	'**/pnpm-lock.yaml',
+	'**/node_modules',
+	'**/dist',
 	'**/package-lock.json',
 	'**/yarn.lock',
-	'**/.DS_Store',
-	'**/Thumbs.db',
+	'**/pnpm-lock.yaml',
+	'**/bun.lockb',
+	'**/output',
+	'**/coverage',
+	'**/temp',
+	'**/.temp',
+	'**/tmp',
+	'**/.tmp',
+	'**/.history',
+	'**/.vitepress/cache',
+	'**/.nuxt',
+	'**/.next',
+	'**/.svelte-kit',
+	'**/.vercel',
+	'**/.changeset',
+	'**/.idea',
+	'**/.cache',
+	'**/.output',
+	'**/.vite-inspect',
+	'**/.yarn',
+	'**/vite.config.*.timestamp-*',
+	'**/CHANGELOG*.md',
+	'**/*.min.*',
+	'**/LICENSE*',
+	'**/__snapshots__',
+	'**/auto-import?(s).d.ts',
+	'**/components.d.ts',
 ]
 
 /**

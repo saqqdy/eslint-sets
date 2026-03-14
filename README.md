@@ -7,6 +7,22 @@ English | [简体中文](./README_CN.md)
 
 Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript, Next.js, Nuxt, Astro, Angular, UnoCSS and more.
 
+## Quick Try
+
+Try it online with StackBlitz:
+
+| Framework | Link |
+| --------- | ---- |
+| Vue 3 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/vue3) |
+| React | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/react) |
+| TypeScript | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/typescript) |
+| Svelte | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/svelte) |
+| Next.js | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/nextjs) |
+| Nuxt | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/nuxt) |
+| Astro | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/astro) |
+| Angular | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/angular) |
+| UnoCSS | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/unocss) |
+
 ## Features
 
 - 🚀 **ESLint v9 Flat Config** - Uses the modern flat config format
@@ -106,6 +122,8 @@ export default eslintConfig({
 	astro: true,
 
 	// Relax rules for scripts (default: true)
+	// Applies to: scripts/**, bin/**, cli/**, tasks/**, tools/**
+	// Allows: console, process.exit, process.env, shebang, require, etc.
 	command: true,
 	// Disable rules in config files (default: true)
 	disables: true,
@@ -169,7 +187,6 @@ export default eslintConfig({
 
 	// Or with options:
 	react: {
-		a11y: true, // Enable JSX accessibility rules
 		reactCompiler: true, // React Compiler support
 	},
 
@@ -285,7 +302,7 @@ export default eslintConfig({
 // Use Prettier with custom options
 export default eslintConfig({
 	prettier: {
-		printWidth: 120,
+		printWidth: 240,
 		semi: false,
 		singleQuote: true,
 		tabWidth: 2,
@@ -310,9 +327,7 @@ export default eslintConfig({
 
 // React/JSX accessibility
 export default eslintConfig({
-	react: {
-		a11y: true,
-	},
+	jsxA11y: true,
 })
 
 // Or standalone JSX a11y
@@ -358,7 +373,6 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	react: {
-		a11y: true,
 		reactCompiler: true,
 	},
 	typescript: true,
@@ -564,8 +578,7 @@ The following packages are optional and will be used if installed:
 
 ### React
 
-- `eslint-plugin-react` - React support
-- `eslint-plugin-react-hooks` - React Hooks support
+- `@eslint-react/eslint-plugin` - Modern React linting (includes core, dom, web-api, hooks-extra, naming-convention, debug)
 - `eslint-plugin-react-refresh` - React Refresh support
 
 ### Vue
@@ -817,10 +830,6 @@ Add to your `.vscode/settings.json`:
 	]
 }
 ```
-
-## Comparison with @antfu/eslint-config
-
-See [COMPARISON.md](./COMPARISON.md) for a detailed comparison with `@antfu/eslint-config`.
 
 ## Changelog
 

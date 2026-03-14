@@ -188,6 +188,7 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 				],
 				'@stylistic/newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
 				'@stylistic/no-mixed-operators': 'error',
+				'@stylistic/no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
 				'@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
 				'@stylistic/no-tabs': indent === 'tab' ? 'off' : 'error',
 				'@stylistic/no-trailing-spaces': 'error',

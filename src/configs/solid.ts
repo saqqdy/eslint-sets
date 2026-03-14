@@ -11,7 +11,7 @@ const GLOB_SOLID = '**/*.{tsx,jsx}'
  */
 export async function solid(): Promise<Linter.Config[]> {
 	// Get the flat recommended config which has the proper plugin structure
-	const flatRecommended = solidPlugin.configs?.['flat/recommended'] as Linter.Config | undefined
+	const flatRecommended = solidPlugin.configs?.['flat/recommended'] as unknown as Linter.Config | undefined
 
 	return [
 		{
@@ -19,11 +19,11 @@ export async function solid(): Promise<Linter.Config[]> {
 			languageOptions: flatRecommended?.languageOptions,
 			name: 'eslint-sets/solid',
 			plugins: {
-				solid: ((flatRecommended?.plugins as Record<string, unknown>)?.solid as any) || solidPlugin,
+				solid: ((flatRecommended?.plugins as Record<string, unknown>)?.solid as any) ?? solidPlugin,
 			},
 			rules: {
 				// Use recommended rules as base
-				...((flatRecommended as Record<string, unknown>)?.rules as Record<string, unknown>),
+				...((flatRecommended as Record<string, unknown>)?.rules as Record<string, Linter.RuleEntry>),
 
 				// Solid.js specific overrides
 				'solid/event-handlers': 'warn',

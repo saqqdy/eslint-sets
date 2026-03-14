@@ -125,4 +125,11 @@ const y = 2`,
 		expect(configs).toBeDefined()
 		expect(configs[0]?.rules?.['@stylistic/semi']).toBe('off')
 	})
+
+	it('should configure @stylistic/no-mixed-spaces-and-tabs with smart-tabs', () => {
+		const configs = stylistic()
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.['@stylistic/no-mixed-spaces-and-tabs']).toEqual(['error', 'smart-tabs'])
+	})
 })

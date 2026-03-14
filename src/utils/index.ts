@@ -16,13 +16,23 @@ export function combine(...configs: Linter.Config[]): Linter.Config[] {
 
 /**
  * Rename rules with a prefix
+ * Converts @typescript-eslint/rule-name to prefix/rule-name
  */
 export function renameRules(
 	rules: Record<string, Linter.RuleEntry>,
 	prefix: string,
+	from?: string,
 ): Record<string, Linter.RuleEntry> {
+	const fromPrefix = from ?? '@typescript-eslint'
+
 	return Object.fromEntries(
-		Object.entries(rules).map(([key, value]) => [`${prefix}/${key}`, value]),
+		Object.entries(rules).map(([key, value]) => {
+			const newKey = key.startsWith(`${fromPrefix}/`)
+				? `${prefix}/${key.slice(fromPrefix.length + 1)}`
+				: key
+
+			return [newKey, value]
+		}),
 	)
 }
 

@@ -112,7 +112,10 @@ export function hasPackage(name: string): boolean {
  */
 export async function loadPlugin<T>(name: string): Promise<T | null> {
 	try {
-		return (await import(name)) as T
+		const mod = await import(name)
+
+		// Handle ESM default export
+		return (mod?.default ?? mod) as T
 	} catch {
 		return null
 	}

@@ -30,16 +30,6 @@ export function nuxt(options: NuxtOptions = {}): Linter.Config[] {
 				// Note: Most Nuxt-specific linting is handled by @nuxt/eslint
 				// These are general best practices for Nuxt projects
 
-				// Nuxt 3 best practices
-				'@typescript-eslint/no-unused-vars': [
-					'error',
-					{
-						argsIgnorePattern: '^_',
-						caughtErrorsIgnorePattern: '^_',
-						varsIgnorePattern: '^_|^use',
-					},
-				],
-
 				// Allow auto-imports
 				'no-undef': 'off',
 

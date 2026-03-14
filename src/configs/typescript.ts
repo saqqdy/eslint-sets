@@ -1,8 +1,9 @@
 import type { Linter } from 'eslint'
 import type { OptionsOverrides } from '../types'
-import tseslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import { GLOB_SRC, GLOB_TS } from '../constants'
+import { loadPlugin } from '../plugins'
+import { renameRules } from '../utils'
 
 /**
  * TypeScript configuration options
@@ -32,11 +33,14 @@ export interface TypeScriptOptions extends OptionsOverrides {
 	typeAware?: boolean
 }
 
+// Type definition for TypeScript ESLint plugin
+type TypeScriptESLintPlugin = typeof import('@typescript-eslint/eslint-plugin')
+
 /**
  * TypeScript configuration
- * Based on antfu/eslint-config
+ * Minimal and essential rules with rule renaming
  */
-export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
+export async function typescript(options: TypeScriptOptions = {}): Promise<Linter.Config[]> {
 	const {
 		filesTypeAware = [GLOB_TS],
 		ignoresTypeAware = ['**/*.md/**', '**/*.astro/*.ts'],
@@ -45,29 +49,42 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 		typeAware = false,
 	} = options
 
+	const tseslint = await loadPlugin<TypeScriptESLintPlugin>('@typescript-eslint/eslint-plugin')
+
+	if (!tseslint) {
+		return []
+	}
+
 	const isTypeAware = typeAware && tsconfigPath
 	const tsconfigPaths = Array.isArray(tsconfigPath) ? tsconfigPath : [tsconfigPath]
 
+	// Get recommended rules and rename them
+	const recommendedRules = tseslint.configs.recommended.rules
+	const strictRules = tseslint.configs.strict?.rules || {}
+
+	// Rename @typescript-eslint/* rules to ts/*
+	const tsRecommendedRules = renameRules(recommendedRules as Record<string, Linter.RuleEntry>, 'ts')
+	const tsStrictRules = renameRules(strictRules as Record<string, Linter.RuleEntry>, 'ts')
+
 	const typeAwareRules: Linter.RulesRecord = {
-		'@typescript-eslint/await-thenable': 'error',
-		'@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
-		'@typescript-eslint/no-floating-promises': 'error',
-		'@typescript-eslint/no-for-in-array': 'error',
-		'@typescript-eslint/no-implied-eval': 'error',
-		'@typescript-eslint/no-misused-promises': 'error',
-		'@typescript-eslint/no-throw-literal': 'error',
-		'@typescript-eslint/no-unnecessary-type-assertion': 'error',
-		'@typescript-eslint/no-unsafe-argument': 'error',
-		'@typescript-eslint/no-unsafe-assignment': 'error',
-		'@typescript-eslint/no-unsafe-call': 'error',
-		'@typescript-eslint/no-unsafe-member-access': 'error',
-		'@typescript-eslint/no-unsafe-return': 'error',
-		'@typescript-eslint/restrict-plus-operands': 'error',
-		'@typescript-eslint/restrict-template-expressions': 'error',
-		'@typescript-eslint/unbound-method': 'error',
-		'dot-notation': 'off',
+		// Turn off base rules
 		'no-implied-eval': 'off',
 		'no-throw-literal': 'off',
+		'ts/await-thenable': 'error',
+		'ts/no-floating-promises': 'error',
+		'ts/no-for-in-array': 'error',
+		'ts/no-implied-eval': 'error',
+		'ts/no-misused-promises': 'error',
+		'ts/no-throw-literal': 'error',
+		'ts/no-unnecessary-type-assertion': 'error',
+		'ts/no-unsafe-argument': 'error',
+		'ts/no-unsafe-assignment': 'error',
+		'ts/no-unsafe-call': 'error',
+		'ts/no-unsafe-member-access': 'error',
+		'ts/no-unsafe-return': 'error',
+		'ts/restrict-plus-operands': 'error',
+		'ts/restrict-template-expressions': 'error',
+		'ts/unbound-method': 'error',
 	}
 
 	const configs: Linter.Config[] = [
@@ -85,55 +102,42 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 						: {}),
 				},
 			},
-			name: 'eslint-sets/typescript/setup',
+			name: 'eslint-sets/typescript',
 			plugins: {
-				'@typescript-eslint': tseslint as any,
+				ts: tseslint as any,
 			},
 			rules: {
-				...tseslint.configs.recommended.rules,
-				...(tseslint.configs.strict?.rules || {}),
+				// Recommended and strict rules with renamed prefix
+				...tsRecommendedRules,
+				...tsStrictRules,
 
-				// TypeScript specific rules
-				'@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
-				'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-				'@typescript-eslint/consistent-type-imports': [
-					'error',
-					{
-						disallowTypeAnnotations: false,
-						prefer: 'type-imports',
-					},
-				],
-				'@typescript-eslint/method-signature-style': ['error', 'property'],
-				'@typescript-eslint/no-dupe-class-members': 'error',
-
-				'@typescript-eslint/no-dynamic-delete': 'off',
-				'@typescript-eslint/no-explicit-any': 'off',
-				'@typescript-eslint/no-extraneous-class': 'off',
-				'@typescript-eslint/no-import-type-side-effects': 'error',
-				'@typescript-eslint/no-invalid-void-type': 'off',
-				'@typescript-eslint/no-loss-of-precision': 'error',
-				'@typescript-eslint/no-non-null-assertion': 'off',
-				'@typescript-eslint/no-redeclare': 'error',
-				'@typescript-eslint/no-require-imports': 'error',
-				'@typescript-eslint/no-unused-vars': 'off',
-				'@typescript-eslint/no-use-before-define': [
-					'error',
-					{
-						classes: false,
-						functions: false,
-						variables: true,
-					},
-				],
-				'@typescript-eslint/no-useless-constructor': 'off',
-				'@typescript-eslint/prefer-ts-expect-error': 'error',
-				'@typescript-eslint/triple-slash-reference': 'off',
-				'@typescript-eslint/unified-signatures': 'off',
 				// Override JavaScript rules
 				'no-dupe-class-members': 'off',
 				'no-loss-of-precision': 'off',
 				'no-redeclare': 'off',
 				'no-use-before-define': 'off',
 				'no-useless-constructor': 'off',
+
+				// Essential custom rules
+				'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
+				'ts/consistent-type-definitions': ['error', 'interface'],
+				'ts/consistent-type-imports': ['error', { disallowTypeAnnotations: false, prefer: 'type-imports' }],
+				'ts/no-dynamic-delete': 'off',
+				'ts/no-explicit-any': 'off',
+				'ts/no-extraneous-class': 'off',
+				'ts/no-import-type-side-effects': 'error',
+				'ts/no-invalid-void-type': 'off',
+				'ts/no-non-null-assertion': 'off',
+				// Use TypeScript's no-redeclare rule instead
+				'ts/no-redeclare': 'error',
+				'ts/no-require-imports': 'error',
+				'ts/no-unused-vars': 'off',
+
+				'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
+				'ts/no-useless-constructor': 'off',
+				'ts/prefer-ts-expect-error': 'error',
+				'ts/triple-slash-reference': 'off',
+				'ts/unified-signatures': 'off',
 
 				// User overrides
 				...overrides,
@@ -147,10 +151,7 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 			files: filesTypeAware,
 			ignores: ignoresTypeAware,
 			name: 'eslint-sets/typescript/type-aware',
-			rules: {
-				...typeAwareRules,
-				...overrides,
-			},
+			rules: typeAwareRules,
 		})
 	}
 
@@ -180,8 +181,8 @@ export function typescript(options: TypeScriptOptions = {}): Linter.Config[] {
 		files: ['**/*.js', '**/*.cjs'],
 		name: 'eslint-sets/typescript/disables/cjs',
 		rules: {
-			'@typescript-eslint/no-require-imports': 'off',
-			'@typescript-eslint/no-var-requires': 'off',
+			'ts/no-require-imports': 'off',
+			'ts/no-var-requires': 'off',
 		},
 	})
 

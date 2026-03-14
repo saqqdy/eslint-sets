@@ -41,21 +41,18 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 			plugins: {
 				astro: astroPlugin as any,
 			},
+			processor: astroPlugin.processors?.astro,
 			rules: {
-				// Astro recommended rules - extract from flat config array
+				// Astro recommended rules
 				...(Array.isArray(astroPlugin.configs.recommended)
 					? astroPlugin.configs.recommended.find((c: any) => c.rules)?.rules || {}
 					: {}),
 
+				// Essential custom rules
 				'astro/missing-client-only-directive-value': 'error',
 				'astro/no-set-html-directive': 'off',
-				'astro/no-unused-css-selector': 'warn',
-				'astro/prefer-class-list-directive': 'warn',
-				'astro/prefer-object-class-list': 'warn',
-				'astro/prefer-split-class-list': 'warn',
-				// Additional Astro rules
 				'astro/semi': 'off',
-				'astro/valid-astro': 'error',
+				'astro/valid-compile': 'error',
 
 				// User overrides
 				...overrides,

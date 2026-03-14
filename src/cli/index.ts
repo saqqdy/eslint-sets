@@ -236,8 +236,15 @@ function getDependencies(answers: Answers): string[] {
 	}
 
 	// Framework specific dependencies
+	if (answers.frameworks.includes('react')) {
+		deps.push('@eslint-react/eslint-plugin')
+		deps.push('eslint-plugin-react-refresh')
+	}
+
 	if (answers.frameworks.includes('nextjs')) {
 		deps.push('@next/eslint-plugin-next')
+		deps.push('@eslint-react/eslint-plugin')
+		deps.push('eslint-plugin-react-refresh')
 	}
 
 	if (answers.frameworks.includes('astro')) {

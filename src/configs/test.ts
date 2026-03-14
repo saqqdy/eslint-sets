@@ -29,14 +29,14 @@ export function test(options: TestOptions = {}): Linter.Config {
 		rules: {
 			...vitest.configs.recommended.rules,
 
-			'@typescript-eslint/no-explicit-any': 'off',
-			'@typescript-eslint/no-non-null-assertion': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'@typescript-eslint/no-unsafe-call': 'off',
-			'@typescript-eslint/no-unsafe-member-access': 'off',
-			'@typescript-eslint/no-unsafe-return': 'off',
 			// Relax rules for test files
 			'no-console': 'off',
+			'ts/no-explicit-any': 'off',
+			'ts/no-non-null-assertion': 'off',
+			'ts/no-unsafe-assignment': 'off',
+			'ts/no-unsafe-call': 'off',
+			'ts/no-unsafe-member-access': 'off',
+			'ts/no-unsafe-return': 'off',
 			// Vitest rules
 			'vitest/consistent-test-it': [
 				'error',

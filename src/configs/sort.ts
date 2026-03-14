@@ -111,8 +111,6 @@ export async function sortPackageJson(
 /**
  * Sort tsconfig.json configuration
  * Note: Requires jsonc plugin to be loaded (via jsonc config)
- *
- * Reference: https://github.com/antfu/eslint-config/blob/main/src/configs/sort.ts
  */
 export async function sortTsconfig(options: SortTsconfigOptions = {}): Promise<Linter.Config[]> {
 	const { files = ['**/[jt]sconfig.json', '**/[jt]sconfig.*.json'], overrides = {} } = options

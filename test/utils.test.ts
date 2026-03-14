@@ -13,16 +13,42 @@ describe('Utils', () => {
 	})
 
 	describe('renameRules', () => {
-		it('should add prefix to rules', () => {
+		it('should rename @typescript-eslint/* rules to ts/*', () => {
 			const rules = {
-				'no-console': 'error',
-				'no-debugger': 'warn',
+				'@typescript-eslint/no-explicit-any': 'error',
+				'@typescript-eslint/no-unused-vars': 'warn',
+				'no-console': 'off',
 			}
-			const result = renameRules(rules, 'custom')
+			const result = renameRules(rules, 'ts', '@typescript-eslint')
 
 			expect(result).toEqual({
-				'custom/no-console': 'error',
-				'custom/no-debugger': 'warn',
+				'no-console': 'off',
+				'ts/no-explicit-any': 'error',
+				'ts/no-unused-vars': 'warn',
+			})
+		})
+
+		it('should only rename rules that match the from prefix', () => {
+			const rules = {
+				'@typescript-eslint/no-explicit-any': 'error',
+				'no-console': 'off',
+			}
+			const result = renameRules(rules, 'ts', '@typescript-eslint')
+
+			expect(result).toEqual({
+				'no-console': 'off',
+				'ts/no-explicit-any': 'error',
+			})
+		})
+
+		it('should use @typescript-eslint as default from prefix', () => {
+			const rules = {
+				'@typescript-eslint/no-explicit-any': 'error',
+			}
+			const result = renameRules(rules, 'ts')
+
+			expect(result).toEqual({
+				'ts/no-explicit-any': 'error',
 			})
 		})
 	})

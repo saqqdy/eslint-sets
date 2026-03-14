@@ -4,447 +4,6 @@ import type { Linter } from 'eslint'
 
 export interface RuleOptions {
   /**
-   * Classes decorated with @Component must have suffix "Component" (or custom) in their name. Note: As of v20, this is no longer recommended by the Angular Team.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-class-suffix.md
-   */
-  '@angular-eslint/component-class-suffix'?: Linter.RuleEntry<AngularEslintComponentClassSuffix>
-  /**
-   * Enforces a maximum number of lines in inline template, styles and animations.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-max-inline-declarations.md
-   */
-  '@angular-eslint/component-max-inline-declarations'?: Linter.RuleEntry<AngularEslintComponentMaxInlineDeclarations>
-  /**
-   * Component selectors should follow given naming rules. See more at https://angular.dev/style-guide#choosing-component-selectors.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-selector.md
-   */
-  '@angular-eslint/component-selector'?: Linter.RuleEntry<AngularEslintComponentSelector>
-  /**
-   * Ensures that computed() returns a value. Omitting the value is likely a mistake.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/computed-must-return.md
-   */
-  '@angular-eslint/computed-must-return'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures consistent usage of `styles`/`styleUrls`/`styleUrl` within Component metadata
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/consistent-component-styles.md
-   */
-  '@angular-eslint/consistent-component-styles'?: Linter.RuleEntry<AngularEslintConsistentComponentStyles>
-  /**
-   * Ensures that classes use contextual decorators in their body
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/contextual-decorator.md
-   */
-  '@angular-eslint/contextual-decorator'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that lifecycle methods are used in a correct context
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/contextual-lifecycle.md
-   */
-  '@angular-eslint/contextual-lifecycle'?: Linter.RuleEntry<[]>
-  /**
-   * Classes decorated with @Directive must have suffix "Directive" (or custom) in their name. Note: As of v20, this is no longer recommended by the Angular Team.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/directive-class-suffix.md
-   */
-  '@angular-eslint/directive-class-suffix'?: Linter.RuleEntry<AngularEslintDirectiveClassSuffix>
-  /**
-   * Directive selectors should follow given naming rules. See more at https://angular.dev/style-guide#choosing-directive-selectors.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/directive-selector.md
-   */
-  '@angular-eslint/directive-selector'?: Linter.RuleEntry<AngularEslintDirectiveSelector>
-  /**
-   * Angular Lifecycle methods should not be async. Angular does not wait for async lifecycle but the code incorrectly suggests it does.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-async-lifecycle-method.md
-   */
-  '@angular-eslint/no-async-lifecycle-method'?: Linter.RuleEntry<[]>
-  /**
-   * The @Attribute decorator is used to obtain a single value for an attribute. This is a much less common use case than getting a stream of values (using @Input), so the @Attribute decorator is often mistakenly used when @Input is intended. This rule disallows the usage of @Attribute decorator entirely to prevent these mistakes.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-attribute-decorator.md
-   */
-  '@angular-eslint/no-attribute-decorator'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that directives do not implement conflicting lifecycle interfaces.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-conflicting-lifecycle.md
-   * @deprecated
-   */
-  '@angular-eslint/no-conflicting-lifecycle'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow using code which is marked as developer preview
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-developer-preview.md
-   */
-  '@angular-eslint/no-developer-preview'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that metadata arrays do not contain duplicate entries.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-duplicates-in-metadata-arrays.md
-   */
-  '@angular-eslint/no-duplicates-in-metadata-arrays'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows declaring empty lifecycle methods
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-empty-lifecycle-method.md
-   */
-  '@angular-eslint/no-empty-lifecycle-method'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow using code which is marked as experimental
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-experimental.md
-   */
-  '@angular-eslint/no-experimental'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows usage of `forwardRef` references for DI
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-forward-ref.md
-   */
-  '@angular-eslint/no-forward-ref'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that `takeUntilDestroyed()` is called with an explicit `DestroyRef` when used outside of an injection context
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-implicit-take-until-destroyed.md
-   */
-  '@angular-eslint/no-implicit-take-until-destroyed'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that input bindings, including aliases, are not named or prefixed by the configured disallowed prefixes
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-input-prefix.md
-   */
-  '@angular-eslint/no-input-prefix'?: Linter.RuleEntry<AngularEslintNoInputPrefix>
-  /**
-   * Ensures that input bindings are not aliased
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-input-rename.md
-   */
-  '@angular-eslint/no-input-rename'?: Linter.RuleEntry<AngularEslintNoInputRename>
-  /**
-   * Disallows usage of the `inputs` metadata property
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-inputs-metadata-property.md
-   */
-  '@angular-eslint/no-inputs-metadata-property'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows explicit calls to lifecycle methods
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-lifecycle-call.md
-   */
-  '@angular-eslint/no-lifecycle-call'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that output bindings, including aliases, are not named as standard DOM events
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-output-native.md
-   */
-  '@angular-eslint/no-output-native'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that output bindings, including aliases, are not named "on", nor prefixed with it. See more at https://angular.dev/guide/components/outputs#choosing-event-names
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-output-on-prefix.md
-   */
-  '@angular-eslint/no-output-on-prefix'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that output bindings are not aliased
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-output-rename.md
-   */
-  '@angular-eslint/no-output-rename'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows usage of the `outputs` metadata property
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-outputs-metadata-property.md
-   */
-  '@angular-eslint/no-outputs-metadata-property'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows the declaration of impure pipes
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-pipe-impure.md
-   */
-  '@angular-eslint/no-pipe-impure'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows usage of the `queries` metadata property.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-queries-metadata-property.md
-   */
-  '@angular-eslint/no-queries-metadata-property'?: Linter.RuleEntry<[]>
-  /**
-   * Warns user about unintentionally doing logic on the signal, rather than the signal's value
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-uncalled-signals.md
-   */
-  '@angular-eslint/no-uncalled-signals'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce consistent prefix for pipes.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/pipe-prefix.md
-   */
-  '@angular-eslint/pipe-prefix'?: Linter.RuleEntry<AngularEslintPipePrefix>
-  /**
-   * Use `host` metadata property instead of `@HostBinding` and `HostListener`
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-host-metadata-property.md
-   */
-  '@angular-eslint/prefer-host-metadata-property'?: Linter.RuleEntry<[]>
-  /**
-   * Prefer using the inject() function over constructor parameter injection
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-inject.md
-   */
-  '@angular-eslint/prefer-inject'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures component's `changeDetection` is set to `ChangeDetectionStrategy.OnPush`
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md
-   */
-  '@angular-eslint/prefer-on-push-component-change-detection'?: Linter.RuleEntry<[]>
-  /**
-   * Use `OutputEmitterRef` instead of `@Output()`
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-output-emitter-ref.md
-   */
-  '@angular-eslint/prefer-output-emitter-ref'?: Linter.RuleEntry<[]>
-  /**
-   * Prefer to declare `@Output`, `OutputEmitterRef` and `OutputRef` as `readonly` since they are not supposed to be reassigned
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-output-readonly.md
-   */
-  '@angular-eslint/prefer-output-readonly'?: Linter.RuleEntry<[]>
-  /**
-   * Use `model` instead of `input` and `output` for two-way bindings
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-signal-model.md
-   */
-  '@angular-eslint/prefer-signal-model'?: Linter.RuleEntry<[]>
-  /**
-   * Use readonly signals instead of `@Input()`, `@ViewChild()` and other legacy decorators
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-signals.md
-   */
-  '@angular-eslint/prefer-signals'?: Linter.RuleEntry<AngularEslintPreferSignals>
-  /**
-   * Ensures Components, Directives and Pipes do not opt out of standalone.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-standalone.md
-   */
-  '@angular-eslint/prefer-standalone'?: Linter.RuleEntry<[]>
-  /**
-   * The ./ and ../ prefix is standard syntax for relative URLs; don't depend on Angular's current ability to do without that prefix.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/relative-url-prefix.md
-   */
-  '@angular-eslint/relative-url-prefix'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that lifecycle methods are defined on the object's prototype instead of on an instance.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/require-lifecycle-on-prototype.md
-   */
-  '@angular-eslint/require-lifecycle-on-prototype'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that $localize tagged messages contain helpful metadata to aid with translations.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/require-localize-metadata.md
-   */
-  '@angular-eslint/require-localize-metadata'?: Linter.RuleEntry<AngularEslintRequireLocalizeMetadata>
-  /**
-   * Ensures that $localize tagged messages can use runtime-loaded translations.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/runtime-localize.md
-   */
-  '@angular-eslint/runtime-localize'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that keys in type decorators (Component, Directive, NgModule, Pipe) are sorted in a consistent order
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/sort-keys-in-type-decorator.md
-   */
-  '@angular-eslint/sort-keys-in-type-decorator'?: Linter.RuleEntry<AngularEslintSortKeysInTypeDecorator>
-  /**
-   * Ensures that lifecycle methods are declared in order of execution
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/sort-lifecycle-methods.md
-   */
-  '@angular-eslint/sort-lifecycle-methods'?: Linter.RuleEntry<[]>
-  /**
-   * [Accessibility] Enforces alternate text for elements which require the alt, aria-label, aria-labelledby attributes.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/alt-text.md
-   */
-  '@angular-eslint/template/alt-text'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that HTML attributes and Angular bindings are sorted based on an expected order
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/attributes-order.md
-   */
-  '@angular-eslint/template/attributes-order'?: Linter.RuleEntry<AngularEslintTemplateAttributesOrder>
-  /**
-   * Ensures that the two-way data binding syntax is correct
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/banana-in-box.md
-   */
-  '@angular-eslint/template/banana-in-box'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that a button has a valid type specified
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/button-has-type.md
-   */
-  '@angular-eslint/template/button-has-type'?: Linter.RuleEntry<AngularEslintTemplateButtonHasType>
-  /**
-   * [Accessibility] Ensures that the click event is accompanied with at least one key event keyup, keydown or keypress.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/click-events-have-key-events.md
-   */
-  '@angular-eslint/template/click-events-have-key-events'?: Linter.RuleEntry<AngularEslintTemplateClickEventsHaveKeyEvents>
-  /**
-   * The conditional complexity should not exceed a rational limit
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/conditional-complexity.md
-   */
-  '@angular-eslint/template/conditional-complexity'?: Linter.RuleEntry<AngularEslintTemplateConditionalComplexity>
-  /**
-   * Checks cyclomatic complexity against a specified limit. It is a quantitative measure of the number of linearly independent paths through a program's source code
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/cyclomatic-complexity.md
-   */
-  '@angular-eslint/template/cyclomatic-complexity'?: Linter.RuleEntry<AngularEslintTemplateCyclomaticComplexity>
-  /**
-   * [Accessibility] Ensures that the heading, anchor and button elements have content in them
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/elements-content.md
-   */
-  '@angular-eslint/template/elements-content'?: Linter.RuleEntry<AngularEslintTemplateElementsContent>
-  /**
-   * Requires `===` and `!==` in place of `==` and `!=`
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/eqeqeq.md
-   */
-  '@angular-eslint/template/eqeqeq'?: Linter.RuleEntry<AngularEslintTemplateEqeqeq>
-  /**
-   * Ensures following best practices for i18n. Checks for missing i18n attributes on elements and attributes containing texts. Can also check for texts without i18n attribute, elements that do not use custom ID (@@) feature and duplicate custom IDs
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/i18n.md
-   */
-  '@angular-eslint/template/i18n'?: Linter.RuleEntry<AngularEslintTemplateI18N>
-  /**
-   * [Accessibility] Ensures that elements with interactive handlers like `(click)` are focusable.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/interactive-supports-focus.md
-   */
-  '@angular-eslint/template/interactive-supports-focus'?: Linter.RuleEntry<AngularEslintTemplateInteractiveSupportsFocus>
-  /**
-   * [Accessibility] Ensures that a label element/component is associated with a form element
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/label-has-associated-control.md
-   */
-  '@angular-eslint/template/label-has-associated-control'?: Linter.RuleEntry<AngularEslintTemplateLabelHasAssociatedControl>
-  /**
-   * [Accessibility] Ensures that the mouse events `mouseout` and `mouseover` are accompanied by `focus` and `blur` events respectively. Coding for the keyboard is important for users with physical disabilities who cannot use a mouse, AT compatibility, and screenreader users. See more at https://www.w3.org/WAI/WCAG21/Understanding/keyboard
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/mouse-events-have-key-events.md
-   */
-  '@angular-eslint/template/mouse-events-have-key-events'?: Linter.RuleEntry<[]>
-  /**
-   * The use of "$any" nullifies the compile-time benefits of Angular's type system
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-any.md
-   */
-  '@angular-eslint/template/no-any'?: Linter.RuleEntry<[]>
-  /**
-   * [Accessibility] Ensures that the `autofocus` attribute is not used
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-autofocus.md
-   */
-  '@angular-eslint/template/no-autofocus'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows calling expressions in templates, except for output handlers
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-call-expression.md
-   */
-  '@angular-eslint/template/no-call-expression'?: Linter.RuleEntry<AngularEslintTemplateNoCallExpression>
-  /**
-   * [Accessibility] Enforces that no distracting elements are used
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-distracting-elements.md
-   */
-  '@angular-eslint/template/no-distracting-elements'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that there are no duplicate input properties or output event listeners
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-duplicate-attributes.md
-   */
-  '@angular-eslint/template/no-duplicate-attributes'?: Linter.RuleEntry<AngularEslintTemplateNoDuplicateAttributes>
-  /**
-   * Ensures that control flow blocks are not empty. Empty control flow blocks usually occur due to refactoring that wasn't completed. They can cause confusion when reading code.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-empty-control-flow.md
-   */
-  '@angular-eslint/template/no-empty-control-flow'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows the use of inline styles in HTML templates
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-inline-styles.md
-   */
-  '@angular-eslint/template/no-inline-styles'?: Linter.RuleEntry<AngularEslintTemplateNoInlineStyles>
-  /**
-   * Ensures that property-binding is used instead of interpolation in attributes.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-interpolation-in-attributes.md
-   */
-  '@angular-eslint/template/no-interpolation-in-attributes'?: Linter.RuleEntry<AngularEslintTemplateNoInterpolationInAttributes>
-  /**
-   * Ensures that async pipe results, as well as values used with the async pipe, are not negated
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-negated-async.md
-   */
-  '@angular-eslint/template/no-negated-async'?: Linter.RuleEntry<[]>
-  /**
-   * Denies nesting of <p> and <a> tags.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-nested-tags.md
-   */
-  '@angular-eslint/template/no-nested-tags'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows the non-null assertion operator (!) in templates
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-non-null-assertion.md
-   */
-  '@angular-eslint/template/no-non-null-assertion'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that the `tabindex` attribute is not positive
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-positive-tabindex.md
-   */
-  '@angular-eslint/template/no-positive-tabindex'?: Linter.RuleEntry<[]>
-  /**
-   * Prefer using `@else` instead of a second `@if` with the opposite condition to reduce code and make it easier to read.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-at-else.md
-   */
-  '@angular-eslint/template/prefer-at-else'?: Linter.RuleEntry<[]>
-  /**
-   * Prefer using `@empty` with `@for` loops instead of a separate `@if` or `@else` block to reduce code and make it easier to read.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-at-empty.md
-   */
-  '@angular-eslint/template/prefer-at-empty'?: Linter.RuleEntry<[]>
-  /**
-   * Encourages the use of Angular built-in pipes (e.g. lowercase, uppercase, titlecase) instead of certain JavaScript methods in Angular templates.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-built-in-pipes.md
-   */
-  '@angular-eslint/template/prefer-built-in-pipes'?: Linter.RuleEntry<AngularEslintTemplatePreferBuiltInPipes>
-  /**
-   * Suggests using [class] bindings over ngClass where applicable
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-class-binding.md
-   */
-  '@angular-eslint/template/prefer-class-binding'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that contextual variables are used in @for blocks where possible instead of aliasing them.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-contextual-for-variables.md
-   */
-  '@angular-eslint/template/prefer-contextual-for-variables'?: Linter.RuleEntry<AngularEslintTemplatePreferContextualForVariables>
-  /**
-   * Ensures that the built-in control flow is used.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-control-flow.md
-   */
-  '@angular-eslint/template/prefer-control-flow'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures ngSrc is used instead of src for img elements
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-ngsrc.md
-   */
-  '@angular-eslint/template/prefer-ngsrc'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that self-closing tags are used for elements with a closing tag but no content.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-self-closing-tags.md
-   */
-  '@angular-eslint/template/prefer-self-closing-tags'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that static string values use property assignment instead of property binding.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-static-string-properties.md
-   */
-  '@angular-eslint/template/prefer-static-string-properties'?: Linter.RuleEntry<AngularEslintTemplatePreferStaticStringProperties>
-  /**
-   * Ensure that template literals are used instead of concatenating strings or expressions.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-template-literal.md
-   */
-  '@angular-eslint/template/prefer-template-literal'?: Linter.RuleEntry<[]>
-  /**
-   * [Accessibility] Ensures elements with ARIA roles have all required properties for that role.
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/role-has-required-aria.md
-   */
-  '@angular-eslint/template/role-has-required-aria'?: Linter.RuleEntry<[]>
-  /**
-   * [Accessibility] Ensures that the `scope` attribute is only used on the `<th>` element
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/table-scope.md
-   */
-  '@angular-eslint/template/table-scope'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures trackBy function is used
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/use-track-by-function.md
-   */
-  '@angular-eslint/template/use-track-by-function'?: Linter.RuleEntry<AngularEslintTemplateUseTrackByFunction>
-  /**
-   * [Accessibility] Ensures that correct ARIA attributes and respective values are used
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/valid-aria.md
-   */
-  '@angular-eslint/template/valid-aria'?: Linter.RuleEntry<[]>
-  /**
-   * Component selector must be declared
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-component-selector.md
-   */
-  '@angular-eslint/use-component-selector'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows using `ViewEncapsulation.None`
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-component-view-encapsulation.md
-   */
-  '@angular-eslint/use-component-view-encapsulation'?: Linter.RuleEntry<[]>
-  /**
-   * Using the `providedIn` property makes `Injectables` tree-shakable
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-injectable-provided-in.md
-   */
-  '@angular-eslint/use-injectable-provided-in'?: Linter.RuleEntry<AngularEslintUseInjectableProvidedIn>
-  /**
-   * Ensures that classes implement lifecycle interfaces corresponding to the declared lifecycle methods. See more at https://angular.dev/style-guide#use-lifecycle-hook-interfaces
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-lifecycle-interface.md
-   */
-  '@angular-eslint/use-lifecycle-interface'?: Linter.RuleEntry<[]>
-  /**
-   * Ensures that `Pipes` implement `PipeTransform` interface
-   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-pipe-transform-interface.md
-   */
-  '@angular-eslint/use-pipe-transform-interface'?: Linter.RuleEntry<[]>
-  /**
    * require a `eslint-enable` comment for every `eslint-disable` comment
    * @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/disable-enable-pair.html
    */
@@ -490,6 +49,536 @@ export interface RuleOptions {
    * @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/require-description.html
    */
   '@eslint-community/eslint-comments/require-description'?: Linter.RuleEntry<EslintCommunityEslintCommentsRequireDescription>
+  /**
+   * Enforces explicit boolean values for boolean attributes.
+   * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-boolean
+   */
+  '@eslint-react/avoid-shorthand-boolean'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces explicit `<Fragment>` components instead of the shorthand `<>` or `</>` syntax.
+   * @see https://eslint-react.xyz/docs/rules/avoid-shorthand-fragment
+   */
+  '@eslint-react/avoid-shorthand-fragment'?: Linter.RuleEntry<[]>
+  /**
+   * Reports all class components.
+   * @see https://eslint-react.xyz/docs/rules/debug-class-component
+   */
+  '@eslint-react/debug/class-component'?: Linter.RuleEntry<[]>
+  /**
+   * Reports all function components.
+   * @see https://eslint-react.xyz/docs/rules/debug-function-component
+   */
+  '@eslint-react/debug/function-component'?: Linter.RuleEntry<[]>
+  /**
+   * Reports all React Hooks.
+   * @see https://eslint-react.xyz/docs/rules/debug-hook
+   */
+  '@eslint-react/debug/hook'?: Linter.RuleEntry<[]>
+  /**
+   * Reports all identifiers that are initialized from React.
+   * @see https://eslint-react.xyz/docs/rules/debug-is-from-react
+   */
+  '@eslint-react/debug/is-from-react'?: Linter.RuleEntry<[]>
+  /**
+   * Reports all JSX elements and fragments.
+   * @see https://eslint-react.xyz/docs/rules/debug-jsx
+   */
+  '@eslint-react/debug/jsx'?: Linter.RuleEntry<[]>
+  /**
+   * Reports all React Hooks.
+   * @see https://eslint-react.xyz/docs/rules/debug-hook
+   */
+  '@eslint-react/debug/react-hooks'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `children` in void DOM elements.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
+   */
+  '@eslint-react/dom/no-children-in-void-dom-elements'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `dangerouslySetInnerHTML`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml
+   */
+  '@eslint-react/dom/no-dangerously-set-innerhtml'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `dangerouslySetInnerHTML` and `children` at the same time.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children
+   */
+  '@eslint-react/dom/no-dangerously-set-innerhtml-with-children'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `findDOMNode`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-find-dom-node
+   */
+  '@eslint-react/dom/no-find-dom-node'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `flushSync`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-flush-sync
+   */
+  '@eslint-react/dom/no-flush-sync'?: Linter.RuleEntry<[]>
+  /**
+   * Replaces usages of `ReactDom.hydrate()` with `hydrateRoot()`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-hydrate
+   */
+  '@eslint-react/dom/no-hydrate'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces explicit `type` attribute for `button` elements.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-missing-button-type
+   */
+  '@eslint-react/dom/no-missing-button-type'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces explicit `sandbox` attribute for `iframe` elements.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
+   */
+  '@eslint-react/dom/no-missing-iframe-sandbox'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces the absence of a `namespace` in React elements.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-namespace
+   */
+  '@eslint-react/dom/no-namespace'?: Linter.RuleEntry<[]>
+  /**
+   * Replaces usages of `ReactDom.render()` with `createRoot(node).render()`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-render
+   */
+  '@eslint-react/dom/no-render'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow the return value of `ReactDOM.render`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-render-return-value
+   */
+  '@eslint-react/dom/no-render-return-value'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `javascript:` URLs as attribute values.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-script-url
+   */
+  '@eslint-react/dom/no-script-url'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unknown `DOM` property.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-unknown-property
+   */
+  '@eslint-react/dom/no-unknown-property'?: Linter.RuleEntry<EslintReactDomNoUnknownProperty>
+  /**
+   * Enforces `sandbox` attribute for `iframe` elements is not set to unsafe combinations.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-unsafe-iframe-sandbox
+   */
+  '@eslint-react/dom/no-unsafe-iframe-sandbox'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `target="_blank"` without `rel="noreferrer noopener"`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-unsafe-target-blank
+   */
+  '@eslint-react/dom/no-unsafe-target-blank'?: Linter.RuleEntry<[]>
+  /**
+   * Replaces usages of `useFormState` with `useActionState`.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-use-form-state
+   */
+  '@eslint-react/dom/no-use-form-state'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `children` in void DOM elements.
+   * @see https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
+   */
+  '@eslint-react/dom/no-void-elements-with-children'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow useless `forwardRef` calls on components that don't use `ref`s.
+   * @see https://eslint-react.xyz/docs/rules/no-useless-forward-ref
+   */
+  '@eslint-react/ensure-forward-ref-using-ref'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
+   */
+  '@eslint-react/hooks-extra/ensure-custom-hooks-using-other-hooks'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary usage of `useCallback`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-callback
+   */
+  '@eslint-react/hooks-extra/ensure-use-callback-has-non-empty-deps'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary usage of `useMemo`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-memo
+   */
+  '@eslint-react/hooks-extra/ensure-use-memo-has-non-empty-deps'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow direct calls to the `set` function of `useState` in `useEffect`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-effect
+   */
+  '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow direct calls to the `set` function of `useState` in `useLayoutEffect`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-layout-effect
+   */
+  '@eslint-react/hooks-extra/no-direct-set-state-in-use-layout-effect'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
+   */
+  '@eslint-react/hooks-extra/no-redundant-custom-hook'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary usage of `useCallback`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-callback
+   */
+  '@eslint-react/hooks-extra/no-unnecessary-use-callback'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary usage of `useMemo`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-memo
+   */
+  '@eslint-react/hooks-extra/no-unnecessary-use-memo'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
+   */
+  '@eslint-react/hooks-extra/no-unnecessary-use-prefix'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that a function with the `use` prefix should use at least one Hook inside of it.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
+   */
+  '@eslint-react/hooks-extra/no-useless-custom-hooks'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces function calls made inside `useState` to be wrapped in an `initializer function`.
+   * @see https://eslint-react.xyz/docs/rules/hooks-extra-prefer-use-state-lazy-initialization
+   */
+  '@eslint-react/hooks-extra/prefer-use-state-lazy-initialization'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that the 'key' attribute is placed before the spread attribute in JSX elements.
+   * @see https://eslint-react.xyz/docs/rules/jsx-key-before-spread
+   */
+  '@eslint-react/jsx-key-before-spread'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow duplicate props in JSX elements.
+   * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
+   */
+  '@eslint-react/jsx-no-duplicate-props'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows 'IIFE' in JSX elements.
+   * @see https://eslint-react.xyz/docs/rules/jsx-no-iife
+   */
+  '@eslint-react/jsx-no-iife'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow undefined variables in JSX.
+   * @see https://eslint-react.xyz/docs/rules/jsx-no-undef
+   */
+  '@eslint-react/jsx-no-undef'?: Linter.RuleEntry<[]>
+  /**
+   * Marks React variables as used when JSX is used.
+   * @see https://eslint-react.xyz/docs/rules/jsx-uses-react
+   */
+  '@eslint-react/jsx-uses-react'?: Linter.RuleEntry<[]>
+  /**
+   * Marks variables used in JSX elements as used.
+   * @see https://eslint-react.xyz/docs/rules/jsx-uses-vars
+   */
+  '@eslint-react/jsx-uses-vars'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces naming conventions for components.
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-component-name
+   */
+  '@eslint-react/naming-convention/component-name'?: Linter.RuleEntry<EslintReactNamingConventionComponentName>
+  /**
+   * Enforces context name to be a valid component name with the suffix `Context`.
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-context-name
+   */
+  '@eslint-react/naming-convention/context-name'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces consistent file naming conventions.
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-filename
+   */
+  '@eslint-react/naming-convention/filename'?: Linter.RuleEntry<EslintReactNamingConventionFilename>
+  /**
+   * Enforces consistent file naming conventions.
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-filename-extension
+   */
+  '@eslint-react/naming-convention/filename-extension'?: Linter.RuleEntry<EslintReactNamingConventionFilenameExtension>
+  /**
+   * Enforces destructuring and symmetric naming of `useState` hook value and setter.
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-use-state
+   */
+  '@eslint-react/naming-convention/use-state'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow accessing `this.state` inside `setState` calls.
+   * @see https://eslint-react.xyz/docs/rules/no-access-state-in-setstate
+   */
+  '@eslint-react/no-access-state-in-setstate'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow an item's index in the array as its key.
+   * @see https://eslint-react.xyz/docs/rules/no-array-index-key
+   */
+  '@eslint-react/no-array-index-key'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `Children.count`.
+   * @see https://eslint-react.xyz/docs/rules/no-children-count
+   */
+  '@eslint-react/no-children-count'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow 'Children.forEach'.
+   * @see https://eslint-react.xyz/docs/rules/no-children-for-each
+   */
+  '@eslint-react/no-children-for-each'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `Children.map`.
+   * @see https://eslint-react.xyz/docs/rules/no-children-map
+   */
+  '@eslint-react/no-children-map'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `Children.only`.
+   * @see https://eslint-react.xyz/docs/rules/no-children-only
+   */
+  '@eslint-react/no-children-only'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow passing `children` as a prop.
+   * @see https://eslint-react.xyz/docs/rules/no-children-prop
+   */
+  '@eslint-react/no-children-prop'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `Children.toArray`.
+   * @see https://eslint-react.xyz/docs/rules/no-children-to-array
+   */
+  '@eslint-react/no-children-to-array'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow class components except for error boundaries.
+   * @see https://eslint-react.xyz/docs/rules/no-class-component
+   */
+  '@eslint-react/no-class-component'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `cloneElement`.
+   * @see https://eslint-react.xyz/docs/rules/no-clone-element
+   */
+  '@eslint-react/no-clone-element'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents comments from being inserted as text nodes.
+   * @see https://eslint-react.xyz/docs/rules/no-comment-textnodes
+   */
+  '@eslint-react/no-comment-textnodes'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow complex conditional rendering in JSX expressions.
+   * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
+   */
+  '@eslint-react/no-complex-conditional-rendering'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow complex conditional rendering in JSX expressions.
+   * @see https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
+   */
+  '@eslint-react/no-complicated-conditional-rendering'?: Linter.RuleEntry<[]>
+  /**
+   * Replace usages of `componentWillMount` with `UNSAFE_componentWillMount`.
+   * @see https://eslint-react.xyz/docs/rules/no-component-will-mount
+   */
+  '@eslint-react/no-component-will-mount'?: Linter.RuleEntry<[]>
+  /**
+   * Replace usages of `componentWillReceiveProps` with `UNSAFE_componentWillReceiveProps`.
+   * @see https://eslint-react.xyz/docs/rules/no-component-will-receive-props
+   */
+  '@eslint-react/no-component-will-receive-props'?: Linter.RuleEntry<[]>
+  /**
+   * Replace usages of `componentWillUpdate` with `UNSAFE_componentWillUpdate`.
+   * @see https://eslint-react.xyz/docs/rules/no-component-will-update
+   */
+  '@eslint-react/no-component-will-update'?: Linter.RuleEntry<[]>
+  /**
+   * Replace usages of `<Context.Provider>` with `<Context>`.
+   * @see https://eslint-react.xyz/docs/rules/no-context-provider
+   */
+  '@eslint-react/no-context-provider'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `createRef` in function components.
+   * @see https://eslint-react.xyz/docs/rules/no-create-ref
+   */
+  '@eslint-react/no-create-ref'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `defaultProps` property in favor of ES6 default parameters.
+   * @see https://eslint-react.xyz/docs/rules/no-default-props
+   */
+  '@eslint-react/no-default-props'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow direct mutation of `this.state`.
+   * @see https://eslint-react.xyz/docs/rules/no-direct-mutation-state
+   */
+  '@eslint-react/no-direct-mutation-state'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow duplicate props in JSX elements.
+   * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
+   */
+  '@eslint-react/no-duplicate-jsx-props'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow duplicate `key` on elements in the same array or a list of `children`.
+   * @see https://eslint-react.xyz/docs/rules/no-duplicate-key
+   */
+  '@eslint-react/no-duplicate-key'?: Linter.RuleEntry<[]>
+  /**
+   * Replaces usages of `forwardRef` with passing `ref` as a prop.
+   * @see https://eslint-react.xyz/docs/rules/no-forward-ref
+   */
+  '@eslint-react/no-forward-ref'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents `key` from not being explicitly specified (e.g. spreading `key` from objects).
+   * @see https://eslint-react.xyz/docs/rules/no-implicit-key
+   */
+  '@eslint-react/no-implicit-key'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents problematic leaked values from being rendered.
+   * @see https://eslint-react.xyz/docs/rules/no-leaked-conditional-rendering
+   */
+  '@eslint-react/no-leaked-conditional-rendering'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that all components have a `displayName` which can be used in devtools.
+   * @see https://eslint-react.xyz/docs/rules/no-missing-component-display-name
+   */
+  '@eslint-react/no-missing-component-display-name'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces that all contexts have a `displayName` which can be used in devtools.
+   * @see https://eslint-react.xyz/docs/rules/no-missing-context-display-name
+   */
+  '@eslint-react/no-missing-context-display-name'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow missing `key` on items in list rendering.
+   * @see https://eslint-react.xyz/docs/rules/no-missing-key
+   */
+  '@eslint-react/no-missing-key'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents incorrect usage of `captureOwnerStack`.
+   * @see https://eslint-react.xyz/docs/rules/no-misused-capture-owner-stack
+   */
+  '@eslint-react/no-misused-capture-owner-stack'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow nesting component definitions inside other components.
+   * @see https://eslint-react.xyz/docs/rules/no-nested-component-definitions
+   */
+  '@eslint-react/no-nested-component-definitions'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow nesting component definitions inside other components.
+   * @see https://eslint-react.xyz/docs/rules/no-nested-component-definitions
+   */
+  '@eslint-react/no-nested-components'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow nesting lazy component declarations inside other components.
+   * @see https://eslint-react.xyz/docs/rules/no-nested-lazy-component-declarations
+   */
+  '@eslint-react/no-nested-lazy-component-declarations'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `propTypes` in favor of TypeScript or another type-checking solution.
+   * @see https://eslint-react.xyz/docs/rules/no-prop-types
+   */
+  '@eslint-react/no-prop-types'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `shouldComponentUpdate` when extending `React.PureComponent`.
+   * @see https://eslint-react.xyz/docs/rules/no-redundant-should-component-update
+   */
+  '@eslint-react/no-redundant-should-component-update'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow calling `this.setState` in `componentDidMount` outside of functions, such as callbacks.
+   * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-mount
+   */
+  '@eslint-react/no-set-state-in-component-did-mount'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow calling `this.setState` in `componentDidUpdate` outside of functions, such as callbacks.
+   * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-update
+   */
+  '@eslint-react/no-set-state-in-component-did-update'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows calling `this.setState` in `componentWillUpdate` outside of functions, such as callbacks.
+   * @see https://eslint-react.xyz/docs/rules/no-set-state-in-component-will-update
+   */
+  '@eslint-react/no-set-state-in-component-will-update'?: Linter.RuleEntry<[]>
+  /**
+   * Replaces string refs with callback refs.
+   * @see https://eslint-react.xyz/docs/rules/no-string-refs
+   */
+  '@eslint-react/no-string-refs'?: Linter.RuleEntry<[]>
+  /**
+   * Warns the usage of `UNSAFE_componentWillMount` in class components.
+   * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
+   */
+  '@eslint-react/no-unsafe-component-will-mount'?: Linter.RuleEntry<[]>
+  /**
+   * Warns the usage of `UNSAFE_componentWillReceiveProps` in class components.
+   * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-receive-props
+   */
+  '@eslint-react/no-unsafe-component-will-receive-props'?: Linter.RuleEntry<[]>
+  /**
+   * Warns the usage of `UNSAFE_componentWillUpdate` in class components.
+   * @see https://eslint-react.xyz/docs/rules/no-unsafe-component-will-update
+   */
+  '@eslint-react/no-unsafe-component-will-update'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents non-stable values (i.e. object literals) from being used as a value for `Context.Provider`.
+   * @see https://eslint-react.xyz/docs/rules/no-unstable-context-value
+   */
+  '@eslint-react/no-unstable-context-value'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents using referential-type values as default props in object destructuring.
+   * @see https://eslint-react.xyz/docs/rules/no-unstable-default-props
+   */
+  '@eslint-react/no-unstable-default-props'?: Linter.RuleEntry<[]>
+  /**
+   * Warns unused class component methods and properties.
+   * @see https://eslint-react.xyz/docs/rules/no-unused-class-component-members
+   */
+  '@eslint-react/no-unused-class-component-members'?: Linter.RuleEntry<[]>
+  /**
+   * Warns unused class component state.
+   * @see https://eslint-react.xyz/docs/rules/no-unused-state
+   */
+  '@eslint-react/no-unused-state'?: Linter.RuleEntry<[]>
+  /**
+   * Replaces usages of `useContext` with `use`.
+   * @see https://eslint-react.xyz/docs/rules/no-use-context
+   */
+  '@eslint-react/no-use-context'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow useless `forwardRef` calls on components that don't use `ref`s.
+   * @see https://eslint-react.xyz/docs/rules/no-useless-forward-ref
+   */
+  '@eslint-react/no-useless-forward-ref'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow useless fragment elements.
+   * @see https://eslint-react.xyz/docs/rules/no-useless-fragment
+   */
+  '@eslint-react/no-useless-fragment'?: Linter.RuleEntry<EslintReactNoUselessFragment>
+  /**
+   * Enforces destructuring assignment for component props and context.
+   * @see https://eslint-react.xyz/docs/rules/prefer-destructuring-assignment
+   */
+  '@eslint-react/prefer-destructuring-assignment'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces React is imported via a namespace import.
+   * @see https://eslint-react.xyz/docs/rules/prefer-react-namespace-import
+   */
+  '@eslint-react/prefer-react-namespace-import'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces read-only props in components.
+   * @see https://eslint-react.xyz/docs/rules/prefer-read-only-props
+   */
+  '@eslint-react/prefer-read-only-props'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces shorthand syntax for boolean attributes.
+   * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
+   */
+  '@eslint-react/prefer-shorthand-boolean'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces shorthand syntax for fragments.
+   * @see https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
+   */
+  '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
+  /**
+   * Marks variables used in JSX elements as used.
+   * @see https://eslint-react.xyz/docs/rules/jsx-uses-vars
+   */
+  '@eslint-react/use-jsx-vars'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents leaked `addEventListener` in a component or custom Hook.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-event-listener
+   */
+  '@eslint-react/web-api/no-leaked-event-listener'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents leaked `setInterval` in a component or custom Hook.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-interval
+   */
+  '@eslint-react/web-api/no-leaked-interval'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents leaked `ResizeObserver` in a component or custom Hook.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-resize-observer
+   */
+  '@eslint-react/web-api/no-leaked-resize-observer'?: Linter.RuleEntry<[]>
+  /**
+   * Prevents leaked `setTimeout` in a component or custom Hook.
+   * @see https://eslint-react.xyz/docs/rules/web-api-no-leaked-timeout
+   */
+  '@eslint-react/web-api/no-leaked-timeout'?: Linter.RuleEntry<[]>
   /**
    * Enforce font-display behavior with Google Fonts.
    * @see https://nextjs.org/docs/messages/google-font-display
@@ -1083,687 +1172,451 @@ export interface RuleOptions {
    */
   '@stylistic/yield-star-spacing'?: Linter.RuleEntry<StylisticYieldStarSpacing>
   /**
-   * Require that function overload signatures be consecutive
-   * @see https://typescript-eslint.io/rules/adjacent-overload-signatures
-   */
-  '@typescript-eslint/adjacent-overload-signatures'?: Linter.RuleEntry<[]>
-  /**
-   * Require consistently using either `T[]` or `Array<T>` for arrays
-   * @see https://typescript-eslint.io/rules/array-type
-   */
-  '@typescript-eslint/array-type'?: Linter.RuleEntry<TypescriptEslintArrayType>
-  /**
-   * Disallow awaiting a value that is not a Thenable
-   * @see https://typescript-eslint.io/rules/await-thenable
-   */
-  '@typescript-eslint/await-thenable'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow `@ts-<directive>` comments or require descriptions after directives
-   * @see https://typescript-eslint.io/rules/ban-ts-comment
-   */
-  '@typescript-eslint/ban-ts-comment'?: Linter.RuleEntry<TypescriptEslintBanTsComment>
-  /**
-   * Disallow `// tslint:<rule-flag>` comments
-   * @see https://typescript-eslint.io/rules/ban-tslint-comment
-   */
-  '@typescript-eslint/ban-tslint-comment'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce that literals on classes are exposed in a consistent style
-   * @see https://typescript-eslint.io/rules/class-literal-property-style
-   */
-  '@typescript-eslint/class-literal-property-style'?: Linter.RuleEntry<TypescriptEslintClassLiteralPropertyStyle>
-  /**
-   * Enforce that class methods utilize `this`
-   * @see https://typescript-eslint.io/rules/class-methods-use-this
-   */
-  '@typescript-eslint/class-methods-use-this'?: Linter.RuleEntry<TypescriptEslintClassMethodsUseThis>
-  /**
-   * Enforce specifying generic type arguments on type annotation or constructor name of a constructor call
-   * @see https://typescript-eslint.io/rules/consistent-generic-constructors
-   */
-  '@typescript-eslint/consistent-generic-constructors'?: Linter.RuleEntry<TypescriptEslintConsistentGenericConstructors>
-  /**
-   * Require or disallow the `Record` type
-   * @see https://typescript-eslint.io/rules/consistent-indexed-object-style
-   */
-  '@typescript-eslint/consistent-indexed-object-style'?: Linter.RuleEntry<TypescriptEslintConsistentIndexedObjectStyle>
-  /**
-   * Require `return` statements to either always or never specify values
-   * @see https://typescript-eslint.io/rules/consistent-return
-   */
-  '@typescript-eslint/consistent-return'?: Linter.RuleEntry<TypescriptEslintConsistentReturn>
-  /**
-   * Enforce consistent usage of type assertions
-   * @see https://typescript-eslint.io/rules/consistent-type-assertions
-   */
-  '@typescript-eslint/consistent-type-assertions'?: Linter.RuleEntry<TypescriptEslintConsistentTypeAssertions>
-  /**
-   * Enforce type definitions to consistently use either `interface` or `type`
-   * @see https://typescript-eslint.io/rules/consistent-type-definitions
-   */
-  '@typescript-eslint/consistent-type-definitions'?: Linter.RuleEntry<TypescriptEslintConsistentTypeDefinitions>
-  /**
-   * Enforce consistent usage of type exports
-   * @see https://typescript-eslint.io/rules/consistent-type-exports
-   */
-  '@typescript-eslint/consistent-type-exports'?: Linter.RuleEntry<TypescriptEslintConsistentTypeExports>
-  /**
-   * Enforce consistent usage of type imports
-   * @see https://typescript-eslint.io/rules/consistent-type-imports
-   */
-  '@typescript-eslint/consistent-type-imports'?: Linter.RuleEntry<TypescriptEslintConsistentTypeImports>
-  /**
-   * Enforce default parameters to be last
-   * @see https://typescript-eslint.io/rules/default-param-last
-   */
-  '@typescript-eslint/default-param-last'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce dot notation whenever possible
-   * @see https://typescript-eslint.io/rules/dot-notation
-   */
-  '@typescript-eslint/dot-notation'?: Linter.RuleEntry<TypescriptEslintDotNotation>
-  /**
-   * Require explicit return types on functions and class methods
-   * @see https://typescript-eslint.io/rules/explicit-function-return-type
-   */
-  '@typescript-eslint/explicit-function-return-type'?: Linter.RuleEntry<TypescriptEslintExplicitFunctionReturnType>
-  /**
-   * Require explicit accessibility modifiers on class properties and methods
-   * @see https://typescript-eslint.io/rules/explicit-member-accessibility
-   */
-  '@typescript-eslint/explicit-member-accessibility'?: Linter.RuleEntry<TypescriptEslintExplicitMemberAccessibility>
-  /**
-   * Require explicit return and argument types on exported functions' and classes' public class methods
-   * @see https://typescript-eslint.io/rules/explicit-module-boundary-types
-   */
-  '@typescript-eslint/explicit-module-boundary-types'?: Linter.RuleEntry<TypescriptEslintExplicitModuleBoundaryTypes>
-  /**
-   * Require or disallow initialization in variable declarations
-   * @see https://typescript-eslint.io/rules/init-declarations
-   */
-  '@typescript-eslint/init-declarations'?: Linter.RuleEntry<TypescriptEslintInitDeclarations>
-  /**
-   * Enforce a maximum number of parameters in function definitions
-   * @see https://typescript-eslint.io/rules/max-params
-   */
-  '@typescript-eslint/max-params'?: Linter.RuleEntry<TypescriptEslintMaxParams>
-  /**
-   * Require a consistent member declaration order
-   * @see https://typescript-eslint.io/rules/member-ordering
-   */
-  '@typescript-eslint/member-ordering'?: Linter.RuleEntry<TypescriptEslintMemberOrdering>
-  /**
-   * Enforce using a particular method signature syntax
-   * @see https://typescript-eslint.io/rules/method-signature-style
-   */
-  '@typescript-eslint/method-signature-style'?: Linter.RuleEntry<TypescriptEslintMethodSignatureStyle>
-  /**
-   * Enforce naming conventions for everything across a codebase
-   * @see https://typescript-eslint.io/rules/naming-convention
-   */
-  '@typescript-eslint/naming-convention'?: Linter.RuleEntry<TypescriptEslintNamingConvention>
-  /**
-   * Disallow generic `Array` constructors
-   * @see https://typescript-eslint.io/rules/no-array-constructor
-   */
-  '@typescript-eslint/no-array-constructor'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow using the `delete` operator on array values
-   * @see https://typescript-eslint.io/rules/no-array-delete
-   */
-  '@typescript-eslint/no-array-delete'?: Linter.RuleEntry<[]>
-  /**
-   * Require `.toString()` and `.toLocaleString()` to only be called on objects which provide useful information when stringified
-   * @see https://typescript-eslint.io/rules/no-base-to-string
-   */
-  '@typescript-eslint/no-base-to-string'?: Linter.RuleEntry<TypescriptEslintNoBaseToString>
-  /**
-   * Disallow non-null assertion in locations that may be confusing
-   * @see https://typescript-eslint.io/rules/no-confusing-non-null-assertion
-   */
-  '@typescript-eslint/no-confusing-non-null-assertion'?: Linter.RuleEntry<[]>
-  /**
-   * Require expressions of type void to appear in statement position
-   * @see https://typescript-eslint.io/rules/no-confusing-void-expression
-   */
-  '@typescript-eslint/no-confusing-void-expression'?: Linter.RuleEntry<TypescriptEslintNoConfusingVoidExpression>
-  /**
-   * Disallow using code marked as `@deprecated`
-   * @see https://typescript-eslint.io/rules/no-deprecated
-   */
-  '@typescript-eslint/no-deprecated'?: Linter.RuleEntry<TypescriptEslintNoDeprecated>
-  /**
-   * Disallow duplicate class members
-   * @see https://typescript-eslint.io/rules/no-dupe-class-members
-   */
-  '@typescript-eslint/no-dupe-class-members'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow duplicate enum member values
-   * @see https://typescript-eslint.io/rules/no-duplicate-enum-values
-   */
-  '@typescript-eslint/no-duplicate-enum-values'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow duplicate constituents of union or intersection types
-   * @see https://typescript-eslint.io/rules/no-duplicate-type-constituents
-   */
-  '@typescript-eslint/no-duplicate-type-constituents'?: Linter.RuleEntry<TypescriptEslintNoDuplicateTypeConstituents>
-  /**
-   * Disallow using the `delete` operator on computed key expressions
-   * @see https://typescript-eslint.io/rules/no-dynamic-delete
-   */
-  '@typescript-eslint/no-dynamic-delete'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow empty functions
-   * @see https://typescript-eslint.io/rules/no-empty-function
-   */
-  '@typescript-eslint/no-empty-function'?: Linter.RuleEntry<TypescriptEslintNoEmptyFunction>
-  /**
-   * Disallow the declaration of empty interfaces
-   * @see https://typescript-eslint.io/rules/no-empty-interface
-   * @deprecated
-   */
-  '@typescript-eslint/no-empty-interface'?: Linter.RuleEntry<TypescriptEslintNoEmptyInterface>
-  /**
-   * Disallow accidentally using the "empty object" type
-   * @see https://typescript-eslint.io/rules/no-empty-object-type
-   */
-  '@typescript-eslint/no-empty-object-type'?: Linter.RuleEntry<TypescriptEslintNoEmptyObjectType>
-  /**
-   * Disallow the `any` type
-   * @see https://typescript-eslint.io/rules/no-explicit-any
-   */
-  '@typescript-eslint/no-explicit-any'?: Linter.RuleEntry<TypescriptEslintNoExplicitAny>
-  /**
-   * Disallow extra non-null assertions
-   * @see https://typescript-eslint.io/rules/no-extra-non-null-assertion
-   */
-  '@typescript-eslint/no-extra-non-null-assertion'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow classes used as namespaces
-   * @see https://typescript-eslint.io/rules/no-extraneous-class
-   */
-  '@typescript-eslint/no-extraneous-class'?: Linter.RuleEntry<TypescriptEslintNoExtraneousClass>
-  /**
-   * Require Promise-like statements to be handled appropriately
-   * @see https://typescript-eslint.io/rules/no-floating-promises
-   */
-  '@typescript-eslint/no-floating-promises'?: Linter.RuleEntry<TypescriptEslintNoFloatingPromises>
-  /**
-   * Disallow iterating over an array with a for-in loop
-   * @see https://typescript-eslint.io/rules/no-for-in-array
-   */
-  '@typescript-eslint/no-for-in-array'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow the use of `eval()`-like functions
-   * @see https://typescript-eslint.io/rules/no-implied-eval
-   */
-  '@typescript-eslint/no-implied-eval'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce the use of top-level import type qualifier when an import only has specifiers with inline type qualifiers
-   * @see https://typescript-eslint.io/rules/no-import-type-side-effects
-   */
-  '@typescript-eslint/no-import-type-side-effects'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow explicit type declarations for variables or parameters initialized to a number, string, or boolean
-   * @see https://typescript-eslint.io/rules/no-inferrable-types
-   */
-  '@typescript-eslint/no-inferrable-types'?: Linter.RuleEntry<TypescriptEslintNoInferrableTypes>
-  /**
-   * Disallow `this` keywords outside of classes or class-like objects
-   * @see https://typescript-eslint.io/rules/no-invalid-this
-   */
-  '@typescript-eslint/no-invalid-this'?: Linter.RuleEntry<TypescriptEslintNoInvalidThis>
-  /**
-   * Disallow `void` type outside of generic or return types
-   * @see https://typescript-eslint.io/rules/no-invalid-void-type
-   */
-  '@typescript-eslint/no-invalid-void-type'?: Linter.RuleEntry<TypescriptEslintNoInvalidVoidType>
-  /**
-   * Disallow function declarations that contain unsafe references inside loop statements
-   * @see https://typescript-eslint.io/rules/no-loop-func
-   */
-  '@typescript-eslint/no-loop-func'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow literal numbers that lose precision
-   * @see https://typescript-eslint.io/rules/no-loss-of-precision
-   * @deprecated
-   */
-  '@typescript-eslint/no-loss-of-precision'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow magic numbers
-   * @see https://typescript-eslint.io/rules/no-magic-numbers
-   */
-  '@typescript-eslint/no-magic-numbers'?: Linter.RuleEntry<TypescriptEslintNoMagicNumbers>
-  /**
-   * Disallow the `void` operator except when used to discard a value
-   * @see https://typescript-eslint.io/rules/no-meaningless-void-operator
-   */
-  '@typescript-eslint/no-meaningless-void-operator'?: Linter.RuleEntry<TypescriptEslintNoMeaninglessVoidOperator>
-  /**
-   * Enforce valid definition of `new` and `constructor`
-   * @see https://typescript-eslint.io/rules/no-misused-new
-   */
-  '@typescript-eslint/no-misused-new'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow Promises in places not designed to handle them
-   * @see https://typescript-eslint.io/rules/no-misused-promises
-   */
-  '@typescript-eslint/no-misused-promises'?: Linter.RuleEntry<TypescriptEslintNoMisusedPromises>
-  /**
-   * Disallow using the spread operator when it might cause unexpected behavior
-   * @see https://typescript-eslint.io/rules/no-misused-spread
-   */
-  '@typescript-eslint/no-misused-spread'?: Linter.RuleEntry<TypescriptEslintNoMisusedSpread>
-  /**
-   * Disallow enums from having both number and string members
-   * @see https://typescript-eslint.io/rules/no-mixed-enums
-   */
-  '@typescript-eslint/no-mixed-enums'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow TypeScript namespaces
-   * @see https://typescript-eslint.io/rules/no-namespace
-   */
-  '@typescript-eslint/no-namespace'?: Linter.RuleEntry<TypescriptEslintNoNamespace>
-  /**
-   * Disallow non-null assertions in the left operand of a nullish coalescing operator
-   * @see https://typescript-eslint.io/rules/no-non-null-asserted-nullish-coalescing
-   */
-  '@typescript-eslint/no-non-null-asserted-nullish-coalescing'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow non-null assertions after an optional chain expression
-   * @see https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain
-   */
-  '@typescript-eslint/no-non-null-asserted-optional-chain'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow non-null assertions using the `!` postfix operator
-   * @see https://typescript-eslint.io/rules/no-non-null-assertion
-   */
-  '@typescript-eslint/no-non-null-assertion'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow variable redeclaration
-   * @see https://typescript-eslint.io/rules/no-redeclare
-   */
-  '@typescript-eslint/no-redeclare'?: Linter.RuleEntry<TypescriptEslintNoRedeclare>
-  /**
-   * Disallow members of unions and intersections that do nothing or override type information
-   * @see https://typescript-eslint.io/rules/no-redundant-type-constituents
-   */
-  '@typescript-eslint/no-redundant-type-constituents'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow invocation of `require()`
-   * @see https://typescript-eslint.io/rules/no-require-imports
-   */
-  '@typescript-eslint/no-require-imports'?: Linter.RuleEntry<TypescriptEslintNoRequireImports>
-  /**
-   * Disallow specified modules when loaded by `import`
-   * @see https://typescript-eslint.io/rules/no-restricted-imports
-   */
-  '@typescript-eslint/no-restricted-imports'?: Linter.RuleEntry<TypescriptEslintNoRestrictedImports>
-  /**
-   * Disallow certain types
-   * @see https://typescript-eslint.io/rules/no-restricted-types
-   */
-  '@typescript-eslint/no-restricted-types'?: Linter.RuleEntry<TypescriptEslintNoRestrictedTypes>
-  /**
-   * Disallow variable declarations from shadowing variables declared in the outer scope
-   * @see https://typescript-eslint.io/rules/no-shadow
-   */
-  '@typescript-eslint/no-shadow'?: Linter.RuleEntry<TypescriptEslintNoShadow>
-  /**
-   * Disallow aliasing `this`
-   * @see https://typescript-eslint.io/rules/no-this-alias
-   */
-  '@typescript-eslint/no-this-alias'?: Linter.RuleEntry<TypescriptEslintNoThisAlias>
-  /**
-   * Disallow type aliases
-   * @see https://typescript-eslint.io/rules/no-type-alias
-   * @deprecated
-   */
-  '@typescript-eslint/no-type-alias'?: Linter.RuleEntry<TypescriptEslintNoTypeAlias>
-  /**
-   * Disallow unnecessary equality comparisons against boolean literals
-   * @see https://typescript-eslint.io/rules/no-unnecessary-boolean-literal-compare
-   */
-  '@typescript-eslint/no-unnecessary-boolean-literal-compare'?: Linter.RuleEntry<TypescriptEslintNoUnnecessaryBooleanLiteralCompare>
-  /**
-   * Disallow conditionals where the type is always truthy or always falsy
-   * @see https://typescript-eslint.io/rules/no-unnecessary-condition
-   */
-  '@typescript-eslint/no-unnecessary-condition'?: Linter.RuleEntry<TypescriptEslintNoUnnecessaryCondition>
-  /**
-   * Disallow unnecessary assignment of constructor property parameter
-   * @see https://typescript-eslint.io/rules/no-unnecessary-parameter-property-assignment
-   */
-  '@typescript-eslint/no-unnecessary-parameter-property-assignment'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary namespace qualifiers
-   * @see https://typescript-eslint.io/rules/no-unnecessary-qualifier
-   */
-  '@typescript-eslint/no-unnecessary-qualifier'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary template expressions
-   * @see https://typescript-eslint.io/rules/no-unnecessary-template-expression
-   */
-  '@typescript-eslint/no-unnecessary-template-expression'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow type arguments that are equal to the default
-   * @see https://typescript-eslint.io/rules/no-unnecessary-type-arguments
-   */
-  '@typescript-eslint/no-unnecessary-type-arguments'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow type assertions that do not change the type of an expression
-   * @see https://typescript-eslint.io/rules/no-unnecessary-type-assertion
-   */
-  '@typescript-eslint/no-unnecessary-type-assertion'?: Linter.RuleEntry<TypescriptEslintNoUnnecessaryTypeAssertion>
-  /**
-   * Disallow unnecessary constraints on generic types
-   * @see https://typescript-eslint.io/rules/no-unnecessary-type-constraint
-   */
-  '@typescript-eslint/no-unnecessary-type-constraint'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow conversion idioms when they do not change the type or value of the expression
-   * @see https://typescript-eslint.io/rules/no-unnecessary-type-conversion
-   */
-  '@typescript-eslint/no-unnecessary-type-conversion'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow type parameters that aren't used multiple times
-   * @see https://typescript-eslint.io/rules/no-unnecessary-type-parameters
-   */
-  '@typescript-eslint/no-unnecessary-type-parameters'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow calling a function with a value with type `any`
-   * @see https://typescript-eslint.io/rules/no-unsafe-argument
-   */
-  '@typescript-eslint/no-unsafe-argument'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow assigning a value with type `any` to variables and properties
-   * @see https://typescript-eslint.io/rules/no-unsafe-assignment
-   */
-  '@typescript-eslint/no-unsafe-assignment'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow calling a value with type `any`
-   * @see https://typescript-eslint.io/rules/no-unsafe-call
-   */
-  '@typescript-eslint/no-unsafe-call'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unsafe declaration merging
-   * @see https://typescript-eslint.io/rules/no-unsafe-declaration-merging
-   */
-  '@typescript-eslint/no-unsafe-declaration-merging'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow comparing an enum value with a non-enum value
-   * @see https://typescript-eslint.io/rules/no-unsafe-enum-comparison
-   */
-  '@typescript-eslint/no-unsafe-enum-comparison'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow using the unsafe built-in Function type
-   * @see https://typescript-eslint.io/rules/no-unsafe-function-type
-   */
-  '@typescript-eslint/no-unsafe-function-type'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow member access on a value with type `any`
-   * @see https://typescript-eslint.io/rules/no-unsafe-member-access
-   */
-  '@typescript-eslint/no-unsafe-member-access'?: Linter.RuleEntry<TypescriptEslintNoUnsafeMemberAccess>
-  /**
-   * Disallow returning a value with type `any` from a function
-   * @see https://typescript-eslint.io/rules/no-unsafe-return
-   */
-  '@typescript-eslint/no-unsafe-return'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow type assertions that narrow a type
-   * @see https://typescript-eslint.io/rules/no-unsafe-type-assertion
-   */
-  '@typescript-eslint/no-unsafe-type-assertion'?: Linter.RuleEntry<[]>
-  /**
-   * Require unary negation to take a number
-   * @see https://typescript-eslint.io/rules/no-unsafe-unary-minus
-   */
-  '@typescript-eslint/no-unsafe-unary-minus'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unused expressions
-   * @see https://typescript-eslint.io/rules/no-unused-expressions
-   */
-  '@typescript-eslint/no-unused-expressions'?: Linter.RuleEntry<TypescriptEslintNoUnusedExpressions>
-  /**
-   * Disallow unused private class members
-   * @see https://typescript-eslint.io/rules/no-unused-private-class-members
-   */
-  '@typescript-eslint/no-unused-private-class-members'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unused variables
-   * @see https://typescript-eslint.io/rules/no-unused-vars
-   */
-  '@typescript-eslint/no-unused-vars'?: Linter.RuleEntry<TypescriptEslintNoUnusedVars>
-  /**
-   * Disallow the use of variables before they are defined
-   * @see https://typescript-eslint.io/rules/no-use-before-define
-   */
-  '@typescript-eslint/no-use-before-define'?: Linter.RuleEntry<TypescriptEslintNoUseBeforeDefine>
-  /**
-   * Disallow unnecessary constructors
-   * @see https://typescript-eslint.io/rules/no-useless-constructor
-   */
-  '@typescript-eslint/no-useless-constructor'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow default values that will never be used
-   * @see https://typescript-eslint.io/rules/no-useless-default-assignment
-   */
-  '@typescript-eslint/no-useless-default-assignment'?: Linter.RuleEntry<TypescriptEslintNoUselessDefaultAssignment>
-  /**
-   * Disallow empty exports that don't change anything in a module file
-   * @see https://typescript-eslint.io/rules/no-useless-empty-export
-   */
-  '@typescript-eslint/no-useless-empty-export'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow `require` statements except in import statements
-   * @see https://typescript-eslint.io/rules/no-var-requires
-   * @deprecated
-   */
-  '@typescript-eslint/no-var-requires'?: Linter.RuleEntry<TypescriptEslintNoVarRequires>
-  /**
-   * Disallow using confusing built-in primitive class wrappers
-   * @see https://typescript-eslint.io/rules/no-wrapper-object-types
-   */
-  '@typescript-eslint/no-wrapper-object-types'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce non-null assertions over explicit type assertions
-   * @see https://typescript-eslint.io/rules/non-nullable-type-assertion-style
-   */
-  '@typescript-eslint/non-nullable-type-assertion-style'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow throwing non-`Error` values as exceptions
-   * @see https://typescript-eslint.io/rules/only-throw-error
-   */
-  '@typescript-eslint/only-throw-error'?: Linter.RuleEntry<TypescriptEslintOnlyThrowError>
-  /**
-   * Require or disallow parameter properties in class constructors
-   * @see https://typescript-eslint.io/rules/parameter-properties
-   */
-  '@typescript-eslint/parameter-properties'?: Linter.RuleEntry<TypescriptEslintParameterProperties>
-  /**
-   * Enforce the use of `as const` over literal type
-   * @see https://typescript-eslint.io/rules/prefer-as-const
-   */
-  '@typescript-eslint/prefer-as-const'?: Linter.RuleEntry<[]>
-  /**
-   * Require destructuring from arrays and/or objects
-   * @see https://typescript-eslint.io/rules/prefer-destructuring
-   */
-  '@typescript-eslint/prefer-destructuring'?: Linter.RuleEntry<TypescriptEslintPreferDestructuring>
-  /**
-   * Require each enum member value to be explicitly initialized
-   * @see https://typescript-eslint.io/rules/prefer-enum-initializers
-   */
-  '@typescript-eslint/prefer-enum-initializers'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce the use of Array.prototype.find() over Array.prototype.filter() followed by [0] when looking for a single result
-   * @see https://typescript-eslint.io/rules/prefer-find
-   */
-  '@typescript-eslint/prefer-find'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce the use of `for-of` loop over the standard `for` loop where possible
-   * @see https://typescript-eslint.io/rules/prefer-for-of
-   */
-  '@typescript-eslint/prefer-for-of'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce using function types instead of interfaces with call signatures
-   * @see https://typescript-eslint.io/rules/prefer-function-type
-   */
-  '@typescript-eslint/prefer-function-type'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce `includes` method over `indexOf` method
-   * @see https://typescript-eslint.io/rules/prefer-includes
-   */
-  '@typescript-eslint/prefer-includes'?: Linter.RuleEntry<[]>
-  /**
-   * Require all enum members to be literal values
-   * @see https://typescript-eslint.io/rules/prefer-literal-enum-member
-   */
-  '@typescript-eslint/prefer-literal-enum-member'?: Linter.RuleEntry<TypescriptEslintPreferLiteralEnumMember>
-  /**
-   * Require using `namespace` keyword over `module` keyword to declare custom TypeScript modules
-   * @see https://typescript-eslint.io/rules/prefer-namespace-keyword
-   */
-  '@typescript-eslint/prefer-namespace-keyword'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce using the nullish coalescing operator instead of logical assignments or chaining
-   * @see https://typescript-eslint.io/rules/prefer-nullish-coalescing
-   */
-  '@typescript-eslint/prefer-nullish-coalescing'?: Linter.RuleEntry<TypescriptEslintPreferNullishCoalescing>
-  /**
-   * Enforce using concise optional chain expressions instead of chained logical ands, negated logical ors, or empty objects
-   * @see https://typescript-eslint.io/rules/prefer-optional-chain
-   */
-  '@typescript-eslint/prefer-optional-chain'?: Linter.RuleEntry<TypescriptEslintPreferOptionalChain>
-  /**
-   * Require using Error objects as Promise rejection reasons
-   * @see https://typescript-eslint.io/rules/prefer-promise-reject-errors
-   */
-  '@typescript-eslint/prefer-promise-reject-errors'?: Linter.RuleEntry<TypescriptEslintPreferPromiseRejectErrors>
-  /**
-   * Require private members to be marked as `readonly` if they're never modified outside of the constructor
-   * @see https://typescript-eslint.io/rules/prefer-readonly
-   */
-  '@typescript-eslint/prefer-readonly'?: Linter.RuleEntry<TypescriptEslintPreferReadonly>
-  /**
-   * Require function parameters to be typed as `readonly` to prevent accidental mutation of inputs
-   * @see https://typescript-eslint.io/rules/prefer-readonly-parameter-types
-   */
-  '@typescript-eslint/prefer-readonly-parameter-types'?: Linter.RuleEntry<TypescriptEslintPreferReadonlyParameterTypes>
-  /**
-   * Enforce using type parameter when calling `Array#reduce` instead of using a type assertion
-   * @see https://typescript-eslint.io/rules/prefer-reduce-type-parameter
-   */
-  '@typescript-eslint/prefer-reduce-type-parameter'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce `RegExp#exec` over `String#match` if no global flag is provided
-   * @see https://typescript-eslint.io/rules/prefer-regexp-exec
-   */
-  '@typescript-eslint/prefer-regexp-exec'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce that `this` is used when only `this` type is returned
-   * @see https://typescript-eslint.io/rules/prefer-return-this-type
-   */
-  '@typescript-eslint/prefer-return-this-type'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce using `String#startsWith` and `String#endsWith` over other equivalent methods of checking substrings
-   * @see https://typescript-eslint.io/rules/prefer-string-starts-ends-with
-   */
-  '@typescript-eslint/prefer-string-starts-ends-with'?: Linter.RuleEntry<TypescriptEslintPreferStringStartsEndsWith>
-  /**
-   * Enforce using `@ts-expect-error` over `@ts-ignore`
-   * @see https://typescript-eslint.io/rules/prefer-ts-expect-error
-   * @deprecated
-   */
-  '@typescript-eslint/prefer-ts-expect-error'?: Linter.RuleEntry<[]>
-  /**
-   * Require any function or method that returns a Promise to be marked async
-   * @see https://typescript-eslint.io/rules/promise-function-async
-   */
-  '@typescript-eslint/promise-function-async'?: Linter.RuleEntry<TypescriptEslintPromiseFunctionAsync>
-  /**
-   * Enforce that `get()` types should be assignable to their equivalent `set()` type
-   * @see https://typescript-eslint.io/rules/related-getter-setter-pairs
-   */
-  '@typescript-eslint/related-getter-setter-pairs'?: Linter.RuleEntry<[]>
-  /**
-   * Require `Array#sort` and `Array#toSorted` calls to always provide a `compareFunction`
-   * @see https://typescript-eslint.io/rules/require-array-sort-compare
-   */
-  '@typescript-eslint/require-array-sort-compare'?: Linter.RuleEntry<TypescriptEslintRequireArraySortCompare>
-  /**
-   * Disallow async functions which do not return promises and have no `await` expression
-   * @see https://typescript-eslint.io/rules/require-await
-   */
-  '@typescript-eslint/require-await'?: Linter.RuleEntry<[]>
-  /**
-   * Require both operands of addition to be the same type and be `bigint`, `number`, or `string`
-   * @see https://typescript-eslint.io/rules/restrict-plus-operands
-   */
-  '@typescript-eslint/restrict-plus-operands'?: Linter.RuleEntry<TypescriptEslintRestrictPlusOperands>
-  /**
-   * Enforce template literal expressions to be of `string` type
-   * @see https://typescript-eslint.io/rules/restrict-template-expressions
-   */
-  '@typescript-eslint/restrict-template-expressions'?: Linter.RuleEntry<TypescriptEslintRestrictTemplateExpressions>
-  /**
-   * Enforce consistent awaiting of returned promises
-   * @see https://typescript-eslint.io/rules/return-await
-   */
-  '@typescript-eslint/return-await'?: Linter.RuleEntry<TypescriptEslintReturnAwait>
-  /**
-   * Enforce constituents of a type union/intersection to be sorted alphabetically
-   * @see https://typescript-eslint.io/rules/sort-type-constituents
-   * @deprecated
-   */
-  '@typescript-eslint/sort-type-constituents'?: Linter.RuleEntry<TypescriptEslintSortTypeConstituents>
-  /**
-   * Disallow certain types in boolean expressions
-   * @see https://typescript-eslint.io/rules/strict-boolean-expressions
-   */
-  '@typescript-eslint/strict-boolean-expressions'?: Linter.RuleEntry<TypescriptEslintStrictBooleanExpressions>
-  /**
-   * Disallow passing a value-returning function in a position accepting a void function
-   * @see https://typescript-eslint.io/rules/strict-void-return
-   */
-  '@typescript-eslint/strict-void-return'?: Linter.RuleEntry<TypescriptEslintStrictVoidReturn>
-  /**
-   * Require switch-case statements to be exhaustive
-   * @see https://typescript-eslint.io/rules/switch-exhaustiveness-check
-   */
-  '@typescript-eslint/switch-exhaustiveness-check'?: Linter.RuleEntry<TypescriptEslintSwitchExhaustivenessCheck>
-  /**
-   * Disallow certain triple slash directives in favor of ES6-style import declarations
-   * @see https://typescript-eslint.io/rules/triple-slash-reference
-   */
-  '@typescript-eslint/triple-slash-reference'?: Linter.RuleEntry<TypescriptEslintTripleSlashReference>
-  /**
-   * Require type annotations in certain places
-   * @see https://typescript-eslint.io/rules/typedef
-   * @deprecated
-   */
-  '@typescript-eslint/typedef'?: Linter.RuleEntry<TypescriptEslintTypedef>
-  /**
-   * Enforce unbound methods are called with their expected scope
-   * @see https://typescript-eslint.io/rules/unbound-method
-   */
-  '@typescript-eslint/unbound-method'?: Linter.RuleEntry<TypescriptEslintUnboundMethod>
-  /**
-   * Disallow two overloads that could be unified into one with a union or an optional/rest parameter
-   * @see https://typescript-eslint.io/rules/unified-signatures
-   */
-  '@typescript-eslint/unified-signatures'?: Linter.RuleEntry<TypescriptEslintUnifiedSignatures>
-  /**
-   * Enforce typing arguments in Promise rejection callbacks as `unknown`
-   * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
-   */
-  '@typescript-eslint/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
-  /**
    * Enforce getter and setter pairs in objects and classes
    * @see https://eslint.org/docs/latest/rules/accessor-pairs
    */
   'accessor-pairs'?: Linter.RuleEntry<AccessorPairs>
+  /**
+   * [Accessibility] Enforces alternate text for elements which require the alt, aria-label, aria-labelledby attributes.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/alt-text.md
+   */
+  'angular-template/alt-text'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that HTML attributes and Angular bindings are sorted based on an expected order
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/attributes-order.md
+   */
+  'angular-template/attributes-order'?: Linter.RuleEntry<AngularTemplateAttributesOrder>
+  /**
+   * Ensures that the two-way data binding syntax is correct
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/banana-in-box.md
+   */
+  'angular-template/banana-in-box'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that a button has a valid type specified
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/button-has-type.md
+   */
+  'angular-template/button-has-type'?: Linter.RuleEntry<AngularTemplateButtonHasType>
+  /**
+   * [Accessibility] Ensures that the click event is accompanied with at least one key event keyup, keydown or keypress.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/click-events-have-key-events.md
+   */
+  'angular-template/click-events-have-key-events'?: Linter.RuleEntry<AngularTemplateClickEventsHaveKeyEvents>
+  /**
+   * The conditional complexity should not exceed a rational limit
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/conditional-complexity.md
+   */
+  'angular-template/conditional-complexity'?: Linter.RuleEntry<AngularTemplateConditionalComplexity>
+  /**
+   * Checks cyclomatic complexity against a specified limit. It is a quantitative measure of the number of linearly independent paths through a program's source code
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/cyclomatic-complexity.md
+   */
+  'angular-template/cyclomatic-complexity'?: Linter.RuleEntry<AngularTemplateCyclomaticComplexity>
+  /**
+   * [Accessibility] Ensures that the heading, anchor and button elements have content in them
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/elements-content.md
+   */
+  'angular-template/elements-content'?: Linter.RuleEntry<AngularTemplateElementsContent>
+  /**
+   * Requires `===` and `!==` in place of `==` and `!=`
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/eqeqeq.md
+   */
+  'angular-template/eqeqeq'?: Linter.RuleEntry<AngularTemplateEqeqeq>
+  /**
+   * Ensures following best practices for i18n. Checks for missing i18n attributes on elements and attributes containing texts. Can also check for texts without i18n attribute, elements that do not use custom ID (@@) feature and duplicate custom IDs
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/i18n.md
+   */
+  'angular-template/i18n'?: Linter.RuleEntry<AngularTemplateI18N>
+  /**
+   * [Accessibility] Ensures that elements with interactive handlers like `(click)` are focusable.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/interactive-supports-focus.md
+   */
+  'angular-template/interactive-supports-focus'?: Linter.RuleEntry<AngularTemplateInteractiveSupportsFocus>
+  /**
+   * [Accessibility] Ensures that a label element/component is associated with a form element
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/label-has-associated-control.md
+   */
+  'angular-template/label-has-associated-control'?: Linter.RuleEntry<AngularTemplateLabelHasAssociatedControl>
+  /**
+   * [Accessibility] Ensures that the mouse events `mouseout` and `mouseover` are accompanied by `focus` and `blur` events respectively. Coding for the keyboard is important for users with physical disabilities who cannot use a mouse, AT compatibility, and screenreader users. See more at https://www.w3.org/WAI/WCAG21/Understanding/keyboard
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/mouse-events-have-key-events.md
+   */
+  'angular-template/mouse-events-have-key-events'?: Linter.RuleEntry<[]>
+  /**
+   * The use of "$any" nullifies the compile-time benefits of Angular's type system
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-any.md
+   */
+  'angular-template/no-any'?: Linter.RuleEntry<[]>
+  /**
+   * [Accessibility] Ensures that the `autofocus` attribute is not used
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-autofocus.md
+   */
+  'angular-template/no-autofocus'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows calling expressions in templates, except for output handlers
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-call-expression.md
+   */
+  'angular-template/no-call-expression'?: Linter.RuleEntry<AngularTemplateNoCallExpression>
+  /**
+   * [Accessibility] Enforces that no distracting elements are used
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-distracting-elements.md
+   */
+  'angular-template/no-distracting-elements'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that there are no duplicate input properties or output event listeners
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-duplicate-attributes.md
+   */
+  'angular-template/no-duplicate-attributes'?: Linter.RuleEntry<AngularTemplateNoDuplicateAttributes>
+  /**
+   * Ensures that control flow blocks are not empty. Empty control flow blocks usually occur due to refactoring that wasn't completed. They can cause confusion when reading code.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-empty-control-flow.md
+   */
+  'angular-template/no-empty-control-flow'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows the use of inline styles in HTML templates
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-inline-styles.md
+   */
+  'angular-template/no-inline-styles'?: Linter.RuleEntry<AngularTemplateNoInlineStyles>
+  /**
+   * Ensures that property-binding is used instead of interpolation in attributes.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-interpolation-in-attributes.md
+   */
+  'angular-template/no-interpolation-in-attributes'?: Linter.RuleEntry<AngularTemplateNoInterpolationInAttributes>
+  /**
+   * Ensures that async pipe results, as well as values used with the async pipe, are not negated
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-negated-async.md
+   */
+  'angular-template/no-negated-async'?: Linter.RuleEntry<[]>
+  /**
+   * Denies nesting of <p> and <a> tags.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-nested-tags.md
+   */
+  'angular-template/no-nested-tags'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows the non-null assertion operator (!) in templates
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-non-null-assertion.md
+   */
+  'angular-template/no-non-null-assertion'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that the `tabindex` attribute is not positive
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/no-positive-tabindex.md
+   */
+  'angular-template/no-positive-tabindex'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer using `@else` instead of a second `@if` with the opposite condition to reduce code and make it easier to read.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-at-else.md
+   */
+  'angular-template/prefer-at-else'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer using `@empty` with `@for` loops instead of a separate `@if` or `@else` block to reduce code and make it easier to read.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-at-empty.md
+   */
+  'angular-template/prefer-at-empty'?: Linter.RuleEntry<[]>
+  /**
+   * Encourages the use of Angular built-in pipes (e.g. lowercase, uppercase, titlecase) instead of certain JavaScript methods in Angular templates.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-built-in-pipes.md
+   */
+  'angular-template/prefer-built-in-pipes'?: Linter.RuleEntry<AngularTemplatePreferBuiltInPipes>
+  /**
+   * Suggests using [class] bindings over ngClass where applicable
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-class-binding.md
+   */
+  'angular-template/prefer-class-binding'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that contextual variables are used in @for blocks where possible instead of aliasing them.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-contextual-for-variables.md
+   */
+  'angular-template/prefer-contextual-for-variables'?: Linter.RuleEntry<AngularTemplatePreferContextualForVariables>
+  /**
+   * Ensures that the built-in control flow is used.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-control-flow.md
+   */
+  'angular-template/prefer-control-flow'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures ngSrc is used instead of src for img elements
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-ngsrc.md
+   */
+  'angular-template/prefer-ngsrc'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that self-closing tags are used for elements with a closing tag but no content.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-self-closing-tags.md
+   */
+  'angular-template/prefer-self-closing-tags'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that static string values use property assignment instead of property binding.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-static-string-properties.md
+   */
+  'angular-template/prefer-static-string-properties'?: Linter.RuleEntry<AngularTemplatePreferStaticStringProperties>
+  /**
+   * Ensure that template literals are used instead of concatenating strings or expressions.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/prefer-template-literal.md
+   */
+  'angular-template/prefer-template-literal'?: Linter.RuleEntry<[]>
+  /**
+   * [Accessibility] Ensures elements with ARIA roles have all required properties for that role.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/role-has-required-aria.md
+   */
+  'angular-template/role-has-required-aria'?: Linter.RuleEntry<[]>
+  /**
+   * [Accessibility] Ensures that the `scope` attribute is only used on the `<th>` element
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/table-scope.md
+   */
+  'angular-template/table-scope'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures trackBy function is used
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/use-track-by-function.md
+   */
+  'angular-template/use-track-by-function'?: Linter.RuleEntry<AngularTemplateUseTrackByFunction>
+  /**
+   * [Accessibility] Ensures that correct ARIA attributes and respective values are used
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/docs/rules/valid-aria.md
+   */
+  'angular-template/valid-aria'?: Linter.RuleEntry<[]>
+  /**
+   * Classes decorated with @Component must have suffix "Component" (or custom) in their name. Note: As of v20, this is no longer recommended by the Angular Team.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-class-suffix.md
+   */
+  'angular/component-class-suffix'?: Linter.RuleEntry<AngularComponentClassSuffix>
+  /**
+   * Enforces a maximum number of lines in inline template, styles and animations.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-max-inline-declarations.md
+   */
+  'angular/component-max-inline-declarations'?: Linter.RuleEntry<AngularComponentMaxInlineDeclarations>
+  /**
+   * Component selectors should follow given naming rules. See more at https://angular.dev/style-guide#choosing-component-selectors.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-selector.md
+   */
+  'angular/component-selector'?: Linter.RuleEntry<AngularComponentSelector>
+  /**
+   * Ensures that computed() returns a value. Omitting the value is likely a mistake.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/computed-must-return.md
+   */
+  'angular/computed-must-return'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures consistent usage of `styles`/`styleUrls`/`styleUrl` within Component metadata
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/consistent-component-styles.md
+   */
+  'angular/consistent-component-styles'?: Linter.RuleEntry<AngularConsistentComponentStyles>
+  /**
+   * Ensures that classes use contextual decorators in their body
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/contextual-decorator.md
+   */
+  'angular/contextual-decorator'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that lifecycle methods are used in a correct context
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/contextual-lifecycle.md
+   */
+  'angular/contextual-lifecycle'?: Linter.RuleEntry<[]>
+  /**
+   * Classes decorated with @Directive must have suffix "Directive" (or custom) in their name. Note: As of v20, this is no longer recommended by the Angular Team.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/directive-class-suffix.md
+   */
+  'angular/directive-class-suffix'?: Linter.RuleEntry<AngularDirectiveClassSuffix>
+  /**
+   * Directive selectors should follow given naming rules. See more at https://angular.dev/style-guide#choosing-directive-selectors.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/directive-selector.md
+   */
+  'angular/directive-selector'?: Linter.RuleEntry<AngularDirectiveSelector>
+  /**
+   * Angular Lifecycle methods should not be async. Angular does not wait for async lifecycle but the code incorrectly suggests it does.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-async-lifecycle-method.md
+   */
+  'angular/no-async-lifecycle-method'?: Linter.RuleEntry<[]>
+  /**
+   * The @Attribute decorator is used to obtain a single value for an attribute. This is a much less common use case than getting a stream of values (using @Input), so the @Attribute decorator is often mistakenly used when @Input is intended. This rule disallows the usage of @Attribute decorator entirely to prevent these mistakes.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-attribute-decorator.md
+   */
+  'angular/no-attribute-decorator'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that directives do not implement conflicting lifecycle interfaces.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-conflicting-lifecycle.md
+   * @deprecated
+   */
+  'angular/no-conflicting-lifecycle'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow using code which is marked as developer preview
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-developer-preview.md
+   */
+  'angular/no-developer-preview'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that metadata arrays do not contain duplicate entries.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-duplicates-in-metadata-arrays.md
+   */
+  'angular/no-duplicates-in-metadata-arrays'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows declaring empty lifecycle methods
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-empty-lifecycle-method.md
+   */
+  'angular/no-empty-lifecycle-method'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow using code which is marked as experimental
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-experimental.md
+   */
+  'angular/no-experimental'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows usage of `forwardRef` references for DI
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-forward-ref.md
+   */
+  'angular/no-forward-ref'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that `takeUntilDestroyed()` is called with an explicit `DestroyRef` when used outside of an injection context
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-implicit-take-until-destroyed.md
+   */
+  'angular/no-implicit-take-until-destroyed'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that input bindings, including aliases, are not named or prefixed by the configured disallowed prefixes
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-input-prefix.md
+   */
+  'angular/no-input-prefix'?: Linter.RuleEntry<AngularNoInputPrefix>
+  /**
+   * Ensures that input bindings are not aliased
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-input-rename.md
+   */
+  'angular/no-input-rename'?: Linter.RuleEntry<AngularNoInputRename>
+  /**
+   * Disallows usage of the `inputs` metadata property
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-inputs-metadata-property.md
+   */
+  'angular/no-inputs-metadata-property'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows explicit calls to lifecycle methods
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-lifecycle-call.md
+   */
+  'angular/no-lifecycle-call'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that output bindings, including aliases, are not named as standard DOM events
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-output-native.md
+   */
+  'angular/no-output-native'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that output bindings, including aliases, are not named "on", nor prefixed with it. See more at https://angular.dev/guide/components/outputs#choosing-event-names
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-output-on-prefix.md
+   */
+  'angular/no-output-on-prefix'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that output bindings are not aliased
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-output-rename.md
+   */
+  'angular/no-output-rename'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows usage of the `outputs` metadata property
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-outputs-metadata-property.md
+   */
+  'angular/no-outputs-metadata-property'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows the declaration of impure pipes
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-pipe-impure.md
+   */
+  'angular/no-pipe-impure'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows usage of the `queries` metadata property.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-queries-metadata-property.md
+   */
+  'angular/no-queries-metadata-property'?: Linter.RuleEntry<[]>
+  /**
+   * Warns user about unintentionally doing logic on the signal, rather than the signal's value
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/no-uncalled-signals.md
+   */
+  'angular/no-uncalled-signals'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce consistent prefix for pipes.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/pipe-prefix.md
+   */
+  'angular/pipe-prefix'?: Linter.RuleEntry<AngularPipePrefix>
+  /**
+   * Use `host` metadata property instead of `@HostBinding` and `HostListener`
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-host-metadata-property.md
+   */
+  'angular/prefer-host-metadata-property'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer using the inject() function over constructor parameter injection
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-inject.md
+   */
+  'angular/prefer-inject'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures component's `changeDetection` is set to `ChangeDetectionStrategy.OnPush`
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md
+   */
+  'angular/prefer-on-push-component-change-detection'?: Linter.RuleEntry<[]>
+  /**
+   * Use `OutputEmitterRef` instead of `@Output()`
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-output-emitter-ref.md
+   */
+  'angular/prefer-output-emitter-ref'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer to declare `@Output`, `OutputEmitterRef` and `OutputRef` as `readonly` since they are not supposed to be reassigned
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-output-readonly.md
+   */
+  'angular/prefer-output-readonly'?: Linter.RuleEntry<[]>
+  /**
+   * Use `model` instead of `input` and `output` for two-way bindings
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-signal-model.md
+   */
+  'angular/prefer-signal-model'?: Linter.RuleEntry<[]>
+  /**
+   * Use readonly signals instead of `@Input()`, `@ViewChild()` and other legacy decorators
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-signals.md
+   */
+  'angular/prefer-signals'?: Linter.RuleEntry<AngularPreferSignals>
+  /**
+   * Ensures Components, Directives and Pipes do not opt out of standalone.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-standalone.md
+   */
+  'angular/prefer-standalone'?: Linter.RuleEntry<[]>
+  /**
+   * The ./ and ../ prefix is standard syntax for relative URLs; don't depend on Angular's current ability to do without that prefix.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/relative-url-prefix.md
+   */
+  'angular/relative-url-prefix'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that lifecycle methods are defined on the object's prototype instead of on an instance.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/require-lifecycle-on-prototype.md
+   */
+  'angular/require-lifecycle-on-prototype'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that $localize tagged messages contain helpful metadata to aid with translations.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/require-localize-metadata.md
+   */
+  'angular/require-localize-metadata'?: Linter.RuleEntry<AngularRequireLocalizeMetadata>
+  /**
+   * Ensures that $localize tagged messages can use runtime-loaded translations.
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/runtime-localize.md
+   */
+  'angular/runtime-localize'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that keys in type decorators (Component, Directive, NgModule, Pipe) are sorted in a consistent order
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/sort-keys-in-type-decorator.md
+   */
+  'angular/sort-keys-in-type-decorator'?: Linter.RuleEntry<AngularSortKeysInTypeDecorator>
+  /**
+   * Ensures that lifecycle methods are declared in order of execution
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/sort-lifecycle-methods.md
+   */
+  'angular/sort-lifecycle-methods'?: Linter.RuleEntry<[]>
+  /**
+   * Component selector must be declared
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-component-selector.md
+   */
+  'angular/use-component-selector'?: Linter.RuleEntry<[]>
+  /**
+   * Disallows using `ViewEncapsulation.None`
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-component-view-encapsulation.md
+   */
+  'angular/use-component-view-encapsulation'?: Linter.RuleEntry<[]>
+  /**
+   * Using the `providedIn` property makes `Injectables` tree-shakable
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-injectable-provided-in.md
+   */
+  'angular/use-injectable-provided-in'?: Linter.RuleEntry<AngularUseInjectableProvidedIn>
+  /**
+   * Ensures that classes implement lifecycle interfaces corresponding to the declared lifecycle methods. See more at https://angular.dev/style-guide#use-lifecycle-hook-interfaces
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-lifecycle-interface.md
+   */
+  'angular/use-lifecycle-interface'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures that `Pipes` implement `PipeTransform` interface
+   * @see https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/use-pipe-transform-interface.md
+   */
+  'angular/use-pipe-transform-interface'?: Linter.RuleEntry<[]>
   /**
    * Enforce linebreaks after opening and before closing array brackets
    * @see https://eslint.org/docs/latest/rules/array-bracket-newline
@@ -2858,204 +2711,6 @@ export interface RuleOptions {
    * @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/vue-custom-block/no-parsing-error.html
    */
   'jsonc/vue-custom-block/no-parsing-error'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce emojis are wrapped in `<span>` and provide screen reader access.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/accessible-emoji.md
-   * @deprecated
-   */
-  'jsx-a11y/accessible-emoji'?: Linter.RuleEntry<JsxA11YAccessibleEmoji>
-  /**
-   * Enforce all elements that require alternative text have meaningful information to relay back to end user.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/alt-text.md
-   */
-  'jsx-a11y/alt-text'?: Linter.RuleEntry<JsxA11YAltText>
-  /**
-   * Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/anchor-ambiguous-text.md
-   */
-  'jsx-a11y/anchor-ambiguous-text'?: Linter.RuleEntry<JsxA11YAnchorAmbiguousText>
-  /**
-   * Enforce all anchors to contain accessible content.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/anchor-has-content.md
-   */
-  'jsx-a11y/anchor-has-content'?: Linter.RuleEntry<JsxA11YAnchorHasContent>
-  /**
-   * Enforce all anchors are valid, navigable elements.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/anchor-is-valid.md
-   */
-  'jsx-a11y/anchor-is-valid'?: Linter.RuleEntry<JsxA11YAnchorIsValid>
-  /**
-   * Enforce elements with aria-activedescendant are tabbable.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-activedescendant-has-tabindex.md
-   */
-  'jsx-a11y/aria-activedescendant-has-tabindex'?: Linter.RuleEntry<JsxA11YAriaActivedescendantHasTabindex>
-  /**
-   * Enforce all `aria-*` props are valid.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-props.md
-   */
-  'jsx-a11y/aria-props'?: Linter.RuleEntry<JsxA11YAriaProps>
-  /**
-   * Enforce ARIA state and property values are valid.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-proptypes.md
-   */
-  'jsx-a11y/aria-proptypes'?: Linter.RuleEntry<JsxA11YAriaProptypes>
-  /**
-   * Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-role.md
-   */
-  'jsx-a11y/aria-role'?: Linter.RuleEntry<JsxA11YAriaRole>
-  /**
-   * Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-unsupported-elements.md
-   */
-  'jsx-a11y/aria-unsupported-elements'?: Linter.RuleEntry<JsxA11YAriaUnsupportedElements>
-  /**
-   * Enforce that autocomplete attributes are used correctly.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/autocomplete-valid.md
-   */
-  'jsx-a11y/autocomplete-valid'?: Linter.RuleEntry<JsxA11YAutocompleteValid>
-  /**
-   * Enforce a clickable non-interactive element has at least one keyboard event listener.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/click-events-have-key-events.md
-   */
-  'jsx-a11y/click-events-have-key-events'?: Linter.RuleEntry<JsxA11YClickEventsHaveKeyEvents>
-  /**
-   * Enforce that a control (an interactive element) has a text label.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/control-has-associated-label.md
-   */
-  'jsx-a11y/control-has-associated-label'?: Linter.RuleEntry<JsxA11YControlHasAssociatedLabel>
-  /**
-   * Enforce heading (`h1`, `h2`, etc) elements contain accessible content.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/heading-has-content.md
-   */
-  'jsx-a11y/heading-has-content'?: Linter.RuleEntry<JsxA11YHeadingHasContent>
-  /**
-   * Enforce `<html>` element has `lang` prop.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/html-has-lang.md
-   */
-  'jsx-a11y/html-has-lang'?: Linter.RuleEntry<JsxA11YHtmlHasLang>
-  /**
-   * Enforce iframe elements have a title attribute.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/iframe-has-title.md
-   */
-  'jsx-a11y/iframe-has-title'?: Linter.RuleEntry<JsxA11YIframeHasTitle>
-  /**
-   * Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/img-redundant-alt.md
-   */
-  'jsx-a11y/img-redundant-alt'?: Linter.RuleEntry<JsxA11YImgRedundantAlt>
-  /**
-   * Enforce that elements with interactive handlers like `onClick` must be focusable.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/interactive-supports-focus.md
-   */
-  'jsx-a11y/interactive-supports-focus'?: Linter.RuleEntry<JsxA11YInteractiveSupportsFocus>
-  /**
-   * Enforce that a `label` tag has a text label and an associated control.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/label-has-associated-control.md
-   */
-  'jsx-a11y/label-has-associated-control'?: Linter.RuleEntry<JsxA11YLabelHasAssociatedControl>
-  /**
-   * Enforce that `<label>` elements have the `htmlFor` prop.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/label-has-for.md
-   * @deprecated
-   */
-  'jsx-a11y/label-has-for'?: Linter.RuleEntry<JsxA11YLabelHasFor>
-  /**
-   * Enforce lang attribute has a valid value.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/lang.md
-   */
-  'jsx-a11y/lang'?: Linter.RuleEntry<JsxA11YLang>
-  /**
-   * Enforces that `<audio>` and `<video>` elements must have a `<track>` for captions.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/media-has-caption.md
-   */
-  'jsx-a11y/media-has-caption'?: Linter.RuleEntry<JsxA11YMediaHasCaption>
-  /**
-   * Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/mouse-events-have-key-events.md
-   */
-  'jsx-a11y/mouse-events-have-key-events'?: Linter.RuleEntry<JsxA11YMouseEventsHaveKeyEvents>
-  /**
-   * Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screen reader.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-access-key.md
-   */
-  'jsx-a11y/no-access-key'?: Linter.RuleEntry<JsxA11YNoAccessKey>
-  /**
-   * Disallow `aria-hidden="true"` from being set on focusable elements.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-aria-hidden-on-focusable.md
-   */
-  'jsx-a11y/no-aria-hidden-on-focusable'?: Linter.RuleEntry<JsxA11YNoAriaHiddenOnFocusable>
-  /**
-   * Enforce autoFocus prop is not used.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-autofocus.md
-   */
-  'jsx-a11y/no-autofocus'?: Linter.RuleEntry<JsxA11YNoAutofocus>
-  /**
-   * Enforce distracting elements are not used.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-distracting-elements.md
-   */
-  'jsx-a11y/no-distracting-elements'?: Linter.RuleEntry<JsxA11YNoDistractingElements>
-  /**
-   * Interactive elements should not be assigned non-interactive roles.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-interactive-element-to-noninteractive-role.md
-   */
-  'jsx-a11y/no-interactive-element-to-noninteractive-role'?: Linter.RuleEntry<JsxA11YNoInteractiveElementToNoninteractiveRole>
-  /**
-   * Non-interactive elements should not be assigned mouse or keyboard event listeners.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-noninteractive-element-interactions.md
-   */
-  'jsx-a11y/no-noninteractive-element-interactions'?: Linter.RuleEntry<JsxA11YNoNoninteractiveElementInteractions>
-  /**
-   * Non-interactive elements should not be assigned interactive roles.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-noninteractive-element-to-interactive-role.md
-   */
-  'jsx-a11y/no-noninteractive-element-to-interactive-role'?: Linter.RuleEntry<JsxA11YNoNoninteractiveElementToInteractiveRole>
-  /**
-   * `tabIndex` should only be declared on interactive elements.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-noninteractive-tabindex.md
-   */
-  'jsx-a11y/no-noninteractive-tabindex'?: Linter.RuleEntry<JsxA11YNoNoninteractiveTabindex>
-  /**
-   * Enforce usage of `onBlur` over `onChange` on select menus for accessibility.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-onchange.md
-   * @deprecated
-   */
-  'jsx-a11y/no-onchange'?: Linter.RuleEntry<JsxA11YNoOnchange>
-  /**
-   * Enforce explicit role property is not the same as implicit/default role property on element.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-redundant-roles.md
-   */
-  'jsx-a11y/no-redundant-roles'?: Linter.RuleEntry<JsxA11YNoRedundantRoles>
-  /**
-   * Enforce that non-interactive, visible elements (such as `<div>`) that have click handlers use the role attribute.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-static-element-interactions.md
-   */
-  'jsx-a11y/no-static-element-interactions'?: Linter.RuleEntry<JsxA11YNoStaticElementInteractions>
-  /**
-   * Enforces using semantic DOM elements over the ARIA `role` property.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/prefer-tag-over-role.md
-   */
-  'jsx-a11y/prefer-tag-over-role'?: Linter.RuleEntry<JsxA11YPreferTagOverRole>
-  /**
-   * Enforce that elements with ARIA roles must have all required attributes for that role.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/role-has-required-aria-props.md
-   */
-  'jsx-a11y/role-has-required-aria-props'?: Linter.RuleEntry<JsxA11YRoleHasRequiredAriaProps>
-  /**
-   * Enforce that elements with explicit or implicit roles defined contain only `aria-*` properties supported by that `role`.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/role-supports-aria-props.md
-   */
-  'jsx-a11y/role-supports-aria-props'?: Linter.RuleEntry<JsxA11YRoleSupportsAriaProps>
-  /**
-   * Enforce `scope` prop is only used on `<th>` elements.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/scope.md
-   */
-  'jsx-a11y/scope'?: Linter.RuleEntry<JsxA11YScope>
-  /**
-   * Enforce `tabIndex` value is not greater than zero.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/tabindex-no-positive.md
-   */
-  'jsx-a11y/tabindex-no-positive'?: Linter.RuleEntry<JsxA11YTabindexNoPositive>
   /**
    * Enforce the consistent use of either double or single quotes in JSX attributes
    * @see https://eslint.org/docs/latest/rules/jsx-quotes
@@ -4611,642 +4266,7 @@ export interface RuleOptions {
    * @see https://eslint.org/docs/latest/rules/radix
    */
   'radix'?: Linter.RuleEntry<Radix>
-  /**
-   * Verifies that automatic effect dependencies are compiled if opted-in
-   */
-  'react-hooks/automatic-effect-dependencies'?: Linter.RuleEntry<ReactHooksAutomaticEffectDependencies>
-  /**
-   * Validates against calling capitalized functions/methods instead of using JSX
-   */
-  'react-hooks/capitalized-calls'?: Linter.RuleEntry<ReactHooksCapitalizedCalls>
-  /**
-   * Validates against higher order functions defining nested components or hooks. Components and hooks should be defined at the module level
-   */
-  'react-hooks/component-hook-factories'?: Linter.RuleEntry<ReactHooksComponentHookFactories>
-  /**
-   * Validates the compiler configuration options
-   */
-  'react-hooks/config'?: Linter.RuleEntry<ReactHooksConfig>
-  /**
-   * Validates usage of error boundaries instead of try/catch for errors in child components
-   */
-  'react-hooks/error-boundaries'?: Linter.RuleEntry<ReactHooksErrorBoundaries>
-  /**
-   * verifies the list of dependencies for Hooks like useEffect and similar
-   * @see https://github.com/facebook/react/issues/14920
-   */
-  'react-hooks/exhaustive-deps'?: Linter.RuleEntry<ReactHooksExhaustiveDeps>
-  /**
-   * Validates usage of fbt
-   */
-  'react-hooks/fbt'?: Linter.RuleEntry<ReactHooksFbt>
-  /**
-   * Validates usage of `fire`
-   */
-  'react-hooks/fire'?: Linter.RuleEntry<ReactHooksFire>
-  /**
-   * Validates configuration of [gating mode](https://react.dev/reference/react-compiler/gating)
-   */
-  'react-hooks/gating'?: Linter.RuleEntry<ReactHooksGating>
-  /**
-   * Validates against assignment/mutation of globals during render, part of ensuring that [side effects must render outside of render](https://react.dev/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render)
-   */
-  'react-hooks/globals'?: Linter.RuleEntry<ReactHooksGlobals>
-  /**
-   * Validates the rules of hooks
-   */
-  'react-hooks/hooks'?: Linter.RuleEntry<ReactHooksHooks>
-  /**
-   * Validates against mutating props, state, and other values that [are immutable](https://react.dev/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable)
-   */
-  'react-hooks/immutability'?: Linter.RuleEntry<ReactHooksImmutability>
-  /**
-   * Validates against usage of libraries which are incompatible with memoization (manual or automatic)
-   */
-  'react-hooks/incompatible-library'?: Linter.RuleEntry<ReactHooksIncompatibleLibrary>
-  /**
-   * Internal invariants
-   */
-  'react-hooks/invariant'?: Linter.RuleEntry<ReactHooksInvariant>
-  /**
-   * Validates that effect dependencies are memoized
-   */
-  'react-hooks/memoized-effect-dependencies'?: Linter.RuleEntry<ReactHooksMemoizedEffectDependencies>
-  /**
-   * Validates against deriving values from state in an effect
-   */
-  'react-hooks/no-deriving-state-in-effects'?: Linter.RuleEntry<ReactHooksNoDerivingStateInEffects>
-  /**
-   * Validates that existing manual memoized is preserved by the compiler. React Compiler will only compile components and hooks if its inference [matches or exceeds the existing manual memoization](https://react.dev/learn/react-compiler/introduction#what-should-i-do-about-usememo-usecallback-and-reactmemo)
-   */
-  'react-hooks/preserve-manual-memoization'?: Linter.RuleEntry<ReactHooksPreserveManualMemoization>
-  /**
-   * Validates that [components/hooks are pure](https://react.dev/reference/rules/components-and-hooks-must-be-pure) by checking that they do not call known-impure functions
-   */
-  'react-hooks/purity'?: Linter.RuleEntry<ReactHooksPurity>
-  /**
-   * Validates correct usage of refs, not reading/writing during render. See the "pitfalls" section in [`useRef()` usage](https://react.dev/reference/react/useRef#usage)
-   */
-  'react-hooks/refs'?: Linter.RuleEntry<ReactHooksRefs>
-  /**
-   * Validates against suppression of other rules
-   */
-  'react-hooks/rule-suppression'?: Linter.RuleEntry<ReactHooksRuleSuppression>
-  /**
-   * enforces the Rules of Hooks
-   * @see https://react.dev/reference/rules/rules-of-hooks
-   */
-  'react-hooks/rules-of-hooks'?: Linter.RuleEntry<ReactHooksRulesOfHooks>
-  /**
-   * Validates against calling setState synchronously in an effect, which can lead to re-renders that degrade performance
-   */
-  'react-hooks/set-state-in-effect'?: Linter.RuleEntry<ReactHooksSetStateInEffect>
-  /**
-   * Validates against setting state during render, which can trigger additional renders and potential infinite render loops
-   */
-  'react-hooks/set-state-in-render'?: Linter.RuleEntry<ReactHooksSetStateInRender>
-  /**
-   * Validates that components are static, not recreated every render. Components that are recreated dynamically can reset state and trigger excessive re-rendering
-   */
-  'react-hooks/static-components'?: Linter.RuleEntry<ReactHooksStaticComponents>
-  /**
-   * Validates against invalid syntax
-   */
-  'react-hooks/syntax'?: Linter.RuleEntry<ReactHooksSyntax>
-  /**
-   * Unimplemented features
-   */
-  'react-hooks/todo'?: Linter.RuleEntry<ReactHooksTodo>
-  /**
-   * Validates against syntax that we do not plan to support in React Compiler
-   */
-  'react-hooks/unsupported-syntax'?: Linter.RuleEntry<ReactHooksUnsupportedSyntax>
-  /**
-   * Validates usage of the useMemo() hook against common mistakes. See [`useMemo()` docs](https://react.dev/reference/react/useMemo) for more information.
-   */
-  'react-hooks/use-memo'?: Linter.RuleEntry<ReactHooksUseMemo>
-  /**
-   * Validates that useMemos always return a value and that the result of the useMemo is used by the component/hook. See [`useMemo()` docs](https://react.dev/reference/react/useMemo) for more information.
-   */
-  'react-hooks/void-use-memo'?: Linter.RuleEntry<ReactHooksVoidUseMemo>
   'react-refresh/only-export-components'?: Linter.RuleEntry<ReactRefreshOnlyExportComponents>
-  /**
-   * Enforces consistent naming for boolean props
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/boolean-prop-naming.md
-   */
-  'react/boolean-prop-naming'?: Linter.RuleEntry<ReactBooleanPropNaming>
-  /**
-   * Disallow usage of `button` elements without an explicit `type` attribute
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/button-has-type.md
-   */
-  'react/button-has-type'?: Linter.RuleEntry<ReactButtonHasType>
-  /**
-   * Enforce using `onChange` or `readonly` attribute when `checked` is used
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/checked-requires-onchange-or-readonly.md
-   */
-  'react/checked-requires-onchange-or-readonly'?: Linter.RuleEntry<ReactCheckedRequiresOnchangeOrReadonly>
-  /**
-   * Enforce all defaultProps have a corresponding non-required PropType
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/default-props-match-prop-types.md
-   */
-  'react/default-props-match-prop-types'?: Linter.RuleEntry<ReactDefaultPropsMatchPropTypes>
-  /**
-   * Enforce consistent usage of destructuring assignment of props, state, and context
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/destructuring-assignment.md
-   */
-  'react/destructuring-assignment'?: Linter.RuleEntry<ReactDestructuringAssignment>
-  /**
-   * Disallow missing displayName in a React component definition
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/display-name.md
-   */
-  'react/display-name'?: Linter.RuleEntry<ReactDisplayName>
-  /**
-   * Disallow certain props on components
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-component-props.md
-   */
-  'react/forbid-component-props'?: Linter.RuleEntry<ReactForbidComponentProps>
-  /**
-   * Disallow certain props on DOM Nodes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-dom-props.md
-   */
-  'react/forbid-dom-props'?: Linter.RuleEntry<ReactForbidDomProps>
-  /**
-   * Disallow certain elements
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-elements.md
-   */
-  'react/forbid-elements'?: Linter.RuleEntry<ReactForbidElements>
-  /**
-   * Disallow using another component's propTypes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-foreign-prop-types.md
-   */
-  'react/forbid-foreign-prop-types'?: Linter.RuleEntry<ReactForbidForeignPropTypes>
-  /**
-   * Disallow certain propTypes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-prop-types.md
-   */
-  'react/forbid-prop-types'?: Linter.RuleEntry<ReactForbidPropTypes>
-  /**
-   * Require all forwardRef components include a ref parameter
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forward-ref-uses-ref.md
-   */
-  'react/forward-ref-uses-ref'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce a specific function type for function components
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/function-component-definition.md
-   */
-  'react/function-component-definition'?: Linter.RuleEntry<ReactFunctionComponentDefinition>
-  /**
-   * Ensure destructuring and symmetric naming of useState hook value and setter variables
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/hook-use-state.md
-   */
-  'react/hook-use-state'?: Linter.RuleEntry<ReactHookUseState>
-  /**
-   * Enforce sandbox attribute on iframe elements
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/iframe-missing-sandbox.md
-   */
-  'react/iframe-missing-sandbox'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce boolean attributes notation in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-boolean-value.md
-   */
-  'react/jsx-boolean-value'?: Linter.RuleEntry<ReactJsxBooleanValue>
-  /**
-   * Enforce or disallow spaces inside of curly braces in JSX attributes and expressions
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-child-element-spacing.md
-   */
-  'react/jsx-child-element-spacing'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce closing bracket location in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-bracket-location.md
-   */
-  'react/jsx-closing-bracket-location'?: Linter.RuleEntry<ReactJsxClosingBracketLocation>
-  /**
-   * Enforce closing tag location for multiline JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-tag-location.md
-   */
-  'react/jsx-closing-tag-location'?: Linter.RuleEntry<ReactJsxClosingTagLocation>
-  /**
-   * Disallow unnecessary JSX expressions when literals alone are sufficient or enforce JSX expressions on literals in JSX children or attributes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-brace-presence.md
-   */
-  'react/jsx-curly-brace-presence'?: Linter.RuleEntry<ReactJsxCurlyBracePresence>
-  /**
-   * Enforce consistent linebreaks in curly braces in JSX attributes and expressions
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-newline.md
-   */
-  'react/jsx-curly-newline'?: Linter.RuleEntry<ReactJsxCurlyNewline>
-  /**
-   * Enforce or disallow spaces inside of curly braces in JSX attributes and expressions
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-spacing.md
-   */
-  'react/jsx-curly-spacing'?: Linter.RuleEntry<ReactJsxCurlySpacing>
-  /**
-   * Enforce or disallow spaces around equal signs in JSX attributes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-equals-spacing.md
-   */
-  'react/jsx-equals-spacing'?: Linter.RuleEntry<ReactJsxEqualsSpacing>
-  /**
-   * Disallow file extensions that may contain JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-filename-extension.md
-   */
-  'react/jsx-filename-extension'?: Linter.RuleEntry<ReactJsxFilenameExtension>
-  /**
-   * Enforce proper position of the first property in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-first-prop-new-line.md
-   */
-  'react/jsx-first-prop-new-line'?: Linter.RuleEntry<ReactJsxFirstPropNewLine>
-  /**
-   * Enforce shorthand or standard form for React fragments
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-fragments.md
-   */
-  'react/jsx-fragments'?: Linter.RuleEntry<ReactJsxFragments>
-  /**
-   * Enforce event handler naming conventions in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-handler-names.md
-   */
-  'react/jsx-handler-names'?: Linter.RuleEntry<ReactJsxHandlerNames>
-  /**
-   * Enforce JSX indentation
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent.md
-   */
-  'react/jsx-indent'?: Linter.RuleEntry<ReactJsxIndent>
-  /**
-   * Enforce props indentation in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent-props.md
-   */
-  'react/jsx-indent-props'?: Linter.RuleEntry<ReactJsxIndentProps>
-  /**
-   * Disallow missing `key` props in iterators/collection literals
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-key.md
-   */
-  'react/jsx-key'?: Linter.RuleEntry<ReactJsxKey>
-  /**
-   * Enforce JSX maximum depth
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-max-depth.md
-   */
-  'react/jsx-max-depth'?: Linter.RuleEntry<ReactJsxMaxDepth>
-  /**
-   * Enforce maximum of props on a single line in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-max-props-per-line.md
-   */
-  'react/jsx-max-props-per-line'?: Linter.RuleEntry<ReactJsxMaxPropsPerLine>
-  /**
-   * Require or prevent a new line after jsx elements and expressions.
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-newline.md
-   */
-  'react/jsx-newline'?: Linter.RuleEntry<ReactJsxNewline>
-  /**
-   * Disallow `.bind()` or arrow functions in JSX props
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-bind.md
-   */
-  'react/jsx-no-bind'?: Linter.RuleEntry<ReactJsxNoBind>
-  /**
-   * Disallow comments from being inserted as text nodes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-comment-textnodes.md
-   */
-  'react/jsx-no-comment-textnodes'?: Linter.RuleEntry<[]>
-  /**
-   * Disallows JSX context provider values from taking values that will cause needless rerenders
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-constructed-context-values.md
-   */
-  'react/jsx-no-constructed-context-values'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow duplicate properties in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-duplicate-props.md
-   */
-  'react/jsx-no-duplicate-props'?: Linter.RuleEntry<ReactJsxNoDuplicateProps>
-  /**
-   * Disallow problematic leaked values from being rendered
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-leaked-render.md
-   */
-  'react/jsx-no-leaked-render'?: Linter.RuleEntry<ReactJsxNoLeakedRender>
-  /**
-   * Disallow usage of string literals in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-literals.md
-   */
-  'react/jsx-no-literals'?: Linter.RuleEntry<ReactJsxNoLiterals>
-  /**
-   * Disallow usage of `javascript:` URLs
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-script-url.md
-   */
-  'react/jsx-no-script-url'?: Linter.RuleEntry<ReactJsxNoScriptUrl>
-  /**
-   * Disallow `target="_blank"` attribute without `rel="noreferrer"`
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-target-blank.md
-   */
-  'react/jsx-no-target-blank'?: Linter.RuleEntry<ReactJsxNoTargetBlank>
-  /**
-   * Disallow undeclared variables in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-undef.md
-   */
-  'react/jsx-no-undef'?: Linter.RuleEntry<ReactJsxNoUndef>
-  /**
-   * Disallow unnecessary fragments
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-useless-fragment.md
-   */
-  'react/jsx-no-useless-fragment'?: Linter.RuleEntry<ReactJsxNoUselessFragment>
-  /**
-   * Require one JSX element per line
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-one-expression-per-line.md
-   */
-  'react/jsx-one-expression-per-line'?: Linter.RuleEntry<ReactJsxOneExpressionPerLine>
-  /**
-   * Enforce PascalCase for user-defined JSX components
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-pascal-case.md
-   */
-  'react/jsx-pascal-case'?: Linter.RuleEntry<ReactJsxPascalCase>
-  /**
-   * Disallow multiple spaces between inline JSX props
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-multi-spaces.md
-   */
-  'react/jsx-props-no-multi-spaces'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow JSX prop spreading the same identifier multiple times
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-spread-multi.md
-   */
-  'react/jsx-props-no-spread-multi'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow JSX prop spreading
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-spreading.md
-   */
-  'react/jsx-props-no-spreading'?: Linter.RuleEntry<ReactJsxPropsNoSpreading>
-  /**
-   * Enforce defaultProps declarations alphabetical sorting
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-sort-default-props.md
-   * @deprecated
-   */
-  'react/jsx-sort-default-props'?: Linter.RuleEntry<ReactJsxSortDefaultProps>
-  /**
-   * Enforce props alphabetical sorting
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-sort-props.md
-   */
-  'react/jsx-sort-props'?: Linter.RuleEntry<ReactJsxSortProps>
-  /**
-   * Enforce spacing before closing bracket in JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-space-before-closing.md
-   * @deprecated
-   */
-  'react/jsx-space-before-closing'?: Linter.RuleEntry<ReactJsxSpaceBeforeClosing>
-  /**
-   * Enforce whitespace in and around the JSX opening and closing brackets
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-tag-spacing.md
-   */
-  'react/jsx-tag-spacing'?: Linter.RuleEntry<ReactJsxTagSpacing>
-  /**
-   * Disallow React to be incorrectly marked as unused
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-uses-react.md
-   */
-  'react/jsx-uses-react'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow variables used in JSX to be incorrectly marked as unused
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-uses-vars.md
-   */
-  'react/jsx-uses-vars'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow missing parentheses around multiline JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-wrap-multilines.md
-   */
-  'react/jsx-wrap-multilines'?: Linter.RuleEntry<ReactJsxWrapMultilines>
-  /**
-   * Disallow when this.state is accessed within setState
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-access-state-in-setstate.md
-   */
-  'react/no-access-state-in-setstate'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow adjacent inline elements not separated by whitespace.
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-adjacent-inline-elements.md
-   */
-  'react/no-adjacent-inline-elements'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of Array index in keys
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-array-index-key.md
-   */
-  'react/no-array-index-key'?: Linter.RuleEntry<[]>
-  /**
-   * Lifecycle methods should be methods on the prototype, not class fields
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-arrow-function-lifecycle.md
-   */
-  'react/no-arrow-function-lifecycle'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow passing of children as props
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-children-prop.md
-   */
-  'react/no-children-prop'?: Linter.RuleEntry<ReactNoChildrenProp>
-  /**
-   * Disallow usage of dangerous JSX properties
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-danger.md
-   */
-  'react/no-danger'?: Linter.RuleEntry<ReactNoDanger>
-  /**
-   * Disallow when a DOM element is using both children and dangerouslySetInnerHTML
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-danger-with-children.md
-   */
-  'react/no-danger-with-children'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of deprecated methods
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-deprecated.md
-   */
-  'react/no-deprecated'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of setState in componentDidMount
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-did-mount-set-state.md
-   */
-  'react/no-did-mount-set-state'?: Linter.RuleEntry<ReactNoDidMountSetState>
-  /**
-   * Disallow usage of setState in componentDidUpdate
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-did-update-set-state.md
-   */
-  'react/no-did-update-set-state'?: Linter.RuleEntry<ReactNoDidUpdateSetState>
-  /**
-   * Disallow direct mutation of this.state
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-direct-mutation-state.md
-   */
-  'react/no-direct-mutation-state'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of findDOMNode
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-find-dom-node.md
-   */
-  'react/no-find-dom-node'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of invalid attributes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-invalid-html-attribute.md
-   */
-  'react/no-invalid-html-attribute'?: Linter.RuleEntry<ReactNoInvalidHtmlAttribute>
-  /**
-   * Disallow usage of isMounted
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-is-mounted.md
-   */
-  'react/no-is-mounted'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow multiple component definition per file
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-multi-comp.md
-   */
-  'react/no-multi-comp'?: Linter.RuleEntry<ReactNoMultiComp>
-  /**
-   * Enforce that namespaces are not used in React elements
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-namespace.md
-   */
-  'react/no-namespace'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of referential-type variables as default param in functional component
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-object-type-as-default-prop.md
-   */
-  'react/no-object-type-as-default-prop'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of shouldComponentUpdate when extending React.PureComponent
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-redundant-should-component-update.md
-   */
-  'react/no-redundant-should-component-update'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of the return value of ReactDOM.render
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-render-return-value.md
-   */
-  'react/no-render-return-value'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of setState
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-set-state.md
-   */
-  'react/no-set-state'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow using string references
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-string-refs.md
-   */
-  'react/no-string-refs'?: Linter.RuleEntry<ReactNoStringRefs>
-  /**
-   * Disallow `this` from being used in stateless functional components
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-this-in-sfc.md
-   */
-  'react/no-this-in-sfc'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow common typos
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-typos.md
-   */
-  'react/no-typos'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unescaped HTML entities from appearing in markup
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unescaped-entities.md
-   */
-  'react/no-unescaped-entities'?: Linter.RuleEntry<ReactNoUnescapedEntities>
-  /**
-   * Disallow usage of unknown DOM property
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unknown-property.md
-   */
-  'react/no-unknown-property'?: Linter.RuleEntry<ReactNoUnknownProperty>
-  /**
-   * Disallow usage of unsafe lifecycle methods
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unsafe.md
-   */
-  'react/no-unsafe'?: Linter.RuleEntry<ReactNoUnsafe>
-  /**
-   * Disallow creating unstable components inside components
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unstable-nested-components.md
-   */
-  'react/no-unstable-nested-components'?: Linter.RuleEntry<ReactNoUnstableNestedComponents>
-  /**
-   * Disallow declaring unused methods of component class
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unused-class-component-methods.md
-   */
-  'react/no-unused-class-component-methods'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow definitions of unused propTypes
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unused-prop-types.md
-   */
-  'react/no-unused-prop-types'?: Linter.RuleEntry<ReactNoUnusedPropTypes>
-  /**
-   * Disallow definitions of unused state
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unused-state.md
-   */
-  'react/no-unused-state'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow usage of setState in componentWillUpdate
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-will-update-set-state.md
-   */
-  'react/no-will-update-set-state'?: Linter.RuleEntry<ReactNoWillUpdateSetState>
-  /**
-   * Enforce ES5 or ES6 class for React Components
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-es6-class.md
-   */
-  'react/prefer-es6-class'?: Linter.RuleEntry<ReactPreferEs6Class>
-  /**
-   * Prefer exact proptype definitions
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-exact-props.md
-   */
-  'react/prefer-exact-props'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce that props are read-only
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-read-only-props.md
-   */
-  'react/prefer-read-only-props'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce stateless components to be written as a pure function
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-stateless-function.md
-   */
-  'react/prefer-stateless-function'?: Linter.RuleEntry<ReactPreferStatelessFunction>
-  /**
-   * Disallow missing props validation in a React component definition
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prop-types.md
-   */
-  'react/prop-types'?: Linter.RuleEntry<ReactPropTypes>
-  /**
-   * Disallow missing React when using JSX
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/react-in-jsx-scope.md
-   */
-  'react/react-in-jsx-scope'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce a defaultProps definition for every prop that is not a required prop
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/require-default-props.md
-   */
-  'react/require-default-props'?: Linter.RuleEntry<ReactRequireDefaultProps>
-  /**
-   * Enforce React components to have a shouldComponentUpdate method
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/require-optimization.md
-   */
-  'react/require-optimization'?: Linter.RuleEntry<ReactRequireOptimization>
-  /**
-   * Enforce ES5 or ES6 class for returning value in render function
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/require-render-return.md
-   */
-  'react/require-render-return'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow extra closing tags for components without children
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/self-closing-comp.md
-   */
-  'react/self-closing-comp'?: Linter.RuleEntry<ReactSelfClosingComp>
-  /**
-   * Enforce component methods order
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-comp.md
-   */
-  'react/sort-comp'?: Linter.RuleEntry<ReactSortComp>
-  /**
-   * Enforce defaultProps declarations alphabetical sorting
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-default-props.md
-   */
-  'react/sort-default-props'?: Linter.RuleEntry<ReactSortDefaultProps>
-  /**
-   * Enforce propTypes declarations alphabetical sorting
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-prop-types.md
-   */
-  'react/sort-prop-types'?: Linter.RuleEntry<ReactSortPropTypes>
-  /**
-   * Enforce class component state initialization style
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/state-in-constructor.md
-   */
-  'react/state-in-constructor'?: Linter.RuleEntry<ReactStateInConstructor>
-  /**
-   * Enforces where React component static properties should be positioned.
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/static-property-placement.md
-   */
-  'react/static-property-placement'?: Linter.RuleEntry<ReactStaticPropertyPlacement>
-  /**
-   * Enforce style prop value is an object
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/style-prop-object.md
-   */
-  'react/style-prop-object'?: Linter.RuleEntry<ReactStylePropObject>
-  /**
-   * Disallow void DOM elements (e.g. `<img />`, `<br />`) from receiving children
-   * @see https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/void-dom-elements-no-children.md
-   */
-  'react/void-dom-elements-no-children'?: Linter.RuleEntry<[]>
   /**
    * disallow confusing quantifiers
    * @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/confusing-quantifier.html
@@ -6402,6 +5422,683 @@ export interface RuleOptions {
    */
   'toml/vue-custom-block/no-parsing-error'?: Linter.RuleEntry<[]>
   /**
+   * Require that function overload signatures be consecutive
+   * @see https://typescript-eslint.io/rules/adjacent-overload-signatures
+   */
+  'ts/adjacent-overload-signatures'?: Linter.RuleEntry<[]>
+  /**
+   * Require consistently using either `T[]` or `Array<T>` for arrays
+   * @see https://typescript-eslint.io/rules/array-type
+   */
+  'ts/array-type'?: Linter.RuleEntry<TsArrayType>
+  /**
+   * Disallow awaiting a value that is not a Thenable
+   * @see https://typescript-eslint.io/rules/await-thenable
+   */
+  'ts/await-thenable'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `@ts-<directive>` comments or require descriptions after directives
+   * @see https://typescript-eslint.io/rules/ban-ts-comment
+   */
+  'ts/ban-ts-comment'?: Linter.RuleEntry<TsBanTsComment>
+  /**
+   * Disallow `// tslint:<rule-flag>` comments
+   * @see https://typescript-eslint.io/rules/ban-tslint-comment
+   */
+  'ts/ban-tslint-comment'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that literals on classes are exposed in a consistent style
+   * @see https://typescript-eslint.io/rules/class-literal-property-style
+   */
+  'ts/class-literal-property-style'?: Linter.RuleEntry<TsClassLiteralPropertyStyle>
+  /**
+   * Enforce that class methods utilize `this`
+   * @see https://typescript-eslint.io/rules/class-methods-use-this
+   */
+  'ts/class-methods-use-this'?: Linter.RuleEntry<TsClassMethodsUseThis>
+  /**
+   * Enforce specifying generic type arguments on type annotation or constructor name of a constructor call
+   * @see https://typescript-eslint.io/rules/consistent-generic-constructors
+   */
+  'ts/consistent-generic-constructors'?: Linter.RuleEntry<TsConsistentGenericConstructors>
+  /**
+   * Require or disallow the `Record` type
+   * @see https://typescript-eslint.io/rules/consistent-indexed-object-style
+   */
+  'ts/consistent-indexed-object-style'?: Linter.RuleEntry<TsConsistentIndexedObjectStyle>
+  /**
+   * Require `return` statements to either always or never specify values
+   * @see https://typescript-eslint.io/rules/consistent-return
+   */
+  'ts/consistent-return'?: Linter.RuleEntry<TsConsistentReturn>
+  /**
+   * Enforce consistent usage of type assertions
+   * @see https://typescript-eslint.io/rules/consistent-type-assertions
+   */
+  'ts/consistent-type-assertions'?: Linter.RuleEntry<TsConsistentTypeAssertions>
+  /**
+   * Enforce type definitions to consistently use either `interface` or `type`
+   * @see https://typescript-eslint.io/rules/consistent-type-definitions
+   */
+  'ts/consistent-type-definitions'?: Linter.RuleEntry<TsConsistentTypeDefinitions>
+  /**
+   * Enforce consistent usage of type exports
+   * @see https://typescript-eslint.io/rules/consistent-type-exports
+   */
+  'ts/consistent-type-exports'?: Linter.RuleEntry<TsConsistentTypeExports>
+  /**
+   * Enforce consistent usage of type imports
+   * @see https://typescript-eslint.io/rules/consistent-type-imports
+   */
+  'ts/consistent-type-imports'?: Linter.RuleEntry<TsConsistentTypeImports>
+  /**
+   * Enforce default parameters to be last
+   * @see https://typescript-eslint.io/rules/default-param-last
+   */
+  'ts/default-param-last'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce dot notation whenever possible
+   * @see https://typescript-eslint.io/rules/dot-notation
+   */
+  'ts/dot-notation'?: Linter.RuleEntry<TsDotNotation>
+  /**
+   * Require explicit return types on functions and class methods
+   * @see https://typescript-eslint.io/rules/explicit-function-return-type
+   */
+  'ts/explicit-function-return-type'?: Linter.RuleEntry<TsExplicitFunctionReturnType>
+  /**
+   * Require explicit accessibility modifiers on class properties and methods
+   * @see https://typescript-eslint.io/rules/explicit-member-accessibility
+   */
+  'ts/explicit-member-accessibility'?: Linter.RuleEntry<TsExplicitMemberAccessibility>
+  /**
+   * Require explicit return and argument types on exported functions' and classes' public class methods
+   * @see https://typescript-eslint.io/rules/explicit-module-boundary-types
+   */
+  'ts/explicit-module-boundary-types'?: Linter.RuleEntry<TsExplicitModuleBoundaryTypes>
+  /**
+   * Require or disallow initialization in variable declarations
+   * @see https://typescript-eslint.io/rules/init-declarations
+   */
+  'ts/init-declarations'?: Linter.RuleEntry<TsInitDeclarations>
+  /**
+   * Enforce a maximum number of parameters in function definitions
+   * @see https://typescript-eslint.io/rules/max-params
+   */
+  'ts/max-params'?: Linter.RuleEntry<TsMaxParams>
+  /**
+   * Require a consistent member declaration order
+   * @see https://typescript-eslint.io/rules/member-ordering
+   */
+  'ts/member-ordering'?: Linter.RuleEntry<TsMemberOrdering>
+  /**
+   * Enforce using a particular method signature syntax
+   * @see https://typescript-eslint.io/rules/method-signature-style
+   */
+  'ts/method-signature-style'?: Linter.RuleEntry<TsMethodSignatureStyle>
+  /**
+   * Enforce naming conventions for everything across a codebase
+   * @see https://typescript-eslint.io/rules/naming-convention
+   */
+  'ts/naming-convention'?: Linter.RuleEntry<TsNamingConvention>
+  /**
+   * Disallow generic `Array` constructors
+   * @see https://typescript-eslint.io/rules/no-array-constructor
+   */
+  'ts/no-array-constructor'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow using the `delete` operator on array values
+   * @see https://typescript-eslint.io/rules/no-array-delete
+   */
+  'ts/no-array-delete'?: Linter.RuleEntry<[]>
+  /**
+   * Require `.toString()` and `.toLocaleString()` to only be called on objects which provide useful information when stringified
+   * @see https://typescript-eslint.io/rules/no-base-to-string
+   */
+  'ts/no-base-to-string'?: Linter.RuleEntry<TsNoBaseToString>
+  /**
+   * Disallow non-null assertion in locations that may be confusing
+   * @see https://typescript-eslint.io/rules/no-confusing-non-null-assertion
+   */
+  'ts/no-confusing-non-null-assertion'?: Linter.RuleEntry<[]>
+  /**
+   * Require expressions of type void to appear in statement position
+   * @see https://typescript-eslint.io/rules/no-confusing-void-expression
+   */
+  'ts/no-confusing-void-expression'?: Linter.RuleEntry<TsNoConfusingVoidExpression>
+  /**
+   * Disallow using code marked as `@deprecated`
+   * @see https://typescript-eslint.io/rules/no-deprecated
+   */
+  'ts/no-deprecated'?: Linter.RuleEntry<TsNoDeprecated>
+  /**
+   * Disallow duplicate class members
+   * @see https://typescript-eslint.io/rules/no-dupe-class-members
+   */
+  'ts/no-dupe-class-members'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow duplicate enum member values
+   * @see https://typescript-eslint.io/rules/no-duplicate-enum-values
+   */
+  'ts/no-duplicate-enum-values'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow duplicate constituents of union or intersection types
+   * @see https://typescript-eslint.io/rules/no-duplicate-type-constituents
+   */
+  'ts/no-duplicate-type-constituents'?: Linter.RuleEntry<TsNoDuplicateTypeConstituents>
+  /**
+   * Disallow using the `delete` operator on computed key expressions
+   * @see https://typescript-eslint.io/rules/no-dynamic-delete
+   */
+  'ts/no-dynamic-delete'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow empty functions
+   * @see https://typescript-eslint.io/rules/no-empty-function
+   */
+  'ts/no-empty-function'?: Linter.RuleEntry<TsNoEmptyFunction>
+  /**
+   * Disallow the declaration of empty interfaces
+   * @see https://typescript-eslint.io/rules/no-empty-interface
+   * @deprecated
+   */
+  'ts/no-empty-interface'?: Linter.RuleEntry<TsNoEmptyInterface>
+  /**
+   * Disallow accidentally using the "empty object" type
+   * @see https://typescript-eslint.io/rules/no-empty-object-type
+   */
+  'ts/no-empty-object-type'?: Linter.RuleEntry<TsNoEmptyObjectType>
+  /**
+   * Disallow the `any` type
+   * @see https://typescript-eslint.io/rules/no-explicit-any
+   */
+  'ts/no-explicit-any'?: Linter.RuleEntry<TsNoExplicitAny>
+  /**
+   * Disallow extra non-null assertions
+   * @see https://typescript-eslint.io/rules/no-extra-non-null-assertion
+   */
+  'ts/no-extra-non-null-assertion'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow classes used as namespaces
+   * @see https://typescript-eslint.io/rules/no-extraneous-class
+   */
+  'ts/no-extraneous-class'?: Linter.RuleEntry<TsNoExtraneousClass>
+  /**
+   * Require Promise-like statements to be handled appropriately
+   * @see https://typescript-eslint.io/rules/no-floating-promises
+   */
+  'ts/no-floating-promises'?: Linter.RuleEntry<TsNoFloatingPromises>
+  /**
+   * Disallow iterating over an array with a for-in loop
+   * @see https://typescript-eslint.io/rules/no-for-in-array
+   */
+  'ts/no-for-in-array'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow the use of `eval()`-like functions
+   * @see https://typescript-eslint.io/rules/no-implied-eval
+   */
+  'ts/no-implied-eval'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce the use of top-level import type qualifier when an import only has specifiers with inline type qualifiers
+   * @see https://typescript-eslint.io/rules/no-import-type-side-effects
+   */
+  'ts/no-import-type-side-effects'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow explicit type declarations for variables or parameters initialized to a number, string, or boolean
+   * @see https://typescript-eslint.io/rules/no-inferrable-types
+   */
+  'ts/no-inferrable-types'?: Linter.RuleEntry<TsNoInferrableTypes>
+  /**
+   * Disallow `this` keywords outside of classes or class-like objects
+   * @see https://typescript-eslint.io/rules/no-invalid-this
+   */
+  'ts/no-invalid-this'?: Linter.RuleEntry<TsNoInvalidThis>
+  /**
+   * Disallow `void` type outside of generic or return types
+   * @see https://typescript-eslint.io/rules/no-invalid-void-type
+   */
+  'ts/no-invalid-void-type'?: Linter.RuleEntry<TsNoInvalidVoidType>
+  /**
+   * Disallow function declarations that contain unsafe references inside loop statements
+   * @see https://typescript-eslint.io/rules/no-loop-func
+   */
+  'ts/no-loop-func'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow literal numbers that lose precision
+   * @see https://typescript-eslint.io/rules/no-loss-of-precision
+   * @deprecated
+   */
+  'ts/no-loss-of-precision'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow magic numbers
+   * @see https://typescript-eslint.io/rules/no-magic-numbers
+   */
+  'ts/no-magic-numbers'?: Linter.RuleEntry<TsNoMagicNumbers>
+  /**
+   * Disallow the `void` operator except when used to discard a value
+   * @see https://typescript-eslint.io/rules/no-meaningless-void-operator
+   */
+  'ts/no-meaningless-void-operator'?: Linter.RuleEntry<TsNoMeaninglessVoidOperator>
+  /**
+   * Enforce valid definition of `new` and `constructor`
+   * @see https://typescript-eslint.io/rules/no-misused-new
+   */
+  'ts/no-misused-new'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow Promises in places not designed to handle them
+   * @see https://typescript-eslint.io/rules/no-misused-promises
+   */
+  'ts/no-misused-promises'?: Linter.RuleEntry<TsNoMisusedPromises>
+  /**
+   * Disallow using the spread operator when it might cause unexpected behavior
+   * @see https://typescript-eslint.io/rules/no-misused-spread
+   */
+  'ts/no-misused-spread'?: Linter.RuleEntry<TsNoMisusedSpread>
+  /**
+   * Disallow enums from having both number and string members
+   * @see https://typescript-eslint.io/rules/no-mixed-enums
+   */
+  'ts/no-mixed-enums'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow TypeScript namespaces
+   * @see https://typescript-eslint.io/rules/no-namespace
+   */
+  'ts/no-namespace'?: Linter.RuleEntry<TsNoNamespace>
+  /**
+   * Disallow non-null assertions in the left operand of a nullish coalescing operator
+   * @see https://typescript-eslint.io/rules/no-non-null-asserted-nullish-coalescing
+   */
+  'ts/no-non-null-asserted-nullish-coalescing'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow non-null assertions after an optional chain expression
+   * @see https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain
+   */
+  'ts/no-non-null-asserted-optional-chain'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow non-null assertions using the `!` postfix operator
+   * @see https://typescript-eslint.io/rules/no-non-null-assertion
+   */
+  'ts/no-non-null-assertion'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow variable redeclaration
+   * @see https://typescript-eslint.io/rules/no-redeclare
+   */
+  'ts/no-redeclare'?: Linter.RuleEntry<TsNoRedeclare>
+  /**
+   * Disallow members of unions and intersections that do nothing or override type information
+   * @see https://typescript-eslint.io/rules/no-redundant-type-constituents
+   */
+  'ts/no-redundant-type-constituents'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow invocation of `require()`
+   * @see https://typescript-eslint.io/rules/no-require-imports
+   */
+  'ts/no-require-imports'?: Linter.RuleEntry<TsNoRequireImports>
+  /**
+   * Disallow specified modules when loaded by `import`
+   * @see https://typescript-eslint.io/rules/no-restricted-imports
+   */
+  'ts/no-restricted-imports'?: Linter.RuleEntry<TsNoRestrictedImports>
+  /**
+   * Disallow certain types
+   * @see https://typescript-eslint.io/rules/no-restricted-types
+   */
+  'ts/no-restricted-types'?: Linter.RuleEntry<TsNoRestrictedTypes>
+  /**
+   * Disallow variable declarations from shadowing variables declared in the outer scope
+   * @see https://typescript-eslint.io/rules/no-shadow
+   */
+  'ts/no-shadow'?: Linter.RuleEntry<TsNoShadow>
+  /**
+   * Disallow aliasing `this`
+   * @see https://typescript-eslint.io/rules/no-this-alias
+   */
+  'ts/no-this-alias'?: Linter.RuleEntry<TsNoThisAlias>
+  /**
+   * Disallow type aliases
+   * @see https://typescript-eslint.io/rules/no-type-alias
+   * @deprecated
+   */
+  'ts/no-type-alias'?: Linter.RuleEntry<TsNoTypeAlias>
+  /**
+   * Disallow unnecessary equality comparisons against boolean literals
+   * @see https://typescript-eslint.io/rules/no-unnecessary-boolean-literal-compare
+   */
+  'ts/no-unnecessary-boolean-literal-compare'?: Linter.RuleEntry<TsNoUnnecessaryBooleanLiteralCompare>
+  /**
+   * Disallow conditionals where the type is always truthy or always falsy
+   * @see https://typescript-eslint.io/rules/no-unnecessary-condition
+   */
+  'ts/no-unnecessary-condition'?: Linter.RuleEntry<TsNoUnnecessaryCondition>
+  /**
+   * Disallow unnecessary assignment of constructor property parameter
+   * @see https://typescript-eslint.io/rules/no-unnecessary-parameter-property-assignment
+   */
+  'ts/no-unnecessary-parameter-property-assignment'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary namespace qualifiers
+   * @see https://typescript-eslint.io/rules/no-unnecessary-qualifier
+   */
+  'ts/no-unnecessary-qualifier'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary template expressions
+   * @see https://typescript-eslint.io/rules/no-unnecessary-template-expression
+   */
+  'ts/no-unnecessary-template-expression'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type arguments that are equal to the default
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-arguments
+   */
+  'ts/no-unnecessary-type-arguments'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type assertions that do not change the type of an expression
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-assertion
+   */
+  'ts/no-unnecessary-type-assertion'?: Linter.RuleEntry<TsNoUnnecessaryTypeAssertion>
+  /**
+   * Disallow unnecessary constraints on generic types
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-constraint
+   */
+  'ts/no-unnecessary-type-constraint'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow conversion idioms when they do not change the type or value of the expression
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-conversion
+   */
+  'ts/no-unnecessary-type-conversion'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type parameters that aren't used multiple times
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-parameters
+   */
+  'ts/no-unnecessary-type-parameters'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow calling a function with a value with type `any`
+   * @see https://typescript-eslint.io/rules/no-unsafe-argument
+   */
+  'ts/no-unsafe-argument'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow assigning a value with type `any` to variables and properties
+   * @see https://typescript-eslint.io/rules/no-unsafe-assignment
+   */
+  'ts/no-unsafe-assignment'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow calling a value with type `any`
+   * @see https://typescript-eslint.io/rules/no-unsafe-call
+   */
+  'ts/no-unsafe-call'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unsafe declaration merging
+   * @see https://typescript-eslint.io/rules/no-unsafe-declaration-merging
+   */
+  'ts/no-unsafe-declaration-merging'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow comparing an enum value with a non-enum value
+   * @see https://typescript-eslint.io/rules/no-unsafe-enum-comparison
+   */
+  'ts/no-unsafe-enum-comparison'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow using the unsafe built-in Function type
+   * @see https://typescript-eslint.io/rules/no-unsafe-function-type
+   */
+  'ts/no-unsafe-function-type'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow member access on a value with type `any`
+   * @see https://typescript-eslint.io/rules/no-unsafe-member-access
+   */
+  'ts/no-unsafe-member-access'?: Linter.RuleEntry<TsNoUnsafeMemberAccess>
+  /**
+   * Disallow returning a value with type `any` from a function
+   * @see https://typescript-eslint.io/rules/no-unsafe-return
+   */
+  'ts/no-unsafe-return'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type assertions that narrow a type
+   * @see https://typescript-eslint.io/rules/no-unsafe-type-assertion
+   */
+  'ts/no-unsafe-type-assertion'?: Linter.RuleEntry<[]>
+  /**
+   * Require unary negation to take a number
+   * @see https://typescript-eslint.io/rules/no-unsafe-unary-minus
+   */
+  'ts/no-unsafe-unary-minus'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unused expressions
+   * @see https://typescript-eslint.io/rules/no-unused-expressions
+   */
+  'ts/no-unused-expressions'?: Linter.RuleEntry<TsNoUnusedExpressions>
+  /**
+   * Disallow unused private class members
+   * @see https://typescript-eslint.io/rules/no-unused-private-class-members
+   */
+  'ts/no-unused-private-class-members'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unused variables
+   * @see https://typescript-eslint.io/rules/no-unused-vars
+   */
+  'ts/no-unused-vars'?: Linter.RuleEntry<TsNoUnusedVars>
+  /**
+   * Disallow the use of variables before they are defined
+   * @see https://typescript-eslint.io/rules/no-use-before-define
+   */
+  'ts/no-use-before-define'?: Linter.RuleEntry<TsNoUseBeforeDefine>
+  /**
+   * Disallow unnecessary constructors
+   * @see https://typescript-eslint.io/rules/no-useless-constructor
+   */
+  'ts/no-useless-constructor'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow default values that will never be used
+   * @see https://typescript-eslint.io/rules/no-useless-default-assignment
+   */
+  'ts/no-useless-default-assignment'?: Linter.RuleEntry<TsNoUselessDefaultAssignment>
+  /**
+   * Disallow empty exports that don't change anything in a module file
+   * @see https://typescript-eslint.io/rules/no-useless-empty-export
+   */
+  'ts/no-useless-empty-export'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow `require` statements except in import statements
+   * @see https://typescript-eslint.io/rules/no-var-requires
+   * @deprecated
+   */
+  'ts/no-var-requires'?: Linter.RuleEntry<TsNoVarRequires>
+  /**
+   * Disallow using confusing built-in primitive class wrappers
+   * @see https://typescript-eslint.io/rules/no-wrapper-object-types
+   */
+  'ts/no-wrapper-object-types'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce non-null assertions over explicit type assertions
+   * @see https://typescript-eslint.io/rules/non-nullable-type-assertion-style
+   */
+  'ts/non-nullable-type-assertion-style'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow throwing non-`Error` values as exceptions
+   * @see https://typescript-eslint.io/rules/only-throw-error
+   */
+  'ts/only-throw-error'?: Linter.RuleEntry<TsOnlyThrowError>
+  /**
+   * Require or disallow parameter properties in class constructors
+   * @see https://typescript-eslint.io/rules/parameter-properties
+   */
+  'ts/parameter-properties'?: Linter.RuleEntry<TsParameterProperties>
+  /**
+   * Enforce the use of `as const` over literal type
+   * @see https://typescript-eslint.io/rules/prefer-as-const
+   */
+  'ts/prefer-as-const'?: Linter.RuleEntry<[]>
+  /**
+   * Require destructuring from arrays and/or objects
+   * @see https://typescript-eslint.io/rules/prefer-destructuring
+   */
+  'ts/prefer-destructuring'?: Linter.RuleEntry<TsPreferDestructuring>
+  /**
+   * Require each enum member value to be explicitly initialized
+   * @see https://typescript-eslint.io/rules/prefer-enum-initializers
+   */
+  'ts/prefer-enum-initializers'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce the use of Array.prototype.find() over Array.prototype.filter() followed by [0] when looking for a single result
+   * @see https://typescript-eslint.io/rules/prefer-find
+   */
+  'ts/prefer-find'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce the use of `for-of` loop over the standard `for` loop where possible
+   * @see https://typescript-eslint.io/rules/prefer-for-of
+   */
+  'ts/prefer-for-of'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce using function types instead of interfaces with call signatures
+   * @see https://typescript-eslint.io/rules/prefer-function-type
+   */
+  'ts/prefer-function-type'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce `includes` method over `indexOf` method
+   * @see https://typescript-eslint.io/rules/prefer-includes
+   */
+  'ts/prefer-includes'?: Linter.RuleEntry<[]>
+  /**
+   * Require all enum members to be literal values
+   * @see https://typescript-eslint.io/rules/prefer-literal-enum-member
+   */
+  'ts/prefer-literal-enum-member'?: Linter.RuleEntry<TsPreferLiteralEnumMember>
+  /**
+   * Require using `namespace` keyword over `module` keyword to declare custom TypeScript modules
+   * @see https://typescript-eslint.io/rules/prefer-namespace-keyword
+   */
+  'ts/prefer-namespace-keyword'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce using the nullish coalescing operator instead of logical assignments or chaining
+   * @see https://typescript-eslint.io/rules/prefer-nullish-coalescing
+   */
+  'ts/prefer-nullish-coalescing'?: Linter.RuleEntry<TsPreferNullishCoalescing>
+  /**
+   * Enforce using concise optional chain expressions instead of chained logical ands, negated logical ors, or empty objects
+   * @see https://typescript-eslint.io/rules/prefer-optional-chain
+   */
+  'ts/prefer-optional-chain'?: Linter.RuleEntry<TsPreferOptionalChain>
+  /**
+   * Require using Error objects as Promise rejection reasons
+   * @see https://typescript-eslint.io/rules/prefer-promise-reject-errors
+   */
+  'ts/prefer-promise-reject-errors'?: Linter.RuleEntry<TsPreferPromiseRejectErrors>
+  /**
+   * Require private members to be marked as `readonly` if they're never modified outside of the constructor
+   * @see https://typescript-eslint.io/rules/prefer-readonly
+   */
+  'ts/prefer-readonly'?: Linter.RuleEntry<TsPreferReadonly>
+  /**
+   * Require function parameters to be typed as `readonly` to prevent accidental mutation of inputs
+   * @see https://typescript-eslint.io/rules/prefer-readonly-parameter-types
+   */
+  'ts/prefer-readonly-parameter-types'?: Linter.RuleEntry<TsPreferReadonlyParameterTypes>
+  /**
+   * Enforce using type parameter when calling `Array#reduce` instead of using a type assertion
+   * @see https://typescript-eslint.io/rules/prefer-reduce-type-parameter
+   */
+  'ts/prefer-reduce-type-parameter'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce `RegExp#exec` over `String#match` if no global flag is provided
+   * @see https://typescript-eslint.io/rules/prefer-regexp-exec
+   */
+  'ts/prefer-regexp-exec'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that `this` is used when only `this` type is returned
+   * @see https://typescript-eslint.io/rules/prefer-return-this-type
+   */
+  'ts/prefer-return-this-type'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce using `String#startsWith` and `String#endsWith` over other equivalent methods of checking substrings
+   * @see https://typescript-eslint.io/rules/prefer-string-starts-ends-with
+   */
+  'ts/prefer-string-starts-ends-with'?: Linter.RuleEntry<TsPreferStringStartsEndsWith>
+  /**
+   * Enforce using `@ts-expect-error` over `@ts-ignore`
+   * @see https://typescript-eslint.io/rules/prefer-ts-expect-error
+   * @deprecated
+   */
+  'ts/prefer-ts-expect-error'?: Linter.RuleEntry<[]>
+  /**
+   * Require any function or method that returns a Promise to be marked async
+   * @see https://typescript-eslint.io/rules/promise-function-async
+   */
+  'ts/promise-function-async'?: Linter.RuleEntry<TsPromiseFunctionAsync>
+  /**
+   * Enforce that `get()` types should be assignable to their equivalent `set()` type
+   * @see https://typescript-eslint.io/rules/related-getter-setter-pairs
+   */
+  'ts/related-getter-setter-pairs'?: Linter.RuleEntry<[]>
+  /**
+   * Require `Array#sort` and `Array#toSorted` calls to always provide a `compareFunction`
+   * @see https://typescript-eslint.io/rules/require-array-sort-compare
+   */
+  'ts/require-array-sort-compare'?: Linter.RuleEntry<TsRequireArraySortCompare>
+  /**
+   * Disallow async functions which do not return promises and have no `await` expression
+   * @see https://typescript-eslint.io/rules/require-await
+   */
+  'ts/require-await'?: Linter.RuleEntry<[]>
+  /**
+   * Require both operands of addition to be the same type and be `bigint`, `number`, or `string`
+   * @see https://typescript-eslint.io/rules/restrict-plus-operands
+   */
+  'ts/restrict-plus-operands'?: Linter.RuleEntry<TsRestrictPlusOperands>
+  /**
+   * Enforce template literal expressions to be of `string` type
+   * @see https://typescript-eslint.io/rules/restrict-template-expressions
+   */
+  'ts/restrict-template-expressions'?: Linter.RuleEntry<TsRestrictTemplateExpressions>
+  /**
+   * Enforce consistent awaiting of returned promises
+   * @see https://typescript-eslint.io/rules/return-await
+   */
+  'ts/return-await'?: Linter.RuleEntry<TsReturnAwait>
+  /**
+   * Enforce constituents of a type union/intersection to be sorted alphabetically
+   * @see https://typescript-eslint.io/rules/sort-type-constituents
+   * @deprecated
+   */
+  'ts/sort-type-constituents'?: Linter.RuleEntry<TsSortTypeConstituents>
+  /**
+   * Disallow certain types in boolean expressions
+   * @see https://typescript-eslint.io/rules/strict-boolean-expressions
+   */
+  'ts/strict-boolean-expressions'?: Linter.RuleEntry<TsStrictBooleanExpressions>
+  /**
+   * Disallow passing a value-returning function in a position accepting a void function
+   * @see https://typescript-eslint.io/rules/strict-void-return
+   */
+  'ts/strict-void-return'?: Linter.RuleEntry<TsStrictVoidReturn>
+  /**
+   * Require switch-case statements to be exhaustive
+   * @see https://typescript-eslint.io/rules/switch-exhaustiveness-check
+   */
+  'ts/switch-exhaustiveness-check'?: Linter.RuleEntry<TsSwitchExhaustivenessCheck>
+  /**
+   * Disallow certain triple slash directives in favor of ES6-style import declarations
+   * @see https://typescript-eslint.io/rules/triple-slash-reference
+   */
+  'ts/triple-slash-reference'?: Linter.RuleEntry<TsTripleSlashReference>
+  /**
+   * Require type annotations in certain places
+   * @see https://typescript-eslint.io/rules/typedef
+   * @deprecated
+   */
+  'ts/typedef'?: Linter.RuleEntry<TsTypedef>
+  /**
+   * Enforce unbound methods are called with their expected scope
+   * @see https://typescript-eslint.io/rules/unbound-method
+   */
+  'ts/unbound-method'?: Linter.RuleEntry<TsUnboundMethod>
+  /**
+   * Disallow two overloads that could be unified into one with a union or an optional/rest parameter
+   * @see https://typescript-eslint.io/rules/unified-signatures
+   */
+  'ts/unified-signatures'?: Linter.RuleEntry<TsUnifiedSignatures>
+  /**
+   * Enforce typing arguments in Promise rejection callbacks as `unknown`
+   * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
+   */
+  'ts/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
+  /**
    * Require or disallow Unicode byte order mark (BOM)
    * @see https://eslint.org/docs/latest/rules/unicode-bom
    */
@@ -7134,26 +6831,6 @@ export interface RuleOptions {
    * @see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v63.0.0/docs/rules/throw-new-error.md
    */
   'unicorn/throw-new-error'?: Linter.RuleEntry<[]>
-  /**
-   * Utilities in UnoCSS blocklist
-   * @see https://unocss.dev/integrations/eslint#rules
-   */
-  'unocss/blocklist'?: Linter.RuleEntry<[]>
-  /**
-   * Enforce class compilation
-   * @see https://unocss.dev/integrations/eslint#rules
-   */
-  'unocss/enforce-class-compile'?: Linter.RuleEntry<UnocssEnforceClassCompile>
-  /**
-   * Order of UnoCSS utilities in class attribute
-   * @see https://unocss.dev/integrations/eslint#rules
-   */
-  'unocss/order'?: Linter.RuleEntry<UnocssOrder>
-  /**
-   * Order of UnoCSS attributes
-   * @see https://unocss.dev/integrations/eslint#rules
-   */
-  'unocss/order-attributify'?: Linter.RuleEntry<[]>
   /**
    * Disallow unused variables
    * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md
@@ -9005,210 +8682,6 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
-// ----- @angular-eslint/component-class-suffix -----
-type AngularEslintComponentClassSuffix = []|[{
-  suffixes?: string[]
-}]
-// ----- @angular-eslint/component-max-inline-declarations -----
-type AngularEslintComponentMaxInlineDeclarations = []|[{
-  template?: number
-  styles?: number
-  animations?: number
-}]
-// ----- @angular-eslint/component-selector -----
-type AngularEslintComponentSelector = []|[({
-  type: (string | ("element" | "attribute")[])
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-} | [{
-  type: ("element" | "attribute")
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-}]|[{
-  type: ("element" | "attribute")
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-}, {
-  type: ("element" | "attribute")
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-}])]
-// ----- @angular-eslint/consistent-component-styles -----
-type AngularEslintConsistentComponentStyles = []|[("array" | "string")]
-// ----- @angular-eslint/directive-class-suffix -----
-type AngularEslintDirectiveClassSuffix = []|[{
-  suffixes?: string[]
-}]
-// ----- @angular-eslint/directive-selector -----
-type AngularEslintDirectiveSelector = []|[({
-  type: (string | ("element" | "attribute")[])
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-} | [{
-  type: ("element" | "attribute")
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-}]|[{
-  type: ("element" | "attribute")
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-}, {
-  type: ("element" | "attribute")
-  prefix?: (string | unknown[])
-  style: ("camelCase" | "kebab-case")
-}])]
-// ----- @angular-eslint/no-input-prefix -----
-type AngularEslintNoInputPrefix = []|[{
-  prefixes?: string[]
-}]
-// ----- @angular-eslint/no-input-rename -----
-type AngularEslintNoInputRename = []|[{
-  
-  allowedNames?: string[]
-}]
-// ----- @angular-eslint/pipe-prefix -----
-type AngularEslintPipePrefix = []|[{
-  prefixes?: string[]
-}]
-// ----- @angular-eslint/prefer-signals -----
-type AngularEslintPreferSignals = []|[{
-  preferReadonlySignalProperties?: boolean
-  preferInputSignals?: boolean
-  preferQuerySignals?: boolean
-  useTypeChecking?: boolean
-  additionalSignalCreationFunctions?: string[]
-}]
-// ----- @angular-eslint/require-localize-metadata -----
-type AngularEslintRequireLocalizeMetadata = []|[{
-  requireDescription?: boolean
-  requireMeaning?: boolean
-  requireCustomId?: (boolean | string)
-}]
-// ----- @angular-eslint/sort-keys-in-type-decorator -----
-type AngularEslintSortKeysInTypeDecorator = []|[{
-  Component?: string[]
-  Directive?: string[]
-  NgModule?: string[]
-  Pipe?: string[]
-}]
-// ----- @angular-eslint/template/attributes-order -----
-type AngularEslintTemplateAttributesOrder = []|[{
-  alphabetical?: boolean
-  
-  order?: [("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ...(("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"))[]]
-}]
-// ----- @angular-eslint/template/button-has-type -----
-type AngularEslintTemplateButtonHasType = []|[{
-  ignoreWithDirectives?: string[]
-}]
-// ----- @angular-eslint/template/click-events-have-key-events -----
-type AngularEslintTemplateClickEventsHaveKeyEvents = []|[{
-  ignoreWithDirectives?: string[]
-}]
-// ----- @angular-eslint/template/conditional-complexity -----
-type AngularEslintTemplateConditionalComplexity = []|[{
-  maxComplexity?: number
-}]
-// ----- @angular-eslint/template/cyclomatic-complexity -----
-type AngularEslintTemplateCyclomaticComplexity = []|[{
-  maxComplexity?: number
-}]
-// ----- @angular-eslint/template/elements-content -----
-type AngularEslintTemplateElementsContent = []|[{
-  allowList?: string[]
-}]
-// ----- @angular-eslint/template/eqeqeq -----
-type AngularEslintTemplateEqeqeq = []|[{
-  allowNullOrUndefined?: boolean
-}]
-// ----- @angular-eslint/template/i18n -----
-type AngularEslintTemplateI18N = []|[{
-  allowMarkupInContent?: boolean
-  boundTextAllowedPattern?: string
-  checkAttributes?: boolean
-  checkDuplicateId?: boolean
-  checkId?: boolean
-  checkText?: boolean
-  ignoreAttributes?: string[]
-  ignoreTags?: string[]
-  requireDescription?: boolean
-  requireMeaning?: boolean
-}]
-// ----- @angular-eslint/template/interactive-supports-focus -----
-type AngularEslintTemplateInteractiveSupportsFocus = []|[{
-  allowList?: string[]
-}]
-// ----- @angular-eslint/template/label-has-associated-control -----
-type AngularEslintTemplateLabelHasAssociatedControl = []|[{
-  checkIds?: boolean
-  controlComponents?: string[]
-  labelComponents?: {
-    inputs?: string[]
-    selector: string
-  }[]
-}]
-// ----- @angular-eslint/template/no-call-expression -----
-type AngularEslintTemplateNoCallExpression = []|[{
-  allowList?: string[]
-  allowPrefix?: string
-  allowSuffix?: string
-}]
-// ----- @angular-eslint/template/no-duplicate-attributes -----
-type AngularEslintTemplateNoDuplicateAttributes = []|[{
-  
-  allowTwoWayDataBinding?: boolean
-  
-  allowStylePrecedenceDuplicates?: boolean
-  
-  ignore?: string[]
-}]
-// ----- @angular-eslint/template/no-inline-styles -----
-type AngularEslintTemplateNoInlineStyles = []|[{
-  allowNgStyle?: boolean
-  allowBindToStyle?: boolean
-}]
-// ----- @angular-eslint/template/no-interpolation-in-attributes -----
-type AngularEslintTemplateNoInterpolationInAttributes = []|[{
-  
-  allowSubstringInterpolation?: boolean
-}]
-// ----- @angular-eslint/template/prefer-built-in-pipes -----
-type AngularEslintTemplatePreferBuiltInPipes = []|[{
-  
-  disallowList?: string[]
-  
-  allowInOutputHandlers?: boolean
-}]
-// ----- @angular-eslint/template/prefer-contextual-for-variables -----
-type AngularEslintTemplatePreferContextualForVariables = []|[{
-  allowedAliases?: {
-    
-    $count?: string[]
-    
-    $index?: string[]
-    
-    $first?: string[]
-    
-    $last?: string[]
-    
-    $even?: string[]
-    
-    $odd?: string[]
-  }
-}]
-// ----- @angular-eslint/template/prefer-static-string-properties -----
-type AngularEslintTemplatePreferStaticStringProperties = []|[{
-  
-  ignore?: string[]
-}]
-// ----- @angular-eslint/template/use-track-by-function -----
-type AngularEslintTemplateUseTrackByFunction = []|[{
-  alias?: string[]
-}]
-// ----- @angular-eslint/use-injectable-provided-in -----
-type AngularEslintUseInjectableProvidedIn = []|[{
-  ignoreClassNamePattern?: string
-}]
 // ----- @eslint-community/eslint-comments/disable-enable-pair -----
 type EslintCommunityEslintCommentsDisableEnablePair = []|[{
   allowWholeFile?: boolean
@@ -9222,6 +8695,34 @@ type EslintCommunityEslintCommentsNoUse = []|[{
 // ----- @eslint-community/eslint-comments/require-description -----
 type EslintCommunityEslintCommentsRequireDescription = []|[{
   ignore?: ("eslint" | "eslint-disable" | "eslint-disable-line" | "eslint-disable-next-line" | "eslint-enable" | "eslint-env" | "exported" | "global" | "globals")[]
+}]
+// ----- @eslint-react/dom/no-unknown-property -----
+type EslintReactDomNoUnknownProperty = []|[{
+  ignore?: string[]
+  requireDataLowercase?: boolean
+}]
+// ----- @eslint-react/naming-convention/component-name -----
+type EslintReactNamingConventionComponentName = []|[(("PascalCase" | "CONSTANT_CASE") | {
+  allowAllCaps?: boolean
+  excepts?: string[]
+  rule?: ("PascalCase" | "CONSTANT_CASE")
+})]
+// ----- @eslint-react/naming-convention/filename -----
+type EslintReactNamingConventionFilename = []|[(("PascalCase" | "camelCase" | "kebab-case" | "snake_case") | {
+  excepts?: string[]
+  extensions?: string[]
+  rule?: ("PascalCase" | "camelCase" | "kebab-case" | "snake_case")
+})]
+// ----- @eslint-react/naming-convention/filename-extension -----
+type EslintReactNamingConventionFilenameExtension = []|[(("always" | "as-needed") | {
+  allow?: ("always" | "as-needed")
+  extensions?: string[]
+  ignoreFilesWithoutCode?: boolean
+})]
+// ----- @eslint-react/no-useless-fragment -----
+type EslintReactNoUselessFragment = []|[{
+  
+  allowExpressions?: boolean
 }]
 // ----- @next/next/no-html-link-for-pages -----
 type NextNextNoHtmlLinkForPages = []|[(string | string[])]
@@ -10485,1235 +9986,216 @@ type StylisticYieldStarSpacing = []|[(("before" | "after" | "both" | "neither") 
   before?: boolean
   after?: boolean
 })]
-// ----- @typescript-eslint/array-type -----
-type TypescriptEslintArrayType = []|[{
-  
-  default?: ("array" | "generic" | "array-simple")
-  
-  readonly?: ("array" | "generic" | "array-simple")
-}]
-// ----- @typescript-eslint/ban-ts-comment -----
-type TypescriptEslintBanTsComment = []|[{
-  
-  minimumDescriptionLength?: number
-  
-  "ts-check"?: (boolean | "allow-with-description" | {
-    descriptionFormat?: string
-  })
-  
-  "ts-expect-error"?: (boolean | "allow-with-description" | {
-    descriptionFormat?: string
-  })
-  
-  "ts-ignore"?: (boolean | "allow-with-description" | {
-    descriptionFormat?: string
-  })
-  
-  "ts-nocheck"?: (boolean | "allow-with-description" | {
-    descriptionFormat?: string
-  })
-}]
-// ----- @typescript-eslint/class-literal-property-style -----
-type TypescriptEslintClassLiteralPropertyStyle = []|[("fields" | "getters")]
-// ----- @typescript-eslint/class-methods-use-this -----
-type TypescriptEslintClassMethodsUseThis = []|[{
-  
-  enforceForClassFields?: boolean
-  
-  exceptMethods?: string[]
-  
-  ignoreClassesThatImplementAnInterface?: (boolean | "public-fields")
-  
-  ignoreOverrideMethods?: boolean
-}]
-// ----- @typescript-eslint/consistent-generic-constructors -----
-type TypescriptEslintConsistentGenericConstructors = []|[("type-annotation" | "constructor")]
-// ----- @typescript-eslint/consistent-indexed-object-style -----
-type TypescriptEslintConsistentIndexedObjectStyle = []|[("record" | "index-signature")]
-// ----- @typescript-eslint/consistent-return -----
-type TypescriptEslintConsistentReturn = []|[{
-  treatUndefinedAsUnspecified?: boolean
-}]
-// ----- @typescript-eslint/consistent-type-assertions -----
-type TypescriptEslintConsistentTypeAssertions = []|[({
-  
-  assertionStyle: "never"
-} | {
-  
-  arrayLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
-  
-  assertionStyle?: ("as" | "angle-bracket")
-  
-  objectLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
-})]
-// ----- @typescript-eslint/consistent-type-definitions -----
-type TypescriptEslintConsistentTypeDefinitions = []|[("interface" | "type")]
-// ----- @typescript-eslint/consistent-type-exports -----
-type TypescriptEslintConsistentTypeExports = []|[{
-  
-  fixMixedExportsWithInlineTypeSpecifier?: boolean
-}]
-// ----- @typescript-eslint/consistent-type-imports -----
-type TypescriptEslintConsistentTypeImports = []|[{
-  
-  disallowTypeAnnotations?: boolean
-  
-  fixStyle?: ("separate-type-imports" | "inline-type-imports")
-  
-  prefer?: ("type-imports" | "no-type-imports")
-}]
-// ----- @typescript-eslint/dot-notation -----
-type TypescriptEslintDotNotation = []|[{
-  
-  allowIndexSignaturePropertyAccess?: boolean
-  
-  allowKeywords?: boolean
-  
-  allowPattern?: string
-  
-  allowPrivateClassPropertyAccess?: boolean
-  
-  allowProtectedClassPropertyAccess?: boolean
-}]
-// ----- @typescript-eslint/explicit-function-return-type -----
-type TypescriptEslintExplicitFunctionReturnType = []|[{
-  
-  allowConciseArrowFunctionExpressionsStartingWithVoid?: boolean
-  
-  allowDirectConstAssertionInArrowFunctions?: boolean
-  
-  allowedNames?: string[]
-  
-  allowExpressions?: boolean
-  
-  allowFunctionsWithoutTypeParameters?: boolean
-  
-  allowHigherOrderFunctions?: boolean
-  
-  allowIIFEs?: boolean
-  
-  allowTypedFunctionExpressions?: boolean
-}]
-// ----- @typescript-eslint/explicit-member-accessibility -----
-type TypescriptEslintExplicitMemberAccessibility = []|[{
-  
-  accessibility?: ("explicit" | "no-public" | "off")
-  
-  ignoredMethodNames?: string[]
-  
-  overrides?: {
-    
-    accessors?: ("explicit" | "no-public" | "off")
-    
-    constructors?: ("explicit" | "no-public" | "off")
-    
-    methods?: ("explicit" | "no-public" | "off")
-    
-    parameterProperties?: ("explicit" | "no-public" | "off")
-    
-    properties?: ("explicit" | "no-public" | "off")
-  }
-}]
-// ----- @typescript-eslint/explicit-module-boundary-types -----
-type TypescriptEslintExplicitModuleBoundaryTypes = []|[{
-  
-  allowArgumentsExplicitlyTypedAsAny?: boolean
-  
-  allowDirectConstAssertionInArrowFunctions?: boolean
-  
-  allowedNames?: string[]
-  
-  allowHigherOrderFunctions?: boolean
-  
-  allowOverloadFunctions?: boolean
-  
-  allowTypedFunctionExpressions?: boolean
-}]
-// ----- @typescript-eslint/init-declarations -----
-type TypescriptEslintInitDeclarations = ([]|["always"] | []|["never"]|["never", {
-  ignoreForLoopInit?: boolean
-}])
-// ----- @typescript-eslint/max-params -----
-type TypescriptEslintMaxParams = []|[{
-  
-  countVoidThis?: boolean
-  
-  max?: number
-  
-  maximum?: number
-}]
-// ----- @typescript-eslint/member-ordering -----
-type TypescriptEslintMemberOrdering = []|[{
-  
-  classes?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
-    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
-    optionalityOrder?: ("optional-first" | "required-first")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
-  })
-  
-  classExpressions?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
-    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
-    optionalityOrder?: ("optional-first" | "required-first")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
-  })
-  
-  default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
-    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
-    optionalityOrder?: ("optional-first" | "required-first")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
-  })
-  
-  interfaces?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
-    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
-    optionalityOrder?: ("optional-first" | "required-first")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
-  })
-  
-  typeLiterals?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
-    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
-    optionalityOrder?: ("optional-first" | "required-first")
-    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
-  })
-}]
-// ----- @typescript-eslint/method-signature-style -----
-type TypescriptEslintMethodSignatureStyle = []|[("property" | "method")]
-// ----- @typescript-eslint/naming-convention -----
-type _TypescriptEslintNamingConventionFormatOptionsConfig = (_TypescriptEslintNamingConventionPredefinedFormats[] | null)
-type _TypescriptEslintNamingConventionPredefinedFormats = ("camelCase" | "strictCamelCase" | "PascalCase" | "StrictPascalCase" | "snake_case" | "UPPER_CASE")
-type _TypescriptEslintNamingConventionUnderscoreOptions = ("forbid" | "allow" | "require" | "requireDouble" | "allowDouble" | "allowSingleOrDouble")
-type _TypescriptEslintNamingConvention_PrefixSuffixConfig = string[]
-type _TypescriptEslintNamingConventionTypeModifiers = ("boolean" | "string" | "number" | "function" | "array")
-type TypescriptEslintNamingConvention = ({
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  modifiers?: ("const" | "readonly" | "static" | "public" | "protected" | "private" | "#private" | "abstract" | "destructured" | "global" | "exported" | "unused" | "requiresQuotes" | "override" | "async" | "default" | "namespace")[]
-  selector: ("default" | "variableLike" | "memberLike" | "typeLike" | "method" | "property" | "accessor" | "variable" | "function" | "parameter" | "parameterProperty" | "classicAccessor" | "enumMember" | "classMethod" | "objectLiteralMethod" | "typeMethod" | "classProperty" | "objectLiteralProperty" | "typeProperty" | "autoAccessor" | "class" | "interface" | "typeAlias" | "enum" | "typeParameter" | "import")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "default"
-  modifiers?: ("const" | "readonly" | "static" | "public" | "protected" | "private" | "#private" | "abstract" | "destructured" | "global" | "exported" | "unused" | "requiresQuotes" | "override" | "async" | "default" | "namespace")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "variableLike"
-  modifiers?: ("unused" | "async")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "variable"
-  modifiers?: ("const" | "destructured" | "exported" | "global" | "unused" | "async")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "function"
-  modifiers?: ("exported" | "global" | "unused" | "async")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "parameter"
-  modifiers?: ("destructured" | "unused")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "memberLike"
-  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override" | "async")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "classProperty"
-  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "objectLiteralProperty"
-  modifiers?: ("public" | "requiresQuotes")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "typeProperty"
-  modifiers?: ("public" | "readonly" | "requiresQuotes")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "parameterProperty"
-  modifiers?: ("private" | "protected" | "public" | "readonly")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "property"
-  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override" | "async")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "classMethod"
-  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "requiresQuotes" | "static" | "override" | "async")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "objectLiteralMethod"
-  modifiers?: ("public" | "requiresQuotes" | "async")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "typeMethod"
-  modifiers?: ("public" | "requiresQuotes")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "method"
-  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "requiresQuotes" | "static" | "override" | "async")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "classicAccessor"
-  modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "autoAccessor"
-  modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "accessor"
-  modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
-  types?: _TypescriptEslintNamingConventionTypeModifiers[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "enumMember"
-  modifiers?: ("requiresQuotes")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "typeLike"
-  modifiers?: ("abstract" | "exported" | "unused")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "class"
-  modifiers?: ("abstract" | "exported" | "unused")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "interface"
-  modifiers?: ("exported" | "unused")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "typeAlias"
-  modifiers?: ("exported" | "unused")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "enum"
-  modifiers?: ("exported" | "unused")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "typeParameter"
-  modifiers?: ("unused")[]
-} | {
-  custom?: _TypescriptEslintNamingConvention_MatchRegexConfig
-  failureMessage?: string
-  format: _TypescriptEslintNamingConventionFormatOptionsConfig
-  leadingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  prefix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  suffix?: _TypescriptEslintNamingConvention_PrefixSuffixConfig
-  trailingUnderscore?: _TypescriptEslintNamingConventionUnderscoreOptions
-  filter?: (string | _TypescriptEslintNamingConvention_MatchRegexConfig)
-  selector: "import"
-  modifiers?: ("default" | "namespace")[]
-})[]
-interface _TypescriptEslintNamingConvention_MatchRegexConfig {
-  match: boolean
-  regex: string
-}
-// ----- @typescript-eslint/no-base-to-string -----
-type TypescriptEslintNoBaseToString = []|[{
-  
-  checkUnknown?: boolean
-  
-  ignoredTypeNames?: string[]
-}]
-// ----- @typescript-eslint/no-confusing-void-expression -----
-type TypescriptEslintNoConfusingVoidExpression = []|[{
-  
-  ignoreArrowShorthand?: boolean
-  
-  ignoreVoidOperator?: boolean
-  
-  ignoreVoidReturningFunctions?: boolean
-}]
-// ----- @typescript-eslint/no-deprecated -----
-type TypescriptEslintNoDeprecated = []|[{
-  
-  allow?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-}]
-// ----- @typescript-eslint/no-duplicate-type-constituents -----
-type TypescriptEslintNoDuplicateTypeConstituents = []|[{
-  
-  ignoreIntersections?: boolean
-  
-  ignoreUnions?: boolean
-}]
-// ----- @typescript-eslint/no-empty-function -----
-type TypescriptEslintNoEmptyFunction = []|[{
-  
-  allow?: ("functions" | "arrowFunctions" | "generatorFunctions" | "methods" | "generatorMethods" | "getters" | "setters" | "constructors" | "private-constructors" | "protected-constructors" | "asyncFunctions" | "asyncMethods" | "decoratedFunctions" | "overrideMethods")[]
-}]
-// ----- @typescript-eslint/no-empty-interface -----
-type TypescriptEslintNoEmptyInterface = []|[{
-  
-  allowSingleExtends?: boolean
-}]
-// ----- @typescript-eslint/no-empty-object-type -----
-type TypescriptEslintNoEmptyObjectType = []|[{
-  
-  allowInterfaces?: ("always" | "never" | "with-single-extends")
-  
-  allowObjectTypes?: ("always" | "never")
-  
-  allowWithName?: string
-}]
-// ----- @typescript-eslint/no-explicit-any -----
-type TypescriptEslintNoExplicitAny = []|[{
-  
-  fixToUnknown?: boolean
-  
-  ignoreRestArgs?: boolean
-}]
-// ----- @typescript-eslint/no-extraneous-class -----
-type TypescriptEslintNoExtraneousClass = []|[{
-  
-  allowConstructorOnly?: boolean
-  
-  allowEmpty?: boolean
-  
-  allowStaticOnly?: boolean
-  
-  allowWithDecorator?: boolean
-}]
-// ----- @typescript-eslint/no-floating-promises -----
-type TypescriptEslintNoFloatingPromises = []|[{
-  
-  allowForKnownSafeCalls?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-  
-  allowForKnownSafePromises?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-  
-  checkThenables?: boolean
-  
-  ignoreIIFE?: boolean
-  
-  ignoreVoid?: boolean
-}]
-// ----- @typescript-eslint/no-inferrable-types -----
-type TypescriptEslintNoInferrableTypes = []|[{
-  
-  ignoreParameters?: boolean
-  
-  ignoreProperties?: boolean
-}]
-// ----- @typescript-eslint/no-invalid-this -----
-type TypescriptEslintNoInvalidThis = []|[{
-  capIsConstructor?: boolean
-}]
-// ----- @typescript-eslint/no-invalid-void-type -----
-type TypescriptEslintNoInvalidVoidType = []|[{
-  
-  allowAsThisParameter?: boolean
-  
-  allowInGenericTypeArguments?: (boolean | [string, ...(string)[]])
-}]
-// ----- @typescript-eslint/no-magic-numbers -----
-type TypescriptEslintNoMagicNumbers = []|[{
-  detectObjects?: boolean
-  enforceConst?: boolean
-  ignore?: (number | string)[]
-  ignoreArrayIndexes?: boolean
-  ignoreDefaultValues?: boolean
-  ignoreClassFieldInitialValues?: boolean
-  
-  ignoreEnums?: boolean
-  
-  ignoreNumericLiteralTypes?: boolean
-  
-  ignoreReadonlyClassProperties?: boolean
-  
-  ignoreTypeIndexes?: boolean
-}]
-// ----- @typescript-eslint/no-meaningless-void-operator -----
-type TypescriptEslintNoMeaninglessVoidOperator = []|[{
-  
-  checkNever?: boolean
-}]
-// ----- @typescript-eslint/no-misused-promises -----
-type TypescriptEslintNoMisusedPromises = []|[{
-  
-  checksConditionals?: boolean
-  
-  checksSpreads?: boolean
-  
-  checksVoidReturn?: (boolean | {
-    
-    arguments?: boolean
-    
-    attributes?: boolean
-    
-    inheritedMethods?: boolean
-    
-    properties?: boolean
-    
-    returns?: boolean
-    
-    variables?: boolean
-  })
-}]
-// ----- @typescript-eslint/no-misused-spread -----
-type TypescriptEslintNoMisusedSpread = []|[{
-  
-  allow?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-}]
-// ----- @typescript-eslint/no-namespace -----
-type TypescriptEslintNoNamespace = []|[{
-  
-  allowDeclarations?: boolean
-  
-  allowDefinitionFiles?: boolean
-}]
-// ----- @typescript-eslint/no-redeclare -----
-type TypescriptEslintNoRedeclare = []|[{
-  
-  builtinGlobals?: boolean
-  
-  ignoreDeclarationMerge?: boolean
-}]
-// ----- @typescript-eslint/no-require-imports -----
-type TypescriptEslintNoRequireImports = []|[{
-  
-  allow?: string[]
-  
-  allowAsImport?: boolean
-}]
-// ----- @typescript-eslint/no-restricted-imports -----
-type TypescriptEslintNoRestrictedImports = ((string | {
-  name: string
-  message?: string
-  importNames?: string[]
-  allowImportNames?: string[]
-  
-  allowTypeImports?: boolean
-})[] | []|[{
-  paths?: (string | {
-    name: string
-    message?: string
-    importNames?: string[]
-    allowImportNames?: string[]
-    
-    allowTypeImports?: boolean
-  })[]
-  patterns?: (string[] | {
-    
-    importNames?: [string, ...(string)[]]
-    
-    allowImportNames?: [string, ...(string)[]]
-    
-    group?: [string, ...(string)[]]
-    regex?: string
-    importNamePattern?: string
-    allowImportNamePattern?: string
-    message?: string
-    caseSensitive?: boolean
-    
-    allowTypeImports?: boolean
-  }[])
-}])
-// ----- @typescript-eslint/no-restricted-types -----
-type TypescriptEslintNoRestrictedTypes = []|[{
-  
-  types?: {
-    [k: string]: (true | string | {
-      
-      fixWith?: string
-      
-      message?: string
-      
-      suggest?: string[]
-    }) | undefined
-  }
-}]
-// ----- @typescript-eslint/no-shadow -----
-type TypescriptEslintNoShadow = []|[{
-  
-  allow?: string[]
-  
-  builtinGlobals?: boolean
-  
-  hoist?: ("all" | "functions" | "functions-and-types" | "never" | "types")
-  
-  ignoreFunctionTypeParameterNameValueShadow?: boolean
-  
-  ignoreOnInitialization?: boolean
-  
-  ignoreTypeValueShadow?: boolean
-}]
-// ----- @typescript-eslint/no-this-alias -----
-type TypescriptEslintNoThisAlias = []|[{
-  
-  allowDestructuring?: boolean
-  
-  allowedNames?: string[]
-}]
-// ----- @typescript-eslint/no-type-alias -----
-type TypescriptEslintNoTypeAlias = []|[{
-  
-  allowAliases?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
-  allowCallbacks?: ("always" | "never")
-  
-  allowConditionalTypes?: ("always" | "never")
-  
-  allowConstructors?: ("always" | "never")
-  
-  allowGenerics?: ("always" | "never")
-  
-  allowLiterals?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
-  allowMappedTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
-  allowTupleTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-}]
-// ----- @typescript-eslint/no-unnecessary-boolean-literal-compare -----
-type TypescriptEslintNoUnnecessaryBooleanLiteralCompare = []|[{
-  
-  allowComparingNullableBooleansToFalse?: boolean
-  
-  allowComparingNullableBooleansToTrue?: boolean
-  
-  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-}]
-// ----- @typescript-eslint/no-unnecessary-condition -----
-type TypescriptEslintNoUnnecessaryCondition = []|[{
-  
-  allowConstantLoopConditions?: (boolean | ("always" | "never" | "only-allowed-literals"))
-  
-  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-  
-  checkTypePredicates?: boolean
-}]
-// ----- @typescript-eslint/no-unnecessary-type-assertion -----
-type TypescriptEslintNoUnnecessaryTypeAssertion = []|[{
-  
-  checkLiteralConstAssertions?: boolean
-  
-  typesToIgnore?: string[]
-}]
-// ----- @typescript-eslint/no-unsafe-member-access -----
-type TypescriptEslintNoUnsafeMemberAccess = []|[{
-  
-  allowOptionalChaining?: boolean
-}]
-// ----- @typescript-eslint/no-unused-expressions -----
-type TypescriptEslintNoUnusedExpressions = []|[{
-  allowShortCircuit?: boolean
-  allowTernary?: boolean
-  allowTaggedTemplates?: boolean
-  enforceForJSX?: boolean
-  ignoreDirectives?: boolean
-}]
-// ----- @typescript-eslint/no-unused-vars -----
-type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
-  
-  args?: ("all" | "after-used" | "none")
-  
-  argsIgnorePattern?: string
-  
-  caughtErrors?: ("all" | "none")
-  
-  caughtErrorsIgnorePattern?: string
-  
-  destructuredArrayIgnorePattern?: string
-  
-  enableAutofixRemoval?: {
-    
-    imports?: boolean
-  }
-  
-  ignoreClassWithStaticInitBlock?: boolean
-  
-  ignoreRestSiblings?: boolean
-  
-  ignoreUsingDeclarations?: boolean
-  
-  reportUsedIgnorePattern?: boolean
-  
-  vars?: ("all" | "local")
-  
-  varsIgnorePattern?: string
-})]
-// ----- @typescript-eslint/no-use-before-define -----
-type TypescriptEslintNoUseBeforeDefine = []|[("nofunc" | {
-  
-  allowNamedExports?: boolean
-  
-  classes?: boolean
-  
-  enums?: boolean
-  
-  functions?: boolean
-  
-  ignoreTypeReferences?: boolean
-  
-  typedefs?: boolean
-  
-  variables?: boolean
-})]
-// ----- @typescript-eslint/no-useless-default-assignment -----
-type TypescriptEslintNoUselessDefaultAssignment = []|[{
-  
-  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-}]
-// ----- @typescript-eslint/no-var-requires -----
-type TypescriptEslintNoVarRequires = []|[{
-  
-  allow?: string[]
-}]
-// ----- @typescript-eslint/only-throw-error -----
-type TypescriptEslintOnlyThrowError = []|[{
-  
-  allow?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-  
-  allowRethrowing?: boolean
-  
-  allowThrowingAny?: boolean
-  
-  allowThrowingUnknown?: boolean
-}]
-// ----- @typescript-eslint/parameter-properties -----
-type TypescriptEslintParameterProperties = []|[{
-  
-  allow?: ("readonly" | "private" | "protected" | "public" | "private readonly" | "protected readonly" | "public readonly")[]
-  
-  prefer?: ("class-property" | "parameter-property")
-}]
-// ----- @typescript-eslint/prefer-destructuring -----
-type TypescriptEslintPreferDestructuring = []|[({
-  AssignmentExpression?: {
-    array?: boolean
-    object?: boolean
-  }
-  VariableDeclarator?: {
-    array?: boolean
-    object?: boolean
-  }
-} | {
-  array?: boolean
-  object?: boolean
-})]|[({
-  AssignmentExpression?: {
-    array?: boolean
-    object?: boolean
-  }
-  VariableDeclarator?: {
-    array?: boolean
-    object?: boolean
-  }
-} | {
-  array?: boolean
-  object?: boolean
-}), {
-  
-  enforceForDeclarationWithTypeAnnotation?: boolean
-  
-  enforceForRenamedProperties?: boolean
-}]
-// ----- @typescript-eslint/prefer-literal-enum-member -----
-type TypescriptEslintPreferLiteralEnumMember = []|[{
-  
-  allowBitwiseExpressions?: boolean
-}]
-// ----- @typescript-eslint/prefer-nullish-coalescing -----
-type TypescriptEslintPreferNullishCoalescing = []|[{
-  
-  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-  
-  ignoreBooleanCoercion?: boolean
-  
-  ignoreConditionalTests?: boolean
-  
-  ignoreIfStatements?: boolean
-  
-  ignoreMixedLogicalExpressions?: boolean
-  
-  ignorePrimitives?: ({
-    
-    bigint?: boolean
-    
-    boolean?: boolean
-    
-    number?: boolean
-    
-    string?: boolean
-  } | true)
-  
-  ignoreTernaryTests?: boolean
-}]
-// ----- @typescript-eslint/prefer-optional-chain -----
-type TypescriptEslintPreferOptionalChain = []|[{
-  
-  allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing?: boolean
-  
-  checkAny?: boolean
-  
-  checkBigInt?: boolean
-  
-  checkBoolean?: boolean
-  
-  checkNumber?: boolean
-  
-  checkString?: boolean
-  
-  checkUnknown?: boolean
-  
-  requireNullish?: boolean
-}]
-// ----- @typescript-eslint/prefer-promise-reject-errors -----
-type TypescriptEslintPreferPromiseRejectErrors = []|[{
-  
-  allow?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-  
-  allowEmptyReject?: boolean
-  
-  allowThrowingAny?: boolean
-  
-  allowThrowingUnknown?: boolean
-}]
-// ----- @typescript-eslint/prefer-readonly -----
-type TypescriptEslintPreferReadonly = []|[{
-  
-  onlyInlineLambdas?: boolean
-}]
-// ----- @typescript-eslint/prefer-readonly-parameter-types -----
-type TypescriptEslintPreferReadonlyParameterTypes = []|[{
-  
-  allow?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-  
-  checkParameterProperties?: boolean
-  
-  ignoreInferredTypes?: boolean
-  
-  treatMethodsAsReadonly?: boolean
-}]
-// ----- @typescript-eslint/prefer-string-starts-ends-with -----
-type TypescriptEslintPreferStringStartsEndsWith = []|[{
-  
-  allowSingleElementEquality?: ("always" | "never")
-}]
-// ----- @typescript-eslint/promise-function-async -----
-type TypescriptEslintPromiseFunctionAsync = []|[{
-  
-  allowAny?: boolean
-  
-  allowedPromiseNames?: string[]
-  
-  checkArrowFunctions?: boolean
-  
-  checkFunctionDeclarations?: boolean
-  
-  checkFunctionExpressions?: boolean
-  
-  checkMethodDeclarations?: boolean
-}]
-// ----- @typescript-eslint/require-array-sort-compare -----
-type TypescriptEslintRequireArraySortCompare = []|[{
-  
-  ignoreStringArrays?: boolean
-}]
-// ----- @typescript-eslint/restrict-plus-operands -----
-type TypescriptEslintRestrictPlusOperands = []|[{
-  
-  allowAny?: boolean
-  
-  allowBoolean?: boolean
-  
-  allowNullish?: boolean
-  
-  allowNumberAndString?: boolean
-  
-  allowRegExp?: boolean
-  
-  skipCompoundAssignments?: boolean
-}]
-// ----- @typescript-eslint/restrict-template-expressions -----
-type TypescriptEslintRestrictTemplateExpressions = []|[{
-  
-  allowAny?: boolean
-  
-  allowArray?: boolean
-  
-  allowBoolean?: boolean
-  
-  allowNullish?: boolean
-  
-  allowNumber?: boolean
-  
-  allowRegExp?: boolean
-  
-  allowNever?: boolean
-  
-  allow?: (string | {
-    from: "file"
-    name: (string | [string, ...(string)[]])
-    path?: string
-  } | {
-    from: "lib"
-    name: (string | [string, ...(string)[]])
-  } | {
-    from: "package"
-    name: (string | [string, ...(string)[]])
-    package: string
-  })[]
-}]
-// ----- @typescript-eslint/return-await -----
-type TypescriptEslintReturnAwait = []|[(("always" | "error-handling-correctness-only" | "in-try-catch" | "never") & string)]
-// ----- @typescript-eslint/sort-type-constituents -----
-type TypescriptEslintSortTypeConstituents = []|[{
-  
-  caseSensitive?: boolean
-  
-  checkIntersections?: boolean
-  
-  checkUnions?: boolean
-  
-  groupOrder?: ("conditional" | "function" | "import" | "intersection" | "keyword" | "nullish" | "literal" | "named" | "object" | "operator" | "tuple" | "union")[]
-}]
-// ----- @typescript-eslint/strict-boolean-expressions -----
-type TypescriptEslintStrictBooleanExpressions = []|[{
-  
-  allowAny?: boolean
-  
-  allowNullableBoolean?: boolean
-  
-  allowNullableEnum?: boolean
-  
-  allowNullableNumber?: boolean
-  
-  allowNullableObject?: boolean
-  
-  allowNullableString?: boolean
-  
-  allowNumber?: boolean
-  
-  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-  
-  allowString?: boolean
-}]
-// ----- @typescript-eslint/strict-void-return -----
-type TypescriptEslintStrictVoidReturn = []|[{
-  
-  allowReturnAny?: boolean
-}]
-// ----- @typescript-eslint/switch-exhaustiveness-check -----
-type TypescriptEslintSwitchExhaustivenessCheck = []|[{
-  
-  allowDefaultCaseForExhaustiveSwitch?: boolean
-  
-  considerDefaultExhaustiveForUnions?: boolean
-  
-  defaultCaseCommentPattern?: string
-  
-  requireDefaultForNonUnion?: boolean
-}]
-// ----- @typescript-eslint/triple-slash-reference -----
-type TypescriptEslintTripleSlashReference = []|[{
-  
-  lib?: ("always" | "never")
-  
-  path?: ("always" | "never")
-  
-  types?: ("always" | "never" | "prefer-import")
-}]
-// ----- @typescript-eslint/typedef -----
-type TypescriptEslintTypedef = []|[{
-  
-  arrayDestructuring?: boolean
-  
-  arrowParameter?: boolean
-  
-  memberVariableDeclaration?: boolean
-  
-  objectDestructuring?: boolean
-  
-  parameter?: boolean
-  
-  propertyDeclaration?: boolean
-  
-  variableDeclaration?: boolean
-  
-  variableDeclarationIgnoreFunction?: boolean
-}]
-// ----- @typescript-eslint/unbound-method -----
-type TypescriptEslintUnboundMethod = []|[{
-  
-  ignoreStatic?: boolean
-}]
-// ----- @typescript-eslint/unified-signatures -----
-type TypescriptEslintUnifiedSignatures = []|[{
-  
-  ignoreDifferentlyNamedParameters?: boolean
-  
-  ignoreOverloadsWithDifferentJSDoc?: boolean
-}]
 // ----- accessor-pairs -----
 type AccessorPairs = []|[{
   getWithoutSet?: boolean
   setWithoutGet?: boolean
   enforceForClassMembers?: boolean
   enforceForTSTypes?: boolean
+}]
+// ----- angular-template/attributes-order -----
+type AngularTemplateAttributesOrder = []|[{
+  alphabetical?: boolean
+  
+  order?: [("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"), ...(("STRUCTURAL_DIRECTIVE" | "TEMPLATE_REFERENCE" | "ATTRIBUTE_BINDING" | "INPUT_BINDING" | "TWO_WAY_BINDING" | "OUTPUT_BINDING"))[]]
+}]
+// ----- angular-template/button-has-type -----
+type AngularTemplateButtonHasType = []|[{
+  ignoreWithDirectives?: string[]
+}]
+// ----- angular-template/click-events-have-key-events -----
+type AngularTemplateClickEventsHaveKeyEvents = []|[{
+  ignoreWithDirectives?: string[]
+}]
+// ----- angular-template/conditional-complexity -----
+type AngularTemplateConditionalComplexity = []|[{
+  maxComplexity?: number
+}]
+// ----- angular-template/cyclomatic-complexity -----
+type AngularTemplateCyclomaticComplexity = []|[{
+  maxComplexity?: number
+}]
+// ----- angular-template/elements-content -----
+type AngularTemplateElementsContent = []|[{
+  allowList?: string[]
+}]
+// ----- angular-template/eqeqeq -----
+type AngularTemplateEqeqeq = []|[{
+  allowNullOrUndefined?: boolean
+}]
+// ----- angular-template/i18n -----
+type AngularTemplateI18N = []|[{
+  allowMarkupInContent?: boolean
+  boundTextAllowedPattern?: string
+  checkAttributes?: boolean
+  checkDuplicateId?: boolean
+  checkId?: boolean
+  checkText?: boolean
+  ignoreAttributes?: string[]
+  ignoreTags?: string[]
+  requireDescription?: boolean
+  requireMeaning?: boolean
+}]
+// ----- angular-template/interactive-supports-focus -----
+type AngularTemplateInteractiveSupportsFocus = []|[{
+  allowList?: string[]
+}]
+// ----- angular-template/label-has-associated-control -----
+type AngularTemplateLabelHasAssociatedControl = []|[{
+  checkIds?: boolean
+  controlComponents?: string[]
+  labelComponents?: {
+    inputs?: string[]
+    selector: string
+  }[]
+}]
+// ----- angular-template/no-call-expression -----
+type AngularTemplateNoCallExpression = []|[{
+  allowList?: string[]
+  allowPrefix?: string
+  allowSuffix?: string
+}]
+// ----- angular-template/no-duplicate-attributes -----
+type AngularTemplateNoDuplicateAttributes = []|[{
+  
+  allowTwoWayDataBinding?: boolean
+  
+  allowStylePrecedenceDuplicates?: boolean
+  
+  ignore?: string[]
+}]
+// ----- angular-template/no-inline-styles -----
+type AngularTemplateNoInlineStyles = []|[{
+  allowNgStyle?: boolean
+  allowBindToStyle?: boolean
+}]
+// ----- angular-template/no-interpolation-in-attributes -----
+type AngularTemplateNoInterpolationInAttributes = []|[{
+  
+  allowSubstringInterpolation?: boolean
+}]
+// ----- angular-template/prefer-built-in-pipes -----
+type AngularTemplatePreferBuiltInPipes = []|[{
+  
+  disallowList?: string[]
+  
+  allowInOutputHandlers?: boolean
+}]
+// ----- angular-template/prefer-contextual-for-variables -----
+type AngularTemplatePreferContextualForVariables = []|[{
+  allowedAliases?: {
+    
+    $count?: string[]
+    
+    $index?: string[]
+    
+    $first?: string[]
+    
+    $last?: string[]
+    
+    $even?: string[]
+    
+    $odd?: string[]
+  }
+}]
+// ----- angular-template/prefer-static-string-properties -----
+type AngularTemplatePreferStaticStringProperties = []|[{
+  
+  ignore?: string[]
+}]
+// ----- angular-template/use-track-by-function -----
+type AngularTemplateUseTrackByFunction = []|[{
+  alias?: string[]
+}]
+// ----- angular/component-class-suffix -----
+type AngularComponentClassSuffix = []|[{
+  suffixes?: string[]
+}]
+// ----- angular/component-max-inline-declarations -----
+type AngularComponentMaxInlineDeclarations = []|[{
+  template?: number
+  styles?: number
+  animations?: number
+}]
+// ----- angular/component-selector -----
+type AngularComponentSelector = []|[({
+  type: (string | ("element" | "attribute")[])
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+} | [{
+  type: ("element" | "attribute")
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+}]|[{
+  type: ("element" | "attribute")
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+}, {
+  type: ("element" | "attribute")
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+}])]
+// ----- angular/consistent-component-styles -----
+type AngularConsistentComponentStyles = []|[("array" | "string")]
+// ----- angular/directive-class-suffix -----
+type AngularDirectiveClassSuffix = []|[{
+  suffixes?: string[]
+}]
+// ----- angular/directive-selector -----
+type AngularDirectiveSelector = []|[({
+  type: (string | ("element" | "attribute")[])
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+} | [{
+  type: ("element" | "attribute")
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+}]|[{
+  type: ("element" | "attribute")
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+}, {
+  type: ("element" | "attribute")
+  prefix?: (string | unknown[])
+  style: ("camelCase" | "kebab-case")
+}])]
+// ----- angular/no-input-prefix -----
+type AngularNoInputPrefix = []|[{
+  prefixes?: string[]
+}]
+// ----- angular/no-input-rename -----
+type AngularNoInputRename = []|[{
+  
+  allowedNames?: string[]
+}]
+// ----- angular/pipe-prefix -----
+type AngularPipePrefix = []|[{
+  prefixes?: string[]
+}]
+// ----- angular/prefer-signals -----
+type AngularPreferSignals = []|[{
+  preferReadonlySignalProperties?: boolean
+  preferInputSignals?: boolean
+  preferQuerySignals?: boolean
+  useTypeChecking?: boolean
+  additionalSignalCreationFunctions?: string[]
+}]
+// ----- angular/require-localize-metadata -----
+type AngularRequireLocalizeMetadata = []|[{
+  requireDescription?: boolean
+  requireMeaning?: boolean
+  requireCustomId?: (boolean | string)
+}]
+// ----- angular/sort-keys-in-type-decorator -----
+type AngularSortKeysInTypeDecorator = []|[{
+  Component?: string[]
+  Directive?: string[]
+  NgModule?: string[]
+  Pipe?: string[]
+}]
+// ----- angular/use-injectable-provided-in -----
+type AngularUseInjectableProvidedIn = []|[{
+  ignoreClassNamePattern?: string
 }]
 // ----- array-bracket-newline -----
 type ArrayBracketNewline = []|[(("always" | "never" | "consistent") | {
@@ -12759,221 +11241,6 @@ type JsoncSpaceUnaryOps = []|[{
   overrides?: {
     [k: string]: boolean | undefined
   }
-}]
-// ----- jsx-a11y/accessible-emoji -----
-type JsxA11YAccessibleEmoji = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/alt-text -----
-type JsxA11YAltText = []|[{
-  elements?: string[]
-  img?: string[]
-  object?: string[]
-  area?: string[]
-  "input[type=\"image\"]"?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/anchor-ambiguous-text -----
-type JsxA11YAnchorAmbiguousText = []|[{
-  words?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/anchor-has-content -----
-type JsxA11YAnchorHasContent = []|[{
-  components?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/anchor-is-valid -----
-type JsxA11YAnchorIsValid = []|[{
-  components?: string[]
-  specialLink?: string[]
-  
-  aspects?: [("noHref" | "invalidHref" | "preferButton"), ...(("noHref" | "invalidHref" | "preferButton"))[]]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/aria-activedescendant-has-tabindex -----
-type JsxA11YAriaActivedescendantHasTabindex = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/aria-props -----
-type JsxA11YAriaProps = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/aria-proptypes -----
-type JsxA11YAriaProptypes = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/aria-role -----
-type JsxA11YAriaRole = []|[{
-  allowedInvalidRoles?: string[]
-  ignoreNonDOM?: boolean
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/aria-unsupported-elements -----
-type JsxA11YAriaUnsupportedElements = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/autocomplete-valid -----
-type JsxA11YAutocompleteValid = []|[{
-  inputComponents?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/click-events-have-key-events -----
-type JsxA11YClickEventsHaveKeyEvents = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/control-has-associated-label -----
-type JsxA11YControlHasAssociatedLabel = []|[{
-  labelAttributes?: string[]
-  controlComponents?: string[]
-  ignoreElements?: string[]
-  ignoreRoles?: string[]
-  
-  depth?: number
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/heading-has-content -----
-type JsxA11YHeadingHasContent = []|[{
-  components?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/html-has-lang -----
-type JsxA11YHtmlHasLang = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/iframe-has-title -----
-type JsxA11YIframeHasTitle = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/img-redundant-alt -----
-type JsxA11YImgRedundantAlt = []|[{
-  components?: string[]
-  words?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/interactive-supports-focus -----
-type JsxA11YInteractiveSupportsFocus = []|[{
-  
-  tabbable?: ("button" | "checkbox" | "columnheader" | "combobox" | "grid" | "gridcell" | "link" | "listbox" | "menu" | "menubar" | "menuitem" | "menuitemcheckbox" | "menuitemradio" | "option" | "progressbar" | "radio" | "radiogroup" | "row" | "rowheader" | "scrollbar" | "searchbox" | "slider" | "spinbutton" | "switch" | "tab" | "tablist" | "textbox" | "tree" | "treegrid" | "treeitem" | "doc-backlink" | "doc-biblioref" | "doc-glossref" | "doc-noteref")[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/label-has-associated-control -----
-type JsxA11YLabelHasAssociatedControl = []|[{
-  labelComponents?: string[]
-  labelAttributes?: string[]
-  controlComponents?: string[]
-  
-  assert?: ("htmlFor" | "nesting" | "both" | "either")
-  
-  depth?: number
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/label-has-for -----
-type JsxA11YLabelHasFor = []|[{
-  components?: string[]
-  required?: (("nesting" | "id") | {
-    
-    some: ("nesting" | "id")[]
-    [k: string]: unknown | undefined
-  } | {
-    
-    every: ("nesting" | "id")[]
-    [k: string]: unknown | undefined
-  })
-  allowChildren?: boolean
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/lang -----
-type JsxA11YLang = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/media-has-caption -----
-type JsxA11YMediaHasCaption = []|[{
-  audio?: string[]
-  video?: string[]
-  track?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/mouse-events-have-key-events -----
-type JsxA11YMouseEventsHaveKeyEvents = []|[{
-  
-  hoverInHandlers?: string[]
-  
-  hoverOutHandlers?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-access-key -----
-type JsxA11YNoAccessKey = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-aria-hidden-on-focusable -----
-type JsxA11YNoAriaHiddenOnFocusable = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-autofocus -----
-type JsxA11YNoAutofocus = []|[{
-  ignoreNonDOM?: boolean
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-distracting-elements -----
-type JsxA11YNoDistractingElements = []|[{
-  
-  elements?: ("marquee" | "blink")[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-interactive-element-to-noninteractive-role -----
-type JsxA11YNoInteractiveElementToNoninteractiveRole = []|[{
-  [k: string]: string[] | undefined
-}]
-// ----- jsx-a11y/no-noninteractive-element-interactions -----
-type JsxA11YNoNoninteractiveElementInteractions = []|[{
-  handlers?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-noninteractive-element-to-interactive-role -----
-type JsxA11YNoNoninteractiveElementToInteractiveRole = []|[{
-  [k: string]: string[] | undefined
-}]
-// ----- jsx-a11y/no-noninteractive-tabindex -----
-type JsxA11YNoNoninteractiveTabindex = []|[{
-  
-  roles?: string[]
-  
-  tags?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-onchange -----
-type JsxA11YNoOnchange = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/no-redundant-roles -----
-type JsxA11YNoRedundantRoles = []|[{
-  [k: string]: string[] | undefined
-}]
-// ----- jsx-a11y/no-static-element-interactions -----
-type JsxA11YNoStaticElementInteractions = []|[{
-  handlers?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/prefer-tag-over-role -----
-type JsxA11YPreferTagOverRole = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/role-has-required-aria-props -----
-type JsxA11YRoleHasRequiredAriaProps = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/role-supports-aria-props -----
-type JsxA11YRoleSupportsAriaProps = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/scope -----
-type JsxA11YScope = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- jsx-a11y/tabindex-no-positive -----
-type JsxA11YTabindexNoPositive = []|[{
-  [k: string]: unknown | undefined
 }]
 // ----- jsx-quotes -----
 type JsxQuotes = []|[("prefer-single" | "prefer-double")]
@@ -18456,595 +16723,12 @@ type Quotes = []|[("single" | "double" | "backtick")]|[("single" | "double" | "b
 })]
 // ----- radix -----
 type Radix = []|[("always" | "as-needed")]
-// ----- react-hooks/automatic-effect-dependencies -----
-type ReactHooksAutomaticEffectDependencies = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/capitalized-calls -----
-type ReactHooksCapitalizedCalls = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/component-hook-factories -----
-type ReactHooksComponentHookFactories = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/config -----
-type ReactHooksConfig = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/error-boundaries -----
-type ReactHooksErrorBoundaries = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/exhaustive-deps -----
-type ReactHooksExhaustiveDeps = []|[{
-  additionalHooks?: string
-  enableDangerousAutofixThisMayCauseInfiniteLoops?: boolean
-  experimental_autoDependenciesHooks?: string[]
-  requireExplicitEffectDeps?: boolean
-}]
-// ----- react-hooks/fbt -----
-type ReactHooksFbt = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/fire -----
-type ReactHooksFire = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/gating -----
-type ReactHooksGating = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/globals -----
-type ReactHooksGlobals = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/hooks -----
-type ReactHooksHooks = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/immutability -----
-type ReactHooksImmutability = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/incompatible-library -----
-type ReactHooksIncompatibleLibrary = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/invariant -----
-type ReactHooksInvariant = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/memoized-effect-dependencies -----
-type ReactHooksMemoizedEffectDependencies = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/no-deriving-state-in-effects -----
-type ReactHooksNoDerivingStateInEffects = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/preserve-manual-memoization -----
-type ReactHooksPreserveManualMemoization = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/purity -----
-type ReactHooksPurity = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/refs -----
-type ReactHooksRefs = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/rule-suppression -----
-type ReactHooksRuleSuppression = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/rules-of-hooks -----
-type ReactHooksRulesOfHooks = []|[{
-  additionalHooks?: string
-}]
-// ----- react-hooks/set-state-in-effect -----
-type ReactHooksSetStateInEffect = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/set-state-in-render -----
-type ReactHooksSetStateInRender = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/static-components -----
-type ReactHooksStaticComponents = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/syntax -----
-type ReactHooksSyntax = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/todo -----
-type ReactHooksTodo = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/unsupported-syntax -----
-type ReactHooksUnsupportedSyntax = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/use-memo -----
-type ReactHooksUseMemo = []|[{
-  [k: string]: unknown | undefined
-}]
-// ----- react-hooks/void-use-memo -----
-type ReactHooksVoidUseMemo = []|[{
-  [k: string]: unknown | undefined
-}]
 // ----- react-refresh/only-export-components -----
 type ReactRefreshOnlyExportComponents = []|[{
   extraHOCs?: string[]
   allowExportNames?: string[]
   allowConstantExport?: boolean
   checkJS?: boolean
-}]
-// ----- react/boolean-prop-naming -----
-type ReactBooleanPropNaming = []|[{
-  
-  propTypeNames?: [string, ...(string)[]]
-  rule?: string
-  message?: string
-  validateNested?: boolean
-}]
-// ----- react/button-has-type -----
-type ReactButtonHasType = []|[{
-  button?: boolean
-  submit?: boolean
-  reset?: boolean
-}]
-// ----- react/checked-requires-onchange-or-readonly -----
-type ReactCheckedRequiresOnchangeOrReadonly = []|[{
-  ignoreMissingProperties?: boolean
-  ignoreExclusiveCheckedAttribute?: boolean
-}]
-// ----- react/default-props-match-prop-types -----
-type ReactDefaultPropsMatchPropTypes = []|[{
-  allowRequiredDefaults?: boolean
-}]
-// ----- react/destructuring-assignment -----
-type ReactDestructuringAssignment = []|[("always" | "never")]|[("always" | "never"), {
-  ignoreClassFields?: boolean
-  destructureInSignature?: ("always" | "ignore")
-}]
-// ----- react/display-name -----
-type ReactDisplayName = []|[{
-  ignoreTranspilerName?: boolean
-  checkContextObjects?: boolean
-}]
-// ----- react/forbid-component-props -----
-type ReactForbidComponentProps = []|[{
-  forbid?: (string | {
-    propName?: string
-    allowedFor?: string[]
-    allowedForPatterns?: string[]
-    message?: string
-  } | ({
-    [k: string]: unknown | undefined
-  } | {
-    [k: string]: unknown | undefined
-  }) | {
-    propNamePattern?: string
-    allowedFor?: string[]
-    allowedForPatterns?: string[]
-    message?: string
-  } | ({
-    [k: string]: unknown | undefined
-  } | {
-    [k: string]: unknown | undefined
-  }))[]
-  [k: string]: unknown | undefined
-}]
-// ----- react/forbid-dom-props -----
-type ReactForbidDomProps = []|[{
-  forbid?: (string | {
-    propName?: string
-    disallowedFor?: string[]
-    message?: string
-    [k: string]: unknown | undefined
-  })[]
-}]
-// ----- react/forbid-elements -----
-type ReactForbidElements = []|[{
-  forbid?: (string | {
-    element: string
-    message?: string
-  })[]
-}]
-// ----- react/forbid-foreign-prop-types -----
-type ReactForbidForeignPropTypes = []|[{
-  allowInPropTypes?: boolean
-}]
-// ----- react/forbid-prop-types -----
-type ReactForbidPropTypes = []|[{
-  forbid?: string[]
-  checkContextTypes?: boolean
-  checkChildContextTypes?: boolean
-  [k: string]: unknown | undefined
-}]
-// ----- react/function-component-definition -----
-type ReactFunctionComponentDefinition = []|[{
-  namedComponents?: (("function-declaration" | "arrow-function" | "function-expression") | ("function-declaration" | "arrow-function" | "function-expression")[])
-  unnamedComponents?: (("arrow-function" | "function-expression") | ("arrow-function" | "function-expression")[])
-  [k: string]: unknown | undefined
-}]
-// ----- react/hook-use-state -----
-type ReactHookUseState = []|[{
-  allowDestructuredState?: boolean
-}]
-// ----- react/jsx-boolean-value -----
-type ReactJsxBooleanValue = ([]|[("always" | "never")] | []|["always"]|["always", {
-  never?: string[]
-  assumeUndefinedIsFalse?: boolean
-}] | []|["never"]|["never", {
-  always?: string[]
-  assumeUndefinedIsFalse?: boolean
-}])
-// ----- react/jsx-closing-bracket-location -----
-type ReactJsxClosingBracketLocation = []|[(("after-props" | "props-aligned" | "tag-aligned" | "line-aligned") | {
-  location?: ("after-props" | "props-aligned" | "tag-aligned" | "line-aligned")
-} | {
-  nonEmpty?: ("after-props" | "props-aligned" | "tag-aligned" | "line-aligned" | false)
-  selfClosing?: ("after-props" | "props-aligned" | "tag-aligned" | "line-aligned" | false)
-})]
-// ----- react/jsx-closing-tag-location -----
-type ReactJsxClosingTagLocation = []|[(("tag-aligned" | "line-aligned") | {
-  location?: ("tag-aligned" | "line-aligned")
-})]
-// ----- react/jsx-curly-brace-presence -----
-type ReactJsxCurlyBracePresence = []|[({
-  props?: ("always" | "never" | "ignore")
-  children?: ("always" | "never" | "ignore")
-  propElementValues?: ("always" | "never" | "ignore")
-} | ("always" | "never" | "ignore"))]
-// ----- react/jsx-curly-newline -----
-type ReactJsxCurlyNewline = []|[(("consistent" | "never") | {
-  singleline?: ("consistent" | "require" | "forbid")
-  multiline?: ("consistent" | "require" | "forbid")
-})]
-// ----- react/jsx-curly-spacing -----
-type ReactJsxCurlySpacing = []|[((_ReactJsxCurlySpacing_BasicConfig & {
-  attributes?: _ReactJsxCurlySpacingBasicConfigOrBoolean
-  children?: _ReactJsxCurlySpacingBasicConfigOrBoolean
-  [k: string]: unknown | undefined
-}) | ("always" | "never"))]|[((_ReactJsxCurlySpacing_BasicConfig & {
-  attributes?: _ReactJsxCurlySpacingBasicConfigOrBoolean
-  children?: _ReactJsxCurlySpacingBasicConfigOrBoolean
-  [k: string]: unknown | undefined
-}) | ("always" | "never")), {
-  allowMultiline?: boolean
-  spacing?: {
-    objectLiterals?: ("always" | "never")
-    [k: string]: unknown | undefined
-  }
-}]
-type _ReactJsxCurlySpacingBasicConfigOrBoolean = (_ReactJsxCurlySpacing_BasicConfig | boolean)
-interface _ReactJsxCurlySpacing_BasicConfig {
-  when?: ("always" | "never")
-  allowMultiline?: boolean
-  spacing?: {
-    objectLiterals?: ("always" | "never")
-    [k: string]: unknown | undefined
-  }
-  [k: string]: unknown | undefined
-}
-// ----- react/jsx-equals-spacing -----
-type ReactJsxEqualsSpacing = []|[("always" | "never")]
-// ----- react/jsx-filename-extension -----
-type ReactJsxFilenameExtension = []|[{
-  allow?: ("always" | "as-needed")
-  extensions?: string[]
-  ignoreFilesWithoutCode?: boolean
-}]
-// ----- react/jsx-first-prop-new-line -----
-type ReactJsxFirstPropNewLine = []|[("always" | "never" | "multiline" | "multiline-multiprop" | "multiprop")]
-// ----- react/jsx-fragments -----
-type ReactJsxFragments = []|[("syntax" | "element")]
-// ----- react/jsx-handler-names -----
-type ReactJsxHandlerNames = []|[({
-  eventHandlerPrefix?: string
-  eventHandlerPropPrefix?: string
-  checkLocalVariables?: boolean
-  checkInlineFunction?: boolean
-  ignoreComponentNames?: string[]
-} | {
-  eventHandlerPrefix?: string
-  eventHandlerPropPrefix?: false
-  checkLocalVariables?: boolean
-  checkInlineFunction?: boolean
-  ignoreComponentNames?: string[]
-} | {
-  eventHandlerPrefix?: false
-  eventHandlerPropPrefix?: string
-  checkLocalVariables?: boolean
-  checkInlineFunction?: boolean
-  ignoreComponentNames?: string[]
-} | {
-  checkLocalVariables?: boolean
-} | {
-  checkInlineFunction?: boolean
-} | {
-  ignoreComponentNames?: string[]
-  [k: string]: unknown | undefined
-})]
-// ----- react/jsx-indent -----
-type ReactJsxIndent = []|[("tab" | number)]|[("tab" | number), {
-  checkAttributes?: boolean
-  indentLogicalExpressions?: boolean
-}]
-// ----- react/jsx-indent-props -----
-type ReactJsxIndentProps = []|[(("tab" | "first") | number | {
-  indentMode?: (("tab" | "first") | number)
-  ignoreTernaryOperator?: boolean
-  [k: string]: unknown | undefined
-})]
-// ----- react/jsx-key -----
-type ReactJsxKey = []|[{
-  checkFragmentShorthand?: boolean
-  checkKeyMustBeforeSpread?: boolean
-  warnOnDuplicates?: boolean
-}]
-// ----- react/jsx-max-depth -----
-type ReactJsxMaxDepth = []|[{
-  max?: number
-}]
-// ----- react/jsx-max-props-per-line -----
-type ReactJsxMaxPropsPerLine = []|[({
-  maximum?: {
-    single?: number
-    multi?: number
-    [k: string]: unknown | undefined
-  }
-} | {
-  maximum?: number
-  when?: ("always" | "multiline")
-})]
-// ----- react/jsx-newline -----
-type ReactJsxNewline = []|[{
-  prevent?: boolean
-  allowMultilines?: boolean
-}]
-// ----- react/jsx-no-bind -----
-type ReactJsxNoBind = []|[{
-  allowArrowFunctions?: boolean
-  allowBind?: boolean
-  allowFunctions?: boolean
-  ignoreRefs?: boolean
-  ignoreDOMComponents?: boolean
-}]
-// ----- react/jsx-no-duplicate-props -----
-type ReactJsxNoDuplicateProps = []|[{
-  ignoreCase?: boolean
-}]
-// ----- react/jsx-no-leaked-render -----
-type ReactJsxNoLeakedRender = []|[{
-  validStrategies?: ("ternary" | "coerce")[]
-}]
-// ----- react/jsx-no-literals -----
-type ReactJsxNoLiterals = []|[{
-  elementOverrides?: {
-    [k: string]: {
-      applyToNestedElements?: boolean
-      noStrings?: boolean
-      allowedStrings?: string[]
-      ignoreProps?: boolean
-      noAttributeStrings?: boolean
-      [k: string]: unknown | undefined
-    }
-  }
-  noStrings?: boolean
-  allowedStrings?: string[]
-  ignoreProps?: boolean
-  noAttributeStrings?: boolean
-}]
-// ----- react/jsx-no-script-url -----
-type ReactJsxNoScriptUrl = ([]|[{
-  name: string
-  props: string[]
-}[]]|[{
-  name: string
-  props: string[]
-}[], {
-  includeFromSettings?: boolean
-  [k: string]: unknown | undefined
-}] | []|[{
-  includeFromSettings?: boolean
-  [k: string]: unknown | undefined
-}])
-// ----- react/jsx-no-target-blank -----
-type ReactJsxNoTargetBlank = []|[{
-  allowReferrer?: boolean
-  enforceDynamicLinks?: ("always" | "never")
-  warnOnSpreadAttributes?: boolean
-  links?: boolean
-  forms?: boolean
-}]
-// ----- react/jsx-no-undef -----
-type ReactJsxNoUndef = []|[{
-  allowGlobals?: boolean
-}]
-// ----- react/jsx-no-useless-fragment -----
-type ReactJsxNoUselessFragment = []|[{
-  allowExpressions?: boolean
-  [k: string]: unknown | undefined
-}]
-// ----- react/jsx-one-expression-per-line -----
-type ReactJsxOneExpressionPerLine = []|[{
-  allow?: ("none" | "literal" | "single-child" | "non-jsx")
-}]
-// ----- react/jsx-pascal-case -----
-type ReactJsxPascalCase = []|[{
-  allowAllCaps?: boolean
-  allowLeadingUnderscore?: boolean
-  allowNamespace?: boolean
-  
-  ignore?: []|[string]
-}]
-// ----- react/jsx-props-no-spreading -----
-type ReactJsxPropsNoSpreading = []|[({
-  html?: ("enforce" | "ignore")
-  custom?: ("enforce" | "ignore")
-  explicitSpread?: ("enforce" | "ignore")
-  exceptions?: string[]
-  [k: string]: unknown | undefined
-} & {
-  [k: string]: unknown | undefined
-})]
-// ----- react/jsx-sort-default-props -----
-type ReactJsxSortDefaultProps = []|[{
-  ignoreCase?: boolean
-}]
-// ----- react/jsx-sort-props -----
-type ReactJsxSortProps = []|[{
-  callbacksLast?: boolean
-  shorthandFirst?: boolean
-  shorthandLast?: boolean
-  multiline?: ("ignore" | "first" | "last")
-  ignoreCase?: boolean
-  noSortAlphabetically?: boolean
-  reservedFirst?: (unknown[] | boolean)
-  locale?: string
-}]
-// ----- react/jsx-space-before-closing -----
-type ReactJsxSpaceBeforeClosing = []|[("always" | "never")]
-// ----- react/jsx-tag-spacing -----
-type ReactJsxTagSpacing = []|[{
-  closingSlash?: ("always" | "never" | "allow")
-  beforeSelfClosing?: ("always" | "proportional-always" | "never" | "allow")
-  afterOpening?: ("always" | "allow-multiline" | "never" | "allow")
-  beforeClosing?: ("always" | "proportional-always" | "never" | "allow")
-}]
-// ----- react/jsx-wrap-multilines -----
-type ReactJsxWrapMultilines = []|[{
-  declaration?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-  assignment?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-  return?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-  arrow?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-  condition?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-  logical?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-  prop?: (true | false | "ignore" | "parens" | "parens-new-line" | "never")
-}]
-// ----- react/no-children-prop -----
-type ReactNoChildrenProp = []|[{
-  allowFunctions?: boolean
-}]
-// ----- react/no-danger -----
-type ReactNoDanger = []|[{
-  
-  customComponentNames?: string[]
-  [k: string]: unknown | undefined
-}]
-// ----- react/no-did-mount-set-state -----
-type ReactNoDidMountSetState = []|["disallow-in-func"]
-// ----- react/no-did-update-set-state -----
-type ReactNoDidUpdateSetState = []|["disallow-in-func"]
-// ----- react/no-invalid-html-attribute -----
-type ReactNoInvalidHtmlAttribute = []|[("rel")[]]
-// ----- react/no-multi-comp -----
-type ReactNoMultiComp = []|[{
-  ignoreStateless?: boolean
-}]
-// ----- react/no-string-refs -----
-type ReactNoStringRefs = []|[{
-  noTemplateLiterals?: boolean
-}]
-// ----- react/no-unescaped-entities -----
-type ReactNoUnescapedEntities = []|[{
-  forbid?: (string | {
-    char?: string
-    alternatives?: string[]
-    [k: string]: unknown | undefined
-  })[]
-}]
-// ----- react/no-unknown-property -----
-type ReactNoUnknownProperty = []|[{
-  ignore?: string[]
-  requireDataLowercase?: boolean
-}]
-// ----- react/no-unsafe -----
-type ReactNoUnsafe = []|[{
-  checkAliases?: boolean
-}]
-// ----- react/no-unstable-nested-components -----
-type ReactNoUnstableNestedComponents = []|[{
-  customValidators?: string[]
-  allowAsProps?: boolean
-  propNamePattern?: string
-}]
-// ----- react/no-unused-prop-types -----
-type ReactNoUnusedPropTypes = []|[{
-  ignore?: string[]
-  customValidators?: string[]
-  skipShapeProps?: boolean
-}]
-// ----- react/no-will-update-set-state -----
-type ReactNoWillUpdateSetState = []|["disallow-in-func"]
-// ----- react/prefer-es6-class -----
-type ReactPreferEs6Class = []|[("always" | "never")]
-// ----- react/prefer-stateless-function -----
-type ReactPreferStatelessFunction = []|[{
-  ignorePureComponents?: boolean
-}]
-// ----- react/prop-types -----
-type ReactPropTypes = []|[{
-  ignore?: string[]
-  customValidators?: string[]
-  skipUndeclared?: boolean
-}]
-// ----- react/require-default-props -----
-type ReactRequireDefaultProps = []|[{
-  forbidDefaultForRequired?: boolean
-  classes?: ("defaultProps" | "ignore")
-  functions?: ("defaultArguments" | "defaultProps" | "ignore")
-  ignoreFunctionalComponents?: boolean
-}]
-// ----- react/require-optimization -----
-type ReactRequireOptimization = []|[{
-  allowDecorators?: string[]
-}]
-// ----- react/self-closing-comp -----
-type ReactSelfClosingComp = []|[{
-  component?: boolean
-  html?: boolean
-}]
-// ----- react/sort-comp -----
-type ReactSortComp = []|[{
-  order?: string[]
-  groups?: {
-    [k: string]: string[]
-  }
-}]
-// ----- react/sort-default-props -----
-type ReactSortDefaultProps = []|[{
-  ignoreCase?: boolean
-}]
-// ----- react/sort-prop-types -----
-type ReactSortPropTypes = []|[{
-  requiredFirst?: boolean
-  callbacksLast?: boolean
-  ignoreCase?: boolean
-  noSortAlphabetically?: boolean
-  sortShapeProp?: boolean
-  checkTypes?: boolean
-}]
-// ----- react/state-in-constructor -----
-type ReactStateInConstructor = []|[("always" | "never")]
-// ----- react/static-property-placement -----
-type ReactStaticPropertyPlacement = []|[("static public field" | "static getter" | "property assignment")]|[("static public field" | "static getter" | "property assignment"), {
-  propTypes?: ("static public field" | "static getter" | "property assignment")
-  defaultProps?: ("static public field" | "static getter" | "property assignment")
-  childContextTypes?: ("static public field" | "static getter" | "property assignment")
-  contextTypes?: ("static public field" | "static getter" | "property assignment")
-  contextType?: ("static public field" | "static getter" | "property assignment")
-  displayName?: ("static public field" | "static getter" | "property assignment")
-}]
-// ----- react/style-prop-object -----
-type ReactStylePropObject = []|[{
-  allow?: string[]
-  [k: string]: unknown | undefined
 }]
 // ----- regexp/hexadecimal-escape -----
 type RegexpHexadecimalEscape = []|[("always" | "never")]
@@ -19661,6 +17345,1229 @@ type TomlSpacedComment = []|[("always" | "never")]|[("always" | "never"), {
 }]
 // ----- toml/table-bracket-spacing -----
 type TomlTableBracketSpacing = []|[("always" | "never")]
+// ----- ts/array-type -----
+type TsArrayType = []|[{
+  
+  default?: ("array" | "generic" | "array-simple")
+  
+  readonly?: ("array" | "generic" | "array-simple")
+}]
+// ----- ts/ban-ts-comment -----
+type TsBanTsComment = []|[{
+  
+  minimumDescriptionLength?: number
+  
+  "ts-check"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string
+  })
+  
+  "ts-expect-error"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string
+  })
+  
+  "ts-ignore"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string
+  })
+  
+  "ts-nocheck"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string
+  })
+}]
+// ----- ts/class-literal-property-style -----
+type TsClassLiteralPropertyStyle = []|[("fields" | "getters")]
+// ----- ts/class-methods-use-this -----
+type TsClassMethodsUseThis = []|[{
+  
+  enforceForClassFields?: boolean
+  
+  exceptMethods?: string[]
+  
+  ignoreClassesThatImplementAnInterface?: (boolean | "public-fields")
+  
+  ignoreOverrideMethods?: boolean
+}]
+// ----- ts/consistent-generic-constructors -----
+type TsConsistentGenericConstructors = []|[("type-annotation" | "constructor")]
+// ----- ts/consistent-indexed-object-style -----
+type TsConsistentIndexedObjectStyle = []|[("record" | "index-signature")]
+// ----- ts/consistent-return -----
+type TsConsistentReturn = []|[{
+  treatUndefinedAsUnspecified?: boolean
+}]
+// ----- ts/consistent-type-assertions -----
+type TsConsistentTypeAssertions = []|[({
+  
+  assertionStyle: "never"
+} | {
+  
+  arrayLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
+  
+  assertionStyle?: ("as" | "angle-bracket")
+  
+  objectLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
+})]
+// ----- ts/consistent-type-definitions -----
+type TsConsistentTypeDefinitions = []|[("interface" | "type")]
+// ----- ts/consistent-type-exports -----
+type TsConsistentTypeExports = []|[{
+  
+  fixMixedExportsWithInlineTypeSpecifier?: boolean
+}]
+// ----- ts/consistent-type-imports -----
+type TsConsistentTypeImports = []|[{
+  
+  disallowTypeAnnotations?: boolean
+  
+  fixStyle?: ("separate-type-imports" | "inline-type-imports")
+  
+  prefer?: ("type-imports" | "no-type-imports")
+}]
+// ----- ts/dot-notation -----
+type TsDotNotation = []|[{
+  
+  allowIndexSignaturePropertyAccess?: boolean
+  
+  allowKeywords?: boolean
+  
+  allowPattern?: string
+  
+  allowPrivateClassPropertyAccess?: boolean
+  
+  allowProtectedClassPropertyAccess?: boolean
+}]
+// ----- ts/explicit-function-return-type -----
+type TsExplicitFunctionReturnType = []|[{
+  
+  allowConciseArrowFunctionExpressionsStartingWithVoid?: boolean
+  
+  allowDirectConstAssertionInArrowFunctions?: boolean
+  
+  allowedNames?: string[]
+  
+  allowExpressions?: boolean
+  
+  allowFunctionsWithoutTypeParameters?: boolean
+  
+  allowHigherOrderFunctions?: boolean
+  
+  allowIIFEs?: boolean
+  
+  allowTypedFunctionExpressions?: boolean
+}]
+// ----- ts/explicit-member-accessibility -----
+type TsExplicitMemberAccessibility = []|[{
+  
+  accessibility?: ("explicit" | "no-public" | "off")
+  
+  ignoredMethodNames?: string[]
+  
+  overrides?: {
+    
+    accessors?: ("explicit" | "no-public" | "off")
+    
+    constructors?: ("explicit" | "no-public" | "off")
+    
+    methods?: ("explicit" | "no-public" | "off")
+    
+    parameterProperties?: ("explicit" | "no-public" | "off")
+    
+    properties?: ("explicit" | "no-public" | "off")
+  }
+}]
+// ----- ts/explicit-module-boundary-types -----
+type TsExplicitModuleBoundaryTypes = []|[{
+  
+  allowArgumentsExplicitlyTypedAsAny?: boolean
+  
+  allowDirectConstAssertionInArrowFunctions?: boolean
+  
+  allowedNames?: string[]
+  
+  allowHigherOrderFunctions?: boolean
+  
+  allowOverloadFunctions?: boolean
+  
+  allowTypedFunctionExpressions?: boolean
+}]
+// ----- ts/init-declarations -----
+type TsInitDeclarations = ([]|["always"] | []|["never"]|["never", {
+  ignoreForLoopInit?: boolean
+}])
+// ----- ts/max-params -----
+type TsMaxParams = []|[{
+  
+  countVoidThis?: boolean
+  
+  max?: number
+  
+  maximum?: number
+}]
+// ----- ts/member-ordering -----
+type TsMemberOrdering = []|[{
+  
+  classes?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
+    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
+    optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
+  })
+  
+  classExpressions?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
+    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
+    optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
+  })
+  
+  default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
+    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
+    optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
+  })
+  
+  interfaces?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
+    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
+    optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
+  })
+  
+  typeLiterals?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
+    memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
+    optionalityOrder?: ("optional-first" | "required-first")
+    order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
+  })
+}]
+// ----- ts/method-signature-style -----
+type TsMethodSignatureStyle = []|[("property" | "method")]
+// ----- ts/naming-convention -----
+type _TsNamingConventionFormatOptionsConfig = (_TsNamingConventionPredefinedFormats[] | null)
+type _TsNamingConventionPredefinedFormats = ("camelCase" | "strictCamelCase" | "PascalCase" | "StrictPascalCase" | "snake_case" | "UPPER_CASE")
+type _TsNamingConventionUnderscoreOptions = ("forbid" | "allow" | "require" | "requireDouble" | "allowDouble" | "allowSingleOrDouble")
+type _TsNamingConvention_PrefixSuffixConfig = string[]
+type _TsNamingConventionTypeModifiers = ("boolean" | "string" | "number" | "function" | "array")
+type TsNamingConvention = ({
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  modifiers?: ("const" | "readonly" | "static" | "public" | "protected" | "private" | "#private" | "abstract" | "destructured" | "global" | "exported" | "unused" | "requiresQuotes" | "override" | "async" | "default" | "namespace")[]
+  selector: ("default" | "variableLike" | "memberLike" | "typeLike" | "method" | "property" | "accessor" | "variable" | "function" | "parameter" | "parameterProperty" | "classicAccessor" | "enumMember" | "classMethod" | "objectLiteralMethod" | "typeMethod" | "classProperty" | "objectLiteralProperty" | "typeProperty" | "autoAccessor" | "class" | "interface" | "typeAlias" | "enum" | "typeParameter" | "import")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "default"
+  modifiers?: ("const" | "readonly" | "static" | "public" | "protected" | "private" | "#private" | "abstract" | "destructured" | "global" | "exported" | "unused" | "requiresQuotes" | "override" | "async" | "default" | "namespace")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "variableLike"
+  modifiers?: ("unused" | "async")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "variable"
+  modifiers?: ("const" | "destructured" | "exported" | "global" | "unused" | "async")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "function"
+  modifiers?: ("exported" | "global" | "unused" | "async")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "parameter"
+  modifiers?: ("destructured" | "unused")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "memberLike"
+  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override" | "async")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "classProperty"
+  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "objectLiteralProperty"
+  modifiers?: ("public" | "requiresQuotes")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "typeProperty"
+  modifiers?: ("public" | "readonly" | "requiresQuotes")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "parameterProperty"
+  modifiers?: ("private" | "protected" | "public" | "readonly")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "property"
+  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "readonly" | "requiresQuotes" | "static" | "override" | "async")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "classMethod"
+  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "requiresQuotes" | "static" | "override" | "async")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "objectLiteralMethod"
+  modifiers?: ("public" | "requiresQuotes" | "async")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "typeMethod"
+  modifiers?: ("public" | "requiresQuotes")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "method"
+  modifiers?: ("abstract" | "private" | "#private" | "protected" | "public" | "requiresQuotes" | "static" | "override" | "async")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "classicAccessor"
+  modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "autoAccessor"
+  modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "accessor"
+  modifiers?: ("abstract" | "private" | "protected" | "public" | "requiresQuotes" | "static" | "override")[]
+  types?: _TsNamingConventionTypeModifiers[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "enumMember"
+  modifiers?: ("requiresQuotes")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "typeLike"
+  modifiers?: ("abstract" | "exported" | "unused")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "class"
+  modifiers?: ("abstract" | "exported" | "unused")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "interface"
+  modifiers?: ("exported" | "unused")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "typeAlias"
+  modifiers?: ("exported" | "unused")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "enum"
+  modifiers?: ("exported" | "unused")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "typeParameter"
+  modifiers?: ("unused")[]
+} | {
+  custom?: _TsNamingConvention_MatchRegexConfig
+  failureMessage?: string
+  format: _TsNamingConventionFormatOptionsConfig
+  leadingUnderscore?: _TsNamingConventionUnderscoreOptions
+  prefix?: _TsNamingConvention_PrefixSuffixConfig
+  suffix?: _TsNamingConvention_PrefixSuffixConfig
+  trailingUnderscore?: _TsNamingConventionUnderscoreOptions
+  filter?: (string | _TsNamingConvention_MatchRegexConfig)
+  selector: "import"
+  modifiers?: ("default" | "namespace")[]
+})[]
+interface _TsNamingConvention_MatchRegexConfig {
+  match: boolean
+  regex: string
+}
+// ----- ts/no-base-to-string -----
+type TsNoBaseToString = []|[{
+  
+  checkUnknown?: boolean
+  
+  ignoredTypeNames?: string[]
+}]
+// ----- ts/no-confusing-void-expression -----
+type TsNoConfusingVoidExpression = []|[{
+  
+  ignoreArrowShorthand?: boolean
+  
+  ignoreVoidOperator?: boolean
+  
+  ignoreVoidReturningFunctions?: boolean
+}]
+// ----- ts/no-deprecated -----
+type TsNoDeprecated = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+}]
+// ----- ts/no-duplicate-type-constituents -----
+type TsNoDuplicateTypeConstituents = []|[{
+  
+  ignoreIntersections?: boolean
+  
+  ignoreUnions?: boolean
+}]
+// ----- ts/no-empty-function -----
+type TsNoEmptyFunction = []|[{
+  
+  allow?: ("functions" | "arrowFunctions" | "generatorFunctions" | "methods" | "generatorMethods" | "getters" | "setters" | "constructors" | "private-constructors" | "protected-constructors" | "asyncFunctions" | "asyncMethods" | "decoratedFunctions" | "overrideMethods")[]
+}]
+// ----- ts/no-empty-interface -----
+type TsNoEmptyInterface = []|[{
+  
+  allowSingleExtends?: boolean
+}]
+// ----- ts/no-empty-object-type -----
+type TsNoEmptyObjectType = []|[{
+  
+  allowInterfaces?: ("always" | "never" | "with-single-extends")
+  
+  allowObjectTypes?: ("always" | "never")
+  
+  allowWithName?: string
+}]
+// ----- ts/no-explicit-any -----
+type TsNoExplicitAny = []|[{
+  
+  fixToUnknown?: boolean
+  
+  ignoreRestArgs?: boolean
+}]
+// ----- ts/no-extraneous-class -----
+type TsNoExtraneousClass = []|[{
+  
+  allowConstructorOnly?: boolean
+  
+  allowEmpty?: boolean
+  
+  allowStaticOnly?: boolean
+  
+  allowWithDecorator?: boolean
+}]
+// ----- ts/no-floating-promises -----
+type TsNoFloatingPromises = []|[{
+  
+  allowForKnownSafeCalls?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  
+  allowForKnownSafePromises?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  
+  checkThenables?: boolean
+  
+  ignoreIIFE?: boolean
+  
+  ignoreVoid?: boolean
+}]
+// ----- ts/no-inferrable-types -----
+type TsNoInferrableTypes = []|[{
+  
+  ignoreParameters?: boolean
+  
+  ignoreProperties?: boolean
+}]
+// ----- ts/no-invalid-this -----
+type TsNoInvalidThis = []|[{
+  capIsConstructor?: boolean
+}]
+// ----- ts/no-invalid-void-type -----
+type TsNoInvalidVoidType = []|[{
+  
+  allowAsThisParameter?: boolean
+  
+  allowInGenericTypeArguments?: (boolean | [string, ...(string)[]])
+}]
+// ----- ts/no-magic-numbers -----
+type TsNoMagicNumbers = []|[{
+  detectObjects?: boolean
+  enforceConst?: boolean
+  ignore?: (number | string)[]
+  ignoreArrayIndexes?: boolean
+  ignoreDefaultValues?: boolean
+  ignoreClassFieldInitialValues?: boolean
+  
+  ignoreEnums?: boolean
+  
+  ignoreNumericLiteralTypes?: boolean
+  
+  ignoreReadonlyClassProperties?: boolean
+  
+  ignoreTypeIndexes?: boolean
+}]
+// ----- ts/no-meaningless-void-operator -----
+type TsNoMeaninglessVoidOperator = []|[{
+  
+  checkNever?: boolean
+}]
+// ----- ts/no-misused-promises -----
+type TsNoMisusedPromises = []|[{
+  
+  checksConditionals?: boolean
+  
+  checksSpreads?: boolean
+  
+  checksVoidReturn?: (boolean | {
+    
+    arguments?: boolean
+    
+    attributes?: boolean
+    
+    inheritedMethods?: boolean
+    
+    properties?: boolean
+    
+    returns?: boolean
+    
+    variables?: boolean
+  })
+}]
+// ----- ts/no-misused-spread -----
+type TsNoMisusedSpread = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+}]
+// ----- ts/no-namespace -----
+type TsNoNamespace = []|[{
+  
+  allowDeclarations?: boolean
+  
+  allowDefinitionFiles?: boolean
+}]
+// ----- ts/no-redeclare -----
+type TsNoRedeclare = []|[{
+  
+  builtinGlobals?: boolean
+  
+  ignoreDeclarationMerge?: boolean
+}]
+// ----- ts/no-require-imports -----
+type TsNoRequireImports = []|[{
+  
+  allow?: string[]
+  
+  allowAsImport?: boolean
+}]
+// ----- ts/no-restricted-imports -----
+type TsNoRestrictedImports = ((string | {
+  name: string
+  message?: string
+  importNames?: string[]
+  allowImportNames?: string[]
+  
+  allowTypeImports?: boolean
+})[] | []|[{
+  paths?: (string | {
+    name: string
+    message?: string
+    importNames?: string[]
+    allowImportNames?: string[]
+    
+    allowTypeImports?: boolean
+  })[]
+  patterns?: (string[] | {
+    
+    importNames?: [string, ...(string)[]]
+    
+    allowImportNames?: [string, ...(string)[]]
+    
+    group?: [string, ...(string)[]]
+    regex?: string
+    importNamePattern?: string
+    allowImportNamePattern?: string
+    message?: string
+    caseSensitive?: boolean
+    
+    allowTypeImports?: boolean
+  }[])
+}])
+// ----- ts/no-restricted-types -----
+type TsNoRestrictedTypes = []|[{
+  
+  types?: {
+    [k: string]: (true | string | {
+      
+      fixWith?: string
+      
+      message?: string
+      
+      suggest?: string[]
+    }) | undefined
+  }
+}]
+// ----- ts/no-shadow -----
+type TsNoShadow = []|[{
+  
+  allow?: string[]
+  
+  builtinGlobals?: boolean
+  
+  hoist?: ("all" | "functions" | "functions-and-types" | "never" | "types")
+  
+  ignoreFunctionTypeParameterNameValueShadow?: boolean
+  
+  ignoreOnInitialization?: boolean
+  
+  ignoreTypeValueShadow?: boolean
+}]
+// ----- ts/no-this-alias -----
+type TsNoThisAlias = []|[{
+  
+  allowDestructuring?: boolean
+  
+  allowedNames?: string[]
+}]
+// ----- ts/no-type-alias -----
+type TsNoTypeAlias = []|[{
+  
+  allowAliases?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
+  
+  allowCallbacks?: ("always" | "never")
+  
+  allowConditionalTypes?: ("always" | "never")
+  
+  allowConstructors?: ("always" | "never")
+  
+  allowGenerics?: ("always" | "never")
+  
+  allowLiterals?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
+  
+  allowMappedTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
+  
+  allowTupleTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
+}]
+// ----- ts/no-unnecessary-boolean-literal-compare -----
+type TsNoUnnecessaryBooleanLiteralCompare = []|[{
+  
+  allowComparingNullableBooleansToFalse?: boolean
+  
+  allowComparingNullableBooleansToTrue?: boolean
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+}]
+// ----- ts/no-unnecessary-condition -----
+type TsNoUnnecessaryCondition = []|[{
+  
+  allowConstantLoopConditions?: (boolean | ("always" | "never" | "only-allowed-literals"))
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+  
+  checkTypePredicates?: boolean
+}]
+// ----- ts/no-unnecessary-type-assertion -----
+type TsNoUnnecessaryTypeAssertion = []|[{
+  
+  checkLiteralConstAssertions?: boolean
+  
+  typesToIgnore?: string[]
+}]
+// ----- ts/no-unsafe-member-access -----
+type TsNoUnsafeMemberAccess = []|[{
+  
+  allowOptionalChaining?: boolean
+}]
+// ----- ts/no-unused-expressions -----
+type TsNoUnusedExpressions = []|[{
+  allowShortCircuit?: boolean
+  allowTernary?: boolean
+  allowTaggedTemplates?: boolean
+  enforceForJSX?: boolean
+  ignoreDirectives?: boolean
+}]
+// ----- ts/no-unused-vars -----
+type TsNoUnusedVars = []|[(("all" | "local") | {
+  
+  args?: ("all" | "after-used" | "none")
+  
+  argsIgnorePattern?: string
+  
+  caughtErrors?: ("all" | "none")
+  
+  caughtErrorsIgnorePattern?: string
+  
+  destructuredArrayIgnorePattern?: string
+  
+  enableAutofixRemoval?: {
+    
+    imports?: boolean
+  }
+  
+  ignoreClassWithStaticInitBlock?: boolean
+  
+  ignoreRestSiblings?: boolean
+  
+  ignoreUsingDeclarations?: boolean
+  
+  reportUsedIgnorePattern?: boolean
+  
+  vars?: ("all" | "local")
+  
+  varsIgnorePattern?: string
+})]
+// ----- ts/no-use-before-define -----
+type TsNoUseBeforeDefine = []|[("nofunc" | {
+  
+  allowNamedExports?: boolean
+  
+  classes?: boolean
+  
+  enums?: boolean
+  
+  functions?: boolean
+  
+  ignoreTypeReferences?: boolean
+  
+  typedefs?: boolean
+  
+  variables?: boolean
+})]
+// ----- ts/no-useless-default-assignment -----
+type TsNoUselessDefaultAssignment = []|[{
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+}]
+// ----- ts/no-var-requires -----
+type TsNoVarRequires = []|[{
+  
+  allow?: string[]
+}]
+// ----- ts/only-throw-error -----
+type TsOnlyThrowError = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  
+  allowRethrowing?: boolean
+  
+  allowThrowingAny?: boolean
+  
+  allowThrowingUnknown?: boolean
+}]
+// ----- ts/parameter-properties -----
+type TsParameterProperties = []|[{
+  
+  allow?: ("readonly" | "private" | "protected" | "public" | "private readonly" | "protected readonly" | "public readonly")[]
+  
+  prefer?: ("class-property" | "parameter-property")
+}]
+// ----- ts/prefer-destructuring -----
+type TsPreferDestructuring = []|[({
+  AssignmentExpression?: {
+    array?: boolean
+    object?: boolean
+  }
+  VariableDeclarator?: {
+    array?: boolean
+    object?: boolean
+  }
+} | {
+  array?: boolean
+  object?: boolean
+})]|[({
+  AssignmentExpression?: {
+    array?: boolean
+    object?: boolean
+  }
+  VariableDeclarator?: {
+    array?: boolean
+    object?: boolean
+  }
+} | {
+  array?: boolean
+  object?: boolean
+}), {
+  
+  enforceForDeclarationWithTypeAnnotation?: boolean
+  
+  enforceForRenamedProperties?: boolean
+}]
+// ----- ts/prefer-literal-enum-member -----
+type TsPreferLiteralEnumMember = []|[{
+  
+  allowBitwiseExpressions?: boolean
+}]
+// ----- ts/prefer-nullish-coalescing -----
+type TsPreferNullishCoalescing = []|[{
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+  
+  ignoreBooleanCoercion?: boolean
+  
+  ignoreConditionalTests?: boolean
+  
+  ignoreIfStatements?: boolean
+  
+  ignoreMixedLogicalExpressions?: boolean
+  
+  ignorePrimitives?: ({
+    
+    bigint?: boolean
+    
+    boolean?: boolean
+    
+    number?: boolean
+    
+    string?: boolean
+  } | true)
+  
+  ignoreTernaryTests?: boolean
+}]
+// ----- ts/prefer-optional-chain -----
+type TsPreferOptionalChain = []|[{
+  
+  allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing?: boolean
+  
+  checkAny?: boolean
+  
+  checkBigInt?: boolean
+  
+  checkBoolean?: boolean
+  
+  checkNumber?: boolean
+  
+  checkString?: boolean
+  
+  checkUnknown?: boolean
+  
+  requireNullish?: boolean
+}]
+// ----- ts/prefer-promise-reject-errors -----
+type TsPreferPromiseRejectErrors = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  
+  allowEmptyReject?: boolean
+  
+  allowThrowingAny?: boolean
+  
+  allowThrowingUnknown?: boolean
+}]
+// ----- ts/prefer-readonly -----
+type TsPreferReadonly = []|[{
+  
+  onlyInlineLambdas?: boolean
+}]
+// ----- ts/prefer-readonly-parameter-types -----
+type TsPreferReadonlyParameterTypes = []|[{
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  
+  checkParameterProperties?: boolean
+  
+  ignoreInferredTypes?: boolean
+  
+  treatMethodsAsReadonly?: boolean
+}]
+// ----- ts/prefer-string-starts-ends-with -----
+type TsPreferStringStartsEndsWith = []|[{
+  
+  allowSingleElementEquality?: ("always" | "never")
+}]
+// ----- ts/promise-function-async -----
+type TsPromiseFunctionAsync = []|[{
+  
+  allowAny?: boolean
+  
+  allowedPromiseNames?: string[]
+  
+  checkArrowFunctions?: boolean
+  
+  checkFunctionDeclarations?: boolean
+  
+  checkFunctionExpressions?: boolean
+  
+  checkMethodDeclarations?: boolean
+}]
+// ----- ts/require-array-sort-compare -----
+type TsRequireArraySortCompare = []|[{
+  
+  ignoreStringArrays?: boolean
+}]
+// ----- ts/restrict-plus-operands -----
+type TsRestrictPlusOperands = []|[{
+  
+  allowAny?: boolean
+  
+  allowBoolean?: boolean
+  
+  allowNullish?: boolean
+  
+  allowNumberAndString?: boolean
+  
+  allowRegExp?: boolean
+  
+  skipCompoundAssignments?: boolean
+}]
+// ----- ts/restrict-template-expressions -----
+type TsRestrictTemplateExpressions = []|[{
+  
+  allowAny?: boolean
+  
+  allowArray?: boolean
+  
+  allowBoolean?: boolean
+  
+  allowNullish?: boolean
+  
+  allowNumber?: boolean
+  
+  allowRegExp?: boolean
+  
+  allowNever?: boolean
+  
+  allow?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+}]
+// ----- ts/return-await -----
+type TsReturnAwait = []|[(("always" | "error-handling-correctness-only" | "in-try-catch" | "never") & string)]
+// ----- ts/sort-type-constituents -----
+type TsSortTypeConstituents = []|[{
+  
+  caseSensitive?: boolean
+  
+  checkIntersections?: boolean
+  
+  checkUnions?: boolean
+  
+  groupOrder?: ("conditional" | "function" | "import" | "intersection" | "keyword" | "nullish" | "literal" | "named" | "object" | "operator" | "tuple" | "union")[]
+}]
+// ----- ts/strict-boolean-expressions -----
+type TsStrictBooleanExpressions = []|[{
+  
+  allowAny?: boolean
+  
+  allowNullableBoolean?: boolean
+  
+  allowNullableEnum?: boolean
+  
+  allowNullableNumber?: boolean
+  
+  allowNullableObject?: boolean
+  
+  allowNullableString?: boolean
+  
+  allowNumber?: boolean
+  
+  allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
+  
+  allowString?: boolean
+}]
+// ----- ts/strict-void-return -----
+type TsStrictVoidReturn = []|[{
+  
+  allowReturnAny?: boolean
+}]
+// ----- ts/switch-exhaustiveness-check -----
+type TsSwitchExhaustivenessCheck = []|[{
+  
+  allowDefaultCaseForExhaustiveSwitch?: boolean
+  
+  considerDefaultExhaustiveForUnions?: boolean
+  
+  defaultCaseCommentPattern?: string
+  
+  requireDefaultForNonUnion?: boolean
+}]
+// ----- ts/triple-slash-reference -----
+type TsTripleSlashReference = []|[{
+  
+  lib?: ("always" | "never")
+  
+  path?: ("always" | "never")
+  
+  types?: ("always" | "never" | "prefer-import")
+}]
+// ----- ts/typedef -----
+type TsTypedef = []|[{
+  
+  arrayDestructuring?: boolean
+  
+  arrowParameter?: boolean
+  
+  memberVariableDeclaration?: boolean
+  
+  objectDestructuring?: boolean
+  
+  parameter?: boolean
+  
+  propertyDeclaration?: boolean
+  
+  variableDeclaration?: boolean
+  
+  variableDeclarationIgnoreFunction?: boolean
+}]
+// ----- ts/unbound-method -----
+type TsUnboundMethod = []|[{
+  
+  ignoreStatic?: boolean
+}]
+// ----- ts/unified-signatures -----
+type TsUnifiedSignatures = []|[{
+  
+  ignoreDifferentlyNamedParameters?: boolean
+  
+  ignoreOverloadsWithDifferentJSDoc?: boolean
+}]
 // ----- unicode-bom -----
 type UnicodeBom = []|[("always" | "never")]
 // ----- unicorn/better-regex -----
@@ -19894,16 +18801,6 @@ type UnicornTemplateIndent = []|[{
 // ----- unicorn/text-encoding-identifier-case -----
 type UnicornTextEncodingIdentifierCase = []|[{
   withDash?: boolean
-}]
-// ----- unocss/enforce-class-compile -----
-type UnocssEnforceClassCompile = []|[{
-  prefix?: string
-  enableFix?: boolean
-}]
-// ----- unocss/order -----
-type UnocssOrder = []|[{
-  unoFunctions?: string[]
-  unoVariables?: string[]
 }]
 // ----- unused-imports/no-unused-imports -----
 type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
@@ -21624,4 +20521,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'eslint-sets/ignores' | 'eslint-sets/javascript' | 'eslint-sets/typescript/setup' | 'eslint-sets/typescript/disables/dts' | 'eslint-sets/typescript/disables/test' | 'eslint-sets/typescript/disables/cjs' | 'eslint-sets/vue/setup' | 'eslint-sets/react/setup' | 'eslint-sets/react/a11y' | 'eslint-sets/svelte/setup' | 'eslint-sets/solid' | 'eslint-sets/nextjs' | 'eslint-sets/nuxt' | 'eslint-sets/astro' | 'eslint-sets/angular' | 'eslint-sets/angular/template' | 'eslint-sets/jsonc/setup' | 'eslint-sets/yaml/setup' | 'eslint-sets/markdown' | 'eslint-sets/toml' | 'eslint-sets/imports' | 'eslint-sets/unicorn' | 'eslint-sets/perfectionist' | 'eslint-sets/regexp' | 'eslint-sets/test' | 'eslint-sets/no-only-tests' | 'eslint-sets/node' | 'eslint-sets/eslint-comments' | 'eslint-sets/disables/config-files' | 'eslint-sets/disables/json-files' | 'eslint-sets/disables/cjs-files' | 'eslint-sets/disables/dts-files' | 'eslint-sets/disables/env-files' | 'eslint-sets/command' | 'eslint-sets/command/shebang' | 'eslint-sets/sort-package-json' | 'eslint-sets/sort-tsconfig' | 'eslint-sets/unocss' | 'eslint-sets/e18e' | 'eslint-sets/pnpm' | 'eslint-sets/formatters/css' | 'eslint-sets/formatters/html' | 'eslint-sets/stylistic' | 'eslint-sets/builtin-rules'
+export type ConfigNames = 'eslint-sets/ignores' | 'eslint-sets/javascript' | 'eslint-sets/typescript' | 'eslint-sets/typescript/disables/dts' | 'eslint-sets/typescript/disables/test' | 'eslint-sets/typescript/disables/cjs' | 'eslint-sets/vue' | 'eslint-sets/react' | 'eslint-sets/svelte' | 'eslint-sets/solid' | 'eslint-sets/nextjs' | 'eslint-sets/nuxt' | 'eslint-sets/astro' | 'eslint-sets/angular/setup' | 'eslint-sets/angular/rules/ts' | 'eslint-sets/angular/rules/template' | 'eslint-sets/jsonc/setup' | 'eslint-sets/yaml/setup' | 'eslint-sets/markdown' | 'eslint-sets/toml' | 'eslint-sets/imports' | 'eslint-sets/unicorn' | 'eslint-sets/perfectionist' | 'eslint-sets/regexp' | 'eslint-sets/test' | 'eslint-sets/no-only-tests' | 'eslint-sets/node' | 'eslint-sets/eslint-comments' | 'eslint-sets/disables/config-files' | 'eslint-sets/disables/json-files' | 'eslint-sets/disables/cjs-files' | 'eslint-sets/disables/dts-files' | 'eslint-sets/disables/env-files' | 'eslint-sets/command' | 'eslint-sets/sort-package-json' | 'eslint-sets/sort-tsconfig' | 'eslint-sets/e18e' | 'eslint-sets/pnpm' | 'eslint-sets/formatters/css' | 'eslint-sets/formatters/html' | 'eslint-sets/stylistic' | 'eslint-sets/builtin-rules'

@@ -20,6 +20,7 @@ import {
 	perfectionist,
 	pnpm,
 	prettier,
+	react,
 	regexp,
 	solid,
 	sortPackageJson,
@@ -49,8 +50,8 @@ describe('Individual Configs', () => {
 	})
 
 	describe('typescript', () => {
-		it('should return valid configs', () => {
-			const configs = typescript()
+		it('should return valid configs', async () => {
+			const configs = await typescript()
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
@@ -61,6 +62,15 @@ describe('Individual Configs', () => {
 	describe('vue', () => {
 		it('should return valid configs', async () => {
 			const configs = await vue()
+
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+		})
+	})
+
+	describe('react', () => {
+		it('should return valid configs', async () => {
+			const configs = await react()
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()

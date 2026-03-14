@@ -27,7 +27,7 @@ export function node(): Linter.Config[] {
 				'n/global-require': 'off',
 				'n/handle-callback-err': 'error',
 				'n/hashbang': 'error',
-				'n/no-callback-literal': 'error',
+				'n/no-callback-literal': 'off',
 				'n/no-deprecated-api': 'error',
 				'n/no-exports-assign': 'error',
 				'n/no-extraneous-import': 'off',
@@ -52,7 +52,8 @@ export function node(): Linter.Config[] {
 				'n/prefer-global/text-encoder': ['error', 'always'],
 				'n/prefer-global/url': ['error', 'always'],
 				'n/prefer-global/url-search-params': ['error', 'always'],
-				'n/prefer-node-protocol': 'error',
+				// Use unicorn/prefer-node-protocol instead (configured in unicorn.ts)
+				'n/prefer-node-protocol': 'off',
 				'n/prefer-promises/dns': 'error',
 				'n/prefer-promises/fs': 'error',
 			},

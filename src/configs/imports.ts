@@ -17,7 +17,6 @@ export interface ImportsOptions extends OptionsOverrides {
 
 /**
  * Import configuration
- * Based on antfu/eslint-config
  *
  * Note: Import sorting is handled by perfectionist/sort-imports, not import-x/order
  */
@@ -32,8 +31,7 @@ export function imports(options: ImportsOptions = {}): Linter.Config {
 			'unused-imports': unusedImports,
 		},
 		rules: {
-			// Import rules
-			'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+			// Essential import rules
 			'import-x/first': 'error',
 			'import-x/no-duplicates': 'error',
 			'import-x/no-mutable-exports': 'error',
@@ -43,13 +41,14 @@ export function imports(options: ImportsOptions = {}): Linter.Config {
 			// Note: import-x/order is disabled - sorting is handled by perfectionist/sort-imports
 			'import-x/order': 'off',
 
+			// Stylistic rules
 			...(stylistic
 				? {
 					'import-x/newline-after-import': ['error', { count: 1 }],
 				}
 				: {}),
 
-			// Unused imports
+			// Unused imports handling (essential)
 			'unused-imports/no-unused-imports': 'error',
 			'unused-imports/no-unused-vars': [
 				'error',

@@ -5,13 +5,13 @@
 		"rootDir": "./src",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
-		"types": ["node"],
 		"paths": {
 			"*": ["./*"],
 			"@/*": ["./src/*"]
 		},
 		"resolveJsonModule": true,
 		"typeRoots": ["./node_modules/@types", "./src/types"],
+		"types": ["node"],
 		"strict": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUnusedLocals": true,

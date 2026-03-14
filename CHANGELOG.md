@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- **Vue 2 Example Project**: Added complete Vue 2 example project with Vite support
 - **TypeGen Support**: Added automatic type generation for ESLint rules
   - Generates `TypedFlatConfigItem`, `RuleOptions`, `Rules`, `ConfigNames` types
   - Full TypeScript IntelliSense for rule names and options
@@ -148,6 +149,13 @@ All notable changes to this project will be documented in this file.
 - Fixed Angular config with updated rule names
 - Fixed config file detection for Angular and UnoCSS
 - Fixed Vue/Svelte TypeScript parser configuration
+- Fixed Svelte 5 compatibility - updated to use new runes API (`$state`, `$derived`, `$effect`, `$props`)
+- Fixed Svelte 5 component instantiation - use `mount()` instead of `new App()`
+- Fixed React/Next.js function component declarations - use function declarations instead of arrow functions
+- Fixed React/Next.js JSX leaked render warnings - use ternary expressions
+- Fixed Angular Observable type import - use value import for `new Observable()`
+- Fixed Astro component TypeScript parsing - added proper type annotations
+- Fixed Next.js CSS module type declarations
 
 ### Breaking Changes
 

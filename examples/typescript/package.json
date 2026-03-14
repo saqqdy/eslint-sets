@@ -1,0 +1,18 @@
+{
+  "name": "eslint-sets-example-typescript",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite-node src/index.ts",
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "link:../..",
+    "eslint": "^9.22.0",
+    "typescript": "^5.9.0",
+    "vite-node": "^2.0.0"
+  }
+}

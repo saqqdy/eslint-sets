@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { existsSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import * as p from '@clack/prompts'

@@ -24,7 +24,8 @@
       "Bash(pnpm lint:fix 2>&1)",
       "Bash(npx eslint:*)",
       "Bash(git checkout:*)",
-      "Bash(pnpm view:*)"
+      "Bash(pnpm view:*)",
+      "Bash(pnpm outdated:*)"
     ]
   }
 }

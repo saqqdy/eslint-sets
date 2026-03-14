@@ -164,7 +164,7 @@ export async function vue(options: VueOptions = {}): Promise<Linter.Config[]> {
 				'vue/no-v-html': 'off',
 				'vue/object-curly-newline': 'off',
 				'vue/object-curly-spacing': ['error', 'always'],
-				'vue/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+				'vue/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
 				'vue/object-shorthand': [
 					'error',
 					'always',

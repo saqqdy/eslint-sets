@@ -64,8 +64,8 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 			name: 'eslint-sets/react/setup',
 			plugins: {
 				react: reactPlugin,
-				'react-hooks': hooksPlugin,
-				...(refreshPlugin && { 'react-refresh': refreshPlugin }),
+				'react-hooks': hooksPlugin as any,
+				...(refreshPlugin && { 'react-refresh': refreshPlugin as any }),
 				...(jsxA11yPlugin && { 'jsx-a11y': jsxA11yPlugin as any }),
 			},
 			rules: {

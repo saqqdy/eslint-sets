@@ -1,0 +1,128 @@
+---
+const { initialValue = 0, max = 10, min = 0 } = Astro.props
+---
+
+<div class="counter" data-initial={initialValue} data-max={max} data-min={min}>
+  <h2>Counter Example</h2>
+  <p class="count-value">{initialValue}</p>
+  <div class="counter-buttons">
+    <button type="button" class="btn-decrement" disabled={initialValue <= min}>-</button>
+    <button type="button" class="btn-reset">Reset</button>
+    <button type="button" class="btn-increment" disabled={initialValue >= max}>+</button>
+  </div>
+  <p class="counter-status">
+    {initialValue <= min && <span>At minimum value</span>}
+    {initialValue >= max && <span>At maximum value</span>}
+    {initialValue > min && initialValue < max && <span>Counting...</span>}
+  </p>
+</div>
+
+<script>
+  function initCounter(counter: HTMLElement) {
+    const min = Number.parseInt(counter.dataset.min || '0', 10)
+    const max = Number.parseInt(counter.dataset.max || '10', 10)
+    let count = Number.parseInt(counter.dataset.initial || '0', 10)
+
+    const countDisplay = counter.querySelector('.count-value')
+    const decrementBtn = counter.querySelector('.btn-decrement') as HTMLButtonElement | null
+    const incrementBtn = counter.querySelector('.btn-increment') as HTMLButtonElement | null
+    const resetBtn = counter.querySelector('.btn-reset') as HTMLButtonElement | null
+    const statusDisplay = counter.querySelector('.counter-status')
+
+    function updateDisplay() {
+      if (countDisplay) {
+        countDisplay.textContent = String(count)
+      }
+
+      if (decrementBtn) {
+        decrementBtn.disabled = count <= min
+      }
+
+      if (incrementBtn) {
+        incrementBtn.disabled = count >= max
+      }
+
+      if (statusDisplay) {
+        if (count <= min) {
+          statusDisplay.innerHTML = '<span>At minimum value</span>'
+        } else if (count >= max) {
+          statusDisplay.innerHTML = '<span>At maximum value</span>'
+        } else {
+          statusDisplay.innerHTML = '<span>Counting...</span>'
+        }
+      }
+    }
+
+    decrementBtn?.addEventListener('click', () => {
+      if (count > min) {
+        count--
+        updateDisplay()
+      }
+    })
+
+    incrementBtn?.addEventListener('click', () => {
+      if (count < max) {
+        count++
+        updateDisplay()
+      }
+    })
+
+    resetBtn?.addEventListener('click', () => {
+      count = min
+      updateDisplay()
+    })
+  }
+
+  document.querySelectorAll('.counter').forEach((el) => {
+    initCounter(el as HTMLElement)
+  })
+</script>
+
+<style>
+  .counter {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ff5d01;
+    border-radius: 12px;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+
+  .count-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff5d01;
+  }
+
+  .counter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .counter-buttons button {
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #ff5d01;
+    color: white;
+    transition: background-color 0.2s;
+  }
+
+  .counter-buttons button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .counter-buttons button:hover:not(:disabled) {
+    background-color: #e65200;
+  }
+
+  .counter-status {
+    font-style: italic;
+    color: #666;
+  }
+</style>

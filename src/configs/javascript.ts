@@ -172,7 +172,14 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 			'no-void': 'error',
 			'no-with': 'error',
 			'object-shorthand': ['error', 'always', { avoidQuotes: true, ignoreConstructors: false }],
-			'one-var': ['error', { initialized: 'never' }],
+			'one-var': [
+				'warn',
+				{
+					const: 'never',
+					let: 'always',
+					var: 'always',
+				},
+			],
 			'operator-linebreak': 'off',
 			'prefer-arrow-callback': [
 				'error',

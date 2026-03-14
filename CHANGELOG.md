@@ -80,7 +80,6 @@ All notable changes to this project will be documented in this file.
   - `no-template-curly-in-string`: Changed from `'off'` to `'error'`
   - `no-throw-literal`: Changed from `'off'` to `'error'`
   - `object-shorthand`: Enhanced with `['error', 'always', { avoidQuotes: true, ignoreConstructors: false }]`
-  - `one-var`: Simplified to `['error', { initialized: 'never' }]`
   - `valid-typeof`: Added `requireStringLiterals: true` option
 - **Node.js Rules**: Disabled `n/no-callback-literal` (not used by antfu/eslint-config)
 - **prefer-node-protocol**: Changed from `n/prefer-node-protocol` to `unicorn/prefer-node-protocol` (matching antfu/eslint-config)

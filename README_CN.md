@@ -14,6 +14,7 @@
 | 框架 | 链接 |
 | ---- | ---- |
 | Vue 3 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/vue3) |
+| Vue 2 | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/vue2) |
 | React | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/react) |
 | TypeScript | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/typescript) |
 | Svelte | [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/svelte) |

@@ -11,6 +11,7 @@ Click the links below to open examples in StackBlitz:
 | Example | StackBlitz |
 | ------- | ---------- |
 | Vue 3 | [Open](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/vue3) |
+| Vue 2 | [Open](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/vue2) |
 | React | [Open](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/react) |
 | TypeScript | [Open](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/typescript) |
 | Svelte | [Open](https://stackblitz.com/github/saqqdy/eslint-sets/tree/master/examples/svelte) |
@@ -44,7 +45,11 @@ pnpm dev
 
 ### Vue 3 (`examples/vue3`)
 
-Basic Vue 3 project with TypeScript support.
+Vue 3 project with TypeScript support, featuring:
+- Composition API with `<script setup>`
+- Custom composables (`useCounter`, `useLocalStorage`)
+- Utility functions with full type support
+- Component examples (`UserCard`, `CounterDisplay`)
 
 ```typescript
 // eslint.config.ts
@@ -56,9 +61,30 @@ export default eslintConfig({
 })
 ```
 
+### Vue 2 (`examples/vue2`)
+
+Vue 2.7 project with TypeScript support, featuring:
+- Options API with `Vue.extend()`
+- Vite + Vue 2 plugin
+- Classic Vue 2 patterns
+
+```typescript
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+  vue: { vueVersion: 2 },
+  typescript: true,
+})
+```
+
 ### React (`examples/react`)
 
-React project with TypeScript support.
+React project with TypeScript support, featuring:
+- Function components with hooks
+- Custom hooks (`useCounter`, `useLocalStorage`)
+- Utility functions
+- Component examples (`UserCard`, `CounterDisplay`)
 
 ```typescript
 // eslint.config.ts
@@ -72,7 +98,10 @@ export default eslintConfig({
 
 ### TypeScript (`examples/typescript`)
 
-Pure TypeScript project.
+Pure TypeScript project with:
+- Utility functions (`helpers.ts`)
+- Collection classes (`LinkedList`, `Queue`, `Stack`)
+- Async utilities (`AsyncTaskQueue`, `retry`, `timeout`)
 
 ```typescript
 // eslint.config.ts
@@ -85,7 +114,11 @@ export default eslintConfig({
 
 ### Svelte (`examples/svelte`)
 
-Svelte 5 project with TypeScript support.
+Svelte 5 project with TypeScript support, featuring:
+- Svelte 5 runes API (`$state`, `$derived`, `$effect`, `$props`)
+- Modern component patterns
+- Store examples
+- Counter and UserCard components
 
 ```typescript
 // eslint.config.ts
@@ -99,7 +132,11 @@ export default eslintConfig({
 
 ### Next.js (`examples/nextjs`)
 
-Next.js 15 project with App Router.
+Next.js 15 project with App Router, featuring:
+- App Router with `layout.tsx` and `page.tsx`
+- Client components with `'use client'`
+- Custom hooks
+- Counter component
 
 ```typescript
 // eslint.config.ts
@@ -114,7 +151,10 @@ export default eslintConfig({
 
 ### Nuxt (`examples/nuxt`)
 
-Nuxt 3 project with Vue 3.
+Nuxt 3 project with Vue 3, featuring:
+- Auto-imports
+- Composables
+- Component examples
 
 ```typescript
 // eslint.config.ts
@@ -129,7 +169,10 @@ export default eslintConfig({
 
 ### Astro (`examples/astro`)
 
-Astro project with TypeScript support.
+Astro project with TypeScript support, featuring:
+- Astro components
+- Client-side scripts
+- Counter component
 
 ```typescript
 // eslint.config.ts
@@ -143,7 +186,11 @@ export default eslintConfig({
 
 ### Angular (`examples/angular`)
 
-Angular 19 project with standalone components.
+Angular 19 project with standalone components, featuring:
+- Standalone components
+- Services with dependency injection
+- Signals for reactive state
+- Counter and UserCard components
 
 ```typescript
 // eslint.config.ts
@@ -157,7 +204,10 @@ export default eslintConfig({
 
 ### UnoCSS (`examples/unocss`)
 
-Vue 3 project with UnoCSS integration.
+Vue 3 project with UnoCSS integration, featuring:
+- UnoCSS utility classes
+- Vue 3 Composition API
+- Counter component with utility-first styling
 
 ```typescript
 // eslint.config.ts
@@ -191,3 +241,27 @@ export default eslintConfig({
   // Your configuration options
 })
 ```
+
+## Common Patterns
+
+### Counter Component
+
+Most examples include a counter component demonstrating:
+- State management
+- Event handling
+- Conditional rendering
+- Styling
+
+### User Card Component
+
+Framework-specific implementations showing:
+- Props/properties
+- Event emission
+- Conditional rendering
+- Type safety
+
+### Custom Hooks/Composables
+
+Reusable logic patterns:
+- `useCounter` - Counter logic with min/max bounds
+- `useLocalStorage` - Persistent state with localStorage

@@ -142,7 +142,14 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 				// Additional rules not covered by customize
 				'@stylistic/curly-newline': 'off',
 				'@stylistic/function-call-spacing': ['error', 'never'],
-				'@stylistic/indent': ['error', indentStyle, { SwitchCase: 1 }],
+				'@stylistic/indent': [
+					'error',
+					indentStyle,
+					{
+						ignoredNodes: ['TemplateLiteral'],
+						SwitchCase: 1,
+					},
+				],
 				'@stylistic/jsx-curly-brace-presence': ['error', { children: 'never', props: 'never' }],
 
 				'@stylistic/jsx-curly-newline': [
@@ -150,12 +157,7 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 					{ multiline: 'consistent', singleline: 'consistent' },
 				],
 				'@stylistic/jsx-curly-spacing': ['error', { attributes: true, children: true }],
-				'@stylistic/jsx-indent': [
-					'error',
-					typeof indentSize === 'number' ? indentSize : 2,
-					{ indentLogicalExpressions: true },
-				],
-				'@stylistic/jsx-indent-props': ['error', typeof indentSize === 'number' ? indentSize : 2],
+				// Note: jsx-indent and jsx-indent-props are deprecated in v5, use indent instead
 				'@stylistic/jsx-newline': 'off',
 				'@stylistic/jsx-one-expression-per-line': ['error', { allow: 'literal' }],
 				'@stylistic/jsx-pascal-case': 'off',

@@ -619,27 +619,176 @@ The following packages are optional and will be used if installed:
 
 ## Migration from v5
 
-If you're migrating from the old `@eslint-sets/eslint-config-*` packages:
+If you're migrating from the old `@eslint-sets/eslint-config-*` packages, all sub-packages have been merged into a single package `@eslint-sets/eslint-config`.
 
-### Before (v5)
+### Migration Map
+
+| Old Package (v5) | New Config (v6) |
+| ---------------- | --------------- |
+| `@eslint-sets/eslint-config-basic` | `eslintConfig()` (default) |
+| `@eslint-sets/eslint-config-ts` | `eslintConfig({ typescript: true })` |
+| `@eslint-sets/eslint-config-vue` | `eslintConfig({ vue: true })` |
+| `@eslint-sets/eslint-config-vue3` | `eslintConfig({ vue: { vueVersion: 3 } })` |
+| `@eslint-sets/eslint-config-react` | `eslintConfig({ react: true })` |
+| `@eslint-sets/eslint-config-svelte` | `eslintConfig({ svelte: true })` |
+| `@eslint-sets/eslint-config-nuxt` | `eslintConfig({ nuxt: true, vue: true })` |
+| `@eslint-sets/eslint-config-egg` | `eslintConfig({ node: true, typescript: true })` |
+
+### Basic
 
 ```javascript
+// Before (v5)
 // .eslintrc.js
 module.exports = {
-	extends: '@eslint-sets/eslint-config-vue',
+	extends: '@eslint-sets/eslint-config-basic',
 }
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig()
 ```
 
-### After (v6)
+### TypeScript
 
-```typescript
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-ts',
+}
+
+// After (v6)
 // eslint.config.ts
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
+	typescript: true,
+})
+```
+
+### Vue 2
+
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-vue',
+}
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	vue: {
+		vueVersion: 2,
+	},
+})
+```
+
+### Vue 3
+
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-vue3',
+}
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	vue: {
+		vueVersion: 3,
+	},
+})
+```
+
+### React
+
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-react',
+}
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	react: true,
+})
+```
+
+### Svelte
+
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-svelte',
+}
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	svelte: true,
+})
+```
+
+### Nuxt
+
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-nuxt',
+}
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	nuxt: true,
 	vue: true,
 })
 ```
+
+### Egg (Node.js)
+
+```javascript
+// Before (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-egg',
+}
+
+// After (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	node: true,
+	typescript: true,
+})
+```
+
+### Key Changes in v6
+
+1. **Flat Config**: v6 uses ESLint's new flat config format (`eslint.config.ts` instead of `.eslintrc.js`)
+2. **Single Package**: All sub-packages merged into one package
+3. **Auto-detection**: Frameworks are auto-detected by default
+4. **Stylistic**: Default formatting uses `@stylistic/eslint-plugin` instead of Prettier
+5. **TypeScript Types**: Auto-generated types for all rules
 
 ## VS Code Integration
 

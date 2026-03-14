@@ -619,27 +619,176 @@ import {
 
 ## 从 v5 迁移
 
-如果你正在从旧的 `@eslint-sets/eslint-config-*` 包迁移：
+如果你正在从旧的 `@eslint-sets/eslint-config-*` 包迁移，所有子包已合并为单个包 `@eslint-sets/eslint-config`。
 
-### 之前（v5）
+### 迁移对照表
+
+| 旧包名 (v5) | 新配置 (v6) |
+| ---------------- | --------------- |
+| `@eslint-sets/eslint-config-basic` | `eslintConfig()` (默认) |
+| `@eslint-sets/eslint-config-ts` | `eslintConfig({ typescript: true })` |
+| `@eslint-sets/eslint-config-vue` | `eslintConfig({ vue: true })` |
+| `@eslint-sets/eslint-config-vue3` | `eslintConfig({ vue: { vueVersion: 3 } })` |
+| `@eslint-sets/eslint-config-react` | `eslintConfig({ react: true })` |
+| `@eslint-sets/eslint-config-svelte` | `eslintConfig({ svelte: true })` |
+| `@eslint-sets/eslint-config-nuxt` | `eslintConfig({ nuxt: true, vue: true })` |
+| `@eslint-sets/eslint-config-egg` | `eslintConfig({ node: true, typescript: true })` |
+
+### Basic 基础配置
 
 ```javascript
+// 之前 (v5)
 // .eslintrc.js
 module.exports = {
-	extends: '@eslint-sets/eslint-config-vue',
+	extends: '@eslint-sets/eslint-config-basic',
 }
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig()
 ```
 
-### 之后（v6）
+### TypeScript
 
-```typescript
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-ts',
+}
+
+// 之后 (v6)
 // eslint.config.ts
 import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
+	typescript: true,
+})
+```
+
+### Vue 2
+
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-vue',
+}
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	vue: {
+		vueVersion: 2,
+	},
+})
+```
+
+### Vue 3
+
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-vue3',
+}
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	vue: {
+		vueVersion: 3,
+	},
+})
+```
+
+### React
+
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-react',
+}
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	react: true,
+})
+```
+
+### Svelte
+
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-svelte',
+}
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	svelte: true,
+})
+```
+
+### Nuxt
+
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-nuxt',
+}
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	nuxt: true,
 	vue: true,
 })
 ```
+
+### Egg (Node.js)
+
+```javascript
+// 之前 (v5)
+// .eslintrc.js
+module.exports = {
+	extends: '@eslint-sets/eslint-config-egg',
+}
+
+// 之后 (v6)
+// eslint.config.ts
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({
+	node: true,
+	typescript: true,
+})
+```
+
+### v6 主要变化
+
+1. **Flat Config**: v6 使用 ESLint 新的 flat config 格式（`eslint.config.ts` 而非 `.eslintrc.js`）
+2. **单一包**: 所有子包合并为一个包
+3. **自动检测**: 框架默认自动检测
+4. **Stylistic**: 默认使用 `@stylistic/eslint-plugin` 进行格式化，而非 Prettier
+5. **TypeScript 类型**: 自动生成所有规则的类型
 
 ## VS Code 集成
 

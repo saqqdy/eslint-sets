@@ -1,0 +1,23 @@
+{
+  "name": "eslint-sets-example-svelte",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "link:../..",
+    "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-svelte": "^3.0.0",
+    "svelte": "^5.25.0",
+    "svelte-eslint-parser": "^1.0.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0"
+  }
+}

@@ -1,0 +1,45 @@
+---
+const title = 'Astro Example'
+const count = 0
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{title}</h1>
+      <p>Count: {count}</p>
+      <button id="increment">Increment</button>
+    </main>
+  </body>
+</html>
+
+<script>
+  let count = 0
+  const button = document.getElementById('increment')
+  const countDisplay = document.querySelector('p')
+
+  button?.addEventListener('click', () => {
+    count++
+    if (countDisplay) {
+      countDisplay.textContent = `Count: ${count}`
+    }
+  })
+</script>
+
+<style>
+  main {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+</style>

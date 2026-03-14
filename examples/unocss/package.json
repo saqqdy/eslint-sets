@@ -1,0 +1,26 @@
+{
+  "name": "eslint-sets-example-unocss",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "link:../..",
+    "@unocss/eslint-plugin": "^66.0.0",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "eslint": "^9.22.0",
+    "typescript": "^5.8.2",
+    "unocss": "^66.0.0",
+    "vite": "^6.2.0",
+    "vue-tsc": "^2.2.0"
+  }
+}

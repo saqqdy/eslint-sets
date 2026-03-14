@@ -1,0 +1,25 @@
+{
+  "name": "eslint-sets-example-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "astro": "^5.5.0"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "link:../..",
+    "astro-eslint-parser": "^1.2.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-astro": "^1.3.0",
+    "typescript": "^5.8.2"
+  }
+}

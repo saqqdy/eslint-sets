@@ -1,0 +1,24 @@
+{
+  "name": "eslint-sets-example-vue2",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "vue": "^2.7.16"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "link:../..",
+    "@vitejs/plugin-vue2": "^2.3.3",
+    "eslint": "^9.22.0",
+    "typescript": "~5.8.2",
+    "vite": "^5.4.14",
+    "vue-template-compiler": "^2.7.16"
+  }
+}

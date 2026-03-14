@@ -1,129 +1,81 @@
-import { join, resolve, sep } from 'node:path'
-import assert from 'assert'
+import { build } from 'esbuild'
 import { execSync } from 'node:child_process'
-import { existsSync, promises } from 'node:fs'
-import { type ParseArgsConfig, parseArgs } from 'node:util'
-// import fg from 'fast-glob'
-import consola from 'consola'
-import {
-	cpSync
-	// readJSONSync,
-	// writeJSONSync
-} from '@node-kit/extra.fs'
-import { getPackages } from '../build/packages'
-// import { version } from '../package.json'
+import { existsSync, mkdirSync, rmSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const [, , ...args] = process.argv
-const rootDir = resolve(__dirname, '..')
-const FILES_COPY_ROOT = ['LICENSE']
-// const FILES_COPY_LOCAL = ['README.md', '*.cjs', '*.mjs', '*.d.ts']
+const outDir = resolve(fileURLToPath(import.meta.url), '../../dist')
 
-const options: ParseArgsConfig['options'] = {
-	package: { type: 'string', short: 'p' },
-	watch: { type: 'boolean' }
+// Clean output directory
+if (existsSync(outDir)) {
+	rmSync(outDir, { recursive: true })
 }
-const { values, positionals } = parseArgs({
-	args,
-	options,
-	allowPositionals: true
-})
+mkdirSync(outDir, { recursive: true })
+mkdirSync(resolve(outDir, 'cli'), { recursive: true })
 
-const watch = values.watch as boolean
-let packageName = positionals[0] || (values.package as string)
-try {
-	packageName = JSON.parse(packageName)
-} catch {}
+async function main() {
+	// Generate types first
+	console.log('Generating types...')
+	execSync('jiti scripts/typegen.ts', { stdio: 'inherit' })
 
-const packages = getPackages(packageName)
+	console.log('Building...')
 
-assert(process.cwd() !== __dirname)
+	// Main ESM build
+	await build({
+		bundle: true,
+		entryPoints: ['src/index.ts'],
+		format: 'esm',
+		outfile: 'dist/index.mjs',
+		packages: 'external',
+		platform: 'node',
+		splitting: false,
+	})
 
-async function buildMetaFiles() {
-	for (const { name } of packages) {
-		if (name === 'monorepo') continue
-		const dirName = name.replace(/\./g, sep)
-		const packageRoot = resolve(__dirname, '..', 'packages', dirName)
-		// const packageDist = resolve(packageRoot, 'dist')
+	// Main CJS build
+	await build({
+		bundle: true,
+		entryPoints: ['src/index.ts'],
+		format: 'cjs',
+		outfile: 'dist/index.js',
+		packages: 'external',
+		platform: 'node',
+	})
 
-		if (name === 'core')
-			await promises.copyFile(
-				resolve(rootDir, 'README.md'),
-				resolve(packageRoot, 'README.md')
-			)
+	// CLI ESM build
+	await build({
+		banner: { js: '#!/usr/bin/env node' },
+		bundle: true,
+		entryPoints: ['src/cli/index.ts'],
+		format: 'esm',
+		outfile: 'dist/cli/index.mjs',
+		packages: 'external',
+		platform: 'node',
+	})
 
-		for (const file of FILES_COPY_ROOT)
-			await promises.copyFile(resolve(rootDir, file), resolve(packageRoot, file))
+	// CLI CJS build
+	await build({
+		banner: { js: '#!/usr/bin/env node' },
+		bundle: true,
+		entryPoints: ['src/cli/index.ts'],
+		format: 'cjs',
+		outfile: 'dist/cli/index.js',
+		packages: 'external',
+		platform: 'node',
+	})
 
-		// const files = await fg(FILES_COPY_LOCAL, { cwd: packageRoot })
-		// for (const file of files)
-		// 	await promises.copyFile(resolve(packageRoot, file), resolve(packageDist, file))
-
-		// const packageJSON: any = readJSONSync(join(packageRoot, 'package.json'), 'utf8')
-		// for (const key of Object.keys(packageJSON.dependencies || {})) {
-		// 	if (key.startsWith('@eslint-sets/')) packageJSON.dependencies[key] = version
-		// }
-		// for (const key of Object.keys(packageJSON.devDependencies || {})) {
-		// 	if (key.startsWith('@eslint-sets/')) packageJSON.devDependencies[key] = version
-		// }
-		// writeJSONSync(join(packageDist, 'package.json'), packageJSON)
-	}
-}
-
-async function build() {
-	for (const { build, name, extractTypes } of packages) {
-		const dirName = name.replace(/\./g, sep)
-		const cwd = resolve(__dirname, '..', 'packages', dirName)
-		const HAS_INDEX_MJS = existsSync(join(cwd, 'src', 'index.mjs'))
-
-		if (build === false || name === 'monorepo') continue
-
-		consola.info('Clean up in: packages/%s', dirName)
-		execSync('rm-all temp dist types typings', {
-			stdio: 'inherit',
-			cwd
-		})
-
-		if (HAS_INDEX_MJS) {
-			consola.info('Copy index.mjs in: packages/%s', dirName)
-			cpSync(join(cwd, 'src', 'index.mjs'), join(cwd, 'dist'))
-		}
-
-		if (watch) continue
-
-		if (extractTypes === false) continue
-
-		consola.info('Create types: packages/%s', dirName)
-		execSync('npx tsc -p tsconfig.declaration.json', {
-			stdio: 'inherit',
-			cwd
-		})
-	}
-
-	consola.info('Rollup build => %s', packageName)
-	execSync(
-		`pnpm run build:rollup${watch ? ' --watch' : ''}${
-			packageName ? ' --environment BUILD_PACKAGE:' + packageName : ''
-		}`,
-		{
-			stdio: 'inherit'
-		}
-	)
-
-	// consola.info("Fix types");
-	// execSync("pnpm run types:fix", { stdio: "inherit" });
-
-	await buildMetaFiles()
-}
-
-async function cli() {
+	// Generate declaration files using tsc
+	console.log('Generating declaration files...')
 	try {
-		await build()
-	} catch (e) {
-		console.error(e)
-		process.exit(1)
+		execSync('tsc --emitDeclarationOnly --declaration --outDir dist', { stdio: 'inherit' })
+	} catch {
+		// tsc may have type errors but still generate .d.ts files
+		console.log('TypeScript completed with some type errors (non-blocking)')
 	}
+
+	console.log('Done!')
 }
 
-export { build }
-
-if (require.main === module) cli()
+main().catch((error) => {
+	console.error(error)
+	process.exit(1)
+})

@@ -1,0 +1,4 @@
+{
+  "name": "eslint-sets-example-nuxt",
+  "outputs": ["./.nuxt"]
+}

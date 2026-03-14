@@ -1,27 +1,30 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
 		"target": "ESNext",
-		"moduleResolution": "node",
-		"noLib": false,
-		"lib": ["ESNext"],
-		"sourceMap": true,
+		"lib": ["ESNext", "DOM"],
+		"rootDir": "./src",
 		"module": "ESNext",
-		"removeComments": true,
-		"strict": true,
-		"declaration": true,
-		"noImplicitOverride": true,
-		"noUnusedLocals": false,
-		"esModuleInterop": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"allowSyntheticDefaultImports": true,
-		"resolveJsonModule": true,
-		"noUnusedParameters": false,
-		"baseUrl": ".",
+		"moduleResolution": "bundler",
+		"types": ["node"],
 		"paths": {
-			"@/*": ["./packages/*"],
-			"@/package": ["./package.json"]
-		}
-	}
+			"*": ["./*"],
+			"@/*": ["./src/*"]
+		},
+		"resolveJsonModule": true,
+		"typeRoots": ["./node_modules/@types", "./src/types"],
+		"strict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"declaration": true,
+		"declarationMap": true,
+		"outDir": "./dist",
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*.ts", "src/**/*.d.ts"],
+	"exclude": ["node_modules", "dist"]
 }

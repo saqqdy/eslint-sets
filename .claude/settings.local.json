@@ -25,7 +25,13 @@
       "Bash(npx eslint:*)",
       "Bash(git checkout:*)",
       "Bash(pnpm view:*)",
-      "Bash(pnpm outdated:*)"
+      "Bash(pnpm outdated:*)",
+      "Bash(for dir:*)",
+      "Bash(npm show:*)",
+      "Bash(pnpm tsup:*)",
+      "Bash(pnpm why:*)",
+      "Bash(pnpm ls:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

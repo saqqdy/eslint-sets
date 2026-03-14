@@ -1,0 +1,27 @@
+{
+  "name": "eslint-sets-example-react",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@eslint-react/eslint-plugin": "^1.40.0",
+    "@eslint-sets/eslint-config": "link:../..",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "typescript": "^5.9.0",
+    "vite": "^5.0.0"
+  }
+}

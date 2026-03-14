@@ -2,8 +2,8 @@ import eslintConfig from './src/index'
 
 export default eslintConfig({
 	ignores: [
-		'**/*.d.ts',
 		'**/examples/**',
+		'src/typegen.d.ts',
 	],
 	markdown: false,
 	stylistic: {

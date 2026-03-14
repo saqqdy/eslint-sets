@@ -1,0 +1,22 @@
+{
+  "name": "eslint-sets-example-vue3",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "link:../..",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "eslint": "^9.22.0",
+    "typescript": "^5.9.0",
+    "vite": "^5.0.0"
+  }
+}

@@ -38,14 +38,14 @@ export async function vue(options: VueOptions = {}): Promise<Linter.Config[]> {
 	const vueRecommendedRules
 		= vueVersion === 2
 			? {
-				...(vuePlugin.configs['vue2-essential'].rules as any),
-				...(vuePlugin.configs['vue2-strongly-recommended'].rules as any),
-				...(vuePlugin.configs['vue2-recommended'].rules as any),
+				...((vuePlugin.configs as any)['flat/vue2-essential']?.rules || {}),
+				...((vuePlugin.configs as any)['flat/vue2-strongly-recommended']?.rules || {}),
+				...((vuePlugin.configs as any)['flat/vue2-recommended']?.rules || {}),
 			}
 			: {
-				...(vuePlugin.configs.essential.rules as any),
-				...(vuePlugin.configs['strongly-recommended'].rules as any),
-				...(vuePlugin.configs.recommended.rules as any),
+				...((vuePlugin.configs as any)['flat/essential']?.rules || {}),
+				...((vuePlugin.configs as any)['flat/strongly-recommended']?.rules || {}),
+				...((vuePlugin.configs as any)['flat/recommended']?.rules || {}),
 			}
 
 	const configs: Linter.Config[] = [

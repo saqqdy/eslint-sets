@@ -70,6 +70,13 @@ npm install -D @eslint-sets/eslint-config eslint
 bun add -D @eslint-sets/eslint-config eslint
 ```
 
+## Requirements
+
+- **Node.js**: `^18.18.0` or `^20.9.0` or `>=21.1.0`
+- **ESLint**: `^9.10.0` or `^9.22.0`
+
+> Note: `eslint-plugin-toml` requires Node.js `^20.19.0 || ^22.13.0 || >=24`. If you need TOML support on Node.js 18, consider downgrading to `eslint-plugin-toml@0.13.1`.
+
 ## Quick Start
 
 ### Using CLI (Recommended)
@@ -572,6 +579,13 @@ import {
 | eslint     | ^9.10.0 or ^9.22.0                          |
 | prettier   | ^3.5.3 (optional, for Prettier integration) |
 | typescript | >=5.0.0 (optional, for TypeScript support)  |
+
+## System Requirements
+
+| Requirement | Version                                  |
+| ----------- | ---------------------------------------- |
+| Node.js     | ^18.18.0 or ^20.9.0 or >=21.1.0          |
+| ESLint      | ^9.10.0 or ^9.22.0                       |
 
 ## Optional Dependencies
 

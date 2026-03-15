@@ -47,7 +47,7 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 			},
 			name: 'eslint-sets/svelte',
 			plugins: {
-				svelte: sveltePlugin,
+				svelte: sveltePlugin as any,
 			},
 			processor: sveltePlugin.processors?.svelte,
 			rules: {

@@ -27,6 +27,6 @@ export default Counter`,
 			'Counter.tsx',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

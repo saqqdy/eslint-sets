@@ -19,6 +19,6 @@ serde = "1.0"`,
 			'Cargo.toml',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

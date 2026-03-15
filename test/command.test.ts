@@ -10,7 +10,7 @@ describe('Command Config', () => {
 console.log('Running script')`,
 			'scripts/build.js',
 		)
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})
@@ -23,7 +23,7 @@ process.exit(0)`,
 			'bin/cli.js',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should allow process.env in scripts', async () => {
@@ -33,7 +33,7 @@ process.exit(0)`,
 			'tasks/deploy.ts',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should allow require in scripts', async () => {
@@ -43,7 +43,7 @@ process.exit(0)`,
 			'tools/generate.js',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should allow shebang in scripts', async () => {
@@ -55,14 +55,14 @@ console.log('Hello')`,
 		)
 
 		// Should not have n/hashbang error
-		const hashbangErrors = messages.filter((m) => m.ruleId === 'n/hashbang')
+		const hashbangErrors = messages.filter(m => m.ruleId === 'n/hashbang')
 
 		expect(hashbangErrors).toHaveLength(0)
 	})
 
 	it('should disable n/hashbang for command files', () => {
 		const configs = command()
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/command')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/command')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['n/hashbang']).toBe('off')
@@ -70,7 +70,7 @@ console.log('Hello')`,
 
 	it('should disable unicorn/prefer-module for scripts', () => {
 		const configs = command()
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/command')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/command')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['unicorn/prefer-module']).toBe('off')
@@ -78,7 +78,7 @@ console.log('Hello')`,
 
 	it('should disable unicorn/prefer-top-level-await for scripts', () => {
 		const configs = command()
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/command')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/command')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['unicorn/prefer-top-level-await']).toBe('off')
@@ -92,7 +92,7 @@ console.log('Hello')`,
 		)
 
 		// Should not have no-console error
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})
@@ -105,7 +105,7 @@ console.log('Hello')`,
 		)
 
 		// Should not have no-console error
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})
@@ -118,7 +118,7 @@ console.log('Hello')`,
 		)
 
 		// Should not have no-console error
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})
@@ -131,7 +131,7 @@ console.log('Hello')`,
 		)
 
 		// Should not have no-console error
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})
@@ -144,7 +144,7 @@ console.log('Hello')`,
 		)
 
 		// Should not have no-console error
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})

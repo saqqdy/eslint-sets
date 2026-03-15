@@ -36,6 +36,7 @@ All notable changes to this project will be documented in this file.
   - Changed `arrowParens` default from `true` (always) to `false` (avoid) - single param arrow functions don't need parentheses
   - Changed `quoteProps` default from `'consistent-as-needed'` to `'as-needed'` - compatible with Prettier
   - Added `@stylistic/operator-linebreak` with overrides: `|` and `&` at beginning of line, others at end
+  - Added `@stylistic/multiline-ternary` with `'never'` - keeps ternary expressions on same line
   - YAML uses double quotes by default (supports escape sequences, consistent with TOML/JSON/Prettier)
 - **TOML Config**: Enhanced with more stylistic rules
   - Added `toml/array-bracket-newline`, `toml/array-bracket-spacing`, etc.

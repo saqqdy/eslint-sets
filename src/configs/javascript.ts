@@ -212,11 +212,9 @@ export function javascript(options: JavaScriptOptions = {}): Linter.Config {
 			yoda: ['error', 'never'],
 
 			// Disable in editor for performance
-			...(isInEditor
-				? {
-					'no-unused-vars': 'off',
-				}
-				: {}),
+			...(isInEditor ? {
+				'no-unused-vars': 'off',
+			} : {}),
 
 			// User overrides
 			...overrides,

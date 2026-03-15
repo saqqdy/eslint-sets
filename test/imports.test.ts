@@ -11,7 +11,7 @@ console.warn(used)`,
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should support default imports', async () => {
@@ -23,7 +23,7 @@ console.warn(used)`,
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should support namespace imports', async () => {
@@ -35,6 +35,6 @@ console.warn(used)`,
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

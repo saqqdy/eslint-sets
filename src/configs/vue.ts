@@ -44,18 +44,16 @@ export async function vue(options: VueOptions = {}): Promise<Linter.Config[]> {
 	} = typeof stylistic === 'boolean' ? {} : stylistic
 
 	// Get recommended rules based on Vue version
-	const vueRecommendedRules
-		= vueVersion === 2
-			? {
-				...((vuePlugin.configs as any)['flat/vue2-essential']?.rules || {}),
-				...((vuePlugin.configs as any)['flat/vue2-strongly-recommended']?.rules || {}),
-				...((vuePlugin.configs as any)['flat/vue2-recommended']?.rules || {}),
-			}
-			: {
-				...((vuePlugin.configs as any)['flat/essential']?.rules || {}),
-				...((vuePlugin.configs as any)['flat/strongly-recommended']?.rules || {}),
-				...((vuePlugin.configs as any)['flat/recommended']?.rules || {}),
-			}
+	const vueRecommendedRules =
+		vueVersion === 2 ? {
+			...((vuePlugin.configs as any)['flat/vue2-essential']?.rules || {}),
+			...((vuePlugin.configs as any)['flat/vue2-strongly-recommended']?.rules || {}),
+			...((vuePlugin.configs as any)['flat/vue2-recommended']?.rules || {}),
+		} : {
+			...((vuePlugin.configs as any)['flat/essential']?.rules || {}),
+			...((vuePlugin.configs as any)['flat/strongly-recommended']?.rules || {}),
+			...((vuePlugin.configs as any)['flat/recommended']?.rules || {}),
+		}
 
 	const configs: Linter.Config[] = [
 		{
@@ -109,36 +107,36 @@ export async function vue(options: VueOptions = {}): Promise<Linter.Config[]> {
 				'vue/space-unary-ops': ['error', { nonwords: false, words: true }],
 
 				// Stylistic rules (conditional)
-				...(stylistic
-					? {
-							'vue/array-bracket-spacing': ['error', 'never'],
-							'vue/arrow-spacing': ['error', { after: true, before: true }],
-							'vue/block-spacing': ['error', 'always'],
-							'vue/block-tag-newline': ['error', { multiline: 'always', singleline: 'always' }],
-							'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-							'vue/comma-dangle': ['error', 'always-multiline'],
-							'vue/comma-spacing': ['error', { after: true, before: false }],
-							'vue/comma-style': ['error', 'last'],
-							'vue/html-indent': ['error', indent === 'tab' ? 'tab' : indent],
-							'vue/html-quotes': ['error', 'double'],
-							'vue/key-spacing': ['error', { afterColon: true, beforeColon: false }],
-							'vue/keyword-spacing': ['error', { after: true, before: true }],
-							'vue/max-attributes-per-line': 'off',
-							'vue/object-curly-newline': 'off',
-							'vue/object-curly-spacing': ['error', 'always'],
-							'vue/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
-							'vue/operator-linebreak': ['error', 'after', {
-							overrides: {
-								'|': 'before',
-								'&': 'before',
-							},
-						}],
-							'vue/padding-line-between-blocks': ['error', 'always'],
-							'vue/quote-props': ['error', 'consistent-as-needed'],
-							'vue/space-in-parens': ['error', 'never'],
-							'vue/template-curly-spacing': 'error',
-						}
-					: {}),
+				...(stylistic ? {
+					'vue/array-bracket-spacing': ['error', 'never'],
+					'vue/arrow-spacing': ['error', { after: true, before: true }],
+					'vue/block-spacing': ['error', 'always'],
+					'vue/block-tag-newline': ['error', { multiline: 'always', singleline: 'always' }],
+					'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+					'vue/comma-dangle': ['error', 'always-multiline'],
+					'vue/comma-spacing': ['error', { after: true, before: false }],
+					'vue/comma-style': ['error', 'last'],
+					'vue/html-indent': ['error', indent === 'tab' ? 'tab' : indent],
+					'vue/html-quotes': ['error', 'double'],
+					'vue/key-spacing': ['error', { afterColon: true, beforeColon: false }],
+					'vue/keyword-spacing': ['error', { after: true, before: true }],
+					'vue/max-attributes-per-line': 'off',
+					'vue/object-curly-newline': 'off',
+					'vue/object-curly-spacing': ['error', 'always'],
+					'vue/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
+					'vue/operator-linebreak': ['error', 'after', {
+						overrides: {
+							'&': 'before',
+							// ':': 'before', // Ternary operator: colon at beginning of line
+							// '?': 'before', // Ternary operator: question mark at beginning of line
+							'|': 'before',
+						},
+					}],
+					'vue/padding-line-between-blocks': ['error', 'always'],
+					'vue/quote-props': ['error', 'consistent-as-needed'],
+					'vue/space-in-parens': ['error', 'never'],
+					'vue/template-curly-spacing': 'error',
+				} : {}),
 
 				// User overrides
 				...overrides,

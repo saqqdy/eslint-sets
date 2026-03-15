@@ -42,11 +42,9 @@ export function imports(options: ImportsOptions = {}): Linter.Config {
 			'import-x/order': 'off',
 
 			// Stylistic rules
-			...(stylistic
-				? {
-					'import-x/newline-after-import': ['error', { count: 1 }],
-				}
-				: {}),
+			...(stylistic ? {
+				'import-x/newline-after-import': ['error', { count: 1 }],
+			} : {}),
 
 			// Unused imports handling (essential)
 			'unused-imports/no-unused-imports': 'error',

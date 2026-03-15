@@ -10,7 +10,7 @@ describe('TypeScript Config', () => {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should support type imports', async () => {
@@ -21,7 +21,7 @@ describe('TypeScript Config', () => {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should support interfaces', async () => {
@@ -35,7 +35,7 @@ describe('TypeScript Config', () => {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should support generics', async () => {
@@ -48,18 +48,18 @@ describe('TypeScript Config', () => {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should return valid configs with typeAware option', async () => {
 		const { typescript } = await import('../src/configs')
-		const configs = await typescript({ typeAware: true, tsconfigPath: './tsconfig.json' })
+		const configs = await typescript({ tsconfigPath: './tsconfig.json', typeAware: true })
 
 		expect(configs).toBeDefined()
 		expect(Array.isArray(configs)).toBeTruthy()
 		expect(configs.length).toBeGreaterThan(1)
 		// Should have type-aware config
-		expect(configs.find((c) => c.name === 'eslint-sets/typescript/type-aware')).toBeDefined()
+		expect(configs.find(c => c.name === 'eslint-sets/typescript/type-aware')).toBeDefined()
 	})
 
 	it('should return valid configs with custom tsconfigPath', async () => {
@@ -74,8 +74,8 @@ describe('TypeScript Config', () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript({
 			filesTypeAware: ['**/*.ts'],
-			typeAware: true,
 			tsconfigPath: './tsconfig.json',
+			typeAware: true,
 		})
 
 		expect(configs).toBeDefined()
@@ -94,13 +94,13 @@ describe('TypeScript Config', () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript()
 
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/typescript')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(mainConfig).toBeDefined()
 
 		// Check that rules use ts/* prefix
 		const rules = mainConfig?.rules || {}
-		const tsRules = Object.keys(rules).filter((r) => r.startsWith('ts/'))
+		const tsRules = Object.keys(rules).filter(r => r.startsWith('ts/'))
 
 		expect(tsRules.length).toBeGreaterThan(0)
 	})
@@ -109,7 +109,7 @@ describe('TypeScript Config', () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript()
 
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/typescript')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['no-redeclare']).toBe('off')
@@ -120,7 +120,7 @@ describe('TypeScript Config', () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript()
 
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/typescript')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['ts/no-unused-expressions']).toEqual([
@@ -137,7 +137,7 @@ describe('TypeScript Config', () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript({ type: 'lib' })
 
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/typescript')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['ts/explicit-function-return-type']).toEqual([
@@ -154,7 +154,7 @@ describe('TypeScript Config', () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript({ type: 'app' })
 
-		const mainConfig = configs.find((c) => c.name === 'eslint-sets/typescript')
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(mainConfig).toBeDefined()
 		expect(mainConfig?.rules?.['ts/explicit-function-return-type']).toBeUndefined()
@@ -163,12 +163,12 @@ describe('TypeScript Config', () => {
 	it('should support overridesTypeAware option', async () => {
 		const { typescript } = await import('../src/configs')
 		const configs = await typescript({
-			typeAware: true,
-			tsconfigPath: './tsconfig.json',
 			overridesTypeAware: { 'ts/no-floating-promises': 'warn' },
+			tsconfigPath: './tsconfig.json',
+			typeAware: true,
 		})
 
-		const typeAwareConfig = configs.find((c) => c.name === 'eslint-sets/typescript/type-aware')
+		const typeAwareConfig = configs.find(c => c.name === 'eslint-sets/typescript/type-aware')
 
 		expect(typeAwareConfig).toBeDefined()
 		expect(typeAwareConfig?.rules?.['ts/no-floating-promises']).toBe('warn')

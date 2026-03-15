@@ -17,7 +17,7 @@ export function main() {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should lint a complete TypeScript file', async () => {
@@ -36,7 +36,7 @@ export function greet(user: User): string {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should lint a Vue component', async () => {
@@ -69,7 +69,7 @@ const title = ref<string>('Hello Vue')
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should lint a package.json file', async () => {
@@ -83,7 +83,7 @@ const title = ref<string>('Hello Vue')
 			'package.json',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should lint a YAML config file', async () => {
@@ -102,7 +102,7 @@ jobs:
 			'.github/workflows/ci.yml',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should lint multiple file types', async () => {
@@ -113,7 +113,7 @@ jobs:
 			'test.js',
 		)
 
-		expect(jsMessages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(jsMessages.filter(m => m.fatal)).toHaveLength(0)
 
 		// TypeScript
 		const tsMessages = await lintContent(
@@ -122,7 +122,7 @@ jobs:
 			'test.ts',
 		)
 
-		expect(tsMessages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(tsMessages.filter(m => m.fatal)).toHaveLength(0)
 
 		// JSON
 		const jsonMessages = await lintContent(
@@ -131,6 +131,6 @@ jobs:
 			'test.json',
 		)
 
-		expect(jsonMessages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(jsonMessages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

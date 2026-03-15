@@ -43,9 +43,9 @@ async function findUp(name: string, options?: { cwd?: string }): Promise<string 
 export function parseGitignore(content: string): string[] {
 	return content
 		.split('\n')
-		.map((line) => line.trim())
-		.filter((line) => line && !line.startsWith('#'))
-		.map((line) => {
+		.map(line => line.trim())
+		.filter(line => line && !line.startsWith('#'))
+		.map(line => {
 			// Handle negation
 			if (line.startsWith('!')) {
 				return line

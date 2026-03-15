@@ -13,7 +13,7 @@ import {
  * Check if Vue is installed
  */
 export function hasVue(): boolean {
-	return VUE_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return VUE_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
@@ -27,7 +27,7 @@ export function hasReact(): boolean {
  * Check if React Compiler is installed
  */
 export function hasReactCompiler(): boolean {
-	return REACT_COMPILER_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return REACT_COMPILER_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
@@ -69,35 +69,35 @@ export function hasSolid(): boolean {
  * Check if Next.js is installed
  */
 export function hasNextjs(): boolean {
-	return NEXTJS_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return NEXTJS_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
  * Check if Nuxt is installed
  */
 export function hasNuxt(): boolean {
-	return NUXT_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return NUXT_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
  * Check if Astro is installed
  */
 export function hasAstro(): boolean {
-	return ASTRO_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return ASTRO_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
  * Check if Angular is installed
  */
 export function hasAngular(): boolean {
-	return ANGULAR_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return ANGULAR_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
  * Check if UnoCSS is installed
  */
 export function hasUnoCSS(): boolean {
-	return UNOCSS_PACKAGES.some((pkg) => isPackageExists(pkg))
+	return UNOCSS_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**
@@ -125,7 +125,7 @@ export async function loadPlugin<T>(name: string): Promise<T | null> {
  * Ensure packages are installed
  */
 export async function ensurePackages(packages: string[]): Promise<void> {
-	const missing = packages.filter((pkg) => !isPackageExists(pkg))
+	const missing = packages.filter(pkg => !isPackageExists(pkg))
 
 	if (missing.length > 0) {
 		throw new Error(

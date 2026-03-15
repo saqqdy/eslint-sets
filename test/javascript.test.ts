@@ -10,7 +10,7 @@ describe('JavaScript Config', () => {
 		)
 
 		// Should lint without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should allow console.warn and console.error', async () => {
@@ -20,7 +20,7 @@ describe('JavaScript Config', () => {
 			'test.js',
 		)
 		// console.warn and console.error should be allowed - no-console should not trigger
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})

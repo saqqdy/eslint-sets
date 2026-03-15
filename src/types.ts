@@ -98,15 +98,15 @@ export interface OptionsStylistic {
  */
 export interface OptionsTypeScriptWithTypes {
 	/**
+	 * Override type aware rules.
+	 */
+	overridesTypeAware?: TypedFlatConfigItem['rules']
+
+	/**
 	 * When this options is provided, type aware rules will be enabled.
 	 * @see https://typescript-eslint.io/linting/typed-linting/
 	 */
 	tsconfigPath?: string
-
-	/**
-	 * Override type aware rules.
-	 */
-	overridesTypeAware?: TypedFlatConfigItem['rules']
 }
 
 /**
@@ -126,11 +126,6 @@ export interface OptionsTypeScriptErasableOnly {
  */
 export interface OptionsTypeScriptParserOptions {
 	/**
-	 * Additional parser options for TypeScript.
-	 */
-	parserOptions?: Record<string, unknown>
-
-	/**
 	 * Glob patterns for files that should be type aware.
 	 * @default ['**\/*.{ts,tsx}']
 	 */
@@ -141,6 +136,11 @@ export interface OptionsTypeScriptParserOptions {
 	 * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
 	 */
 	ignoresTypeAware?: string[]
+
+	/**
+	 * Additional parser options for TypeScript.
+	 */
+	parserOptions?: Record<string, unknown>
 }
 
 /**

@@ -40,14 +40,14 @@ export async function lintContent(
  * Get rule IDs from lint messages
  */
 export function getRuleIds(messages: Linter.LintMessage[]): string[] {
-	return messages.filter((msg) => msg.ruleId).map((msg) => msg.ruleId as string)
+	return messages.filter(msg => msg.ruleId).map(msg => msg.ruleId as string)
 }
 
 /**
  * Check if a rule is triggered
  */
 export function hasRule(messages: Linter.LintMessage[], ruleId: string): boolean {
-	return messages.some((msg) => msg.ruleId === ruleId)
+	return messages.some(msg => msg.ruleId === ruleId)
 }
 
 /**

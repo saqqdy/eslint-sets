@@ -26,7 +26,7 @@ function hasUnoCSSConfig(): boolean {
 		'unocss.config.js',
 	]
 
-	return configFiles.some((file) => existsSync(resolve(process.cwd(), file)))
+	return configFiles.some(file => existsSync(resolve(process.cwd(), file)))
 }
 
 /**

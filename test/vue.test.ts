@@ -20,7 +20,7 @@ export default {}
 		)
 
 		// Should parse without error
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should parse Vue SFC with TypeScript', async () => {
@@ -41,7 +41,7 @@ const message = ref<string>('Hello')
 		)
 
 		// Should parse without error
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should parse Vue SFC with style', async () => {
@@ -64,7 +64,7 @@ export default {}
 		)
 
 		// Should parse without error
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should return valid configs with a11y enabled', async () => {

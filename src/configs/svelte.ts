@@ -52,9 +52,7 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 			processor: sveltePlugin.processors?.svelte,
 			rules: {
 				// Svelte recommended rules
-				...(Array.isArray(sveltePlugin.configs.recommended)
-					? sveltePlugin.configs.recommended.find((c: any) => c.rules)?.rules || {}
-					: {}),
+				...(Array.isArray(sveltePlugin.configs.recommended) ? sveltePlugin.configs.recommended.find((c: any) => c.rules)?.rules || {} : {}),
 
 				// Essential custom rules
 				'svelte/block-lang': ['error', { script: typescript ? ['ts'] : ['js'] }],

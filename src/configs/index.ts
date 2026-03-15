@@ -189,11 +189,9 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		vueOpts.overrides = getOverrides(options as Record<string, unknown>, 'vue')
 
 		// Extract stylistic options for Vue
-		const vueStylistic = stylisticOption === false
-			? false
-			: {
-					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-				}
+		const vueStylistic = stylisticOption === false ? false : {
+			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+		}
 
 		configs.push(...(await vue({ ...vueOpts, stylistic: vueStylistic })))
 	}
@@ -247,11 +245,9 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const jsoncOpts = typeof jsoncOption === 'object' ? jsoncOption : {}
 
 		// Extract stylistic options for JSON
-		const jsoncStylistic = stylisticOption === false
-			? false
-			: {
-					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-				}
+		const jsoncStylistic = stylisticOption === false ? false : {
+			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+		}
 
 		configs.push(...jsonc({ ...jsoncOpts, stylistic: jsoncStylistic }))
 	}
@@ -261,13 +257,11 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const yamlOpts = typeof yamlOption === 'object' ? yamlOption : {}
 
 		// Extract stylistic options for YAML
-		const yamlStylistic = stylisticOption === false
-			? false
-			: {
-					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-					// YAML uses double quotes by default (supports escape sequences)
-					quotes: 'double' as const,
-				}
+		const yamlStylistic = stylisticOption === false ? false : {
+			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+			// YAML uses double quotes by default (supports escape sequences)
+			quotes: 'double' as const,
+		}
 
 		configs.push(...yaml({ ...yamlOpts, stylistic: yamlStylistic }))
 	}
@@ -284,11 +278,9 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const tomlOpts = typeof tomlOption === 'object' ? tomlOption : {}
 
 		// Extract stylistic options for TOML
-		const tomlStylistic = stylisticOption === false
-			? false
-			: {
-					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-				}
+		const tomlStylistic = stylisticOption === false ? false : {
+			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+		}
 
 		configs.push(...toml({ ...tomlOpts, stylistic: tomlStylistic }))
 	}
@@ -359,8 +351,8 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// JSX A11y (if not already included in React)
 	if (
-		jsxA11yOption
-		&& !(isEnabled(reactOption) || (isAutoDetect(reactOption) && autoDetect && hasReact()))
+		jsxA11yOption &&
+		!(isEnabled(reactOption) || (isAutoDetect(reactOption) && autoDetect && hasReact()))
 	) {
 		configs.push(...(await jsxA11y()))
 	}

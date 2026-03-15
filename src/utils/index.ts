@@ -27,9 +27,7 @@ export function renameRules(
 
 	return Object.fromEntries(
 		Object.entries(rules).map(([key, value]) => {
-			const newKey = key.startsWith(`${fromPrefix}/`)
-				? `${prefix}/${key.slice(fromPrefix.length + 1)}`
-				: key
+			const newKey = key.startsWith(`${fromPrefix}/`) ? `${prefix}/${key.slice(fromPrefix.length + 1)}` : key
 
 			return [newKey, value]
 		}),
@@ -86,7 +84,7 @@ export function filterNil<T>(array: (T | undefined | null)[]): T[] {
  * Check if currently running in an editor environment
  */
 export function isInEditorEnv(): boolean {
-	return EDITOR_ENV_KEYS.some((key) => process.env[key])
+	return EDITOR_ENV_KEYS.some(key => process.env[key])
 }
 
 /**

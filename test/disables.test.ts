@@ -13,7 +13,7 @@ describe('Disables Config', () => {
 			`console.log('Config loaded')`,
 			'eslint.config.ts',
 		)
-		const consoleErrors = messages.filter((m) => m.ruleId === 'no-console')
+		const consoleErrors = messages.filter(m => m.ruleId === 'no-console')
 
 		expect(consoleErrors).toHaveLength(0)
 	})
@@ -35,7 +35,7 @@ describe('Disables Config', () => {
 			'package.json',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should relax rules in markdown code blocks', async () => {
@@ -56,7 +56,7 @@ console.log('hello')
 			'README.md',
 		)
 		// Markdown parsing may have issues, just check no TypeScript errors
-		const tsErrors = messages.filter((m) => m.ruleId?.includes('typescript') && m.severity === 2)
+		const tsErrors = messages.filter(m => m.ruleId?.includes('typescript') && m.severity === 2)
 
 		expect(tsErrors).toHaveLength(0)
 	})
@@ -74,6 +74,6 @@ module.exports = {}`,
 			'config.cjs',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

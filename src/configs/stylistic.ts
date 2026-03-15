@@ -132,7 +132,7 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 			plugins: {
 				'@stylistic': stylisticPlugin as any,
 			},
-		rules: {
+			rules: {
 				// Base rules from customize
 				...config.rules,
 
@@ -174,6 +174,7 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 						singleline: { delimiter: 'semi', requireLast: false },
 					},
 				],
+				'@stylistic/multiline-ternary': ['error', 'never'],
 				'@stylistic/newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
 				'@stylistic/no-mixed-operators': ['error', {
 					allowSamePrecedence: true,
@@ -190,8 +191,10 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 				'@stylistic/object-curly-spacing': ['error', bracketSpacing ? 'always' : 'never'],
 				'@stylistic/operator-linebreak': ['error', 'after', {
 					overrides: {
-						'|': 'before',  // Union type: pipe at beginning of line
-						'&': 'before',  // Intersection type: ampersand at beginning of line
+						'&': 'before', // Intersection type: ampersand at beginning of line
+						// ':': 'before', // Ternary operator: colon at beginning of line
+						// '?': 'before', // Ternary operator: question mark at beginning of line
+						'|': 'before', // Union type: pipe at beginning of line
 					},
 				}],
 				'@stylistic/padding-line-between-statements': [

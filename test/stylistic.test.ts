@@ -18,7 +18,7 @@ const y = 2`,
 			'test.ts',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should use custom indent when specified', async () => {
@@ -37,7 +37,7 @@ const y = 2`,
 			'test.ts',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should use single quotes by default', async () => {
@@ -54,7 +54,7 @@ const y = 2`,
 			'test.ts',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should not use semicolons by default', async () => {
@@ -71,7 +71,7 @@ const y = 2`,
 			'test.ts',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should use avoid for arrowParens by default', () => {

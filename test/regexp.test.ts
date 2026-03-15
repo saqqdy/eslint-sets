@@ -9,7 +9,7 @@ describe('RegExp Config', () => {
 			'test.js',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should accept regex literals', async () => {
@@ -19,7 +19,7 @@ describe('RegExp Config', () => {
 			'test.js',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should accept regex with character classes', async () => {
@@ -29,7 +29,7 @@ describe('RegExp Config', () => {
 			'test.js',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should accept regex with quantifiers', async () => {
@@ -39,6 +39,6 @@ describe('RegExp Config', () => {
 			'test.js',
 		)
 
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

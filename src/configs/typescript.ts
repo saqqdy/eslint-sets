@@ -1,6 +1,5 @@
 import type { Linter } from 'eslint'
 import type { OptionsOverrides, OptionsProjectType, OptionsTypeScriptErasableOnly, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
-import process from 'node:process'
 import tsParser from '@typescript-eslint/parser'
 import { GLOB_SRC, GLOB_TS } from '../constants'
 import { loadPlugin } from '../plugins'
@@ -11,10 +10,10 @@ import { interopDefault, renameRules } from '../utils'
  */
 export interface TypeScriptOptions
 	extends OptionsOverrides,
-		OptionsTypeScriptWithTypes,
-		OptionsTypeScriptParserOptions,
-		OptionsProjectType,
-		OptionsTypeScriptErasableOnly {
+	OptionsTypeScriptWithTypes,
+	OptionsTypeScriptParserOptions,
+	OptionsProjectType,
+	OptionsTypeScriptErasableOnly {
 	/**
 	 * Enable rules that require type information
 	 * @default false
@@ -31,6 +30,7 @@ type TypeScriptESLintPlugin = typeof import('@typescript-eslint/eslint-plugin')
  */
 export async function typescript(options: TypeScriptOptions = {}): Promise<Linter.Config[]> {
 	const {
+		erasableOnly = false,
 		filesTypeAware = [GLOB_TS],
 		ignoresTypeAware = ['**/*.md/**', '**/*.astro/*.ts'],
 		overrides = {},
@@ -39,7 +39,6 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 		tsconfigPath,
 		type = 'app',
 		typeAware = false,
-		erasableOnly = false,
 	} = options
 
 	const tseslint = await loadPlugin<TypeScriptESLintPlugin>('@typescript-eslint/eslint-plugin')
@@ -91,15 +90,13 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 				parserOptions: {
 					ecmaVersion: 'latest',
 					sourceType: 'module',
-					...(isTypeAware
-						? {
-								projectService: {
-									allowDefaultProject: ['./*.js'],
-									defaultProject: tsconfigPath,
-								},
-								tsconfigRootDir: process.cwd(),
-							}
-						: {}),
+					...(isTypeAware ? {
+						projectService: {
+							allowDefaultProject: ['./*.js'],
+							defaultProject: tsconfigPath,
+						},
+						tsconfigRootDir: process.cwd(),
+					} : {}),
 					...parserOptions,
 				},
 			},
@@ -148,15 +145,13 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 				'ts/unified-signatures': 'off',
 
 				// Library-specific rules
-				...(type === 'lib'
-					? {
-							'ts/explicit-function-return-type': ['error', {
-								allowExpressions: true,
-								allowHigherOrderFunctions: true,
-								allowIIFEs: true,
-							}],
-						}
-					: {}),
+				...(type === 'lib' ? {
+					'ts/explicit-function-return-type': ['error', {
+						allowExpressions: true,
+						allowHigherOrderFunctions: true,
+						allowIIFEs: true,
+					}],
+				} : {}),
 
 				// User overrides
 				...overrides,

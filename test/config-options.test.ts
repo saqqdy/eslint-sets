@@ -18,7 +18,7 @@ describe('Config Options', () => {
 		expect(config).toBeDefined()
 
 		// Check that ignores config exists
-		const ignoresConfig = config.find((c) => c.name === 'eslint-sets/ignores')
+		const ignoresConfig = config.find(c => c.name === 'eslint-sets/ignores')
 
 		expect(ignoresConfig).toBeDefined()
 		expect(ignoresConfig?.ignores).toContain('**/dist/**')
@@ -27,12 +27,12 @@ describe('Config Options', () => {
 
 	it('should respect ignores function option', async () => {
 		const config = await eslintConfig({
-			ignores: (defaults) => [...defaults, '**/custom-ignore/**'],
+			ignores: defaults => [...defaults, '**/custom-ignore/**'],
 		})
 
 		expect(config).toBeDefined()
 
-		const ignoresConfig = config.find((c) => c.name === 'eslint-sets/ignores')
+		const ignoresConfig = config.find(c => c.name === 'eslint-sets/ignores')
 
 		expect(ignoresConfig).toBeDefined()
 		expect(ignoresConfig?.ignores).toContain('**/custom-ignore/**')
@@ -45,7 +45,7 @@ describe('Config Options', () => {
 			},
 		})
 
-		const customConfig = config.find((c) => c.name === 'eslint-sets/custom-rules')
+		const customConfig = config.find(c => c.name === 'eslint-sets/custom-rules')
 
 		expect(customConfig).toBeDefined()
 		expect(customConfig?.rules?.['no-console']).toBe('off')
@@ -56,7 +56,7 @@ describe('Config Options', () => {
 			typescript: false,
 		})
 
-		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript')
+		const tsConfig = config.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(tsConfig).toBeUndefined()
 	})
@@ -66,7 +66,7 @@ describe('Config Options', () => {
 			unicorn: false,
 		})
 
-		const unicornConfig = config.find((c) => c.name === 'eslint-sets/unicorn')
+		const unicornConfig = config.find(c => c.name === 'eslint-sets/unicorn')
 
 		expect(unicornConfig).toBeUndefined()
 	})
@@ -76,7 +76,7 @@ describe('Config Options', () => {
 			prettier: false,
 		})
 
-		const prettierConfig = config.find((c) => c.name === 'eslint-sets/prettier')
+		const prettierConfig = config.find(c => c.name === 'eslint-sets/prettier')
 
 		expect(prettierConfig).toBeUndefined()
 	})
@@ -102,8 +102,8 @@ describe('Config Options', () => {
 		expect(config.length).toBeGreaterThan(0)
 
 		// Should only have basic configs
-		expect(config.find((c) => c.name === 'eslint-sets/javascript')).toBeDefined()
-		expect(config.find((c) => c.name === 'eslint-sets/ignores')).toBeDefined()
+		expect(config.find(c => c.name === 'eslint-sets/javascript')).toBeDefined()
+		expect(config.find(c => c.name === 'eslint-sets/ignores')).toBeDefined()
 	})
 
 	it('should support extends option', async () => {
@@ -118,7 +118,7 @@ describe('Config Options', () => {
 			],
 		})
 
-		expect(config.find((c) => c.name === 'test/custom')).toBeDefined()
+		expect(config.find(c => c.name === 'test/custom')).toBeDefined()
 	})
 
 	it('should support isInEditor option', async () => {
@@ -190,7 +190,7 @@ describe('Config Options', () => {
 			vue: { vueVersion: 3 },
 		})
 
-		expect(config.find((c) => c.name === 'eslint-sets/vue')).toBeDefined()
+		expect(config.find(c => c.name === 'eslint-sets/vue')).toBeDefined()
 	})
 
 	it('should support react with options object', async () => {
@@ -209,7 +209,7 @@ describe('Config Options', () => {
 			typescript: { typeAware: false },
 		})
 
-		expect(config.find((c) => c.name === 'eslint-sets/typescript')).toBeDefined()
+		expect(config.find(c => c.name === 'eslint-sets/typescript')).toBeDefined()
 	})
 
 	it('should have ts plugin for typescript config', async () => {
@@ -217,7 +217,7 @@ describe('Config Options', () => {
 			typescript: true,
 		})
 
-		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript')
+		const tsConfig = config.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(tsConfig).toBeDefined()
 		expect(tsConfig?.plugins?.ts).toBeDefined()
@@ -228,13 +228,13 @@ describe('Config Options', () => {
 			typescript: true,
 		})
 
-		const tsConfig = config.find((c) => c.name === 'eslint-sets/typescript')
+		const tsConfig = config.find(c => c.name === 'eslint-sets/typescript')
 
 		expect(tsConfig).toBeDefined()
 
 		// Check that rules use ts/* prefix instead of @typescript-eslint/*
 		const rules = tsConfig?.rules || {}
-		const tsRules = Object.keys(rules).filter((r) => r.startsWith('ts/'))
+		const tsRules = Object.keys(rules).filter(r => r.startsWith('ts/'))
 
 		expect(tsRules.length).toBeGreaterThan(0)
 	})

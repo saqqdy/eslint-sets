@@ -64,21 +64,19 @@ export function toml(options: TomlOptions = {}): Linter.Config[] {
 				'toml/tables-order': 'error',
 
 				// Stylistic rules (conditional)
-				...(stylistic
-					? {
-							'toml/array-bracket-newline': 'error',
-							'toml/array-bracket-spacing': 'error',
-							'toml/array-element-newline': 'error',
-							'toml/indent': ['error', indent === 'tab' ? 'tab' : indent],
-							'toml/inline-table-curly-spacing': 'error',
-							'toml/key-spacing': 'error',
-							'toml/padding-line-between-pairs': 'error',
-							'toml/padding-line-between-tables': 'error',
-							'toml/quoted-keys': 'error',
-							'toml/spaced-comment': 'error',
-							'toml/table-bracket-spacing': 'error',
-						}
-					: {}),
+				...(stylistic ? {
+					'toml/array-bracket-newline': 'error',
+					'toml/array-bracket-spacing': 'error',
+					'toml/array-element-newline': 'error',
+					'toml/indent': ['error', indent === 'tab' ? 'tab' : indent],
+					'toml/inline-table-curly-spacing': 'error',
+					'toml/key-spacing': 'error',
+					'toml/padding-line-between-pairs': 'error',
+					'toml/padding-line-between-tables': 'error',
+					'toml/quoted-keys': 'error',
+					'toml/spaced-comment': 'error',
+					'toml/table-bracket-spacing': 'error',
+				} : {}),
 
 				// User overrides
 				...overrides,

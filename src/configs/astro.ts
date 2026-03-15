@@ -44,9 +44,7 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 			processor: astroPlugin.processors?.astro,
 			rules: {
 				// Astro recommended rules
-				...(Array.isArray(astroPlugin.configs.recommended)
-					? astroPlugin.configs.recommended.find((c: any) => c.rules)?.rules || {}
-					: {}),
+				...(Array.isArray(astroPlugin.configs.recommended) ? astroPlugin.configs.recommended.find((c: any) => c.rules)?.rules || {} : {}),
 
 				// Essential custom rules
 				'astro/missing-client-only-directive-value': 'error',

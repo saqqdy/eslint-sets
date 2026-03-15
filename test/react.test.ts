@@ -21,7 +21,7 @@ describe('React Config', () => {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should detect @eslint-react/no-missing-key', async () => {
@@ -81,7 +81,7 @@ function App({ name }: Props) {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should support react-refresh plugin', async () => {
@@ -90,7 +90,7 @@ function App({ name }: Props) {
 		).default({ autoDetect: false, react: true })
 
 		// Check that react-refresh plugin is loaded
-		const reactConfig = config.find((c) => c.name === 'eslint-sets/react')
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
 
 		expect(reactConfig).toBeDefined()
 		expect(reactConfig?.plugins?.['react-refresh']).toBeDefined()
@@ -111,12 +111,12 @@ function App({ name }: Props) {
 			await import('../src/index')
 		).default({ autoDetect: false, react: true })
 
-		const reactConfig = config.find((c) => c.name === 'eslint-sets/react')
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
 
 		expect(reactConfig).toBeDefined()
 		// Check that @eslint-react plugin is loaded
 		const plugins = reactConfig?.plugins || {}
-		const hasEslintReact = Object.keys(plugins).some((key) => key.startsWith('@eslint-react'))
+		const hasEslintReact = Object.keys(plugins).some(key => key.startsWith('@eslint-react'))
 
 		expect(hasEslintReact).toBeTruthy()
 	})
@@ -126,7 +126,7 @@ function App({ name }: Props) {
 			await import('../src/index')
 		).default({ autoDetect: false, react: true })
 
-		const reactConfig = config.find((c) => c.name === 'eslint-sets/react')
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
 
 		expect(reactConfig?.rules?.['@eslint-react/no-nested-component-definitions']).toBe('off')
 	})
@@ -136,7 +136,7 @@ function App({ name }: Props) {
 			await import('../src/index')
 		).default({ autoDetect: false, react: true })
 
-		const reactConfig = config.find((c) => c.name === 'eslint-sets/react')
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
 
 		expect(reactConfig?.rules?.['react-refresh/only-export-components']).toBeDefined()
 		expect(reactConfig?.rules?.['react-refresh/only-export-components']?.[0]).toBe('warn')

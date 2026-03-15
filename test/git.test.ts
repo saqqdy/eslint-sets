@@ -139,7 +139,7 @@ build/output/`
 			writeFileSync(join(tempDir, '.git', 'info', 'exclude'), 'node_modules\n*.log')
 			const patterns = await getGitignorePatterns(tempDir)
 			// node_modules should only appear once
-			const nodeModulesCount = patterns.filter((p) => p.includes('node_modules')).length
+			const nodeModulesCount = patterns.filter(p => p.includes('node_modules')).length
 
 			expect(nodeModulesCount).toBe(1)
 		})

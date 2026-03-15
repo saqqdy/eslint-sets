@@ -11,6 +11,6 @@ const result = arr.filter(x => x > 1)`,
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 })

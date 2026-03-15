@@ -22,7 +22,7 @@ describe('Svelte Config', () => {
 		)
 
 		// Should parse without fatal errors
-		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
 	it('should detect svelte/button-has-type', async () => {

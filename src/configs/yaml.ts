@@ -78,25 +78,21 @@ export function yaml(options: YamlOptions = {}): Linter.Config[] {
 				'yml/sort-sequence-values': 'off',
 
 				// Stylistic rules (conditional)
-				...(stylistic
-					? {
-							// yml/indent only accepts integer values, not "tab"
-							// When using tabs, disable indent rule and no-tab-indent
-							...(indent === 'tab'
-								? {
-										'yml/indent': 'off',
-										'yml/no-tab-indent': 'off',
-									}
-								: {
-										'yml/indent': ['error', indent],
-										'yml/no-tab-indent': 'error',
-									}),
-							'yml/key-spacing': 'error',
-							'yml/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
-							'yml/quotes': ['error', { avoidEscape: true, prefer: quotes }],
-							'yml/spaced-comment': 'error',
-						}
-					: {}),
+				...(stylistic ? {
+					// yml/indent only accepts integer values, not "tab"
+					// When using tabs, disable indent rule and no-tab-indent
+					...(indent === 'tab' ? {
+						'yml/indent': 'off',
+						'yml/no-tab-indent': 'off',
+					} : {
+						'yml/indent': ['error', indent],
+						'yml/no-tab-indent': 'error',
+					}),
+					'yml/key-spacing': 'error',
+					'yml/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
+					'yml/quotes': ['error', { avoidEscape: true, prefer: quotes }],
+					'yml/spaced-comment': 'error',
+				} : {}),
 
 				// User overrides
 				...overrides,

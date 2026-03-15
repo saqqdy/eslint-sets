@@ -8,7 +8,7 @@ describe('Utils', () => {
 			const result = combine(...configs)
 
 			expect(result).toHaveLength(3)
-			expect(result.map((c) => c.name)).toEqual(['a', 'b', 'c'])
+			expect(result.map(c => c.name)).toEqual(['a', 'b', 'c'])
 		})
 	})
 

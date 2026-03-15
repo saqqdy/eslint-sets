@@ -11,7 +11,7 @@ import { GLOB_SRC } from '../constants'
 export interface PrettierOptions {
 	/**
 	 * Arrow function parentheses
-	 * @default 'always'
+	 * @default 'avoid'
 	 */
 	arrowParens?: 'always' | 'avoid'
 
@@ -40,7 +40,7 @@ export interface PrettierOptions {
 
 	/**
 	 * Print width
-	 * @default 120
+	 * @default 100
 	 */
 	printWidth?: number
 
@@ -91,12 +91,12 @@ export interface PrettierOptions {
  */
 export function prettier(options: PrettierOptions = {}): Linter.Config[] {
 	const {
-		arrowParens = 'always',
+		arrowParens = 'avoid',
 		bracketSpacing = true,
 		endOfLine = 'auto',
 		jsxSingleQuote = false,
 		overrides = {},
-		printWidth = 240,
+		printWidth = 100,
 		quoteProps = 'as-needed',
 		semi = false,
 		singleQuote = true,

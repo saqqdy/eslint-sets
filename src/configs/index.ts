@@ -178,6 +178,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const tsOpts: TypeScriptOptions = isOptionsObject(tsOption) ? { ...tsOption } : {}
 
 		tsOpts.overrides = getOverrides(options as Record<string, unknown>, 'typescript')
+		tsOpts.type = _type // Pass project type for lib-specific rules
 		configs.push(...(await typescript(tsOpts)))
 	}
 
@@ -186,7 +187,15 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const vueOpts: VueOptions = isOptionsObject(vueOption) ? { ...vueOption } : {}
 
 		vueOpts.overrides = getOverrides(options as Record<string, unknown>, 'vue')
-		configs.push(...(await vue(vueOpts)))
+
+		// Extract stylistic options for Vue
+		const vueStylistic = stylisticOption === false
+			? false
+			: {
+					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+				}
+
+		configs.push(...(await vue({ ...vueOpts, stylistic: vueStylistic })))
 	}
 
 	// React
@@ -237,14 +246,30 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	if (jsoncOption !== false) {
 		const jsoncOpts = typeof jsoncOption === 'object' ? jsoncOption : {}
 
-		configs.push(...jsonc(jsoncOpts))
+		// Extract stylistic options for JSON
+		const jsoncStylistic = stylisticOption === false
+			? false
+			: {
+					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+				}
+
+		configs.push(...jsonc({ ...jsoncOpts, stylistic: jsoncStylistic }))
 	}
 
 	// YAML
 	if (yamlOption !== false) {
 		const yamlOpts = typeof yamlOption === 'object' ? yamlOption : {}
 
-		configs.push(...yaml(yamlOpts))
+		// Extract stylistic options for YAML
+		const yamlStylistic = stylisticOption === false
+			? false
+			: {
+					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+					// YAML uses double quotes by default (supports escape sequences)
+					quotes: 'double' as const,
+				}
+
+		configs.push(...yaml({ ...yamlOpts, stylistic: yamlStylistic }))
 	}
 
 	// Markdown
@@ -256,7 +281,16 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// TOML
 	if (tomlOption !== false) {
-		configs.push(...toml())
+		const tomlOpts = typeof tomlOption === 'object' ? tomlOption : {}
+
+		// Extract stylistic options for TOML
+		const tomlStylistic = stylisticOption === false
+			? false
+			: {
+					indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+				}
+
+		configs.push(...toml({ ...tomlOpts, stylistic: tomlStylistic }))
 	}
 
 	// Imports
@@ -437,5 +471,7 @@ export type { FrameworkOptions, Linter, Options, OptionsOverrides, ProjectType }
 // Export utilities
 export * from '../utils'
 export type { ReactOptions } from './react'
+export type { TomlOptions } from './toml'
 export type { TypeScriptOptions } from './typescript'
 export type { VueOptions } from './vue'
+export type { YamlOptions } from './yaml'

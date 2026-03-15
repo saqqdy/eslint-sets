@@ -1,8 +1,41 @@
 import { existsSync, readFileSync } from 'node:fs'
+import { stat } from 'node:fs/promises'
 import path from 'node:path'
-import { findUp } from 'find-up-simple'
 
 const { resolve } = path
+
+/**
+ * Find a file by walking up parent directories
+ * @param name - File name to find
+ * @param options - Options
+ * @returns File path if found, undefined otherwise
+ */
+async function findUp(name: string, options?: { cwd?: string }): Promise<string | undefined> {
+	let directory = path.resolve(options?.cwd ?? process.cwd())
+	const { root } = path.parse(directory)
+
+	while (true) {
+		const filePath = path.join(directory, name)
+
+		try {
+			const stats = await stat(filePath)
+
+			if (stats.isFile()) {
+				return filePath
+			}
+		} catch {
+			// File doesn't exist, continue
+		}
+
+		if (directory === root) {
+			break
+		}
+
+		directory = path.dirname(directory)
+	}
+
+	return undefined
+}
 
 /**
  * Parse gitignore content into patterns

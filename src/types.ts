@@ -41,10 +41,106 @@ export type FrameworkOptions = boolean | 'auto' | OptionsOverrides
 export type ProjectType = 'app' | 'lib'
 
 /**
+ * Project type options
+ */
+export interface OptionsProjectType {
+	/**
+	 * Type of the project. `lib` will enable more strict rules for libraries.
+	 * @default 'app'
+	 */
+	type?: ProjectType
+}
+
+/**
  * Override rules for a specific configuration
  */
 export interface OptionsOverrides {
 	overrides?: TypedFlatConfigItem['rules']
+}
+
+/**
+ * Editor environment detection options
+ */
+export interface OptionsIsInEditor {
+	/**
+	 * Control to disable some rules in editors.
+	 * @default auto-detect based on process.env
+	 */
+	isInEditor?: boolean
+}
+
+/**
+ * Base stylistic options shared across configs
+ */
+export interface StylisticConfigBase {
+	/**
+	 * Indentation style
+	 * @default 2
+	 */
+	indent?: number | 'tab'
+
+	/**
+	 * Quote style
+	 * @default 'single'
+	 */
+	quotes?: 'single' | 'double'
+}
+
+/**
+ * Stylistic options for configs that support it
+ */
+export interface OptionsStylistic {
+	stylistic?: boolean | StylisticConfigBase
+}
+
+/**
+ * TypeScript type-aware options
+ */
+export interface OptionsTypeScriptWithTypes {
+	/**
+	 * When this options is provided, type aware rules will be enabled.
+	 * @see https://typescript-eslint.io/linting/typed-linting/
+	 */
+	tsconfigPath?: string
+
+	/**
+	 * Override type aware rules.
+	 */
+	overridesTypeAware?: TypedFlatConfigItem['rules']
+}
+
+/**
+ * TypeScript erasable syntax only options
+ */
+export interface OptionsTypeScriptErasableOnly {
+	/**
+	 * Enable erasable syntax only rules.
+	 * Useful for libraries that want to ensure type-only constructs.
+	 * @default false
+	 */
+	erasableOnly?: boolean
+}
+
+/**
+ * TypeScript parser options
+ */
+export interface OptionsTypeScriptParserOptions {
+	/**
+	 * Additional parser options for TypeScript.
+	 */
+	parserOptions?: Record<string, unknown>
+
+	/**
+	 * Glob patterns for files that should be type aware.
+	 * @default ['**\/*.{ts,tsx}']
+	 */
+	filesTypeAware?: string[]
+
+	/**
+	 * Glob patterns for files that should not be type aware.
+	 * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+	 */
+	ignoresTypeAware?: string[]
 }
 
 /**
@@ -72,7 +168,7 @@ export interface PerfectionistOptions {
 /**
  * Main configuration options
  */
-export interface Options {
+export interface Options extends OptionsIsInEditor {
 	/**
 	 * Enable Angular support
 	 * Requires @angular-eslint/eslint-plugin
@@ -147,12 +243,6 @@ export interface Options {
 	 * @default true
 	 */
 	imports?: boolean | OptionsOverrides
-
-	/**
-	 * Control to disable some rules in editors
-	 * @default auto-detect based on process.env
-	 */
-	isInEditor?: boolean
 
 	/**
 	 * Enable JSON/YAML support
@@ -272,7 +362,7 @@ export interface Options {
 	 * Enable TOML support
 	 * @default true
 	 */
-	toml?: boolean
+	toml?: boolean | OptionsOverrides
 
 	/**
 	 * Project type

@@ -8,7 +8,8 @@ describe('Stylistic Config', () => {
 			async () =>
 				await (
 					await import('../src/index')
-				).default({ autoDetect: false,
+				).default({
+					autoDetect: false,
 					prettier: false,
 					stylistic: true,
 				}),
@@ -25,7 +26,8 @@ const y = 2`,
 			async () =>
 				await (
 					await import('../src/index')
-				).default({ autoDetect: false,
+				).default({
+					autoDetect: false,
 					prettier: false,
 					stylistic: { indent: 2 },
 				}),
@@ -43,7 +45,8 @@ const y = 2`,
 			async () =>
 				await (
 					await import('../src/index')
-				).default({ autoDetect: false,
+				).default({
+					autoDetect: false,
 					prettier: false,
 					stylistic: true,
 				}),
@@ -59,7 +62,8 @@ const y = 2`,
 			async () =>
 				await (
 					await import('../src/index')
-				).default({ autoDetect: false,
+				).default({
+					autoDetect: false,
 					prettier: false,
 					stylistic: true,
 				}),
@@ -68,6 +72,15 @@ const y = 2`,
 		)
 
 		expect(messages.filter((m) => m.fatal)).toHaveLength(0)
+	})
+
+	it('should use avoid for arrowParens by default', () => {
+		const configs = stylistic()
+
+		expect(configs).toBeDefined()
+		// arrowParens: false means avoid (no parens for single param)
+		// requireForBlockBody: false - no parens needed even for block body
+		expect(configs[0]?.rules?.['@stylistic/arrow-parens']).toEqual(['error', 'as-needed', { requireForBlockBody: false }])
 	})
 
 	it('should support tab indent', () => {
@@ -113,10 +126,11 @@ const y = 2`,
 	})
 
 	it('should support arrowParens', () => {
-		const configs = stylistic({ arrowParens: 'avoid' })
+		const configs = stylistic({ arrowParens: true })
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/arrow-parens']).toBeDefined()
+		// arrowParens: true means always require parens
+		expect(configs[0]?.rules?.['@stylistic/arrow-parens']).toEqual(['error', 'always', { requireForBlockBody: false }])
 	})
 
 	it('should support overrides', () => {
@@ -131,5 +145,30 @@ const y = 2`,
 
 		expect(configs).toBeDefined()
 		expect(configs[0]?.rules?.['@stylistic/no-mixed-spaces-and-tabs']).toEqual(['error', 'smart-tabs'])
+	})
+
+	it('should not configure @stylistic/max-len by default', () => {
+		const configs = stylistic()
+
+		expect(configs).toBeDefined()
+		// max-len should not be configured (no line length limit)
+		expect(configs[0]?.rules?.['@stylistic/max-len']).toBeUndefined()
+	})
+
+	it('should configure @stylistic/no-mixed-operators with groups', () => {
+		const configs = stylistic()
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.['@stylistic/no-mixed-operators']).toEqual([
+			'error',
+			{
+				allowSamePrecedence: true,
+				groups: [
+					['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+					['&&', '||'],
+					['in', 'instanceof'],
+				],
+			},
+		])
 	})
 })

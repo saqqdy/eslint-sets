@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.0] - 2026-03-15
+
+### Breaking Changes
+
+- **ESM-only package**: Changed to pure ESM package
+  - Added `"type": "module"` to package.json
+  - Removed CJS build output - `dist/index.js` is now ESM only
+  - Config file must use ESM format: `eslint.config.ts` or `eslint.config.mjs`
+  - `eslint.config.cjs` and `eslint.config.js` (CommonJS) are no longer supported
+  - This change was necessary because core dependencies like `@stylistic/eslint-plugin` are ESM-only
+
+### Added
+
+- **Stylistic Options Support**: Added `stylistic` option to multiple configs
+  - `jsonc`: Support `stylistic` option for indent control
+  - `yaml`: Support `stylistic` option for indent and quotes control
+  - `toml`: Support `stylistic` option for indent control
+  - `vue`: Support `stylistic` option for indent control
+- **TypeScript Enhancements**:
+  - Added `type: 'lib'` option to enable `ts/explicit-function-return-type` for libraries
+  - Added `erasableOnly` option to enable `eslint-plugin-erasable-syntax-only`
+  - Added `overridesTypeAware` option to override type-aware rules
+  - Updated to use `projectService` instead of `project` for better performance
+- **New Optional Dependency**: Added `eslint-plugin-erasable-syntax-only` for erasable syntax checking
+
+### Changed
+
+- **Simplified build**: Removed CJS build step, only ESM output now
+  - Faster build times
+  - Smaller package size
+- **Stylistic Defaults**:
+  - Changed `arrowParens` default from `true` (always) to `false` (avoid) - single param arrow functions don't need parentheses
+  - Changed `quoteProps` default from `'consistent-as-needed'` to `'as-needed'` - compatible with Prettier
+  - Added `@stylistic/operator-linebreak` with overrides: `|` and `&` at beginning of line, others at end
+  - YAML uses double quotes by default (supports escape sequences, consistent with TOML/JSON/Prettier)
+- **TOML Config**: Enhanced with more stylistic rules
+  - Added `toml/array-bracket-newline`, `toml/array-bracket-spacing`, etc.
+  - Changed `toml/indent` from `'tab'` to `2`
+- **YAML Config**: Added `yml/quotes` rule for consistent quote style
+- **JSON Config**: Added more stylistic rules when `stylistic` is enabled
+- **Vue Config**: Added more stylistic rules when `stylistic` is enabled
+- **Rule Configuration Sync**: Updated rules to align with modern best practices
+  - Removed `@stylistic/max-len` rule (no line length limit by default)
+  - Changed `n/prefer-global/buffer` to `'always'` (use global Buffer)
+  - Changed `n/prefer-global/process` to `'always'` (use global process)
+  - Added `ts/no-unused-expressions` with options for short-circuit, ternary, and tagged templates
+  - Updated `@stylistic/no-mixed-operators` with specific operator groups configuration
+  - Added `ts/method-signature-style` rule
+  - Added `ts/no-wrapper-object-types` rule
+
 ## [6.1.0] - 2026-03-15
 
 ### Added

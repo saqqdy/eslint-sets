@@ -66,6 +66,27 @@ describe('Individual Configs', () => {
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
 		})
+
+		it('should support stylistic option with indent', async () => {
+			const configs = await vue({ stylistic: { indent: 4 } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['vue/html-indent']).toEqual(['error', 4])
+		})
+
+		it('should support tab indent', async () => {
+			const configs = await vue({ stylistic: { indent: 'tab' } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['vue/html-indent']).toEqual(['error', 'tab'])
+		})
+
+		it('should disable stylistic rules when stylistic is false', async () => {
+			const configs = await vue({ stylistic: false })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['vue/html-indent']).toBeUndefined()
+		})
 	})
 
 	describe('react', () => {
@@ -85,6 +106,28 @@ describe('Individual Configs', () => {
 			expect(Array.isArray(configs)).toBeTruthy()
 			expect(configs[0]?.files).toBeDefined()
 		})
+
+		it('should support stylistic option', () => {
+			const configs = jsonc({ stylistic: { indent: 4 } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['jsonc/indent']).toEqual(['error', 4])
+		})
+
+		it('should support tab indent', () => {
+			const configs = jsonc({ stylistic: { indent: 'tab' } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['jsonc/indent']).toEqual(['error', 'tab'])
+		})
+
+		it('should not add extra stylistic rules when stylistic is false', () => {
+			const configs = jsonc({ stylistic: false })
+
+			expect(configs).toBeDefined()
+			// Core rules should still be present
+			expect(configs[0]?.rules?.['jsonc/no-bigint-literals']).toBe('error')
+		})
 	})
 
 	describe('yaml', () => {
@@ -93,6 +136,45 @@ describe('Individual Configs', () => {
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
+		})
+
+		it('should support stylistic option with indent', () => {
+			const configs = yaml({ stylistic: { indent: 4 } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['yml/indent']).toEqual(['error', 4])
+		})
+
+		it('should support tab indent by disabling indent rule', () => {
+			const configs = yaml({ stylistic: { indent: 'tab' } })
+
+			expect(configs).toBeDefined()
+			// yml/indent only accepts integer values, so when indent is 'tab',
+			// we disable the indent rule and no-tab-indent
+			expect(configs[0]?.rules?.['yml/indent']).toBe('off')
+			expect(configs[0]?.rules?.['yml/no-tab-indent']).toBe('off')
+		})
+
+		it('should support stylistic option with quotes', () => {
+			const configs = yaml({ stylistic: { quotes: 'single' } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['yml/quotes']).toEqual(['error', { avoidEscape: true, prefer: 'single' }])
+		})
+
+		it('should use double quotes by default', () => {
+			const configs = yaml()
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['yml/quotes']).toEqual(['error', { avoidEscape: true, prefer: 'double' }])
+		})
+
+		it('should use custom indent when stylistic is enabled', () => {
+			const configs = yaml({ stylistic: { indent: 4 } })
+
+			expect(configs).toBeDefined()
+			// When stylistic is enabled with custom indent, it should override standard rules
+			expect(configs[0]?.rules?.['yml/indent']).toEqual(['error', 4])
 		})
 	})
 
@@ -152,6 +234,14 @@ describe('Individual Configs', () => {
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
 			expect(configs[0]?.name).toBe('eslint-sets/node')
+		})
+
+		it('should prefer globals for buffer and process', () => {
+			const configs = node()
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['n/prefer-global/buffer']).toEqual(['error', 'always'])
+			expect(configs[0]?.rules?.['n/prefer-global/process']).toEqual(['error', 'always'])
 		})
 	})
 
@@ -234,6 +324,28 @@ describe('Individual Configs', () => {
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
+		})
+
+		it('should support stylistic option with indent', () => {
+			const configs = toml({ stylistic: { indent: 4 } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['toml/indent']).toEqual(['error', 4])
+		})
+
+		it('should support tab indent', () => {
+			const configs = toml({ stylistic: { indent: 'tab' } })
+
+			expect(configs).toBeDefined()
+			expect(configs[0]?.rules?.['toml/indent']).toEqual(['error', 'tab'])
+		})
+
+		it('should not add extra stylistic rules when stylistic is false', () => {
+			const configs = toml({ stylistic: false })
+
+			expect(configs).toBeDefined()
+			// Core rules should still be present
+			expect(configs[0]?.rules?.['toml/comma-style']).toBe('error')
 		})
 	})
 

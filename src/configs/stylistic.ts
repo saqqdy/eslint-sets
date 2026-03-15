@@ -8,7 +8,7 @@ import { GLOB_SRC } from '../constants'
 export interface StylisticOptions {
 	/**
 	 * Arrow function parentheses
-	 * @default true
+	 * @default false
 	 */
 	arrowParens?: boolean
 
@@ -76,7 +76,7 @@ export interface StylisticOptions {
  * Stylistic configuration defaults
  */
 export const StylisticConfigDefaults: StylisticOptions = {
-	arrowParens: true,
+	arrowParens: false,
 	braceStyle: '1tbs',
 	bracketSpacing: true,
 	indent: 2,
@@ -124,7 +124,6 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 	}) as Linter.Config
 
 	const indentStyle = indent === 'tab' ? 'tab' : indent
-	const indentSize = indent === 'tab' ? 2 : indent
 
 	return [
 		{
@@ -133,11 +132,12 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 			plugins: {
 				'@stylistic': stylisticPlugin as any,
 			},
-			rules: {
+		rules: {
 				// Base rules from customize
 				...config.rules,
 
 				// Override with custom settings
+				'@stylistic/arrow-parens': ['error', arrowParens ? 'always' : 'as-needed', { requireForBlockBody: false }],
 				'@stylistic/brace-style': ['error', braceStyle, { allowSingleLine: true }],
 				// Additional rules not covered by customize
 				'@stylistic/curly-newline': 'off',
@@ -167,18 +167,6 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 				'@stylistic/jsx-tag-spacing': ['error', { beforeSelfClosing: 'always' }],
 				'@stylistic/jsx-wrap-multilines': 'off',
 				'@stylistic/linebreak-style': 'off',
-				'@stylistic/max-len': [
-					'error',
-					{
-						code: 120,
-						ignoreComments: false,
-						ignoreRegExpLiterals: true,
-						ignoreStrings: true,
-						ignoreTemplateLiterals: true,
-						ignoreUrls: true,
-						tabWidth: typeof indentSize === 'number' ? indentSize : 2,
-					},
-				],
 				'@stylistic/member-delimiter-style': [
 					'error',
 					{
@@ -187,13 +175,25 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 					},
 				],
 				'@stylistic/newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
-				'@stylistic/no-mixed-operators': 'error',
+				'@stylistic/no-mixed-operators': ['error', {
+					allowSamePrecedence: true,
+					groups: [
+						['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+						['&&', '||'],
+						['in', 'instanceof'],
+					],
+				}],
 				'@stylistic/no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
 				'@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
 				'@stylistic/no-tabs': indent === 'tab' ? 'off' : 'error',
 				'@stylistic/no-trailing-spaces': 'error',
 				'@stylistic/object-curly-spacing': ['error', bracketSpacing ? 'always' : 'never'],
-				'@stylistic/operator-linebreak': ['error', 'before'],
+				'@stylistic/operator-linebreak': ['error', 'after', {
+					overrides: {
+						'|': 'before',  // Union type: pipe at beginning of line
+						'&': 'before',  // Intersection type: ampersand at beginning of line
+					},
+				}],
 				'@stylistic/padding-line-between-statements': [
 					'error',
 					{ blankLine: 'always', next: 'return', prev: '*' },

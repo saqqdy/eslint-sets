@@ -37,7 +37,9 @@
       "Bash(pnpm:*)",
       "Bash(cat:*)",
       "Bash(npm pack:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)"
     ]
   }
 }

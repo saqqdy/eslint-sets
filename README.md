@@ -41,6 +41,7 @@ Try it online with StackBlitz:
 - 🔍 **Editor Detection** - Automatically detect editor environment
 - 🔎 **Config Inspector** - Visual tool for inspecting your ESLint config
 - 📊 **Perfectionist Sorting** - Import/export sorting with natural ordering
+- 🚀 **ESM-only** - Modern ESM package for optimal compatibility
 
 ## Supported Frameworks
 
@@ -70,10 +71,22 @@ npm install -D @eslint-sets/eslint-config eslint
 bun add -D @eslint-sets/eslint-config eslint
 ```
 
+> **Note for pnpm users**: ESLint 9.x requires `jiti` for TypeScript config files. If you use `eslint.config.ts`, ensure peer dependencies are installed:
+> ```shell
+> # Option 1: Add to .npmrc
+> echo "auto-install-peers=true" >> .npmrc
+>
+> # Option 2: Install jiti manually
+> pnpm add -D jiti
+> ```
+
 ## Requirements
 
 - **Node.js**: `^18.18.0` or `^20.9.0` or `>=21.1.0`
 - **ESLint**: `^9.10.0` or `^9.22.0`
+- **Config file**: Must use ESM format (`eslint.config.ts` or `eslint.config.mjs`)
+
+> **Note**: This package is ESM-only. CommonJS config files (`eslint.config.cjs`, `eslint.config.js` without `"type": "module"`) are not supported. This is required because core dependencies like `@stylistic/eslint-plugin` are ESM-only.
 
 > Note: `eslint-plugin-toml` requires Node.js `^20.19.0 || ^22.13.0 || >=24`. If you need TOML support on Node.js 18, consider downgrading to `eslint-plugin-toml@0.13.1`.
 
@@ -221,13 +234,15 @@ export default eslintConfig({
 
 	// Or with custom options:
 	stylistic: {
-		arrowParens: 'always', // 'always' | 'avoid'
-		bracketSpacing: true, // boolean
-		indent: 2, // 'tab' | number
-		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
-		quotes: 'single', // 'single' | 'double'
-		semi: false, // boolean
-		trailingComma: 'always-multiline', // 'none' | 'es5' | 'always-multiline' | 'all'
+		arrowParens: false, // true (always) | false (avoid) - default: false
+		braceStyle: '1tbs', // '1tbs' | 'stroustrup' | 'allman' - default: '1tbs'
+		bracketSpacing: true, // boolean - default: true
+		indent: 2, // 'tab' | number - default: 2
+		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single' - default: 'prefer-double'
+		quoteProps: 'as-needed', // 'always' | 'as-needed' | 'consistent' | 'consistent-as-needed' - default: 'as-needed'
+		quotes: 'single', // 'single' | 'double' - default: 'single'
+		semi: false, // boolean - default: false
+		trailingComma: 'always-multiline', // 'none' | 'always' | 'never' | 'only-multiline' | 'always-multiline' - default: 'always-multiline'
 	},
 
 	// Svelte support (default: 'auto' - auto-detect)
@@ -291,13 +306,15 @@ export default eslintConfig({
 // Use Stylistic with custom options
 export default eslintConfig({
 	stylistic: {
-		arrowParens: 'always', // 'always' | 'avoid'
+		arrowParens: false, // true (always) | false (avoid)
+		braceStyle: '1tbs', // '1tbs' | 'stroustrup' | 'allman'
 		bracketSpacing: true, // boolean
 		indent: 2, // 'tab' | number
 		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
+		quoteProps: 'as-needed', // 'always' | 'as-needed' | 'consistent' | 'consistent-as-needed'
 		quotes: 'single', // 'single' | 'double'
 		semi: false, // boolean
-		trailingComma: 'always-multiline', // 'none' | 'es5' | 'always-multiline' | 'all'
+		trailingComma: 'always-multiline', // 'none' | 'always' | 'never' | 'only-multiline' | 'always-multiline'
 	},
 })
 
@@ -310,7 +327,7 @@ export default eslintConfig({
 // Use Prettier with custom options
 export default eslintConfig({
 	prettier: {
-		printWidth: 240,
+		printWidth: 100,
 		semi: false,
 		singleQuote: true,
 		tabWidth: 2,
@@ -322,6 +339,30 @@ export default eslintConfig({
 ```
 
 **Note**: Stylistic and Prettier are mutually exclusive. When `stylistic` is enabled (default), Prettier is automatically disabled.
+
+### Default Rule Behaviors
+
+This config follows modern best practices with sensible defaults:
+
+- **No line length limit**: `@stylistic/max-len` is not configured by default, allowing flexible line lengths
+- **Use global Buffer/process**: `n/prefer-global/buffer` and `n/prefer-global/process` are set to `'always'`, allowing direct use of global variables
+- **Flexible unused expressions**: `ts/no-unused-expressions` allows short-circuit evaluation, ternary expressions, and tagged templates
+- **Mixed operators grouping**: `@stylistic/no-mixed-operators` groups operators by category (comparison, logical, in/instanceof) for clearer code
+
+You can override these defaults in your config:
+
+```typescript
+export default eslintConfig({
+	rules: {
+		// Add line length limit if needed
+		'@stylistic/max-len': ['error', { code: 100 }],
+
+		// Prefer imports over globals
+		'n/prefer-global/buffer': ['error', 'never'],
+		'n/prefer-global/process': ['error', 'never'],
+	},
+})
+```
 
 ### Accessibility Rules
 
@@ -354,6 +395,48 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	autoDetect: true, // Enable auto-detection (default: true)
+})
+```
+
+### TypeScript Advanced Options
+
+```typescript
+// Type-aware rules (requires tsconfig.json)
+export default eslintConfig({
+	typescript: {
+		typeAware: true,
+		tsconfigPath: './tsconfig.json',
+		overridesTypeAware: {
+			'ts/no-floating-promises': 'warn',
+		},
+	},
+})
+
+// Library project with explicit return types
+export default eslintConfig({
+	type: 'lib', // Enables ts/explicit-function-return-type
+	typescript: true,
+})
+
+// Erasable syntax only (for libraries that want type-only constructs)
+export default eslintConfig({
+	typescript: {
+		erasableOnly: true, // Requires eslint-plugin-erasable-syntax-only
+	},
+})
+```
+
+### Disabling Stylistic Rules per Config
+
+You can disable stylistic rules for specific configs:
+
+```typescript
+// Disable stylistic rules for JSON files
+export default eslintConfig({
+	jsonc: { stylistic: false },
+	yaml: { stylistic: false },
+	toml: { stylistic: false },
+	vue: { stylistic: false },
 })
 ```
 
@@ -579,6 +662,8 @@ import {
 | eslint     | ^9.10.0 or ^9.22.0                          |
 | prettier   | ^3.5.3 (optional, for Prettier integration) |
 | typescript | >=5.0.0 (optional, for TypeScript support)  |
+
+> **Note**: ESLint 9.x requires `jiti` for loading TypeScript config files. It's automatically installed as ESLint's peer dependency with npm/yarn, but pnpm users may need to enable `auto-install-peers` or use `--shamefully-hoist`.
 
 ## System Requirements
 
@@ -813,10 +898,11 @@ export default eslintConfig({
 ### Key Changes in v6
 
 1. **Flat Config**: v6 uses ESLint's new flat config format (`eslint.config.ts` instead of `.eslintrc.js`)
-2. **Single Package**: All sub-packages merged into one package
-3. **Auto-detection**: Frameworks are auto-detected by default
-4. **Stylistic**: Default formatting uses `@stylistic/eslint-plugin` instead of Prettier
-5. **TypeScript Types**: Auto-generated types for all rules
+2. **ESM-only**: Package is now pure ESM, requires `eslint.config.ts` or `eslint.config.mjs`
+3. **Single Package**: All sub-packages merged into one package
+4. **Auto-detection**: Frameworks are auto-detected by default
+5. **Stylistic**: Default formatting uses `@stylistic/eslint-plugin` instead of Prettier
+6. **TypeScript Types**: Auto-generated types for all rules
 
 ## VS Code Integration
 

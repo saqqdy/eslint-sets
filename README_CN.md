@@ -214,13 +214,15 @@ export default eslintConfig({
 
 	// 或带自定义选项：
 	stylistic: {
-		arrowParens: 'always', // 'always' | 'avoid'
-		bracketSpacing: true, // boolean
-		indent: 2, // 'tab' | number
-		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
-		quotes: 'single', // 'single' | 'double'
-		semi: false, // boolean
-		trailingComma: 'always-multiline', // 'none' | 'es5' | 'always-multiline' | 'all'
+		arrowParens: false, // true (always) | false (avoid) - 默认: false
+		braceStyle: '1tbs', // '1tbs' | 'stroustrup' | 'allman' - 默认: '1tbs'
+		bracketSpacing: true, // boolean - 默认: true
+		indent: 2, // 'tab' | number - 默认: 2
+		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single' - 默认: 'prefer-double'
+		quoteProps: 'as-needed', // 'always' | 'as-needed' | 'consistent' | 'consistent-as-needed' - 默认: 'as-needed'
+		quotes: 'single', // 'single' | 'double' - 默认: 'single'
+		semi: false, // boolean - 默认: false
+		trailingComma: 'always-multiline', // 'none' | 'always' | 'never' | 'only-multiline' | 'always-multiline' - 默认: 'always-multiline'
 	},
 
 	// Svelte 支持（默认：'auto' - 自动检测）
@@ -284,13 +286,15 @@ export default eslintConfig({
 // 使用 Stylistic 带自定义选项
 export default eslintConfig({
 	stylistic: {
-		arrowParens: 'always', // 'always' | 'avoid'
+		arrowParens: false, // true (always) | false (avoid)
+		braceStyle: '1tbs', // '1tbs' | 'stroustrup' | 'allman'
 		bracketSpacing: true, // boolean
 		indent: 2, // 'tab' | number
 		jsxQuotes: 'prefer-double', // 'prefer-double' | 'prefer-single'
+		quoteProps: 'as-needed', // 'always' | 'as-needed' | 'consistent' | 'consistent-as-needed'
 		quotes: 'single', // 'single' | 'double'
 		semi: false, // boolean
-		trailingComma: 'always-multiline', // 'none' | 'es5' | 'always-multiline' | 'all'
+		trailingComma: 'always-multiline', // 'none' | 'always' | 'never' | 'only-multiline' | 'always-multiline'
 	},
 })
 
@@ -303,7 +307,7 @@ export default eslintConfig({
 // 使用 Prettier 带自定义选项
 export default eslintConfig({
 	prettier: {
-		printWidth: 240,
+		printWidth: 100,
 		semi: false,
 		singleQuote: true,
 		tabWidth: 2,
@@ -347,6 +351,48 @@ import eslintConfig from '@eslint-sets/eslint-config'
 
 export default eslintConfig({
 	autoDetect: true, // 启用自动检测（默认：true）
+})
+```
+
+### TypeScript 高级选项
+
+```typescript
+// 类型感知规则（需要 tsconfig.json）
+export default eslintConfig({
+	typescript: {
+		typeAware: true,
+		tsconfigPath: './tsconfig.json',
+		overridesTypeAware: {
+			'ts/no-floating-promises': 'warn',
+		},
+	},
+})
+
+// 库项目启用显式返回类型
+export default eslintConfig({
+	type: 'lib', // 启用 ts/explicit-function-return-type
+	typescript: true,
+})
+
+// 仅可擦除语法（用于需要纯类型构造的库）
+export default eslintConfig({
+	typescript: {
+		erasableOnly: true, // 需要 eslint-plugin-erasable-syntax-only
+	},
+})
+```
+
+### 按配置禁用 Stylistic 规则
+
+可以为特定配置禁用 stylistic 规则：
+
+```typescript
+// 为 JSON 文件禁用 stylistic 规则
+export default eslintConfig({
+	jsonc: { stylistic: false },
+	yaml: { stylistic: false },
+	toml: { stylistic: false },
+	vue: { stylistic: false },
 })
 ```
 

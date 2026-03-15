@@ -22,42 +22,21 @@ async function main() {
 
 	// Main ESM build
 	await build({
+		banner: { js: '#!/usr/bin/env node' },
 		bundle: true,
 		entryPoints: ['src/index.ts'],
 		format: 'esm',
-		outfile: 'dist/index.mjs',
-		packages: 'external',
-		platform: 'node',
-		splitting: false,
-	})
-
-	// Main CJS build
-	await build({
-		bundle: true,
-		entryPoints: ['src/index.ts'],
-		format: 'cjs',
 		outfile: 'dist/index.js',
 		packages: 'external',
 		platform: 'node',
 	})
 
-	// CLI ESM build
+	// CLI build
 	await build({
 		banner: { js: '#!/usr/bin/env node' },
 		bundle: true,
 		entryPoints: ['src/cli/index.ts'],
 		format: 'esm',
-		outfile: 'dist/cli/index.mjs',
-		packages: 'external',
-		platform: 'node',
-	})
-
-	// CLI CJS build
-	await build({
-		banner: { js: '#!/usr/bin/env node' },
-		bundle: true,
-		entryPoints: ['src/cli/index.ts'],
-		format: 'cjs',
 		outfile: 'dist/cli/index.js',
 		packages: 'external',
 		platform: 'node',

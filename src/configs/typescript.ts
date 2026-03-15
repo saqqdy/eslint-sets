@@ -1,31 +1,20 @@
 import type { Linter } from 'eslint'
-import type { OptionsOverrides } from '../types'
+import type { OptionsOverrides, OptionsProjectType, OptionsTypeScriptErasableOnly, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
+import process from 'node:process'
 import tsParser from '@typescript-eslint/parser'
 import { GLOB_SRC, GLOB_TS } from '../constants'
 import { loadPlugin } from '../plugins'
-import { renameRules } from '../utils'
+import { interopDefault, renameRules } from '../utils'
 
 /**
  * TypeScript configuration options
  */
-export interface TypeScriptOptions extends OptionsOverrides {
-	/**
-	 * Glob patterns for files that should be type aware
-	 * @default ['**\/*.{ts,tsx}']
-	 */
-	filesTypeAware?: string[]
-
-	/**
-	 * Glob patterns for files that should not be type aware
-	 */
-	ignoresTypeAware?: string[]
-
-	/**
-	 * Path to tsconfig.json
-	 * @default './tsconfig.json'
-	 */
-	tsconfigPath?: string | string[]
-
+export interface TypeScriptOptions
+	extends OptionsOverrides,
+		OptionsTypeScriptWithTypes,
+		OptionsTypeScriptParserOptions,
+		OptionsProjectType,
+		OptionsTypeScriptErasableOnly {
 	/**
 	 * Enable rules that require type information
 	 * @default false
@@ -45,8 +34,12 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 		filesTypeAware = [GLOB_TS],
 		ignoresTypeAware = ['**/*.md/**', '**/*.astro/*.ts'],
 		overrides = {},
-		tsconfigPath = './tsconfig.json',
+		overridesTypeAware = {},
+		parserOptions = {},
+		tsconfigPath,
+		type = 'app',
 		typeAware = false,
+		erasableOnly = false,
 	} = options
 
 	const tseslint = await loadPlugin<TypeScriptESLintPlugin>('@typescript-eslint/eslint-plugin')
@@ -55,8 +48,7 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 		return []
 	}
 
-	const isTypeAware = typeAware && tsconfigPath
-	const tsconfigPaths = Array.isArray(tsconfigPath) ? tsconfigPath : [tsconfigPath]
+	const isTypeAware = typeAware && !!tsconfigPath
 
 	// Get recommended rules and rename them
 	const recommendedRules = tseslint.configs.recommended.rules
@@ -68,22 +60,26 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 	const typeAwareRules: Linter.RulesRecord = {
 		// Turn off base rules
+		'dot-notation': 'off',
 		'no-implied-eval': 'off',
-		'no-throw-literal': 'off',
 		'ts/await-thenable': 'error',
+		'ts/dot-notation': ['error', { allowKeywords: true }],
 		'ts/no-floating-promises': 'error',
 		'ts/no-for-in-array': 'error',
 		'ts/no-implied-eval': 'error',
 		'ts/no-misused-promises': 'error',
-		'ts/no-throw-literal': 'error',
 		'ts/no-unnecessary-type-assertion': 'error',
 		'ts/no-unsafe-argument': 'error',
 		'ts/no-unsafe-assignment': 'error',
 		'ts/no-unsafe-call': 'error',
 		'ts/no-unsafe-member-access': 'error',
 		'ts/no-unsafe-return': 'error',
+		'ts/promise-function-async': 'error',
 		'ts/restrict-plus-operands': 'error',
 		'ts/restrict-template-expressions': 'error',
+		'ts/return-await': ['error', 'in-try-catch'],
+		'ts/strict-boolean-expressions': ['error', { allowNullableBoolean: true, allowNullableObject: true }],
+		'ts/switch-exhaustiveness-check': 'error',
 		'ts/unbound-method': 'error',
 	}
 
@@ -97,9 +93,14 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 					sourceType: 'module',
 					...(isTypeAware
 						? {
-							project: tsconfigPaths,
-						}
+								projectService: {
+									allowDefaultProject: ['./*.js'],
+									defaultProject: tsconfigPath,
+								},
+								tsconfigRootDir: process.cwd(),
+							}
 						: {}),
+					...parserOptions,
 				},
 			},
 			name: 'eslint-sets/typescript',
@@ -113,31 +114,49 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 				// Override JavaScript rules
 				'no-dupe-class-members': 'off',
-				'no-loss-of-precision': 'off',
 				'no-redeclare': 'off',
 				'no-use-before-define': 'off',
 				'no-useless-constructor': 'off',
 
 				// Essential custom rules
-				'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
+				'ts/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
 				'ts/consistent-type-definitions': ['error', 'interface'],
-				'ts/consistent-type-imports': ['error', { disallowTypeAnnotations: false, prefer: 'type-imports' }],
+				'ts/consistent-type-imports': ['error', {
+					disallowTypeAnnotations: false,
+					fixStyle: 'separate-type-imports',
+					prefer: 'type-imports',
+				}],
+				'ts/method-signature-style': ['error', 'property'],
 				'ts/no-dynamic-delete': 'off',
 				'ts/no-explicit-any': 'off',
 				'ts/no-extraneous-class': 'off',
 				'ts/no-import-type-side-effects': 'error',
 				'ts/no-invalid-void-type': 'off',
 				'ts/no-non-null-assertion': 'off',
-				// Use TypeScript's no-redeclare rule instead
-				'ts/no-redeclare': 'error',
+				'ts/no-redeclare': ['error', { builtinGlobals: false }],
 				'ts/no-require-imports': 'error',
+				'ts/no-unused-expressions': ['error', {
+					allowShortCircuit: true,
+					allowTaggedTemplates: true,
+					allowTernary: true,
+				}],
 				'ts/no-unused-vars': 'off',
-
 				'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
 				'ts/no-useless-constructor': 'off',
-				'ts/prefer-ts-expect-error': 'error',
+				'ts/no-wrapper-object-types': 'error',
 				'ts/triple-slash-reference': 'off',
 				'ts/unified-signatures': 'off',
+
+				// Library-specific rules
+				...(type === 'lib'
+					? {
+							'ts/explicit-function-return-type': ['error', {
+								allowExpressions: true,
+								allowHigherOrderFunctions: true,
+								allowIIFEs: true,
+							}],
+						}
+					: {}),
 
 				// User overrides
 				...overrides,
@@ -151,8 +170,31 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 			files: filesTypeAware,
 			ignores: ignoresTypeAware,
 			name: 'eslint-sets/typescript/type-aware',
-			rules: typeAwareRules,
+			rules: {
+				...typeAwareRules,
+				...overridesTypeAware,
+			},
 		})
+	}
+
+	// Add erasable syntax only rules if enabled
+	if (erasableOnly) {
+		const erasablePlugin = await interopDefault(import('eslint-plugin-erasable-syntax-only'))
+
+		if (erasablePlugin) {
+			configs.push({
+				name: 'eslint-sets/typescript/erasable-syntax-only',
+				plugins: {
+					'erasable-syntax-only': erasablePlugin as any,
+				},
+				rules: {
+					'erasable-syntax-only/enums': 'error',
+					'erasable-syntax-only/import-aliases': 'error',
+					'erasable-syntax-only/namespaces': 'error',
+					'erasable-syntax-only/parameter-properties': 'error',
+				},
+			})
+		}
 	}
 
 	// Add disables for .d.ts files

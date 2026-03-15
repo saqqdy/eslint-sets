@@ -33,9 +33,13 @@ export type { ReactOptions } from './configs/react'
 
 export type { StylisticOptions } from './configs/stylistic'
 
+export type { TomlOptions } from './configs/toml'
+
 export type { TypeScriptOptions } from './configs/typescript'
 
 export type { VueOptions } from './configs/vue'
+
+export type { YamlOptions } from './configs/yaml'
 // Export constants
 export * from './constants'
 // Export plugin helpers

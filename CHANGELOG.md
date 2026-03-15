@@ -113,16 +113,16 @@ All notable changes to this project will be documented in this file.
 - **Build System**: Replaced tsup with custom esbuild build script for better Node.js 24 compatibility
   - CLI now correctly includes shebang (`#!/usr/bin/env node`)
   - Smaller bundle sizes with `packages: 'external'` option
-- **JavaScript Rules**: Updated rules to align with antfu/eslint-config best practices
+- **JavaScript Rules**: Updated rules with best practices
   - `no-labels`: Now enforces `['error', { allowLoop: false, allowSwitch: false }]`
   - `no-prototype-builtins`: Changed from `'off'` to `'error'`
   - `no-template-curly-in-string`: Changed from `'off'` to `'error'`
   - `no-throw-literal`: Changed from `'off'` to `'error'`
   - `object-shorthand`: Enhanced with `['error', 'always', { avoidQuotes: true, ignoreConstructors: false }]`
   - `valid-typeof`: Added `requireStringLiterals: true` option
-- **Node.js Rules**: Disabled `n/no-callback-literal` (not used by antfu/eslint-config)
-- **prefer-node-protocol**: Changed from `n/prefer-node-protocol` to `unicorn/prefer-node-protocol` (matching antfu/eslint-config)
-- **Ignores**: Updated `GLOB_EXCLUDES` to match antfu/eslint-config with more comprehensive ignore patterns
+- **Node.js Rules**: Disabled `n/no-callback-literal`
+- **prefer-node-protocol**: Changed from `n/prefer-node-protocol` to `unicorn/prefer-node-protocol`
+- **Ignores**: Updated `GLOB_EXCLUDES` with more comprehensive ignore patterns
 - **React Plugin Migration**: Migrated from `eslint-plugin-react` + `eslint-plugin-react-hooks` to `@eslint-react/eslint-plugin`
   - Modern React linting with modular design
   - Includes core, dom, web-api, hooks-extra, naming-convention, and debug sub-plugins

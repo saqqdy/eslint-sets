@@ -32,8 +32,10 @@ export function unicorn(options: UnicornOptions = {}): Linter.Config {
 				? unicornPlugin.configs.recommended.rules
 				: {
 					// Curated essential rules
+					'unicorn/consistent-empty-array-spread': 'error',
 					'unicorn/error-message': 'error',
 					'unicorn/escape-case': 'error',
+					'unicorn/new-for-builtins': 'error',
 					'unicorn/no-instanceof-array': 'error',
 					'unicorn/no-new-array': 'error',
 					'unicorn/no-new-buffer': 'error',

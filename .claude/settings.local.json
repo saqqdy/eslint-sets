@@ -31,7 +31,13 @@
       "Bash(pnpm tsup:*)",
       "Bash(pnpm why:*)",
       "Bash(pnpm ls:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(echo:*)",
+      "Bash(node:*)",
+      "Bash(pnpm:*)",
+      "Bash(cat:*)",
+      "Bash(npm pack:*)",
+      "Bash(cd:*)"
     ]
   }
 }

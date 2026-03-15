@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.0] - 2026-03-15
+
+### Added
+
+- **Node.js 18 Support**: Lowered minimum Node.js requirement from 20.19.0 to 18.18.0
+  - Added `engines` field to package.json: `"node": "^18.18.0 || ^20.9.0 || >=21.1.0"`
+- **Workspace Configuration**: Added `pnpm-workspace.yaml` for monorepo support
+- **Node Version Requirements Doc**: Added comprehensive documentation for all ESLint plugins' Node.js requirements at `docs/NODE_VERSION_REQUIREMENTS.md`
+
+### Changed
+
+- **Downgraded Plugins for Node.js 18 Compatibility**:
+  - `eslint-plugin-regexp`: ^3.1.0 → ^2.10.0
+  - `eslint-plugin-jsdoc`: ^62.8.0 → ^61.7.1
+  - `eslint-plugin-perfectionist`: ^5.6.0 → ^4.15.1
+  - `eslint-plugin-unicorn`: ^59.0.1 → ^56.0.1
+  - `eslint-plugin-svelte`: ^3.0.0 → ^2.46.1
+  - `eslint-plugin-vue`: ^10.0.0 → ^9.33.0
+- **Unicorn Rules**: Updated unicorn config with additional rules
+  - Added `unicorn/consistent-empty-array-spread`
+  - Added `unicorn/new-for-builtins`
+  - Kept `unicorn/no-instanceof-array` (not available in unicorn 59.x)
+- **Vue Config**: Updated to use flat config names for Vue 2/3 detection
+  - Vue 2: Uses `flat/vue2-essential`, `flat/vue2-recommended`, `flat/vue2-strongly-recommended`
+  - Vue 3: Uses `flat/essential`, `flat/recommended`, `flat/strongly-recommended`
+- **Svelte Config**: Added type assertion for plugin compatibility
+
+### Fixed
+
+- Fixed `TypeError: context.sourceCode.isGlobalReference is not a function` error with unicorn rules
+- Fixed Vue config compatibility with eslint-plugin-vue@9.x
+- Fixed Svelte config type compatibility with eslint-plugin-svelte@2.x
+
+### Notes
+
+- `eslint-plugin-toml@1.x` still requires Node.js 20.19.0+, but is kept as optional
+- `eslint-plugin-unicorn@56.x` is compatible with all ESLint 9.x versions (not just 9.22.0+)
+
 ## [6.0.0] - 2026-03-14
 
 ### Added

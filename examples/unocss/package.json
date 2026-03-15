@@ -14,7 +14,7 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@eslint-sets/eslint-config": "link:../..",
+    "@eslint-sets/eslint-config": "^6.1.0",
     "@unocss/eslint-plugin": "^66.0.0",
     "@vitejs/plugin-vue": "^5.2.0",
     "eslint": "^9.22.0",

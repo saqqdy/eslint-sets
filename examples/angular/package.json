@@ -30,7 +30,7 @@
     "@angular-eslint/template-parser": "^19.2.0",
     "@angular/cli": "^19.2.0",
     "@angular/compiler-cli": "^19.2.0",
-    "@eslint-sets/eslint-config": "link:../..",
+    "@eslint-sets/eslint-config": "^6.1.0",
     "@types/node": "^22.13.0",
     "eslint": "^9.22.0",
     "typescript": "^5.8.2"

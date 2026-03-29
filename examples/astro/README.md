@@ -78,7 +78,7 @@ const { initialValue = 0, max = 10, min = 0 } = Astro.props
     // ...
   }
 
-  document.querySelectorAll('.counter').forEach((el) => {
+  document.querySelectorAll('.counter').forEach(el => {
     initCounter(el as HTMLElement)
   })
 </script>

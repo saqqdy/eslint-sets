@@ -7,8 +7,8 @@ import { GLOB_SRC } from '../constants'
  */
 export function regexp(): Linter.Config {
 	return {
-		files: [GLOB_SRC],
 		name: 'eslint-sets/regexp',
+		files: [GLOB_SRC],
 		plugins: {
 			regexp: regexpPlugin as any,
 		},

@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint'
 import type { OptionsOverrides } from '../types'
-import importPlugin from 'eslint-plugin-import-x'
-import unusedImports from 'eslint-plugin-unused-imports'
+import importPlugin from 'eslint-plugin-import-lite'
 import { GLOB_SRC } from '../constants'
 
 /**
@@ -18,46 +17,29 @@ export interface ImportsOptions extends OptionsOverrides {
 /**
  * Import configuration
  *
- * Note: Import sorting is handled by perfectionist/sort-imports, not import-x/order
+ * Note: Import sorting is handled by perfectionist/sort-imports
  */
 export function imports(options: ImportsOptions = {}): Linter.Config {
 	const { overrides = {}, stylistic = true } = options
 
 	return {
-		files: [GLOB_SRC],
 		name: 'eslint-sets/imports',
+		files: [GLOB_SRC],
 		plugins: {
-			'import-x': importPlugin,
-			'unused-imports': unusedImports,
+			import: importPlugin,
 		},
 		rules: {
 			// Essential import rules
-			'import-x/first': 'error',
-			'import-x/no-duplicates': 'error',
-			'import-x/no-mutable-exports': 'error',
-			'import-x/no-named-default': 'error',
-			'import-x/no-self-import': 'error',
-			'import-x/no-webpack-loader-syntax': 'error',
-			// Note: import-x/order is disabled - sorting is handled by perfectionist/sort-imports
-			'import-x/order': 'off',
+			'import/first': 'error',
+			'import/no-duplicates': 'error',
+			'import/no-mutable-exports': 'error',
+			'import/no-named-default': 'error',
+			'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 
 			// Stylistic rules
 			...(stylistic ? {
-				'import-x/newline-after-import': ['error', { count: 1 }],
+				'import/newline-after-import': ['error', { count: 1 }],
 			} : {}),
-
-			// Unused imports handling (essential)
-			'unused-imports/no-unused-imports': 'error',
-			'unused-imports/no-unused-vars': [
-				'error',
-				{
-					args: 'after-used',
-					argsIgnorePattern: '^_',
-					ignoreRestSiblings: true,
-					vars: 'all',
-					varsIgnorePattern: '^_',
-				},
-			],
 
 			// User overrides
 			...overrides,

@@ -7,22 +7,10 @@ import { GLOB_SRC } from '../constants'
  */
 export interface StylisticOptions {
 	/**
-	 * Arrow function parentheses
+	 * Enable experimental rules
 	 * @default false
 	 */
-	arrowParens?: boolean
-
-	/**
-	 * Brace style
-	 * @default '1tbs'
-	 */
-	braceStyle?: '1tbs' | 'stroustrup' | 'allman'
-
-	/**
-	 * Bracket spacing
-	 * @default true
-	 */
-	bracketSpacing?: boolean
+	experimental?: boolean
 
 	/**
 	 * Indentation style
@@ -37,21 +25,15 @@ export interface StylisticOptions {
 	jsx?: boolean
 
 	/**
-	 * JSX quote style
-	 * @default 'prefer-double'
+	 * Use less opinionated rules
+	 * @default false
 	 */
-	jsxQuotes?: 'prefer-double' | 'prefer-single'
+	lessOpinionated?: boolean
 
 	/**
 	 * Override rules
 	 */
 	overrides?: Linter.RulesRecord
-
-	/**
-	 * Quote props
-	 * @default 'as-needed'
-	 */
-	quoteProps?: 'always' | 'as-needed' | 'consistent' | 'consistent-as-needed'
 
 	/**
 	 * Quote style
@@ -64,28 +46,18 @@ export interface StylisticOptions {
 	 * @default false
 	 */
 	semi?: boolean
-
-	/**
-	 * Trailing commas
-	 * @default 'always-multiline'
-	 */
-	trailingComma?: 'always-multiline' | 'always' | 'never' | 'only-multiline'
 }
 
 /**
  * Stylistic configuration defaults
  */
 export const StylisticConfigDefaults: StylisticOptions = {
-	arrowParens: false,
-	braceStyle: '1tbs',
-	bracketSpacing: true,
+	experimental: false,
 	indent: 2,
 	jsx: true,
-	jsxQuotes: 'prefer-double',
-	quoteProps: 'as-needed',
+	lessOpinionated: false,
 	quotes: 'single',
 	semi: false,
-	trailingComma: 'always-multiline',
 }
 
 /**
@@ -93,17 +65,13 @@ export const StylisticConfigDefaults: StylisticOptions = {
  */
 export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 	const {
-		arrowParens,
-		braceStyle,
-		bracketSpacing,
+		experimental,
 		indent,
 		jsx,
-		jsxQuotes,
+		lessOpinionated = false,
 		overrides = {},
-		quoteProps,
 		quotes,
 		semi,
-		trailingComma,
 	} = {
 		...StylisticConfigDefaults,
 		...options,
@@ -111,107 +79,43 @@ export function stylistic(options: StylisticOptions = {}): Linter.Config[] {
 
 	// Use @stylistic/eslint-plugin's customize function for base rules
 	const config = stylisticPlugin.configs.customize({
-		arrowParens,
-		blockSpacing: true,
-		braceStyle,
-		commaDangle: trailingComma,
-		indent: indent === 'tab' ? 2 : indent,
+		experimental,
+		indent,
 		jsx,
-		pluginName: '@stylistic',
-		quoteProps,
+		pluginName: 'style',
 		quotes,
 		semi,
 	}) as Linter.Config
 
-	const indentStyle = indent === 'tab' ? 'tab' : indent
-
 	return [
 		{
-			files: [GLOB_SRC],
 			name: 'eslint-sets/stylistic',
+			files: [GLOB_SRC],
 			plugins: {
-				'@stylistic': stylisticPlugin as any,
+				style: stylisticPlugin as any,
 			},
 			rules: {
 				// Base rules from customize
 				...config.rules,
 
-				// Override with custom settings
-				'@stylistic/arrow-parens': ['error', arrowParens ? 'always' : 'as-needed', { requireForBlockBody: false }],
-				'@stylistic/brace-style': ['error', braceStyle, { allowSingleLine: true }],
-				// Additional rules not covered by customize
-				'@stylistic/curly-newline': 'off',
-				'@stylistic/function-call-spacing': ['error', 'never'],
-				'@stylistic/indent': [
-					'error',
-					indentStyle,
-					{
-						ignoredNodes: ['TemplateLiteral'],
-						SwitchCase: 1,
-					},
-				],
-				'@stylistic/jsx-curly-brace-presence': ['error', { children: 'never', props: 'never' }],
+				// arrow-parens: omit parens for single argument
+				'style/arrow-parens': ['error', 'as-needed'],
 
-				'@stylistic/jsx-curly-newline': [
-					'error',
-					{ multiline: 'consistent', singleline: 'consistent' },
-				],
-				'@stylistic/jsx-curly-spacing': ['error', { attributes: true, children: true }],
-				// Note: jsx-indent and jsx-indent-props are deprecated in v5, use indent instead
-				'@stylistic/jsx-newline': 'off',
-				'@stylistic/jsx-one-expression-per-line': ['error', { allow: 'literal' }],
-				'@stylistic/jsx-pascal-case': 'off',
-				'@stylistic/jsx-quotes': ['error', jsxQuotes],
-				'@stylistic/jsx-self-closing-comp': 'error',
-				'@stylistic/jsx-sort-props': 'off',
-				'@stylistic/jsx-tag-spacing': ['error', { beforeSelfClosing: 'always' }],
-				'@stylistic/jsx-wrap-multilines': 'off',
-				'@stylistic/linebreak-style': 'off',
-				'@stylistic/member-delimiter-style': [
-					'error',
-					{
-						multiline: { delimiter: 'none', requireLast: false },
-						singleline: { delimiter: 'semi', requireLast: false },
-					},
-				],
-				'@stylistic/multiline-ternary': ['error', 'never'],
-				'@stylistic/newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
-				'@stylistic/no-mixed-operators': ['error', {
-					allowSamePrecedence: true,
-					groups: [
-						['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-						['&&', '||'],
-						['in', 'instanceof'],
-					],
-				}],
-				'@stylistic/no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
-				'@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
-				'@stylistic/no-tabs': indent === 'tab' ? 'off' : 'error',
-				'@stylistic/no-trailing-spaces': 'error',
-				'@stylistic/object-curly-spacing': ['error', bracketSpacing ? 'always' : 'never'],
-				'@stylistic/operator-linebreak': ['error', 'after', {
-					overrides: {
-						'&': 'before', // Intersection type: ampersand at beginning of line
-						// ':': 'before', // Ternary operator: colon at beginning of line
-						// '?': 'before', // Ternary operator: question mark at beginning of line
-						'|': 'before', // Union type: pipe at beginning of line
-					},
-				}],
-				'@stylistic/padding-line-between-statements': [
-					'error',
-					{ blankLine: 'always', next: 'return', prev: '*' },
-					{ blankLine: 'always', next: '*', prev: ['const', 'let', 'var'] },
-					{ blankLine: 'any', next: ['const', 'let', 'var'], prev: ['const', 'let', 'var'] },
-				],
-				'@stylistic/space-before-function-paren': [
-					'error',
-					{
-						anonymous: 'always',
-						asyncArrow: 'always',
-						named: 'never',
-					},
-				],
-				'@stylistic/type-annotation-spacing': 'error',
+				// brace-style: use 1tbs (else on same line)
+				'style/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+
+				// Generator and yield star spacing
+				'style/generator-star-spacing': ['error', { after: true, before: false }],
+				'style/multiline-ternary': ['error', 'never'],
+				'style/yield-star-spacing': ['error', { after: true, before: false }],
+
+				// quote-props: only quote when needed (not consistent-as-needed)
+				'style/quote-props': ['error', 'as-needed'],
+
+				// Less opinionated mode uses basic curly rule
+				...(lessOpinionated ? {
+					curly: ['error', 'all'],
+				} : {}),
 
 				// User overrides
 				...overrides,

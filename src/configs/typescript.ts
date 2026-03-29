@@ -30,6 +30,7 @@ type TypeScriptESLintPlugin = typeof import('@typescript-eslint/eslint-plugin')
  */
 export async function typescript(options: TypeScriptOptions = {}): Promise<Linter.Config[]> {
 	const {
+		type = 'app',
 		erasableOnly = false,
 		filesTypeAware = [GLOB_TS],
 		ignoresTypeAware = ['**/*.md/**', '**/*.astro/*.ts'],
@@ -37,7 +38,6 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 		overridesTypeAware = {},
 		parserOptions = {},
 		tsconfigPath,
-		type = 'app',
 		typeAware = false,
 	} = options
 
@@ -84,6 +84,7 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 	const configs: Linter.Config[] = [
 		{
+			name: 'eslint-sets/typescript',
 			files: [GLOB_TS, GLOB_SRC],
 			languageOptions: {
 				parser: tsParser,
@@ -100,7 +101,6 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 					...parserOptions,
 				},
 			},
-			name: 'eslint-sets/typescript',
 			plugins: {
 				ts: tseslint as any,
 			},
@@ -124,7 +124,9 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 					prefer: 'type-imports',
 				}],
 				'ts/method-signature-style': ['error', 'property'],
+				'ts/no-dupe-class-members': 'error',
 				'ts/no-dynamic-delete': 'off',
+				'ts/no-empty-object-type': ['error', { allowInterfaces: 'always' }],
 				'ts/no-explicit-any': 'off',
 				'ts/no-extraneous-class': 'off',
 				'ts/no-import-type-side-effects': 'error',
@@ -162,9 +164,9 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 	// Add type-aware rules if enabled
 	if (isTypeAware) {
 		configs.push({
+			name: 'eslint-sets/typescript/type-aware',
 			files: filesTypeAware,
 			ignores: ignoresTypeAware,
-			name: 'eslint-sets/typescript/type-aware',
 			rules: {
 				...typeAwareRules,
 				...overridesTypeAware,
@@ -194,11 +196,11 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 	// Add disables for .d.ts files
 	configs.push({
-		files: ['**/*.d.ts'],
 		name: 'eslint-sets/typescript/disables/dts',
+		files: ['**/*.d.ts'],
 		rules: {
 			'eslint-comments/no-unlimited-disable': 'off',
-			'import-x/no-duplicates': 'off',
+			'import/no-duplicates': 'off',
 			'no-restricted-syntax': 'off',
 			'unused-imports/no-unused-vars': 'off',
 		},
@@ -206,8 +208,8 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 	// Add disables for test files
 	configs.push({
-		files: ['**/*.{test,spec}.ts?(x)'],
 		name: 'eslint-sets/typescript/disables/test',
+		files: ['**/*.{test,spec}.ts?(x)'],
 		rules: {
 			'no-unused-expressions': 'off',
 		},
@@ -215,8 +217,8 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 	// Add disables for .js/.cjs files
 	configs.push({
-		files: ['**/*.js', '**/*.cjs'],
 		name: 'eslint-sets/typescript/disables/cjs',
+		files: ['**/*.js', '**/*.cjs'],
 		rules: {
 			'ts/no-require-imports': 'off',
 			'ts/no-var-requires': 'off',

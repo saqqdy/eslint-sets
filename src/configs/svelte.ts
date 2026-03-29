@@ -35,6 +35,7 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 
 	return [
 		{
+			name: 'eslint-sets/svelte',
 			files: [GLOB_SVELTE],
 			languageOptions: {
 				parser: svelteParser,
@@ -45,7 +46,6 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 					sourceType: 'module',
 				},
 			},
-			name: 'eslint-sets/svelte',
 			plugins: {
 				svelte: sveltePlugin as any,
 			},

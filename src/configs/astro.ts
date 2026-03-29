@@ -29,6 +29,7 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 
 	return [
 		{
+			name: 'eslint-sets/astro',
 			files: [GLOB_ASTRO],
 			languageOptions: {
 				parser: astroParser,
@@ -37,7 +38,6 @@ export async function astro(options: AstroOptions = {}): Promise<Linter.Config[]
 					sourceType: 'module',
 				},
 			},
-			name: 'eslint-sets/astro',
 			plugins: {
 				astro: astroPlugin as any,
 			},

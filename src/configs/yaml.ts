@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 import type { OptionsOverrides } from '../types'
-import ymlPlugin, { configs as ymlConfigs } from 'eslint-plugin-yml'
+import ymlPlugin from 'eslint-plugin-yml'
 import yamlParser from 'yaml-eslint-parser'
 import { GLOB_YAML } from '../constants'
 
@@ -16,7 +16,7 @@ export interface YamlStylisticOptions {
 
 	/**
 	 * Quote style
-	 * @default 'double'
+	 * @default 'single'
 	 */
 	quotes?: 'single' | 'double'
 }
@@ -32,9 +32,6 @@ export interface YamlOptions extends OptionsOverrides {
 	stylistic?: boolean | YamlStylisticOptions
 }
 
-// Get rules from the plugin configs
-const ymlStandardRules = (ymlConfigs?.standard as any)?.rules || {}
-
 /**
  * YAML configuration
  */
@@ -46,52 +43,55 @@ export function yaml(options: YamlOptions = {}): Linter.Config[] {
 
 	const {
 		indent = 2,
-		quotes = 'double',
+		quotes = 'single',
 	} = typeof stylistic === 'boolean' ? {} : stylistic
 
 	return [
 		{
+			name: 'eslint-sets/yaml',
 			files: [GLOB_YAML],
 			languageOptions: {
 				parser: yamlParser,
 			},
-			name: 'eslint-sets/yaml',
 			plugins: {
-				yml: ymlPlugin as any,
+				yaml: ymlPlugin as any,
 			},
 			rules: {
-				...ymlStandardRules,
+				'style/spaced-comment': 'off',
+
+				// Disable file-extension rule
+				'yml/file-extension': 'off',
 
 				// YAML core rules (always enabled)
-				'yml/block-mapping': 'error',
-				'yml/block-sequence': 'error',
-				'yml/file-extension': ['error', { extension: 'yml' }],
-				'yml/key-name-casing': 'off',
-				'yml/no-empty-document': 'error',
-				'yml/no-empty-key': 'error',
-				'yml/no-empty-mapping-value': 'error',
-				'yml/no-empty-sequence-entry': 'error',
-				'yml/no-irregular-whitespace': 'error',
-				'yml/plain-scalar': 'error',
-				'yml/require-string-key': 'error',
-				'yml/sort-keys': 'off',
-				'yml/sort-sequence-values': 'off',
+				'yaml/block-mapping': 'error',
+				'yaml/block-sequence': 'error',
+				'yaml/no-empty-key': 'error',
+				'yaml/no-empty-sequence-entry': 'error',
+				'yaml/no-irregular-whitespace': 'error',
+				'yaml/plain-scalar': 'error',
+
+				// Vue custom block
+				'yaml/vue-custom-block/no-parsing-error': 'error',
 
 				// Stylistic rules (conditional)
 				...(stylistic ? {
-					// yml/indent only accepts integer values, not "tab"
-					// When using tabs, disable indent rule and no-tab-indent
+					'yaml/block-mapping-question-indicator-newline': 'error',
+					'yaml/block-sequence-hyphen-indicator-newline': 'error',
+					'yaml/flow-mapping-curly-newline': 'error',
+					'yaml/flow-mapping-curly-spacing': 'error',
+					'yaml/flow-sequence-bracket-newline': 'error',
+					'yaml/flow-sequence-bracket-spacing': 'error',
+					// yaml/indent only accepts integer values, not "tab"
 					...(indent === 'tab' ? {
-						'yml/indent': 'off',
-						'yml/no-tab-indent': 'off',
+						'yaml/indent': 'off',
+						'yaml/no-tab-indent': 'off',
 					} : {
-						'yml/indent': ['error', indent],
-						'yml/no-tab-indent': 'error',
+						'yaml/indent': ['error', indent],
+						'yaml/no-tab-indent': 'error',
 					}),
-					'yml/key-spacing': 'error',
-					'yml/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
-					'yml/quotes': ['error', { avoidEscape: true, prefer: quotes }],
-					'yml/spaced-comment': 'error',
+					'yaml/key-spacing': 'error',
+					'yaml/quotes': ['error', { avoidEscape: true, prefer: quotes }],
+					'yaml/spaced-comment': 'error',
 				} : {}),
 
 				// User overrides

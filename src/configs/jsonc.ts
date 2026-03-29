@@ -24,11 +24,11 @@ export function jsonc(options: JsoncOptions = {}): Linter.Config[] {
 
 	return [
 		{
+			name: 'eslint-sets/jsonc',
 			files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
 			languageOptions: {
 				parser: jsoncParser,
 			},
-			name: 'eslint-sets/jsonc',
 			plugins: {
 				jsonc: jsoncPlugin as any,
 			},
@@ -59,6 +59,9 @@ export function jsonc(options: JsoncOptions = {}): Linter.Config[] {
 				'jsonc/no-useless-escape': 'error',
 				'jsonc/space-unary-ops': 'error',
 				'jsonc/valid-json-number': 'error',
+
+				// Vue custom block
+				'jsonc/vue-custom-block/no-parsing-error': 'error',
 
 				// Stylistic rules (conditional)
 				...(stylistic ? {

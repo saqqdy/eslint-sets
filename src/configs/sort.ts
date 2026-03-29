@@ -34,8 +34,8 @@ export async function sortPackageJson(
 
 	return [
 		{
-			files,
 			name: 'eslint-sets/sort-package-json',
+			files,
 			rules: {
 				'jsonc/sort-keys': [
 					'error',
@@ -117,8 +117,8 @@ export async function sortTsconfig(options: SortTsconfigOptions = {}): Promise<L
 
 	return [
 		{
-			files,
 			name: 'eslint-sets/sort-tsconfig',
+			files,
 			rules: {
 				'jsonc/sort-keys': [
 					'error',

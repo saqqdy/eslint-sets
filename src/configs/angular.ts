@@ -51,8 +51,8 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 			},
 		},
 		{
-			files: [GLOB_TS],
 			name: 'eslint-sets/angular/rules/ts',
+			files: [GLOB_TS],
 			processor: angularTemplatePlugin.processors?.['extract-inline-html'],
 			rules: {
 				// Core Angular rules
@@ -74,11 +74,11 @@ export async function angular(options: AngularOptions = {}): Promise<Linter.Conf
 			},
 		},
 		{
+			name: 'eslint-sets/angular/rules/template',
 			files: templateFiles,
 			languageOptions: {
 				parser: templateParser as any,
 			},
-			name: 'eslint-sets/angular/rules/template',
 			rules: {
 				// Core template rules
 				'angular-template/banana-in-box': 'error',

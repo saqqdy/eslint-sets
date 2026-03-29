@@ -31,14 +31,14 @@ export interface PerfectionistOptions {
  */
 export function perfectionist(options: PerfectionistOptions = {}): Linter.Config {
 	const {
+		type = 'natural',
 		order = 'asc',
 		overrides = {},
-		type = 'natural',
 	} = options
 
 	return {
-		files: [GLOB_SRC],
 		name: 'eslint-sets/perfectionist',
+		files: [GLOB_SRC],
 		plugins: {
 			perfectionist: perfectionistPlugin as any,
 		},
@@ -46,13 +46,14 @@ export function perfectionist(options: PerfectionistOptions = {}): Linter.Config
 			'perfectionist/sort-exports': [
 				'error',
 				{
-					order,
 					type,
+					order,
 				},
 			],
 			'perfectionist/sort-imports': [
 				'error',
 				{
+					type,
 					groups: [
 						'type-import',
 						['type-parent', 'type-sibling', 'type-index', 'type-internal'],
@@ -66,35 +67,52 @@ export function perfectionist(options: PerfectionistOptions = {}): Linter.Config
 					],
 					newlinesBetween: 'ignore',
 					order,
-					type,
-				},
-			],
-			'perfectionist/sort-interfaces': [
-				'error',
-				{
-					order,
-					type,
 				},
 			],
 			'perfectionist/sort-named-exports': [
 				'error',
 				{
-					order,
 					type,
+					customGroups: [
+						{
+							groupName: 'default',
+							elementNamePattern: 'default',
+						},
+						{
+							groupName: 'values',
+							modifiers: ['value'],
+						},
+						{
+							groupName: 'types',
+							modifiers: ['type'],
+						},
+					],
+					groups: ['default', 'values', 'types'],
+					order,
 				},
 			],
 			'perfectionist/sort-named-imports': [
 				'error',
 				{
-					order,
 					type,
+					order,
 				},
 			],
 			'perfectionist/sort-objects': [
 				'error',
 				{
-					order,
-					type,
+					type: 'unsorted',
+					customGroups: [
+						{
+							groupName: 'id',
+							elementNamePattern: '^(id|key|name)$',
+						},
+						{
+							groupName: 'required',
+							elementNamePattern: '^(type|value)$',
+						},
+					],
+					groups: ['id', 'required', 'unknown'],
 				},
 			],
 

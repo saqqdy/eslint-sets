@@ -45,15 +45,18 @@ export function toml(options: TomlOptions = {}): Linter.Config[] {
 
 	return [
 		{
+			name: 'eslint-sets/toml',
 			files: [GLOB_TOML],
 			languageOptions: {
 				parser: tomlParser as any,
 			},
-			name: 'eslint-sets/toml',
 			plugins: {
 				toml: tomlPlugin as any,
 			},
 			rules: {
+				// Disable style/spaced-comment for TOML files
+				'style/spaced-comment': 'off',
+
 				// TOML core rules (always enabled)
 				'toml/comma-style': 'error',
 				'toml/keys-order': 'error',
@@ -62,6 +65,9 @@ export function toml(options: TomlOptions = {}): Linter.Config[] {
 				'toml/precision-of-fractional-seconds': 'error',
 				'toml/precision-of-integer': 'error',
 				'toml/tables-order': 'error',
+
+				// Vue custom block
+				'toml/vue-custom-block/no-parsing-error': 'error',
 
 				// Stylistic rules (conditional)
 				...(stylistic ? {

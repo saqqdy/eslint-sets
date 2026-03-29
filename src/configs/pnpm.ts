@@ -35,8 +35,8 @@ export async function pnpm(options: PnpmOptions = {}): Promise<Linter.Config[]> 
 
 	return [
 		{
-			files: ['**/package.json'],
 			name: 'eslint-sets/pnpm',
+			files: ['**/package.json'],
 			plugins: {
 				pnpm: plugin as any,
 			},

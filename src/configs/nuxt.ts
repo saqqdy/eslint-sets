@@ -23,8 +23,8 @@ export function nuxt(options: NuxtOptions = {}): Linter.Config[] {
 
 	return [
 		{
-			files: [GLOB_VUE, GLOB_TS],
 			name: 'eslint-sets/nuxt',
+			files: [GLOB_VUE, GLOB_TS],
 			rules: {
 				// Nuxt-specific rules
 				// Note: Most Nuxt-specific linting is handled by @nuxt/eslint

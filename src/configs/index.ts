@@ -28,18 +28,17 @@ import {
 import { angular } from './angular'
 import { astro } from './astro'
 import { command } from './command'
+import { comments } from './comments'
 import { disables } from './disables'
-import { e18e } from './e18e'
-import { eslintComments } from './eslint-comments'
 import { formatters } from './formatters'
 import { ignores } from './ignores'
 import { imports } from './imports'
 import { javascript } from './javascript'
+import { jsdoc } from './jsdoc'
 import { jsonc } from './jsonc'
-import { jsxA11y } from './jsx-a11y'
+import { jsx } from './jsx'
 import { markdown } from './markdown'
 import { nextjs } from './nextjs'
-import { noOnlyTests } from './no-only-tests'
 import { node } from './node'
 import { nuxt } from './nuxt'
 import { perfectionist } from './perfectionist'
@@ -57,7 +56,6 @@ import { typescript } from './typescript'
 import { unicorn } from './unicorn'
 import { unocss } from './unocss'
 import { vue } from './vue'
-import { vueA11y } from './vue-a11y'
 import { yaml } from './yaml'
 
 /**
@@ -103,21 +101,22 @@ function resolveOptionsOverrides<K extends string>(
  */
 export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	const {
+		type: _type = 'app',
 		angular: angularOption = 'auto',
 		astro: astroOption = 'auto',
 		autoDetect = true,
 		command: commandOption = true,
+		comments: commentsOption = true,
 		disables: disablesOption = true,
-		e18e: e18eOption = false,
-		eslintComments: eslintCommentsOption = true,
 		extends: extendConfigs = [],
 		formatters: formattersOption = false,
 		gitignore: gitignoreOption = true,
 		ignores: ignorePatterns,
 		imports: importsOption = true,
 		isInEditor,
+		jsdoc: jsdocOption = true,
 		jsonc: jsoncOption = true,
-		jsxA11y: jsxA11yOption = false,
+		jsx: jsxOption = false,
 		markdown: markdownOption = true,
 		nextjs: nextjsOption = 'auto',
 		node: nodeOption = true,
@@ -135,7 +134,6 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		svelte: svelteOption = 'auto',
 		test: testOption = true,
 		toml: tomlOption = true,
-		type: _type = 'app',
 		typescript: tsOption = true,
 		unicorn: unicornOption = true,
 		unocss: unocssOption = 'auto',
@@ -145,10 +143,6 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// Detect editor environment
 	const inEditor = isInEditor ?? isInEditorEnv()
-
-	if (inEditor) {
-		console.info('[@eslint-sets/eslint-config] Detected running in editor, some rules are disabled.')
-	}
 
 	const configs: Linter.Config[] = []
 
@@ -202,6 +196,12 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 		reactOpts.overrides = getOverrides(options as Record<string, unknown>, 'react')
 		configs.push(...(await react(reactOpts)))
+	}
+
+	// JSX (base JSX support with optional a11y)
+	if (jsxOption !== false) {
+		const jsxOpts = typeof jsxOption === 'object' ? jsxOption : {}
+		configs.push(...(await jsx(jsxOpts)))
 	}
 
 	// Svelte
@@ -315,8 +315,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	if (testOption !== false) {
 		const testOpts = typeof testOption === 'object' ? testOption : {}
 
-		configs.push(test(testOpts))
-		configs.push(...(await noOnlyTests()))
+		configs.push(...(await test({ ...testOpts, isInEditor: inEditor })))
 	}
 
 	// Node
@@ -324,9 +323,14 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		configs.push(...node())
 	}
 
-	// ESLint Comments
-	if (eslintCommentsOption !== false) {
-		configs.push(...(await eslintComments()))
+	// Comments (ESLint directive comments)
+	if (commentsOption !== false) {
+		configs.push(...(await comments()))
+	}
+
+	// JSDoc
+	if (jsdocOption !== false) {
+		configs.push(...(await jsdoc(typeof jsdocOption === 'object' ? jsdocOption : {})))
 	}
 
 	// Disables (for specific file types)
@@ -336,7 +340,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// Command (for scripts/bin files)
 	if (commandOption !== false) {
-		configs.push(...command())
+		configs.push(...(await command()))
 	}
 
 	// Sort package.json
@@ -349,24 +353,11 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		configs.push(...(await sortTsconfig()))
 	}
 
-	// JSX A11y (if not already included in React)
-	if (
-		jsxA11yOption &&
-		!(isEnabled(reactOption) || (isAutoDetect(reactOption) && autoDetect && hasReact()))
-	) {
-		configs.push(...(await jsxA11y()))
-	}
-
 	// UnoCSS
 	if (isEnabled(unocssOption) || (isAutoDetect(unocssOption) && autoDetect && hasUnoCSS())) {
 		configs.push(
 			...(await unocss(resolveOptionsOverrides(options as Record<string, unknown>, 'unocss'))),
 		)
-	}
-
-	// e18e (modernization rules)
-	if (e18eOption !== false && e18eOption !== undefined) {
-		configs.push(...(await e18e(typeof e18eOption === 'object' ? e18eOption : {})))
 	}
 
 	// pnpm workspace
@@ -376,8 +367,17 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// External formatters (CSS, HTML, XML, SVG, GraphQL)
 	if (formattersOption !== false && formattersOption !== undefined) {
+		// Extract stylistic options for formatters
+		const formattersStylistic = stylisticOption === false ? {} : {
+			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
+			quotes: typeof stylisticOption === 'object' ? stylisticOption.quotes : 'single',
+		}
+
 		configs.push(
-			...(await formatters(typeof formattersOption === 'object' ? formattersOption : {})),
+			...(await formatters(
+				typeof formattersOption === 'object' ? formattersOption : {},
+				formattersStylistic,
+			)),
 		)
 	}
 
@@ -420,19 +420,18 @@ export {
 	angular,
 	astro,
 	command,
+	comments,
 	disables,
-	e18e,
-	eslintComments,
 	formatters,
 	ignores,
 	imports,
 	javascript,
+	jsdoc,
 	jsonc,
-	jsxA11y,
+	jsx,
 	markdown,
 	nextjs,
 	node,
-	noOnlyTests,
 	nuxt,
 	perfectionist,
 	pnpm,
@@ -450,7 +449,6 @@ export {
 	unicorn,
 	unocss,
 	vue,
-	vueA11y,
 	yaml,
 }
 

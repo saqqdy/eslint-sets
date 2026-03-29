@@ -107,8 +107,8 @@ export function prettier(options: PrettierOptions = {}): Linter.Config[] {
 
 	return [
 		{
-			files: [GLOB_SRC],
 			name: 'eslint-sets/prettier',
+			files: [GLOB_SRC],
 			plugins: {
 				prettier: eslintPluginPrettier,
 			},

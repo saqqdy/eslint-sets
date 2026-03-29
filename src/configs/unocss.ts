@@ -52,8 +52,8 @@ export async function unocss(options: UnoCssOptions = {}): Promise<Linter.Config
 
 	return [
 		{
-			files: [GLOB_SRC],
 			name: 'eslint-sets/unocss',
+			files: [GLOB_SRC],
 			plugins: {
 				unocss: {
 					rules: pluginRules,

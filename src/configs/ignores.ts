@@ -5,7 +5,7 @@ import type { Linter } from 'eslint'
  */
 export function ignores(userIgnores: string[] = []): Linter.Config {
 	return {
-		ignores: userIgnores,
 		name: 'eslint-sets/ignores',
+		ignores: userIgnores,
 	}
 }

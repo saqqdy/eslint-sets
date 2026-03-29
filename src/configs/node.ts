@@ -1,9 +1,14 @@
 import type { Linter } from 'eslint'
-import nPlugin from 'eslint-plugin-n'
+import nodePlugin from 'eslint-plugin-n'
 import { GLOB_SRC } from '../constants'
+import { renameRules } from '../utils'
 
-// Get rules from the plugin configs
-const nRecommendedRules = (nPlugin.configs?.['flat/recommended'] as any)?.rules || {}
+// Get rules from the plugin configs and rename n/ to node/
+const nodeRecommendedRules = renameRules(
+	(nodePlugin.configs?.['flat/recommended'] as any)?.rules || {},
+	'node',
+	'n',
+)
 
 /**
  * Node.js configuration
@@ -11,51 +16,55 @@ const nRecommendedRules = (nPlugin.configs?.['flat/recommended'] as any)?.rules 
 export function node(): Linter.Config[] {
 	return [
 		{
-			files: [GLOB_SRC],
 			name: 'eslint-sets/node',
+			files: [GLOB_SRC],
 			plugins: {
-				n: nPlugin as any,
+				node: nodePlugin as any,
 			},
 			rules: {
-				...nRecommendedRules,
+				...nodeRecommendedRules,
 
 				// Node.js specific rules
-				'n/callback-return': 'off',
-				'n/exports-style': 'off',
-				'n/file-extension-in-import': 'off',
+				'node/callback-return': 'off',
+				'node/exports-style': 'off',
+				'node/file-extension-in-import': 'off',
 
-				'n/global-require': 'off',
-				'n/handle-callback-err': 'error',
-				'n/hashbang': 'error',
-				'n/no-callback-literal': 'off',
-				'n/no-deprecated-api': 'error',
-				'n/no-exports-assign': 'error',
-				'n/no-extraneous-import': 'off',
-				'n/no-extraneous-require': 'off',
-				'n/no-missing-import': 'off',
-				'n/no-missing-require': 'off',
-				'n/no-mixed-requires': 'off',
-				'n/no-new-require': 'error',
-				'n/no-path-concat': 'error',
-				'n/no-process-env': 'off',
+				'node/global-require': 'off',
+				'node/handle-callback-err': 'error',
+				'node/hashbang': 'off',
+				'node/no-callback-literal': 'off',
+				'node/no-deprecated-api': 'error',
+				'node/no-exports-assign': 'error',
+				'node/no-extraneous-import': 'off',
+				'node/no-extraneous-require': 'off',
+				'node/no-missing-import': 'off',
+				'node/no-missing-require': 'off',
+				'node/no-mixed-requires': 'off',
+				'node/no-new-require': 'error',
+				'node/no-path-concat': 'error',
+				'node/no-process-env': 'off',
 				// Override recommended rules
-				'n/no-process-exit': 'off',
-				'n/no-restricted-import': 'off',
-				'n/no-restricted-require': 'off',
-				'n/no-sync': 'off',
-				'n/no-unpublished-import': 'off',
-				'n/no-unpublished-require': 'off',
-				'n/prefer-global/buffer': ['error', 'always'],
-				'n/prefer-global/console': ['error', 'always'],
-				'n/prefer-global/process': ['error', 'always'],
-				'n/prefer-global/text-decoder': ['error', 'always'],
-				'n/prefer-global/text-encoder': ['error', 'always'],
-				'n/prefer-global/url': ['error', 'always'],
-				'n/prefer-global/url-search-params': ['error', 'always'],
+				'node/no-process-exit': 'off',
+				'node/no-restricted-import': 'off',
+				'node/no-restricted-require': 'off',
+				'node/no-sync': 'off',
+				'node/no-unpublished-import': 'off',
+				'node/no-unpublished-require': 'off',
+				'node/no-unsupported-features/es-syntax': 'off',
+				'node/no-unsupported-features/node-builtins': 'off',
+				'node/no-unsupported-features/es-builtins': 'off',
+				'node/prefer-global/buffer': ['error', 'always'],
+				'node/prefer-global/console': ['error', 'always'],
+				'node/prefer-global/process': ['error', 'always'],
+				'node/prefer-global/text-decoder': ['error', 'always'],
+				'node/prefer-global/text-encoder': ['error', 'always'],
+				'node/prefer-global/url': ['error', 'always'],
+				'node/prefer-global/url-search-params': ['error', 'always'],
 				// Use unicorn/prefer-node-protocol instead (configured in unicorn.ts)
-				'n/prefer-node-protocol': 'off',
-				'n/prefer-promises/dns': 'error',
-				'n/prefer-promises/fs': 'error',
+				'node/prefer-node-protocol': 'off',
+				'node/prefer-promises/dns': 'error',
+				'node/prefer-promises/fs': 'error',
+				'node/process-exit-as-throw': 'error',
 			},
 		},
 	]

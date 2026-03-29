@@ -65,7 +65,7 @@ Nuxt auto-imports composables from the `composables/` directory:
 
 ```typescript
 // composables/useCounter.ts
-import { computed, ref, type ComputedRef, type Ref } from 'vue'
+import { computed, type ComputedRef, ref, type Ref } from 'vue'
 
 export function useCounter(options: UseCounterOptions = {}): UseCounterReturn {
   const { initialValue = 0, min = -Infinity, max = Infinity, step = 1 } = options

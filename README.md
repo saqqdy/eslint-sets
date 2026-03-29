@@ -212,6 +212,7 @@ export default eslintConfig({
 	// Or with options:
 	react: {
 		reactCompiler: true, // React Compiler support
+		rsc: true, // RSC (React Server Components) rules (default: true)
 	},
 
 	// Regexp rules (default: true)
@@ -465,6 +466,7 @@ import eslintConfig from '@eslint-sets/eslint-config'
 export default eslintConfig({
 	react: {
 		reactCompiler: true,
+		rsc: true, // RSC rules for React Server Components
 	},
 	typescript: true,
 })

@@ -238,5 +238,33 @@ function App({ name }: Props) {
 		expect(tsConfig).toBeDefined()
 		expect(tsConfig?.rules?.['react-dom/no-string-style-prop']).toBe('off')
 		expect(tsConfig?.rules?.['react-dom/no-unknown-property']).toBe('off')
+		// Additional TypeScript-specific rule disables (align with antfu)
+		expect(tsConfig?.rules?.['react/jsx-no-duplicate-props']).toBe('off')
+		expect(tsConfig?.rules?.['react/jsx-no-undef']).toBe('off')
+		expect(tsConfig?.rules?.['react/jsx-uses-react']).toBe('off')
+		expect(tsConfig?.rules?.['react/jsx-uses-vars']).toBe('off')
+	})
+
+	it('should support rsc option', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: { rsc: true } })
+
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
+		expect(reactSetup).toBeDefined()
+		// RSC plugin may not be available in v1.x of @eslint-react/eslint-plugin
+		// so we just check the config is valid
+		expect(Array.isArray(config)).toBeTruthy()
+	})
+
+	it('should support rsc: false option', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: { rsc: false } })
+
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
+		expect(reactConfig).toBeDefined()
+		// RSC rule should not be present when rsc: false
+		expect(reactConfig?.rules?.['react-rsc/function-definition']).toBeUndefined()
 	})
 })

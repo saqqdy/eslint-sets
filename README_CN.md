@@ -212,6 +212,7 @@ export default eslintConfig({
 	// 或带选项：
 	react: {
 		reactCompiler: true, // React Compiler 支持
+		rsc: true, // RSC (React Server Components) 规则（默认：true）
 	},
 
 	// 正则表达式规则（默认：true）
@@ -441,6 +442,7 @@ import eslintConfig from '@eslint-sets/eslint-config'
 export default eslintConfig({
 	react: {
 		reactCompiler: true,
+		rsc: true, // RSC 规则用于 React Server Components
 	},
 	typescript: true,
 })

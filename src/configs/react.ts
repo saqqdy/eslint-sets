@@ -18,6 +18,12 @@ export interface ReactOptions extends OptionsOverrides, OptionsTypeScriptParserO
 	 * @default auto-detect
 	 */
 	reactCompiler?: boolean
+
+	/**
+	 * Enable RSC (React Server Components) rules
+	 * @default true
+	 */
+	rsc?: boolean
 }
 
 /**
@@ -31,12 +37,14 @@ function renameRules(rules: Partial<Linter.RulesRecord>): Linter.RulesRecord {
 		// @eslint-react/web-api/xxx -> react-web-api/xxx
 		// @eslint-react/naming-convention/xxx -> react-naming-convention/xxx
 		// @eslint-react/hooks-extra/xxx -> react-hooks-extra/xxx
+		// @eslint-react/rsc/xxx -> react-rsc/xxx
 		// @eslint-react/xxx -> react/xxx
 		const newKey = key
 			.replace('@eslint-react/dom/', 'react-dom/')
 			.replace('@eslint-react/web-api/', 'react-web-api/')
 			.replace('@eslint-react/naming-convention/', 'react-naming-convention/')
 			.replace('@eslint-react/hooks-extra/', 'react-hooks-extra/')
+			.replace('@eslint-react/rsc/', 'react-rsc/')
 			.replace('@eslint-react/', 'react/')
 		if (value !== undefined) {
 			result[newKey] = value
@@ -58,6 +66,7 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 		overrides = {},
 		tsconfigPath,
 		reactCompiler = hasReactCompiler(),
+		rsc = true,
 	} = options
 
 	const [
@@ -83,6 +92,9 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 	// Get plugins from the all config
 	const allPlugins = (pluginReact.configs.all as any).plugins
 
+	// Check if RSC plugin is available (requires @eslint-react/eslint-plugin >= 2.0.0)
+	const hasRscPlugin = !!allPlugins['@eslint-react/rsc']
+
 	// Get recommended rules and rename them
 	const recommendedRules = renameRules(pluginReact.configs.recommended?.rules || {})
 
@@ -101,6 +113,7 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				'react-hooks-extra': allPlugins['@eslint-react/hooks-extra'],
 				'react-naming-convention': allPlugins['@eslint-react/naming-convention'],
 				'react-refresh': pluginReactRefresh as any,
+				...(hasRscPlugin ? { 'react-rsc': allPlugins['@eslint-react/rsc'] } : {}),
 				'react-web-api': allPlugins['@eslint-react/web-api'],
 			},
 		},
@@ -121,6 +134,11 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 
 				// Additional rules
 				'react/prefer-react-namespace-import': 'error',
+
+				// RSC (React Server Components) rules - only if plugin is available
+				...(rsc && hasRscPlugin ? {
+					'react-rsc/function-definition': 'error',
+				} : {}),
 
 				// React hooks rules
 				'react-hooks/rules-of-hooks': 'error',
@@ -193,6 +211,11 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				// Disables rules that are already handled by TypeScript
 				'react-dom/no-string-style-prop': 'off',
 				'react-dom/no-unknown-property': 'off',
+				// Additional TypeScript-specific rule disables (align with antfu)
+				'react/jsx-no-duplicate-props': 'off',
+				'react/jsx-no-undef': 'off',
+				'react/jsx-uses-react': 'off',
+				'react/jsx-uses-vars': 'off',
 			},
 		},
 	]

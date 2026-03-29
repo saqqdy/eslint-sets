@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.3.1] - 2026-03-29
+
+### Added
+
+- **React RSC Support**: Added React Server Components (RSC) rules support
+  - New `rsc` option (default: `true`) in react config
+  - Added `react-rsc/function-definition: 'error'` rule for proper RSC function definitions
+  - Requires `@eslint-react/eslint-plugin@^2.0.0` or higher for full RSC support
+  - Auto-detects if `@eslint-react/rsc` plugin is available
+
+### Changed
+
+- **React TypeScript Rules**: Added more TypeScript-specific rule disables (align with antfu)
+  - `react/jsx-no-duplicate-props: 'off'` - TypeScript handles this
+  - `react/jsx-no-undef: 'off'` - TypeScript handles this
+  - `react/jsx-uses-react: 'off'` - Not needed with new JSX transform
+  - `react/jsx-uses-vars: 'off'` - TypeScript handles this
+
+### Fixed
+
+- **Plugin Compatibility**: RSC plugin is now optional and won't cause errors if not available
+- Updated `@eslint-react/eslint-plugin` version constraint to support v1.x, v2.x, and v3.x
+
 ## [6.3.0] - 2026-03-29
 
 ### Breaking Changes

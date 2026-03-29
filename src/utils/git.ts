@@ -8,6 +8,7 @@ const { resolve } = path
  * Find a file by walking up parent directories
  * @param name - File name to find
  * @param options - Options
+ * @param options.cwd - Current working directory to start from
  * @returns File path if found, undefined otherwise
  */
 async function findUp(name: string, options?: { cwd?: string }): Promise<string | undefined> {

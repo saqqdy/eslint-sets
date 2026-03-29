@@ -27,16 +27,16 @@ function renameRules(rules: Partial<Linter.RulesRecord>): Linter.RulesRecord {
 	const result: Linter.RulesRecord = {}
 
 	for (const [key, value] of Object.entries(rules)) {
-		// @eslint-react/rsc/xxx -> react-rsc/xxx
 		// @eslint-react/dom/xxx -> react-dom/xxx
 		// @eslint-react/web-api/xxx -> react-web-api/xxx
 		// @eslint-react/naming-convention/xxx -> react-naming-convention/xxx
+		// @eslint-react/hooks-extra/xxx -> react-hooks-extra/xxx
 		// @eslint-react/xxx -> react/xxx
 		const newKey = key
-			.replace('@eslint-react/rsc/', 'react-rsc/')
 			.replace('@eslint-react/dom/', 'react-dom/')
 			.replace('@eslint-react/web-api/', 'react-web-api/')
 			.replace('@eslint-react/naming-convention/', 'react-naming-convention/')
+			.replace('@eslint-react/hooks-extra/', 'react-hooks-extra/')
 			.replace('@eslint-react/', 'react/')
 		if (value !== undefined) {
 			result[newKey] = value
@@ -63,12 +63,10 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 	const [
 		pluginReact,
 		pluginReactHooks,
-		pluginReactHooksExtra,
 		pluginReactRefresh,
 	] = await Promise.all([
 		loadPlugin<ESLintReactPlugin>('@eslint-react/eslint-plugin'),
 		loadPlugin<typeof import('eslint-plugin-react-hooks')>('eslint-plugin-react-hooks'),
-		loadPlugin<typeof import('eslint-plugin-react-hooks-extra')>('eslint-plugin-react-hooks-extra'),
 		loadPlugin<typeof import('eslint-plugin-react-refresh')>('eslint-plugin-react-refresh'),
 	])
 
@@ -100,10 +98,9 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				react: allPlugins['@eslint-react'],
 				'react-dom': allPlugins['@eslint-react/dom'],
 				'react-hooks': pluginReactHooks as any,
-				'react-hooks-extra': pluginReactHooksExtra as any,
+				'react-hooks-extra': allPlugins['@eslint-react/hooks-extra'],
 				'react-naming-convention': allPlugins['@eslint-react/naming-convention'],
 				'react-refresh': pluginReactRefresh as any,
-				'react-rsc': allPlugins['@eslint-react/rsc'],
 				'react-web-api': allPlugins['@eslint-react/web-api'],
 			},
 		},
@@ -123,7 +120,7 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				...recommendedRules,
 
 				// Additional rules
-				'react/prefer-namespace-import': 'error',
+				'react/prefer-react-namespace-import': 'error',
 
 				// React hooks rules
 				'react-hooks/rules-of-hooks': 'error',

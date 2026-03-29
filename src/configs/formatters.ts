@@ -173,7 +173,7 @@ export async function formatters(
 	// Default Prettier options
 	const prettierOptions: PrettierOptions = {
 		endOfLine: 'auto',
-		printWidth: 120,
+		printWidth: 100,
 		semi: false,
 		singleQuote: quotes === 'single',
 		tabWidth: typeof indent === 'number' ? indent : 2,

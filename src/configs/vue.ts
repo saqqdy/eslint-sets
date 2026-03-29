@@ -49,7 +49,7 @@ interface VueA11yPlugin {
 
 // Type definition for Vue blocks processor
 interface VueBlocksProcessor {
-	default: (options?: {
+	(options?: {
 		blocks?: {
 			styles?: boolean
 			customBlocks?: boolean | string[]
@@ -58,7 +58,7 @@ interface VueBlocksProcessor {
 			scriptSetup?: boolean
 		}
 		defaultLanguage?: Record<string, string>
-	}) => Linter.Processor
+	}): Linter.Processor
 }
 
 /**
@@ -103,7 +103,7 @@ export async function vue(options: VueOptions = {}): Promise<Linter.Config[]> {
 		configs.push({
 			name: 'eslint-sets/vue/sfc-blocks',
 			files: [GLOB_VUE],
-			processor: vueBlocksProcessor.default({
+			processor: vueBlocksProcessor({
 				blocks: {
 					styles: processorOptions.styles ?? true,
 					customBlocks: processorOptions.customBlocks ?? false,
@@ -114,7 +114,7 @@ export async function vue(options: VueOptions = {}): Promise<Linter.Config[]> {
 		configs.push({
 			name: 'eslint-sets/vue/sfc-blocks',
 			files: [GLOB_VUE],
-			processor: vueBlocksProcessor.default({
+			processor: vueBlocksProcessor({
 				blocks: {
 					styles: true,
 					customBlocks: false,

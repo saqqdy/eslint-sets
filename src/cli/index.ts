@@ -1,7 +1,128 @@
+import type { Answers } from './types'
 import { existsSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import * as p from '@clack/prompts'
-import type { Answers } from './types'
+
+/**
+ * Generate ESLint config content based on answers
+ */
+export function generateConfig(answers: Answers): string {
+	const lines: string[] = [
+		'// eslint.config.ts',
+		'import eslintConfig from \'@eslint-sets/eslint-config\'',
+		'',
+		'export default eslintConfig({',
+		`  type: '${answers.type}',`,
+	]
+
+	if (answers.frameworks.length > 0) {
+		for (const fw of answers.frameworks) {
+			if (fw === 'vue' || fw === 'react') {
+				lines.push(`  ${fw}: {`)
+				if (answers.a11y) {
+					lines.push('    a11y: true,')
+				}
+				lines.push('  },')
+			} else {
+				lines.push(`  ${fw}: true,`)
+			}
+		}
+	}
+
+	if (answers.formatter === 'stylistic') {
+		lines.push('  prettier: false,')
+		lines.push('  stylistic: true,')
+	}
+
+	if (!answers.gitignore) {
+		lines.push('  gitignore: false,')
+	}
+
+	if (!answers.sortPackageJson) {
+		lines.push('  sortPackageJson: false,')
+	}
+
+	if (!answers.sortTsconfig) {
+		lines.push('  sortTsconfig: false,')
+	}
+
+	lines.push('})')
+
+	return lines.join('\n')
+}
+
+/**
+ * Get list of dependencies based on answers
+ */
+export function getDependencies(answers: Answers): string[] {
+	const deps: string[] = ['@eslint-sets/eslint-config', 'eslint']
+
+	if (answers.typescript) {
+		deps.push('typescript')
+	}
+
+	if (answers.formatter === 'prettier') {
+		deps.push('prettier')
+	}
+
+	// Framework specific dependencies
+	if (answers.frameworks.includes('react')) {
+		deps.push('@eslint-react/eslint-plugin')
+		deps.push('eslint-plugin-react-refresh')
+	}
+
+	if (answers.frameworks.includes('nextjs')) {
+		deps.push('@next/eslint-plugin-next')
+		deps.push('@eslint-react/eslint-plugin')
+		deps.push('eslint-plugin-react-refresh')
+	}
+
+	if (answers.frameworks.includes('astro')) {
+		deps.push('eslint-plugin-astro')
+		deps.push('astro-eslint-parser')
+	}
+
+	if (answers.frameworks.includes('angular')) {
+		deps.push('@angular-eslint/eslint-plugin')
+		deps.push('@angular-eslint/eslint-plugin-template')
+		deps.push('@angular-eslint/template-parser')
+	}
+
+	if (answers.frameworks.includes('unocss')) {
+		deps.push('@unocss/eslint-plugin')
+	}
+
+	if (answers.a11y) {
+		if (answers.frameworks.includes('react')) {
+			deps.push('eslint-plugin-jsx-a11y')
+		}
+		if (answers.frameworks.includes('vue')) {
+			deps.push('eslint-plugin-vuejs-accessibility')
+		}
+	}
+
+	return deps
+}
+
+/**
+ * Get install command for package manager
+ */
+export function getInstallCommand(packageManager: string, deps: string[]): string {
+	const depsStr = deps.join(' ')
+
+	switch (packageManager) {
+		case 'pnpm':
+			return `pnpm add -D ${depsStr}`
+		case 'npm':
+			return `npm install -D ${depsStr}`
+		case 'yarn':
+			return `yarn add -D ${depsStr}`
+		case 'bun':
+			return `bun add -D ${depsStr}`
+		default:
+			return `pnpm add -D ${depsStr}`
+	}
+}
 
 async function main() {
 	console.clear()
@@ -9,13 +130,13 @@ async function main() {
 	p.intro(' @eslint-sets/eslint-config ')
 
 	const answers: Answers = {
+		type: 'app',
 		a11y: false,
 		formatter: 'prettier',
 		frameworks: [],
 		gitignore: true,
 		sortPackageJson: true,
 		sortTsconfig: true,
-		type: 'app',
 		typescript: true,
 	}
 
@@ -23,8 +144,8 @@ async function main() {
 	const projectType = await p.select({
 		message: 'What type of project is this?',
 		options: [
-			{ hint: 'Web application with relaxed rules', label: 'Application', value: 'app' },
-			{ hint: 'Library with stricter rules', label: 'Library', value: 'lib' },
+			{ value: 'app', hint: 'Web application with relaxed rules', label: 'Application' },
+			{ value: 'lib', hint: 'Library with stricter rules', label: 'Library' },
 		],
 	})
 
@@ -50,15 +171,15 @@ async function main() {
 	const frameworks = await p.multiselect({
 		message: 'Select frameworks you use',
 		options: [
-			{ hint: 'Vue.js framework', label: 'Vue', value: 'vue' },
-			{ hint: 'React library', label: 'React', value: 'react' },
-			{ hint: 'Svelte framework', label: 'Svelte', value: 'svelte' },
-			{ hint: 'SolidJS framework', label: 'Solid', value: 'solid' },
-			{ hint: 'React framework', label: 'Next.js', value: 'nextjs' },
-			{ hint: 'Vue framework', label: 'Nuxt', value: 'nuxt' },
-			{ hint: 'Static site builder', label: 'Astro', value: 'astro' },
-			{ hint: 'Angular framework', label: 'Angular', value: 'angular' },
-			{ hint: 'Atomic CSS engine', label: 'UnoCSS', value: 'unocss' },
+			{ value: 'vue', hint: 'Vue.js framework', label: 'Vue' },
+			{ value: 'react', hint: 'React library', label: 'React' },
+			{ value: 'svelte', hint: 'Svelte framework', label: 'Svelte' },
+			{ value: 'solid', hint: 'SolidJS framework', label: 'Solid' },
+			{ value: 'nextjs', hint: 'React framework', label: 'Next.js' },
+			{ value: 'nuxt', hint: 'Vue framework', label: 'Nuxt' },
+			{ value: 'astro', hint: 'Static site builder', label: 'Astro' },
+			{ value: 'angular', hint: 'Angular framework', label: 'Angular' },
+			{ value: 'unocss', hint: 'Atomic CSS engine', label: 'UnoCSS' },
 		],
 		required: false,
 	})
@@ -87,8 +208,8 @@ async function main() {
 	const formatter = await p.select({
 		message: 'Choose a formatter',
 		options: [
-			{ hint: 'Popular code formatter', label: 'Prettier', value: 'prettier' },
-			{ hint: 'ESLint-based formatting', label: 'ESLint Stylistic', value: 'stylistic' },
+			{ value: 'prettier', hint: 'Popular code formatter', label: 'Prettier' },
+			{ value: 'stylistic', hint: 'ESLint-based formatting', label: 'ESLint Stylistic' },
 		],
 	})
 
@@ -159,10 +280,10 @@ async function main() {
 	const packageManager = await p.select({
 		message: 'Choose a package manager',
 		options: [
-			{ label: 'pnpm', value: 'pnpm' },
-			{ label: 'npm', value: 'npm' },
-			{ label: 'yarn', value: 'yarn' },
-			{ label: 'bun', value: 'bun' },
+			{ value: 'pnpm', label: 'pnpm' },
+			{ value: 'npm', label: 'npm' },
+			{ value: 'yarn', label: 'yarn' },
+			{ value: 'bun', label: 'bun' },
 		],
 	})
 
@@ -177,118 +298,6 @@ async function main() {
 	p.note(`Run the following command to install dependencies:\n\n${installCommand}`, 'Next steps')
 
 	p.outro(' Done! ')
-}
-
-function generateConfig(answers: Answers): string {
-	const lines: string[] = [
-		'// eslint.config.ts',
-		'import eslintConfig from \'@eslint-sets/eslint-config\'',
-		'',
-		'export default eslintConfig({',
-		`  type: '${answers.type}',`,
-	]
-
-	if (answers.frameworks.length > 0) {
-		for (const fw of answers.frameworks) {
-			if (fw === 'vue' || fw === 'react') {
-				lines.push(`  ${fw}: {`)
-				if (answers.a11y) {
-					lines.push('    a11y: true,')
-				}
-				lines.push('  },')
-			} else {
-				lines.push(`  ${fw}: true,`)
-			}
-		}
-	}
-
-	if (answers.formatter === 'stylistic') {
-		lines.push('  prettier: false,')
-		lines.push('  stylistic: true,')
-	}
-
-	if (!answers.gitignore) {
-		lines.push('  gitignore: false,')
-	}
-
-	if (!answers.sortPackageJson) {
-		lines.push('  sortPackageJson: false,')
-	}
-
-	if (!answers.sortTsconfig) {
-		lines.push('  sortTsconfig: false,')
-	}
-
-	lines.push('})')
-
-	return lines.join('\n')
-}
-
-function getDependencies(answers: Answers): string[] {
-	const deps: string[] = ['@eslint-sets/eslint-config', 'eslint']
-
-	if (answers.typescript) {
-		deps.push('typescript')
-	}
-
-	if (answers.formatter === 'prettier') {
-		deps.push('prettier')
-	}
-
-	// Framework specific dependencies
-	if (answers.frameworks.includes('react')) {
-		deps.push('@eslint-react/eslint-plugin')
-		deps.push('eslint-plugin-react-refresh')
-	}
-
-	if (answers.frameworks.includes('nextjs')) {
-		deps.push('@next/eslint-plugin-next')
-		deps.push('@eslint-react/eslint-plugin')
-		deps.push('eslint-plugin-react-refresh')
-	}
-
-	if (answers.frameworks.includes('astro')) {
-		deps.push('eslint-plugin-astro')
-		deps.push('astro-eslint-parser')
-	}
-
-	if (answers.frameworks.includes('angular')) {
-		deps.push('@angular-eslint/eslint-plugin')
-		deps.push('@angular-eslint/eslint-plugin-template')
-		deps.push('@angular-eslint/template-parser')
-	}
-
-	if (answers.frameworks.includes('unocss')) {
-		deps.push('@unocss/eslint-plugin')
-	}
-
-	if (answers.a11y) {
-		if (answers.frameworks.includes('react')) {
-			deps.push('eslint-plugin-jsx-a11y')
-		}
-		if (answers.frameworks.includes('vue')) {
-			deps.push('eslint-plugin-vuejs-accessibility')
-		}
-	}
-
-	return deps
-}
-
-function getInstallCommand(packageManager: string, deps: string[]): string {
-	const depsStr = deps.join(' ')
-
-	switch (packageManager) {
-		case 'pnpm':
-			return `pnpm add -D ${depsStr}`
-		case 'npm':
-			return `npm install -D ${depsStr}`
-		case 'yarn':
-			return `yarn add -D ${depsStr}`
-		case 'bun':
-			return `bun add -D ${depsStr}`
-		default:
-			return `pnpm add -D ${depsStr}`
-	}
 }
 
 main().catch(error => {

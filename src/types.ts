@@ -202,17 +202,10 @@ export interface Options extends OptionsIsInEditor {
 	disables?: boolean
 
 	/**
-	 * Enable e18e modernization rules
-	 * Requires @e18e/eslint-plugin
-	 * @default false
-	 */
-	e18e?: boolean
-
-	/**
-	 * Enable ESLint comments rules
+	 * Enable ESLint directive comments rules
 	 * @default true
 	 */
-	eslintComments?: boolean
+	comments?: boolean
 
 	/**
 	 * Additional flat configs to merge
@@ -245,17 +238,23 @@ export interface Options extends OptionsIsInEditor {
 	imports?: boolean | OptionsOverrides
 
 	/**
+	 * Enable JSDoc rules
+	 * @default true
+	 */
+	jsdoc?: boolean | OptionsOverrides
+
+	/**
 	 * Enable JSON/YAML support
 	 * @default true
 	 */
 	jsonc?: boolean | OptionsOverrides
 
 	/**
-	 * Enable JSX accessibility rules
-	 * Requires eslint-plugin-jsx-a11y
+	 * Enable JSX base support with optional a11y
+	 * When a11y is true, enables jsx-a11y rules
 	 * @default false
 	 */
-	jsxA11y?: boolean
+	jsx?: boolean | OptionsOverrides & { a11y?: boolean | OptionsOverrides }
 
 	/**
 	 * Enable Markdown support

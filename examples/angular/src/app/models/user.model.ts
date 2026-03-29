@@ -25,3 +25,24 @@ export interface PaginatedResponse<T> {
   page: number
   total: number
 }
+
+// New types for extended functionality
+export interface UserFilter {
+  role?: User['role']
+  search?: string
+}
+
+export interface UserFormData {
+  email: string
+  name: string
+  role: User['role']
+}
+
+export type UserUpdateData = Partial<UserFormData>
+
+export interface UserStats {
+  adminCount: number
+  guestCount: number
+  totalCount: number
+  userCount: number
+}

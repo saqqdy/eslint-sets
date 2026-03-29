@@ -16,9 +16,9 @@ export class UserService {
   private nextId = 1
 
   private readonly mockUsers: User[] = [
-    { email: 'alice@example.com', id: this.nextId++, name: 'Alice', role: 'admin' },
-    { email: 'bob@example.com', id: this.nextId++, name: 'Bob', role: 'user' },
-    { email: 'charlie@example.com', id: this.nextId++, name: 'Charlie', role: 'guest' },
+    { id: this.nextId++, name: 'Alice', email: 'alice@example.com', role: 'admin' },
+    { id: this.nextId++, name: 'Bob', email: 'bob@example.com', role: 'user' },
+    { id: this.nextId++, name: 'Charlie', email: 'charlie@example.com', role: 'guest' },
   ]
 
   getAll(): Observable<User[]> {
@@ -36,7 +36,7 @@ export class UserService {
 
   getById(id: number): Observable<User | undefined> {
     return this.users$.pipe(
-      map((users) => users.find((user) => user.id === id)),
+      map(users => users.find(user => user.id === id)),
     )
   }
 
@@ -56,7 +56,7 @@ export class UserService {
   }
 
   update(id: number, updates: Partial<User>): Observable<User | undefined> {
-    const index = this.mockUsers.findIndex((user) => user.id === id)
+    const index = this.mockUsers.findIndex(user => user.id === id)
 
     if (index === -1) {
       return new Observable((observer: Observer<User | undefined>) => {
@@ -77,7 +77,7 @@ export class UserService {
   }
 
   delete(id: number): Observable<boolean> {
-    const index = this.mockUsers.findIndex((user) => user.id === id)
+    const index = this.mockUsers.findIndex(user => user.id === id)
 
     if (index === -1) {
       return new Observable((observer: Observer<boolean>) => {
@@ -99,7 +99,7 @@ export class UserService {
     const { limit, page, sortBy = 'id', sortOrder = 'asc' } = params
 
     return this.users$.pipe(
-      map((users) => {
+      map(users => {
         const sorted = [...users].sort((a, b) => {
           const aVal = a[sortBy as keyof User]
           const bVal = b[sortBy as keyof User]

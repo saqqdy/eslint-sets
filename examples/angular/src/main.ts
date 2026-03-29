@@ -4,4 +4,4 @@ import { AppComponent } from './app/app.component'
 
 bootstrapApplication(AppComponent, {
   providers: [provideAnimations()],
-}).catch((err) => console.error(err))
+}).catch(err => console.error(err))

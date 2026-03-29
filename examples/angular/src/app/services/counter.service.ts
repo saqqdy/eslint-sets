@@ -26,7 +26,7 @@ export class CounterService {
   readonly isMax = signal(false)
 
   initialize(options: Partial<CounterState> = {}): void {
-    const { max = 100, min = 0, step = 1, value = 0 } = options
+    const { value = 0, max = 100, min = 0, step = 1 } = options
 
     this._min.set(min)
     this._max.set(max)

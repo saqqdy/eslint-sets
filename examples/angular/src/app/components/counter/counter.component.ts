@@ -85,10 +85,10 @@ export class CounterComponent implements OnInit {
 
   ngOnInit(): void {
     this.counterService.initialize({
+      value: this.initialValue(),
       max: this.max(),
       min: this.min(),
       step: 1,
-      value: this.initialValue(),
     })
   }
 }

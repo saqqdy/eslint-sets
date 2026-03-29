@@ -109,7 +109,7 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(eslint@9.39.4(jiti@2.6.1))
       '@eslint-react/eslint-plugin':
-        specifier: ^1.40.4
+        specifier: ^1.40.4 || ^2.0.0 || ^3.0.0
         version: 1.53.1(eslint@9.39.4(jiti@2.6.1))(ts-api-utils@2.4.0(typescript@5.9.3))(typescript@5.9.3)
       '@eslint/markdown':
         specifier: ^6.6.0

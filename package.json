@@ -2,7 +2,7 @@
 	"name": "@eslint-sets/eslint-config",
 	"description": "Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript, Next.js, Nuxt, Astro, Angular, UnoCSS and more",
 	"type": "module",
-	"version": "6.3.0-beta.2",
+	"version": "6.3.0",
 	"packageManager": "pnpm@9.0.6",
 	"bin": {
 		"eslint-sets": "./dist/cli/index.js"

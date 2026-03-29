@@ -2,29 +2,6 @@
 
 All notable changes to this project will be documented in this file.
 
-## [6.3.1] - 2026-03-29
-
-### Added
-
-- **React RSC Support**: Added React Server Components (RSC) rules support
-  - New `rsc` option (default: `true`) in react config
-  - Added `react-rsc/function-definition: 'error'` rule for proper RSC function definitions
-  - Requires `@eslint-react/eslint-plugin@^2.0.0` or higher for full RSC support
-  - Auto-detects if `@eslint-react/rsc` plugin is available
-
-### Changed
-
-- **React TypeScript Rules**: Added more TypeScript-specific rule disables (align with antfu)
-  - `react/jsx-no-duplicate-props: 'off'` - TypeScript handles this
-  - `react/jsx-no-undef: 'off'` - TypeScript handles this
-  - `react/jsx-uses-react: 'off'` - Not needed with new JSX transform
-  - `react/jsx-uses-vars: 'off'` - TypeScript handles this
-
-### Fixed
-
-- **Plugin Compatibility**: RSC plugin is now optional and won't cause errors if not available
-- Updated `@eslint-react/eslint-plugin` version constraint to support v1.x, v2.x, and v3.x
-
 ## [6.3.0] - 2026-03-29
 
 ### Breaking Changes
@@ -76,6 +53,22 @@ All notable changes to this project will be documented in this file.
 - **Test config enhancements**: Merged `eslint-plugin-no-only-tests` into test config
   - Automatically included in test files
   - `test/no-only-tests` rule warns in editor, errors otherwise
+- **React RSC Support**: Added React Server Components (RSC) rules support
+  - New `rsc` option (default: `true`) in react config
+  - Added `react-rsc/function-definition: 'error'` rule for proper RSC function definitions
+  - Requires `@eslint-react/eslint-plugin@^2.0.0` or higher for full RSC support
+  - Auto-detects if `@eslint-react/rsc` plugin is available
+- **Extended Example Coverage**: Added comprehensive code examples for all supported frameworks
+  - **TypeScript**: Advanced type utilities (DeepPartial, RequiredKeys, OptionalKeys, First, Last, Tail), Observer pattern, Subject class, Result type for error handling, QueryBuilder pattern, TypedEventEmitter, and more
+  - **React**: New hooks (useDebounce, useToggle, useClickOutside, useMediaQuery, usePrevious, useAsync), new components (Modal, Tabs, DataTable), extended helpers (deepClone, deepMerge, curry, flatten, unique, chunk, zip, partition, pick, omit, memoize, compose, pipe)
+  - **Vue 3**: New composables (useDebounce, useToggle, useMouse, useMediaQuery, useAsync), new components (Modal.vue, Tabs.vue, DataTable.vue)
+  - **Vue 2**: Extended App.vue with full user management, new components (UserCard.vue, Tabs.vue), utility helpers
+  - **Angular**: New pipes (FilterPipe, SortByPipe, TruncatePipe, SafeHtmlPipe), new directives (ClickOutsideDirective, DebounceClickDirective, HighlightDirective), new services (ToastService, ThemeService), extended helpers
+  - **Svelte**: New stores (theme, selectedUser, counter, toasts), new composables (useDebounce, useToggle, useCounter, useMouse, useMediaQuery, useBreakpoint), new components (Modal.svelte, Tabs.svelte, DataTable.svelte)
+  - **Next.js**: New hooks (useDebounce, useToggle, useMediaQuery), new components (Tabs.tsx, Modal.tsx, DataTable.tsx), extended helpers
+  - **Nuxt**: New composables (useDebounce, useToggle, useMouse, useMediaQuery), new component (UserManagement.vue), extended helpers
+  - **Astro**: New types (Product, CartItem, Order), new formatters utility (formatCurrency, formatNumber, formatPercent, formatDateRelative, truncate, slugify, escapeHtml), extended helpers
+  - **UnoCSS**: New component (UserManagement.vue with UnoCSS classes), new composables (useDebounce, useToggle), extended helpers
 
 ### Changed
 
@@ -101,6 +94,12 @@ All notable changes to this project will be documented in this file.
   - Updated `sort-imports` and `sort-exports` configuration
 - **Node config**: Cleaned up rules, better organization
 - **Disables config**: Added more file type specific disables
+- **React TypeScript Rules**: Added more TypeScript-specific rule disables (align with antfu)
+  - `react/jsx-no-duplicate-props: 'off'` - TypeScript handles this
+  - `react/jsx-no-undef: 'off'` - TypeScript handles this
+  - `react/jsx-uses-react: 'off'` - Not needed with new JSX transform
+  - `react/jsx-uses-vars: 'off'` - TypeScript handles this
+- **no-console rule**: Now allows `console.info` in addition to `console.warn` and `console.error`
 
 ### Fixed
 
@@ -108,6 +107,8 @@ All notable changes to this project will be documented in this file.
 - Fixed yaml test cases to use `yaml` prefix instead of `yml`
 - Removed editor detection log message for cleaner output
 - Fixed various type definitions and exports
+- **Plugin Compatibility**: RSC plugin is now optional and won't cause errors if not available
+- Updated `@eslint-react/eslint-plugin` version constraint to support v1.x, v2.x, and v3.x
 
 ## [6.2.0] - 2026-03-15
 

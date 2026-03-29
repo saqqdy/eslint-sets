@@ -21,11 +21,11 @@ export function createCounterStore(options: CounterOptions = {}): CounterStore {
   const count: Writable<number> = writable(initialValue)
 
   function increment(): void {
-    count.update((n) => (n + step <= max ? n + step : n))
+    count.update(n => (n + step <= max ? n + step : n))
   }
 
   function decrement(): void {
-    count.update((n) => (n - step >= min ? n - step : n))
+    count.update(n => (n - step >= min ? n - step : n))
   }
 
   function reset(): void {
@@ -46,7 +46,7 @@ export function createCounterStore(options: CounterOptions = {}): CounterStore {
 }
 
 export function createDerivedCounter(store: Readable<number>, min: number, max: number) {
-  return derived(store, ($count) => ({
+  return derived(store, $count => ({
     isMax: $count >= max,
     isMin: $count <= min,
   }))

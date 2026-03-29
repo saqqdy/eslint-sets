@@ -16,22 +16,20 @@ export function localStorageStore<T>(
   const { serializer = { read: JSON.parse, write: JSON.stringify } } = options
 
   // Browser-only: localStorage is a Web API, not Node.js
-  /* eslint-disable n/no-unsupported-features/node-builtins */
-  const storedValue = typeof window !== 'undefined' ? localStorage.getItem(key) : null
+  const storedValue = typeof window !== 'undefined' ? window.localStorage.getItem(key) : null
   const initial = storedValue ? serializer.read(storedValue) : initialValue
 
   const store = writable<T>(initial)
 
   if (typeof window !== 'undefined') {
-    store.subscribe((value) => {
+    store.subscribe(value => {
       if (value === null || value === undefined) {
-        localStorage.removeItem(key)
+        window.localStorage.removeItem(key)
       } else {
-        localStorage.setItem(key, serializer.write(value))
+        window.localStorage.setItem(key, serializer.write(value))
       }
     })
   }
-  /* eslint-enable n/no-unsupported-features/node-builtins */
 
   return store
 }

@@ -1,8 +1,8 @@
-import { build } from 'esbuild'
 import { execSync } from 'node:child_process'
 import { existsSync, mkdirSync, rmSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { build } from 'esbuild'
 
 const outDir = resolve(fileURLToPath(import.meta.url), '../../dist')
 

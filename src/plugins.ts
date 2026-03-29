@@ -5,6 +5,9 @@ import {
 	NEXTJS_PACKAGES,
 	NUXT_PACKAGES,
 	REACT_COMPILER_PACKAGES,
+	REACT_REFRESH_ALLOW_CONSTANT_EXPORT_PACKAGES,
+	REACT_ROUTER_PACKAGES,
+	REMIX_PACKAGES,
 	UNOCSS_PACKAGES,
 	VUE_PACKAGES,
 } from './constants'
@@ -98,6 +101,27 @@ export function hasAngular(): boolean {
  */
 export function hasUnoCSS(): boolean {
 	return UNOCSS_PACKAGES.some(pkg => isPackageExists(pkg))
+}
+
+/**
+ * Check if Remix is installed
+ */
+export function hasRemix(): boolean {
+	return REMIX_PACKAGES.some(pkg => isPackageExists(pkg))
+}
+
+/**
+ * Check if React Router is installed
+ */
+export function hasReactRouter(): boolean {
+	return REACT_ROUTER_PACKAGES.some(pkg => isPackageExists(pkg))
+}
+
+/**
+ * Check if Vite is installed (for React Refresh allowConstantExport)
+ */
+export function hasVite(): boolean {
+	return REACT_REFRESH_ALLOW_CONSTANT_EXPORT_PACKAGES.some(pkg => isPackageExists(pkg))
 }
 
 /**

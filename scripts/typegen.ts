@@ -6,18 +6,19 @@ import { config } from '../src/configs'
 async function main() {
 	// Full options to enable all rules
 	const fullOptions = {
+		type: 'app' as const,
 		angular: true,
 		astro: true,
 		autoDetect: false,
 		command: true,
+		comments: true,
 		disables: true,
-		e18e: true,
-		eslintComments: true,
 		formatters: true,
 		gitignore: false,
 		imports: true,
+		jsdoc: true,
 		jsonc: true,
-		jsxA11y: true,
+		jsx: true,
 		markdown: true,
 		nextjs: true,
 		node: true,
@@ -34,7 +35,6 @@ async function main() {
 		svelte: true,
 		test: true,
 		toml: true,
-		type: 'app' as const,
 		typescript: true,
 		unicorn: true,
 		unocss: true,
@@ -55,9 +55,22 @@ async function main() {
 
 	const configNames = configs.map(i => i.name).filter(Boolean) as string[]
 
-	let dts = await flatConfigsToRulesDTS(configs, {
-		includeAugmentation: false,
+	// Filter out configs that don't have proper plugin structure for typegen
+	const validConfigs = configs.filter(c => {
+		if (!c.plugins) return false
+		return Object.values(c.plugins).every((p: any) => p && typeof p.rules === 'object')
 	})
+
+	let dts: string
+	try {
+		dts = await flatConfigsToRulesDTS(validConfigs, {
+			includeAugmentation: false,
+		})
+	} catch (e) {
+		console.warn('Warning: Failed to generate type definitions for some rules')
+		console.warn(e)
+		dts = ''
+	}
 
 	dts += `
 // Names of all the configs

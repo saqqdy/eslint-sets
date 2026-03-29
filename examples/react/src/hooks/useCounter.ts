@@ -26,11 +26,11 @@ export function useCounter(options: UseCounterOptions = {}): UseCounterReturn {
   const isMax = useMemo(() => count >= max, [count, max])
 
   const increment = useCallback(() => {
-    setCountState((prev) => (prev + step <= max ? prev + step : prev))
+    setCountState(prev => (prev + step <= max ? prev + step : prev))
   }, [max, step])
 
   const decrement = useCallback(() => {
-    setCountState((prev) => (prev - step >= min ? prev - step : prev))
+    setCountState(prev => (prev - step >= min ? prev - step : prev))
   }, [min, step])
 
   const reset = useCallback(() => {

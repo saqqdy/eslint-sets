@@ -15,7 +15,6 @@ export function useLocalStorage<T>(
   const { serializer = { read: JSON.parse, write: JSON.stringify } } = options
 
   // Browser-only: localStorage is a Web API, not Node.js
-  /* eslint-disable n/no-unsupported-features/node-builtins */
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       const item = localStorage.getItem(key)
@@ -28,7 +27,7 @@ export function useLocalStorage<T>(
 
   const setValue = useCallback(
     (value: T | ((prev: T) => T)) => {
-      setStoredValue((prev) => {
+      setStoredValue(prev => {
         const valueToStore = value instanceof Function ? value(prev) : value
 
         localStorage.setItem(key, serializer.write(valueToStore))
@@ -38,7 +37,6 @@ export function useLocalStorage<T>(
     },
     [key, serializer],
   )
-  /* eslint-enable n/no-unsupported-features/node-builtins */
 
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {

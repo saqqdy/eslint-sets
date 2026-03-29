@@ -90,4 +90,115 @@ export default {}
 		expect(configs).toBeDefined()
 		expect(configs[0]?.rules?.['vue/no-v-html']).toBe('off')
 	})
+
+	it('should support stylistic option with indent', async () => {
+		const configs = await vue({ stylistic: { indent: 4 } })
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.['vue/html-indent']).toEqual(['error', 4])
+	})
+
+	it('should support tab indent', async () => {
+		const configs = await vue({ stylistic: { indent: 'tab' } })
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.['vue/html-indent']).toEqual(['error', 'tab'])
+	})
+
+	it('should disable stylistic rules when stylistic is false', async () => {
+		const configs = await vue({ stylistic: false })
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.['vue/html-indent']).toBeUndefined()
+	})
+
+	it('should have vue plugin loaded', async () => {
+		const configs = await vue()
+
+		expect(configs[0]?.plugins?.vue).toBeDefined()
+	})
+
+	it('should have vue-a11y plugin when a11y is enabled', async () => {
+		const configs = await vue({ a11y: true })
+
+		// If the plugin is installed, it should be present
+		const mainConfig = configs.find(c => c.plugins?.['vue-a11y'])
+		expect(mainConfig?.plugins?.['vue-a11y'] ?? undefined).toBeDefined()
+	})
+
+	it('should support sfcBlocks option with boolean true', async () => {
+		const configs = await vue({ sfcBlocks: true })
+
+		expect(configs).toBeDefined()
+		expect(Array.isArray(configs)).toBeTruthy()
+		// Should have sfc-blocks processor config when sfcBlocks is enabled
+		// (requires eslint-processor-vue-blocks to be installed)
+		const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
+		expect(sfcBlocksConfig?.processor).toBeDefined()
+	})
+
+	it('should support sfcBlocks option with custom config', async () => {
+		const configs = await vue({ sfcBlocks: { styles: true, customBlocks: ['i18n'] } })
+
+		expect(configs).toBeDefined()
+		expect(Array.isArray(configs)).toBeTruthy()
+		// Should have sfc-blocks processor config
+		// (requires eslint-processor-vue-blocks to be installed)
+		const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
+		expect(sfcBlocksConfig?.processor).toBeDefined()
+	})
+
+	it('should support sfcBlocks with styles false', async () => {
+		const configs = await vue({ sfcBlocks: { styles: false, customBlocks: false } })
+
+		expect(configs).toBeDefined()
+		const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
+		expect(sfcBlocksConfig?.processor).toBeDefined()
+	})
+
+	it('should not have sfc-blocks config when sfcBlocks is false', async () => {
+		const configs = await vue({ sfcBlocks: false })
+
+		const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
+		expect(sfcBlocksConfig).toBeUndefined()
+	})
+
+	it('should have correct vue3 globals', async () => {
+		const configs = await vue({ vueVersion: 3 })
+
+		const mainConfig = configs.find(c => c.name === 'eslint-sets/vue')
+		expect(mainConfig?.languageOptions?.globals?.ref).toBe('readonly')
+		expect(mainConfig?.languageOptions?.globals?.reactive).toBe('readonly')
+		expect(mainConfig?.languageOptions?.globals?.computed).toBe('readonly')
+	})
+
+	it('should have correct block-order rule', async () => {
+		const configs = await vue()
+
+		expect(configs[0]?.rules?.['vue/block-order']).toEqual(['error', { order: ['script', 'template', 'style'] }])
+	})
+
+	it('should have component-name-in-template-casing rule', async () => {
+		const configs = await vue()
+
+		expect(configs[0]?.rules?.['vue/component-name-in-template-casing']).toEqual(['error', 'PascalCase'])
+	})
+
+	it('should have define-macros-order rule', async () => {
+		const configs = await vue()
+
+		expect(configs[0]?.rules?.['vue/define-macros-order']).toEqual(['error', { order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'] }])
+	})
+
+	it('should have disabled multi-word-component-names rule', async () => {
+		const configs = await vue()
+
+		expect(configs[0]?.rules?.['vue/multi-word-component-names']).toBe('off')
+	})
+
+	it('should have disabled no-v-html rule', async () => {
+		const configs = await vue()
+
+		expect(configs[0]?.rules?.['vue/no-v-html']).toBe('off')
+	})
 })

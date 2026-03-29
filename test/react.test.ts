@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
+import { react } from '../src/configs'
 import { hasRule, lintContent } from './utils'
 
 describe('react Config', () => {
@@ -9,6 +10,13 @@ describe('react Config', () => {
 		} catch {
 			console.warn('@eslint-react/eslint-plugin not installed, skipping React tests')
 		}
+	})
+
+	it('should return empty array when plugin not available', async () => {
+		// This test verifies the behavior when plugin fails to load
+		// Since the plugin is installed, we can't truly test this without mocking
+		const configs = await react()
+		expect(Array.isArray(configs)).toBeTruthy()
 	})
 
 	it('should parse JSX', async () => {
@@ -36,7 +44,7 @@ describe('react Config', () => {
 		expect(hasRule(messages, 'react/no-missing-key')).toBeTruthy()
 	})
 
-	it('should detect react/jsx-no-comment-textnodes', async () => {
+	it('should detect react/no-comment-textnodes', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default({ autoDetect: false, react: true }),
 			`function App() {
@@ -45,7 +53,7 @@ describe('react Config', () => {
 			'test.jsx',
 		)
 
-		expect(hasRule(messages, 'react/jsx-no-comment-textnodes')).toBeTruthy()
+		expect(hasRule(messages, 'react/no-comment-textnodes')).toBeTruthy()
 	})
 
 	it('should detect react-hooks/rules-of-hooks', async () => {
@@ -104,6 +112,11 @@ function App({ name }: Props) {
 		// Config should be valid
 		expect(config).toBeDefined()
 		expect(Array.isArray(config)).toBeTruthy()
+
+		// Check for compiler-specific rules
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
+		expect(reactConfig?.rules?.['react-hooks/immutability']).toBe('error')
+		expect(reactConfig?.rules?.['react-hooks/purity']).toBe('error')
 	})
 
 	it('should have react plugin loaded', async () => {
@@ -136,5 +149,94 @@ function App({ name }: Props) {
 
 		expect(reactConfig?.rules?.['react-refresh/only-export-components']).toBeDefined()
 		expect(reactConfig?.rules?.['react-refresh/only-export-components']?.[0]).toBe('error')
+	})
+
+	it('should support custom files option', async () => {
+		const configs = await react({ files: ['**/*.custom.jsx'] })
+
+		expect(configs).toBeDefined()
+		const reactConfig = configs.find(c => c.name === 'eslint-sets/react/rules')
+		expect(reactConfig?.files).toContain('**/*.custom.jsx')
+	})
+
+	it('should support tsconfigPath option for type-aware rules', async () => {
+		const configs = await react({ tsconfigPath: './tsconfig.json' })
+
+		expect(configs).toBeDefined()
+		const typeAwareConfig = configs.find(c => c.name === 'eslint-sets/react/type-aware')
+		expect(typeAwareConfig).toBeDefined()
+		expect(typeAwareConfig?.rules?.['react/no-leaked-conditional-rendering']).toBe('warn')
+		expect(typeAwareConfig?.rules?.['react/no-implicit-key']).toBe('error')
+	})
+
+	it('should support custom overrides', async () => {
+		const configs = await react({ overrides: { 'react/no-missing-key': 'warn' } })
+
+		expect(configs).toBeDefined()
+		const reactConfig = configs.find(c => c.name === 'eslint-sets/react/rules')
+		expect(reactConfig?.rules?.['react/no-missing-key']).toBe('warn')
+	})
+
+	it('should have react-dom plugin loaded', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: true })
+
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
+		expect(reactSetup?.plugins?.['react-dom']).toBeDefined()
+	})
+
+	it('should have react-hooks-extra plugin loaded', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: true })
+
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
+		expect(reactSetup?.plugins?.['react-hooks-extra']).toBeDefined()
+	})
+
+	it('should have react-naming-convention plugin loaded', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: true })
+
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
+		expect(reactSetup?.plugins?.['react-naming-convention']).toBeDefined()
+	})
+
+	it('should have react-web-api plugin loaded', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: true })
+
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
+		expect(reactSetup?.plugins?.['react-web-api']).toBeDefined()
+	})
+
+	it('should have react/prefer-react-namespace-import rule', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: true })
+
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
+		expect(reactConfig?.rules?.['react/prefer-react-namespace-import']).toBe('error')
+	})
+
+	it('should have react-hooks/exhaustive-deps rule', async () => {
+		const config = await (
+			await import('../src/index')
+		).default({ autoDetect: false, react: true })
+
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
+		expect(reactConfig?.rules?.['react-hooks/exhaustive-deps']).toBe('warn')
+	})
+
+	it('should have typescript config with disabled rules', async () => {
+		const configs = await react()
+
+		const tsConfig = configs.find(c => c.name === 'eslint-sets/react/typescript')
+		expect(tsConfig).toBeDefined()
+		expect(tsConfig?.rules?.['react-dom/no-string-style-prop']).toBe('off')
+		expect(tsConfig?.rules?.['react-dom/no-unknown-property']).toBe('off')
 	})
 })

@@ -103,9 +103,7 @@ describe('individual Configs', () => {
 			// (requires eslint-processor-vue-blocks to be installed)
 			const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
 			// If the plugin is not installed, the config will not be added
-			if (sfcBlocksConfig) {
-				expect(sfcBlocksConfig.processor).toBeDefined()
-			}
+			expect(sfcBlocksConfig?.processor).toBeDefined()
 		})
 
 		it('should support sfcBlocks option with custom config', async () => {
@@ -117,9 +115,7 @@ describe('individual Configs', () => {
 			// (requires eslint-processor-vue-blocks to be installed)
 			const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
 			// If the plugin is not installed, the config will not be added
-			if (sfcBlocksConfig) {
-				expect(sfcBlocksConfig.processor).toBeDefined()
-			}
+			expect(sfcBlocksConfig?.processor).toBeDefined()
 		})
 	})
 

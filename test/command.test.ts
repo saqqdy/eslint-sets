@@ -131,4 +131,10 @@ console.log('Hello')`,
 
 		expect(consoleErrors).toHaveLength(0)
 	})
+
+	it('should return config with correct name', async () => {
+		const configs = await command()
+
+		expect(configs[0]?.name).toBe('eslint-sets/command')
+	})
 })

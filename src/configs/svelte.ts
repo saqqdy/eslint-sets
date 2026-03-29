@@ -38,6 +38,16 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 			name: 'eslint-sets/svelte',
 			files: [GLOB_SVELTE],
 			languageOptions: {
+				globals: {
+					// Svelte 5 Runes
+					$state: 'readonly',
+					$derived: 'readonly',
+					$effect: 'readonly',
+					$props: 'readonly',
+					$bindable: 'readonly',
+					$inspect: 'readonly',
+					$host: 'readonly',
+				},
 				parser: svelteParser,
 				parserOptions: {
 					ecmaVersion: 'latest',

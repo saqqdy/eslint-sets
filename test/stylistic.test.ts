@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { stylistic } from '../src/configs'
 import { lintContent } from './utils'
 
-describe('Stylistic Config', () => {
+describe('stylistic Config', () => {
 	it('should apply stylistic rules when enabled', async () => {
 		const messages = await lintContent(
 			async () =>
@@ -74,101 +74,72 @@ const y = 2`,
 		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
-	it('should use avoid for arrowParens by default', () => {
-		const configs = stylistic()
-
-		expect(configs).toBeDefined()
-		// arrowParens: false means avoid (no parens for single param)
-		// requireForBlockBody: false - no parens needed even for block body
-		expect(configs[0]?.rules?.['@stylistic/arrow-parens']).toEqual(['error', 'as-needed', { requireForBlockBody: false }])
-	})
-
 	it('should support tab indent', () => {
 		const configs = stylistic({ indent: 'tab' })
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/indent']).toBeDefined()
+		expect(configs[0]?.rules?.['style/indent']).toBeDefined()
 	})
 
 	it('should support double quotes', () => {
 		const configs = stylistic({ quotes: 'double' })
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/quotes']).toBeDefined()
+		expect(configs[0]?.rules?.['style/quotes']).toBeDefined()
 	})
 
 	it('should support semicolons', () => {
 		const configs = stylistic({ semi: true })
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/semi']).toBeDefined()
-	})
-
-	it('should support jsxQuotes', () => {
-		const configs = stylistic({ jsxQuotes: 'prefer-single' })
-
-		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/jsx-quotes']).toBeDefined()
-	})
-
-	it('should support trailingComma', () => {
-		const configs = stylistic({ trailingComma: 'none' })
-
-		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/comma-dangle']).toBeDefined()
-	})
-
-	it('should support bracketSpacing', () => {
-		const configs = stylistic({ bracketSpacing: false })
-
-		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/object-curly-spacing']).toBeDefined()
-	})
-
-	it('should support arrowParens', () => {
-		const configs = stylistic({ arrowParens: true })
-
-		expect(configs).toBeDefined()
-		// arrowParens: true means always require parens
-		expect(configs[0]?.rules?.['@stylistic/arrow-parens']).toEqual(['error', 'always', { requireForBlockBody: false }])
+		expect(configs[0]?.rules?.['style/semi']).toBeDefined()
 	})
 
 	it('should support overrides', () => {
-		const configs = stylistic({ overrides: { '@stylistic/semi': 'off' } })
+		const configs = stylistic({ overrides: { 'style/semi': 'off' } })
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/semi']).toBe('off')
+		expect(configs[0]?.rules?.['style/semi']).toBe('off')
 	})
 
-	it('should configure @stylistic/no-mixed-spaces-and-tabs with smart-tabs', () => {
+	it('should configure generator-star-spacing', () => {
 		const configs = stylistic()
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/no-mixed-spaces-and-tabs']).toEqual(['error', 'smart-tabs'])
+		expect(configs[0]?.rules?.['style/generator-star-spacing']).toEqual(['error', { after: true, before: false }])
 	})
 
-	it('should not configure @stylistic/max-len by default', () => {
+	it('should configure yield-star-spacing', () => {
 		const configs = stylistic()
 
 		expect(configs).toBeDefined()
-		// max-len should not be configured (no line length limit)
-		expect(configs[0]?.rules?.['@stylistic/max-len']).toBeUndefined()
+		expect(configs[0]?.rules?.['style/yield-star-spacing']).toEqual(['error', { after: true, before: false }])
 	})
 
-	it('should configure @stylistic/no-mixed-operators with groups', () => {
+	it('should configure multiline-ternary as never', () => {
 		const configs = stylistic()
 
 		expect(configs).toBeDefined()
-		expect(configs[0]?.rules?.['@stylistic/no-mixed-operators']).toEqual([
-			'error',
-			{
-				allowSamePrecedence: true,
-				groups: [
-					['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-					['&&', '||'],
-					['in', 'instanceof'],
-				],
-			},
-		])
+		expect(configs[0]?.rules?.['style/multiline-ternary']).toEqual(['error', 'never'])
+	})
+
+	it('should support lessOpinionated mode', () => {
+		const configs = stylistic({ lessOpinionated: true })
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.rules?.curly).toEqual(['error', 'all'])
+	})
+
+	it('should support experimental option', () => {
+		const configs = stylistic({ experimental: true })
+
+		expect(configs).toBeDefined()
+	})
+
+	it('should use style as plugin name', () => {
+		const configs = stylistic()
+
+		expect(configs).toBeDefined()
+		expect(configs[0]?.plugins?.style).toBeDefined()
 	})
 })

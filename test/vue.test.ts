@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { vue } from '../src/configs'
 import { lintContent } from './utils'
 
-describe('Vue Config', () => {
+describe('vue Config', () => {
 	it('should parse Vue SFC', async () => {
 		const messages = await lintContent(
 			async () => {

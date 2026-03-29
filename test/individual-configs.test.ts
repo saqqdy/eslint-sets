@@ -3,19 +3,17 @@ import {
 	angular,
 	astro,
 	command,
+	comments,
 	disables,
-	e18e,
-	eslintComments,
 	formatters,
 	ignores,
 	imports,
 	javascript,
 	jsonc,
-	jsxA11y,
+	jsx,
 	markdown,
 	nextjs,
 	node,
-	noOnlyTests,
 	nuxt,
 	perfectionist,
 	pnpm,
@@ -33,11 +31,10 @@ import {
 	unicorn,
 	unocss,
 	vue,
-	vueA11y,
 	yaml,
 } from '../src/configs'
 
-describe('Individual Configs', () => {
+describe('individual Configs', () => {
 	describe('javascript', () => {
 		it('should return a valid config', () => {
 			const config = javascript()
@@ -86,6 +83,43 @@ describe('Individual Configs', () => {
 
 			expect(configs).toBeDefined()
 			expect(configs[0]?.rules?.['vue/html-indent']).toBeUndefined()
+		})
+
+		it('should support a11y option', async () => {
+			const configs = await vue({ a11y: true })
+
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+			// Should have vue-a11y plugin when a11y is enabled
+			expect(configs[0]?.plugins?.['vue-a11y']).toBeDefined()
+		})
+
+		it('should support sfcBlocks option', async () => {
+			const configs = await vue({ sfcBlocks: true })
+
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+			// Should have sfc-blocks processor config when sfcBlocks is enabled
+			// (requires eslint-processor-vue-blocks to be installed)
+			const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
+			// If the plugin is not installed, the config will not be added
+			if (sfcBlocksConfig) {
+				expect(sfcBlocksConfig.processor).toBeDefined()
+			}
+		})
+
+		it('should support sfcBlocks option with custom config', async () => {
+			const configs = await vue({ sfcBlocks: { styles: true, customBlocks: ['i18n'] } })
+
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+			// Should have sfc-blocks processor config
+			// (requires eslint-processor-vue-blocks to be installed)
+			const sfcBlocksConfig = configs.find(c => c.name === 'eslint-sets/vue/sfc-blocks')
+			// If the plugin is not installed, the config will not be added
+			if (sfcBlocksConfig) {
+				expect(sfcBlocksConfig.processor).toBeDefined()
+			}
 		})
 	})
 
@@ -142,31 +176,31 @@ describe('Individual Configs', () => {
 			const configs = yaml({ stylistic: { indent: 4 } })
 
 			expect(configs).toBeDefined()
-			expect(configs[0]?.rules?.['yml/indent']).toEqual(['error', 4])
+			expect(configs[0]?.rules?.['yaml/indent']).toEqual(['error', 4])
 		})
 
 		it('should support tab indent by disabling indent rule', () => {
 			const configs = yaml({ stylistic: { indent: 'tab' } })
 
 			expect(configs).toBeDefined()
-			// yml/indent only accepts integer values, so when indent is 'tab',
+			// yaml/indent only accepts integer values, so when indent is 'tab',
 			// we disable the indent rule and no-tab-indent
-			expect(configs[0]?.rules?.['yml/indent']).toBe('off')
-			expect(configs[0]?.rules?.['yml/no-tab-indent']).toBe('off')
+			expect(configs[0]?.rules?.['yaml/indent']).toBe('off')
+			expect(configs[0]?.rules?.['yaml/no-tab-indent']).toBe('off')
 		})
 
 		it('should support stylistic option with quotes', () => {
-			const configs = yaml({ stylistic: { quotes: 'single' } })
+			const configs = yaml({ stylistic: { quotes: 'double' } })
 
 			expect(configs).toBeDefined()
-			expect(configs[0]?.rules?.['yml/quotes']).toEqual(['error', { avoidEscape: true, prefer: 'single' }])
+			expect(configs[0]?.rules?.['yaml/quotes']).toEqual(['error', { avoidEscape: true, prefer: 'double' }])
 		})
 
-		it('should use double quotes by default', () => {
+		it('should use single quotes by default', () => {
 			const configs = yaml()
 
 			expect(configs).toBeDefined()
-			expect(configs[0]?.rules?.['yml/quotes']).toEqual(['error', { avoidEscape: true, prefer: 'double' }])
+			expect(configs[0]?.rules?.['yaml/quotes']).toEqual(['error', { avoidEscape: true, prefer: 'single' }])
 		})
 
 		it('should use custom indent when stylistic is enabled', () => {
@@ -174,7 +208,7 @@ describe('Individual Configs', () => {
 
 			expect(configs).toBeDefined()
 			// When stylistic is enabled with custom indent, it should override standard rules
-			expect(configs[0]?.rules?.['yml/indent']).toEqual(['error', 4])
+			expect(configs[0]?.rules?.['yaml/indent']).toEqual(['error', 4])
 		})
 	})
 
@@ -219,11 +253,12 @@ describe('Individual Configs', () => {
 	})
 
 	describe('test', () => {
-		it('should return a valid config', () => {
-			const config = testConfig()
+		it('should return valid configs', async () => {
+			const configs = await testConfig()
 
-			expect(config).toBeDefined()
-			expect(config.name).toBe('eslint-sets/test')
+			expect(configs).toBeDefined()
+			expect(Array.isArray(configs)).toBeTruthy()
+			expect(configs[0]?.name).toBe('eslint-sets/test')
 		})
 	})
 
@@ -240,8 +275,8 @@ describe('Individual Configs', () => {
 			const configs = node()
 
 			expect(configs).toBeDefined()
-			expect(configs[0]?.rules?.['n/prefer-global/buffer']).toEqual(['error', 'always'])
-			expect(configs[0]?.rules?.['n/prefer-global/process']).toEqual(['error', 'always'])
+			expect(configs[0]?.rules?.['node/prefer-global/buffer']).toEqual(['error', 'always'])
+			expect(configs[0]?.rules?.['node/prefer-global/process']).toEqual(['error', 'always'])
 		})
 	})
 
@@ -283,8 +318,8 @@ describe('Individual Configs', () => {
 	})
 
 	describe('command', () => {
-		it('should return valid configs', () => {
-			const configs = command()
+		it('should return valid configs', async () => {
+			const configs = await command()
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
@@ -367,18 +402,9 @@ describe('Individual Configs', () => {
 		})
 	})
 
-	describe('eslintComments', () => {
+	describe('comments', () => {
 		it('should return valid configs', async () => {
-			const configs = await eslintComments()
-
-			expect(configs).toBeDefined()
-			expect(Array.isArray(configs)).toBeTruthy()
-		})
-	})
-
-	describe('noOnlyTests', () => {
-		it('should return valid configs', async () => {
-			const configs = await noOnlyTests()
+			const configs = await comments()
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
@@ -421,15 +447,6 @@ describe('Individual Configs', () => {
 		})
 	})
 
-	describe('e18e', () => {
-		it('should return valid configs', async () => {
-			const configs = await e18e()
-
-			expect(configs).toBeDefined()
-			expect(Array.isArray(configs)).toBeTruthy()
-		})
-	})
-
 	describe('pnpm', () => {
 		it('should return valid configs', async () => {
 			const configs = await pnpm()
@@ -457,18 +474,16 @@ describe('Individual Configs', () => {
 		})
 	})
 
-	describe('jsxA11y', () => {
-		it('should return valid configs', async () => {
-			const configs = await jsxA11y()
+	describe('jsx', () => {
+		it('should return valid configs without a11y', async () => {
+			const configs = await jsx()
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()
 		})
-	})
 
-	describe('vueA11y', () => {
-		it('should return valid configs', async () => {
-			const configs = await vueA11y()
+		it('should return valid configs with a11y enabled', async () => {
+			const configs = await jsx({ a11y: true })
 
 			expect(configs).toBeDefined()
 			expect(Array.isArray(configs)).toBeTruthy()

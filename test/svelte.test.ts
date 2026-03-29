@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { hasRule, lintContent } from './utils'
 
-describe('Svelte Config', () => {
+describe('svelte Config', () => {
 	beforeAll(async () => {
 		try {
 			await import('eslint-plugin-svelte')

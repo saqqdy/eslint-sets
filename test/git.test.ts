@@ -6,7 +6,7 @@ import { findGitignore, getGitignorePatterns, parseGitignore } from '../src/util
 
 const { join } = path
 
-describe('Git Utils', () => {
+describe('git Utils', () => {
 	describe('parseGitignore', () => {
 		it('should parse basic patterns', () => {
 			const content = `node_modules

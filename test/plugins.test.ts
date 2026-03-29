@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { hasPrettier, hasReact, hasSvelte, hasTypeScript, hasVue } from '../src/plugins'
 
-describe('Plugin Detection', () => {
+describe('plugin Detection', () => {
 	it('should detect TypeScript (installed)', () => {
 		expect(hasTypeScript()).toBeTruthy()
 	})

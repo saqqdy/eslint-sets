@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('YAML Config', () => {
+describe('yAML Config', () => {
 	it('should parse YAML files', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),

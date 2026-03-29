@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { hasRule, lintContent } from './utils'
 
-describe('JSON Config', () => {
+describe('jSON Config', () => {
 	it('should parse JSON files', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),

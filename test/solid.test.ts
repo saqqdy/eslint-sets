@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('Solid Config', () => {
+describe('solid Config', () => {
 	it('should parse Solid.js components', async () => {
 		const messages = await lintContent(
 			async () =>

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('Integration Tests', () => {
+describe('integration Tests', () => {
 	it('should lint a complete JavaScript file', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),

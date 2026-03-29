@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('TOML Config', () => {
+describe('tOML Config', () => {
 	it('should parse TOML files', async () => {
 		const messages = await lintContent(
 			async () =>

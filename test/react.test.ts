@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { hasRule, lintContent } from './utils'
 
-describe('React Config', () => {
+describe('react Config', () => {
 	beforeAll(async () => {
 		// Ensure react plugin is loaded
 		try {
@@ -24,7 +24,7 @@ describe('React Config', () => {
 		expect(messages.filter(m => m.fatal)).toHaveLength(0)
 	})
 
-	it('should detect @eslint-react/no-missing-key', async () => {
+	it('should detect react/no-missing-key', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default({ autoDetect: false, react: true }),
 			`function App() {
@@ -33,10 +33,10 @@ describe('React Config', () => {
 			'test.jsx',
 		)
 
-		expect(hasRule(messages, '@eslint-react/no-missing-key')).toBeTruthy()
+		expect(hasRule(messages, 'react/no-missing-key')).toBeTruthy()
 	})
 
-	it('should detect @eslint-react/no-comment-textnodes', async () => {
+	it('should detect react/jsx-no-comment-textnodes', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default({ autoDetect: false, react: true }),
 			`function App() {
@@ -45,10 +45,10 @@ describe('React Config', () => {
 			'test.jsx',
 		)
 
-		expect(hasRule(messages, '@eslint-react/no-comment-textnodes')).toBeTruthy()
+		expect(hasRule(messages, 'react/jsx-no-comment-textnodes')).toBeTruthy()
 	})
 
-	it('should detect @eslint-react/hooks-extra/rules-of-hooks', async () => {
+	it('should detect react-hooks/rules-of-hooks', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default({ autoDetect: false, react: true }),
 			`function App() {
@@ -90,10 +90,10 @@ function App({ name }: Props) {
 		).default({ autoDetect: false, react: true })
 
 		// Check that react-refresh plugin is loaded
-		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
 
-		expect(reactConfig).toBeDefined()
-		expect(reactConfig?.plugins?.['react-refresh']).toBeDefined()
+		expect(reactSetup).toBeDefined()
+		expect(reactSetup?.plugins?.['react-refresh']).toBeDefined()
 	})
 
 	it('should support react compiler option', async () => {
@@ -106,29 +106,25 @@ function App({ name }: Props) {
 		expect(Array.isArray(config)).toBeTruthy()
 	})
 
-	it('should have @eslint-react plugin loaded', async () => {
+	it('should have react plugin loaded', async () => {
 		const config = await (
 			await import('../src/index')
 		).default({ autoDetect: false, react: true })
 
-		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
+		const reactSetup = config.find(c => c.name === 'eslint-sets/react/setup')
 
-		expect(reactConfig).toBeDefined()
-		// Check that @eslint-react plugin is loaded
-		const plugins = reactConfig?.plugins || {}
-		const hasEslintReact = Object.keys(plugins).some(key => key.startsWith('@eslint-react'))
-
-		expect(hasEslintReact).toBeTruthy()
+		expect(reactSetup).toBeDefined()
+		expect(reactSetup?.plugins?.react).toBeDefined()
 	})
 
-	it('should disable @eslint-react/no-nested-component-definitions by default', async () => {
+	it('should have react/no-nested-component-definitions enabled', async () => {
 		const config = await (
 			await import('../src/index')
 		).default({ autoDetect: false, react: true })
 
-		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
 
-		expect(reactConfig?.rules?.['@eslint-react/no-nested-component-definitions']).toBe('off')
+		expect(reactConfig?.rules?.['react/no-nested-component-definitions']).toBe('error')
 	})
 
 	it('should configure react-refresh/only-export-components', async () => {
@@ -136,9 +132,9 @@ function App({ name }: Props) {
 			await import('../src/index')
 		).default({ autoDetect: false, react: true })
 
-		const reactConfig = config.find(c => c.name === 'eslint-sets/react')
+		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
 
 		expect(reactConfig?.rules?.['react-refresh/only-export-components']).toBeDefined()
-		expect(reactConfig?.rules?.['react-refresh/only-export-components']?.[0]).toBe('warn')
+		expect(reactConfig?.rules?.['react-refresh/only-export-components']?.[0]).toBe('error')
 	})
 })

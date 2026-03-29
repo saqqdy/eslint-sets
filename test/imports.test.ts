@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('Imports Config', () => {
+describe('imports Config', () => {
 	it('should parse import statements', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),

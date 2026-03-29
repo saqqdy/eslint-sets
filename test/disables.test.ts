@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('Disables Config', () => {
+describe('disables Config', () => {
 	it('should allow console in config files', async () => {
 		const messages = await lintContent(
 			async () =>

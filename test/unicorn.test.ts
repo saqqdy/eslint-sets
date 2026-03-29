@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('Unicorn Config', () => {
+describe('unicorn Config', () => {
 	it('should lint JavaScript with unicorn rules', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default({ autoDetect: false, isInEditor: false }),

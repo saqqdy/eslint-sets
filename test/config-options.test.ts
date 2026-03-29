@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { eslintConfig } from './utils'
 
-describe('Config Options', () => {
+describe('config Options', () => {
 	it('should work with default options', async () => {
 		const config = await eslintConfig()
 
@@ -169,9 +169,9 @@ describe('Config Options', () => {
 		expect(config).toBeDefined()
 	})
 
-	it('should support eslintComments option disabled', async () => {
+	it('should support comments option disabled', async () => {
 		const config = await eslintConfig({
-			eslintComments: false,
+			comments: false,
 		})
 
 		expect(config).toBeDefined()

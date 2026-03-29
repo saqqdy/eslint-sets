@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { lintContent } from './utils'
 
-describe('TypeScript Config', () => {
+describe('typeScript Config', () => {
 	it('should parse TypeScript files', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
@@ -16,8 +16,8 @@ describe('TypeScript Config', () => {
 	it('should support type imports', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
-      `import type { Foo } from 'foo'`,
-      'test.ts',
+			`import type { Foo } from 'foo'`,
+			'test.ts',
 		)
 
 		// Should parse without fatal errors
@@ -27,11 +27,11 @@ describe('TypeScript Config', () => {
 	it('should support interfaces', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
-      `interface User {
+			`interface User {
   name: string
   age: number
 }`,
-      'test.ts',
+			'test.ts',
 		)
 
 		// Should parse without fatal errors
@@ -41,10 +41,10 @@ describe('TypeScript Config', () => {
 	it('should support generics', async () => {
 		const messages = await lintContent(
 			async () => await (await import('../src/index')).default(),
-      `function identity<T>(arg: T): T {
+			`function identity<T>(arg: T): T {
   return arg
 }`,
-      'test.ts',
+			'test.ts',
 		)
 
 		// Should parse without fatal errors

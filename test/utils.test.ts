@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { combine, deepMerge, ensureArray, filterNil, isObject, renameRules } from '../src/utils'
 
-describe('Utils', () => {
+describe('utils', () => {
 	describe('combine', () => {
 		it('should flatten configs', () => {
 			const configs = [{ name: 'a' }, [{ name: 'b' }, { name: 'c' }]]

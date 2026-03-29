@@ -7,6 +7,19 @@ export interface User {
   role: 'admin' | 'user' | 'guest'
 }
 
+export interface UserStats {
+  adminCount: number
+  guestCount: number
+  totalCount: number
+  userCount: number
+}
+
+export interface ApiResponse<T> {
+  data: T
+  message: string
+  status: number
+}
+
 export function formatDate(date: Date): string {
   return date.toLocaleDateString('en-US', {
     day: 'numeric',
@@ -33,6 +46,23 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
     timeoutId = setTimeout(() => {
       fn.apply(this, args)
     }, delay)
+  }
+}
+
+export function throttle<T extends (...args: unknown[]) => unknown>(
+  fn: T,
+  limit: number,
+): (...args: Parameters<T>) => void {
+  let inThrottle = false
+
+  return function (this: unknown, ...args: Parameters<T>) {
+    if (!inThrottle) {
+      fn.apply(this, args)
+      inThrottle = true
+      setTimeout(() => {
+        inThrottle = false
+      }, limit)
+    }
   }
 }
 
@@ -64,6 +94,70 @@ export function groupBy<T, K extends string | number | symbol>(
     },
     {} as Record<K, T[]>,
   )
+}
+
+export function calculateUserStats(users: User[]): UserStats {
+  return users.reduce<UserStats>(
+    (stats, user) => {
+      stats.totalCount++
+
+      switch (user.role) {
+        case 'admin':
+          stats.adminCount++
+          break
+        case 'guest':
+          stats.guestCount++
+          break
+        case 'user':
+          stats.userCount++
+          break
+      }
+
+      return stats
+    },
+    { adminCount: 0, guestCount: 0, totalCount: 0, userCount: 0 },
+  )
+}
+
+export function filterUsers(users: User[], search: string): User[] {
+  if (!search.trim()) {
+    return users
+  }
+
+  const lowerSearch = search.toLowerCase()
+
+  return users.filter(
+    user =>
+      user.name.toLowerCase().includes(lowerSearch)
+      || user.email.toLowerCase().includes(lowerSearch),
+  )
+}
+
+export function sortUsers<T extends User>(
+  users: T[],
+  sortBy: keyof User,
+  sortOrder: 'asc' | 'desc' = 'asc',
+): T[] {
+  return [...users].sort((a, b) => {
+    const aVal = a[sortBy]
+    const bVal = b[sortBy]
+
+    if (typeof aVal === 'string' && typeof bVal === 'string') {
+      return sortOrder === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal)
+    }
+
+    if (typeof aVal === 'number' && typeof bVal === 'number') {
+      return sortOrder === 'asc' ? aVal - bVal : bVal - aVal
+    }
+
+    return 0
+  })
+}
+
+export function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
 }
 
 export const USER_ROLES = ['admin', 'user', 'guest'] as const

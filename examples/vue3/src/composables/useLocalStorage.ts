@@ -15,18 +15,16 @@ export function useLocalStorage<T>(
   const { serializer = { read: JSON.parse, write: JSON.stringify } } = options
 
   // Browser-only: localStorage is a Web API, not Node.js
-  /* eslint-disable n/no-unsupported-features/node-builtins */
   const storedValue = localStorage.getItem(key)
   const data = ref(storedValue ? serializer.read(storedValue) : initialValue) as Ref<T>
 
-  watch(data, (newValue) => {
+  watch(data, newValue => {
     if (newValue === null || newValue === undefined) {
       localStorage.removeItem(key)
     } else {
       localStorage.setItem(key, serializer.write(newValue))
     }
   })
-  /* eslint-enable n/no-unsupported-features/node-builtins */
 
   return data
 }

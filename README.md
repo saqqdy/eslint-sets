@@ -33,7 +33,7 @@ Try it online with StackBlitz:
 - 📦 **Auto-detection** - Automatically detects installed frameworks
 - 🔧 **Highly Configurable** - Fine-grained control over enabled features
 - 🙈 **Git Ignore Support** - Automatically read `.gitignore` patterns (default: on)
-- 🛠️ **Disables Support** - Automatically disable strict rules in config files
+- 🛠️ **Disables Support** - Automatically disable strict rules in config files and script directories (`scripts/`, `tasks/`, `tools/`, `cli/`, `bin/`)
 - 🖥️ **Command Support** - Relaxed rules for command-line scripts
 - 🏷️ **Project Types** - Support for `app` and `lib` project types
 - ♿ **Accessibility** - Optional a11y rules for Vue and React
@@ -50,7 +50,7 @@ Try it online with StackBlitz:
 | TypeScript |     ✅      | Default enabled                                 |
 | Vue        |     ✅      | Vue 2 & 3 support, with a11y option             |
 | React      |     ✅      | With hooks, refresh, and React Compiler support |
-| Svelte     |     ✅      |                                                 |
+| Svelte     |     ✅      | Svelte 5 runes support in `.svelte` and TS files |
 | Solid      |     ✅      |                                                 |
 | Next.js    |     ✅      | Requires `@next/eslint-plugin-next`             |
 | Nuxt       |     ✅      |                                                 |

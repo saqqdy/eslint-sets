@@ -95,6 +95,12 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 	// Check if RSC plugin is available (requires @eslint-react/eslint-plugin >= 2.0.0)
 	const hasRscPlugin = !!allPlugins['@eslint-react/rsc']
 
+	// Check for namespace import rule (renamed between v1 and v2)
+	// v1.x: prefer-react-namespace-import
+	// v2.x: prefer-namespace-import
+	const hasNamespaceImportRule = 'prefer-namespace-import' in pluginReact.rules
+	const namespaceImportRuleName = hasNamespaceImportRule ? 'react/prefer-namespace-import' : 'react/prefer-react-namespace-import'
+
 	// Get recommended rules and rename them
 	const recommendedRules = renameRules(pluginReact.configs.recommended?.rules || {})
 
@@ -133,7 +139,7 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				...recommendedRules,
 
 				// Additional rules
-				'react/prefer-react-namespace-import': 'error',
+				[namespaceImportRuleName]: 'error',
 
 				// RSC (React Server Components) rules - only if plugin is available
 				...(rsc && hasRscPlugin ? {

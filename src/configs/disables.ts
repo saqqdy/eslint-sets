@@ -28,6 +28,20 @@ export function disables(): Linter.Config[] {
 			rules: {},
 		},
 		{
+			name: 'eslint-sets/disables/tasks',
+			files: [`**/tasks/${GLOB_SRC}`],
+			rules: {
+				'no-console': 'off',
+			},
+		},
+		{
+			name: 'eslint-sets/disables/tools',
+			files: [`**/tools/${GLOB_SRC}`],
+			rules: {
+				'no-console': 'off',
+			},
+		},
+		{
 			name: 'eslint-sets/disables/dts',
 			files: ['**/*.d.?([cm])ts'],
 			rules: {

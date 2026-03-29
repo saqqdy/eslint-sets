@@ -33,7 +33,7 @@
 - 📦 **自动检测** - 自动检测已安装的框架
 - 🔧 **高度可配置** - 细粒度控制启用的功能
 - 🙈 **Git Ignore 支持** - 自动读取 `.gitignore` 规则（默认开启）
-- 🛠️ **禁用支持** - 自动在配置文件中禁用严格规则
+- 🛠️ **禁用支持** - 自动在配置文件和脚本目录（`scripts/`、`tasks/`、`tools/`、`cli/`、`bin/`）中禁用严格规则
 - 🖥️ **命令行支持** - 放宽命令行脚本的规则
 - 🏷️ **项目类型** - 支持 `app` 和 `lib` 项目类型
 - ♿ **无障碍** - Vue 和 React 可选的 a11y 规则
@@ -50,7 +50,7 @@
 | TypeScript |    ✅    | 默认启用                           |
 | Vue        |    ✅    | 支持 Vue 2 和 3，可选 a11y         |
 | React      |    ✅    | 支持 hooks、refresh 和 React Compiler |
-| Svelte     |    ✅    |                                    |
+| Svelte     |    ✅    | 支持 Svelte 5 runes，在 `.svelte` 和 TS 文件中可用 |
 | Solid      |    ✅    |                                    |
 | Next.js    |    ✅    | 需要 `@next/eslint-plugin-next`    |
 | Nuxt       |    ✅    |                                    |

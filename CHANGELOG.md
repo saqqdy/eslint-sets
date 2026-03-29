@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.3.1] - 2026-03-29
+
+### Fixed
+
+- **React config**: Fixed `prefer-namespace-import` rule compatibility with `@eslint-react/eslint-plugin` v1.x and v2.x
+  - v1.x uses rule name `prefer-react-namespace-import`
+  - v2.x uses rule name `prefer-namespace-import`
+  - Now dynamically detects and uses the correct rule name based on installed version
+
+- **Disables config**: Added support for `tasks` and `tools` directories
+  - `no-console` rule is now disabled in `tasks/` and `tools/` directories
+  - Aligns with existing support for `scripts/`, `cli/`, and `bin/` directories
+
+- **Svelte config**: Added Svelte 5 runes support in TypeScript files
+  - Svelte 5 runes (`$state`, `$effect`, etc.) are now recognized in `composables/` and `stores/` directories
+  - Prevents `no-undef` errors when using runes outside `.svelte` files
+
+### Changed
+
+- **JSDoc config**: Updated `jsdoc/check-param-names` rule options
+  - Disabled `checkDestructured` to skip checking destructured parameters
+  - Disabled `useDefaultObjectProperties` to skip checking default object properties
+  - Reduces false positives in modern JavaScript/TypeScript code
+
 ## [6.3.0] - 2026-03-29
 
 ### Breaking Changes

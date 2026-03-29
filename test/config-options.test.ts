@@ -238,4 +238,35 @@ describe('config Options', () => {
 
 		expect(tsRules.length).toBeGreaterThan(0)
 	})
+
+	it('should support jsdoc option disabled', async () => {
+		const config = await eslintConfig({
+			jsdoc: false,
+		})
+
+		const jsdocConfig = config.find(c => c.name === 'eslint-sets/jsdoc')
+
+		expect(jsdocConfig).toBeUndefined()
+	})
+
+	it('should have jsdoc config with check-param-names options', async () => {
+		const config = await eslintConfig({
+			jsdoc: true,
+		})
+
+		const jsdocConfig = config.find(c => c.name === 'eslint-sets/jsdoc')
+
+		expect(jsdocConfig).toBeDefined()
+		expect(jsdocConfig?.plugins?.jsdoc).toBeDefined()
+
+		// Check that jsdoc/check-param-names has correct options
+		const checkParamNames = jsdocConfig?.rules?.['jsdoc/check-param-names']
+		expect(checkParamNames).toBeDefined()
+		expect(Array.isArray(checkParamNames)).toBeTruthy()
+		expect(checkParamNames?.[0]).toBe('warn')
+		expect(checkParamNames?.[1]).toEqual({
+			checkDestructured: false,
+			useDefaultObjectProperties: false,
+		})
+	})
 })

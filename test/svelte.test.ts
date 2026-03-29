@@ -157,4 +157,34 @@ describe('svelte Config', () => {
 		const svelteConfig = configs.find(c => c.name === 'eslint-sets/svelte')
 		expect(svelteConfig?.rules?.['svelte/no-inner-declarations']).toBe('error')
 	})
+
+	it('should have Svelte 5 runes globals in svelte files', async () => {
+		const configs = await svelte()
+
+		const svelteConfig = configs.find(c => c.name === 'eslint-sets/svelte')
+		expect(svelteConfig?.languageOptions?.globals?.$state).toBe('readonly')
+		expect(svelteConfig?.languageOptions?.globals?.$derived).toBe('readonly')
+		expect(svelteConfig?.languageOptions?.globals?.$effect).toBe('readonly')
+		expect(svelteConfig?.languageOptions?.globals?.$props).toBe('readonly')
+		expect(svelteConfig?.languageOptions?.globals?.$bindable).toBe('readonly')
+		expect(svelteConfig?.languageOptions?.globals?.$inspect).toBe('readonly')
+		expect(svelteConfig?.languageOptions?.globals?.$host).toBe('readonly')
+	})
+
+	it('should have runes-in-ts config for composables', async () => {
+		const configs = await svelte()
+
+		const runesConfig = configs.find(c => c.name === 'eslint-sets/svelte/runes-in-ts')
+		expect(runesConfig).toBeDefined()
+		expect(runesConfig?.files).toContain('**/composables/**/*.?([cm])[jt]s?(x)')
+		expect(runesConfig?.files).toContain('**/stores/**/*.?([cm])[jt]s?(x)')
+	})
+
+	it('should have runes globals in runes-in-ts config', async () => {
+		const configs = await svelte()
+
+		const runesConfig = configs.find(c => c.name === 'eslint-sets/svelte/runes-in-ts')
+		expect(runesConfig?.languageOptions?.globals?.$state).toBe('readonly')
+		expect(runesConfig?.languageOptions?.globals?.$effect).toBe('readonly')
+	})
 })

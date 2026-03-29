@@ -31,7 +31,7 @@ export async function jsdoc(options: JSDocOptions = {}): Promise<Linter.Config[]
 			rules: {
 				'jsdoc/check-access': 'warn',
 				'jsdoc/check-alignment': 'warn',
-				'jsdoc/check-param-names': 'warn',
+				'jsdoc/check-param-names': ['warn', { checkDestructured: false, useDefaultObjectProperties: false }],
 				'jsdoc/check-property-names': 'warn',
 				'jsdoc/check-types': 'warn',
 				'jsdoc/empty-tags': 'warn',

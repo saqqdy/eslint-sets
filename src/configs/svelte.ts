@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 import type { OptionsOverrides } from '../types'
-import { GLOB_SVELTE } from '../constants'
+import { GLOB_SRC, GLOB_SVELTE } from '../constants'
 import { loadPlugin } from '../plugins'
 
 // Type definitions for Svelte plugins
@@ -33,21 +33,23 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 		return []
 	}
 
+	// Svelte 5 Runes globals
+	const svelteRunesGlobals = {
+		$state: 'readonly',
+		$derived: 'readonly',
+		$effect: 'readonly',
+		$props: 'readonly',
+		$bindable: 'readonly',
+		$inspect: 'readonly',
+		$host: 'readonly',
+	} as const
+
 	return [
 		{
 			name: 'eslint-sets/svelte',
 			files: [GLOB_SVELTE],
 			languageOptions: {
-				globals: {
-					// Svelte 5 Runes
-					$state: 'readonly',
-					$derived: 'readonly',
-					$effect: 'readonly',
-					$props: 'readonly',
-					$bindable: 'readonly',
-					$inspect: 'readonly',
-					$host: 'readonly',
-				},
+				globals: svelteRunesGlobals,
 				parser: svelteParser,
 				parserOptions: {
 					ecmaVersion: 'latest',
@@ -81,6 +83,13 @@ export async function svelte(options: SvelteOptions = {}): Promise<Linter.Config
 
 				// User overrides
 				...overrides,
+			},
+		},
+		{
+			name: 'eslint-sets/svelte/runes-in-ts',
+			files: [`**/composables/${GLOB_SRC}`, `**/stores/${GLOB_SRC}`],
+			languageOptions: {
+				globals: svelteRunesGlobals,
 			},
 		},
 	]

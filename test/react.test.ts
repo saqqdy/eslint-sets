@@ -219,7 +219,12 @@ function App({ name }: Props) {
 		).default({ autoDetect: false, react: true })
 
 		const reactConfig = config.find(c => c.name === 'eslint-sets/react/rules')
-		expect(reactConfig?.rules?.['react/prefer-react-namespace-import']).toBe('error')
+		// Rule name differs between @eslint-react/eslint-plugin v1 and v2
+		// v1.x: prefer-react-namespace-import
+		// v2.x: prefer-namespace-import
+		const hasV1Rule = reactConfig?.rules?.['react/prefer-react-namespace-import'] === 'error'
+		const hasV2Rule = reactConfig?.rules?.['react/prefer-namespace-import'] === 'error'
+		expect(hasV1Rule || hasV2Rule).toBe(true)
 	})
 
 	it('should have react-hooks/exhaustive-deps rule', async () => {

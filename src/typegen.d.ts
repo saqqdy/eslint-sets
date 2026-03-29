@@ -1039,6 +1039,14 @@ export interface RuleOptions {
    */
   'for-direction'?: Linter.RuleEntry<[]>
   /**
+   * Use dprint to format code
+   */
+  'format/dprint'?: Linter.RuleEntry<FormatDprint>
+  /**
+   * Use Prettier to format code
+   */
+  'format/prettier'?: Linter.RuleEntry<FormatPrettier>
+  /**
    * Require or disallow spacing between function identifiers and their invocations
    * @see https://eslint.org/docs/latest/rules/func-call-spacing
    * @deprecated
@@ -9226,6 +9234,19 @@ type EslintCommentsNoUse = []|[{
 // ----- eslint-comments/require-description -----
 type EslintCommentsRequireDescription = []|[{
   ignore?: ("eslint" | "eslint-disable" | "eslint-disable-line" | "eslint-disable-next-line" | "eslint-enable" | "eslint-env" | "exported" | "global" | "globals")[]
+}]
+// ----- format/dprint -----
+type FormatDprint = []|[{
+  language?: string
+  languageOptions?: {
+    [k: string]: unknown | undefined
+  }
+  [k: string]: unknown | undefined
+}]
+// ----- format/prettier -----
+type FormatPrettier = []|[{
+  parser?: string
+  [k: string]: unknown | undefined
 }]
 // ----- func-call-spacing -----
 type FuncCallSpacing = ([]|["never"] | []|["always"]|["always", {
@@ -19773,4 +19794,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'eslint-sets/ignores' | 'eslint-sets/javascript' | 'eslint-sets/typescript' | 'eslint-sets/typescript/disables/dts' | 'eslint-sets/typescript/disables/test' | 'eslint-sets/typescript/disables/cjs' | 'eslint-sets/vue' | 'eslint-sets/react/setup' | 'eslint-sets/react/rules' | 'eslint-sets/react/typescript' | 'eslint-sets/jsx' | 'eslint-sets/svelte' | 'eslint-sets/solid' | 'eslint-sets/nextjs' | 'eslint-sets/nuxt' | 'eslint-sets/astro' | 'eslint-sets/angular/setup' | 'eslint-sets/angular/rules/ts' | 'eslint-sets/angular/rules/template' | 'eslint-sets/jsonc' | 'eslint-sets/yaml' | 'eslint-sets/markdown/setup' | 'eslint-sets/markdown/processor' | 'eslint-sets/markdown/parser' | 'eslint-sets/markdown/rules' | 'eslint-sets/markdown/disables/markdown' | 'eslint-sets/markdown/disables/code' | 'eslint-sets/toml' | 'eslint-sets/imports' | 'eslint-sets/unicorn' | 'eslint-sets/perfectionist' | 'eslint-sets/regexp' | 'eslint-sets/test' | 'eslint-sets/node' | 'eslint-sets/comments' | 'eslint-sets/jsdoc' | 'eslint-sets/disables/scripts' | 'eslint-sets/disables/cli' | 'eslint-sets/disables/bin' | 'eslint-sets/disables/dts' | 'eslint-sets/disables/cjs' | 'eslint-sets/disables/config-files' | 'eslint-sets/command' | 'eslint-sets/sort-package-json' | 'eslint-sets/sort-tsconfig' | 'eslint-sets/pnpm' | 'eslint-sets/stylistic' | 'eslint-sets/builtin-rules'
+export type ConfigNames = 'eslint-sets/ignores' | 'eslint-sets/javascript' | 'eslint-sets/typescript' | 'eslint-sets/typescript/disables/dts' | 'eslint-sets/typescript/disables/test' | 'eslint-sets/typescript/disables/cjs' | 'eslint-sets/vue' | 'eslint-sets/react/setup' | 'eslint-sets/react/rules' | 'eslint-sets/react/typescript' | 'eslint-sets/jsx' | 'eslint-sets/svelte' | 'eslint-sets/svelte/runes-in-ts' | 'eslint-sets/solid' | 'eslint-sets/nextjs' | 'eslint-sets/nuxt' | 'eslint-sets/astro' | 'eslint-sets/angular/setup' | 'eslint-sets/angular/rules/ts' | 'eslint-sets/angular/rules/template' | 'eslint-sets/jsonc' | 'eslint-sets/yaml' | 'eslint-sets/markdown/setup' | 'eslint-sets/markdown/processor' | 'eslint-sets/markdown/parser' | 'eslint-sets/markdown/rules' | 'eslint-sets/markdown/disables/markdown' | 'eslint-sets/markdown/disables/code' | 'eslint-sets/toml' | 'eslint-sets/imports' | 'eslint-sets/unicorn' | 'eslint-sets/perfectionist' | 'eslint-sets/regexp' | 'eslint-sets/test' | 'eslint-sets/node' | 'eslint-sets/comments' | 'eslint-sets/jsdoc' | 'eslint-sets/disables/scripts' | 'eslint-sets/disables/cli' | 'eslint-sets/disables/bin' | 'eslint-sets/disables/tasks' | 'eslint-sets/disables/tools' | 'eslint-sets/disables/dts' | 'eslint-sets/disables/cjs' | 'eslint-sets/disables/config-files' | 'eslint-sets/command' | 'eslint-sets/sort-package-json' | 'eslint-sets/sort-tsconfig' | 'eslint-sets/pnpm' | 'eslint-sets/formatters/setup' | 'eslint-sets/formatters/css' | 'eslint-sets/formatters/scss' | 'eslint-sets/formatters/less' | 'eslint-sets/formatters/html' | 'eslint-sets/formatters/graphql' | 'eslint-sets/stylistic' | 'eslint-sets/builtin-rules'

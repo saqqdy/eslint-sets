@@ -73,7 +73,7 @@ export function groupBy<T, K extends string | number | symbol>(
 }
 
 export async function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(resolve, ms)
   })
 }

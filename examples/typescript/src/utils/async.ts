@@ -66,7 +66,7 @@ export class AsyncTaskQueue<T = unknown> {
 
 export async function retry<T>(
   fn: () => Promise<T>,
-  options: { maxAttempts?: number; delay?: number } = {},
+  options: { maxAttempts?: number, delay?: number } = {},
 ): Promise<T> {
   const { delay = 1000, maxAttempts = 3 } = options
   let lastError: Error | undefined
@@ -78,7 +78,7 @@ export async function retry<T>(
       lastError = error instanceof Error ? error : new Error(String(error))
 
       if (attempt < maxAttempts) {
-        await new Promise((resolve) => {
+        await new Promise(resolve => {
           setTimeout(resolve, delay * attempt)
         })
       }
@@ -95,11 +95,11 @@ export async function timeout<T>(promise: Promise<T>, ms: number): Promise<T> {
     }, ms)
 
     promise
-      .then((result) => {
+      .then(result => {
         clearTimeout(timer)
         resolve(result)
       })
-      .catch((error) => {
+      .catch(error => {
         clearTimeout(timer)
         reject(error)
       })

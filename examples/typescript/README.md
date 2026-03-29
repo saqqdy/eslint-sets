@@ -116,7 +116,7 @@ class Stack<T> {
 // Retry with backoff
 async function retry<T>(
   fn: () => Promise<T>,
-  options: { maxAttempts?: number; delay?: number },
+  options: { maxAttempts?: number, delay?: number },
 ): Promise<T>
 
 // Timeout wrapper

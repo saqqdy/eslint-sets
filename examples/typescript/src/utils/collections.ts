@@ -19,7 +19,7 @@ export class LinkedList<T> {
   }
 
   append(value: T): void {
-    const node: LinkedListNode<T> = { next: null, value }
+    const node: LinkedListNode<T> = { value, next: null }
 
     if (this.tail) {
       this.tail.next = node
@@ -33,7 +33,7 @@ export class LinkedList<T> {
   }
 
   prepend(value: T): void {
-    const node: LinkedListNode<T> = { next: this.head, value }
+    const node: LinkedListNode<T> = { value, next: this.head }
 
     this.head = node
 

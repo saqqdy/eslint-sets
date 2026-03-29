@@ -149,10 +149,11 @@ export default eslintConfig({
 	// Disable rules in config files (default: true)
 	disables: true,
 
-	// e18e modernization rules (default: false)
-	e18e: true,
-	// ESLint comments rules (default: true)
-	eslintComments: true,
+	// ESLint directive comments rules (default: true)
+	comments: true,
+
+	// JSDoc rules (default: true)
+	jsdoc: true,
 
 	// External formatters (default: false)
 	formatters: {
@@ -179,8 +180,10 @@ export default eslintConfig({
 	// JSON/JSONC support (default: true)
 	jsonc: true,
 
-	// JSX Accessibility rules (default: false)
-	jsxA11y: true,
+	// JSX support with optional a11y (default: false)
+	jsx: true,
+	// Or with a11y:
+	// jsx: { a11y: true },
 
 	// Markdown support (default: true)
 	markdown: true,
@@ -374,14 +377,11 @@ export default eslintConfig({
 	},
 })
 
-// React/JSX accessibility
+// JSX accessibility
 export default eslintConfig({
-	jsxA11y: true,
-})
-
-// Or standalone JSX a11y
-export default eslintConfig({
-	jsxA11y: true,
+	jsx: {
+		a11y: true,
+	},
 })
 ```
 
@@ -638,18 +638,16 @@ import {
 	stylistic,
 	disables,
 	command,
+	comments,
+	jsdoc,
+	jsx,
 	nextjs,
 	nuxt,
 	astro,
 	angular,
 	unocss,
-	e18e,
 	pnpm,
 	formatters,
-	eslintComments,
-	jsxA11y,
-	vueA11y,
-	noOnlyTests,
 	sortPackageJson,
 	sortTsconfig,
 } from '@eslint-sets/eslint-config'
@@ -713,10 +711,6 @@ The following packages are optional and will be used if installed:
 ### Accessibility
 
 - `eslint-plugin-jsx-a11y` - JSX accessibility rules
-
-### Modernization
-
-- `@e18e/eslint-plugin` - Code modernization rules
 
 ### Workspace
 

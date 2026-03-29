@@ -41,6 +41,7 @@
 - 🔍 **编辑器检测** - 自动检测编辑器环境
 - 🔎 **配置检查器** - 可视化检查 ESLint 配置的工具
 - 📊 **Perfectionist 排序** - 导入/导出排序，支持自然排序
+- 🚀 **ESM-only** - 现代化的 ESM 包，兼容性更好
 
 ## 支持的框架
 
@@ -69,6 +70,25 @@ npm install -D @eslint-sets/eslint-config eslint
 # 使用 bun
 bun add -D @eslint-sets/eslint-config eslint
 ```
+
+> **pnpm 用户注意**：ESLint 9.x 需要 `jiti` 来加载 TypeScript 配置文件。如果你使用 `eslint.config.ts`，请确保安装了对等依赖：
+> ```shell
+> # 方式 1：添加到 .npmrc
+> echo "auto-install-peers=true" >> .npmrc
+>
+> # 方式 2：手动安装 jiti
+> pnpm add -D jiti
+> ```
+
+## 系统要求
+
+- **Node.js**: `^18.18.0` 或 `^20.9.0` 或 `>=21.1.0`
+- **ESLint**: `^9.10.0` 或 `^9.22.0`
+- **配置文件**: 必须使用 ESM 格式（`eslint.config.ts` 或 `eslint.config.mjs`）
+
+> **注意**：此包为纯 ESM。不支持 CommonJS 配置文件（`eslint.config.cjs`、不带 `"type": "module"` 的 `eslint.config.js`）。这是因为核心依赖如 `@stylistic/eslint-plugin` 是纯 ESM 的。
+
+> 注意：`eslint-plugin-toml` 需要 Node.js `^20.19.0 || ^22.13.0 || >=24`。如果你需要在 Node.js 18 上使用 TOML 支持，请考虑降级到 `eslint-plugin-toml@0.13.1`。
 
 ## 快速开始
 
@@ -129,10 +149,11 @@ export default eslintConfig({
 	// 在配置文件中禁用规则（默认：true）
 	disables: true,
 
-	// e18e 现代化规则（默认：false）
-	e18e: true,
-	// ESLint 注释规则（默认：true）
-	eslintComments: true,
+	// ESLint 指令注释规则（默认：true）
+	comments: true,
+
+	// JSDoc 规则（默认：true）
+	jsdoc: true,
 
 	// 外部格式化工具（默认：false）
 	formatters: {
@@ -159,8 +180,10 @@ export default eslintConfig({
 	// JSON/JSONC 支持（默认：true）
 	jsonc: true,
 
-	// JSX 无障碍规则（默认：false）
-	jsxA11y: true,
+	// JSX 支持及可选 a11y（默认：false）
+	jsx: true,
+	// 或带 a11y：
+	// jsx: { a11y: true },
 
 	// Markdown 支持（默认：true）
 	markdown: true,
@@ -330,14 +353,11 @@ export default eslintConfig({
 	},
 })
 
-// React/JSX 无障碍
+// JSX 无障碍
 export default eslintConfig({
-	jsxA11y: true,
-})
-
-// 或独立的 JSX a11y
-export default eslintConfig({
-	jsxA11y: true,
+	jsx: {
+		a11y: true,
+	},
 })
 ```
 
@@ -594,18 +614,16 @@ import {
 	stylistic,
 	disables,
 	command,
+	comments,
+	jsdoc,
+	jsx,
 	nextjs,
 	nuxt,
 	astro,
 	angular,
 	unocss,
-	e18e,
 	pnpm,
 	formatters,
-	eslintComments,
-	jsxA11y,
-	vueA11y,
-	noOnlyTests,
 	sortPackageJson,
 	sortTsconfig,
 } from '@eslint-sets/eslint-config'
@@ -660,10 +678,6 @@ import {
 ### 无障碍
 
 - `eslint-plugin-jsx-a11y` - JSX 无障碍规则
-
-### 现代化
-
-- `@e18e/eslint-plugin` - 代码现代化规则
 
 ### 工作区
 
@@ -845,10 +859,11 @@ export default eslintConfig({
 ### v6 主要变化
 
 1. **Flat Config**: v6 使用 ESLint 新的 flat config 格式（`eslint.config.ts` 而非 `.eslintrc.js`）
-2. **单一包**: 所有子包合并为一个包
-3. **自动检测**: 框架默认自动检测
-4. **Stylistic**: 默认使用 `@stylistic/eslint-plugin` 进行格式化，而非 Prettier
-5. **TypeScript 类型**: 自动生成所有规则的类型
+2. **ESM-only**: 包为纯 ESM，需要 `eslint.config.ts` 或 `eslint.config.mjs`
+3. **单一包**: 所有子包合并为一个包
+4. **自动检测**: 框架默认自动检测
+5. **Stylistic**: 默认使用 `@stylistic/eslint-plugin` 进行格式化，而非 Prettier
+6. **TypeScript 类型**: 自动生成所有规则的类型
 
 ## VS Code 集成
 

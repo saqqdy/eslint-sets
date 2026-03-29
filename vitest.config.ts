@@ -3,7 +3,7 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
 	test: {
 		coverage: {
-			exclude: ['src/types.ts', 'src/constants.ts'],
+			exclude: ['src/types.ts', 'src/constants.ts', 'src/**/types.ts', 'src/**/typegen.d.ts'],
 			include: ['src/**/*.ts'],
 			provider: 'v8',
 			reporter: ['text', 'json', 'html'],

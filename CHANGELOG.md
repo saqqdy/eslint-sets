@@ -2,6 +2,90 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.3.0] - 2026-03-29
+
+### Breaking Changes
+
+- **Config restructure**: Simplified configuration structure
+  - Removed `e18e` config (use `@e18e/eslint-plugin` directly if needed)
+  - Removed `vueA11y` export - use `vue: { a11y: true }` instead
+  - Removed `jsxA11y` export - use `jsx: { a11y: true }` instead
+  - Removed `noOnlyTests` export - merged into `test` config
+  - Renamed `eslintComments` option to `comments`
+  - Renamed `jsxA11y` option to `jsx`
+- **Plugin naming changes**: Updated plugin names for consistency
+  - Stylistic plugin: `@stylistic` → `style`
+  - ESLint comments plugin: `@eslint-community/eslint-comments` → `eslint-comments`
+  - YAML plugin: `yml` → `yaml`
+
+### Added
+
+- **JSX config**: New standalone JSX config with optional a11y support
+  - Base JSX support with `jsx: true`
+  - JSX a11y rules via `jsx: { a11y: true }`
+  - Uses `eslint-plugin-jsx-a11y` for accessibility rules
+- **JSDoc config**: New JSDoc configuration for documentation comments
+  - Enable with `jsdoc: true` (default: true)
+  - Rules for JSDoc comment validation and formatting
+- **Comments config**: Renamed from `eslintComments` for simplicity
+  - ESLint directive comments rules
+  - Enable with `comments: true` (default: true)
+- **Markdown enhancements**: Improved markdown support
+  - Added `eslint-merge-processors` for markdown file processing
+  - Added `processor` configuration with `mergeProcessors`
+  - Added `language` configuration (`markdown/gfm` or `markdown/commonmark`)
+  - Added `markdown/fenced-code-language: 'off'` and `markdown/no-missing-label-refs: 'off'`
+  - Added comprehensive code block disables
+  - Added `gfm` option to toggle between GFM and CommonMark
+  - Added `overridesMarkdown` option for markdown-specific rule overrides
+- **TOML enhancements**:
+  - Added `toml/vue-custom-block/no-parsing-error: 'error'`
+  - Added `style/spaced-comment: 'off'` for TOML files
+- **YAML enhancements**:
+  - Added `yaml/vue-custom-block/no-parsing-error: 'error'`
+  - Added `style/spaced-comment: 'off'` for YAML files
+  - Added stylistic rules: `block-mapping-question-indicator-newline`, `block-sequence-hyphen-indicator-newline`, `flow-mapping-curly-newline`, `flow-mapping-curly-spacing`, `flow-sequence-bracket-newline`, `flow-sequence-bracket-spacing`
+- **JSONC enhancements**:
+  - Added `jsonc/vue-custom-block/no-parsing-error: 'error'`
+- **Vue a11y integration**: Merged `eslint-plugin-vuejs-accessibility` into vue config
+  - Enable with `vue: { a11y: true }` option
+  - Plugin name: `vue-a11y`
+- **Test config enhancements**: Merged `eslint-plugin-no-only-tests` into test config
+  - Automatically included in test files
+  - `test/no-only-tests` rule warns in editor, errors otherwise
+
+### Changed
+
+- **Stylistic config**: Simplified configuration using `@stylistic/configs.customize()`
+  - Added `lessOpinionated` option for less opinionated rules
+  - Added `experimental` option for experimental rules
+  - Plugin name changed to `style` for consistency
+  - Added `style/multiline-ternary: ['error', 'never']`
+  - Added `style/generator-star-spacing` and `style/yield-star-spacing`
+- **ESLint comments config**: Renamed to `comments`, simplified rules
+  - Plugin name changed to `eslint-comments`
+- **JavaScript config**: Improved rules configuration
+  - Added `unused-imports/no-unused-imports: 'error'`
+  - Added `unused-imports/no-unused-vars: 'warn'`
+  - Updated `no-restricted-syntax` rules
+  - Added `no-alert: 'warn'`, `no-debugger: 'error'`, `no-void: 'off'`
+- **TypeScript config**: Improved TypeScript rules
+  - Added `ts/no-dupe-class-members: 'error'`
+  - Added `ts/no-empty-object-type: 'error'`
+  - Added `ts/no-wrapper-object-types: 'error'`
+- **Perfectionist config**: Improved sorting rules
+  - Disabled `sort-objects` and `sort-interfaces`
+  - Updated `sort-imports` and `sort-exports` configuration
+- **Node config**: Cleaned up rules, better organization
+- **Disables config**: Added more file type specific disables
+
+### Fixed
+
+- Fixed test compatibility with new stylistic config options
+- Fixed yaml test cases to use `yaml` prefix instead of `yml`
+- Removed editor detection log message for cleaner output
+- Fixed various type definitions and exports
+
 ## [6.2.0] - 2026-03-15
 
 ### Breaking Changes

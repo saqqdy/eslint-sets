@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+	base: '/eslint-sets/',
 	title: '@eslint-sets/eslint-config',
 	description: 'Modern ESLint config with flat config support',
 

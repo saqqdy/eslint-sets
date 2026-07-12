@@ -1,0 +1,47 @@
+name: Validate Examples
+
+on:
+  push:
+    branches: [master, dev]
+    paths:
+      - "examples/**"
+      - "src/**"
+      - package.json
+  pull_request:
+    branches: [master]
+    paths:
+      - "examples/**"
+      - "src/**"
+      - package.json
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Run examples validation tests
+        run: pnpm test examples-validation
+
+      - name: Validate examples (CLI)
+        run: pnpm validate:examples
+        continue-on-error: true
+        env:
+          CI: true

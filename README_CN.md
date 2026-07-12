@@ -43,6 +43,9 @@
 - 📊 **Perfectionist 排序** - 导入/导出排序，支持自然排序
 - 🚀 **ESM-only** - 现代化的 ESM 包，兼容性更好
 
+- 🧪 **全面测试** - Monorepo、E2E 和性能测试框架
+- 🌐 **Monorepo 支持** - 首选支持 pnpm-workspace、Turborepo 和 NX
+- ⚙️ **languageOptions** - 自定义 ESLint 语言选项支持
 ## 支持的框架
 
 | 框架       | 自动检测 | 说明                               |

@@ -43,6 +43,9 @@ Try it online with StackBlitz:
 - 📊 **Perfectionist Sorting** - Import/export sorting with natural ordering
 - 🚀 **ESM-only** - Modern ESM package for optimal compatibility
 
+- 🧪 **Comprehensive Testing** - Monorepo, E2E, and performance testing framework
+- 🌐 **Monorepo Support** - First-class support for pnpm-workspace, Turborepo, and NX
+- ⚙️ **languageOptions** - Custom ESLint language options support
 ## Supported Frameworks
 
 | Framework  | Auto-detect | Notes                                           |

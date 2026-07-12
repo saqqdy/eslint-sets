@@ -45,6 +45,11 @@ yarn-error.log*
 # Testing
 coverage
 
+# Docs
+docs/.vitepress/dist
+docs/.vitepress/cache
+docs/.vitepress/.temp
+
 # Misc
 *.bak
 *_bak

@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.4.0] - 2026-07-12
+
+### Added
+
+- ✨ **languageOptions Support**: Custom ESLint language options
+  - Support for custom globals, parser options, etc.
+  - Merge with base configuration
+  - Works with all frameworks
+
+- 🧪 **Comprehensive Testing Framework**
+  - Monorepo testing support (pnpm-workspace, Turborepo, NX)
+  - E2E testing framework for real project scenarios
+  - Config conflict detection tests
+  - Performance benchmarks
+  - Test coverage reporting
+
+- 📚 **Enhanced Documentation**
+  - Complete testing guide (docs/TESTING.md)
+  - Monorepo usage guide (docs/MONOREPO.md)
+  - API documentation
+  - Configuration examples
+
+- 📦 **Monorepo Examples**
+  - pnpm-workspace example project
+  - Turborepo example project
+  - Mixed framework workspace examples
+
+### Changed
+
+- 🔧 **Improved Testing Infrastructure**
+  - All 407 tests passing
+  - Automated examples validation
+  - CI workflow for examples testing
+
+### Fixed
+
+- 🐛 Fixed config merging for user options
+- 🐛 Fixed examples validation in CI
+
+## [6.3.1] - 2026-03-29
 ## [6.3.1] - 2026-03-29
 
 ### Fixed

@@ -177,6 +177,13 @@ export interface Options extends OptionsIsInEditor {
 	angular?: FrameworkOptions
 
 	/**
+	 * Language options to pass to ESLint
+	 * These will be merged with the base language options
+	 * @see https://eslint.org/docs/latest/use/configure/language-options
+	 */
+	languageOptions?: Linter.Config['languageOptions']
+
+	/**
 	 * Enable Astro support
 	 * Requires eslint-plugin-astro
 	 * @default 'auto'

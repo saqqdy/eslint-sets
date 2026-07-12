@@ -117,6 +117,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		jsdoc: jsdocOption = true,
 		jsonc: jsoncOption = true,
 		jsx: jsxOption = false,
+		languageOptions: customLanguageOptions,
 		markdown: markdownOption = true,
 		nextjs: nextjsOption = 'auto',
 		node: nodeOption = true,
@@ -396,12 +397,19 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		configs.push(...prettier(prettierOpts))
 	}
 
-	// Custom rules
+	// Custom language options (merged with base configs)
+	const flatConfigItem: Linter.Config = {
+		name: 'eslint-sets/user-options',
+	}
+	if (customLanguageOptions) {
+		flatConfigItem.languageOptions = customLanguageOptions
+	}
 	if (Object.keys(customRules).length > 0) {
-		configs.push({
-			name: 'eslint-sets/custom-rules',
-			rules: customRules,
-		})
+		flatConfigItem.rules = customRules
+	}
+	// Only push if there are actual options
+	if (flatConfigItem.languageOptions || flatConfigItem.rules) {
+		configs.push(flatConfigItem)
 	}
 
 	// Extended configs

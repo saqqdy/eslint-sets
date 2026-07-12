@@ -1,0 +1,109 @@
+/* Custom theme colors - Blue for ESLint */
+:root {
+  --vp-c-brand-1: #3b82f6;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #1d4ed8;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.14);
+
+  /* Accent colors */
+  --vp-c-brand-1-dark: #60a5fa;
+  --vp-c-brand-2-dark: #3b82f6;
+  --vp-c-brand-3-dark: #2563eb;
+
+  /* Button */
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: #fff;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: #fff;
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: #fff;
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+
+  /* Sponsor button */
+  --vp-button-sponsor-border: var(--vp-c-brand-1);
+  --vp-button-sponsor-text: var(--vp-c-brand-1);
+  --vp-button-sponsor-bg: transparent;
+  --vp-button-sponsor-hover-border: var(--vp-c-brand-2);
+  --vp-button-sponsor-hover-text: var(--vp-c-brand-2);
+  --vp-button-sponsor-hover-bg: transparent;
+
+  /* Home hero */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+  --vp-home-hero-image-background-image: linear-gradient(135deg, #60a5fa 50%, #3b82f6 50%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+/* Hero image sizing - make it larger */
+.VPHero .image-bg {
+  width: 280px;
+  height: 280px;
+}
+
+.VPHero .image-src {
+  width: 240px;
+  height: 240px;
+}
+
+@media (max-width: 768px) {
+  .VPHero .image-bg {
+    width: 200px;
+    height: 200px;
+  }
+
+  .VPHero .image-src {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.dark {
+  --vp-c-brand-1: #93c5fd;
+  --vp-c-brand-2: #60a5fa;
+  --vp-c-brand-3: #3b82f6;
+  --vp-c-brand-soft: rgba(147, 197, 253, 0.14);
+
+  --vp-home-hero-name-background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 50%, #3b82f6 100%);
+  --vp-home-hero-image-background-image: linear-gradient(135deg, #93c5fd 50%, #60a5fa 50%);
+}
+
+/* Link hover color */
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* Sidebar active link */
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* Nav link active */
+.VPNavBarMenuLink.active .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* Custom block styling */
+.custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+}
+
+.custom-block.tip a {
+  color: var(--vp-c-brand-1);
+}
+
+/* Badge styling */
+.VPBadge {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+/* Feature grid */
+.VPFeature {
+  border-color: var(--vp-c-brand-soft);
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+}

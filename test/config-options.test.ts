@@ -45,7 +45,7 @@ describe('config Options', () => {
 			},
 		})
 
-		const customConfig = config.find(c => c.name === 'eslint-sets/custom-rules')
+		const customConfig = config.find(c => c.name === 'eslint-sets/user-options')
 
 		expect(customConfig).toBeDefined()
 		expect(customConfig?.rules?.['no-console']).toBe('off')

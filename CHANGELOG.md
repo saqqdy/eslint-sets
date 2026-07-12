@@ -42,7 +42,6 @@ All notable changes to this project will be documented in this file.
 - 🐛 Fixed examples validation in CI
 
 ## [6.3.1] - 2026-03-29
-## [6.3.1] - 2026-03-29
 
 ### Fixed
 

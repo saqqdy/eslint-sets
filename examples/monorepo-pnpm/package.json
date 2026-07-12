@@ -1,0 +1,11 @@
+{
+  "name": "monorepo-pnpm-example",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "^6.3.1",
+    "eslint": "^9.22.0"
+  }
+}

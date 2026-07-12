@@ -1,0 +1,12 @@
+{
+  "name": "monorepo-turbo-example",
+  "private": true,
+  "scripts": {
+    "lint": "turbo lint"
+  },
+  "devDependencies": {
+    "@eslint-sets/eslint-config": "^6.3.1",
+    "eslint": "^9.22.0",
+    "turbo": "^2.0.0"
+  }
+}

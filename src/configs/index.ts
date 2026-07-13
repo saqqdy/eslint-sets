@@ -427,7 +427,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		})
 	}
 
-	return composer
+	return composer.toConfigs()
 }
 // Export constants
 export * from '../constants'

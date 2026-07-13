@@ -316,6 +316,42 @@ export default eslintConfig({
 // 使用 Stylistic 带自定义选项
 export default eslintConfig({
 	stylistic: {
+
+### 自定义语言选项
+
+为特定框架场景添加自定义全局变量和解析器选项：
+
+```typescript
+export default eslintConfig({
+  vue: true,
+  typescript: true,
+  languageOptions: {
+    globals: {
+      // Taro 框架全局变量
+      defineAppConfig: 'readonly',
+      definePageConfig: 'readonly',
+      // 自定义全局变量
+      myGlobal: 'writable',
+    },
+    parserOptions: {
+      ecmaVersion: 2024,
+      sourceType: 'module',
+    },
+  },
+})
+```
+
+**核心特性**：
+- **智能合并**：自定义 `globals` 会智能合并到所有相关配置中（javascript、vue、react 等）
+- **框架全局变量**：非常适合添加框架特定的全局变量，如 Taro 的 `definePageConfig`
+- **完全控制**：支持所有 ESLint `languageOptions` 属性
+
+**常见使用场景**：
+- Taro：`defineAppConfig`、`definePageConfig`
+- Uni-app：`uni`、`plus`
+- 微信小程序：`wx`、`App`、`Page`
+- 自定义环境变量
+
 		arrowParens: false, // true (always) | false (avoid)
 		braceStyle: '1tbs', // '1tbs' | 'stroustrup' | 'allman'
 		bracketSpacing: true, // boolean

@@ -283,6 +283,22 @@ export default eslintConfig({
 
 	// YAML support (default: true)
 	yaml: true,
+
+	// Custom language options (ESLint languageOptions)
+	// Useful for adding framework-specific globals
+	languageOptions: {
+		globals: {
+			// Example: Taro framework globals
+			defineAppConfig: 'readonly',
+			definePageConfig: 'readonly',
+			// Custom global variables
+			myGlobal: 'writable',
+			},
+		parserOptions: {
+			ecmaVersion: 2024,
+			sourceType: 'module',
+			},
+		},
 })
 ```
 
@@ -299,6 +315,42 @@ export default eslintConfig({
 	type: 'lib',
 })
 ```
+
+
+### Custom Language Options
+
+Add custom globals and parser options for framework-specific scenarios:
+
+```typescript
+export default eslintConfig({
+  vue: true,
+  typescript: true,
+  languageOptions: {
+    globals: {
+      // Taro framework globals
+      defineAppConfig: 'readonly',
+      definePageConfig: 'readonly',
+      // Custom global variables
+      myGlobal: 'writable',
+    },
+    parserOptions: {
+      ecmaVersion: 2024,
+      sourceType: 'module',
+    },
+  },
+})
+```
+
+**Key Features**:
+- **Smart Merging**: Custom `globals` are intelligently merged into all relevant configurations (javascript, vue, react, etc.)
+- **Framework Globals**: Perfect for adding framework-specific globals like Taro's `definePageConfig`
+- **Full Control**: Supports all ESLint `languageOptions` properties
+
+**Common Use Cases**:
+- Taro: `defineAppConfig`, `definePageConfig`
+- Uni-app: `uni`, `plus`
+- WeChat miniprogram: `wx`, `App`, `Page`
+- Custom environment variables
 
 ### Stylistic vs Prettier
 

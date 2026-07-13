@@ -39,7 +39,8 @@ All notable changes to this project will be documented in this file.
 
 - ✨ **languageOptions Support**: Custom ESLint language options
   - Support for custom globals, parser options, etc.
-  - Merge with base configuration
+  - Smart merging: globals are merged into all relevant configs (javascript, vue, react, etc.)
+  - Perfect for framework-specific globals (Taro, Uni-app, WeChat miniprogram)
   - Works with all frameworks
 
 - 🧪 **Comprehensive Testing Framework**

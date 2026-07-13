@@ -46,6 +46,9 @@ Try it online with StackBlitz:
 - 🧪 **Comprehensive Testing** - Monorepo, E2E, and performance testing framework
 - 🌐 **Monorepo Support** - First-class support for pnpm-workspace, Turborepo, and NX
 - ⚙️ **languageOptions** - Custom ESLint language options support
+- 📊 **Test Coverage Reports** - Automated coverage analysis with framework matrix and recommendations
+- ⚡ **Performance Monitoring** - Comprehensive benchmarks for small/medium/large projects
+- 🔍 **Rule Update Detection** - Automatic deprecated rule detection with migration suggestions
 ## Supported Frameworks
 
 | Framework  | Auto-detect | Notes                                           |

@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.5.0] - 2026-07-12
+
+### Added
+
+- 📊 **Test Coverage Reports**: Automated coverage analysis system
+  - Framework coverage metrics with detailed breakdown
+  - Coverage matrix for all supported frameworks
+  - Missing scenario detection and recommendations
+  - JSON and Markdown report generation
+  - Run with: `pnpm tsx scripts/coverage-report.ts`
+
+- ⚡ **Performance Monitoring**: Comprehensive performance benchmarks
+  - Small/Medium/Large project size benchmarks
+  - Memory usage tracking and optimization
+  - File linting performance tests (10/100/300 files)
+  - Configuration generation performance tests
+  - Memory leak detection tests
+
+- 🔍 **Rule Update Detection**: Automatic rule migration helper
+  - Deprecated rule detection across all configs
+  - Migration path suggestions for outdated rules
+  - Plugin version compatibility checking
+  - Rule configuration validation
+  - Comprehensive coverage reports
+
+### Changed
+
+- 🎯 **Enhanced Testing Infrastructure**: Improved test monitoring capabilities
+- 📚 **Documentation**: Added performance tuning and coverage reporting guides
+
+
 ## [6.4.0] - 2026-07-12
 
 ### Added

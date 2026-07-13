@@ -5,6 +5,7 @@ import type { ReactOptions } from './react'
 import type { StylisticOptions } from './stylistic'
 import type { TypeScriptOptions } from './typescript'
 import type { VueOptions } from './vue'
+import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import {
 	hasAngular,
 	hasAstro,
@@ -18,7 +19,6 @@ import {
 	hasVue,
 } from '../plugins'
 import {
-	combine,
 	getGitignorePatterns,
 	getOverrides,
 	isInEditorEnv,
@@ -397,29 +397,38 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		configs.push(...prettier(prettierOpts))
 	}
 
-	// Custom language options (merged with base configs)
-	const flatConfigItem: Linter.Config = {
-		name: 'eslint-sets/user-options',
-	}
-	if (customLanguageOptions) {
-		flatConfigItem.languageOptions = customLanguageOptions
-	}
-	if (Object.keys(customRules).length > 0) {
-		flatConfigItem.rules = customRules
-	}
-	// Only push if there are actual options
-	if (flatConfigItem.languageOptions || flatConfigItem.rules) {
-		configs.push(flatConfigItem)
-	}
-
 	// Extended configs
 	if (extendConfigs.length > 0) {
 		configs.push(...extendConfigs)
 	}
 
-	return combine(...configs)
-}
+	// Manually merge languageOptions.globals into existing configs
+	// FlatConfigComposer doesn't auto-merge globals
+	if (customLanguageOptions?.globals) {
+		for (const config of configs) {
+			if (config.languageOptions?.globals) {
+				config.languageOptions.globals = {
+					...config.languageOptions.globals,
+					...customLanguageOptions.globals,
+				}
+			}
+		}
+	}
 
+	// Use FlatConfigComposer for plugin renaming and other utilities
+	const composer = new FlatConfigComposer()
+	composer.append(...configs)
+
+	// Append custom rules (globals already merged above)
+	if (Object.keys(customRules).length > 0) {
+		composer.append({
+			name: 'eslint-sets/user-options',
+			rules: customRules,
+		})
+	}
+
+	return composer
+}
 // Export constants
 export * from '../constants'
 

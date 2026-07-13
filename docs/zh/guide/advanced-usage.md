@@ -32,3 +32,39 @@
 - Svelte 5 Runes
 
 详细配置和示例请查看英文文档。
+
+### 自定义语言选项
+
+为特定框架场景添加自定义全局变量：
+
+```typescript
+export default eslintConfig({
+  vue: true,
+  typescript: true,
+  languageOptions: {
+    globals: {
+      // Taro 框架全局变量
+      defineAppConfig: 'readonly',
+      definePageConfig: 'readonly',
+      // 自定义全局变量
+      myGlobal: 'writable',
+    },
+  },
+})
+```
+
+**核心特性**：
+
+- **智能合并**：自定义 `globals` 会智能合并到所有相关配置中（javascript、vue、react 等）
+- **框架全局变量**：非常适合添加框架特定的全局变量，如 Taro 的 `definePageConfig`
+- **保留默认值**：默认全局变量（console、process、window 等）会被保留
+
+**常见使用场景**：
+
+- **Taro**：`defineAppConfig`、`definePageConfig`
+- **Uni-app**：`uni`、`plus`
+- **微信小程序**：`wx`、`App`、`Page`
+- **自定义环境变量**
+
+**注意**：当前仅支持 `globals` 合并。其他 `languageOptions` 属性不会自动合并。
+

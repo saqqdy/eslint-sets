@@ -345,3 +345,38 @@ This enforces:
 - Require descriptions for `eslint-disable` comments
 - Warn about unused `eslint-disable` comments
 - And more...
+## Custom Language Options
+
+Add custom globals and parser options for framework-specific scenarios:
+
+```typescript
+export default eslintConfig({
+  vue: true,
+  typescript: true,
+  languageOptions: {
+    globals: {
+      // Taro framework globals
+      defineAppConfig: 'readonly',
+      definePageConfig: 'readonly',
+      // Custom global variables
+      myGlobal: 'writable',
+    },
+  },
+})
+```
+
+**Key Features**:
+
+- **Smart Merging**: Custom `globals` are intelligently merged into all relevant configurations (javascript, vue, react, etc.)
+- **Framework Globals**: Perfect for adding framework-specific globals like Taro's `definePageConfig`
+- **Preserves Defaults**: Default globals (console, process, window, etc.) are preserved
+
+**Common Use Cases**:
+
+- **Taro**: `defineAppConfig`, `definePageConfig`
+- **Uni-app**: `uni`, `plus`
+- **WeChat Miniprogram**: `wx`, `App`, `Page`
+- **Custom Environment Variables**
+
+**Note**: Currently, only `globals` merging is supported. Other `languageOptions` properties are not automatically merged.
+

@@ -121,3 +121,53 @@ Tests run automatically on:
 - Changes to `examples/` or `src/` directories
 
 See `.github/workflows/examples.yml` for configuration.
+
+## Testing Tools (v6.5.0)
+
+### Test Coverage Reports
+
+Generate comprehensive coverage analysis for all frameworks:
+
+```bash
+# Generate coverage report
+pnpm tsx scripts/coverage-report.ts
+
+# Output: coverage-report.json and coverage-report.md
+```
+
+**Features**:
+- Framework coverage matrix
+- Missing scenario detection
+- Improvement recommendations
+- JSON and Markdown formats
+
+### Performance Benchmarks
+
+Built-in performance tests ensure optimal linting speed:
+
+```bash
+# Run performance tests
+pnpm test test/performance.test.ts
+```
+
+**Benchmarks**:
+- Configuration generation performance
+- TypeScript/Vue/React linting performance
+- Memory efficiency tests
+- Large code file handling
+
+### Rule Update Detection
+
+Automatically detect deprecated ESLint rules:
+
+```bash
+# Run rule update detection
+pnpm test test/rule-updates.test.ts
+```
+
+**Features**:
+- Deprecated rule detection
+- Migration path suggestions
+- Plugin version compatibility checking
+- Rule configuration validation
+

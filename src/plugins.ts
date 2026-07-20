@@ -1,4 +1,5 @@
 import { isPackageExists } from 'local-pkg'
+import { globSync } from 'tinyglobby'
 import {
 	ANGULAR_PACKAGES,
 	ASTRO_PACKAGES,
@@ -155,5 +156,20 @@ export async function ensurePackages(packages: string[]): Promise<void> {
 		throw new Error(
 			`Missing required packages: ${missing.join(', ')}. Please install them with: pnpm add -D ${missing.join(' ')}`,
 		)
+	}
+}
+
+/**
+ * Check if JSX/TSX files exist in the project
+ */
+export function hasJsxFiles(): boolean {
+	try {
+		const files = globSync('**/*.{jsx,tsx}', {
+			ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'],
+			cwd: process.cwd(),
+		})
+		return files.length > 0
+	} catch {
+		return false
 	}
 }

@@ -9,6 +9,7 @@ import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import {
 	hasAngular,
 	hasAstro,
+	hasJsxFiles,
 	hasNextjs,
 	hasNuxt,
 	hasReact,
@@ -189,6 +190,29 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		}
 
 		configs.push(...(await vue({ ...vueOpts, stylistic: vueStylistic })))
+	}
+
+	// Configuration conflict detection
+	// Warn if React is installed but explicitly disabled
+	if (reactOption === false && hasReact()) {
+		console.warn(
+			'\n[eslint-sets] ⚠️  Warning: "react" package detected but react: false.\n'
+			+ '  This disables React-specific rules like react-dom/no-unknown-property.\n'
+			+ '  JSX may incorrectly use "class" instead of "className".\n'
+			+ '  Recommendation: Set react: "auto" or react: true\n',
+		)
+	}
+
+	// Warn if JSX files exist but no JSX framework is enabled
+	const hasJsxFramework = isEnabled(reactOption) || isEnabled(solidOption) || isEnabled(vueOption)
+		|| (autoDetect && (hasReact() || hasSolid() || hasVue()))
+
+	if (!hasJsxFramework && hasJsxFiles()) {
+		console.warn(
+			'\n[eslint-sets] ⚠️  Warning: JSX/TSX files detected but no JSX framework enabled.\n'
+			+ '  This may cause incorrect linting of JSX attributes (e.g., "class" vs "className").\n'
+			+ '  Recommendation: Set react/solid/vue to "auto" or true based on your framework.\n',
+		)
 	}
 
 	// React

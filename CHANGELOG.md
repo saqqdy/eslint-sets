@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.5.1] - 2026-07-20
+
+### Added
+
+- 🎯 **FlatConfigComposer Integration**: Improved language options handling and custom rule merging
+  - Integrated `FlatConfigComposer` from `eslint-flat-config-utils` for better config composition
+  - Enhanced plugin renaming and utility functions
+  - Improved custom rules appending mechanism
+
+- 🌐 **Framework-Specific Globals Support**: Enhanced custom language options
+  - Smart merging of custom `globals` into all relevant configurations (javascript, vue, react, etc.)
+  - Perfect for framework-specific globals like Taro, Uni-app, WeChat miniprogram
+  - Preserves default globals while adding custom ones
+  - Added documentation with common use cases
+
+### Fixed
+
+- 🔧 **eslint-flat-config-utils Compatibility**: Updated to compatible version for better stability
+
+### Changed
+
+- 📚 **Documentation**: Enhanced custom language options documentation with more examples and use cases
+
 ## [6.5.0] - 2026-07-12
 
 ### Added

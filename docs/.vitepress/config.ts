@@ -17,8 +17,9 @@ export default defineConfig({
 			{ text: 'Config', link: '/configs/' },
 			{ text: 'API', link: '/api/' },
 			{
-				text: 'v6.6.0',
+				text: 'v6.6.1',
 				items: [
+					{ text: 'v6.6.0', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.6.0' },
 					{ text: 'v6.5.1', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.5.1' },
 					{ text: 'v6.5.0', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.5.0' },
 					{ text: 'v6.4.0', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.4.0' },

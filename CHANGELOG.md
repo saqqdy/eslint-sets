@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.6.0] - 2026-08-08
+
+### Added
+
+- 🛡️ **Editor Environment CI Guard**: `isInEditorEnv()` now returns `false` in CI, git hooks, and lint-staged contexts
+  - Rules downgraded for editors (`prefer-const`, `unused-imports`, etc.) now stay strict (`error`) where it matters
+  - Added `VIM` and `NVIM` to `EDITOR_ENV_KEYS`; added ZED editor support (`ZED_ENVIRONMENT` without `ZED_TERM`)
+  - Exposed `isInGitHooksOrLintStaged()` helper
+
+- 🔊 **`loadPlugin` Required Flag**: `loadPlugin(name, { required: true })` warns with the plugin name and error message on failure
+  - Core dependencies (`@typescript-eslint/eslint-plugin`, `eslint-plugin-jsdoc`, `eslint-plugin-no-only-tests`) now surface broken installs instead of silently producing empty rulesets
+  - Optional plugin loads (default) remain silent — preserves existing behavior
+
+- ⚡ **`hasJsxFiles` Caching**: The JSX/TSX file scan is now cached per-process, avoiding repeated full-tree scans on editor reloads
+
+### Fixed
+
+- 🐛 **CI Rule Strictness**: Removed `TERM_PROGRAM` from `EDITOR_ENV_KEYS` — it caused false-positive editor detection in CI terminals, wrongly downgrading strict rules to `warn`. CI and git-hook contexts now correctly keep rules strict.
+
+- 📁 **Gitignore Semantics**: Replaced the hand-rolled gitignore parser with `eslint-config-flat-gitignore` for correct git semantics (root-anchored patterns, nested `.gitignore` files). The previous implementation mishandled root anchoring.
+
+### Changed
+
+- 🔄 **React/Svelte/Solid Now Opt-In by Default**: `react`, `svelte`, `solid` defaults changed from `'auto'` to `false`, aligning with `@antfu/eslint-config`. Only `vue` remains auto-detected. This prevents Vue and React configs from both activating in hoisted monorepos (where `isPackageExists` resolves both from root `node_modules`), which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files.
+  - **Migration**: if you relied on auto-detection, add `react: true` / `svelte: true` / `solid: true`. To restore old behavior, set `react: 'auto'`.
+  - A warning now prints when `react` is installed but disabled, guiding you to enable it.
+- 🧹 **Helper Consolidation**: Removed the duplicate `resolveOptionsOverrides` helper; `getOverrides` is now the single path for sub-option overrides
+- 🎨 **Stylistic Options Dedup**: Stylistic options are resolved once and shared across `vue`/`jsonc`/`yaml`/`toml`/`formatters`/`stylistic` configs instead of re-deriving per config
+- 📦 **Peer Dependencies**: Raised `eslint` peer dependency to `^9.10.0`
+- 🔨 **Build Hard-Fail**: `prepublishOnly` now runs `pnpm typecheck && pnpm build` — type errors block publish
+
+### Deprecated
+
+- ⚠️ **Git Utilities**: `parseGitignore`, `findGitignore`, and `getGitignorePatterns` (`src/utils/git.ts`) are deprecated. They still work in v6.6.0 but are slated for removal in v7.0.0 — use the built-in `gitignore` option (enabled by default) instead. The new implementation no longer reads `.git/info/exclude` (only `.gitignore` files).
+
 ## [6.5.1] - 2026-07-20
 
 ### Added

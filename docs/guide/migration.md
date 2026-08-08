@@ -86,9 +86,17 @@ extends: '@eslint-sets/eslint-config-react'
 
 **After (v6):**
 ```typescript
-// Auto-detects React if react is in dependencies
-export default eslintConfig()
+// Vue is auto-detected if vue/nuxt/vitepress is in dependencies.
+// React/Svelte/Solid require explicit opt-in (v6.6.0+, aligned with @antfu/eslint-config):
+export default eslintConfig({
+  react: true, // when using React
+})
 ```
+
+> [!NOTE]
+> Since v6.6.0, only `vue` auto-detects. `react`/`svelte`/`solid` default to `false`
+> to prevent Vue and React from both activating in hoisted monorepos. Set `react: true`
+> / `svelte: true` / `solid: true` to enable, or `'auto'` to restore auto-detection.
 
 ### 5. Stylistic by Default
 
@@ -339,6 +347,50 @@ export default eslintConfig({
   stylistic: false,
 })
 ```
+
+## v6.6.0
+
+### React/Svelte/Solid Now Opt-In
+
+`react`, `svelte`, and `solid` defaults changed from `'auto'` to `false`, aligning with `@antfu/eslint-config`. Only `vue` remains auto-detected. This prevents Vue and React configs from both activating simultaneously in hoisted monorepos (where `isPackageExists` resolves both from the root `node_modules`), which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files.
+
+**Migration**: if you relied on auto-detection, add `react: true` / `svelte: true` / `solid: true`:
+
+```typescript
+export default eslintConfig({
+  react: true, // or svelte: true / solid: true
+})
+```
+
+To restore the old auto-detect behavior, set the option to `'auto'`:
+
+```typescript
+export default eslintConfig({
+  react: 'auto',
+})
+```
+
+A warning now prints when `react` is installed but `react` is disabled, guiding you to enable it.
+
+### CI and Git Hooks Keep Rules Strict
+
+`isInEditorEnv()` now returns `false` in CI, git hooks (`GIT_PARAMS` / `VSCODE_GIT_COMMAND`), and lint-staged contexts. Rules that are downgraded for editors (e.g. `prefer-const`, `unused-imports`) now stay strict (`error`) where it matters. The `TERM_PROGRAM` environment variable has been removed from `EDITOR_ENV_KEYS` (it caused CI false-positives); `VIM`, `NVIM`, and Zed (`ZED_ENVIRONMENT` without `ZED_TERM`) are now recognized as editors.
+
+### .gitignore Handling
+
+`.gitignore` handling is now backed by `eslint-config-flat-gitignore`, which provides correct git semantics (root-anchoring, nested `.gitignore` files). It no longer reads `.git/info/exclude` — only `.gitignore` files are read.
+
+### Deprecated Git Utilities
+
+`parseGitignore`, `findGitignore`, and `getGitignorePatterns` (from `src/utils/git.ts`) are **deprecated** and slated for removal in v7.0.0. Use the built-in `gitignore` option (enabled by default) instead.
+
+### Peer Dependencies
+
+The ESLint peer dependency requirement has been raised to `^9.10.0`.
+
+### loadPlugin Required Flag
+
+`loadPlugin(name, { required: true })` now warns with the plugin name and error message on failure. Optional loads (without the flag) remain silent. Core dependencies (`@typescript-eslint/eslint-plugin`, `eslint-plugin-jsdoc`, `eslint-plugin-no-only-tests`) now use `required: true`.
 
 ## Need Help?
 

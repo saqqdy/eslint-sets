@@ -55,14 +55,17 @@
 | ---------- | :------: | ---------------------------------- |
 | TypeScript |    ✅    | 默认启用                           |
 | Vue        |    ✅    | 支持 Vue 2 和 3，可选 a11y         |
-| React      |    ✅    | 支持 hooks、refresh 和 React Compiler |
-| Svelte     |    ✅    | 支持 Svelte 5 runes，在 `.svelte` 和 TS 文件中可用 |
-| Solid      |    ✅    |                                    |
+| React      |    ❌    | 显式启用（v6.6.0+）；`react: true` 或 `'auto'`；hooks、refresh、React Compiler |
+| Svelte     |    ❌    | 显式启用（v6.6.0+）；`svelte: true` 或 `'auto'`；Svelte 5 runes |
+| Solid      |    ❌    |                                    |
 | Next.js    |    ✅    | 需要 `@next/eslint-plugin-next`    |
 | Nuxt       |    ✅    |                                    |
 | Astro      |    ✅    | 需要 `eslint-plugin-astro`         |
 | Angular    |    ✅    | 需要 `@angular-eslint/eslint-plugin` |
 | UnoCSS     |    ✅    | 需要 `@unocss/eslint-plugin`       |
+
+> [!NOTE]
+> 自 v6.6.0 起，仅 `vue` 自动检测。`react`/`svelte`/`solid` 默认为 `false`（显式启用），以防止在 hoisted monorepo 中 Vue 和 React 配置同时激活——这会导致 `react-refresh/only-export-components` 对 Vue 项目的 `.ts` 文件误报。设 `react: true` / `svelte: true` / `solid: true` 启用，或传 `'auto'` 恢复自动检测。
 
 ## 安装
 
@@ -212,7 +215,7 @@ export default eslintConfig({
 	// 注意：必须设置 stylistic: false 才能使用 prettier
 	prettier: false,
 
-	// React 支持（默认：'auto' - 自动检测）
+	// React 支持（默认：false - 显式启用，v6.6.0+；用 'auto' 恢复自动检测）
 	react: true,
 
 	// 或带选项：
@@ -229,7 +232,7 @@ export default eslintConfig({
 		'no-console': 'off',
 	},
 
-	// Solid 支持（默认：'auto' - 自动检测）
+	// Solid 支持（默认：false - 显式启用，v6.6.0+；用 'auto' 恢复自动检测）
 	solid: true,
 
 	// 自动排序 package.json（默认：true）
@@ -255,7 +258,7 @@ export default eslintConfig({
 		trailingComma: 'always-multiline', // 'none' | 'always' | 'never' | 'only-multiline' | 'always-multiline' - 默认: 'always-multiline'
 	},
 
-	// Svelte 支持（默认：'auto' - 自动检测）
+	// Svelte 支持（默认：false - 显式启用，v6.6.0+；用 'auto' 恢复自动检测）
 	svelte: true,
 
 	// 测试文件支持（默认：true）
@@ -406,7 +409,7 @@ export default eslintConfig({
 
 ### 自动检测
 
-默认情况下，配置会自动检测已安装的框架并启用相应的规则：
+默认情况下，配置会自动检测已安装的框架（自 v6.6.0 起仅 `vue` 自动检测；`react`/`svelte`/`solid` 需显式启用）并启用相应的规则：
 
 ```typescript
 // eslint.config.ts
@@ -905,7 +908,7 @@ export default eslintConfig({
 1. **Flat Config**: v6 使用 ESLint 新的 flat config 格式（`eslint.config.ts` 而非 `.eslintrc.js`）
 2. **ESM-only**: 包为纯 ESM，需要 `eslint.config.ts` 或 `eslint.config.mjs`
 3. **单一包**: 所有子包合并为一个包
-4. **自动检测**: 框架默认自动检测
+4. **自动检测**: 框架默认自动检测（自 v6.6.0 起仅 `vue` 自动检测；`react`/`svelte`/`solid` 需显式启用）
 5. **Stylistic**: 默认使用 `@stylistic/eslint-plugin` 进行格式化，而非 Prettier
 6. **TypeScript 类型**: 自动生成所有规则的类型
 

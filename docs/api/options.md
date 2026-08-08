@@ -87,7 +87,10 @@ export default eslintConfig({
 React support configuration.
 
 - **Type**: `boolean | ReactOptions`
-- **Default**: `'auto'`
+- **Default**: `false`
+
+> [!NOTE]
+> Auto-detection is disabled by default to avoid Vue and React both activating in hoisted monorepos. Set to `true` to enable, or `'auto'` to restore the old auto-detect behavior.
 
 ```typescript
 // Boolean
@@ -109,7 +112,10 @@ export default eslintConfig({
 Svelte support configuration.
 
 - **Type**: `boolean`
-- **Default**: `'auto'`
+- **Default**: `false`
+
+> [!NOTE]
+> Auto-detection is disabled by default to avoid conflicts with Vue in hoisted monorepos. Set to `true` to enable, or `'auto'` to restore the old auto-detect behavior.
 
 ```typescript
 export default eslintConfig({
@@ -122,7 +128,10 @@ export default eslintConfig({
 SolidJS support configuration.
 
 - **Type**: `boolean`
-- **Default**: `'auto'`
+- **Default**: `false`
+
+> [!NOTE]
+> Auto-detection is disabled by default to avoid conflicts with Vue in hoisted monorepos. Set to `true` to enable, or `'auto'` to restore the old auto-detect behavior.
 
 ```typescript
 export default eslintConfig({
@@ -264,6 +273,14 @@ export default eslintConfig({
   gitignore: true,
 })
 ```
+
+::: tip Library-backed git semantics
+Since v6.6.0, `.gitignore` handling is backed by `eslint-config-flat-gitignore`, which provides correct git semantics (root-anchoring, nested `.gitignore` files). Only `.gitignore` files are read — `.git/info/exclude` is no longer consulted.
+:::
+
+::: warning Deprecated git utilities
+`parseGitignore`, `findGitignore`, and `getGitignorePatterns` (from `src/utils/git.ts`) are **deprecated** and slated for removal in v7.0.0. Use the built-in `gitignore` option (enabled by default) instead.
+:::
 
 ### `ignores`
 

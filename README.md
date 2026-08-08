@@ -38,7 +38,7 @@ Try it online with StackBlitz:
 - 🏷️ **Project Types** - Support for `app` and `lib` project types
 - ♿ **Accessibility** - Optional a11y rules for Vue and React
 - 📝 **Auto-sort** - Automatically sort package.json and tsconfig.json
-- 🔍 **Editor Detection** - Automatically detect editor environment
+- 🔍 **Editor Detection** - Automatically detect editor environment; CI and git hooks keep rules strict
 - 🔎 **Config Inspector** - Visual tool for inspecting your ESLint config
 - 📊 **Perfectionist Sorting** - Import/export sorting with natural ordering
 - 🚀 **ESM-only** - Modern ESM package for optimal compatibility
@@ -55,14 +55,17 @@ Try it online with StackBlitz:
 | ---------- | :---------: | ----------------------------------------------- |
 | TypeScript |     ✅      | Default enabled                                 |
 | Vue        |     ✅      | Vue 2 & 3 support, with a11y option             |
-| React      |     ✅      | With hooks, refresh, and React Compiler support |
-| Svelte     |     ✅      | Svelte 5 runes support in `.svelte` and TS files |
-| Solid      |     ✅      |                                                 |
+| React      |     ❌      | Opt-in (v6.6.0+); `react: true` or `'auto'`; hooks, refresh, React Compiler |
+| Svelte     |     ❌      | Opt-in (v6.6.0+); `svelte: true` or `'auto'`; Svelte 5 runes |
+| Solid      |     ❌      |                                                 |
 | Next.js    |     ✅      | Requires `@next/eslint-plugin-next`             |
 | Nuxt       |     ✅      |                                                 |
 | Astro      |     ✅      | Requires `eslint-plugin-astro`                  |
 | Angular    |     ✅      | Requires `@angular-eslint/eslint-plugin`        |
 | UnoCSS     |     ✅      | Requires `@unocss/eslint-plugin`                |
+
+> [!NOTE]
+> Since v6.6.0, only `vue` auto-detects. `react`/`svelte`/`solid` default to `false` (opt-in) to prevent Vue and React from both activating in hoisted monorepos, which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files. Set `react: true` / `svelte: true` / `solid: true` to enable, or `'auto'` to restore detection.
 
 ## Installation
 
@@ -172,6 +175,7 @@ export default eslintConfig({
 	},
 
 	// Auto-read .gitignore (default: true)
+	// (parseGitignore/findGitignore/getGitignorePatterns are deprecated v6.6.0, removal v7.0.0; use this option instead)
 	gitignore: true,
 
 	// Files to ignore
@@ -212,7 +216,7 @@ export default eslintConfig({
 	// Note: Must set stylistic: false to use prettier
 	prettier: false,
 
-	// React support (default: 'auto' - auto-detect)
+	// React support (default: false - opt-in, v6.6.0+; use 'auto' to auto-detect)
 	react: true,
 
 	// Or with options:
@@ -229,7 +233,7 @@ export default eslintConfig({
 		'no-console': 'off',
 	},
 
-	// Solid support (default: 'auto' - auto-detect)
+	// Solid support (default: false - opt-in, v6.6.0+; use 'auto' to auto-detect)
 	solid: true,
 
 	// Auto-sort package.json (default: true)
@@ -255,7 +259,7 @@ export default eslintConfig({
 		trailingComma: 'always-multiline', // 'none' | 'always' | 'never' | 'only-multiline' | 'always-multiline' - default: 'always-multiline'
 	},
 
-	// Svelte support (default: 'auto' - auto-detect)
+	// Svelte support (default: false - opt-in, v6.6.0+; use 'auto' to auto-detect)
 	svelte: true,
 
 	// Test file support (default: true)
@@ -446,7 +450,7 @@ export default eslintConfig({
 
 ### Auto-Detection
 
-By default, the config auto-detects installed frameworks and enables the appropriate rules:
+By default, the config auto-detects installed frameworks (only `vue` since v6.6.0; `react`/`svelte`/`solid` are opt-in) and enables the appropriate rules:
 
 ```typescript
 // eslint.config.ts
@@ -954,7 +958,7 @@ export default eslintConfig({
 1. **Flat Config**: v6 uses ESLint's new flat config format (`eslint.config.ts` instead of `.eslintrc.js`)
 2. **ESM-only**: Package is now pure ESM, requires `eslint.config.ts` or `eslint.config.mjs`
 3. **Single Package**: All sub-packages merged into one package
-4. **Auto-detection**: Frameworks are auto-detected by default
+4. **Auto-detection**: Frameworks are auto-detected by default (since v6.6.0, only `vue` auto-detects; `react`/`svelte`/`solid` are opt-in)
 5. **Stylistic**: Default formatting uses `@stylistic/eslint-plugin` instead of Prettier
 6. **TypeScript Types**: Auto-generated types for all rules
 

@@ -67,7 +67,7 @@ export async function test(options: TestOptions = {}): Promise<Linter.Config[]> 
 	const { isInEditor = false, overrides = {} } = options
 
 	// Load no-only-tests plugin
-	const noOnlyTestsPlugin = await loadPlugin<NoOnlyTestsPlugin>('eslint-plugin-no-only-tests')
+	const noOnlyTestsPlugin = await loadPlugin<NoOnlyTestsPlugin>('eslint-plugin-no-only-tests', { required: true })
 
 	// Create merged test plugin
 	const testPlugin = createTestPlugin(vitest, noOnlyTestsPlugin)

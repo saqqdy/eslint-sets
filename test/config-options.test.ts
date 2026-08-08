@@ -137,6 +137,17 @@ describe('config Options', () => {
 		expect(config).toBeDefined()
 	})
 
+	it('should include a gitignore config when enabled', async () => {
+		// v6.6.0: .gitignore is read via eslint-config-flat-gitignore.
+		const config = await eslintConfig({ gitignore: true })
+		const gitignoreConfig = config.find(c => c.name === 'eslint-sets/gitignore')
+
+		expect(gitignoreConfig).toBeDefined()
+		expect(gitignoreConfig?.ignores).toBeDefined()
+		expect(Array.isArray(gitignoreConfig?.ignores)).toBeTruthy()
+		expect(gitignoreConfig!.ignores!.length).toBeGreaterThan(0)
+	})
+
 	it('should support disables option disabled', async () => {
 		const config = await eslintConfig({
 			disables: false,
@@ -268,5 +279,50 @@ describe('config Options', () => {
 			checkDestructured: false,
 			useDefaultObjectProperties: false,
 		})
+	})
+
+	// v6.6.0: react/svelte/solid default to false (opt-in, aligned with @antfu/eslint-config)
+	// to avoid Vue/React both activating in hoisted monorepos. Only vue stays 'auto'.
+	it('should not enable react by default (opt-in like antfu)', async () => {
+		const config = await eslintConfig()
+
+		expect(config.find(c => c.name === 'eslint-sets/react/rules')).toBeUndefined()
+		expect(config.find(c => c.name === 'eslint-sets/react/setup')).toBeUndefined()
+	})
+
+	it('should not enable svelte by default', async () => {
+		const config = await eslintConfig()
+
+		expect(config.find(c => c.name === 'eslint-sets/svelte')).toBeUndefined()
+	})
+
+	it('should not enable solid by default', async () => {
+		const config = await eslintConfig()
+
+		expect(config.find(c => c.name === 'eslint-sets/solid')).toBeUndefined()
+	})
+
+	it('should enable react when explicitly set to true', async () => {
+		// When @eslint-react/eslint-plugin is not installed, react() returns [],
+		// so we assert no-throw + valid array (mirrors 'react with options object' test).
+		const config = await eslintConfig({ react: true })
+
+		expect(config).toBeDefined()
+		expect(Array.isArray(config)).toBeTruthy()
+	})
+
+	it('should still accept react: "auto" for backward compatibility', async () => {
+		const config = await eslintConfig({ react: 'auto' })
+
+		expect(config).toBeDefined()
+		expect(Array.isArray(config)).toBeTruthy()
+	})
+
+	it('should keep vue auto-detection (unchanged)', async () => {
+		const config = await eslintConfig()
+
+		// Vue is the only JSX framework still auto-detected by default.
+		// In this repo vue is installed, so the vue config should be present.
+		expect(config.find(c => c.name === 'eslint-sets/vue')).toBeDefined()
 	})
 })

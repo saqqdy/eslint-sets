@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { combine, deepMerge, ensureArray, filterNil, isObject, renameRules } from '../src/utils'
+import { combine, deepMerge, ensureArray, filterNil, getOverrides, isObject, renameRules } from '../src/utils'
 
 describe('utils', () => {
 	describe('combine', () => {
@@ -106,6 +106,21 @@ describe('utils', () => {
 
 		it('should return empty array for all nil values', () => {
 			expect(filterNil([null, undefined])).toEqual([])
+		})
+	})
+
+	describe('getOverrides', () => {
+		it('should return overrides for a known key', () => {
+			const options = { vue: { overrides: { 'vue/foo': 'off' } } }
+			expect(getOverrides(options as never, 'vue')).toEqual({ 'vue/foo': 'off' })
+		})
+
+		it('should return empty object when sub-options have no overrides', () => {
+			expect(getOverrides({ vue: {} } as never, 'vue')).toEqual({})
+		})
+
+		it('should return empty object when key is missing', () => {
+			expect(getOverrides({} as never, 'vue')).toEqual({})
 		})
 	})
 })

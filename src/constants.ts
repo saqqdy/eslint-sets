@@ -140,5 +140,6 @@ export const EDITOR_ENV_KEYS = [
 	'VSCODE_CWD',
 	'JETBRAINS_IDE',
 	'WEBIDE_PID',
-	'TERM_PROGRAM',
+	'VIM',
+	'NVIM',
 ]

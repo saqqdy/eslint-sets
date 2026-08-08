@@ -81,9 +81,31 @@ export function filterNil<T>(array: (T | undefined | null)[]): T[] {
 }
 
 /**
- * Check if currently running in an editor environment
+ * Check if currently running inside a git hook or lint-staged context.
+ * In these contexts we want strict rules (not the editor-downgraded ones).
+ */
+export function isInGitHooksOrLintStaged(): boolean {
+	return !!(
+		process.env.GIT_PARAMS
+		|| process.env.VSCODE_GIT_COMMAND
+		|| process.env.npm_lifecycle_script?.startsWith('lint-staged')
+	)
+}
+
+/**
+ * Check if currently running in an editor environment.
+ *
+ * Returns `false` in CI and git-hook / lint-staged contexts so that rules
+ * downgraded for editors (e.g. `prefer-const`) stay strict where it matters.
  */
 export function isInEditorEnv(): boolean {
+	if (process.env.CI)
+		return false
+	if (isInGitHooksOrLintStaged())
+		return false
+	// ZED ships a bundled terminal (ZED_TERM); only count as editor when not in it
+	if (process.env.ZED_ENVIRONMENT && !process.env.ZED_TERM)
+		return true
 	return EDITOR_ENV_KEYS.some(key => process.env[key])
 }
 

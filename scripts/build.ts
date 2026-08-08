@@ -42,14 +42,10 @@ async function main() {
 		platform: 'node',
 	})
 
-	// Generate declaration files using tsc
+	// Generate declaration files using tsc (hard-fail on type errors so the
+	// published .d.ts are always valid — see prepublishOnly typecheck gate)
 	console.log('Generating declaration files...')
-	try {
-		execSync('tsc --emitDeclarationOnly --declaration --outDir dist', { stdio: 'inherit' })
-	} catch {
-		// tsc may have type errors but still generate .d.ts files
-		console.log('TypeScript completed with some type errors (non-blocking)')
-	}
+	execSync('tsc --emitDeclarationOnly --declaration --outDir dist', { stdio: 'inherit' })
 
 	console.log('Done!')
 }

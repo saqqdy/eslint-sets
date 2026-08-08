@@ -133,15 +133,31 @@ export function hasPackage(name: string): boolean {
 }
 
 /**
- * Dynamically load a plugin
+ * Dynamically load a plugin.
+ *
+ * By default failures are silent (the plugin is treated as optional). Pass
+ * `{ required: true }` for core dependencies whose failure should be surfaced
+ * — otherwise a broken/incompatible install silently reduces the config to a
+ * ruleset with no rules (e.g. a TypeScript config with no `ts/*` rules).
+ *
+ * @param options.required when true, warn with the plugin name and error on failure
  */
-export async function loadPlugin<T>(name: string): Promise<T | null> {
+export async function loadPlugin<T>(
+	name: string,
+	options: { required?: boolean } = {},
+): Promise<T | null> {
 	try {
 		const mod = await import(name)
 
 		// Handle ESM default export
 		return (mod?.default ?? mod) as T
-	} catch {
+	} catch (error) {
+		if (options.required) {
+			console.warn(
+				`[eslint-sets] Failed to load plugin "${name}": `
+				+ `${error instanceof Error ? error.message : error}`,
+			)
+		}
 		return null
 	}
 }
@@ -160,16 +176,25 @@ export async function ensurePackages(packages: string[]): Promise<void> {
 }
 
 /**
- * Check if JSX/TSX files exist in the project
+ * Check if JSX/TSX files exist in the project.
+ *
+ * The result is cached per-process so repeated `config()` calls (e.g. editor
+ * reloads) don't re-scan the whole tree.
  */
+let cachedHasJsxFiles: boolean | null = null
+
 export function hasJsxFiles(): boolean {
+	if (cachedHasJsxFiles !== null)
+		return cachedHasJsxFiles
 	try {
 		const files = globSync('**/*.{jsx,tsx}', {
 			ignore: ['**/node_modules/**', '**/dist/**', '**/.git/**'],
 			cwd: process.cwd(),
 		})
-		return files.length > 0
+		cachedHasJsxFiles = files.length > 0
+		return cachedHasJsxFiles
 	} catch {
-		return false
+		cachedHasJsxFiles = false
+		return cachedHasJsxFiles
 	}
 }

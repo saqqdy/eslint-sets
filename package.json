@@ -2,7 +2,7 @@
 	"name": "@eslint-sets/eslint-config",
 	"description": "Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript, Next.js, Nuxt, Astro, Angular, UnoCSS and more",
 	"type": "module",
-	"version": "6.5.1",
+	"version": "6.6.0",
 	"packageManager": "pnpm@9.15.9",
 	"bin": {
 		"eslint-sets": "./dist/cli/index.js"
@@ -35,7 +35,7 @@
 		"test:watch": "vitest",
 		"test:coverage": "vitest run --coverage",
 		"inspector": "@eslint/config-inspector",
-		"prepublishOnly": "pnpm build",
+		"prepublishOnly": "pnpm typecheck && pnpm build",
 		"release": "bumpp && pnpm publish",
 		"validate:examples": "jiti scripts/validate-examples.ts",
 		"docs:dev": "vitepress dev docs",
@@ -54,6 +54,7 @@
 		"@typescript-eslint/eslint-plugin": "^8.63.0",
 		"@typescript-eslint/parser": "^8.63.0",
 		"@vitest/eslint-plugin": "^1.6.23",
+		"eslint-config-flat-gitignore": "^2.3.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-flat-config-utils": "^0.4.0",
 		"eslint-merge-processors": "^2.0.0",
@@ -94,7 +95,7 @@
 		"vitest": "^4.1.10"
 	},
 	"peerDependencies": {
-		"eslint": "^9.10.0 || ^9.22.0",
+		"eslint": "^9.10.0",
 		"prettier": "^3.5.3",
 		"typescript": ">=5.0.0"
 	},

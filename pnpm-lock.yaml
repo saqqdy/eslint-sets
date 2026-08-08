@@ -29,6 +29,9 @@ importers:
       '@vitest/eslint-plugin':
         specifier: ^1.6.23
         version: 1.6.23(@typescript-eslint/eslint-plugin@8.63.0(@typescript-eslint/parser@8.63.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)(vitest@4.1.10)
+      eslint-config-flat-gitignore:
+        specifier: ^2.3.0
+        version: 2.3.0(eslint@9.39.5(jiti@2.7.0))
       eslint-config-prettier:
         specifier: ^10.1.8
         version: 10.1.8(eslint@9.39.5(jiti@2.7.0))
@@ -805,6 +808,15 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.0.0'
+
+  '@eslint/compat@2.1.0':
+    resolution: {integrity: sha512-LgaSCymEpw7tF53xvDw9SNsraPb1IBHxpdABIOM0hW8UAlP8znrjYtuxfR58FSJ3L9BhwD+FaPRFQpZq84Nh6g==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+    peerDependencies:
+      eslint: ^8.40 || 9 || 10
+    peerDependenciesMeta:
+      eslint:
+        optional: true
 
   '@eslint/config-array@0.21.2':
     resolution: {integrity: sha512-nJl2KGTlrf9GjLimgIru+V/mzgSK0ABCDQRvxw5BjURL7WfH5uoWmizbH7QB6MmnMBd8cIC9uceWnezL1VZWWw==}
@@ -2044,6 +2056,11 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  eslint-config-flat-gitignore@2.3.0:
+    resolution: {integrity: sha512-bg4ZLGgoARg1naWfsINUUb/52Ksw/K22K+T16D38Y8v+/sGwwIYrGvH/JBjOin+RQtxxC9tzNNiy4shnGtGyyQ==}
+    peerDependencies:
+      eslint: ^9.5.0 || ^10.0.0
 
   eslint-config-prettier@10.1.8:
     resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
@@ -4643,6 +4660,12 @@ snapshots:
       - supports-color
     optional: true
 
+  '@eslint/compat@2.1.0(eslint@9.39.5(jiti@2.7.0))':
+    dependencies:
+      '@eslint/core': 1.2.1
+    optionalDependencies:
+      eslint: 9.39.5(jiti@2.7.0)
+
   '@eslint/config-array@0.21.2':
     dependencies:
       '@eslint/object-schema': 2.1.7
@@ -6078,6 +6101,11 @@ snapshots:
     dependencies:
       eslint: 9.39.5(jiti@2.7.0)
       semver: 7.7.4
+
+  eslint-config-flat-gitignore@2.3.0(eslint@9.39.5(jiti@2.7.0)):
+    dependencies:
+      '@eslint/compat': 2.1.0(eslint@9.39.5(jiti@2.7.0))
+      eslint: 9.39.5(jiti@2.7.0)
 
   eslint-config-prettier@10.1.8(eslint@9.39.5(jiti@2.7.0)):
     dependencies:

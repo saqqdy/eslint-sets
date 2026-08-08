@@ -1,5 +1,5 @@
 import type { Linter } from 'eslint'
-import type { Options, OptionsOverrides, PerfectionistOptions } from '../types'
+import type { Options, PerfectionistOptions } from '../types'
 import type { PrettierOptions } from './prettier'
 import type { ReactOptions } from './react'
 import type { StylisticOptions } from './stylistic'
@@ -20,11 +20,9 @@ import {
 	hasVue,
 } from '../plugins'
 import {
-	getGitignorePatterns,
 	getOverrides,
 	isInEditorEnv,
 	processIgnores,
-	resolveSubOptions,
 } from '../utils'
 import { angular } from './angular'
 import { astro } from './astro'
@@ -84,20 +82,6 @@ function isOptionsObject(option: unknown): option is Record<string, unknown> {
 }
 
 /**
- * Resolve sub-options with overrides
- */
-function resolveOptionsOverrides<K extends string>(
-	options: Record<string, unknown>,
-	key: K,
-): OptionsOverrides {
-	const subOptions = resolveSubOptions(options, key)
-
-	return {
-		overrides: (subOptions.overrides as Linter.RulesRecord) || {},
-	}
-}
-
-/**
  * Create the ESLint configuration
  */
 export async function config(options: Options = {}): Promise<Linter.Config[]> {
@@ -126,14 +110,14 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		perfectionist: perfectionistOption = true,
 		pnpm: pnpmOption = false,
 		prettier: prettierOption = false,
-		react: reactOption = 'auto',
+		react: reactOption = false,
 		regexp: regexpOption = true,
 		rules: customRules = {},
-		solid: solidOption = 'auto',
+		solid: solidOption = false,
 		sortPackageJson: sortPackageJsonOption = true,
 		sortTsconfig: sortTsconfigOption = true,
 		stylistic: stylisticOption = true,
-		svelte: svelteOption = 'auto',
+		svelte: svelteOption = false,
 		test: testOption = true,
 		toml: tomlOption = true,
 		typescript: tsOption = true,
@@ -146,20 +130,24 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Detect editor environment
 	const inEditor = isInEditor ?? isInEditorEnv()
 
+	// Resolve stylistic options once — shared by vue/jsonc/yaml/toml/formatters/stylistic
+	const stylisticOptions: false | StylisticOptions = stylisticOption === false ? false : typeof stylisticOption === 'object' ? { ...stylisticOption } : {}
+
 	const configs: Linter.Config[] = []
 
-	// Collect all ignore patterns
+	// Collect user-specified ignore patterns (defaults handled by ignores())
 	const allIgnores = processIgnores(ignorePatterns)
-
-	// Add gitignore patterns if enabled
-	if (gitignoreOption) {
-		const gitignorePatterns = await getGitignorePatterns()
-
-		allIgnores.push(...gitignorePatterns)
-	}
 
 	// Ignores
 	configs.push(ignores(allIgnores))
+
+	// Auto-read .gitignore with correct git semantics (root anchoring, nested
+	// .gitignore) via eslint-config-flat-gitignore. Note: this no longer reads
+	// .git/info/exclude (the hand-rolled impl did) — only .gitignore files.
+	if (gitignoreOption) {
+		const { default: ignore } = await import('eslint-config-flat-gitignore')
+		configs.push(ignore({ name: 'eslint-sets/gitignore', strict: false }))
+	}
 
 	// Base JavaScript
 	configs.push(
@@ -184,12 +172,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 		vueOpts.overrides = getOverrides(options as Record<string, unknown>, 'vue')
 
-		// Extract stylistic options for Vue
-		const vueStylistic = stylisticOption === false ? false : {
-			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-		}
-
-		configs.push(...(await vue({ ...vueOpts, stylistic: vueStylistic })))
+		configs.push(...(await vue({ ...vueOpts, stylistic: stylisticOptions })))
 	}
 
 	// Configuration conflict detection
@@ -242,26 +225,26 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Next.js
 	if (isEnabled(nextjsOption) || (isAutoDetect(nextjsOption) && autoDetect && hasNextjs())) {
 		configs.push(
-			...(await nextjs(resolveOptionsOverrides(options as Record<string, unknown>, 'nextjs'))),
+			...(await nextjs({ overrides: getOverrides(options as Record<string, unknown>, 'nextjs') })),
 		)
 	}
 
 	// Nuxt
 	if (isEnabled(nuxtOption) || (isAutoDetect(nuxtOption) && autoDetect && hasNuxt())) {
-		configs.push(...nuxt(resolveOptionsOverrides(options as Record<string, unknown>, 'nuxt')))
+		configs.push(...nuxt({ overrides: getOverrides(options as Record<string, unknown>, 'nuxt') }))
 	}
 
 	// Astro
 	if (isEnabled(astroOption) || (isAutoDetect(astroOption) && autoDetect && hasAstro())) {
 		configs.push(
-			...(await astro(resolveOptionsOverrides(options as Record<string, unknown>, 'astro'))),
+			...(await astro({ overrides: getOverrides(options as Record<string, unknown>, 'astro') })),
 		)
 	}
 
 	// Angular
 	if (isEnabled(angularOption) || (isAutoDetect(angularOption) && autoDetect && hasAngular())) {
 		configs.push(
-			...(await angular(resolveOptionsOverrides(options as Record<string, unknown>, 'angular'))),
+			...(await angular({ overrides: getOverrides(options as Record<string, unknown>, 'angular') })),
 		)
 	}
 
@@ -269,24 +252,15 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	if (jsoncOption !== false) {
 		const jsoncOpts = typeof jsoncOption === 'object' ? jsoncOption : {}
 
-		// Extract stylistic options for JSON
-		const jsoncStylistic = stylisticOption === false ? false : {
-			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-		}
-
-		configs.push(...jsonc({ ...jsoncOpts, stylistic: jsoncStylistic }))
+		configs.push(...jsonc({ ...jsoncOpts, stylistic: stylisticOptions }))
 	}
 
 	// YAML
 	if (yamlOption !== false) {
 		const yamlOpts = typeof yamlOption === 'object' ? yamlOption : {}
 
-		// Extract stylistic options for YAML
-		const yamlStylistic = stylisticOption === false ? false : {
-			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-			// YAML uses double quotes by default (supports escape sequences)
-			quotes: 'double' as const,
-		}
+		// YAML uses double quotes by default (supports escape sequences)
+		const yamlStylistic = stylisticOptions === false ? false : { ...stylisticOptions, quotes: 'double' as const }
 
 		configs.push(...yaml({ ...yamlOpts, stylistic: yamlStylistic }))
 	}
@@ -302,12 +276,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	if (tomlOption !== false) {
 		const tomlOpts = typeof tomlOption === 'object' ? tomlOption : {}
 
-		// Extract stylistic options for TOML
-		const tomlStylistic = stylisticOption === false ? false : {
-			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-		}
-
-		configs.push(...toml({ ...tomlOpts, stylistic: tomlStylistic }))
+		configs.push(...toml({ ...tomlOpts, stylistic: stylisticOptions }))
 	}
 
 	// Imports
@@ -381,7 +350,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// UnoCSS
 	if (isEnabled(unocssOption) || (isAutoDetect(unocssOption) && autoDetect && hasUnoCSS())) {
 		configs.push(
-			...(await unocss(resolveOptionsOverrides(options as Record<string, unknown>, 'unocss'))),
+			...(await unocss({ overrides: getOverrides(options as Record<string, unknown>, 'unocss') })),
 		)
 	}
 
@@ -392,25 +361,17 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 	// External formatters (CSS, HTML, XML, SVG, GraphQL)
 	if (formattersOption !== false && formattersOption !== undefined) {
-		// Extract stylistic options for formatters
-		const formattersStylistic = stylisticOption === false ? {} : {
-			indent: typeof stylisticOption === 'object' ? stylisticOption.indent : 2,
-			quotes: typeof stylisticOption === 'object' ? stylisticOption.quotes : 'single',
-		}
-
 		configs.push(
 			...(await formatters(
 				typeof formattersOption === 'object' ? formattersOption : {},
-				formattersStylistic,
+				stylisticOptions === false ? {} : stylisticOptions,
 			)),
 		)
 	}
 
 	// Stylistic (code formatting with ESLint)
 	if (stylisticOption !== false && stylisticOption !== undefined) {
-		const stylisticOpts: StylisticOptions = typeof stylisticOption === 'object' ? stylisticOption : {}
-
-		configs.push(...stylistic(stylisticOpts))
+		configs.push(...stylistic(stylisticOptions === false ? {} : stylisticOptions))
 	}
 
 	// Prettier (should be last, before custom rules)

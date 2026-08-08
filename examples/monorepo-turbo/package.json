@@ -5,7 +5,7 @@
     "lint": "turbo lint"
   },
   "devDependencies": {
-    "@eslint-sets/eslint-config": "^6.3.1",
+    "@eslint-sets/eslint-config": "^6.6.0",
     "eslint": "^9.22.0",
     "turbo": "^2.0.0"
   }

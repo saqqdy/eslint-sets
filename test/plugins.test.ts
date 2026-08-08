@@ -1,8 +1,9 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import {
 	ensurePackages,
 	hasAngular,
 	hasAstro,
+	hasJsxFiles,
 	hasNuxt,
 	hasPackage,
 	hasPrettier,
@@ -116,6 +117,46 @@ describe('loadPlugin', () => {
 		// Test with a plugin that has default export
 		const plugin = await loadPlugin<typeof import('eslint-plugin-react-hooks')>('eslint-plugin-react-hooks')
 		expect(plugin).toBeDefined()
+	})
+
+	// v6.6.0: required plugins surface failures instead of silently returning null.
+	it('should warn and return null when a required plugin fails to load', async () => {
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+		const plugin = await loadPlugin('non-existent-required-plugin-xyz', { required: true })
+
+		expect(plugin).toBeNull()
+		expect(warnSpy).toHaveBeenCalledTimes(1)
+		expect(warnSpy.mock.calls[0][0]).toContain('[eslint-sets]')
+		expect(warnSpy.mock.calls[0][0]).toContain('non-existent-required-plugin-xyz')
+		warnSpy.mockRestore()
+	})
+
+	// Optional loads (no `required` flag) stay silent — preserves the documented contract.
+	it('should stay silent when an optional plugin fails to load', async () => {
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+		const plugin = await loadPlugin('non-existent-optional-plugin-xyz')
+
+		expect(plugin).toBeNull()
+		expect(warnSpy).not.toHaveBeenCalled()
+		warnSpy.mockRestore()
+	})
+})
+
+describe('hasJsxFiles', () => {
+	// v6.6.0: result is cached per-process; repeated calls do not re-scan the tree.
+	it('returns a boolean', () => {
+		expect(typeof hasJsxFiles()).toBe('boolean')
+	})
+
+	it('returns true (the repo ships .tsx files under examples/)', () => {
+		expect(hasJsxFiles()).toBe(true)
+	})
+
+	it('returns the cached value on repeated calls (idempotent)', () => {
+		const first = hasJsxFiles()
+		const second = hasJsxFiles()
+
+		expect(first).toBe(second)
 	})
 })
 

@@ -15,7 +15,7 @@ export type JSDocOptions = OptionsOverrides
 export async function jsdoc(options: JSDocOptions = {}): Promise<Linter.Config[]> {
 	const { overrides = {} } = options
 
-	const jsdocPlugin = await loadPlugin<typeof import('eslint-plugin-jsdoc')>('eslint-plugin-jsdoc')
+	const jsdocPlugin = await loadPlugin<typeof import('eslint-plugin-jsdoc')>('eslint-plugin-jsdoc', { required: true })
 
 	if (!jsdocPlugin) {
 		return []

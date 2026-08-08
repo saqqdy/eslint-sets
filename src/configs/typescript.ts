@@ -41,7 +41,7 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 		typeAware = false,
 	} = options
 
-	const tseslint = await loadPlugin<TypeScriptESLintPlugin>('@typescript-eslint/eslint-plugin')
+	const tseslint = await loadPlugin<TypeScriptESLintPlugin>('@typescript-eslint/eslint-plugin', { required: true })
 
 	if (!tseslint) {
 		return []

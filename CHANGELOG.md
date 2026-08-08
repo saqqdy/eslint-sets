@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.6.1] - 2026-08-08
+
+### Fixed
+
+- 🐛 **React Detection False-Positive in Vue/Solid Monorepos**: The `"react" package detected but react: false` warning now fires only when `react` is installed and neither `vue` nor `solid` is present (i.e. React is the only candidate JSX framework). Previously, a transitive `react` dependency — common in hoisted pnpm monorepos — triggered the warning in Vue projects where React rules are correctly left disabled.
+- 🔧 **Restored Node.js 18 Support for JSDoc**: Pinned `eslint-plugin-jsdoc` to `~50.8.0` (was `^61.7.1`). `51.0.0+` uses the ES2024 `v` (unicodeSets) regex flag and requires Node.js `>=20.11.0`; on Node.js 18 it throws `Invalid regular expression flags` at import time, which `loadPlugin` surfaces as `Failed to load plugin "eslint-plugin-jsdoc"`. The pin restores JSDoc rule coverage on Node.js 18, consistent with the declared `engines` (`^18.18.0 || ^20.9.0 || >=21.1.0`).
+
 ## [6.6.0] - 2026-08-08
 
 ### Added

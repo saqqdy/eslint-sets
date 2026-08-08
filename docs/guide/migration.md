@@ -392,6 +392,16 @@ The ESLint peer dependency requirement has been raised to `^9.10.0`.
 
 `loadPlugin(name, { required: true })` now warns with the plugin name and error message on failure. Optional loads (without the flag) remain silent. Core dependencies (`@typescript-eslint/eslint-plugin`, `eslint-plugin-jsdoc`, `eslint-plugin-no-only-tests`) now use `required: true`.
 
+## v6.6.1
+
+### React Warning No Longer Fires in Vue/Solid Projects
+
+The `"react" package detected but react: false` warning is now gated on `!hasVue() && !hasSolid()` — it only fires when `react` is installed and neither Vue nor Solid is present (i.e. React is the only candidate JSX framework). This eliminates false positives in Vue/Solid monorepos where `react` is merely a transitive (hoisted) dependency and React rules are correctly left disabled.
+
+### JSDoc Pinned for Node.js 18 Compatibility
+
+`eslint-plugin-jsdoc` is pinned to `~50.8.0` (was `^61.7.1`). Versions `51.0.0+` use the ES2024 `v` (unicodeSets) regex flag and require Node.js `>=20.11.0`; on Node.js 18 they throw `Invalid regular expression flags` at import time, which `loadPlugin` reports as `Failed to load plugin "eslint-plugin-jsdoc"`. The pin restores JSDoc rule coverage on Node.js 18, matching the declared `engines` (`^18.18.0 || ^20.9.0 || >=21.1.0`).
+
 ## Need Help?
 
 If you encounter issues during migration:

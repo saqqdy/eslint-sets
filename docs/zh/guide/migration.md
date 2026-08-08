@@ -168,6 +168,16 @@ peer 依赖 `eslint` 提升至 `^9.10.0`。
 
 `loadPlugin(name, { required: true })` 现在加载失败时会输出包含插件名与错误信息的警告。可选加载（不带该标志）保持静默不变。核心依赖（`@typescript-eslint/eslint-plugin`、`eslint-plugin-jsdoc`、`eslint-plugin-no-only-tests`）现在使用 `required: true`。
 
+## v6.6.1
+
+### React 警告不再在 Vue/Solid 项目中触发
+
+`"react" package detected but react: false` 警告现以 `!hasVue() && !hasSolid()` 作为前置条件：仅当 `react` 已安装且 Vue、Solid 均不存在时（即 React 是唯一的 JSX 框架候选）才触发。这消除了 Vue/Solid monorepo 中因 `react` 仅作为传递（被 hoist 的）依赖而误报的情况——此时禁用 React 规则本就是正确的。
+
+### 为兼容 Node.js 18 固定 JSDoc 版本
+
+`eslint-plugin-jsdoc` 固定为 `~50.8.0`（原 `^61.7.1`）。`51.0.0+` 使用了 ES2024 的 `v`（unicodeSets）正则 flag，要求 Node.js `>=20.11.0`；在 Node.js 18 上会在 import 时抛出 `Invalid regular expression flags`，`loadPlugin` 会将其报告为 `Failed to load plugin "eslint-plugin-jsdoc"`。此次固定恢复了 Node.js 18 上的 JSDoc 规则覆盖，与包声明的 `engines`（`^18.18.0 || ^20.9.0 || >=21.1.0`）一致。
+
 ## 迁移步骤
 
 1. **删除旧包：**

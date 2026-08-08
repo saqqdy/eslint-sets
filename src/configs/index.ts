@@ -176,8 +176,8 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	}
 
 	// Configuration conflict detection
-	// Warn if React is installed but explicitly disabled
-	if (reactOption === false && hasReact()) {
+	// Warn if React is installed but explicitly disabled (and no Vue/Solid present)
+	if (reactOption === false && hasReact() && !hasVue() && !hasSolid()) {
 		console.warn(
 			'\n[eslint-sets] ⚠️  Warning: "react" package detected but react: false.\n'
 			+ '  This disables React-specific rules like react-dom/no-unknown-property.\n'

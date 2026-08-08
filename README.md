@@ -98,6 +98,8 @@ bun add -D @eslint-sets/eslint-config eslint
 > **Note**: This package is ESM-only. CommonJS config files (`eslint.config.cjs`, `eslint.config.js` without `"type": "module"`) are not supported. This is required because core dependencies like `@stylistic/eslint-plugin` are ESM-only.
 
 > Note: `eslint-plugin-toml` requires Node.js `^20.19.0 || ^22.13.0 || >=24`. If you need TOML support on Node.js 18, consider downgrading to `eslint-plugin-toml@0.13.1`.
+>
+> Note: `eslint-plugin-jsdoc` is pinned to `~50.8.0`. Versions `51.0.0+` use the ES2024 `v` (unicodeSets) regex flag and require Node.js `>=20.11.0`; the pin keeps JSDoc rules working on Node.js 18.
 
 ## Quick Start
 

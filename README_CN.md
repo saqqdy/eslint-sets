@@ -98,6 +98,8 @@ bun add -D @eslint-sets/eslint-config eslint
 > **注意**：此包为纯 ESM。不支持 CommonJS 配置文件（`eslint.config.cjs`、不带 `"type": "module"` 的 `eslint.config.js`）。这是因为核心依赖如 `@stylistic/eslint-plugin` 是纯 ESM 的。
 
 > 注意：`eslint-plugin-toml` 需要 Node.js `^20.19.0 || ^22.13.0 || >=24`。如果你需要在 Node.js 18 上使用 TOML 支持，请考虑降级到 `eslint-plugin-toml@0.13.1`。
+>
+> 注意：`eslint-plugin-jsdoc` 固定为 `~50.8.0`。`51.0.0+` 使用了 ES2024 的 `v`（unicodeSets）正则 flag，要求 Node.js `>=20.11.0`；该固定使 JSDoc 规则在 Node.js 18 上仍可正常工作。
 
 ## 快速开始
 

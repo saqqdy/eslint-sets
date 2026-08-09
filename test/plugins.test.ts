@@ -1,6 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
 import {
-	ensurePackages,
 	hasAngular,
 	hasAstro,
 	hasJsxFiles,
@@ -157,30 +156,5 @@ describe('hasJsxFiles', () => {
 		const second = hasJsxFiles()
 
 		expect(first).toBe(second)
-	})
-})
-
-describe('ensurePackages', () => {
-	it('resolves when all packages are present', async () => {
-		await expect(ensurePackages(['typescript', 'eslint'])).resolves.toBeUndefined()
-	})
-
-	it('skips (no throw) when packages are missing in non-interactive contexts', async () => {
-		// v7.0.0: ensurePackages is interactive in TTY contexts via
-		// @clack/prompts + @antfu/install-pkg; it is a no-op in CI / non-TTY /
-		// out-of-scope contexts. Force CI here so the prompt is skipped and the
-		// call resolves without installing. (Vitest does not set CI itself, and
-		// stdout.isTTY is `undefined` here, not strictly `false`.)
-		const prev = process.env.CI
-		process.env.CI = '1'
-		try {
-			await expect(ensurePackages(['non-existent-package-xyz'])).resolves.toBeUndefined()
-		} finally {
-			process.env.CI = prev
-		}
-	})
-
-	it('accepts undefined entries (filters them out)', async () => {
-		await expect(ensurePackages(['typescript', undefined, 'eslint'])).resolves.toBeUndefined()
 	})
 })

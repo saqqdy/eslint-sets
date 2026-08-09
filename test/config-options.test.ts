@@ -281,9 +281,9 @@ describe('config Options', () => {
 		})
 	})
 
-	// v6.6.0: react/svelte/solid default to false (opt-in, aligned with @antfu/eslint-config)
+	// v6.6.0: react/svelte/solid default to false (opt-in)
 	// to avoid Vue/React both activating in hoisted monorepos. Only vue stays 'auto'.
-	it('should not enable react by default (opt-in like antfu)', async () => {
+	it('should not enable react by default (opt-in)', async () => {
 		const config = await eslintConfig()
 
 		expect(config.find(c => c.name === 'eslint-sets/react/rules')).toBeUndefined()

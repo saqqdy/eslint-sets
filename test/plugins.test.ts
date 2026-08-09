@@ -161,15 +161,26 @@ describe('hasJsxFiles', () => {
 })
 
 describe('ensurePackages', () => {
-	it('should not throw when all packages are installed', async () => {
+	it('resolves when all packages are present', async () => {
 		await expect(ensurePackages(['typescript', 'eslint'])).resolves.toBeUndefined()
 	})
 
-	it('should throw when packages are missing', async () => {
-		await expect(ensurePackages(['non-existent-package-xyz'])).rejects.toThrow('Missing required packages')
+	it('skips (no throw) when packages are missing in non-interactive contexts', async () => {
+		// v7.0.0: ensurePackages is interactive in TTY contexts via
+		// @clack/prompts + @antfu/install-pkg; it is a no-op in CI / non-TTY /
+		// out-of-scope contexts. Force CI here so the prompt is skipped and the
+		// call resolves without installing. (Vitest does not set CI itself, and
+		// stdout.isTTY is `undefined` here, not strictly `false`.)
+		const prev = process.env.CI
+		process.env.CI = '1'
+		try {
+			await expect(ensurePackages(['non-existent-package-xyz'])).resolves.toBeUndefined()
+		} finally {
+			process.env.CI = prev
+		}
 	})
 
-	it('should list all missing packages in error message', async () => {
-		await expect(ensurePackages(['missing-pkg-a', 'missing-pkg-b'])).rejects.toThrow('missing-pkg-a, missing-pkg-b')
+	it('accepts undefined entries (filters them out)', async () => {
+		await expect(ensurePackages(['typescript', undefined, 'eslint'])).resolves.toBeUndefined()
 	})
 })

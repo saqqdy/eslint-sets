@@ -13,13 +13,14 @@ describe('Language Options', () => {
 		expect(config).toBeDefined()
 		expect(Array.isArray(config)).toBeTruthy()
 
-		// Custom globals should be merged into javascript config
-		const javascriptConfig = config.find(c => c.name?.includes('javascript'))
-		expect(javascriptConfig).toBeDefined()
-		expect(javascriptConfig?.languageOptions?.globals?.customGlobal).toBe('readonly')
+		// Custom globals live in a dedicated no-files language-options config
+		// so ESLint merges them natively across all matching files.
+		const langConfig = config.find(c => c.name === 'eslint-sets/language-options')
+		expect(langConfig).toBeDefined()
+		expect(langConfig?.languageOptions?.globals?.customGlobal).toBe('readonly')
 	})
 
-	it('should merge globals into base config', async () => {
+	it('should expose custom globals via a language-options config', async () => {
 		const config = await eslintConfig({
 			typescript: true,
 			languageOptions: {
@@ -28,9 +29,8 @@ describe('Language Options', () => {
 		})
 
 		expect(config).toBeDefined()
-		// Globals should be merged into javascript config
-		const javascriptConfig = config.find(c => c.name?.includes('javascript'))
-		expect(javascriptConfig?.languageOptions?.globals?.myGlobal).toBe('writable')
+		const langConfig = config.find(c => c.name === 'eslint-sets/language-options')
+		expect(langConfig?.languageOptions?.globals?.myGlobal).toBe('writable')
 	})
 
 	it('should work with different frameworks', async () => {
@@ -42,8 +42,7 @@ describe('Language Options', () => {
 			},
 		})
 		expect(vueConfig).toBeDefined()
-		const vueJsConfig = vueConfig.find(c => c.name?.includes('javascript'))
-		expect(vueJsConfig?.languageOptions?.globals?.vueGlobal).toBe('readonly')
+		expect(vueConfig.find(c => c.name === 'eslint-sets/language-options')?.languageOptions?.globals?.vueGlobal).toBe('readonly')
 
 		// Test with React
 		const reactConfig = await eslintConfig({
@@ -53,8 +52,7 @@ describe('Language Options', () => {
 			},
 		})
 		expect(reactConfig).toBeDefined()
-		const reactJsConfig = reactConfig.find(c => c.name?.includes('javascript'))
-		expect(reactJsConfig?.languageOptions?.globals?.reactGlobal).toBe('readonly')
+		expect(reactConfig.find(c => c.name === 'eslint-sets/language-options')?.languageOptions?.globals?.reactGlobal).toBe('readonly')
 	})
 
 	it('should work without languageOptions', async () => {
@@ -94,7 +92,7 @@ describe('Language Options', () => {
 		expect(noUndefErrors.length).toBe(0)
 	})
 
-	it('should intelligently merge globals into javascript config', async () => {
+	it('should expose custom globals alongside default globals', async () => {
 		const config = await eslintConfig({
 			typescript: true,
 			languageOptions: {
@@ -107,18 +105,20 @@ describe('Language Options', () => {
 
 		expect(config).toBeDefined()
 
-		// Find the javascript config
+		// Custom globals are in the dedicated language-options config
+		const langConfig = config.find(c => c.name === 'eslint-sets/language-options')
+		expect(langConfig).toBeDefined()
+		expect(langConfig?.languageOptions?.globals?.defineAppConfig).toBe('readonly')
+		expect(langConfig?.languageOptions?.globals?.definePageConfig).toBe('readonly')
+
+		// Default globals remain in the javascript config (unaffected)
 		const javascriptConfig = config.find(c => c.name?.includes('javascript'))
 		expect(javascriptConfig).toBeDefined()
-		expect(javascriptConfig?.languageOptions?.globals?.defineAppConfig).toBe('readonly')
-		expect(javascriptConfig?.languageOptions?.globals?.definePageConfig).toBe('readonly')
-
-		// Verify default globals are still present
 		expect(javascriptConfig?.languageOptions?.globals?.console).toBeDefined()
 		expect(javascriptConfig?.languageOptions?.globals?.process).toBeDefined()
 	})
 
-	it('should preserve default globals when merging', async () => {
+	it('should preserve default globals when applying custom globals', async () => {
 		const config = await eslintConfig({
 			languageOptions: {
 				globals: {
@@ -129,14 +129,12 @@ describe('Language Options', () => {
 
 		expect(config).toBeDefined()
 
-		// Find the javascript config
+		// Custom global in the language-options config
+		expect(config.find(c => c.name === 'eslint-sets/language-options')?.languageOptions?.globals?.defineAppConfig).toBe('readonly')
+
+		// Default globals remain in the javascript config
 		const javascriptConfig = config.find(c => c.name?.includes('javascript'))
 		expect(javascriptConfig).toBeDefined()
-
-		// Custom global should be added
-		expect(javascriptConfig?.languageOptions?.globals?.defineAppConfig).toBe('readonly')
-
-		// Default globals should still be present
 		expect(javascriptConfig?.languageOptions?.globals?.console).toBeDefined()
 		expect(javascriptConfig?.languageOptions?.globals?.process).toBeDefined()
 		expect(javascriptConfig?.languageOptions?.globals?.window).toBeDefined()

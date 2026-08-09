@@ -243,7 +243,7 @@ function App({ name }: Props) {
 		expect(tsConfig).toBeDefined()
 		expect(tsConfig?.rules?.['react-dom/no-string-style-prop']).toBe('off')
 		expect(tsConfig?.rules?.['react-dom/no-unknown-property']).toBe('off')
-		// Additional TypeScript-specific rule disables (align with antfu)
+		// Additional TypeScript-specific rule disables
 		expect(tsConfig?.rules?.['react/jsx-no-duplicate-props']).toBe('off')
 		expect(tsConfig?.rules?.['react/jsx-no-undef']).toBe('off')
 		expect(tsConfig?.rules?.['react/jsx-uses-react']).toBe('off')

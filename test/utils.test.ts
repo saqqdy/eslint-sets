@@ -1,17 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { combine, deepMerge, ensureArray, filterNil, getOverrides, isObject, renameRules } from '../src/utils'
+import { deepMerge, ensureArray, filterNil, getOverrides, isObject, renameRules } from '../src/utils'
 
 describe('utils', () => {
-	describe('combine', () => {
-		it('should flatten configs', () => {
-			const configs = [{ name: 'a' }, [{ name: 'b' }, { name: 'c' }]]
-			const result = combine(...configs)
-
-			expect(result).toHaveLength(3)
-			expect(result.map(c => c.name)).toEqual(['a', 'b', 'c'])
-		})
-	})
-
 	describe('renameRules', () => {
 		it('should rename @typescript-eslint/* rules to ts/*', () => {
 			const rules = {

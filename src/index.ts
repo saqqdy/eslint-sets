@@ -1,9 +1,14 @@
-import type { Linter } from 'eslint'
+import type { FlatConfigComposer } from 'eslint-flat-config-utils'
 import type { Options } from './types'
 import { config } from './configs'
 
 /**
- * Create ESLint flat config
+ * Create ESLint flat config.
+ *
+ * Returns a `FlatConfigComposer` (extends `Promise<Linter.Config[]>`), so the
+ * common `export default eslintConfig({...})` pattern is unchanged — ESLint
+ * awaits it to a config array. Chain `.renamePlugins()` / `.override()` for
+ * customisation.
  *
  * @example
  * ```ts
@@ -17,7 +22,7 @@ import { config } from './configs'
  * })
  * ```
  */
-export default function eslintConfig(options?: Options): Promise<Linter.Config[]> {
+export default function eslintConfig(options?: Options): FlatConfigComposer {
 	return config(options)
 }
 

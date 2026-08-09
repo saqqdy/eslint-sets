@@ -58,6 +58,27 @@ import { vue } from './vue'
 import { yaml } from './yaml'
 
 /**
+ * Central plugin-prefix renaming map. Applied once via
+ * `composer.renamePlugins(...)` so individual configs use raw plugin rule
+ * keys and stay free of per-config rename helpers.
+ */
+export const defaultPluginRenaming: Record<string, string> = {
+	'@typescript-eslint': 'ts',
+	'@eslint-react/dom': 'react-dom',
+	'@eslint-react/web-api': 'react-web-api',
+	'@eslint-react/naming-convention': 'react-naming-convention',
+	'@eslint-react/hooks-extra': 'react-hooks-extra',
+	'@eslint-react/rsc': 'react-rsc',
+	'@eslint-react': 'react',
+	'@next/next': 'next',
+	n: 'node',
+	'import-lite': 'import',
+	'@stylistic': 'style',
+	vitest: 'test',
+	yml: 'yaml',
+}
+
+/**
  * Check if a framework option is enabled
  */
 function isEnabled(option: unknown): boolean {
@@ -82,9 +103,14 @@ function isOptionsObject(option: unknown): option is Record<string, unknown> {
 }
 
 /**
- * Create the ESLint configuration
+ * Create the ESLint configuration.
+ *
+ * Returns a `FlatConfigComposer` (which extends `Promise<Linter.Config[]>`),
+ * so the common `export default eslintConfig({...})` pattern is unchanged —
+ * ESLint awaits it to a config array. The composer also exposes chainable
+ * `.renamePlugins()` / `.override()` / `.append()` / `.prepend()`.
  */
-export async function config(options: Options = {}): Promise<Linter.Config[]> {
+export function config(options: Options = {}): FlatConfigComposer {
 	const {
 		type: _type = 'app',
 		angular: angularOption = 'auto',
@@ -133,7 +159,11 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// Resolve stylistic options once — shared by vue/jsonc/yaml/toml/formatters/stylistic
 	const stylisticOptions: false | StylisticOptions = stylisticOption === false ? false : typeof stylisticOption === 'object' ? { ...stylisticOption } : {}
 
-	const configs: Linter.Config[] = []
+	// Per-config items are pushed as resolvables (sync config, config array,
+	// or a Promise of either) so `config()` can stay synchronous and return a
+	// chainable composer. The composer resolves them lazily on await.
+	type ResolvableConfig = Linter.Config | Linter.Config[] | Promise<Linter.Config[]> | false | undefined | null
+	const configs: ResolvableConfig[] = []
 
 	// Collect user-specified ignore patterns (defaults handled by ignores())
 	const allIgnores = processIgnores(ignorePatterns)
@@ -145,8 +175,9 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	// .gitignore) via eslint-config-flat-gitignore. Note: this no longer reads
 	// .git/info/exclude (the hand-rolled impl did) — only .gitignore files.
 	if (gitignoreOption) {
-		const { default: ignore } = await import('eslint-config-flat-gitignore')
-		configs.push(ignore({ name: 'eslint-sets/gitignore', strict: false }))
+		configs.push(
+			import('eslint-config-flat-gitignore').then(m => [m.default({ name: 'eslint-sets/gitignore', strict: false })]),
+		)
 	}
 
 	// Base JavaScript
@@ -163,7 +194,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 		tsOpts.overrides = getOverrides(options as Record<string, unknown>, 'typescript')
 		tsOpts.type = _type // Pass project type for lib-specific rules
-		configs.push(...(await typescript(tsOpts)))
+		configs.push(typescript(tsOpts))
 	}
 
 	// Vue
@@ -172,7 +203,7 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 
 		vueOpts.overrides = getOverrides(options as Record<string, unknown>, 'vue')
 
-		configs.push(...(await vue({ ...vueOpts, stylistic: stylisticOptions })))
+		configs.push(vue({ ...vueOpts, stylistic: stylisticOptions }))
 	}
 
 	// Configuration conflict detection
@@ -203,56 +234,50 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		const reactOpts: ReactOptions = isOptionsObject(reactOption) ? { ...reactOption } : {}
 
 		reactOpts.overrides = getOverrides(options as Record<string, unknown>, 'react')
-		configs.push(...(await react(reactOpts)))
+		configs.push(react(reactOpts))
 	}
 
 	// JSX (base JSX support with optional a11y)
 	if (jsxOption !== false) {
 		const jsxOpts = typeof jsxOption === 'object' ? jsxOption : {}
-		configs.push(...(await jsx(jsxOpts)))
+		configs.push(jsx(jsxOpts))
 	}
 
 	// Svelte
 	if (isEnabled(svelteOption) || (isAutoDetect(svelteOption) && autoDetect && hasSvelte())) {
-		configs.push(...(await svelte()))
+		configs.push(svelte())
 	}
 
 	// Solid
 	if (isEnabled(solidOption) || (isAutoDetect(solidOption) && autoDetect && hasSolid())) {
-		configs.push(...(await solid()))
+		configs.push(solid())
 	}
 
 	// Next.js
 	if (isEnabled(nextjsOption) || (isAutoDetect(nextjsOption) && autoDetect && hasNextjs())) {
-		configs.push(
-			...(await nextjs({ overrides: getOverrides(options as Record<string, unknown>, 'nextjs') })),
-		)
+		configs.push(nextjs({ overrides: getOverrides(options as Record<string, unknown>, 'nextjs') }))
 	}
 
 	// Nuxt
 	if (isEnabled(nuxtOption) || (isAutoDetect(nuxtOption) && autoDetect && hasNuxt())) {
-		configs.push(...nuxt({ overrides: getOverrides(options as Record<string, unknown>, 'nuxt') }))
+		configs.push(nuxt({ overrides: getOverrides(options as Record<string, unknown>, 'nuxt') }))
 	}
 
 	// Astro
 	if (isEnabled(astroOption) || (isAutoDetect(astroOption) && autoDetect && hasAstro())) {
-		configs.push(
-			...(await astro({ overrides: getOverrides(options as Record<string, unknown>, 'astro') })),
-		)
+		configs.push(astro({ overrides: getOverrides(options as Record<string, unknown>, 'astro') }))
 	}
 
 	// Angular
 	if (isEnabled(angularOption) || (isAutoDetect(angularOption) && autoDetect && hasAngular())) {
-		configs.push(
-			...(await angular({ overrides: getOverrides(options as Record<string, unknown>, 'angular') })),
-		)
+		configs.push(angular({ overrides: getOverrides(options as Record<string, unknown>, 'angular') }))
 	}
 
 	// JSON/JSONC
 	if (jsoncOption !== false) {
 		const jsoncOpts = typeof jsoncOption === 'object' ? jsoncOption : {}
 
-		configs.push(...jsonc({ ...jsoncOpts, stylistic: stylisticOptions }))
+		configs.push(jsonc({ ...jsoncOpts, stylistic: stylisticOptions }))
 	}
 
 	// YAML
@@ -262,21 +287,21 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		// YAML uses double quotes by default (supports escape sequences)
 		const yamlStylistic = stylisticOptions === false ? false : { ...stylisticOptions, quotes: 'double' as const }
 
-		configs.push(...yaml({ ...yamlOpts, stylistic: yamlStylistic }))
+		configs.push(yaml({ ...yamlOpts, stylistic: yamlStylistic }))
 	}
 
 	// Markdown
 	if (markdownOption !== false) {
 		const markdownOpts = typeof markdownOption === 'object' ? markdownOption : {}
 
-		configs.push(...(await markdown(markdownOpts)))
+		configs.push(markdown(markdownOpts))
 	}
 
 	// TOML
 	if (tomlOption !== false) {
 		const tomlOpts = typeof tomlOption === 'object' ? tomlOption : {}
 
-		configs.push(...toml({ ...tomlOpts, stylistic: stylisticOptions }))
+		configs.push(toml({ ...tomlOpts, stylistic: stylisticOptions }))
 	}
 
 	// Imports
@@ -309,69 +334,67 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	if (testOption !== false) {
 		const testOpts = typeof testOption === 'object' ? testOption : {}
 
-		configs.push(...(await test({ ...testOpts, isInEditor: inEditor })))
+		configs.push(test({ ...testOpts, isInEditor: inEditor }))
 	}
 
 	// Node
 	if (nodeOption !== false) {
-		configs.push(...node())
+		configs.push(node())
 	}
 
 	// Comments (ESLint directive comments)
 	if (commentsOption !== false) {
-		configs.push(...(await comments()))
+		configs.push(comments())
 	}
 
 	// JSDoc
 	if (jsdocOption !== false) {
-		configs.push(...(await jsdoc(typeof jsdocOption === 'object' ? jsdocOption : {})))
+		configs.push(jsdoc(typeof jsdocOption === 'object' ? jsdocOption : {}))
 	}
 
 	// Disables (for specific file types)
 	if (disablesOption !== false) {
-		configs.push(...disables())
+		configs.push(disables())
 	}
 
 	// Command (for scripts/bin files)
 	if (commandOption !== false) {
-		configs.push(...(await command()))
+		configs.push(command())
 	}
 
 	// Sort package.json
 	if (sortPackageJsonOption !== false) {
-		configs.push(...(await sortPackageJson()))
+		configs.push(sortPackageJson())
 	}
 
 	// Sort tsconfig.json
 	if (sortTsconfigOption !== false) {
-		configs.push(...(await sortTsconfig()))
+		configs.push(sortTsconfig())
 	}
 
 	// UnoCSS
 	if (isEnabled(unocssOption) || (isAutoDetect(unocssOption) && autoDetect && hasUnoCSS())) {
-		configs.push(
-			...(await unocss({ overrides: getOverrides(options as Record<string, unknown>, 'unocss') })),
-		)
+		configs.push(unocss({ overrides: getOverrides(options as Record<string, unknown>, 'unocss') }))
 	}
 
 	// pnpm workspace
 	if (pnpmOption !== false && pnpmOption !== undefined) {
-		configs.push(...(await pnpm(typeof pnpmOption === 'object' ? pnpmOption : {})))
+		configs.push(pnpm(typeof pnpmOption === 'object' ? pnpmOption : {}))
 	}
 
 	// External formatters (CSS, HTML, XML, SVG, GraphQL)
 	if (formattersOption !== false && formattersOption !== undefined) {
 		configs.push(
-			...(await formatters(
+			formatters(
 				typeof formattersOption === 'object' ? formattersOption : {},
 				stylisticOptions === false ? {} : stylisticOptions,
-			)),
+			),
 		)
 	}
 
 	// Stylistic (code formatting with ESLint)
 	if (stylisticOption !== false && stylisticOption !== undefined) {
-		configs.push(...stylistic(stylisticOptions === false ? {} : stylisticOptions))
+		configs.push(stylistic(stylisticOptions === false ? {} : stylisticOptions))
 	}
 
 	// Prettier (should be last, before custom rules)
@@ -379,32 +402,29 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 	if (prettierOption !== false && stylisticOption === false) {
 		const prettierOpts: PrettierOptions = typeof prettierOption === 'object' ? prettierOption : {}
 
-		configs.push(...prettier(prettierOpts))
+		configs.push(prettier(prettierOpts))
 	}
 
 	// Extended configs
 	if (extendConfigs.length > 0) {
-		configs.push(...extendConfigs)
+		configs.push(extendConfigs)
 	}
 
-	// Manually merge languageOptions.globals into existing configs
-	// FlatConfigComposer doesn't auto-merge globals
-	if (customLanguageOptions?.globals) {
-		for (const config of configs) {
-			if (config.languageOptions?.globals) {
-				config.languageOptions.globals = {
-					...config.languageOptions.globals,
-					...customLanguageOptions.globals,
-				}
-			}
-		}
+	// Custom language options: append as a no-files config so ESLint merges
+	// globals/parserOptions natively across all matching files.
+	if (customLanguageOptions) {
+		configs.push({
+			name: 'eslint-sets/language-options',
+			languageOptions: customLanguageOptions,
+		})
 	}
 
-	// Use FlatConfigComposer for plugin renaming and other utilities
-	const composer = new FlatConfigComposer()
-	composer.append(...configs)
+	// Build the composer from the resolvable configs. The composer extends
+	// Promise<Linter.Config[]>, resolving the lazy items — including the
+	// queued `.renamePlugins()` — when awaited.
+	const composer = new FlatConfigComposer(...configs)
 
-	// Append custom rules (globals already merged above)
+	// Append custom rules
 	if (Object.keys(customRules).length > 0) {
 		composer.append({
 			name: 'eslint-sets/user-options',
@@ -412,7 +432,10 @@ export async function config(options: Options = {}): Promise<Linter.Config[]> {
 		})
 	}
 
-	return composer.toConfigs()
+	// Centralize plugin-prefix renaming (replaces per-config renameRules calls)
+	composer.renamePlugins(defaultPluginRenaming)
+
+	return composer
 }
 // Export constants
 export * from '../constants'

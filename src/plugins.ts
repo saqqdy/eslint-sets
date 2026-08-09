@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import { isPackageExists } from 'local-pkg'
 import { globSync } from 'tinyglobby'
 import {
@@ -12,6 +13,22 @@ import {
 	UNOCSS_PACKAGES,
 	VUE_PACKAGES,
 } from './constants'
+
+/**
+ * Directory of this module — used as the resolution root for
+ * `isPackageExists(name, { paths: [scopeUrl] })` so we detect packages in the
+ * project that *installed eslint-sets*, not whatever is resolvable from
+ * `process.cwd()` (e.g. a hoisted monorepo root).
+ */
+const scopeUrl = fileURLToPath(new URL('.', import.meta.url))
+
+/**
+ * `true` only when `@eslint-sets/eslint-config` itself is resolvable from
+ * `process.cwd()` — i.e. the user's project actually depends on it. Guards
+ * `ensurePackages` against prompting in scopes where eslint-sets is loaded
+ * incidentally (global tools, source checkout).
+ */
+const isCwdInScope = isPackageExists('@eslint-sets/eslint-config')
 
 /**
  * Check if Vue is installed
@@ -163,15 +180,33 @@ export async function loadPlugin<T>(
 }
 
 /**
- * Ensure packages are installed
+ * Ensure packages are installed.
+ *
+ * In CI / non-TTY / out-of-scope contexts this is a no-op. Otherwise it
+ * interactively prompts to install any missing packages (devDependencies).
+ * No-op in CI / non-TTY / out-of-scope contexts.
  */
-export async function ensurePackages(packages: string[]): Promise<void> {
-	const missing = packages.filter(pkg => !isPackageExists(pkg))
+export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
+	if (process.env.CI)
+		return
+	if (process.stdout.isTTY === false)
+		return
+	if (isCwdInScope === false)
+		return
 
-	if (missing.length > 0) {
-		throw new Error(
-			`Missing required packages: ${missing.join(', ')}. Please install them with: pnpm add -D ${missing.join(' ')}`,
-		)
+	const missing = packages.filter((pkg): pkg is string => !!pkg && !isPackageExists(pkg, { paths: [scopeUrl] }))
+	if (!missing.length)
+		return
+
+	const { confirm } = await import('@clack/prompts')
+	const result = await confirm({
+		message: `eslint-sets requires these packages: ${missing.join(', ')}. Install now?`,
+		initialValue: true,
+	})
+
+	if (result) {
+		const { installPackage } = await import('@antfu/install-pkg')
+		await installPackage(missing, { dev: true })
 	}
 }
 

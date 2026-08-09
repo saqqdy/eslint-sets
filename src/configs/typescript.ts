@@ -3,7 +3,7 @@ import type { OptionsOverrides, OptionsProjectType, OptionsTypeScriptErasableOnl
 import tsParser from '@typescript-eslint/parser'
 import { GLOB_SRC, GLOB_TS } from '../constants'
 import { loadPlugin } from '../plugins'
-import { interopDefault, renameRules } from '../utils'
+import { interopDefault } from '../utils'
 
 /**
  * TypeScript configuration options
@@ -49,13 +49,10 @@ export async function typescript(options: TypeScriptOptions = {}): Promise<Linte
 
 	const isTypeAware = typeAware && !!tsconfigPath
 
-	// Get recommended rules and rename them
-	const recommendedRules = tseslint.configs.recommended.rules
-	const strictRules = tseslint.configs.strict?.rules || {}
-
-	// Rename @typescript-eslint/* rules to ts/*
-	const tsRecommendedRules = renameRules(recommendedRules as Record<string, Linter.RuleEntry>, 'ts')
-	const tsStrictRules = renameRules(strictRules as Record<string, Linter.RuleEntry>, 'ts')
+	// Recommended rules (raw @typescript-eslint/* keys; centralized
+	// renamePlugins rewrites to ts/* at resolve time)
+	const tsRecommendedRules = tseslint.configs.recommended.rules
+	const tsStrictRules = tseslint.configs.strict?.rules || {}
 
 	const typeAwareRules: Linter.RulesRecord = {
 		// Turn off base rules

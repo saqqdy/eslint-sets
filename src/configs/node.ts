@@ -1,14 +1,10 @@
 import type { Linter } from 'eslint'
 import nodePlugin from 'eslint-plugin-n'
 import { GLOB_SRC } from '../constants'
-import { renameRules } from '../utils'
 
-// Get rules from the plugin configs and rename n/ to node/
-const nodeRecommendedRules = renameRules(
-	(nodePlugin.configs?.['flat/recommended'] as any)?.rules || {},
-	'node',
-	'n',
-)
+// Raw recommended rules (native n/* prefix; centralized renamePlugins
+// rewrites to node/* at resolve time)
+const nodeRecommendedRules = (nodePlugin.configs?.['flat/recommended'] as any)?.rules || {}
 
 /**
  * Node.js configuration

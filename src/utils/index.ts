@@ -1,34 +1,33 @@
 import type { Linter } from 'eslint'
 import { EDITOR_ENV_KEYS, GLOB_EXCLUDES } from '../constants'
 
-// Re-export git utilities
-export * from './git'
-
 // Re-export types
 export * from './types'
 
 /**
- * Combine multiple ESLint flat configs into one array
- */
-export function combine(...configs: Linter.Config[]): Linter.Config[] {
-	return configs.flat()
-}
-
-/**
- * Rename rules with a prefix
- * Converts @typescript-eslint/rule-name to prefix/rule-name
+ * Rename rule keys by a prefix map (longest-prefix-first).
+ *
+ * Backward compatible: pass a `prefix` string (with optional `from`, default
+ * `@typescript-eslint`) to rename a single prefix; or pass a full map.
  */
 export function renameRules(
 	rules: Record<string, Linter.RuleEntry>,
-	prefix: string,
+	mapOrPrefix: Record<string, string> | string,
 	from?: string,
 ): Record<string, Linter.RuleEntry> {
-	const fromPrefix = from ?? '@typescript-eslint'
+	const map = typeof mapOrPrefix === 'string' ? { [from ?? '@typescript-eslint']: mapOrPrefix } : mapOrPrefix
+	const sorted = Object.entries(map).sort(([a], [b]) => b.length - a.length)
 
 	return Object.fromEntries(
 		Object.entries(rules).map(([key, value]) => {
-			const newKey = key.startsWith(`${fromPrefix}/`) ? `${prefix}/${key.slice(fromPrefix.length + 1)}` : key
-
+			let newKey = key
+			for (const [fromPrefix, to] of sorted) {
+				const prefix = `${fromPrefix}/`
+				if (newKey.startsWith(prefix)) {
+					newKey = `${to}/${newKey.slice(prefix.length)}`
+					break
+				}
+			}
 			return [newKey, value]
 		}),
 	)

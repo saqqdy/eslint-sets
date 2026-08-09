@@ -27,34 +27,6 @@ export interface ReactOptions extends OptionsOverrides, OptionsTypeScriptParserO
 }
 
 /**
- * Rename rules from @eslint-react/* prefixes to react* prefixes
- */
-function renameRules(rules: Partial<Linter.RulesRecord>): Linter.RulesRecord {
-	const result: Linter.RulesRecord = {}
-
-	for (const [key, value] of Object.entries(rules)) {
-		// @eslint-react/dom/xxx -> react-dom/xxx
-		// @eslint-react/web-api/xxx -> react-web-api/xxx
-		// @eslint-react/naming-convention/xxx -> react-naming-convention/xxx
-		// @eslint-react/hooks-extra/xxx -> react-hooks-extra/xxx
-		// @eslint-react/rsc/xxx -> react-rsc/xxx
-		// @eslint-react/xxx -> react/xxx
-		const newKey = key
-			.replace('@eslint-react/dom/', 'react-dom/')
-			.replace('@eslint-react/web-api/', 'react-web-api/')
-			.replace('@eslint-react/naming-convention/', 'react-naming-convention/')
-			.replace('@eslint-react/hooks-extra/', 'react-hooks-extra/')
-			.replace('@eslint-react/rsc/', 'react-rsc/')
-			.replace('@eslint-react/', 'react/')
-		if (value !== undefined) {
-			result[newKey] = value
-		}
-	}
-
-	return result
-}
-
-/**
  * React configuration
  * Uses @eslint-react/eslint-plugin for modern React linting
  */
@@ -101,8 +73,9 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 	const hasNamespaceImportRule = 'prefer-namespace-import' in pluginReact.rules
 	const namespaceImportRuleName = hasNamespaceImportRule ? 'react/prefer-namespace-import' : 'react/prefer-react-namespace-import'
 
-	// Get recommended rules and rename them
-	const recommendedRules = renameRules(pluginReact.configs.recommended?.rules || {})
+	// Recommended rules (raw @eslint-react/* keys; centralized renamePlugins
+	// rewrites them to react*/* at resolve time)
+	const recommendedRules = pluginReact.configs.recommended?.rules || {}
 
 	const typeAwareRules: Linter.RulesRecord = {
 		'react/no-leaked-conditional-rendering': 'warn',
@@ -217,7 +190,7 @@ export async function react(options: ReactOptions = {}): Promise<Linter.Config[]
 				// Disables rules that are already handled by TypeScript
 				'react-dom/no-string-style-prop': 'off',
 				'react-dom/no-unknown-property': 'off',
-				// Additional TypeScript-specific rule disables (align with antfu)
+				// Additional TypeScript-specific rule disables
 				'react/jsx-no-duplicate-props': 'off',
 				'react/jsx-no-undef': 'off',
 				'react/jsx-uses-react': 'off',

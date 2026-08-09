@@ -278,8 +278,8 @@ export default eslintConfig({
 Since v6.6.0, `.gitignore` handling is backed by `eslint-config-flat-gitignore`, which provides correct git semantics (root-anchoring, nested `.gitignore` files). Only `.gitignore` files are read — `.git/info/exclude` is no longer consulted.
 :::
 
-::: warning Deprecated git utilities
-`parseGitignore`, `findGitignore`, and `getGitignorePatterns` (from `src/utils/git.ts`) are **deprecated** and slated for removal in v7.0.0. Use the built-in `gitignore` option (enabled by default) instead.
+::: warning Removed git utilities
+`parseGitignore`, `findGitignore`, and `getGitignorePatterns` (from `src/utils/git.ts`) were **removed in v7.0.0** (deprecated since v6.6.0). Use the built-in `gitignore` option (enabled by default) instead.
 :::
 
 ### `ignores`

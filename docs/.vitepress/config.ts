@@ -17,8 +17,9 @@ export default defineConfig({
 			{ text: 'Config', link: '/configs/' },
 			{ text: 'API', link: '/api/' },
 			{
-				text: 'v6.6.1',
+				text: 'v7.0.0',
 				items: [
+					{ text: 'v6.6.1', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.6.1' },
 					{ text: 'v6.6.0', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.6.0' },
 					{ text: 'v6.5.1', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.5.1' },
 					{ text: 'v6.5.0', link: 'https://github.com/saqqdy/eslint-sets/tree/v6.5.0' },
@@ -36,6 +37,7 @@ export default defineConfig({
 						{ text: 'Getting Started', link: '/guide/getting-started' },
 						{ text: 'Basic Usage', link: '/guide/basic-usage' },
 						{ text: 'Advanced Usage', link: '/guide/advanced-usage' },
+						{ text: 'Migrate to v7', link: '/guide/migrate-to-v7' },
 					],
 				},
 				{
@@ -98,6 +100,49 @@ export default defineConfig({
 			label: '简体中文',
 			lang: 'zh-CN',
 			link: '/zh/',
+			themeConfig: {
+				sidebar: {
+					'/zh/guide/': [
+						{
+							text: '指南',
+							items: [
+								{ text: '快速开始', link: '/zh/guide/getting-started' },
+								{ text: '基础用法', link: '/zh/guide/basic-usage' },
+								{ text: '进阶用法', link: '/zh/guide/advanced-usage' },
+								{ text: 'CLI', link: '/zh/guide/cli' },
+								{ text: '从 v5 迁移', link: '/zh/guide/migration' },
+								{ text: '从 v6 升级到 v7', link: '/zh/guide/migrate-to-v7' },
+							],
+						},
+						{
+							text: '测试',
+							items: [
+								{ text: '测试指南', link: '/zh/TESTING' },
+								{ text: 'Monorepo 指南', link: '/zh/MONOREPO' },
+							],
+						},
+					],
+					'/zh/configs/': [
+						{
+							text: '配置',
+							items: [
+								{ text: '概览', link: '/zh/configs/' },
+								{ text: 'Vue', link: '/zh/configs/vue' },
+								{ text: 'React', link: '/zh/configs/react' },
+							],
+						},
+					],
+					'/zh/api/': [
+						{
+							text: 'API 参考',
+							items: [
+								{ text: '概览', link: '/zh/api/' },
+								{ text: '选项', link: '/zh/api/options' },
+							],
+						},
+					],
+				},
+			},
 		},
 	},
 })

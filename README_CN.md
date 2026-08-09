@@ -27,6 +27,7 @@
 ## 特性
 
 - 🚀 **ESLint v9 Flat Config** - 使用现代化的 flat config 格式
+- 🔗 **FlatConfigComposer 链式调用** - 直接在配置上链式 `.append()`/`.prepend()`/`.renamePlugins()`（v7.0.0+）
 - 🎨 **@stylistic 集成** - 默认使用 `@stylistic/eslint-plugin` 进行格式化（无需 Prettier）
 - 📝 **TypeScript 类型生成** - 自动生成所有规则的类型，支持完整的 IntelliSense
 - ✨ **Prettier 支持** - 可选的 Prettier 集成
@@ -38,7 +39,7 @@
 - 🏷️ **项目类型** - 支持 `app` 和 `lib` 项目类型
 - ♿ **无障碍** - Vue 和 React 可选的 a11y 规则
 - 📝 **自动排序** - 自动排序 package.json 和 tsconfig.json
-- 🔍 **编辑器检测** - 自动检测编辑器环境
+- 🔍 **编辑器检测** - 自动检测编辑器环境；CI 和 git 钩子中保持规则严格
 - 🔎 **配置检查器** - 可视化检查 ESLint 配置的工具
 - 📊 **Perfectionist 排序** - 导入/导出排序，支持自然排序
 - 🚀 **ESM-only** - 现代化的 ESM 包，兼容性更好
@@ -140,6 +141,21 @@ export default eslintConfig()
 
 ## 使用方法
 
+### 链式调用（v7.0.0+）
+
+`eslintConfig()` 返回 `FlatConfigComposer`（继承 `Promise<Linter.Config[]>`），可直接链式调用方法：
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({ vue: true })
+  .append({ name: 'my-overrides', rules: { 'no-console': 'off' } })
+  .prepend({ rules: { 'no-debugger': 'error' } })
+  .renamePlugins({ 'import-lite': 'import' })
+```
+
+`export default eslintConfig(...)` 仍可正常工作——ESLint 加载时会自动将 composer await 为配置数组。可用方法：`.append()`、`.prepend()`、`.insert()`、`.replace()`、`.renamePlugins()`。
+
 ### 配置选项
 
 ```typescript
@@ -177,6 +193,7 @@ export default eslintConfig({
 	},
 
 	// 自动读取 .gitignore（默认：true）
+	// （parseGitignore/findGitignore/getGitignorePatterns 已于 v6.6.0 弃用，v7.0.0 移除；请改用此选项）
 	gitignore: true,
 
 	// 忽略的文件
@@ -390,6 +407,30 @@ export default eslintConfig({
 ```
 
 **注意**：Stylistic 和 Prettier 互斥。当 `stylistic` 启用时（默认），Prettier 会自动禁用。
+
+### 默认规则行为
+
+此配置遵循现代最佳实践，采用合理的默认值：
+
+- **无行长度限制**：默认不配置 `@stylistic/max-len`，允许灵活的行长度
+- **使用全局 Buffer/process**：`n/prefer-global/buffer` 和 `n/prefer-global/process` 设为 `'always'`，允许直接使用全局变量
+- **灵活的未使用表达式**：`ts/no-unused-expressions` 允许短路求值、三元表达式和标签模板
+- **混合运算符分组**：`@stylistic/no-mixed-operators` 按类别（比较、逻辑、in/instanceof）分组运算符，代码更清晰
+
+可在配置中覆盖这些默认值：
+
+```typescript
+export default eslintConfig({
+	rules: {
+		// 如需限制行长度
+		'@stylistic/max-len': ['error', { code: 100 }],
+
+		// 优先使用 import 而非全局
+		'n/prefer-global/buffer': ['error', 'never'],
+		'n/prefer-global/process': ['error', 'never'],
+	},
+})
+```
 
 ### 无障碍规则
 
@@ -685,6 +726,15 @@ import {
 | eslint     | ^9.10.0 或 ^9.22.0                          |
 | prettier   | ^3.5.3（可选，用于 Prettier 集成）          |
 | typescript | >=5.0.0（可选，用于 TypeScript 支持）       |
+
+> **注意**：ESLint 9.x 需要 `jiti` 来加载 TypeScript 配置文件。使用 npm/yarn 时它会作为 ESLint 的对等依赖自动安装，但 pnpm 用户可能需要启用 `auto-install-peers` 或使用 `--shamefully-hoist`。
+
+## 系统要求
+
+| 要求    | 版本                                     |
+| ------- | ---------------------------------------- |
+| Node.js | ^18.18.0 或 ^20.9.0 或 >=21.1.0          |
+| ESLint  | ^9.10.0 或 ^9.22.0                       |
 
 ## 可选依赖
 

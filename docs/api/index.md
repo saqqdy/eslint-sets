@@ -20,7 +20,7 @@ export default eslintConfig(options)
 
 #### Returns
 
-- `Promise<TypedFlatConfigItem[]>` - Array of flat config items
+- `FlatConfigComposer` - A [`FlatConfigComposer`](https://www.npmjs.com/package/eslint-flat-config-utils) (extends `Promise<Linter.Config[]>`). `export default eslintConfig(...)` still works — ESLint awaits the composer to a config array — and `await eslintConfig(...)` still resolves to `Linter.Config[]`. Chain `.append()`/`.prepend()`/`.insert()`/`.replace()`/`.renamePlugins()` directly on the result.
 
 ## Types
 
@@ -359,22 +359,22 @@ type ConfigNames =
 
 ## Utility Functions
 
-### `compose(...configs)`
+### Chaining configs (FlatConfigComposer)
 
-Compose multiple configs:
+`config()` returns a `FlatConfigComposer` (extends `Promise<Linter.Config[]>`), so you can chain `.append()` / `.prepend()` / `.insert()` / `.replace()` / `.renamePlugins()` directly:
 
 ```typescript
-import { compose, javascript, typescript } from '@eslint-sets/eslint-config'
+import eslintConfig from '@eslint-sets/eslint-config'
 
-export default compose(
-  javascript(),
-  typescript(),
-  {
+export default eslintConfig()
+  .append({
     name: 'custom',
     rules: { 'no-console': 'off' },
-  },
-)
+  })
 ```
+
+> [!NOTE]
+> `combine()` was removed in v7.0.0. Use `.append()` / `.prepend()` on the composer (or spread `await eslintConfig(...)` into an array) to merge configs.
 
 ## Next Steps
 

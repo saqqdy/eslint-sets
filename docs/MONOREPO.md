@@ -130,15 +130,12 @@ export const baseConfig = eslintConfig({
 // apps/web-app/eslint.config.ts
 import { baseConfig } from '../../eslint.base.config'
 
-export default [
-  ...baseConfig,
-  {
-    name: 'web-app-overrides',
-    rules: {
-      // App-specific rules
-    },
+export default baseConfig.append({
+  name: 'web-app-overrides',
+  rules: {
+    // App-specific rules
   },
-]
+})
 ```
 
 ### 3. Monorepo Structure

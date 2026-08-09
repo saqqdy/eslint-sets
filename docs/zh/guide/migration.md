@@ -87,7 +87,7 @@ extends: '@eslint-sets/eslint-config-react'
 **之后 (v6):**
 ```typescript
 // vue/nuxt/vitepress 在依赖中时自动检测 Vue。
-// react/svelte/solid 需显式启用（v6.6.0+，对齐 @antfu/eslint-config）：
+// react/svelte/solid 需显式启用（v6.6.0+）：
 export default eslintConfig({
   react: true, // 使用 React 时
 })
@@ -124,7 +124,7 @@ export default eslintConfig({
 
 ### React/Svelte/Solid 改为显式启用
 
-`react`、`svelte`、`solid` 的默认值从 `'auto'` 改为 `false`，对齐 `@antfu/eslint-config`。仅 `vue` 仍自动检测。这能防止在 hoisted monorepo（`isPackageExists` 从根 `node_modules` 同时解析到两者）中 Vue 和 React 配置同时激活，从而避免误报，例如 `react-refresh/only-export-components` 对 Vue 项目的 `.ts` 文件误报。
+`react`、`svelte`、`solid` 的默认值从 `'auto'` 改为 `false`（显式启用）。仅 `vue` 仍自动检测。这能防止在 hoisted monorepo（`isPackageExists` 从根 `node_modules` 同时解析到两者）中 Vue 和 React 配置同时激活，从而避免误报，例如 `react-refresh/only-export-components` 对 Vue 项目的 `.ts` 文件误报。
 
 **迁移**：若依赖了自动检测，请显式启用 `react: true` / `svelte: true` / `solid: true`：
 
@@ -177,6 +177,46 @@ peer 依赖 `eslint` 提升至 `^9.10.0`。
 ### 为兼容 Node.js 18 固定 JSDoc 版本
 
 `eslint-plugin-jsdoc` 固定为 `~50.8.0`（原 `^61.7.1`）。`51.0.0+` 使用了 ES2024 的 `v`（unicodeSets）正则 flag，要求 Node.js `>=20.11.0`；在 Node.js 18 上会在 import 时抛出 `Invalid regular expression flags`，`loadPlugin` 会将其报告为 `Failed to load plugin "eslint-plugin-jsdoc"`。此次固定恢复了 Node.js 18 上的 JSDoc 规则覆盖，与包声明的 `engines`（`^18.18.0 || ^20.9.0 || >=21.1.0`）一致。
+
+## v7.0.0
+
+v7.0.0 是一个包含破坏性变更的主版本。
+
+### 1. config() 返回 FlatConfigComposer
+
+`config()`（即 `eslintConfig()`）现在返回 [`FlatConfigComposer`](https://www.npmjs.com/package/eslint-flat-config-utils)（extends `Promise<Linter.Config[]>`），而不是纯数组。这是对 #7 的实现。
+
+**影响**：
+- `export default eslintConfig(...)` 仍然有效——ESLint 会自动 await composer 为配置数组。
+- `await eslintConfig(...)` 仍然解析为 `Linter.Config[]`。
+- 新增：可直接在返回值上链式调用 `.append()` / `.prepend()` / `.insert()` / `.replace()` / `.renamePlugins()`。
+
+```typescript
+export default eslintConfig()
+  .append({
+    name: 'my-overrides',
+    rules: { 'no-console': 'off' },
+  })
+```
+
+> [!WARNING]
+> 不要同步地读取 composer 的 `.length` 或索引访问——它在被 await 之前是惰性的。如需数组，使用 `await eslintConfig(...)` 或 `await composer.toConfigs()`。
+
+### 2. 移除 git 工具函数
+
+`parseGitignore`、`findGitignore`、`getGitignorePatterns`（来自 `src/utils/git.ts`）已**移除**（v6.6.0 弃用）。`src/utils/git.ts` 不再存在。请改用内置的 `gitignore` 选项（默认启用，由 `eslint-config-flat-gitignore` 提供正确的 Git 语义）。
+
+### 3. 移除 combine()
+
+`combine()` 工具函数已移除。如需合并配置，使用 FlatConfigComposer 的 `.append()` / `.prepend()` 方法（见上）。
+
+### 4. 集中化插件重命名
+
+插件重命名（`n` → `eslint`、`ts` → `typescript-eslint` 等）现由 composer 的 `.renamePlugins(defaultPluginRenaming)` 在解析时统一处理，不再在各配置项构建时单独 `renameRules()`。**规则键不变**（`ts/*`、`node/*`、`react*/*`、`style/*`、`yaml/*` 前缀保持不变），用户配置中的规则覆盖无需修改。
+
+### 5. 移除 ensurePackages
+
+`ensurePackages()` 已从 `src/plugins.ts` 移除（无内部调用者的死代码；`@antfu/install-pkg` 依赖一并移除）。无用户可见行为变化。若曾导入它，请移除该导入。
 
 ## 迁移步骤
 

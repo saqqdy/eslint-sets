@@ -36,6 +36,6 @@
 
 `gitignore` 选项（默认启用）使用 `eslint-config-flat-gitignore`，提供正确的 Git 语义（根锚定、嵌套 `.gitignore`）。仅读取 `.gitignore` 文件，不再读取 `.git/info/exclude`。
 
-**弃用**：`src/utils/git.ts` 中的 `parseGitignore`、`findGitignore`、`getGitignorePatterns` 已弃用，但仍导出，计划在 v7.0.0 移除。请改用内置的 `gitignore` 选项。
+**已移除**：`src/utils/git.ts` 中的 `parseGitignore`、`findGitignore`、`getGitignorePatterns`（v6.6.0 弃用）已在 v7.0.0 移除，`src/utils/git.ts` 不再存在。请改用内置的 `gitignore` 选项。
 
 更多详细选项和类型定义，请查看英文文档或 TypeScript 类型定义。

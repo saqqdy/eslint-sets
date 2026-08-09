@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.0] - 2026-08-09
+
+### ⚠️ Breaking Changes
+
+- 🚀 **`eslintConfig()` returns a `FlatConfigComposer`**: The factory now returns [`FlatConfigComposer`](https://www.npmjs.com/package/eslint-flat-config-utils) (from `eslint-flat-config-utils`) instead of a hand-built `Promise<Linter.Config[]>`, aligning eslint-sets's public API with the FlatConfigComposer pattern. `export default eslintConfig(...)` keeps working — ESLint awaits the composer to a config array at load time, and the composer is itself `Promise<T[]>`-compatible, so `const config = await eslintConfig(...)` still resolves to `Linter.Config[]`. **New capability:** chain `.append()`, `.prepend()`, `.insert()`, `.replace()`, `.renamePlugins()`, and other composer methods directly on the result. Resolves [#7].
+
+- 🧹 **Removed deprecated git utilities**: `parseGitignore`, `findGitignore`, and `getGitignorePatterns` (from `src/utils/git.ts`) — deprecated since v6.6.0 — are removed along with `src/utils/git.ts` and `test/git.test.ts`. `.gitignore` handling is exclusively backed by `eslint-config-flat-gitignore` via the `gitignore` option (enabled by default). If you imported these helpers, switch to the `gitignore` option.
+
+- 🧹 **Removed `combine` utility**: `combine()` is removed from `src/utils`. With `FlatConfigComposer` as the public return type, use `.append()`/`.prepend()` or plain array spread instead.
+
+- 🔁 **Next.js rule keys renamed to `next/*`**: The `@next/next` plugin is now registered as `next` and its rules shortened from `@next/next/*` to `next/*` (e.g. `@next/next/no-img-element` → `next/no-img-element`), via the central `defaultPluginRenaming` map. The `vitest` → `test` mapping is also added for parity. **Migration:** if you reference Next.js rules in a config you append yourself (outside `eslintConfig()`'s `overrides`), update `@next/next/*` → `next/*`. Rules referenced inside `overrides` are auto-renamed and need no change.
+
+- 🧹 **Removed `ensurePackages` export**: `ensurePackages()` (and its `isCwdInScope` / `scopeUrl` helpers) is removed from `src/plugins.ts` along with the `@antfu/install-pkg` dependency. It was dead code with no internal callers; no user-visible behavior changes. If you imported it, remove the import.
+
+### Changed
+
+- 🔁 **Centralized plugin renaming (#8, #13)**: Rule keys are now shortened by a single `composer.renamePlugins(defaultPluginRenaming)` at resolve time, replacing per-config `renameRules()` calls. Long-prefixed keys (`@typescript-eslint/*`, `n/*`, `@eslint-react/*`, `@stylistic/*`, `yml/*`) are consistently shortened to `ts/*`, `node/*`, `react*/*`, `style/*`, `yaml/*`. **Rule keys are unchanged** — this is internal; no user config changes needed. `renameRules()` now accepts a full `Record<string, string>` map (longest-prefix-first) and stays backward compatible with the legacy `(rules, prefix, from?)` string form.
+
 ## [6.6.1] - 2026-08-08
 
 ### Fixed
@@ -32,7 +50,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- 🔄 **React/Svelte/Solid Now Opt-In by Default**: `react`, `svelte`, `solid` defaults changed from `'auto'` to `false`, aligning with `@antfu/eslint-config`. Only `vue` remains auto-detected. This prevents Vue and React configs from both activating in hoisted monorepos (where `isPackageExists` resolves both from root `node_modules`), which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files.
+- 🔄 **React/Svelte/Solid Now Opt-In by Default**: `react`, `svelte`, `solid` defaults changed from `'auto'` to `false`, (opt-in). Only `vue` remains auto-detected. This prevents Vue and React configs from both activating in hoisted monorepos (where `isPackageExists` resolves both from root `node_modules`), which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files.
   - **Migration**: if you relied on auto-detection, add `react: true` / `svelte: true` / `solid: true`. To restore old behavior, set `react: 'auto'`.
   - A warning now prints when `react` is installed but disabled, guiding you to enable it.
 - 🧹 **Helper Consolidation**: Removed the duplicate `resolveOptionsOverrides` helper; `getOverrides` is now the single path for sub-option overrides
@@ -254,7 +272,7 @@ All notable changes to this project will be documented in this file.
   - Updated `sort-imports` and `sort-exports` configuration
 - **Node config**: Cleaned up rules, better organization
 - **Disables config**: Added more file type specific disables
-- **React TypeScript Rules**: Added more TypeScript-specific rule disables (align with antfu)
+- **React TypeScript Rules**: Added more TypeScript-specific rule disables
   - `react/jsx-no-duplicate-props: 'off'` - TypeScript handles this
   - `react/jsx-no-undef: 'off'` - TypeScript handles this
   - `react/jsx-uses-react: 'off'` - Not needed with new JSX transform

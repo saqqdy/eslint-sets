@@ -87,7 +87,7 @@ extends: '@eslint-sets/eslint-config-react'
 **After (v6):**
 ```typescript
 // Vue is auto-detected if vue/nuxt/vitepress is in dependencies.
-// React/Svelte/Solid require explicit opt-in (v6.6.0+, aligned with @antfu/eslint-config):
+// React/Svelte/Solid require explicit opt-in (v6.6.0+):
 export default eslintConfig({
   react: true, // when using React
 })
@@ -352,7 +352,7 @@ export default eslintConfig({
 
 ### React/Svelte/Solid Now Opt-In
 
-`react`, `svelte`, and `solid` defaults changed from `'auto'` to `false`, aligning with `@antfu/eslint-config`. Only `vue` remains auto-detected. This prevents Vue and React configs from both activating simultaneously in hoisted monorepos (where `isPackageExists` resolves both from the root `node_modules`), which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files.
+`react`, `svelte`, and `solid` defaults changed from `'auto'` to `false`, (opt-in). Only `vue` remains auto-detected. This prevents Vue and React configs from both activating simultaneously in hoisted monorepos (where `isPackageExists` resolves both from the root `node_modules`), which caused false positives such as `react-refresh/only-export-components` firing on Vue projects' `.ts` files.
 
 **Migration**: if you relied on auto-detection, add `react: true` / `svelte: true` / `solid: true`:
 
@@ -401,6 +401,63 @@ The `"react" package detected but react: false` warning is now gated on `!hasVue
 ### JSDoc Pinned for Node.js 18 Compatibility
 
 `eslint-plugin-jsdoc` is pinned to `~50.8.0` (was `^61.7.1`). Versions `51.0.0+` use the ES2024 `v` (unicodeSets) regex flag and require Node.js `>=20.11.0`; on Node.js 18 they throw `Invalid regular expression flags` at import time, which `loadPlugin` reports as `Failed to load plugin "eslint-plugin-jsdoc"`. The pin restores JSDoc rule coverage on Node.js 18, matching the declared `engines` (`^18.18.0 || ^20.9.0 || >=21.1.0`).
+
+## v7.0.0
+
+### `eslintConfig()` Returns a `FlatConfigComposer`
+
+v7 changes the factory's return type from a hand-built `Promise<Linter.Config[]>` to [`FlatConfigComposer`](https://www.npmjs.com/package/eslint-flat-config-utils).
+
+**What still works (no change needed):**
+
+```typescript
+// ESLint awaits the composer to a config array at load time.
+export default eslintConfig({ vue: true, typescript: true })
+
+// The composer is Promise<T[]>-compatible, so awaiting still yields an array.
+const config = await eslintConfig({ typescript: true })
+```
+
+**New — chain composer methods directly:**
+
+```typescript
+export default eslintConfig({ vue: true })
+  .append({ rules: { 'no-console': 'off' } })
+  .renamePlugins({ 'import-lite': 'import' })
+```
+
+> [!WARNING]
+> If you treated the return value as a plain `Linter.Config[]` **synchronously** (without `await`), either `await` it or use composer methods like `.append()`.
+
+### Removed: Deprecated Git Utilities
+
+`parseGitignore`, `findGitignore`, and `getGitignorePatterns` (deprecated in v6.6.0) are removed along with `src/utils/git.ts`. `.gitignore` handling is exclusively provided by the `gitignore` option (enabled by default).
+
+```typescript
+// Removed — do not import:
+// import { parseGitignore } from '@eslint-sets/eslint-config/utils'
+
+// Use the built-in option instead (default true):
+export default eslintConfig({ gitignore: true })
+```
+
+### Removed: `combine` Utility
+
+`combine()` is removed from `src/utils`. Use `FlatConfigComposer` methods or array spread:
+
+```typescript
+// Before: const config = combine(base, extra)
+// After:
+export default eslintConfig({}).append(extra)
+```
+
+### Centralized Plugin Renaming
+
+Plugin name shortening (`@typescript-eslint` → `ts`, `n` → `node`, `@eslint-react` → `react`, `@stylistic` → `style`, `yml` → `yaml`) now happens once at resolve time via `composer.renamePlugins(defaultPluginRenaming)`, replacing per-config `renameRules()` calls. **Rule keys are unchanged** — this is an internal refactor; no config changes needed.
+
+### Removed: `ensurePackages`
+
+`ensurePackages()` is removed from `src/plugins.ts` (dead code with no internal callers; the `@antfu/install-pkg` dependency is also dropped). No user-visible behavior changes. If you imported it, remove the import.
 
 ## Need Help?
 

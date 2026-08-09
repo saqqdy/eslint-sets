@@ -27,6 +27,7 @@ Try it online with StackBlitz:
 ## Features
 
 - 🚀 **ESLint v9 Flat Config** - Uses the modern flat config format
+- 🔗 **FlatConfigComposer Chaining** - Chain `.append()`/`.prepend()`/`.renamePlugins()` directly on the config (v7.0.0+)
 - 🎨 **@stylistic Integration** - Default formatting with `@stylistic/eslint-plugin` (no Prettier needed)
 - 📝 **TypeScript TypeGen** - Auto-generated types for all rules with full IntelliSense support
 - ✨ **Prettier Support** - Optional Prettier integration for those who prefer it
@@ -140,6 +141,21 @@ export default eslintConfig()
 
 ## Usage
 
+### Chaining (v7.0.0+)
+
+`eslintConfig()` returns a `FlatConfigComposer` (extends `Promise<Linter.Config[]>`), so you can chain methods directly:
+
+```typescript
+import eslintConfig from '@eslint-sets/eslint-config'
+
+export default eslintConfig({ vue: true })
+  .append({ name: 'my-overrides', rules: { 'no-console': 'off' } })
+  .prepend({ rules: { 'no-debugger': 'error' } })
+  .renamePlugins({ 'import-lite': 'import' })
+```
+
+`export default eslintConfig(...)` still works unchanged — ESLint awaits the composer to a config array at load time. Available methods: `.append()`, `.prepend()`, `.insert()`, `.replace()`, `.renamePlugins()`.
+
 ### With Options
 
 ```typescript
@@ -177,7 +193,7 @@ export default eslintConfig({
 	},
 
 	// Auto-read .gitignore (default: true)
-	// (parseGitignore/findGitignore/getGitignorePatterns are deprecated v6.6.0, removal v7.0.0; use this option instead)
+	// (parseGitignore/findGitignore/getGitignorePatterns are deprecated v6.6.0, removed v7.0.0; use this option instead)
 	gitignore: true,
 
 	// Files to ignore

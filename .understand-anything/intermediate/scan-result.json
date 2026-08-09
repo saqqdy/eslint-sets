@@ -1,0 +1,2634 @@
+{
+  "name": "@eslint-sets/eslint-config",
+  "description": "Modern ESLint config with flat config support for Vue, React, Svelte, TypeScript, Next.js, Nuxt, Astro, Angular, UnoCSS and more Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
+  "languages": [
+    "astro",
+    "css",
+    "html",
+    "json",
+    "markdown",
+    "properties",
+    "svelte",
+    "typescript",
+    "unknown",
+    "vue",
+    "yaml"
+  ],
+  "frameworks": [
+    "Angular",
+    "Astro",
+    "GitHub Actions",
+    "Next.js",
+    "React",
+    "Svelte",
+    "Solid",
+    "UnoCSS",
+    "Vite",
+    "VitePress",
+    "Vitest",
+    "Vue"
+  ],
+  "files": [
+    {
+      "path": ".claude/settings.local.json",
+      "language": "json",
+      "sizeLines": 45,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".codacy.yml",
+      "language": "yaml",
+      "sizeLines": 31,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".gitattributes",
+      "language": "unknown",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".github/FUNDING.yml",
+      "language": "yaml",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".github/workflows/build.yml",
+      "language": "yaml",
+      "sizeLines": 39,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 39,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/docs.yml",
+      "language": "yaml",
+      "sizeLines": 60,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/examples.yml",
+      "language": "yaml",
+      "sizeLines": 46,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/lint.yml",
+      "language": "yaml",
+      "sizeLines": 33,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/publish-test.yml",
+      "language": "yaml",
+      "sizeLines": 44,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/publish.yml",
+      "language": "yaml",
+      "sizeLines": 52,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".markdownlint.json",
+      "language": "json",
+      "sizeLines": 14,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".reinstallerrc",
+      "language": "unknown",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-scan-files.json",
+      "language": "json",
+      "sizeLines": 444,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "language": "markdown",
+      "sizeLines": 574,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "language": "markdown",
+      "sizeLines": 128,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/.vitepress/config.ts",
+      "language": "typescript",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/.vitepress/theme/custom.css",
+      "language": "css",
+      "sizeLines": 108,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/.vitepress/theme/index.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/api/index.md",
+      "language": "markdown",
+      "sizeLines": 381,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/api/options.md",
+      "language": "markdown",
+      "sizeLines": 593,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/configs/index.md",
+      "language": "markdown",
+      "sizeLines": 173,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/configs/react.md",
+      "language": "markdown",
+      "sizeLines": 280,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/configs/vue.md",
+      "language": "markdown",
+      "sizeLines": 269,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/examples/monorepo-pnpm.md",
+      "language": "markdown",
+      "sizeLines": 2,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/examples/monorepo-turbo.md",
+      "language": "markdown",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/guide/advanced-usage.md",
+      "language": "markdown",
+      "sizeLines": 382,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/guide/basic-usage.md",
+      "language": "markdown",
+      "sizeLines": 315,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/guide/cli.md",
+      "language": "markdown",
+      "sizeLines": 214,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/guide/getting-started.md",
+      "language": "markdown",
+      "sizeLines": 158,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/guide/migrate-to-v7.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/guide/migration.md",
+      "language": "markdown",
+      "sizeLines": 467,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/index.md",
+      "language": "markdown",
+      "sizeLines": 108,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/MONOREPO.md",
+      "language": "markdown",
+      "sizeLines": 190,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "language": "markdown",
+      "sizeLines": 173,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/api/index.md",
+      "language": "markdown",
+      "sizeLines": 26,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/api/options.md",
+      "language": "markdown",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/configs/index.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/configs/react.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/configs/vue.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/examples/monorepo-pnpm.md",
+      "language": "markdown",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/examples/monorepo-turbo.md",
+      "language": "markdown",
+      "sizeLines": 13,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/guide/advanced-usage.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/guide/basic-usage.md",
+      "language": "markdown",
+      "sizeLines": 314,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/guide/cli.md",
+      "language": "markdown",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/guide/getting-started.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/guide/migrate-to-v7.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/guide/migration.md",
+      "language": "markdown",
+      "sizeLines": 288,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/index.md",
+      "language": "markdown",
+      "sizeLines": 107,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/MONOREPO.md",
+      "language": "markdown",
+      "sizeLines": 189,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/zh/TESTING.md",
+      "language": "markdown",
+      "sizeLines": 171,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/angular.json",
+      "language": "json",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/angular/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/package.json",
+      "language": "json",
+      "sizeLines": 38,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/angular/README.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/angular/src/app/app.component.ts",
+      "language": "typescript",
+      "sizeLines": 231,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/components/counter/counter.component.ts",
+      "language": "typescript",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/components/user-card/user-card.component.ts",
+      "language": "typescript",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/directives/click-outside.directive.ts",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/models/user.model.ts",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/pipes/filter.pipe.ts",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/services/counter.service.ts",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/services/theme.service.ts",
+      "language": "typescript",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/services/toast.service.ts",
+      "language": "typescript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/services/user.service.ts",
+      "language": "typescript",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/app/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/index.html",
+      "language": "html",
+      "sizeLines": 12,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/angular/src/main.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/angular/src/styles.css",
+      "language": "css",
+      "sizeLines": 10,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/angular/tsconfig.json",
+      "language": "json",
+      "sizeLines": 27,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/astro/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/package.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/astro/README.md",
+      "language": "markdown",
+      "sizeLines": 98,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/astro/src/components/Counter.astro",
+      "language": "astro",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/src/pages/index.astro",
+      "language": "astro",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/src/types/counter.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/src/types/product.ts",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/src/utils/formatters.ts",
+      "language": "typescript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 201,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/astro/tsconfig.json",
+      "language": "json",
+      "sizeLines": 6,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/monorepo-pnpm/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/monorepo-pnpm/package.json",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/monorepo-pnpm/pnpm-workspace.yaml",
+      "language": "yaml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/monorepo-turbo/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/monorepo-turbo/package.json",
+      "language": "json",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/monorepo-turbo/turbo.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/nextjs/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/next-env.d.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/next.config.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/package.json",
+      "language": "json",
+      "sizeLines": 28,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/nextjs/README.md",
+      "language": "markdown",
+      "sizeLines": 116,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/nextjs/src/app/globals.css",
+      "language": "css",
+      "sizeLines": 15,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/nextjs/src/app/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/app/page.tsx",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/components/CounterDisplay.tsx",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/components/DataTable.tsx",
+      "language": "typescript",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/components/Modal.tsx",
+      "language": "typescript",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/components/Tabs.tsx",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/hooks/useCounter.ts",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/hooks/useDebounce.ts",
+      "language": "typescript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/hooks/useMediaQuery.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/hooks/useToggle.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/src/lib/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 197,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nextjs/tsconfig.json",
+      "language": "json",
+      "sizeLines": 24,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/nuxt/app.vue",
+      "language": "vue",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/components/CounterDisplay.vue",
+      "language": "vue",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/components/UserManagement.vue",
+      "language": "vue",
+      "sizeLines": 316,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/composables/useCounter.ts",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/composables/useDebounce.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/composables/useMediaQuery.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/composables/useMouse.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/composables/useToggle.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/nuxt.config.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/nuxt/package.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/nuxt/README.md",
+      "language": "markdown",
+      "sizeLines": 100,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/nuxt/server/tsconfig.json",
+      "language": "json",
+      "sizeLines": 4,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/nuxt/tsconfig.json",
+      "language": "json",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/nuxt/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 179,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/index.html",
+      "language": "html",
+      "sizeLines": 12,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/react/package.json",
+      "language": "json",
+      "sizeLines": 27,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/react/README.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/react/src/App.tsx",
+      "language": "typescript",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/components/CounterDisplay.tsx",
+      "language": "typescript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/components/DataTable.tsx",
+      "language": "typescript",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/components/Modal.tsx",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/components/Tabs.tsx",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/components/UserCard.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/components/UserStats.tsx",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useAsync.ts",
+      "language": "typescript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useClickOutside.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useCounter.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useDebounce.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useLocalStorage.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useMediaQuery.ts",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/usePrevious.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useToggle.ts",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/hooks/useUsers.ts",
+      "language": "typescript",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/main.tsx",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/react/tsconfig.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/react/vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/README.md",
+      "language": "markdown",
+      "sizeLines": 267,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/svelte/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/index.html",
+      "language": "html",
+      "sizeLines": 12,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/svelte/package.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/svelte/README.md",
+      "language": "markdown",
+      "sizeLines": 153,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/svelte/src/App.svelte",
+      "language": "svelte",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/components/CounterDisplay.svelte",
+      "language": "svelte",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/components/DataTable.svelte",
+      "language": "svelte",
+      "sizeLines": 196,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/components/Modal.svelte",
+      "language": "svelte",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/components/Tabs.svelte",
+      "language": "svelte",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/components/UserCard.svelte",
+      "language": "svelte",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/composables/useDebounce.ts",
+      "language": "typescript",
+      "sizeLines": 184,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/stores/counter.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/stores/localStorage.ts",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/stores/theme.ts",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/stores/users.ts",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/lib/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/src/main.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/svelte/tsconfig.json",
+      "language": "json",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/svelte/vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/package.json",
+      "language": "json",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/typescript/README.md",
+      "language": "markdown",
+      "sizeLines": 129,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/typescript/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 278,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/src/utils/async.ts",
+      "language": "typescript",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/src/utils/collections.ts",
+      "language": "typescript",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/src/utils/functional.ts",
+      "language": "typescript",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/src/utils/patterns.ts",
+      "language": "typescript",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/typescript/tsconfig.json",
+      "language": "json",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/unocss/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/index.html",
+      "language": "html",
+      "sizeLines": 13,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/unocss/package.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/unocss/README.md",
+      "language": "markdown",
+      "sizeLines": 102,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/unocss/src/App.vue",
+      "language": "vue",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/components/CounterDisplay.vue",
+      "language": "vue",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/components/UserManagement.vue",
+      "language": "vue",
+      "sizeLines": 250,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/composables/useCounter.ts",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/composables/useDebounce.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/composables/useToggle.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/main.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/tsconfig.json",
+      "language": "json",
+      "sizeLines": 21,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/unocss/tsconfig.node.json",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/unocss/uno.config.ts",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/unocss/vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/index.html",
+      "language": "html",
+      "sizeLines": 12,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/vue2/package.json",
+      "language": "json",
+      "sizeLines": 24,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/vue2/README.md",
+      "language": "markdown",
+      "sizeLines": 92,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/vue2/src/App.vue",
+      "language": "vue",
+      "sizeLines": 307,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/src/components/Counter.vue",
+      "language": "vue",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/src/components/Tabs.vue",
+      "language": "vue",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/src/components/UserCard.vue",
+      "language": "vue",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/src/main.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue2/tsconfig.json",
+      "language": "json",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/vue2/vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/eslint.config.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/index.html",
+      "language": "html",
+      "sizeLines": 12,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "examples/vue3/package.json",
+      "language": "json",
+      "sizeLines": 22,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/vue3/README.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/vue3/src/App.vue",
+      "language": "vue",
+      "sizeLines": 216,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/components/CounterDisplay.vue",
+      "language": "vue",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/components/DataTable.vue",
+      "language": "vue",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/components/Modal.vue",
+      "language": "vue",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/components/Tabs.vue",
+      "language": "vue",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/components/UserCard.vue",
+      "language": "vue",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/components/UserStats.vue",
+      "language": "vue",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useAsync.ts",
+      "language": "typescript",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useCounter.ts",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useDebounce.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useLocalStorage.ts",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useMediaQuery.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useMouse.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useToggle.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/composables/useUsers.ts",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/main.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/src/utils/helpers.ts",
+      "language": "typescript",
+      "sizeLines": 165,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/vue3/tsconfig.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "examples/vue3/vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/github-workflows.md",
+      "language": "markdown",
+      "sizeLines": 246,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "internal/NODE_VERSION_REQUIREMENTS.md",
+      "language": "markdown",
+      "sizeLines": 383,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "internal/TESTING_ENHANCEMENT_PLAN.md",
+      "language": "markdown",
+      "sizeLines": 681,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 167,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README_CN.md",
+      "language": "markdown",
+      "sizeLines": 1010,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 1026,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/build.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/coverage-report.ts",
+      "language": "typescript",
+      "sizeLines": 268,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/typegen.ts",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/validate-examples.ts",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sonar-project.properties",
+      "language": "properties",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/cli/index.ts",
+      "language": "typescript",
+      "sizeLines": 306,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/cli/types.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/angular.ts",
+      "language": "typescript",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/astro.ts",
+      "language": "typescript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/command.ts",
+      "language": "typescript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/comments.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/disables.ts",
+      "language": "typescript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/formatters.ts",
+      "language": "typescript",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/ignores.ts",
+      "language": "typescript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/imports.ts",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/index.ts",
+      "language": "typescript",
+      "sizeLines": 492,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/javascript.ts",
+      "language": "typescript",
+      "sizeLines": 226,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/jsdoc.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/jsonc.ts",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/jsx.ts",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/markdown.ts",
+      "language": "typescript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/nextjs.ts",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/node.ts",
+      "language": "typescript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/nuxt.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/perfectionist.ts",
+      "language": "typescript",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/pnpm.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/prettier.ts",
+      "language": "typescript",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/react.ts",
+      "language": "typescript",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/regexp.ts",
+      "language": "typescript",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/solid.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/sort.ts",
+      "language": "typescript",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/stylistic.ts",
+      "language": "typescript",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/svelte.ts",
+      "language": "typescript",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/test.ts",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/toml.ts",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/typescript.ts",
+      "language": "typescript",
+      "sizeLines": 226,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/unicorn.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/unocss.ts",
+      "language": "typescript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/vue.ts",
+      "language": "typescript",
+      "sizeLines": 302,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/configs/yaml.ts",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/constants.ts",
+      "language": "typescript",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/index.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/plugins.ts",
+      "language": "typescript",
+      "sizeLines": 187,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/typegen.d.ts",
+      "language": "typescript",
+      "sizeLines": 19387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/types.ts",
+      "language": "typescript",
+      "sizeLines": 414,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/index.ts",
+      "language": "typescript",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/types.ts",
+      "language": "typescript",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/angular.test.ts",
+      "language": "typescript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/astro.test.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/cli.test.ts",
+      "language": "typescript",
+      "sizeLines": 513,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/command.test.ts",
+      "language": "typescript",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/composer-chaining.test.ts",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/config-conflicts.test.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/config-options.test.ts",
+      "language": "typescript",
+      "sizeLines": 328,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/disables.test.ts",
+      "language": "typescript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/e2e/framework.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/e2e/scenarios.test.ts",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/e2e/scenarios/index.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/editor-env.test.ts",
+      "language": "typescript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/examples-validation.test.ts",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/file-overrides.test.ts",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/formatters.test.ts",
+      "language": "typescript",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/imports.test.ts",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/individual-configs.test.ts",
+      "language": "typescript",
+      "sizeLines": 488,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/integration.test.ts",
+      "language": "typescript",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/javascript.test.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/json.test.ts",
+      "language": "typescript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/language-options.test.ts",
+      "language": "typescript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/monorepo-basic.test.ts",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/path-aliases.test.ts",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/performance.test.ts",
+      "language": "typescript",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/plugins.test.ts",
+      "language": "typescript",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/react.test.ts",
+      "language": "typescript",
+      "sizeLines": 275,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/regexp.test.ts",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/rule-priority.test.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/rule-updates.test.ts",
+      "language": "typescript",
+      "sizeLines": 328,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/solid.test.ts",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/stylistic.test.ts",
+      "language": "typescript",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/svelte.test.ts",
+      "language": "typescript",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/test-files.test.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/toml.test.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/typescript.test.ts",
+      "language": "typescript",
+      "sizeLines": 258,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/unicorn.test.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/unocss.test.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/utils.test.ts",
+      "language": "typescript",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/utils.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/utils/monorepo-helper.ts",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/vue.test.ts",
+      "language": "typescript",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/yaml.test.ts",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "sizeLines": 30,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 330,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "large",
+  "importMap": {
+    ".claude/settings.local.json": [],
+    ".codacy.yml": [],
+    ".gitattributes": [],
+    ".github/FUNDING.yml": [],
+    ".github/workflows/build.yml": [],
+    ".github/workflows/ci.yml": [],
+    ".github/workflows/docs.yml": [],
+    ".github/workflows/examples.yml": [],
+    ".github/workflows/lint.yml": [],
+    ".github/workflows/publish-test.yml": [],
+    ".github/workflows/publish.yml": [],
+    ".markdownlint.json": [],
+    ".reinstallerrc": [],
+    ".understand-anything/.understandignore": [],
+    ".understand-anything/config.json": [],
+    ".understand-anything/tmp/ua-scan-files.json": [],
+    "CHANGELOG.md": [],
+    "CODE_OF_CONDUCT.md": [],
+    "CONTRIBUTING.md": [],
+    "docs/.vitepress/config.ts": [],
+    "docs/.vitepress/theme/custom.css": [],
+    "docs/.vitepress/theme/index.ts": [
+      "docs/.vitepress/theme/custom.css"
+    ],
+    "docs/api/index.md": [],
+    "docs/api/options.md": [],
+    "docs/configs/index.md": [],
+    "docs/configs/react.md": [],
+    "docs/configs/vue.md": [],
+    "docs/examples/monorepo-pnpm.md": [],
+    "docs/examples/monorepo-turbo.md": [],
+    "docs/guide/advanced-usage.md": [],
+    "docs/guide/basic-usage.md": [],
+    "docs/guide/cli.md": [],
+    "docs/guide/getting-started.md": [],
+    "docs/guide/migrate-to-v7.md": [],
+    "docs/guide/migration.md": [],
+    "docs/index.md": [],
+    "docs/MONOREPO.md": [],
+    "docs/TESTING.md": [],
+    "docs/zh/api/index.md": [],
+    "docs/zh/api/options.md": [],
+    "docs/zh/configs/index.md": [],
+    "docs/zh/configs/react.md": [],
+    "docs/zh/configs/vue.md": [],
+    "docs/zh/examples/monorepo-pnpm.md": [],
+    "docs/zh/examples/monorepo-turbo.md": [],
+    "docs/zh/guide/advanced-usage.md": [],
+    "docs/zh/guide/basic-usage.md": [],
+    "docs/zh/guide/cli.md": [],
+    "docs/zh/guide/getting-started.md": [],
+    "docs/zh/guide/migrate-to-v7.md": [],
+    "docs/zh/guide/migration.md": [],
+    "docs/zh/index.md": [],
+    "docs/zh/MONOREPO.md": [],
+    "docs/zh/TESTING.md": [],
+    "eslint.config.ts": [
+      "src/index.ts"
+    ],
+    "examples/angular/angular.json": [],
+    "examples/angular/eslint.config.ts": [],
+    "examples/angular/package.json": [],
+    "examples/angular/README.md": [],
+    "examples/angular/src/app/app.component.ts": [
+      "examples/angular/src/app/components/counter/counter.component.ts",
+      "examples/angular/src/app/components/user-card/user-card.component.ts",
+      "examples/angular/src/app/models/user.model.ts",
+      "examples/angular/src/app/services/counter.service.ts",
+      "examples/angular/src/app/services/user.service.ts",
+      "examples/angular/src/app/utils/helpers.ts"
+    ],
+    "examples/angular/src/app/components/counter/counter.component.ts": [
+      "examples/angular/src/app/services/counter.service.ts"
+    ],
+    "examples/angular/src/app/components/user-card/user-card.component.ts": [
+      "examples/angular/src/app/models/user.model.ts"
+    ],
+    "examples/angular/src/app/directives/click-outside.directive.ts": [],
+    "examples/angular/src/app/models/user.model.ts": [],
+    "examples/angular/src/app/pipes/filter.pipe.ts": [],
+    "examples/angular/src/app/services/counter.service.ts": [],
+    "examples/angular/src/app/services/theme.service.ts": [],
+    "examples/angular/src/app/services/toast.service.ts": [],
+    "examples/angular/src/app/services/user.service.ts": [
+      "examples/angular/src/app/models/user.model.ts"
+    ],
+    "examples/angular/src/app/utils/helpers.ts": [
+      "examples/angular/src/app/models/user.model.ts"
+    ],
+    "examples/angular/src/index.html": [],
+    "examples/angular/src/main.ts": [
+      "examples/angular/src/app/app.component.ts"
+    ],
+    "examples/angular/src/styles.css": [],
+    "examples/angular/tsconfig.json": [],
+    "examples/astro/eslint.config.ts": [],
+    "examples/astro/package.json": [],
+    "examples/astro/README.md": [],
+    "examples/astro/src/components/Counter.astro": [],
+    "examples/astro/src/pages/index.astro": [],
+    "examples/astro/src/types/counter.ts": [],
+    "examples/astro/src/types/product.ts": [],
+    "examples/astro/src/utils/formatters.ts": [],
+    "examples/astro/src/utils/helpers.ts": [],
+    "examples/astro/tsconfig.json": [],
+    "examples/monorepo-pnpm/eslint.config.ts": [],
+    "examples/monorepo-pnpm/package.json": [],
+    "examples/monorepo-pnpm/pnpm-workspace.yaml": [],
+    "examples/monorepo-turbo/eslint.config.ts": [],
+    "examples/monorepo-turbo/package.json": [],
+    "examples/monorepo-turbo/turbo.json": [],
+    "examples/nextjs/eslint.config.ts": [],
+    "examples/nextjs/next-env.d.ts": [],
+    "examples/nextjs/next.config.ts": [],
+    "examples/nextjs/package.json": [],
+    "examples/nextjs/README.md": [],
+    "examples/nextjs/src/app/globals.css": [],
+    "examples/nextjs/src/app/layout.tsx": [
+      "examples/nextjs/src/app/globals.css"
+    ],
+    "examples/nextjs/src/app/page.tsx": [],
+    "examples/nextjs/src/components/CounterDisplay.tsx": [
+      "examples/nextjs/src/hooks/useCounter.ts"
+    ],
+    "examples/nextjs/src/components/DataTable.tsx": [],
+    "examples/nextjs/src/components/Modal.tsx": [],
+    "examples/nextjs/src/components/Tabs.tsx": [],
+    "examples/nextjs/src/env.d.ts": [],
+    "examples/nextjs/src/hooks/useCounter.ts": [],
+    "examples/nextjs/src/hooks/useDebounce.ts": [],
+    "examples/nextjs/src/hooks/useMediaQuery.ts": [],
+    "examples/nextjs/src/hooks/useToggle.ts": [],
+    "examples/nextjs/src/lib/utils/helpers.ts": [],
+    "examples/nextjs/tsconfig.json": [],
+    "examples/nuxt/app.vue": [],
+    "examples/nuxt/components/CounterDisplay.vue": [],
+    "examples/nuxt/components/UserManagement.vue": [],
+    "examples/nuxt/composables/useCounter.ts": [],
+    "examples/nuxt/composables/useDebounce.ts": [],
+    "examples/nuxt/composables/useMediaQuery.ts": [],
+    "examples/nuxt/composables/useMouse.ts": [],
+    "examples/nuxt/composables/useToggle.ts": [],
+    "examples/nuxt/eslint.config.ts": [],
+    "examples/nuxt/nuxt.config.ts": [],
+    "examples/nuxt/package.json": [],
+    "examples/nuxt/README.md": [],
+    "examples/nuxt/server/tsconfig.json": [],
+    "examples/nuxt/tsconfig.json": [],
+    "examples/nuxt/utils/helpers.ts": [],
+    "examples/react/eslint.config.ts": [],
+    "examples/react/index.html": [],
+    "examples/react/package.json": [],
+    "examples/react/README.md": [],
+    "examples/react/src/App.tsx": [
+      "examples/react/src/components/CounterDisplay.tsx",
+      "examples/react/src/components/UserCard.tsx",
+      "examples/react/src/components/UserStats.tsx",
+      "examples/react/src/hooks/useCounter.ts",
+      "examples/react/src/hooks/useLocalStorage.ts",
+      "examples/react/src/hooks/useUsers.ts",
+      "examples/react/src/utils/helpers.ts"
+    ],
+    "examples/react/src/components/CounterDisplay.tsx": [
+      "examples/react/src/hooks/useCounter.ts"
+    ],
+    "examples/react/src/components/DataTable.tsx": [],
+    "examples/react/src/components/Modal.tsx": [
+      "examples/react/src/hooks/useClickOutside.ts"
+    ],
+    "examples/react/src/components/Tabs.tsx": [],
+    "examples/react/src/components/UserCard.tsx": [
+      "examples/react/src/utils/helpers.ts"
+    ],
+    "examples/react/src/components/UserStats.tsx": [
+      "examples/react/src/utils/helpers.ts"
+    ],
+    "examples/react/src/hooks/useAsync.ts": [],
+    "examples/react/src/hooks/useClickOutside.ts": [],
+    "examples/react/src/hooks/useCounter.ts": [],
+    "examples/react/src/hooks/useDebounce.ts": [],
+    "examples/react/src/hooks/useLocalStorage.ts": [],
+    "examples/react/src/hooks/useMediaQuery.ts": [],
+    "examples/react/src/hooks/usePrevious.ts": [],
+    "examples/react/src/hooks/useToggle.ts": [],
+    "examples/react/src/hooks/useUsers.ts": [
+      "examples/react/src/utils/helpers.ts"
+    ],
+    "examples/react/src/main.tsx": [
+      "examples/react/src/App.tsx"
+    ],
+    "examples/react/src/utils/helpers.ts": [],
+    "examples/react/tsconfig.json": [],
+    "examples/react/vite.config.ts": [],
+    "examples/README.md": [],
+    "examples/svelte/eslint.config.ts": [],
+    "examples/svelte/index.html": [],
+    "examples/svelte/package.json": [],
+    "examples/svelte/README.md": [],
+    "examples/svelte/src/App.svelte": [],
+    "examples/svelte/src/env.d.ts": [],
+    "examples/svelte/src/lib/components/CounterDisplay.svelte": [],
+    "examples/svelte/src/lib/components/DataTable.svelte": [],
+    "examples/svelte/src/lib/components/Modal.svelte": [],
+    "examples/svelte/src/lib/components/Tabs.svelte": [],
+    "examples/svelte/src/lib/components/UserCard.svelte": [],
+    "examples/svelte/src/lib/composables/useDebounce.ts": [],
+    "examples/svelte/src/lib/stores/counter.ts": [],
+    "examples/svelte/src/lib/stores/localStorage.ts": [],
+    "examples/svelte/src/lib/stores/theme.ts": [
+      "examples/svelte/src/lib/utils/helpers.ts"
+    ],
+    "examples/svelte/src/lib/stores/users.ts": [
+      "examples/svelte/src/lib/utils/helpers.ts"
+    ],
+    "examples/svelte/src/lib/utils/helpers.ts": [],
+    "examples/svelte/src/main.ts": [
+      "examples/svelte/src/App.svelte"
+    ],
+    "examples/svelte/tsconfig.json": [],
+    "examples/svelte/vite.config.ts": [],
+    "examples/typescript/eslint.config.ts": [],
+    "examples/typescript/package.json": [],
+    "examples/typescript/README.md": [],
+    "examples/typescript/src/index.ts": [],
+    "examples/typescript/src/utils/async.ts": [],
+    "examples/typescript/src/utils/collections.ts": [],
+    "examples/typescript/src/utils/functional.ts": [],
+    "examples/typescript/src/utils/helpers.ts": [],
+    "examples/typescript/src/utils/patterns.ts": [],
+    "examples/typescript/tsconfig.json": [],
+    "examples/unocss/eslint.config.ts": [],
+    "examples/unocss/index.html": [],
+    "examples/unocss/package.json": [],
+    "examples/unocss/README.md": [],
+    "examples/unocss/src/App.vue": [],
+    "examples/unocss/src/components/CounterDisplay.vue": [],
+    "examples/unocss/src/components/UserManagement.vue": [],
+    "examples/unocss/src/composables/useCounter.ts": [],
+    "examples/unocss/src/composables/useDebounce.ts": [],
+    "examples/unocss/src/composables/useToggle.ts": [],
+    "examples/unocss/src/env.d.ts": [],
+    "examples/unocss/src/main.ts": [
+      "examples/unocss/src/App.vue"
+    ],
+    "examples/unocss/src/utils/helpers.ts": [],
+    "examples/unocss/tsconfig.json": [],
+    "examples/unocss/tsconfig.node.json": [],
+    "examples/unocss/uno.config.ts": [],
+    "examples/unocss/vite.config.ts": [],
+    "examples/vue2/eslint.config.ts": [],
+    "examples/vue2/index.html": [],
+    "examples/vue2/package.json": [],
+    "examples/vue2/README.md": [],
+    "examples/vue2/src/App.vue": [],
+    "examples/vue2/src/components/Counter.vue": [],
+    "examples/vue2/src/components/Tabs.vue": [],
+    "examples/vue2/src/components/UserCard.vue": [],
+    "examples/vue2/src/env.d.ts": [],
+    "examples/vue2/src/main.ts": [
+      "examples/vue2/src/App.vue"
+    ],
+    "examples/vue2/src/utils/helpers.ts": [],
+    "examples/vue2/tsconfig.json": [],
+    "examples/vue2/vite.config.ts": [],
+    "examples/vue3/eslint.config.ts": [],
+    "examples/vue3/index.html": [],
+    "examples/vue3/package.json": [],
+    "examples/vue3/README.md": [],
+    "examples/vue3/src/App.vue": [],
+    "examples/vue3/src/components/CounterDisplay.vue": [],
+    "examples/vue3/src/components/DataTable.vue": [],
+    "examples/vue3/src/components/Modal.vue": [],
+    "examples/vue3/src/components/Tabs.vue": [],
+    "examples/vue3/src/components/UserCard.vue": [],
+    "examples/vue3/src/components/UserStats.vue": [],
+    "examples/vue3/src/composables/useAsync.ts": [],
+    "examples/vue3/src/composables/useCounter.ts": [],
+    "examples/vue3/src/composables/useDebounce.ts": [],
+    "examples/vue3/src/composables/useLocalStorage.ts": [],
+    "examples/vue3/src/composables/useMediaQuery.ts": [],
+    "examples/vue3/src/composables/useMouse.ts": [],
+    "examples/vue3/src/composables/useToggle.ts": [],
+    "examples/vue3/src/composables/useUsers.ts": [
+      "examples/vue3/src/utils/helpers.ts"
+    ],
+    "examples/vue3/src/env.d.ts": [],
+    "examples/vue3/src/main.ts": [
+      "examples/vue3/src/App.vue"
+    ],
+    "examples/vue3/src/utils/helpers.ts": [],
+    "examples/vue3/tsconfig.json": [],
+    "examples/vue3/vite.config.ts": [],
+    "internal/github-workflows.md": [],
+    "internal/NODE_VERSION_REQUIREMENTS.md": [],
+    "internal/TESTING_ENHANCEMENT_PLAN.md": [],
+    "package.json": [],
+    "README_CN.md": [],
+    "README.md": [],
+    "scripts/build.ts": [],
+    "scripts/coverage-report.ts": [],
+    "scripts/typegen.ts": [
+      "src/configs/index.ts"
+    ],
+    "scripts/validate-examples.ts": [],
+    "sonar-project.properties": [],
+    "src/cli/index.ts": [
+      "src/cli/types.ts"
+    ],
+    "src/cli/types.ts": [],
+    "src/configs/angular.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/astro.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/command.ts": [
+      "src/plugins.ts"
+    ],
+    "src/configs/comments.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/configs/disables.ts": [
+      "src/constants.ts"
+    ],
+    "src/configs/formatters.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/ignores.ts": [],
+    "src/configs/imports.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/configs/index.ts": [
+      "src/configs/angular.ts",
+      "src/configs/astro.ts",
+      "src/configs/command.ts",
+      "src/configs/comments.ts",
+      "src/configs/disables.ts",
+      "src/configs/formatters.ts",
+      "src/configs/ignores.ts",
+      "src/configs/imports.ts",
+      "src/configs/javascript.ts",
+      "src/configs/jsdoc.ts",
+      "src/configs/jsonc.ts",
+      "src/configs/jsx.ts",
+      "src/configs/markdown.ts",
+      "src/configs/nextjs.ts",
+      "src/configs/node.ts",
+      "src/configs/nuxt.ts",
+      "src/configs/perfectionist.ts",
+      "src/configs/pnpm.ts",
+      "src/configs/prettier.ts",
+      "src/configs/react.ts",
+      "src/configs/regexp.ts",
+      "src/configs/solid.ts",
+      "src/configs/sort.ts",
+      "src/configs/stylistic.ts",
+      "src/configs/svelte.ts",
+      "src/configs/test.ts",
+      "src/configs/toml.ts",
+      "src/configs/typescript.ts",
+      "src/configs/unicorn.ts",
+      "src/configs/unocss.ts",
+      "src/configs/vue.ts",
+      "src/configs/yaml.ts",
+      "src/plugins.ts",
+      "src/types.ts",
+      "src/utils/index.ts"
+    ],
+    "src/configs/javascript.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/configs/jsdoc.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/jsonc.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/configs/jsx.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/markdown.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/nextjs.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/node.ts": [
+      "src/constants.ts"
+    ],
+    "src/configs/nuxt.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/configs/perfectionist.ts": [
+      "src/constants.ts"
+    ],
+    "src/configs/pnpm.ts": [
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/prettier.ts": [
+      "src/constants.ts"
+    ],
+    "src/configs/react.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/regexp.ts": [
+      "src/constants.ts"
+    ],
+    "src/configs/solid.ts": [],
+    "src/configs/sort.ts": [
+      "src/types.ts"
+    ],
+    "src/configs/stylistic.ts": [
+      "src/constants.ts"
+    ],
+    "src/configs/svelte.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/test.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/toml.ts": [
+      "src/types.ts"
+    ],
+    "src/configs/typescript.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts",
+      "src/utils/index.ts"
+    ],
+    "src/configs/unicorn.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/configs/unocss.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/vue.ts": [
+      "src/constants.ts",
+      "src/plugins.ts",
+      "src/types.ts"
+    ],
+    "src/configs/yaml.ts": [
+      "src/constants.ts",
+      "src/types.ts"
+    ],
+    "src/constants.ts": [],
+    "src/index.ts": [
+      "src/configs/index.ts",
+      "src/types.ts"
+    ],
+    "src/plugins.ts": [
+      "src/constants.ts"
+    ],
+    "src/typegen.d.ts": [],
+    "src/types.ts": [
+      "src/configs/formatters.ts",
+      "src/configs/prettier.ts",
+      "src/configs/react.ts",
+      "src/configs/stylistic.ts",
+      "src/configs/typescript.ts",
+      "src/configs/vue.ts"
+    ],
+    "src/utils/index.ts": [
+      "src/constants.ts"
+    ],
+    "src/utils/types.ts": [],
+    "test/angular.test.ts": [
+      "src/configs/index.ts"
+    ],
+    "test/astro.test.ts": [
+      "src/configs/index.ts"
+    ],
+    "test/cli.test.ts": [
+      "src/cli/index.ts",
+      "src/cli/types.ts"
+    ],
+    "test/command.test.ts": [
+      "src/configs/index.ts",
+      "test/utils.ts"
+    ],
+    "test/composer-chaining.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/config-conflicts.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/config-options.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/disables.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/e2e/framework.ts": [],
+    "test/e2e/scenarios.test.ts": [],
+    "test/e2e/scenarios/index.ts": [],
+    "test/editor-env.test.ts": [
+      "src/constants.ts",
+      "src/utils/index.ts"
+    ],
+    "test/examples-validation.test.ts": [],
+    "test/file-overrides.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/formatters.test.ts": [
+      "src/configs/index.ts"
+    ],
+    "test/imports.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/individual-configs.test.ts": [
+      "src/configs/index.ts"
+    ],
+    "test/integration.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/javascript.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/json.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/language-options.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/monorepo-basic.test.ts": [],
+    "test/path-aliases.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/performance.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/plugins.test.ts": [
+      "src/plugins.ts"
+    ],
+    "test/react.test.ts": [
+      "src/configs/index.ts",
+      "test/utils.ts"
+    ],
+    "test/regexp.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/rule-priority.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/rule-updates.test.ts": [],
+    "test/solid.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/stylistic.test.ts": [
+      "src/configs/index.ts",
+      "test/utils.ts"
+    ],
+    "test/svelte.test.ts": [
+      "src/configs/index.ts",
+      "test/utils.ts"
+    ],
+    "test/test-files.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/toml.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/typescript.test.ts": [
+      "src/configs/index.ts",
+      "test/utils.ts"
+    ],
+    "test/unicorn.test.ts": [
+      "test/utils.ts"
+    ],
+    "test/unocss.test.ts": [
+      "src/configs/index.ts"
+    ],
+    "test/utils.test.ts": [
+      "src/utils/index.ts"
+    ],
+    "test/utils.ts": [
+      "src/index.ts"
+    ],
+    "test/utils/monorepo-helper.ts": [],
+    "test/vue.test.ts": [
+      "src/configs/index.ts",
+      "test/utils.ts"
+    ],
+    "test/yaml.test.ts": [
+      "test/utils.ts"
+    ],
+    "tsconfig.json": [],
+    "vitest.config.ts": []
+  }
+}
